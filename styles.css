@@ -83,4 +83,19 @@ a:hover {
 .site-nav a:hover {
   color: #FFD600;          /* bare gulfarget tekst ved hover */
 }
+  /* Global link-stil */
+a:link,
+a:visited,
+a:active {
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 2px solid #FFD600;
+  padding-bottom: 2px;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  color: #FFD600;
+  border-bottom-color: #ffffff;
+}
 }
