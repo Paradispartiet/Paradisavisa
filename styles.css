@@ -331,4 +331,43 @@ a:hover {
   border-bottom: 2px solid var(--yellow);
   text-align: center;
 }
+  .kategori-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 12px 0;
+  background: #0a0a0a;
+  border-bottom: 1px solid #222;
+}
+
+.kategori-nav a {
+  color: var(--yellow);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  text-decoration: none;
+  position: relative;
+  padding: 4px 6px;
+  transition: color 0.2s ease;
+}
+
+.kategori-nav a:hover {
+  color: #fff;
+}
+
+.kategori-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--yellow);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.kategori-nav a:hover::after {
+  opacity: 1;
+}
 }
