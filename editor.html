@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paradisavisa – Innlegg-editor</title>
+  <style>
+    body { font-family: sans-serif; background:#111; color:#fff; padding:20px; }
+    h1 { color:#FFD600; }
+    label { display:block; margin-top:1rem; font-weight:600; }
+    input, textarea, select {
+      width:100%; max-width:600px; padding:.5rem; margin-top:.25rem;
+      border-radius:4px; border:1px solid #333; background:#222; color:#fff;
+    }
+    textarea { min-height:100px; }
+    button {
+      margin-top:1rem; padding:.7rem 1.2rem;
+      background:#FFD600; border:none; border-radius:4px;
+      font-weight:600; cursor:pointer;
+    }
+    pre {
+      background:#000; padding:1rem; border-radius:4px;
+      white-space:pre-wrap; word-wrap:break-word;
+      margin-top:1rem; border:1px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Innlegg-editor</h1>
+  <p>Fyll inn feltene og trykk "Generer" for å få en ferdig JSON-blokk.</p>
+
+  <form id="editorForm">
+    <label for="type">Type</label>
+    <select id="type">
+      <option value="debatt">Debatt</option>
+      <option value="post">Nyhet / Artikkel</option>
+    </select>
+
+    <label for="title">Tittel</label>
+    <input id="title" type="text" required>
+
+    <label for="url">URL (sti til html-filen, f.eks. posts/2025-09-27-eksempel.html)</label>
+    <input id="url" type="text" required>
+
+    <label for="author">Forfatter (bare debatt)</label>
+    <input id="author" type="text">
+
+    <label for="date">Dato (f.eks. 27. september 2025)</label>
+    <input id="date" type="text">
+
+    <label for="excerpt">Ingress / kort oppsummering</label>
+    <textarea id="excerpt"></textarea>
+
+    <button type="submit">Generer JSON</button>
+  </form>
+
+  <h2>Resultat:</h2>
+  <pre id="output"></pre>
+
+  <script>
+    document.getElementById("editorForm").addEventListener("submit", e => {
+      e.preventDefault();
+
+      const type = document.getElementById("type").value;
+      const title = document.getElementById("title").value.trim();
+      const url = document.getElementById("url").value.trim();
+      const author = document.getElementById("author").value.trim();
+      const date = document.getElementById("date").value.trim();
+      const excerpt = document.getElementById("excerpt").value.trim();
+
+      let block = {};
+
+      if (type === "debatt") {
+        block = {
+          "title": title,
+          "url": url,
+          "author": author || "Ukjent",
+          "date": date || "",
+          "excerpt": excerpt
+        };
+      } else {
+        block = {
+          "title": title,
+          "url": url,
+          "excerpt": excerpt
+        };
+      }
+
+      document.getElementById("output").textContent = JSON.stringify(block, null, 2);
+    });
+  </script>
+</body>
+</html>
