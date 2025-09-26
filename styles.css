@@ -50,6 +50,51 @@ a:hover {
   z-index: 100;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  display: block;
+  object-fit: contain;
+}
+
+.brand span,
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* SLAGORD (valgfritt under logo/navn) */
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-text h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.brand-text .slagord {
+  font-size: 0.9rem;
+  color: var(--yellow);
+  font-style: italic;
+  margin: 0.15rem 0 0 0;
+}
+
 .nav-toggle {
   display: none;
   background: none;
@@ -76,49 +121,6 @@ a:hover {
 .site-nav a:hover {
   color: var(--yellow);
   opacity: 1;
-}
-
-/* AVISHEADER – ikon + navn + slagord */
-.avis-header {
-  display: flex;
-  align-items: center;
-  padding: 1.2rem 1rem;
-  gap: 1rem;
-  background: var(--black);
-  border-bottom: 2px solid var(--yellow);
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.brand-icon {
-  width: 48px;
-  height: 48px;
-  display: block;
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.brand-text h1 {
-  font-size: 2rem;
-  margin: 0;
-  color: var(--yellow);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-.brand-text .slagord {
-  font-size: 0.9rem;
-  color: var(--yellow);
-  font-style: italic;
-  margin: 0.15rem 0 0 0;
 }
 
 /* HERO */
@@ -279,12 +281,13 @@ a:hover {
     font-size: 1.9rem;
   }
 
-  .brand-text h1 {
-    font-size: 1.5rem;
+  .brand span,
+  .brand-name {
+    font-size: 1.2rem;
   }
 
   .brand-icon {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
   }
 }
