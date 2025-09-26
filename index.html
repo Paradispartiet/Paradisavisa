@@ -10,30 +10,46 @@
 </head>
 <body>
 
-  <!-- Avis-header med logo og slagord (sentrert) -->
+  <!-- Header: logo + navn + slagord -->
   <header class="avis-header">
-    <img src="ikon-paradis.png" class="brand-icon" alt="Logo">
-    <div class="brand-text">
-      <h1>PARADISAVISA</h1>
-      <p class="slagord">Objektivt sett, fra vår synsvinkel</p>
+    <div class="brand">
+      <img src="ikon-paradis.png" class="brand-icon" alt="Logo">
+      <div class="brand-text">
+        <h1>PARADISAVISA</h1>
+        <p class="slagord">Objektivt sett, fra vår synsvinkel</p>
+      </div>
     </div>
   </header>
 
+  <!-- Meny med kategorier -->
   <nav class="kategori-nav">
-  <a href="#nyheter">Nyheter</a>
-  <a href="#kultur">Kultur</a>
-  <a href="#sport">Sport</a>
-</nav>
+    <a href="#nyheter">Nyheter</a>
+    <a href="#kultur">Kultur</a>
+    <a href="#sport">Sport</a>
+  </nav>
 
-  <!-- Nyheter -->
-  <section class="cards" id="nyheter">
-    <!-- Artikler fra posts.json bygges inn via script.js -->
+  <!-- Hero / intro -->
+  <section class="hero">
+    <h2>Nyheter, debatt og idéer – uten løpehjul.</h2>
+    <p class="tagline">
+      Her samler vi stoff om Paradismodellen, lokalt liv, kultur og politikk – skrevet i et språk folk faktisk bruker.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-outline" href="#nyheter">Siste saker</a>
+      <a class="btn btn-outline" href="#debatt">Debatt</a>
+      <a class="btn btn-outline" href="#om">Om avisa</a>
+    </div>
   </section>
 
-  <!-- Debatt -->
+  <!-- Nyhetssaker -->
+  <section class="cards" id="nyheter">
+    <!-- Artikler hentes inn via script.js -->
+  </section>
+
+  <!-- Debattseksjon -->
   <section class="cards" id="debatt">
     <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Debatt</h2>
-    <!-- Debattinnlegg fra debatt.json bygges inn via script.js -->
+    <!-- Debattinnlegg hentes inn via script.js -->
     <div style="grid-column:1/-1; text-align:center; margin-top:1rem;">
       <a class="btn btn-yellow" href="skriv-innlegg.html">Skriv innlegg</a>
     </div>
