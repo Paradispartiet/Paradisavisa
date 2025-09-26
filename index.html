@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="no">
 <head>
   <meta charset="utf-8">
@@ -6,48 +6,64 @@
   <title>Paradisavisa</title>
   <meta name="description" content="Paradisavisa – nyheter, debatt og idéer fra Paradispartiet.">
   <link rel="icon" href="assets/favicon.svg">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="header-placeholder"></div>
+  <!-- Logo og navn på avisa -->
+  <header class="avis-header">
+    <img src="ikon-paradis.svg" class="logo" alt="Logo">
+    <h1>PARADISAVISA</h1>
+    <p class="slagord">Objektivt sett, fra vår synsvinkel</p>
+  </header>
 
-<section class="hero">
-  <h1>Paradisavisa</h1>
-  <h2>Nyheter, debatt og idéer – uten løpehjul.</h2>
-  <p class="tagline">Her samler vi stoff om Paradismodellen, lokalt liv, kultur og politikk – skrevet i et språk folk faktisk bruker.</p>
-  <div class="cta-row">
-    <a class="btn btn-yellow" href="#nyheter">Siste saker</a>
-    <a class="btn" href="#debatt">Debatt</a>
-    <a class="btn btn-outline" href="#om">Om avisa</a>
-  </div>
-</section>
+  <!-- Introseksjon -->
+  <section class="hero">
+    <h2>Nyheter, debatt og idéer – uten løpehjul.</h2>
+    <p class="tagline">
+      Her samler vi stoff om Paradismodellen, lokalt liv, kultur og politikk – skrevet i et språk folk faktisk bruker.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-yellow" href="#nyheter">Siste saker</a>
+      <a class="btn" href="#debatt">Debatt</a>
+      <a class="btn btn-outline" href="#om">Om avisa</a>
+    </div>
+  </section>
 
-<!-- Nyhetsseksjon lastes automatisk -->
-<section class="cards" id="nyheter">
-  <!-- Artikler fra posts.json bygges inn via script.js -->
-</section>
+  <!-- Nyheter -->
+  <section class="cards" id="nyheter">
+    <!-- Artikler fra posts.json bygges inn via script.js -->
+  </section>
 
-<!-- Debattseksjon lastes automatisk -->
-<section class="cards" id="debatt">
-  <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Debatt</h2>
-  <!-- Debattinnlegg fra debatt.json bygges inn via script.js -->
+  <!-- Debatt -->
+  <section class="cards" id="debatt">
+    <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Debatt</h2>
+    <!-- Debattinnlegg fra debatt.json bygges inn via script.js -->
+    <div style="grid-column:1/-1; text-align:center; margin-top:1rem;">
+      <a class="btn btn-yellow" href="skriv-innlegg.html">Skriv innlegg</a>
+    </div>
+  </section>
 
-  <div style="grid-column:1/-1; text-align:center; margin-top:1rem;">
-    <a class="btn btn-yellow" href="skriv-innlegg.html">Skriv innlegg</a>
-  </div>
-</section>
+  <!-- Om avisa -->
+  <section class="article article--about" id="om">
+    <h1>Om Paradisavisa</h1>
+    <p class="lead">
+      Paradisavisa er en enkel, gratis nettavis for stoff knyttet til Paradispartiet, idéutvikling, kultur og politikk.
+      Ingen annonser. Ingen klikkjakt.
+    </p>
+    <p>
+      Vi publiserer korte, tydelige tekster og debattinnlegg. Vil du bidra? Skriv til oss via
+      <a href="kontakt.html">kontakt</a>.
+    </p>
+  </section>
 
-<section class="article article--about" id="om">
-  <h1>Om Paradisavisa</h1>
-  <p class="lead">Paradisavisa er en enkel, gratis nettavis for stoff knyttet til Paradispartiet, idéutvikling, kultur og politikk. Ingen annonser. Ingen klikkjakt.</p>
-  <p>Vi publiserer korte, tydelige tekster og debattinnlegg. Vil du bidra? Skriv til oss via <a href="kontakt.html">kontakt</a>.</p>
-</section>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 Paradisavisa</p>
+  </footer>
 
-<footer class="site-footer">
-  <p>© 2025 Paradisavisa</p>
-</footer>
+  <!-- Script -->
+  <script src="script.js"></script>
 
-<script src="script.js"></script>
 </body>
 </html>
