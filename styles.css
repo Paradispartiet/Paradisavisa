@@ -22,9 +22,9 @@ body {
   line-height: 1.6;
 }
 
-/* GLOBALE LENKER */
+/* LENKER */
 a {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   border-bottom: 2px solid var(--yellow);
   padding-bottom: 2px;
@@ -33,125 +33,10 @@ a {
 
 a:hover {
   color: var(--yellow);
-  border-bottom-color: #ffffff;
+  border-bottom-color: #fff;
 }
 
-a:link,
-a:visited,
-a:active {
-  color: #ffffff;
-  text-decoration: none;
-  border-bottom: 2px solid var(--yellow);
-  padding-bottom: 2px;
-}
-
-/* HEADER – eksisterende navigasjon */
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 12px 16px;
-  background: var(--black);
-  border-bottom: 2px solid var(--yellow);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: #fff;
-  font-weight: 800;
-  letter-spacing: 0.2px;
-}
-
-.brand-icon {
-  width: 22px;
-  height: 22px;
-  display: block;
-}
-
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.4rem;
-}
-
-.site-nav {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.site-nav a {
-  color: #fff;
-  text-decoration: none;
-  opacity: 0.9;
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.site-nav a.active,
-.site-nav a:hover {
-  color: var(--yellow);
-  opacity: 1;
-}
-
-/* NY AVIS-HEADER (logo + navn + slagord) */
-:root {
-  --yellow: #FFD600;
-  --black: #000;
-  --bg: #111;
-  --text: #eee;
-  --muted: #bbb;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  color: var(--text);
-  background: #0c0c0c;
-  line-height: 1.6;
-}
-
-/* GLOBALE LENKER */
-a {
-  color: #ffffff;
-  text-decoration: none;
-  border-bottom: 2px solid var(--yellow);
-  padding-bottom: 2px;
-  transition: 0.2s ease;
-}
-
-a:hover {
-  color: var(--yellow);
-  border-bottom-color: #ffffff;
-}
-
-a:link,
-a:visited,
-a:active {
-  color: #ffffff;
-  text-decoration: none;
-  border-bottom: 2px solid var(--yellow);
-  padding-bottom: 2px;
-}
-
-/* HEADER – eksisterende navigasjon */
+/* TOPP-NAVIGASJON */
 .site-header {
   display: flex;
   align-items: center;
@@ -193,7 +78,7 @@ a:active {
   opacity: 1;
 }
 
-/* AVIS-HEADER – logo + navn + slagord */
+/* AVISHEADER – ikon + navn + slagord */
 .avis-header {
   display: flex;
   align-items: center;
@@ -210,8 +95,8 @@ a:active {
 }
 
 .brand-icon {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   display: block;
 }
 
@@ -401,137 +286,5 @@ a:active {
   .brand-icon {
     width: 30px;
     height: 30px;
-  }
-}
-/* KNAPPER */
-.cta-row {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 0.65rem 1.1rem;
-  border: 2px solid #fff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: 0.2s;
-}
-
-.btn:hover {
-  background: #fff;
-  color: #111;
-}
-
-.btn-yellow {
-  background: var(--yellow);
-  color: #111;
-  border-color: var(--yellow);
-}
-
-.btn-yellow:hover {
-  filter: brightness(1.06);
-}
-
-.btn-outline {
-  border-color: var(--yellow);
-  color: var(--yellow);
-}
-
-.btn-outline:hover {
-  background: var(--yellow);
-  color: #111;
-}
-
-/* KORT-GRID */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-  padding: 24px 16px;
-  max-width: 1080px;
-  margin: 0 auto;
-}
-
-.card {
-  background: #141414;
-  border: 1px solid #222;
-  border-radius: 8px;
-  padding: 16px;
-}
-
-.card h3 {
-  margin: 0.25rem 0 0.35rem;
-  color: #fff;
-}
-
-.card p {
-  color: #cfcfcf;
-  margin: 0;
-}
-
-/* ARTIKKEL */
-.article {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 24px 16px;
-}
-
-.meta {
-  color: var(--muted);
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-}
-
-.article h1 {
-  margin: 0.2rem 0 0.4rem;
-}
-
-.article .lead {
-  font-size: 1.15rem;
-  color: #eaeaea;
-}
-
-.article img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-}
-
-/* FOOTER */
-.site-footer {
-  border-top: 1px solid #222;
-  color: #aaa;
-  font-size: 0.95rem;
-  text-align: center;
-  padding: 20px 12px;
-  background: #0a0a0a;
-}
-
-/* RESPONSIV MOBIL */
-@media (max-width: 820px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .nav-toggle {
-    display: block;
-  }
-
-  .site-nav {
-    display: none;
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 12px 0;
-  }
-
-  .site-nav.show {
-    display: flex;
-  }
-
-  .hero h1 {
-    font-size: 1.9rem;
   }
 }
