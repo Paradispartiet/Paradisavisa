@@ -23,6 +23,21 @@
       white-space:pre-wrap; word-wrap:break-word;
       margin-top:1rem; border:1px solid #333;
     }
+    footer {
+      border-top: 1px solid #333;
+      margin-top: 4rem;
+      padding-top: 1rem;
+      font-size: 0.95rem;
+      color: #aaa;
+    }
+    footer a {
+      color: #bbb;
+      text-decoration: none;
+      margin-right: 1rem;
+    }
+    footer a:hover {
+      color: #FFD600;
+    }
   </style>
 </head>
 <body>
@@ -56,6 +71,14 @@
 
   <h2>Resultat:</h2>
   <pre id="output"></pre>
+
+  <footer>
+    <p>© 2025 Paradisavisa</p>
+    <p>
+      <a href="https://paradispartiet.github.io/Paradispartiet" target="_blank">Paradispartiet</a>
+      <a href="https://paradispartiet.github.io/Teorien-om-lyset" target="_blank">Teorien om lyset</a>
+    </p>
+  </footer>
 
   <script>
     document.getElementById("editorForm").addEventListener("submit", e => {
