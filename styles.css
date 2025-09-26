@@ -73,28 +73,6 @@ a:hover {
   letter-spacing: 0.8px;
 }
 
-/* SLAGORD (valgfritt under logo/navn) */
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.brand-text h1 {
-  font-size: 2rem;
-  margin: 0;
-  color: var(--yellow);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-.brand-text .slagord {
-  font-size: 0.9rem;
-  color: var(--yellow);
-  font-style: italic;
-  margin: 0.15rem 0 0 0;
-}
-
 .nav-toggle {
   display: none;
   background: none;
@@ -121,6 +99,46 @@ a:hover {
 .site-nav a:hover {
   color: var(--yellow);
   opacity: 1;
+}
+
+/* AVISHEADER – logo + slagord (sentrert) */
+.avis-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1.2rem 1rem;
+  gap: 0.5rem;
+  background: var(--black);
+  border-bottom: 2px solid var(--yellow);
+  text-align: center;
+}
+
+.avis-header .brand-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.avis-header .brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.avis-header .brand-text h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.avis-header .slagord {
+  font-size: 0.9rem;
+  color: var(--yellow);
+  font-style: italic;
+  margin: 0.15rem 0 0 0;
 }
 
 /* HERO */
@@ -289,5 +307,18 @@ a:hover {
   .brand-icon {
     width: 36px;
     height: 36px;
+  }
+
+  .avis-header .brand-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .avis-header .brand-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .avis-header .slagord {
+    font-size: 0.85rem;
   }
 }
