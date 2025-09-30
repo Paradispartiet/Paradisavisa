@@ -12,7 +12,7 @@
       width:100%; max-width:600px; padding:.5rem; margin-top:.25rem;
       border-radius:4px; border:1px solid #333; background:#222; color:#fff;
     }
-    textarea { min-height:60px; }
+    textarea { min-height:100px; }
     button {
       margin-top:1rem; padding:.7rem 1.2rem;
       background:#FFD600; border:none; border-radius:4px;
@@ -22,22 +22,32 @@
       background:#000; padding:1rem; border-radius:4px;
       white-space:pre-wrap; word-wrap:break-word;
       margin-top:1rem; border:1px solid #333;
+      max-width:800px;
+    }
+    .mode-toggle {
+      margin:1rem 0;
     }
   </style>
 </head>
 <body>
   <h1>Grafikk-editor</h1>
-  <p>Fyll inn feltene og trykk "Generer" for å få en ferdig JSON-blokk du kan lime inn i <code>grafikk.json</code>.</p>
+  <p>Generer JSON-blokker til <code>grafikk.json</code>. Du kan bruke enkel-modus eller bulk-modus.</p>
 
-  <form id="grafikkForm">
+  <div class="mode-toggle">
+    <label><input type="radio" name="mode" value="single" checked> Enkel-modus</label>
+    <label><input type="radio" name="mode" value="bulk"> Bulk-modus</label>
+  </div>
+
+  <!-- Enkel-modus -->
+  <form id="singleForm">
     <label for="title">Tittel</label>
-    <input id="title" type="text" required>
+    <input id="title" type="text">
 
     <label for="file">Filbane (f.eks. grafikk/bilde.png)</label>
-    <input id="file" type="text" required>
+    <input id="file" type="text">
 
     <label for="category">Kategori</label>
-    <select id="category" required>
+    <select id="category">
       <option value="Nyheter">Nyheter</option>
       <option value="Kultur">Kultur</option>
       <option value="Sport">Sport</option>
@@ -49,24 +59,78 @@
     <button type="submit">Generer JSON</button>
   </form>
 
+  <!-- Bulk-modus -->
+  <form id="bulkForm" style="display:none;">
+    <label for="bulkInput">Lim inn flere linjer (format: <code>tittel | filbane | kategori</code>)</label>
+    <textarea id="bulkInput" placeholder="Eksempel:
+Bodø/Glimt møter Tottenham | grafikk/bodo.png | Sport
+Nesseby lager beredskapslager | grafikk/nesseby.png | Nyheter"></textarea>
+
+    <button type="submit">Generer JSON (flere)</button>
+  </form>
+
   <h2>Resultat:</h2>
   <pre id="output"></pre>
 
   <script>
-    document.getElementById("grafikkForm").addEventListener("submit", e => {
-      e.preventDefault();
+    const singleForm = document.getElementById("singleForm");
+    const bulkForm = document.getElementById("bulkForm");
+    const output = document.getElementById("output");
 
+    // Modusvelger
+    document.querySelectorAll("input[name='mode']").forEach(radio => {
+      radio.addEventListener("change", e => {
+        if (e.target.value === "single") {
+          singleForm.style.display = "block";
+          bulkForm.style.display = "none";
+          output.textContent = "";
+        } else {
+          singleForm.style.display = "none";
+          bulkForm.style.display = "block";
+          output.textContent = "";
+        }
+      });
+    });
+
+    // Enkel-modus
+    singleForm.addEventListener("submit", e => {
+      e.preventDefault();
       const title = document.getElementById("title").value.trim();
       const file = document.getElementById("file").value.trim();
       const category = document.getElementById("category").value.trim();
 
-      const block = {
-        "title": title,
-        "file": file,
-        "category": category
-      };
+      if (!title || !file) {
+        output.textContent = "⚠️ Du må fylle inn både tittel og filbane.";
+        return;
+      }
 
-      document.getElementById("output").textContent = JSON.stringify(block, null, 2);
+      const block = { title, file, category };
+      output.textContent = JSON.stringify(block, null, 2);
+    });
+
+    // Bulk-modus
+    bulkForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const lines = document.getElementById("bulkInput").value.trim().split("\n");
+      const blocks = [];
+
+      lines.forEach(line => {
+        const parts = line.split("|").map(p => p.trim());
+        if (parts.length >= 3) {
+          blocks.push({
+            title: parts[0],
+            file: parts[1],
+            category: parts[2]
+          });
+        }
+      });
+
+      if (!blocks.length) {
+        output.textContent = "⚠️ Ingen gyldige linjer funnet.";
+        return;
+      }
+
+      output.textContent = JSON.stringify(blocks, null, 2);
     });
   </script>
 </body>
