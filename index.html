@@ -29,20 +29,12 @@
     <a href="feed.html">Nyhetshjul</a>
   </nav>
 
-  <!-- Nyhetshjul (grafikk feed) -->
-  <section class="nyhetshjul" id="nyhetshjul">
-    <h2>Nyhetshjul</h2>
-    <div class="nyhetshjul-grid" id="nyhetshjul-grid">
-      <!-- Tre nyeste grafikker fylles inn via script.js -->
-    </div>
-    <div style="text-align:center; margin-top:1rem;">
-      <a class="btn btn-yellow" href="feed.html">Se nyhetshjul</a>
-    </div>
-  </section>
+  <!-- Nyheter -->
+  <section class="cards" id="nyheter"></section>
 
-  <!-- Nyhetssaker -->
-  <section class="cards" id="nyheter">
-    <!-- Artikler hentes inn via script.js -->
+  <!-- Nyhetshjul (tre bilder midt på skjermen) -->
+  <section class="cards" id="nyhetshjul">
+    <h2 style="grid-column:1/-1; text-align:center;">Nyhetshjul</h2>
   </section>
 
   <!-- Debatt -->
@@ -53,30 +45,18 @@
     </div>
   </section>
 
-  <!-- Om avisa -->
+  <!-- Om -->
   <section class="article article--about" id="om">
     <h1>Om Paradisavisa</h1>
-    <p class="lead">
-      Paradisavisa er en enkel, gratis nettavis for stoff knyttet til Paradispartiet, idéutvikling, kultur og politikk.
-      Ingen annonser. Ingen klikkjakt.
-    </p>
-    <p>
-      Vi publiserer korte, tydelige tekster og debattinnlegg. Vil du bidra? Skriv til oss via
-      <a href="kontakt.html">kontakt</a>.
-    </p>
+    <p class="lead">Paradisavisa er en enkel, gratis nettavis …</p>
   </section>
 
   <!-- Footer -->
   <footer class="site-footer">
     <p>© 2025 Paradisavisa</p>
-    <p>
-      <a href="https://paradispartiet.github.io/Paradispartiet" target="_blank">Paradispartiet</a> ·
-      <a href="https://paradispartiet.github.io/Teorien-om-lyset" target="_blank">Teorien om lyset</a>
-    </p>
   </footer>
 
   <!-- Script -->
   <script src="script.js"></script>
-
 </body>
 </html>
