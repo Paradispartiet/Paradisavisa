@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paradisavisa – Grafikk-editor</title>
+  <style>
+    body { font-family: sans-serif; background:#111; color:#fff; padding:20px; }
+    h1 { color:#FFD600; }
+    label { display:block; margin-top:1rem; font-weight:600; }
+    input, textarea, select {
+      width:100%; max-width:600px; padding:.5rem; margin-top:.25rem;
+      border-radius:4px; border:1px solid #333; background:#222; color:#fff;
+    }
+    textarea { min-height:60px; }
+    button {
+      margin-top:1rem; padding:.7rem 1.2rem;
+      background:#FFD600; border:none; border-radius:4px;
+      font-weight:600; cursor:pointer;
+    }
+    pre {
+      background:#000; padding:1rem; border-radius:4px;
+      white-space:pre-wrap; word-wrap:break-word;
+      margin-top:1rem; border:1px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Grafikk-editor</h1>
+  <p>Fyll inn feltene og trykk "Generer" for å få en ferdig JSON-blokk du kan lime inn i <code>grafikk.json</code>.</p>
+
+  <form id="grafikkForm">
+    <label for="title">Tittel</label>
+    <input id="title" type="text" required>
+
+    <label for="file">Filbane (f.eks. grafikk/bilde.png)</label>
+    <input id="file" type="text" required>
+
+    <label for="category">Kategori</label>
+    <select id="category" required>
+      <option value="Nyheter">Nyheter</option>
+      <option value="Kultur">Kultur</option>
+      <option value="Sport">Sport</option>
+      <option value="Internasjonalt">Internasjonalt</option>
+      <option value="Politikk">Politikk</option>
+      <option value="Annet">Annet</option>
+    </select>
+
+    <button type="submit">Generer JSON</button>
+  </form>
+
+  <h2>Resultat:</h2>
+  <pre id="output"></pre>
+
+  <script>
+    document.getElementById("grafikkForm").addEventListener("submit", e => {
+      e.preventDefault();
+
+      const title = document.getElementById("title").value.trim();
+      const file = document.getElementById("file").value.trim();
+      const category = document.getElementById("category").value.trim();
+
+      const block = {
+        "title": title,
+        "file": file,
+        "category": category
+      };
+
+      document.getElementById("output").textContent = JSON.stringify(block, null, 2);
+    });
+  </script>
+</body>
+</html>
