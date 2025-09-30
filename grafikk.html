@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grafikk – Paradisavisa</title>
+  <link rel="icon" href="ikon-paradis.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .grafikk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    .grafikk-card {
+      background: #141414;
+      border: 1px solid #222;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .grafikk-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: pointer;
+    }
+    .grafikk-card .caption {
+      padding: 10px;
+      font-size: 0.95rem;
+      color: #eee;
+      border-top: 1px solid #222;
+    }
+    .grafikk-card .caption span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--yellow);
+      margin-top: 2px;
+    }
+    /* Lysboks */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 3px solid var(--yellow);
+      border-radius: 6px;
+    }
+    .lightbox.show {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Avis-header -->
+  <header class="avis-header">
+    <img src="ikon-paradis.png" class="brand-icon" alt="Logo">
+    <div class="brand-text">
+      <h1>PARADISAVISA</h1>
+      <p class="slagord">Objektivt sett, fra vår synsvinkel</p>
+    </div>
+  </header>
+
+  <!-- Meny -->
+  <nav class="kategori-nav">
+    <a href="nyheter.html">Nyheter</a>
+    <a href="kultur.html">Kultur</a>
+    <a href="sport.html">Sport</a>
+    <a href="grafikk.html" class="active">Grafikk</a>
+  </nav>
+
+  <!-- Grafikkseksjon -->
+  <section class="grafikk-grid" id="grafikk-container">
+    <!-- Kortene bygges av script.js -->
+  </section>
+
+  <!-- Lysboks -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Forstørret grafikk">
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2025 Paradisavisa</p>
+  </footer>
+
+  <script>
+    // Last inn grafikk fra grafikk.json
+    fetch("grafikk.json")
+      .then(res => res.json())
+      .then(items => {
+        const container = document.getElementById("grafikk-container");
+
+        items.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "grafikk-card";
+          card.innerHTML = `
+            <img src="${item.file}" alt="${item.title}">
+            <div class="caption">
+              ${item.title}
+              <span>${item.category}</span>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+        // Lysboks
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = lightbox.querySelector("img");
+
+        container.querySelectorAll("img").forEach(img => {
+          img.addEventListener("click", () => {
+            lightboxImg.src = img.src;
+            lightbox.classList.add("show");
+          });
+        });
+
+        lightbox.addEventListener("click", () => {
+          lightbox.classList.remove("show");
+        });
+      })
+      .catch(err => console.error("Kunne ikke laste grafikk:", err));
+  </script>
+</body>
+</html>
