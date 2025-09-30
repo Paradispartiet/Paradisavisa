@@ -377,4 +377,29 @@ a:hover {
   padding: 0 10px 10px;
   color: #ddd;
 }
+  /* Layout for nyhetshjulet på forsiden */
+.nyhetshjul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.nyhetshjul img {
+  width: 200px;       /* gjør bildet passe lite */
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+  /* Nyhetshjul-bilder */
+.nyhetshjul img {
+  width: 200px;       /* fast bredde */
+  height: auto;       /* behold proporsjoner */
+  border-radius: 6px; /* avrundede kanter */
+  display: block;
+  margin: 0 auto 8px; /* midtstill + litt luft under */
+}
 }
