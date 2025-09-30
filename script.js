@@ -13,6 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
     loadKategori("sport");
   }
 
+  if (document.querySelector("#grafikk")) {
+    loadGrafikk();
+  }
+
   if (document.querySelector("#debatt")) {
     loadDebatt();
   }
@@ -54,7 +58,6 @@ function loadNyheter() {
         return;
       }
 
-      // sorter nyeste først
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       posts.forEach(post => {
@@ -83,7 +86,6 @@ function loadKategori(kategori) {
         return;
       }
 
-      // sorter nyeste først
       filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       filtered.forEach(post => {
@@ -99,6 +101,34 @@ function loadKategori(kategori) {
     .catch(err => console.error(`Kunne ikke laste ${kategori}-artikler:`, err));
 }
 
+function loadGrafikk() {
+  fetch("grafikk.json")
+    .then(res => res.json())
+    .then(items => {
+      const container = document.querySelector("#grafikk");
+      if (!container) return;
+
+      if (!items.length) {
+        container.innerHTML = "<p>Ingen grafikker publisert ennå.</p>";
+        return;
+      }
+
+      items.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      items.forEach(g => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${g.image}" alt="${g.title}" style="max-width:100%; border-radius:6px;">
+          <h3>${g.title}</h3>
+          <p>${g.caption || ""}</p>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(err => console.error("Kunne ikke laste grafikk:", err));
+}
+
 function loadDebatt() {
   fetch("debatt.json")
     .then(res => res.json())
@@ -106,7 +136,7 @@ function loadDebatt() {
       const container = document.querySelector("#debatt");
       if (!container) return;
 
-      const skrivBtn = container.querySelector(".btn"); // skriv-innlegg-knappen
+      const skrivBtn = container.querySelector(".btn");
 
       if (!debattInnlegg.length) {
         const msg = document.createElement("p");
@@ -115,7 +145,6 @@ function loadDebatt() {
         return;
       }
 
-      // sorter nyeste først
       debattInnlegg.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       debattInnlegg.forEach(innlegg => {
