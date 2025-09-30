@@ -1,32 +1,80 @@
-[
-  {
-    "title": "Bodø/Glimt møter Tottenham",
-    "excerpt": "Har de økt sin muskelmasse, vil de finne rom til å spille sin hyperhurtige kunstgressfotball med vannplaning?",
-    "image": "F4A3BC6E-DBCA-470C-945A-167E58543BC2.png",
-    "date": "2025-09-30"
-  },
-  {
-    "title": "Verdensordenens fall gir Netanyahu frie tøyler",
-    "excerpt": "Hvorfor åpner ikke Egypt grensene? Nabolandene må ta ansvar og umiddelbart avse litt ørken.",
-    "image": "E8998DF6-0E5D-42A0-8F8C-47A5CFCBA015.png",
-    "date": "2025-09-29"
-  },
-  {
-    "title": "Legemangel ved sykehusene",
-    "excerpt": "Antall sykehusleger som slutter øker betydelig. Paradismodellen sikrer helse som et område med trygg ansettelse.",
-    "image": "A795FFE4-7B46-4717-9150-8E1F9B329653.png",
-    "date": "2025-09-28"
-  },
-  {
-    "title": "Norgespris bestilt av 334 000 kunder første dag",
-    "excerpt": "Over 300 000 husholdninger tegnet avtale på fast strømpris første dag.",
-    "image": "5CA57AA9-4363-4073-980B-C24FDD16DB80.png",
-    "date": "2025-09-27"
-  },
-  {
-    "title": "Fremmede droner sirkler inn våre flyplasser",
-    "excerpt": "Hvordan skal myndighetene reagere?",
-    "image": "0545F710-8E78-44A8-BC56-6399D3426DAC.png",
-    "date": "2025-09-26"
-  }
-]
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.querySelector("#nyheter")) loadNyheter();
+  if (document.querySelector("#kultur")) loadKategori("kultur");
+  if (document.querySelector("#sport")) loadKategori("sport");
+  if (document.querySelector("#feed")) loadFeed();
+  if (document.querySelector("#debatt")) loadDebatt();
+});
+
+function loadNyheter() {
+  fetch("posts.json")
+    .then(res => res.json())
+    .then(posts => {
+      const container = document.querySelector("#nyheter");
+      if (!container) return;
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+      posts.forEach(post => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `<h3><a href="${post.url}">${post.title}</a></h3><p>${post.excerpt}</p>`;
+        container.appendChild(card);
+      });
+    });
+}
+
+function loadKategori(kategori) {
+  fetch("posts.json")
+    .then(res => res.json())
+    .then(posts => {
+      const container = document.querySelector(`#${kategori}`);
+      if (!container) return;
+      const filtered = posts.filter(p => p.category === kategori);
+      filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+      filtered.forEach(post => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `<h3><a href="${post.url}">${post.title}</a></h3><p>${post.excerpt}</p>`;
+        container.appendChild(card);
+      });
+    });
+}
+
+function loadFeed() {
+  fetch("grafikk/grafikk.json")
+    .then(res => res.json())
+    .then(items => {
+      const container = document.querySelector("#feed");
+      if (!container) return;
+      items.sort((a, b) => new Date(b.date) - new Date(a.date));
+      items.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="grafikk/${item.image}" alt="${item.title}" style="max-width:100%; border-radius:6px;">
+          <h3>${item.title}</h3>
+          <p>${item.excerpt}</p>
+        `;
+        container.appendChild(card);
+      });
+    });
+}
+
+function loadDebatt() {
+  fetch("debatt.json")
+    .then(res => res.json())
+    .then(innlegg => {
+      const container = document.querySelector("#debatt");
+      const skrivBtn = container.querySelector(".btn");
+      innlegg.sort((a, b) => new Date(b.date) - new Date(a.date));
+      innlegg.forEach(post => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <h3><a href="${post.url}">${post.title}</a></h3>
+          <p>Innlegg av ${post.author} · ${post.date}</p>
+          <p>${post.excerpt}</p>
+        `;
+        container.insertBefore(card, skrivBtn.parentNode);
+      });
+    });
+}
