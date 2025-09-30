@@ -300,12 +300,13 @@ a:hover {
   text-align: left;
 }
 
+/* Bildene i nyhetshjulet */
 .nyhetshjul-card img {
-  width: 100%;
-  max-width: 300px;   /* begrenser bredden */
-  height: auto;
+  width: 180px;         /* fast bredde */
+  height: auto;         /* behold proporsjoner */
   display: block;
-  margin: 0 auto;
+  margin: 10px auto;    /* midtstill og gi luft */
+  border-radius: 6px;
   border-bottom: 1px solid #222;
 }
 
