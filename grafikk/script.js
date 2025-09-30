@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadGrafikk() {
-  fetch("grafikk/grafikk.json") // legg JSON i samme mappe
+  fetch("./grafikk.json")
     .then(res => res.json())
     .then(items => {
       const container = document.querySelector("#grafikk-feed");
