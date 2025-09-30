@@ -283,53 +283,42 @@ a:hover {
     flex-wrap: wrap;
     gap: 1rem;
   }
-/* NYHETSHJUL */
-.nyhetshjul {
-  margin: 3rem auto;
-  max-width: 1080px;
-  padding: 0 16px;
-  text-align: center;
-}
-
-.nyhetshjul h2 {
-  color: var(--yellow);
-  font-size: 1.6rem;
-  margin-bottom: 1.5rem;
-}
-
+/* Nyhetshjul – bilder i grid */
 .nyhetshjul-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  justify-items: center;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-.nyhetshjul .card {
+.nyhetshjul-card {
   background: #141414;
   border: 1px solid #222;
   border-radius: 6px;
   overflow: hidden;
-  max-width: 320px;
   text-align: left;
 }
 
-.nyhetshjul .card img {
-  width: 200px;          /* fast bredde */
-  height: auto;          /* behold proporsjoner */
-  border-radius: 6px;    /* avrundede kanter */
+.nyhetshjul-card img {
+  width: 100%;
+  max-width: 300px;   /* begrenser bredden */
+  height: auto;
   display: block;
-  margin: 0 auto 8px;    /* midtstill */
+  margin: 0 auto;
+  border-bottom: 1px solid #222;
 }
 
-.nyhetshjul .card h3 {
-  font-size: 1.1rem;
-  margin: 0.5rem 0;
-  padding: 0 10px;
+.nyhetshjul-card h3 {
+  font-size: 1rem;
+  margin: 0.5rem;
+  color: #fff;
 }
 
-.nyhetshjul .card p {
-  font-size: 0.9rem;
-  padding: 0 10px 10px;
-  color: #ddd;
+.nyhetshjul-card p {
+  font-size: 0.85rem;
+  margin: 0 0.5rem 0.8rem;
+  color: #ccc;
+  line-height: 1.4;
 }
 }
