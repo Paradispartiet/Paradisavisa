@@ -49,15 +49,29 @@
       background: rgba(0,0,0,0.85);
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
     .lightbox img {
       max-width: 90%;
-      max-height: 90%;
+      max-height: 80%;
       border: 3px solid var(--yellow);
       border-radius: 6px;
     }
     .lightbox.show {
       display: flex;
+    }
+    .lightbox-controls {
+      margin-top: 10px;
+      display: flex;
+      gap: 1rem;
+    }
+    .lightbox-controls button {
+      background: var(--yellow);
+      border: none;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -68,68 +82,4 @@
     <img src="ikon-paradis.png" class="brand-icon" alt="Logo">
     <div class="brand-text">
       <h1>PARADISAVISA</h1>
-      <p class="slagord">Objektivt sett, fra vår synsvinkel</p>
-    </div>
-  </header>
-
-  <!-- Meny -->
-  <nav class="kategori-nav">
-    <a href="nyheter.html">Nyheter</a>
-    <a href="kultur.html">Kultur</a>
-    <a href="sport.html">Sport</a>
-    <a href="grafikk.html" class="active">Grafikk</a>
-  </nav>
-
-  <!-- Grafikkseksjon -->
-  <section class="grafikk-grid" id="grafikk-container">
-    <!-- Kortene bygges av script.js -->
-  </section>
-
-  <!-- Lysboks -->
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="Forstørret grafikk">
-  </div>
-
-  <footer class="site-footer">
-    <p>© 2025 Paradisavisa</p>
-  </footer>
-
-  <script>
-    // Last inn grafikk fra grafikk.json
-    fetch("grafikk.json")
-      .then(res => res.json())
-      .then(items => {
-        const container = document.getElementById("grafikk-container");
-
-        items.forEach(item => {
-          const card = document.createElement("div");
-          card.className = "grafikk-card";
-          card.innerHTML = `
-            <img src="${item.file}" alt="${item.title}">
-            <div class="caption">
-              ${item.title}
-              <span>${item.category}</span>
-            </div>
-          `;
-          container.appendChild(card);
-        });
-
-        // Lysboks
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImg = lightbox.querySelector("img");
-
-        container.querySelectorAll("img").forEach(img => {
-          img.addEventListener("click", () => {
-            lightboxImg.src = img.src;
-            lightbox.classList.add("show");
-          });
-        });
-
-        lightbox.addEventListener("click", () => {
-          lightbox.classList.remove("show");
-        });
-      })
-      .catch(err => console.error("Kunne ikke laste grafikk:", err));
-  </script>
-</body>
-</html>
+      <p class="
