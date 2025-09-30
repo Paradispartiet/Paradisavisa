@@ -1,14 +1,37 @@
 [
   {
     "title": "Bodø/Glimt møter Tottenham",
-    "img": "grafikk/glimt-tottenham.png",
-    "caption": "Knutsen tror de har lært – klar for kamp på kunstgress.",
-    "date": "2025-09-26"
+    "file": "grafikk/F4A3BC6E-DBCA-470C-945A-167E58543BC2.png",
+    "category": "Sport",
+    "date": "2025-09-30",
+    "caption": "Har de økt muskelmassen nok til å spille hyperhurtig kunstgressfotball med vannplaning?"
   },
   {
-    "title": "Nesseby lager beredskapslager",
-    "img": "grafikk/nesseby-lager.png",
-    "caption": "Mat og vann for ti dager til 800 innbyggere.",
-    "date": "2025-09-25"
+    "title": "Verdensordenens fall gir Netanyahu frie tøyler",
+    "file": "grafikk/E8998DF6-0E5D-42A0-8F8C-47A5CFCBA015.png",
+    "category": "Internasjonalt",
+    "date": "2025-09-30",
+    "caption": "Hvorfor åpner ikke Egypt grensene? Nabolandene må ta ansvar."
+  },
+  {
+    "title": "Legemangel ved sykehusene",
+    "file": "grafikk/A795FFE4-7B46-4717-9150-8E1F9B329653.png",
+    "category": "Helse",
+    "date": "2025-09-30",
+    "caption": "Paradismodellen sikrer helse som et område med trygg ansettelse."
+  },
+  {
+    "title": "Norgespris bestilt av 334 000 første dag",
+    "file": "grafikk/5CA57AA9-4363-4073-980B-C24FDD16DB80.png",
+    "category": "Økonomi",
+    "date": "2025-09-30",
+    "caption": "Over 300 000 husholdninger tegnet avtale om fast strømpris første dag."
+  },
+  {
+    "title": "Fremmede droner ved flyplassene",
+    "file": "grafikk/0545F710-8E78-44A8-BC56-6399D3426DAC.png",
+    "category": "Sikkerhet",
+    "date": "2025-09-30",
+    "caption": "Hvordan skal myndighetene reagere på økende droneobservasjoner?"
   }
 ]
