@@ -1,14 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
   includeHeader();
 
-  if (document.querySelector("#nyheter")) loadNyheter(); // for index.html
-  if (document.querySelector("#kultur")) loadKategori("kultur");
-  if (document.querySelector("#sport")) loadKategori("sport");
-  if (document.querySelector("#debatt")) loadDebatt();
-  if (document.querySelector("#feed")) loadFeed();        // full feed
-  if (document.querySelector("#nyhetshjul")) loadNyhetshjul(); // mini-feed på forsiden
+  if (document.querySelector("#nyheter")) {
+    loadNyheter();
+  }
+
+  if (document.querySelector("#kultur")) {
+    loadKategori("kultur");
+  }
+
+  if (document.querySelector("#sport")) {
+    loadKategori("sport");
+  }
+
+  if (document.querySelector("#debatt")) {
+    loadDebatt();
+  }
+
+  if (document.querySelector("#grafikk-feed")) {
+    loadGrafikkFull();
+  }
+
+  if (document.querySelector("#nyhetshjul")) {
+    loadNyhetshjul();
+  }
 });
 
+// --- HEADER ---
 function includeHeader() {
   fetch("header.html")
     .then(res => res.text())
@@ -33,17 +51,13 @@ function initNav() {
   }
 }
 
+// --- NYHETER ---
 function loadNyheter() {
   fetch("posts.json")
     .then(res => res.json())
     .then(posts => {
       const container = document.querySelector("#nyheter");
       if (!container) return;
-
-      if (!posts.length) {
-        container.innerHTML = "<p>Ingen artikler publisert ennå.</p>";
-        return;
-      }
 
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -60,6 +74,7 @@ function loadNyheter() {
     .catch(err => console.error("Kunne ikke laste nyheter:", err));
 }
 
+// --- KATEGORI ---
 function loadKategori(kategori) {
   fetch("posts.json")
     .then(res => res.json())
@@ -68,11 +83,6 @@ function loadKategori(kategori) {
       if (!container) return;
 
       const filtered = posts.filter(post => post.category === kategori);
-      if (!filtered.length) {
-        container.innerHTML = `<p>Ingen ${kategori}-artikler publisert ennå.</p>`;
-        return;
-      }
-
       filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       filtered.forEach(post => {
@@ -85,74 +95,10 @@ function loadKategori(kategori) {
         container.appendChild(card);
       });
     })
-    .catch(err => console.error(`Kunne ikke laste ${kategori}-artikler:`, err));
+    .catch(err => console.error(`Kunne ikke laste ${kategori}:`, err));
 }
 
-function loadFeed() {
-  fetch("grafikk/grafikk.json")
-    .then(res => res.json())
-    .then(items => {
-      const container = document.querySelector("#feed .grafikk-grid");
-      if (!container) return;
-
-      if (!items.length) {
-        container.innerHTML = "<p>Ingen grafikker publisert ennå.</p>";
-        return;
-      }
-
-      items.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      items.forEach(item => {
-        const card = document.createElement("div");
-        card.className = "grafikk-card";
-        card.innerHTML = `
-          <img src="grafikk/${item.image}" alt="${item.title}">
-          <div class="caption">
-            ${item.title}
-            <span>${item.date}</span>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    })
-    .catch(err => console.error("Kunne ikke laste feed:", err));
-}
-
-function loadNyhetshjul() {
-  fetch("grafikk/grafikk.json")
-    .then(res => res.json())
-    .then(items => {
-      const container = document.querySelector("#nyhetshjul");
-      if (!container) return;
-
-      if (!items.length) {
-        container.innerHTML = "<p>Ingen grafikker i nyhetshjulet ennå.</p>";
-        return;
-      }
-
-      // Kun de 3 nyeste
-      items.sort((a, b) => new Date(b.date) - new Date(a.date));
-      const latest = items.slice(0, 3);
-
-      latest.forEach(item => {
-        const card = document.createElement("div");
-        card.className = "grafikk-card";
-        card.innerHTML = `
-          <img src="grafikk/${item.image}" alt="${item.title}">
-          <div class="caption">${item.title}</div>
-        `;
-        container.appendChild(card);
-      });
-
-      // legg til link til hele feeden
-      const link = document.createElement("p");
-      link.style.textAlign = "center";
-      link.innerHTML = `<a href="feed.html">Se nyhetshjul →</a>`;
-      container.appendChild(link);
-    })
-    .catch(err => console.error("Kunne ikke laste nyhetshjul:", err));
-}
-
+// --- DEBATT ---
 function loadDebatt() {
   fetch("debatt.json")
     .then(res => res.json())
@@ -161,13 +107,6 @@ function loadDebatt() {
       if (!container) return;
 
       const skrivBtn = container.querySelector(".btn");
-
-      if (!debattInnlegg.length) {
-        const msg = document.createElement("p");
-        msg.textContent = "Ingen debattinnlegg publisert ennå.";
-        container.insertBefore(msg, skrivBtn?.parentNode || null);
-        return;
-      }
 
       debattInnlegg.sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -183,4 +122,54 @@ function loadDebatt() {
       });
     })
     .catch(err => console.error("Kunne ikke laste debatt:", err));
+}
+
+// --- FULL GRAFIKK (feed.html) ---
+function loadGrafikkFull() {
+  fetch("grafikk/grafikk.json")
+    .then(res => res.json())
+    .then(items => {
+      const container = document.querySelector("#grafikk-feed");
+      if (!container) return;
+
+      items.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      items.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" style="width:100%; border-radius:6px;">
+          <h3>${item.title}</h3>
+          <p>${item.excerpt}</p>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(err => console.error("Kunne ikke laste grafikk-feed:", err));
+}
+
+// --- NYHETSHJUL (forsiden, kun 3 siste) ---
+function loadNyhetshjul() {
+  fetch("grafikk/grafikk.json")
+    .then(res => res.json())
+    .then(items => {
+      const container = document.querySelector("#nyhetshjul");
+      if (!container) return;
+
+      items.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      const latest = items.slice(0, 3); // bare tre siste
+
+      latest.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" style="width:100%; border-radius:6px;">
+          <h3>${item.title}</h3>
+          <p>${item.excerpt}</p>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(err => console.error("Kunne ikke laste nyhetshjul:", err));
 }
