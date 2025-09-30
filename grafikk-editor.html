@@ -24,9 +24,8 @@
       margin-top:1rem; border:1px solid #333;
       max-width:800px;
     }
-    .mode-toggle {
-      margin:1rem 0;
-    }
+    .mode-toggle { margin:1rem 0; }
+    .btn-row { display:flex; gap:1rem; flex-wrap:wrap; }
   </style>
 </head>
 <body>
@@ -56,7 +55,10 @@
       <option value="Annet">Annet</option>
     </select>
 
-    <button type="submit">Generer JSON</button>
+    <div class="btn-row">
+      <button type="submit">Generer JSON</button>
+      <button type="button" id="genFileSingle">Lag hel grafikk.json</button>
+    </div>
   </form>
 
   <!-- Bulk-modus -->
@@ -66,7 +68,10 @@
 Bodø/Glimt møter Tottenham | grafikk/bodo.png | Sport
 Nesseby lager beredskapslager | grafikk/nesseby.png | Nyheter"></textarea>
 
-    <button type="submit">Generer JSON (flere)</button>
+    <div class="btn-row">
+      <button type="submit">Generer JSON (flere)</button>
+      <button type="button" id="genFileBulk">Lag hel grafikk.json</button>
+    </div>
   </form>
 
   <h2>Resultat:</h2>
@@ -95,43 +100,52 @@ Nesseby lager beredskapslager | grafikk/nesseby.png | Nyheter"></textarea>
     // Enkel-modus
     singleForm.addEventListener("submit", e => {
       e.preventDefault();
+      const block = makeSingleBlock();
+      if (block) output.textContent = JSON.stringify(block, null, 2);
+    });
+
+    document.getElementById("genFileSingle").addEventListener("click", () => {
+      const block = makeSingleBlock();
+      if (block) output.textContent = JSON.stringify([block], null, 2);
+    });
+
+    function makeSingleBlock() {
       const title = document.getElementById("title").value.trim();
       const file = document.getElementById("file").value.trim();
       const category = document.getElementById("category").value.trim();
-
       if (!title || !file) {
         output.textContent = "⚠️ Du må fylle inn både tittel og filbane.";
-        return;
+        return null;
       }
-
-      const block = { title, file, category };
-      output.textContent = JSON.stringify(block, null, 2);
-    });
+      return { title, file, category };
+    }
 
     // Bulk-modus
     bulkForm.addEventListener("submit", e => {
       e.preventDefault();
+      const blocks = makeBulkBlocks();
+      if (blocks.length) output.textContent = JSON.stringify(blocks, null, 2);
+    });
+
+    document.getElementById("genFileBulk").addEventListener("click", () => {
+      const blocks = makeBulkBlocks();
+      if (blocks.length) output.textContent = JSON.stringify(blocks, null, 2);
+    });
+
+    function makeBulkBlocks() {
       const lines = document.getElementById("bulkInput").value.trim().split("\n");
       const blocks = [];
-
       lines.forEach(line => {
         const parts = line.split("|").map(p => p.trim());
         if (parts.length >= 3) {
-          blocks.push({
-            title: parts[0],
-            file: parts[1],
-            category: parts[2]
-          });
+          blocks.push({ title: parts[0], file: parts[1], category: parts[2] });
         }
       });
-
       if (!blocks.length) {
         output.textContent = "⚠️ Ingen gyldige linjer funnet.";
-        return;
       }
-
-      output.textContent = JSON.stringify(blocks, null, 2);
-    });
+      return blocks;
+    }
   </script>
 </body>
 </html>
