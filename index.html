@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Paradisavisa</title>
-  <meta name="description" content="Paradisavisa – nyheter, debatt, feed og idéer fra Paradispartiet.">
+  <meta name="description" content="Paradisavisa – nyheter, debatt og idéer fra Paradispartiet.">
   <link rel="icon" href="ikon-paradis.png">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -26,28 +26,23 @@
     <a href="#nyheter">Nyheter</a>
     <a href="#kultur">Kultur</a>
     <a href="#sport">Sport</a>
-    <a href="#feed">Feed</a>
-    <a href="#debatt">Debatt</a>
+    <a href="feed.html">Nyhetshjul</a>
   </nav>
 
-  <!-- Nyheter -->
+  <!-- Nyhetshjul (grafikk feed) -->
+  <section class="nyhetshjul" id="nyhetshjul">
+    <h2>Nyhetshjul</h2>
+    <div class="nyhetshjul-grid" id="nyhetshjul-grid">
+      <!-- Tre nyeste grafikker fylles inn via script.js -->
+    </div>
+    <div style="text-align:center; margin-top:1rem;">
+      <a class="btn btn-yellow" href="feed.html">Se nyhetshjul</a>
+    </div>
+  </section>
+
+  <!-- Nyhetssaker -->
   <section class="cards" id="nyheter">
-    <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Nyheter</h2>
-  </section>
-
-  <!-- Kultur -->
-  <section class="cards" id="kultur">
-    <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Kultur</h2>
-  </section>
-
-  <!-- Sport -->
-  <section class="cards" id="sport">
-    <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Sport</h2>
-  </section>
-
-  <!-- Feed -->
-  <section class="cards" id="feed">
-    <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Feed</h2>
+    <!-- Artikler hentes inn via script.js -->
   </section>
 
   <!-- Debatt -->
@@ -82,5 +77,6 @@
 
   <!-- Script -->
   <script src="script.js"></script>
+
 </body>
 </html>
