@@ -283,55 +283,10 @@ a:hover {
     flex-wrap: wrap;
     gap: 1rem;
   }
-  /* Nyhetshjul */
-.nyhetshjul {
-  padding: 32px 16px;
-  max-width: 1080px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.nyhetshjul h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: var(--yellow);
-}
-
-.nyhetshjul-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-}
-
-.nyhetshjul-grid .card {
-  background: #141414;
-  border: 1px solid #222;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: left;
-}
-
-.nyhetshjul-grid img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.nyhetshjul-grid h3 {
-  margin: 0.5rem;
-  font-size: 1.1rem;
-  color: #fff;
-}
-
-.nyhetshjul-grid p {
-  margin: 0.5rem;
-  color: #ccc;
-}
-
-  /* Nyhetshjul */
+/* NYHETSHJUL */
 .nyhetshjul {
   margin: 3rem auto;
-  max-width: 1200px;
+  max-width: 1080px;
   padding: 0 16px;
   text-align: center;
 }
@@ -340,12 +295,11 @@ a:hover {
   color: var(--yellow);
   font-size: 1.6rem;
   margin-bottom: 1.5rem;
-  text-align: center;
 }
 
-.nyhetshjul .grafikk-grid {
+.nyhetshjul-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   justify-items: center;
 }
@@ -355,15 +309,16 @@ a:hover {
   border: 1px solid #222;
   border-radius: 6px;
   overflow: hidden;
-  max-width: 360px;
+  max-width: 320px;
   text-align: left;
 }
 
 .nyhetshjul .card img {
-  width: 100%;
-  height: auto;
+  width: 200px;          /* fast bredde */
+  height: auto;          /* behold proporsjoner */
+  border-radius: 6px;    /* avrundede kanter */
   display: block;
-  border-bottom: 1px solid #222;
+  margin: 0 auto 8px;    /* midtstill */
 }
 
 .nyhetshjul .card h3 {
@@ -376,30 +331,5 @@ a:hover {
   font-size: 0.9rem;
   padding: 0 10px 10px;
   color: #ddd;
-}
-  /* Layout for nyhetshjulet på forsiden */
-.nyhetshjul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: 24px auto;
-  padding: 0 16px;
-  text-align: center;
-}
-
-.nyhetshjul img {
-  width: 200px;       /* gjør bildet passe lite */
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-  /* Nyhetshjul-bilder */
-.nyhetshjul img {
-  width: 200px;       /* fast bredde */
-  height: auto;       /* behold proporsjoner */
-  border-radius: 6px; /* avrundede kanter */
-  display: block;
-  margin: 0 auto 8px; /* midtstill + litt luft under */
 }
 }
