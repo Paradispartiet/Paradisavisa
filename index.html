@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header: logo + navn + slagord -->
   <header class="avis-header">
     <div class="brand">
       <img src="ikon-paradis.png" class="brand-icon" alt="Logo">
@@ -21,42 +21,58 @@
     </div>
   </header>
 
-  <!-- Meny -->
+  <!-- Meny med kategorier -->
   <nav class="kategori-nav">
-    <a href="#nyheter">Nyheter</a>
-    <a href="#kultur">Kultur</a>
-    <a href="#sport">Sport</a>
+    <a href="nyheter.html">Nyheter</a>
+    <a href="kultur.html">Kultur</a>
+    <a href="sport.html">Sport</a>
     <a href="feed.html">Nyhetshjul</a>
   </nav>
 
-  <!-- Nyheter -->
-  <section class="cards" id="nyheter"></section>
-
-  <!-- Nyhetshjul (tre bilder midt på skjermen) -->
-  <section class="cards" id="nyhetshjul">
-    <h2 style="grid-column:1/-1; text-align:center;">Nyhetshjul</h2>
+  <!-- Nyhetssaker -->
+  <section class="cards" id="nyheter">
+    <!-- Artikler hentes inn via script.js -->
   </section>
 
-  <!-- Debatt -->
+  <!-- Nyhetshjul -->
+  <section class="nyhetshjul" id="feed">
+    <h2>Nyhetshjul</h2>
+    <div class="grafikk-grid"></div>
+  </section>
+
+  <!-- Debattseksjon -->
   <section class="cards" id="debatt">
     <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Debatt</h2>
+    <!-- Debattinnlegg hentes inn via script.js -->
     <div style="grid-column:1/-1; text-align:center; margin-top:1rem;">
       <a class="btn btn-yellow" href="skriv-innlegg.html">Skriv innlegg</a>
     </div>
   </section>
 
-  <!-- Om -->
+  <!-- Om avisa -->
   <section class="article article--about" id="om">
     <h1>Om Paradisavisa</h1>
-    <p class="lead">Paradisavisa er en enkel, gratis nettavis …</p>
+    <p class="lead">
+      Paradisavisa er en enkel, gratis nettavis for stoff knyttet til Paradispartiet, idéutvikling, kultur og politikk.
+      Ingen annonser. Ingen klikkjakt.
+    </p>
+    <p>
+      Vi publiserer korte, tydelige tekster og debattinnlegg. Vil du bidra? Skriv til oss via
+      <a href="kontakt.html">kontakt</a>.
+    </p>
   </section>
 
   <!-- Footer -->
   <footer class="site-footer">
     <p>© 2025 Paradisavisa</p>
+    <p>
+      <a href="https://paradispartiet.github.io/Paradispartiet" target="_blank">Paradispartiet</a> ·
+      <a href="https://paradispartiet.github.io/Teorien-om-lyset" target="_blank">Teorien om lyset</a>
+    </p>
   </footer>
 
   <!-- Script -->
   <script src="script.js"></script>
+
 </body>
 </html>
