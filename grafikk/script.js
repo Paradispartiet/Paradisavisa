@@ -19,6 +19,36 @@ function loadNyheter() {
         card.innerHTML = `<h3><a href="${post.url}">${post.title}</a></h3><p>${post.excerpt}</p>`;
         container.appendChild(card);
       });
+      function loadNyhetshjul() {
+  fetch("grafikk/grafikk.json", { cache: "no-store" })
+    .then(r => r.json())
+    .then(items => {
+      if (!Array.isArray(items) || items.length === 0) return;
+      // sorter nyeste først
+      items.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const top3 = items.slice(0, 3);
+
+      const grid = document.getElementById("nyhetshjul-grid");
+      if (!grid) return;
+      grid.innerHTML = "";
+
+      top3.forEach(item => {
+        const imgSrc = item.image.startsWith("grafikk/")
+          ? item.image
+          : `grafikk/${item.image}`;
+
+        const card = document.createElement("article");
+        card.className = "nyhetshjul-card";
+        card.innerHTML = `
+          <img src="${imgSrc}" alt="${escapeHtml(item.title || "Grafikk")}" loading="lazy">
+          <h3>${escapeHtml(item.title || "")}</h3>
+          <p>${escapeHtml(item.excerpt || "")}</p>
+        `;
+        grid.appendChild(card);
+      });
+    })
+    .catch(err => console.error("Nyhetshjul feilet:", err));
+}
     });
 }
 
