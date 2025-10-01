@@ -1,0 +1,45 @@
+/* Nyhetshjul – fremhevet seksjon */
+#nyhetshjul {
+  background: #0a0a0a;
+  border-top: 2px solid var(--yellow);
+  border-bottom: 2px solid var(--yellow);
+  padding: 2rem 1rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+#nyhetshjul h2 {
+  color: var(--yellow);
+  margin-bottom: 1rem;
+}
+.nyhetshjul-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+.nyhetshjul-card {
+  background: #141414;
+  border: 1px solid #222;
+  border-radius: 6px;
+  max-width: 280px;
+  width: 100%;
+  overflow: hidden;
+  text-align: left;
+}
+.nyhetshjul-card img {
+  width: 180px;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+  border-radius: 6px;
+}
+.nyhetshjul-card h3 {
+  font-size: 1rem;
+  margin: 0.5rem;
+  color: #fff;
+}
+.nyhetshjul-card p {
+  font-size: 0.85rem;
+  margin: 0 0.5rem 1rem;
+  color: #ccc;
+}
