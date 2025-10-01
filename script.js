@@ -1,41 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Forside: nyhetshjul
+  // Forside: last nyhetshjulet hvis 'nyhetshjul-grid' finnes
   if (document.getElementById("nyhetshjul-grid")) {
-    loadNyhetshjul();
+    loadNyhetshjul(false);
+  }
+  // Feed-siden: last alle grafikker
+  if (document.body.classList.contains("feed-page")) {
+    loadNyhetshjul(true);
   }
 
-  // Seksjoner som evt. finnes:
+  // Andre seksjoner
   if (document.querySelector("#nyheter")) loadNyheter();
   if (document.querySelector("#kultur")) loadKategori("kultur");
   if (document.querySelector("#sport")) loadKategori("sport");
   if (document.querySelector("#debatt")) loadDebatt();
 });
 
-/* ---------- Nyhetshjul (forside) ---------- */
-function loadNyhetshjul() {
-  fetch("Nyhetshjul.json", { cache: "no-store" })  // JSON i rot
-    .then(r => r.json())
+/**
+ * Last nyhetshjul: top3 = false for forsiden (3 bilder),
+ * top3 = true for feed-siden (alle bilder).
+ */
+function loadNyhetshjul(allSaker) {
+  fetch("Nyhetshjul.json", { cache: "no-store" })
+    .then(res => res.json())
     .then(items => {
-      if (!Array.isArray(items) || items.length === 0) return;
-
-      // Nyeste tre
-      items.sort((a, b) => new Date(b.date) - new Date(a.date));
-      const top3 = items.slice(0, 3);
-
       const grid = document.getElementById("nyhetshjul-grid");
       if (!grid) return;
-      grid.innerHTML = "";
 
-      top3.forEach(item => {
+      // Sorter nyeste først
+      items.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const selected = allSaker ? items : items.slice(0, 3);
+
+      grid.innerHTML = "";
+      selected.forEach(item => {
         const card = document.createElement("article");
         card.className = "nyhetshjul-card";
         card.innerHTML = `
-          <img src="${item.image}" 
-               alt="${escapeHtml(item.title || "Grafikk")}"
-               loading="lazy"
-               onerror="this.onerror=null;this.src='ikon-paradis.png'">
-          <h3>${escapeHtml(item.title || "")}</h3>
-          <p>${escapeHtml(item.excerpt || "")}</p>
+          <img src="${item.image}" alt="${escapeHtml(item.title)}" loading="lazy">
+          <h3>${escapeHtml(item.title)}</h3>
+          <p>${escapeHtml(item.excerpt)}</p>
         `;
         grid.appendChild(card);
       });
@@ -43,7 +45,7 @@ function loadNyhetshjul() {
     .catch(err => console.error("Nyhetshjul feilet:", err));
 }
 
-/* ---------- Nyheter ---------- */
+/* --- Nyheter, kategori og debatt (samme logikk som før) --- */
 function loadNyheter() {
   fetch("posts.json")
     .then(res => res.json())
@@ -68,7 +70,6 @@ function loadNyheter() {
     .catch(err => console.error("Kunne ikke laste nyheter:", err));
 }
 
-/* ---------- Kategori-sider ---------- */
 function loadKategori(kategori) {
   fetch("posts.json")
     .then(res => res.json())
@@ -96,7 +97,6 @@ function loadKategori(kategori) {
     .catch(err => console.error(`Kunne ikke laste ${kategori}-artikler:`, err));
 }
 
-/* ---------- Debatt ---------- */
 function loadDebatt() {
   fetch("debatt.json")
     .then(res => res.json())
@@ -127,7 +127,7 @@ function loadDebatt() {
     .catch(err => console.error("Kunne ikke laste debatt:", err));
 }
 
-/* ---------- hjelpefunksjon ---------- */
+/* --- Unngå XSS i tekst --- */
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, s => (
     { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[s]
