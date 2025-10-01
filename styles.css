@@ -283,43 +283,50 @@ a:hover {
     flex-wrap: wrap;
     gap: 1rem;
   }
-/* Nyhetshjul – bilder i grid */
+#nyhetshjul {
+  background: #0a0a0a;
+  border-top: 2px solid var(--yellow);
+  border-bottom: 2px solid var(--yellow);
+  padding: 2rem 1rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+#nyhetshjul h2 {
+  color: var(--yellow);
+  margin-bottom: 1rem;
+}
 .nyhetshjul-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  max-width: 960px;
+  justify-items: center;
+  max-width: 900px;
   margin: 0 auto;
 }
-
 .nyhetshjul-card {
   background: #141414;
   border: 1px solid #222;
   border-radius: 6px;
-  overflow: hidden;
+  max-width: 280px;
+  width: 100%;
   text-align: left;
+  overflow: hidden;
 }
-
-/* Bildene i nyhetshjulet */
 .nyhetshjul-card img {
-  width: 180px;         /* fast bredde */
-  height: auto;         /* behold proporsjoner */
+  width: 180px;
+  height: auto;
   display: block;
-  margin: 10px auto;    /* midtstill og gi luft */
+  margin: 10px auto;
   border-radius: 6px;
-  border-bottom: 1px solid #222;
 }
-
 .nyhetshjul-card h3 {
   font-size: 1rem;
   margin: 0.5rem;
   color: #fff;
 }
-
 .nyhetshjul-card p {
   font-size: 0.85rem;
-  margin: 0 0.5rem 0.8rem;
+  margin: 0 0.5rem 1rem;
   color: #ccc;
-  line-height: 1.4;
 }
 }
