@@ -1,18 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Forside: nyhetshjul
   if (document.getElementById("nyhetshjul-grid")) {
     loadNyhetshjul();
   }
+
+  // Seksjoner som evt. finnes:
   if (document.querySelector("#nyheter")) loadNyheter();
   if (document.querySelector("#kultur")) loadKategori("kultur");
   if (document.querySelector("#sport")) loadKategori("sport");
   if (document.querySelector("#debatt")) loadDebatt();
 });
 
+/* ---------- Nyhetshjul (forside) ---------- */
 function loadNyhetshjul() {
-  fetch("grafikk/grafikk.json", { cache: "no-store" })
+  fetch("Nyhetshjul.json", { cache: "no-store" })  // JSON i rot
     .then(r => r.json())
     .then(items => {
-      // sorter nyeste først og velg tre
+      if (!Array.isArray(items) || items.length === 0) return;
+
+      // Nyeste tre
       items.sort((a, b) => new Date(b.date) - new Date(a.date));
       const top3 = items.slice(0, 3);
 
@@ -21,14 +27,13 @@ function loadNyhetshjul() {
       grid.innerHTML = "";
 
       top3.forEach(item => {
-        const imgSrc = item.image.startsWith("grafikk/")
-          ? item.image
-          : `grafikk/${item.image}`;
-
         const card = document.createElement("article");
         card.className = "nyhetshjul-card";
         card.innerHTML = `
-          <img src="${imgSrc}" alt="${escapeHtml(item.title || "Grafikk")}">
+          <img src="${item.image}" 
+               alt="${escapeHtml(item.title || "Grafikk")}"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='ikon-paradis.png'">
           <h3>${escapeHtml(item.title || "")}</h3>
           <p>${escapeHtml(item.excerpt || "")}</p>
         `;
@@ -38,7 +43,7 @@ function loadNyhetshjul() {
     .catch(err => console.error("Nyhetshjul feilet:", err));
 }
 
-/* ---------- Nyheter / Kategorier / Debatt (uendret logikk) ---------- */
+/* ---------- Nyheter ---------- */
 function loadNyheter() {
   fetch("posts.json")
     .then(res => res.json())
@@ -63,6 +68,7 @@ function loadNyheter() {
     .catch(err => console.error("Kunne ikke laste nyheter:", err));
 }
 
+/* ---------- Kategori-sider ---------- */
 function loadKategori(kategori) {
   fetch("posts.json")
     .then(res => res.json())
@@ -90,6 +96,7 @@ function loadKategori(kategori) {
     .catch(err => console.error(`Kunne ikke laste ${kategori}-artikler:`, err));
 }
 
+/* ---------- Debatt ---------- */
 function loadDebatt() {
   fetch("debatt.json")
     .then(res => res.json())
