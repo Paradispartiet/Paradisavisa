@@ -6,37 +6,15 @@
   --muted: #bbb;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  font-family: system-ui, sans-serif;
   color: var(--text);
   background: #0c0c0c;
   line-height: 1.6;
 }
 
-/* LENKER */
-a {
-  color: #fff;
-  text-decoration: none;
-  border-bottom: 2px solid var(--yellow);
-  padding-bottom: 2px;
-  transition: 0.2s ease;
-}
-
-a:hover {
-  color: var(--yellow);
-  border-bottom-color: #fff;
-}
-
-/* HEADER */
+/* Header */
 .avis-header {
   display: flex;
   justify-content: center;
@@ -47,42 +25,11 @@ a:hover {
   border-bottom: 2px solid var(--yellow);
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-align: left;
-}
+.brand-icon { width: 48px; height: 48px; }
+.brand-text h1 { color: var(--yellow); margin: 0; }
+.slagord { color: var(--yellow); font-style: italic; }
 
-.brand-icon {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  display: block;
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.brand-text h1 {
-  font-size: 2rem;
-  margin: 0;
-  color: var(--yellow);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-.brand-text .slagord {
-  font-size: 0.9rem;
-  color: var(--yellow);
-  font-style: italic;
-  margin: 0.15rem 0 0 0;
-}
-
-/* MENY */
+/* Meny */
 .kategori-nav {
   display: flex;
   justify-content: center;
@@ -91,104 +38,9 @@ a:hover {
   background: #0a0a0a;
   border-bottom: 1px solid #222;
 }
+.kategori-nav a { color: var(--yellow); font-weight: 600; text-transform: uppercase; }
 
-.kategori-nav a {
-  color: var(--yellow);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.95rem;
-  text-decoration: none;
-  position: relative;
-  padding: 4px 6px;
-  transition: color 0.2s ease;
-}
-
-.kategori-nav a:hover {
-  color: #fff;
-}
-
-.kategori-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--yellow);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.kategori-nav a:hover::after {
-  opacity: 1;
-}
-
-/* KORT */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-  padding: 24px 16px;
-  max-width: 1080px;
-  margin: 0 auto;
-}
-
-.card {
-  background: #141414;
-  border: 1px solid #222;
-  border-radius: 8px;
-  padding: 16px;
-}
-
-.card h3 {
-  margin: 0.25rem 0 0.35rem;
-  color: #fff;
-}
-
-.card p {
-  color: #cfcfcf;
-  margin: 0;
-}
-
-/* ARTIKKEL */
-.article {
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 24px 16px;
-}
-
-.meta {
-  color: var(--muted);
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-}
-
-.article h1 {
-  margin: 0.2rem 0 0.4rem;
-}
-
-.article .lead {
-  font-size: 1.15rem;
-  color: #eaeaea;
-}
-
-.article img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-}
-
-/* FOOTER */
-.site-footer {
-  border-top: 1px solid #222;
-  color: #aaa;
-  font-size: 0.95rem;
-  text-align: center;
-  padding: 20px 12px;
-  background: #0a0a0a;
-}
-
-/* NYHETSHJUL */
+/* Nyhetshjul */
 #nyhetshjul {
   background: #0a0a0a;
   border-top: 2px solid var(--yellow);
@@ -197,77 +49,48 @@ a:hover {
   margin: 2rem 0;
   text-align: center;
 }
-
-#nyhetshjul h2 {
-  color: var(--yellow);
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-}
-
 #nyhetshjul-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  justify-items: center;
   max-width: 1000px;
   margin: 0 auto;
 }
-
 .nyhetshjul-card {
   background: #141414;
   border: 1px solid #222;
   border-radius: 6px;
-  max-width: 280px;
-  width: 100%;
-  text-align: left;
   overflow: hidden;
+  text-align: left;
 }
-
 .nyhetshjul-card img {
   width: 100%;
   max-height: 180px;
   object-fit: cover;
   display: block;
-  border-bottom: 1px solid #222;
 }
+.nyhetshjul-card h3 { margin: 0.5rem; font-size: 1rem; color: #fff; }
+.nyhetshjul-card p { margin: 0 0.5rem 1rem; font-size: 0.85rem; color: #ccc; }
 
-.nyhetshjul-card h3 {
-  font-size: 1rem;
-  margin: 0.5rem;
-  color: #fff;
+/* Kort */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 24px 16px;
+  max-width: 1080px;
+  margin: 0 auto;
 }
+.card { background: #141414; border: 1px solid #222; padding: 16px; border-radius: 8px; }
+.card h3 { color: #fff; margin: 0; }
+.card p { color: #ccc; margin: 0.5rem 0 0; }
 
-.nyhetshjul-card p {
-  font-size: 0.85rem;
-  margin: 0 0.5rem 1rem;
-  color: #ccc;
-}
-
-/* MOBIL */
-@media (max-width: 820px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    font-size: 1.9rem;
-  }
-
-  .brand-icon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .brand-text h1 {
-    font-size: 1.6rem;
-  }
-
-  .brand-text .slagord {
-    font-size: 0.85rem;
-  }
-
-  .kategori-nav {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
+/* Footer */
+.site-footer {
+  border-top: 1px solid #222;
+  color: #aaa;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 20px 12px;
+  background: #0a0a0a;
 }
