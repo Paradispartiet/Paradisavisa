@@ -211,4 +211,26 @@ a:hover {
   .brand-text h1 {
     font-size: 1.6rem;
   }
+  /* Lenker – globalt */
+a,
+a:visited {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 2px solid var(--yellow);
+  padding-bottom: 2px;
+  transition: 0.2s ease;
+}
+a:hover {
+  color: var(--yellow);
+  border-bottom-color: #fff;
+}
+  .card a,
+.card a:visited {
+  color: #fff;
+  border-bottom: 1px solid var(--yellow);
+}
+.card a:hover {
+  color: var(--yellow);
+  border-bottom-color: #fff;
+}
 }
