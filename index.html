@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <!-- Header: logo + navn + slagord -->
+  <!-- HEADER -->
   <header class="avis-header">
     <div class="brand">
       <img src="ikon-paradis.png" class="brand-icon" alt="Logo">
@@ -21,36 +21,38 @@
     </div>
   </header>
 
-  <!-- Meny -->
+  <!-- MENY -->
   <nav class="kategori-nav">
     <a href="#nyheter">Nyheter</a>
     <a href="kultur.html">Kultur</a>
     <a href="sport.html">Sport</a>
-    <a href="feed.html">Nyhetshjul</a>
+    <a href="#nyhetshjul">Nyhetshjul</a>
   </nav>
 
-  <!-- Nyhetshjul (tre nyeste grafikker) -->
-<<section id="nyhetshjul">
-  <h2>Nyhetshjul</h2>
-  <div id="nyhetshjul-grid" class="nyhetshjul-grid"></div>
-  <p><a href="feed.html">Se nyhetshjul →</a></p>
-</section>
-
-  <!-- Nyheter -->
-  <section class="cards" id="nyheter">
-    <!-- Artikler hentes inn via script.js -->
+  <!-- NYHETSHJUL -->
+  <section id="nyhetshjul">
+    <h2>Nyhetshjul</h2>
+    <div id="nyhetshjul-grid">
+      <!-- script.js fyller inn grafikker -->
+    </div>
   </section>
 
-  <!-- Debatt -->
+  <!-- NYHETER -->
+  <section class="cards" id="nyheter">
+    <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Nyheter</h2>
+    <!-- script.js henter inn artikler fra posts.json -->
+  </section>
+
+  <!-- DEBATT -->
   <section class="cards" id="debatt">
     <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Debatt</h2>
-    <!-- Debattinnlegg hentes inn via script.js -->
+    <!-- script.js henter inn innlegg fra debatt.json -->
     <div style="grid-column:1/-1; text-align:center; margin-top:1rem;">
       <a class="btn btn-yellow" href="skriv-innlegg.html">Skriv innlegg</a>
     </div>
   </section>
 
-  <!-- Om avisa -->
+  <!-- OM -->
   <section class="article article--about" id="om">
     <h1>Om Paradisavisa</h1>
     <p class="lead">
@@ -63,7 +65,7 @@
     </p>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <p>© 2025 Paradisavisa</p>
     <p>
@@ -72,8 +74,7 @@
     </p>
   </footer>
 
-  <!-- Script -->
+  <!-- SCRIPT -->
   <script src="script.js"></script>
-
 </body>
 </html>
