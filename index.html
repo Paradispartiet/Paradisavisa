@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- Header -->
   <header class="avis-header">
     <div class="brand">
       <img src="ikon-paradis.png" class="brand-icon" alt="Logo">
@@ -21,51 +21,39 @@
     </div>
   </header>
 
-  <!-- MENY -->
+  <!-- Meny -->
   <nav class="kategori-nav">
     <a href="#nyheter">Nyheter</a>
     <a href="kultur.html">Kultur</a>
     <a href="sport.html">Sport</a>
-    <a href="#nyhetshjul">Nyhetshjul</a>
+    <a href="feed.html">Nyhetshjul</a>
   </nav>
 
-  <!-- NYHETSHJUL -->
+  <!-- Nyhetshjul -->
   <section id="nyhetshjul">
     <h2>Nyhetshjul</h2>
-    <div id="nyhetshjul-grid">
-      <!-- script.js fyller inn grafikker -->
-    </div>
+    <div id="nyhetshjul-grid"></div>
   </section>
 
-  <!-- NYHETER -->
-  <section class="cards" id="nyheter">
-    <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Nyheter</h2>
-    <!-- script.js henter inn artikler fra posts.json -->
-  </section>
+  <!-- Nyheter -->
+  <section class="cards" id="nyheter"></section>
 
-  <!-- DEBATT -->
+  <!-- Debatt -->
   <section class="cards" id="debatt">
     <h2 style="grid-column:1/-1; margin-bottom:0.5rem;">Debatt</h2>
-    <!-- script.js henter inn innlegg fra debatt.json -->
     <div style="grid-column:1/-1; text-align:center; margin-top:1rem;">
       <a class="btn btn-yellow" href="skriv-innlegg.html">Skriv innlegg</a>
     </div>
   </section>
 
-  <!-- OM -->
-  <section class="article article--about" id="om">
+  <!-- Om -->
+  <section class="article" id="om">
     <h1>Om Paradisavisa</h1>
-    <p class="lead">
-      Paradisavisa er en enkel, gratis nettavis for stoff knyttet til Paradispartiet, idéutvikling, kultur og politikk.
-      Ingen annonser. Ingen klikkjakt.
-    </p>
-    <p>
-      Vi publiserer korte, tydelige tekster og debattinnlegg. Vil du bidra? Skriv til oss via
-      <a href="kontakt.html">kontakt</a>.
-    </p>
+    <p class="lead">Paradisavisa er en enkel, gratis nettavis for stoff knyttet til Paradispartiet, idéutvikling, kultur og politikk. Ingen annonser. Ingen klikkjakt.</p>
+    <p>Vi publiserer korte, tydelige tekster og debattinnlegg. Vil du bidra? Skriv til oss via <a href="kontakt.html">kontakt</a>.</p>
   </section>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer class="site-footer">
     <p>© 2025 Paradisavisa</p>
     <p>
@@ -74,14 +62,6 @@
     </p>
   </footer>
 
-  <!-- SCRIPT -->
   <script src="script.js"></script>
-  <script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/service-worker.js")
-    .then(() => console.log("Service Worker registrert"))
-    .catch(err => console.error("SW-feil:", err));
-}
-</script>
 </body>
 </html>
