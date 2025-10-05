@@ -64,6 +64,22 @@ a:hover {
   color: var(--yellow);
   font-style: italic;
 }
+/* Clean header: no underlines/borders inside the logo block */
+.avis-header * {
+  border: 0 !important;
+  text-decoration: none !important;
+}
+
+/* Keep just one clean line under the header */
+.avis-header {
+  border-bottom: 2px solid var(--yellow);
+}
+
+/* Avoid an extra yellow line stacking directly under the header */
+.kategori-nav {
+  border-top: 0;                /* kill any extra line above the menu */
+  border-bottom: 1px solid #222; /* keep the subtle divider under menu */
+}
 
 /* MENY */
 .kategori-nav {
