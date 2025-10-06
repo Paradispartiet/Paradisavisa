@@ -30,47 +30,55 @@ a:hover {
   border-bottom-color: #fff;
 }
 
-/* HEADER */
+/* HEADER – logo + navn + slagord */
 .avis-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.8rem;
   background: var(--black);
-  padding: 0.9rem 1rem 0.6rem;
-  border: none;
+  padding: 1rem 1.25rem 0.8rem;
+  border-bottom: 2px solid var(--yellow);
 }
+
 .brand {
   display: flex;
-  align-items: baseline; /* løfter ikonet i linje med teksten */
-  gap: 0.65rem;
+  align-items: center;
+  gap: 0.8rem;
+  line-height: 1.1;
 }
 
 .brand-icon {
-  width: 48px;
-  height: 48px;
-  position: relative;
-  top: -2px; /* justerer litt høyere visuelt */
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  display: block;
+  margin-top: -2px; /* hever ikonet bittelitt for perfekt linjejustering */
 }
+
 .brand-text {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  justify-content: center;
 }
+
 .brand-text h1 {
-  font-size: 2.4rem;           /* litt større */
-  font-weight: 800;            /* kraftigere */
-  letter-spacing: 1.2px;       /* litt mer luft mellom bokstaver */
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  margin: 0;
   color: var(--yellow);
-  font-stretch: 110%;          /* bredere uttrykk om fonten støtter det */
+  margin: 0;
+  font-stretch: 115%;
 }
+
 .brand-text .slagord {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--yellow);
   font-style: italic;
-  margin-top: 0.1rem; /* tettere kobling */
+  margin-top: 0.2rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
 }
 
 /* MENY */
