@@ -42,12 +42,15 @@ a:hover {
 }
 .brand {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  align-items: baseline; /* løfter ikonet i linje med teksten */
+  gap: 0.65rem;
 }
+
 .brand-icon {
   width: 48px;
   height: 48px;
+  position: relative;
+  top: -2px; /* justerer litt høyere visuelt */
 }
 .brand-text {
   display: flex;
@@ -55,11 +58,13 @@ a:hover {
   line-height: 1.1;
 }
 .brand-text h1 {
-  font-size: 2rem;
+  font-size: 2.4rem;           /* litt større */
+  font-weight: 800;            /* kraftigere */
+  letter-spacing: 1.2px;       /* litt mer luft mellom bokstaver */
+  text-transform: uppercase;
   margin: 0;
   color: var(--yellow);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-stretch: 110%;          /* bredere uttrykk om fonten støtter det */
 }
 .brand-text .slagord {
   font-size: 0.9rem;
