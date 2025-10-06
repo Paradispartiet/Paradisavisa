@@ -1,14 +1,16 @@
 [
   {
-  "title": "Ny vurdering av helseforetaksmodellen etter 25 år",
-  "excerpt": "Etter 25 år med helseforetaksmodellen ønsker flere partier og fagforeninger endring. Regjeringen utreder nye løsninger gjennom Helsereformutvalget og Prosjekt X.",
-  "image": "Nyhetshjul/Helsemodell.png",
-  "date": "2025-10-06"
-},
+    "title": "Ny vurdering av helseforetaksmodellen etter 25 år",
+    "excerpt": "Etter 25 år med helseforetaksmodellen ønsker flere partier og fagforeninger endring.",
+    "image": "Nyhetshjul/Helsemodell.png",
+    "url": "artikler/2025-10-06-Helsemodell.html",
+    "date": "2025-10-06"
+  },
   {
     "title": "Verdensordenens fall gir Netanyahu frie tøyler",
-    "excerpt": "Hvorfor åpner ikke Egypt grensene? Nabolandene må ta ansvar og umiddelbart avse litt ørken.",
+    "excerpt": "Hvorfor åpner ikke Egypt grensene?",
     "image": "Nyhetshjul/Netanyahu.png",
+    "url": "artikler/2025-09-29-Netanyahu.html",
     "date": "2025-09-29"
   },
   {
