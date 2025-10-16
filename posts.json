@@ -2,22 +2,36 @@
   {
     "title": "Legeflukt truer helsetjenesten",
     "url": "artikler/2025-09-26-Legeflukt.html",
-    "excerpt": "Stadig flere leger forlater offentlig sektor. Paradismodellen tilbyr tryggere rammer og fellesskapets ansvar.",
+    "excerpt": "Stadig flere leger forlater offentlig sektor. Paradismodellen tilbyr tryggere rammer.",
     "date": "2025-09-26",
     "category": "nyheter"
   },
   {
     "title": "Smågutta boys og det farlige",
     "url": "artikler/2025-09-26-Smagutta.html",
-    "excerpt": "Fire unge gutter er siktet etter en eksplosjon i Oslo. Historien viser at smågutter alltid har latt seg trekke mot det farlige – og at bakmenn og storbyens strukturer spiller en avgjørende rolle.",
+    "excerpt": "Fire unge gutter er siktet etter en eksplosjon i Oslo. Historien viser at smågutter alltid har søkt det farlige.",
     "date": "2025-09-26",
     "category": "nyheter"
   },
   {
-    "title": "Manifestet – nøkkelkapitler",
-    "url": "manifest.html",
-    "excerpt": "Utdrag som forklarer arbeidstimer som valuta, åpen produksjonsregistrering og spredt bosetting.",
-    "date": "2025-09-25",
+    "title": "Verdensordenens fall gir Netanyahu frie tøyler",
+    "url": "artikler/2025-09-29-Netanyahu.html",
+    "excerpt": "Hvorfor åpner ikke Egypt grensene? En analyse av makt, religion og geopolitikk.",
+    "date": "2025-09-29",
+    "category": "utenriks"
+  },
+  {
+    "title": "Ny vurdering av helseforetaksmodellen etter 25 år",
+    "url": "artikler/2025-10-06-Helsemodell.html",
+    "excerpt": "Flere partier og fagforeninger ønsker endringer i finansiering og styring.",
+    "date": "2025-10-06",
+    "category": "nyheter"
+  },
+  {
+    "title": "Sofienberg kirke får nytt liv som kulturhus",
+    "url": "artikler/2025-10-16-sofienberg-kirke.html",
+    "excerpt": "Kirken åpnes for konserter, debatt og fellesskap. Et nytt kapittel for bydelen.",
+    "date": "2025-10-16",
     "category": "kultur"
   }
 ]
