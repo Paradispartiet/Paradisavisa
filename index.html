@@ -5,15 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Paradisavisa</title>
   <meta name="description" content="Paradisavisa – nyheter, debatt og idéer fra Paradispartiet.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
   <!-- Header -->
-<header class="avis-header" id="top">
-  <a href="#top" class="avis-logo">PARADISAVISA</a>
-  <p class="avis-tagline">Objektivt sett, fra vår synsvinkel</p>
-</header>
+  <header class="avis-header" id="top">
+    <a href="#top" class="avis-logo">PARADISAVISA</a>
+    <p class="avis-tagline">Objektivt sett, fra vår synsvinkel</p>
+  </header>
 
   <!-- Nyhetshjul -->
   <section id="nyhetshjul">
@@ -21,19 +23,16 @@
   </section>
 
   <!-- Nyheter -->
-  <section class="cards" id="nyheter"></section>
+  <section id="nyheter" class="cards"></section>
 
   <!-- Debatt -->
-  <section class="cards" id="debatt">
-  <h2 style="grid-column:1/-1; margin-bottom:1.5rem;">Debatt</h2>
-  <!-- Her lastes debattkortene automatisk -->
-  <div class="debatt-innlegg"></div>
-
-  <!-- Flyttet knapp nederst -->
-  <div style="grid-column:1/-1; text-align:center; margin-top:2rem;">
-    <a class="btn" href="skriv-innlegg.html">Skriv innlegg</a>
-  </div>
-</section>
+  <section id="debatt" class="cards">
+    <h2>Debatt</h2>
+    <div class="debatt-innlegg"></div>
+    <div class="btn-container">
+      <a class="btn" href="skriv-innlegg.html">Skriv innlegg</a>
+    </div>
+  </section>
 
   <!-- Om -->
   <section class="article" id="om">
@@ -50,6 +49,11 @@
       <a href="https://paradispartiet.github.io/Teorien-om-lyset" target="_blank">Teorien om lyset</a>
     </p>
   </footer>
+
+  <!-- Notisbånd -->
+  <div class="notisbånd">
+    <div class="notisinnhold"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
