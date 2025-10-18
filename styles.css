@@ -145,6 +145,12 @@ a:hover { text-decoration: underline; }
 
 
 /* ---------- NOTISBÅND ---------- */
+/* ---------- NOTISBÅND ---------- */
+body {
+  padding-top: 3.6rem;   /* plass til ticker øverst */
+  padding-bottom: 0;
+}
+
 .notisbånd {
   position: fixed;
   top: 0;
@@ -153,12 +159,12 @@ a:hover { text-decoration: underline; }
   overflow: hidden;
   white-space: nowrap;
   background: #000;
-  border-top: 2px solid #FFD600;
-  box-shadow: 0 -1px 8px rgba(255,214,0,0.35);
+  border-bottom: 2px solid var(--yellow);  /* gul linje under teksten */
+  box-shadow: 0 2px 8px rgba(246,200,0,0.35);
   color: #eee;
   font-size: 0.95rem;
   padding: 0.4rem 0;
-  z-index: 2000;
+  z-index: 3000;  /* ligger over headeren */
   opacity: 0;
   transform: translateY(10px);
   animation: fadeInTicker 1.2s ease-out forwards;
@@ -176,8 +182,8 @@ a:hover { text-decoration: underline; }
   opacity: 0.9;
 }
 
-.notisinnhold strong { color: #FFD600; }
-.notisinnhold a { color: #FFD600; text-decoration: none; }
+.notisinnhold strong { color: var(--yellow); }
+.notisinnhold a { color: var(--yellow); text-decoration: none; }
 .notisinnhold a:hover { text-decoration: underline; }
 
 @keyframes ticker {
@@ -197,6 +203,7 @@ a:hover { text-decoration: underline; }
 .notisbånd.fade-ut {
   animation: fadeOutTicker 0.6s ease-in forwards;
 }
+
 @keyframes fadeOutTicker {
   from { opacity: 1; transform: translateY(0); }
   to { opacity: 0; transform: translateY(10px); }
