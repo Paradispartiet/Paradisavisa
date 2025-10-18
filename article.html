@@ -4,25 +4,49 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tittel – Paradisavisa</title>
+
+  <!-- Metadata for søk og deling -->
+  <meta name="description" content="Kort ingress eller oppsummering av artikkelen – vises i søk og lenker.">
+  <meta property="og:title" content="Tittel – Paradisavisa">
+  <meta property="og:description" content="Kort ingress eller oppsummering av artikkelen – vises i søk og lenker.">
+  <meta property="og:image" content="../Nyhetshjul/eksempel.png">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Paradisavisa">
+
+  <!-- Favicon og stilark -->
   <link rel="icon" href="../ikon-paradis.png">
   <link rel="stylesheet" href="../styles.css">
 </head>
+
 <body>
 
+<!-- Header -->
 <div id="header-placeholder"></div>
 
+<!-- Artikkel -->
 <article class="article">
   <h1>Tittel på saken</h1>
-  <div class="meta">Av Forfatternavn · 25. september 2025</div>
-  <p class="lead">Kort ingress som sier hva saken handler om – enkelt og uten svada.</p>
+  <div class="meta">
+    Av Forfatternavn · <time datetime="2025-09-25">25. september 2025</time>
+  </div>
+
+  <!-- Hovedbilde (valgfritt) -->
+  <!--
+  <img class="banner" src="../Nyhetshjul/eksempel.png" alt="Beskrivende alt-tekst" loading="lazy">
+  -->
+
+  <p class="lead" aria-label="Ingress">
+    Kort ingress som sier hva saken handler om – enkelt og uten svada.
+  </p>
 
   <p>Første avsnitt. Bruk korte setninger, hverdagslige ord, og kom til poenget tidlig.</p>
 
   <h3>Mellomtittel ved behov</h3>
   <p>Mer tekst. Legg gjerne inn et sitat, en figur eller en punktliste hvis det styrker klarheten.</p>
 
-  <!-- Eksempelbilde:
-  <img src="../assets/illustrasjon.png" alt="beskrivende alt-tekst">
+  <!-- Eksempelbilde midt i artikkelen -->
+  <!--
+  <img src="../assets/illustrasjon.png" alt="Beskrivende alt-tekst" loading="lazy">
   -->
 
   <p>Avslutning med konklusjon eller videre lesning.</p>
@@ -37,6 +61,8 @@
   </p>
 </footer>
 
+<!-- Script for felles header -->
 <script src="../script.js"></script>
+
 </body>
 </html>
