@@ -265,7 +265,7 @@ a:hover { text-decoration: underline; }
   .btn-container a { font-size: 0.85rem; }
 }
 
-/* ---------- MOBIL: SMÅERE NYHETSHJUL, MEN TRE KORT ---------- */
+/* ---------- MOBIL: SMÅERE NYHETSHJUL OG TO DEBATTKORT ---------- */
 @media (max-width: 600px) {
   #nyhetshjul {
     padding: 0.8rem 0.5rem 1.2rem;
@@ -301,10 +301,11 @@ a:hover { text-decoration: underline; }
   }
 
   .debatt-innlegg {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* to kort også på mobil */
     gap: 10px;
   }
 
-  .debatt-innlegg h3 { font-size: 0.85rem; }
-  .debatt-innlegg p  { font-size: 0.75rem; line-height: 1.3; }
+  .debatt-innlegg h3 { font-size: 0.8rem; }
+  .debatt-innlegg p  { font-size: 0.7rem; line-height: 1.3; }
 }
