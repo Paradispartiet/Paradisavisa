@@ -300,3 +300,19 @@ a:hover { text-decoration: underline; }
 /* Fjern understreking i kort */
 .nyhetshjul-card a, .cards a { text-decoration: none !important; }
 .nyhetshjul-card a:hover, .cards a:hover { text-decoration: none !important; }
+
+/* --- Rullbart nyhetshjul --- */
+#nyhetshjul-grid {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+  padding: 0 1rem;
+  scrollbar-width: none; /* skjul scrollbar (Firefox) */
+}
+#nyhetshjul-grid::-webkit-scrollbar { display: none; } /* skjul scrollbar (Chrome) */
+
+.nyhetshjul-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+}
