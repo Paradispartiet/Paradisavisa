@@ -64,6 +64,17 @@ a:hover { text-decoration: underline; }
   100% { transform: translateX(-100%); }
 }
 
+/* ---------- NOTISBÅND: FARGER OG KONTRAST ---------- */
+.notisinnhold span strong {
+  color: var(--yellow);
+  font-weight: 700;
+  margin-right: 0.3rem;
+}
+
+.notisinnhold span {
+  color: #f2f2f2;        /* hvit tekst for selve nyheten */
+  font-weight: 400;
+}
 /* ================================
    🟡 HEADER
    ================================ */
