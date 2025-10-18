@@ -1,5 +1,5 @@
 :root {
---yellow: #f6c800; /* varmere og mykere tone */
+  --yellow: #f6c800; /* varmere og mykere tone */
   --bg: #000;
   --text: #eee;
   --muted: #bbb;
@@ -12,7 +12,8 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  padding-bottom: 2.4rem; /* plass til ticker */
+  padding-top: 3.6rem;   /* plass til ticker øverst */
+  padding-bottom: 0;
 }
 
 a { color: var(--yellow); text-decoration: none; }
@@ -23,7 +24,7 @@ a:hover { text-decoration: underline; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #000;
+  background: linear-gradient(to bottom, #000 0%, #0a0a0a 100%);
   padding: 1.2rem 1rem 0.8rem;
   text-align: center;
 }
@@ -126,7 +127,6 @@ a:hover { text-decoration: underline; }
 }
 
 /* ---------- DEBATTSEKSJON ---------- */
-/* ---------- DEBATTSEKSJON OPPDATERT ---------- */
 #debatt {
   padding: 2rem 1rem;
   max-width: 1080px;
@@ -134,9 +134,9 @@ a:hover { text-decoration: underline; }
 }
 
 #debatt h2 {
-  color: var(--yellow);        /* gul overskrift */
+  color: var(--yellow);
   font-size: 1.4rem;
-  font-weight: 800;            /* fet skrift */
+  font-weight: 800;
   margin-bottom: 1rem;
   text-align: left;
   letter-spacing: 0.5px;
@@ -144,7 +144,7 @@ a:hover { text-decoration: underline; }
 
 .debatt-innlegg {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* kort ved siden av hverandre */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 16px;
   align-items: start;
 }
@@ -174,11 +174,6 @@ a:hover { text-decoration: underline; }
 }
 
 /* ---------- NOTISBÅND ---------- */
-body {
-  padding-top: 3.6rem;   /* plass til ticker øverst */
-  padding-bottom: 0;
-}
-
 .notisbånd {
   position: fixed;
   top: 0;
@@ -186,13 +181,13 @@ body {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  background: #000;
-  border-bottom: 2px solid var(--yellow);  /* gul linje under teksten */
+  background: linear-gradient(to bottom, #000 0%, #111 100%);
+  border-bottom: 2px solid var(--yellow);
   box-shadow: 0 2px 8px rgba(246,200,0,0.35);
   color: #eee;
   font-size: 0.95rem;
   padding: 0.4rem 0;
-  z-index: 9999;  /* ligger over headeren */
+  z-index: 9999;
   opacity: 0;
   transform: translateY(10px);
   animation: fadeInTicker 1.2s ease-out forwards;
@@ -228,15 +223,6 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.notisbånd.fade-ut {
-  animation: fadeOutTicker 0.6s ease-in forwards;
-}
-
-@keyframes fadeOutTicker {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(10px); }
-}
-
 /* ---------- MOBILVARIANT ---------- */
 @media (max-width: 820px) {
   .avis-logo { font-size: 2.4rem; }
@@ -245,37 +231,39 @@ body {
   .fade-notis { opacity: 0; transition: opacity 1s ease; text-align: center; max-width: 95%; }
   .fade-notis.fadein { opacity: 1; }
 }
+
 /* ---------- MOBIL: SMÅERE NYHETSHJUL, MEN TRE KORT ---------- */
 @media (max-width: 600px) {
   #nyhetshjul {
-    padding: 0.8rem 0.5rem 1.2rem;  /* mindre luft rundt feltet */
+    padding: 0.8rem 0.5rem 1.2rem;
   }
 
   #nyhetshjul-grid {
-    grid-template-columns: repeat(3, 1fr); /* behold tre kort */
-    gap: 8px;                              /* mindre avstand mellom kort */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
     max-width: 100%;
   }
 
   .nyhetshjul-card {
     border-radius: 6px;
-    transform: scale(0.92);                /* gjør kortene visuelt mindre */
+    transform: scale(0.92);
   }
 
   .nyhetshjul-card img {
-    height: 100px;                         /* lavere bilder */
+    height: 100px;
   }
 
   .nyhetshjul-card h3 {
-    font-size: 0.75rem;                    /* mindre overskrift */
+    font-size: 0.75rem;
     margin: 0.4rem;
   }
 
   .nyhetshjul-card p {
-    font-size: 0.7rem;                     /* mindre ingress */
+    font-size: 0.7rem;
     margin: 0 0.4rem 0.6rem;
   }
 }
+
 /* ---------- MOBIL: SMÅERE DEBATTKORT ---------- */
 @media (max-width: 600px) {
   #debatt {
@@ -284,7 +272,7 @@ body {
 
   .debatt-innlegg {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* behold tre kolonner hvis plassen tillater */
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
 
@@ -304,7 +292,7 @@ body {
   }
 
   .btn {
-    padding: 0.4rem 0.8rem;   /* mindre knapp på mobil */
+    padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
   }
 }
