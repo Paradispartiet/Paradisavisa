@@ -1,3 +1,7 @@
+/* ================================
+   🎯 PARADISAVISA – HOVEDSTIL
+   ================================ */
+
 :root {
   --yellow: #f6c800;
   --bg: #000;
@@ -5,6 +9,7 @@
   --muted: #bbb;
 }
 
+/* Reset og base */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -19,7 +24,9 @@ body {
 a { color: var(--yellow); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* ---------- NOTISBÅND (stabil versjon) ---------- */
+/* ================================
+   🟡 NOTISBÅND (stabil versjon)
+   ================================ */
 .notisbånd {
   position: fixed;
   top: 0;
@@ -34,7 +41,6 @@ a:hover { text-decoration: underline; }
   font-size: 0.95rem;
   padding: 0.4rem 0;
   z-index: 9999;
-  opacity: 1;
 }
 
 .notisinnhold {
@@ -58,35 +64,70 @@ a:hover { text-decoration: underline; }
   100% { transform: translateX(-100%); }
 }
 
-/* ---------- HEADER ---------- */
+/* ================================
+   🟡 HEADER
+   ================================ */
 .avis-header {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #000;
-  padding: 1.2rem 1rem 0.8rem;
+  background: linear-gradient(to bottom, #000 0%, #0a0a0a 100%);
+  padding: 1rem 1rem 0.4rem;
+  margin-bottom: 0;
   text-align: center;
 }
 
+/* Logo */
 .avis-logo {
   font-size: 3rem;
   font-weight: 900;
   letter-spacing: 2px;
   color: var(--yellow);
   text-shadow: 0 0 12px rgba(246,200,0,0.35);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.05rem;
 }
 
+/* Slagord med metallisk gullskjær */
 .avis-tagline {
-  color: rgba(255,255,255,0.65);
+  margin-top: 0;
+  margin-bottom: 0.4rem;
   font-style: italic;
   font-size: 0.95rem;
-  margin-top: 0;
+  letter-spacing: 0.3px;
+  background: linear-gradient(90deg,
+    rgba(255, 230, 120, 0.9) 0%,
+    rgba(246, 200, 0, 0.95) 40%,
+    rgba(255, 255, 160, 0.8) 70%,
+    rgba(246, 200, 0, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 6px rgba(246, 200, 0, 0.25),
+    0 0 12px rgba(246, 200, 0, 0.15);
 }
 
-/* ---------- NYHETSHJUL ---------- */
+/* Myk skygge som glir ned mot nyhetshjulet */
+.avis-header::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 35px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+/* Stram overgang til nyhetshjul */
+#nyhetshjul { padding-top: 0.6rem; }
+
+/* ================================
+   🟡 NYHETSHJUL
+   ================================ */
 #nyhetshjul {
-  padding: 1.5rem 1rem 2rem;
+  padding: 1.2rem 1rem 2rem;
   text-align: center;
 }
 
@@ -107,31 +148,29 @@ a:hover { text-decoration: underline; }
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .nyhetshjul-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
-
 .nyhetshjul-card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
 }
-
 .nyhetshjul-card h3 {
   font-size: 1rem;
   margin: 0.5rem;
   color: #fff;
 }
-
 .nyhetshjul-card p {
   font-size: 0.85rem;
   margin: 0 0.5rem 1rem;
   color: #ccc;
 }
 
-/* ---------- KORT ---------- */
+/* ================================
+   🟡 ARTIKKELKORT / NYHETER
+   ================================ */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -140,29 +179,27 @@ a:hover { text-decoration: underline; }
   max-width: 1080px;
   margin: 0 auto;
 }
-
 .card {
   background: #111;
   border-radius: 8px;
   padding: 16px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
-
 .card h3 { color: #fff; margin-bottom: .3rem; }
 .card p { color: #bbb; }
 
-/* ---------- DEBATT ---------- */
+/* ================================
+   🟡 DEBATTSEKSJON
+   ================================ */
 #debatt {
   padding: 2rem 1rem;
   max-width: 1080px;
   margin: 0 auto;
 }
-
 #debatt h2 {
   color: var(--yellow);
   font-size: 1.3rem;
@@ -170,36 +207,58 @@ a:hover { text-decoration: underline; }
   margin-bottom: 1rem;
   text-align: left;
 }
-
 .debatt-innlegg {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
-
 .debatt-innlegg .card {
   background: #111;
   border-radius: 8px;
   padding: 14px;
 }
-
 .debatt-innlegg h3 { color: #fff; font-size: 0.9rem; margin-bottom: 0.25rem; }
 .debatt-innlegg p { color: #bbb; font-size: 0.8rem; line-height: 1.4; }
-
 .btn-container { text-align: right; margin-top: 0.8rem; margin-right: 0.5rem; }
 .btn-container a { color: var(--yellow); font-weight: 600; }
 .btn-container a:hover { opacity: 0.8; text-decoration: underline; }
 
-/* ---------- FOOTER ---------- */
+/* ================================
+   🟡 FOOTER
+   ================================ */
 .site-footer {
-  background: #000;
+  position: relative;
+  background: linear-gradient(to top, #000 0%, #0a0a0a 100%);
   color: #aaa;
   font-size: 0.95rem;
   text-align: center;
-  padding: 20px 12px;
+  padding: 1.8rem 1rem 1.2rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 214, 0, 0.15);
+  box-shadow: 0 -4px 20px rgba(246, 200, 0, 0.08);
+}
+.site-footer a {
+  color: #f6c800;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+.site-footer a:hover { opacity: 0.8; }
+.site-footer::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20px;
+  height: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+  pointer-events: none;
 }
 
-/* ---------- MOBIL ---------- */
+/* ================================
+   🟡 MOBILTILPASNING
+   ================================ */
 @media (max-width: 600px) {
   .avis-logo { font-size: 2.4rem; }
   .cards { grid-template-columns: 1fr; }
@@ -210,13 +269,8 @@ a:hover { text-decoration: underline; }
   .debatt-innlegg { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }
 
-/* ---------- FJERN UNDERSTREKING I NYHETSKORT ---------- */
+/* Fjern understreking i kort */
 .nyhetshjul-card a,
-.cards a {
-  text-decoration: none !important;
-}
-
+.cards a { text-decoration: none !important; }
 .nyhetshjul-card a:hover,
-.cards a:hover {
-  text-decoration: none !important;
-}
+.cards a:hover { text-decoration: none !important; }
