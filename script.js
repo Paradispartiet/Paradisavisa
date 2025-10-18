@@ -1,4 +1,3 @@
-/* ---------- LASTING AV SIDEN ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
   if (document.querySelector("#nyheter")) loadNyheter();
@@ -6,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadNotiser();
 });
 
-/* ---------- NYHETSHJUL ---------- */
+/* ---------- Nyhetshjul ---------- */
 function loadNyhetshjul() {
   fetch("Nyhetshjul.json", { cache: "no-store" })
     .then(r => r.json())
@@ -31,46 +30,41 @@ function loadNyhetshjul() {
     .catch(err => console.error("Nyhetshjul feilet:", err));
 }
 
-/* ---------- NYHETER ---------- */
+/* ---------- Nyheter ---------- */
 function loadNyheter() {
-  fetch("posts.json")
-    .then(r => r.json())
-    .then(posts => {
-      const container = document.querySelector("#nyheter");
-      if (!posts.length) return;
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-      posts.forEach(post => {
-        const card = document.createElement("a");
-        card.className = "card";
-        card.href = post.url;
-        card.innerHTML = `<h3>${escapeHtml(post.title)}</h3><p>${escapeHtml(post.excerpt)}</p>`;
-        container.appendChild(card);
-      });
+  fetch("posts.json").then(r => r.json()).then(posts => {
+    const container = document.querySelector("#nyheter");
+    if (!posts.length) return;
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    posts.forEach(post => {
+      const card = document.createElement("a");
+      card.className = "card";
+      card.href = post.url;
+      card.innerHTML = `<h3>${escapeHtml(post.title)}</h3><p>${escapeHtml(post.excerpt)}</p>`;
+      container.appendChild(card);
     });
+  });
 }
 
-/* ---------- DEBATT ---------- */
+/* ---------- Debatt ---------- */
 function loadDebatt() {
-  fetch("debatt.json")
-    .then(r => r.json())
-    .then(items => {
-      const container = document.querySelector(".debatt-innlegg");
-      if (!items.length) return;
-      items.forEach(innlegg => {
-        const card = document.createElement("a");
-        card.className = "card";
-        card.href = innlegg.url;
-        card.innerHTML = `
-          <h3>${escapeHtml(innlegg.title)}</h3>
-          <p class="debatt-meta">${escapeHtml(innlegg.author)} · ${escapeHtml(innlegg.date)}</p>
-          <p class="debatt-excerpt">${escapeHtml(innlegg.excerpt.split(' ').slice(0, 14).join(' '))}...</p>
-        `;
-        container.appendChild(card);
-      });
+  fetch("debatt.json").then(r => r.json()).then(items => {
+    const container = document.querySelector(".debatt-innlegg");
+    items.forEach(innlegg => {
+      const card = document.createElement("a");
+      card.className = "card";
+      card.href = innlegg.url;
+      card.innerHTML = `
+        <h3>${escapeHtml(innlegg.title)}</h3>
+        <p class="debatt-meta">${escapeHtml(innlegg.author)} · ${escapeHtml(innlegg.date)}</p>
+        <p class="debatt-excerpt">${escapeHtml(innlegg.excerpt.split(' ').slice(0, 14).join(' '))}...</p>
+      `;
+      container.appendChild(card);
     });
+  });
 }
 
-/* ---------- NOTISBÅND V3 ---------- */
+/* ---------- Notisbånd ---------- */
 function loadNotiser() {
   fetch("notiser.json", { cache: "no-store" })
     .then(r => r.json())
@@ -78,55 +72,17 @@ function loadNotiser() {
       const innhold = document.querySelector(".notisinnhold");
       if (!innhold) return;
       innhold.innerHTML = "";
-
-      // 🔧 Sørg for at notisbåndet alltid vises når innholdet er klart
-      const band = document.querySelector(".notisbånd");
-      if (band) {
-        band.style.opacity = "1";
-        band.style.transform = "translateY(0)";
-      }
-
-      const isMobile = window.innerWidth <= 820;
-
-      if (!isMobile) {
-        items.forEach(n => {
-          const span = document.createElement("span");
-          const content = `<strong>${n.category}:</strong> ${n.text}`;
-          span.innerHTML = n.url ? `<a href="${n.url}">${content}</a>` : content;
-          innhold.appendChild(span);
-        });
-      } else {
-        let index = 0;
-        const fadeSpan = document.createElement("span");
-        fadeSpan.classList.add("fade-notis");
-        innhold.appendChild(fadeSpan);
-
-        function showNext() {
-          const n = items[index];
-          const content = `<strong>${n.category}:</strong> ${n.text}`;
-          fadeSpan.innerHTML = n.url ? `<a href="${n.url}">${content}</a>` : content;
-          fadeSpan.classList.remove("fadein");
-          void fadeSpan.offsetWidth;
-          fadeSpan.classList.add("fadein");
-          index = (index + 1) % items.length;
-        }
-
-        showNext();
-        setInterval(showNext, 5000);
-      }
-
-      // 🔧 Pause ticker ved trykk (mobil)
-      innhold.addEventListener("touchstart", () => {
-        innhold.style.animationPlayState = "paused";
-      });
-      innhold.addEventListener("touchend", () => {
-        innhold.style.animationPlayState = "running";
+      items.forEach(n => {
+        const span = document.createElement("span");
+        const content = `<strong>${n.category}:</strong> ${n.text}`;
+        span.innerHTML = n.url ? `<a href="${n.url}">${content}</a>` : content;
+        innhold.appendChild(span);
       });
     })
     .catch(err => console.error("Notisbånd feilet:", err));
 }
 
-/* ---------- HJELPEFUNKSJON ---------- */
+/* ---------- Hjelpefunksjon ---------- */
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, s =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[s])
