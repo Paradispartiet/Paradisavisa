@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
   if (document.querySelector("#nyheter")) loadNyheter();
-  if (document.querySelector("#kultur")) loadKategori("kultur");
-  if (document.querySelector("#sport")) loadKategori("sport");
   if (document.querySelector("#debatt")) loadDebatt();
+  loadNotiser();
 });
 
 /* ---------- Nyhetshjul ---------- */
@@ -14,10 +13,8 @@ function loadNyhetshjul() {
       if (!items.length) return;
       items.sort((a, b) => new Date(b.date) - new Date(a.date));
       const top3 = items.slice(0, 3);
-
       const grid = document.getElementById("nyhetshjul-grid");
       grid.innerHTML = "";
-
       top3.forEach(item => {
         const card = document.createElement("a");
         card.className = "nyhetshjul-card";
@@ -43,28 +40,7 @@ function loadNyheter() {
       const card = document.createElement("a");
       card.className = "card";
       card.href = post.url;
-      card.innerHTML = `
-        <h3>${escapeHtml(post.title)}</h3>
-        <p>${escapeHtml(post.excerpt)}</p>
-      `;
-      container.appendChild(card);
-    });
-  });
-}
-
-/* ---------- Kultur / Sport ---------- */
-function loadKategori(kategori) {
-  fetch("posts.json").then(r => r.json()).then(posts => {
-    const container = document.querySelector(`#${kategori}`);
-    const filtered = posts.filter(p => p.category === kategori);
-    filtered.forEach(post => {
-      const card = document.createElement("a");
-      card.className = "card";
-      card.href = post.url;
-      card.innerHTML = `
-        <h3>${escapeHtml(post.title)}</h3>
-        <p>${escapeHtml(post.excerpt)}</p>
-      `;
+      card.innerHTML = `<h3>${escapeHtml(post.title)}</h3><p>${escapeHtml(post.excerpt)}</p>`;
       container.appendChild(card);
     });
   });
@@ -73,7 +49,7 @@ function loadKategori(kategori) {
 /* ---------- Debatt ---------- */
 function loadDebatt() {
   fetch("debatt.json").then(r => r.json()).then(items => {
-    const container = document.querySelector("#debatt");
+    const container = document.querySelector(".debatt-innlegg");
     items.forEach(innlegg => {
       const card = document.createElement("a");
       card.className = "card";
@@ -88,9 +64,55 @@ function loadDebatt() {
   });
 }
 
-/* ---------- hjelpefunksjon ---------- */
+/* ---------- Notisbånd V3 ---------- */
+function loadNotiser() {
+  fetch("notiser.json", { cache: "no-store" })
+    .then(r => r.json())
+    .then(items => {
+      const innhold = document.querySelector(".notisinnhold");
+      if (!innhold) return;
+      innhold.innerHTML = "";
+
+      const isMobile = window.innerWidth <= 820;
+
+      if (!isMobile) {
+        items.forEach(n => {
+          const span = document.createElement("span");
+          const content = `<strong>${n.category}:</strong> ${n.text}`;
+          span.innerHTML = n.url ? `<a href="${n.url}">${content}</a>` : content;
+          innhold.appendChild(span);
+        });
+      } else {
+        let index = 0;
+        const fadeSpan = document.createElement("span");
+        fadeSpan.classList.add("fade-notis");
+        innhold.appendChild(fadeSpan);
+
+        function showNext() {
+          const n = items[index];
+          const content = `<strong>${n.category}:</strong> ${n.text}`;
+          fadeSpan.innerHTML = n.url ? `<a href="${n.url}">${content}</a>` : content;
+          fadeSpan.classList.remove("fadein");
+          void fadeSpan.offsetWidth;
+          fadeSpan.classList.add("fadein");
+          index = (index + 1) % items.length;
+        }
+        showNext();
+        setInterval(showNext, 5000);
+      }
+    })
+    .catch(err => console.error("Notisbånd feilet:", err));
+}
+
+/* Fade ut ticker ved sidebytte */
+window.addEventListener("beforeunload", () => {
+  const ticker = document.querySelector(".notisbånd");
+  if (ticker) ticker.classList.add("fade-ut");
+});
+
+/* Hjelpefunksjon */
 function escapeHtml(str) {
-  return String(str).replace(/[&<>"']/g, s => (
-    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[s]
-  ));
+  return String(str).replace(/[&<>"']/g, s =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[s])
+  );
 }
