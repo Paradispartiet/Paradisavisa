@@ -9,7 +9,7 @@
   --muted: #bbb;
 }
 
-/* Reset og base */
+/* RESET OG BASE */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -20,12 +20,12 @@ body {
   padding-top: 2.6rem; /* plass til ticker øverst */
 }
 
-/* ---------- LENKER ---------- */
+/* LENKER */
 a { color: var(--yellow); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* ================================
-   🟡 NOTISBÅND (stabil versjon)
+   🟡 NOTISBÅND
    ================================ */
 .notisbånd {
   position: fixed;
@@ -55,67 +55,51 @@ a:hover { text-decoration: underline; }
   opacity: 0.9;
 }
 
-.notisinnhold strong { color: var(--yellow); }
-.notisinnhold a { color: var(--yellow); text-decoration: none; }
-.notisinnhold a:hover { text-decoration: underline; }
+.notisinnhold strong { color: var(--yellow); font-weight: 700; margin-right: 0.3rem; }
+.notisinnhold span { color: #f2f2f2; font-weight: 400; }
 
 @keyframes ticker {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
 
-/* ---------- NOTISBÅND: FARGER OG KONTRAST ---------- */
-.notisinnhold span strong {
-  color: var(--yellow);
-  font-weight: 700;
-  margin-right: 0.3rem;
-}
-
-.notisinnhold span {
-  color: #f2f2f2;        /* hvit tekst for selve nyheten */
-  font-weight: 400;
-}
 /* ================================
    🟡 HEADER
    ================================ */
 .avis-header {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: linear-gradient(to bottom, #000 0%, #0a0a0a 100%);
   padding: 1rem 1rem 0.4rem;
-  margin-bottom: 0;
   text-align: center;
 }
 
-/* Logo */
 .avis-logo {
   font-size: 3rem;
   font-weight: 900;
   letter-spacing: 2px;
   color: var(--yellow);
-  text-shadow: 0 0 12px rgba(246,200,0,0.35);
+  text-shadow: 0 0 10px rgba(246,200,0,0.3);
   margin-bottom: 0.05rem;
 }
 
-/* Slagord med rent metallisk gull, uten skygge */
+/* Slagord – metallisk gull, uten skygge */
 .avis-tagline {
-  margin-top: 0;
-  margin-bottom: 0.4rem;
+  margin: 0;
   font-style: italic;
   font-size: 0.95rem;
   letter-spacing: 0.3px;
   background: linear-gradient(90deg,
-    rgba(255, 220, 100, 1) 0%,
-    rgba(246, 200, 0, 1) 40%,
-    rgba(230, 180, 40, 1) 70%,
-    rgba(246, 200, 0, 1) 100%);
+    rgba(255,220,100,1) 0%,
+    rgba(246,200,0,1) 40%,
+    rgba(230,180,40,1) 70%,
+    rgba(246,200,0,1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Myk skygge som glir ned mot nyhetshjulet */
+/* Skygge under header */
 .avis-header::after {
   content: "";
   display: block;
@@ -127,9 +111,6 @@ a:hover { text-decoration: underline; }
   background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
   pointer-events: none;
 }
-
-/* Stram overgang til nyhetshjul */
-#nyhetshjul { padding-top: 0.6rem; }
 
 /* ================================
    🟡 NYHETSHJUL
@@ -152,37 +133,50 @@ a:hover { text-decoration: underline; }
   background: #111;
   border-radius: 8px;
   overflow: hidden;
-  color: inherit;
-  text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .nyhetshjul-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
+
 .nyhetshjul-card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  object-position: center 40%; /* senker bildet litt i rammen */
+  object-position: center 47%; /* balanserer bildet */
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   display: block;
 }
-}
+
+/* Dynamisk tittel og ingress i nyhetshjul */
 .nyhetshjul-card h3 {
-  font-size: 1rem;
-  margin: 0.5rem;
+  font-size: clamp(1rem, 1.6vw + 0.2rem, 1.3rem);
+  font-weight: 700;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: #fff;
+  margin: 0.5rem;
 }
+
 .nyhetshjul-card p {
-  font-size: 0.85rem;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  line-height: 1.5;
+  color: #bbb;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   margin: 0 0.5rem 1rem;
-  color: #ccc;
 }
 
 /* ================================
-   🟡 ARTIKKELKORT / NYHETER
+   🟡 ARTIKLER OG KORT
    ================================ */
 .cards {
   display: grid;
@@ -192,6 +186,7 @@ a:hover { text-decoration: underline; }
   max-width: 1080px;
   margin: 0 auto;
 }
+
 .card {
   background: #111;
   border-radius: 8px;
@@ -202,11 +197,31 @@ a:hover { text-decoration: underline; }
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
-.card h3 { color: #fff; margin-bottom: .3rem; }
-.card p { color: #bbb; }
+
+/* Dynamisk tittel og ingress i kort */
+.card h3 {
+  font-size: clamp(1rem, 1.6vw + 0.2rem, 1.3rem);
+  font-weight: 700;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #fff;
+  margin-bottom: .3rem;
+}
+.card p {
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  line-height: 1.5;
+  color: #bbb;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 /* ================================
-   🟡 DEBATTSEKSJON
+   🟡 DEBATT
    ================================ */
 #debatt {
   padding: 2rem 1rem;
@@ -270,7 +285,7 @@ a:hover { text-decoration: underline; }
 }
 
 /* ================================
-   🟡 MOBILTILPASNING
+   🟡 MOBIL
    ================================ */
 @media (max-width: 600px) {
   .avis-logo { font-size: 2.4rem; }
@@ -283,7 +298,5 @@ a:hover { text-decoration: underline; }
 }
 
 /* Fjern understreking i kort */
-.nyhetshjul-card a,
-.cards a { text-decoration: none !important; }
-.nyhetshjul-card a:hover,
-.cards a:hover { text-decoration: none !important; }
+.nyhetshjul-card a, .cards a { text-decoration: none !important; }
+.nyhetshjul-card a:hover, .cards a:hover { text-decoration: none !important; }
