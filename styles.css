@@ -209,3 +209,14 @@ a:hover { text-decoration: underline; }
   .nyhetshjul-card p { font-size: 0.7rem; margin: 0 0.4rem 0.6rem; }
   .debatt-innlegg { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }
+
+/* ---------- FJERN UNDERSTREKING I NYHETSKORT ---------- */
+.nyhetshjul-card a,
+.cards a {
+  text-decoration: none !important;
+}
+
+.nyhetshjul-card a:hover,
+.cards a:hover {
+  text-decoration: none !important;
+}
