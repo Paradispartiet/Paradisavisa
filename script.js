@@ -104,11 +104,6 @@ function loadNotiser() {
     .catch(err => console.error("Notisbånd feilet:", err));
 }
 
-/* Fade ut ticker ved sidebytte */
-window.addEventListener("beforeunload", () => {
-  const ticker = document.querySelector(".notisbånd");
-  if (ticker) ticker.classList.add("fade-ut");
-});
 
 /* Hjelpefunksjon */
 function escapeHtml(str) {
