@@ -283,25 +283,51 @@ a:hover { text-decoration: underline; }
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
   pointer-events: none;
 }
-
 /* ================================
    🟡 MOBIL
    ================================ */
 @media (max-width: 600px) {
   .avis-logo { font-size: 2.4rem; }
   .cards { grid-template-columns: 1fr; }
-  #nyhetshjul-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .nyhetshjul-card img { height: 100px; }
-  .nyhetshjul-card h3 { font-size: 0.75rem; margin: 0.4rem; }
-  .nyhetshjul-card p { font-size: 0.7rem; margin: 0 0.4rem 0.6rem; }
   .debatt-innlegg { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+  /* Nyhetshjul – mobil */
+  #nyhetshjul-grid {
+    gap: 8px;
+    padding: 0 0.5rem;
+  }
+
+  .nyhetshjul-card {
+    flex: 0 0 220px; /* litt smalere kort på mobil */
+  }
+
+  .nyhetshjul-card img {
+    height: 130px; /* lavere bilde */
+  }
+
+  .nyhetshjul-card h3 {
+    font-size: 0.8rem;
+    margin: 0.5rem 0.4rem 0.2rem;
+  }
+
+  .nyhetshjul-card p {
+    font-size: 0.7rem;
+    margin: 0 0.4rem 0.6rem;
+  }
 }
 
-/* Fjern understreking i kort */
-.nyhetshjul-card a, .cards a { text-decoration: none !important; }
-.nyhetshjul-card a:hover, .cards a:hover { text-decoration: none !important; }
+/* ================================
+   🟡 FJERN UNDERSTREKING I KORT
+   ================================ */
+.nyhetshjul-card a,
+.cards a { text-decoration: none !important; }
 
-/* --- Rullbart nyhetshjul --- */
+.nyhetshjul-card a:hover,
+.cards a:hover { text-decoration: none !important; }
+
+/* ================================
+   🟡 RULLBART NYHETSHJUL
+   ================================ */
 #nyhetshjul-grid {
   display: flex;
   overflow-x: auto;
