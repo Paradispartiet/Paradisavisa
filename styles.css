@@ -192,7 +192,7 @@ body {
   color: #eee;
   font-size: 0.95rem;
   padding: 0.4rem 0;
-  z-index: 3000;  /* ligger over headeren */
+  z-index: 9999;  /* ligger over headeren */
   opacity: 0;
   transform: translateY(10px);
   animation: fadeInTicker 1.2s ease-out forwards;
