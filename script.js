@@ -55,10 +55,10 @@ function loadDebatt() {
       card.className = "card";
       card.href = innlegg.url;
       card.innerHTML = `
-        <h3>${escapeHtml(innlegg.title)}</h3>
-        <p>Innlegg av ${escapeHtml(innlegg.author)} · ${escapeHtml(innlegg.date)}</p>
-        <p>${escapeHtml(innlegg.excerpt)}</p>
-      `;
+  <h3>${escapeHtml(innlegg.title)}</h3>
+  <p class="debatt-meta">${escapeHtml(innlegg.author)} · ${escapeHtml(innlegg.date)}</p>
+  <p class="debatt-excerpt">${escapeHtml(innlegg.excerpt.split(' ').slice(0, 14).join(' '))}...</p>
+`;
       container.appendChild(card);
     });
   });
