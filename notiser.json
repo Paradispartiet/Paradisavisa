@@ -1,7 +1,24 @@
 [
-  { "category": "Oslo", "text": "Sofienberg kirke brukes nå til betalte events – ikke åpent hus." },
-  { "category": "Politikk", "text": "Paradispartiet foreslår 10-timers uke for felles velferd." },
-  { "category": "Miljø", "text": "Ny modell åpner for spredt bosetting i naturen – uten naturtap." },
-  { "category": "Sport", "text": "Bodø/Glimt møter Tottenham – Knutsen tror på tempo." },
-  { "category": "Kultur", "text": "Lesebiblioteket åpner dagtidstilhold for voksne i Sofienberg." }
+  {
+    "category": "Oslo",
+    "text": "Sofienberg kirke brukes nå til betalte events – ikke åpent hus.",
+    "url": "posts/2025-10-16-sofienberg.html"
+  },
+  {
+    "category": "Politikk",
+    "text": "Paradispartiet foreslår 10-timers uke for felles velferd.",
+    "url": "posts/2025-09-25-paradis-modellen.html"
+  },
+  {
+    "category": "Miljø",
+    "text": "Ny modell åpner for spredt bosetting i naturen – uten naturtap."
+  },
+  {
+    "category": "Sport",
+    "text": "Bodø/Glimt møter Tottenham – Knutsen tror på tempo."
+  },
+  {
+    "category": "Kultur",
+    "text": "Lesebiblioteket åpner dagtidstilhold for voksne i Sofienberg."
+  }
 ]
