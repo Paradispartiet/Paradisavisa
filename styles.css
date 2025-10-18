@@ -114,20 +114,6 @@ a:hover { text-decoration: underline; }
 .card h3 { color: #fff; margin-bottom: .3rem; }
 .card p { color: #bbb; }
 
-/* ---------- KNAPP ---------- */
-.btn-container { grid-column: 1 / -1; text-align: center; margin-top: 2rem; }
-
-.btn {
-  display: inline-block;
-  padding: 0.65rem 1.1rem;
-  border-radius: 4px;
-  background: var(--yellow);
-  color: #111;
-  font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.btn:hover { transform: translateY(-2px); }
-
 /* ---------- FOOTER ---------- */
 .site-footer {
   background: #000;
@@ -136,6 +122,25 @@ a:hover { text-decoration: underline; }
   text-align: center;
   padding: 20px 12px;
 }
+
+/* ---------- DEBATTSEKSJON ---------- */
+.debatt-innlegg h3 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.debatt-meta {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.debatt-excerpt {
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
 
 /* ---------- NOTISBÅND ---------- */
 .notisbånd {
