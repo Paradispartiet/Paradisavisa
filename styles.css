@@ -126,25 +126,53 @@ a:hover { text-decoration: underline; }
 }
 
 /* ---------- DEBATTSEKSJON ---------- */
+/* ---------- DEBATTSEKSJON OPPDATERT ---------- */
+#debatt {
+  padding: 2rem 1rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+#debatt h2 {
+  color: var(--yellow);        /* gul overskrift */
+  font-size: 1.4rem;
+  font-weight: 800;            /* fet skrift */
+  margin-bottom: 1rem;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.debatt-innlegg {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* kort ved siden av hverandre */
+  gap: 16px;
+  align-items: start;
+}
+
+.debatt-innlegg .card {
+  background: #111;
+  border-radius: 8px;
+  padding: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.debatt-innlegg .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
 .debatt-innlegg h3 {
+  color: #fff;
   font-size: 1rem;
   margin-bottom: 0.3rem;
 }
 
-.debatt-meta {
-  color: #aaa;
-  font-size: 0.8rem;
-  margin-bottom: 0.25rem;
-}
-
-.debatt-excerpt {
-  color: #ccc;
+.debatt-innlegg p {
+  color: #bbb;
   font-size: 0.9rem;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
-
-/* ---------- NOTISBÅND ---------- */
 /* ---------- NOTISBÅND ---------- */
 body {
   padding-top: 3.6rem;   /* plass til ticker øverst */
