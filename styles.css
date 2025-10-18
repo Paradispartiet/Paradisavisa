@@ -113,7 +113,7 @@ a:hover { text-decoration: underline; }
 }
 
 /* ================================
-   🟡 NYHETSHJUL
+   🟡 NYHETSHJUL (rullbart)
    ================================ */
 #nyhetshjul {
   padding: 1.2rem 1rem 2rem;
@@ -121,36 +121,40 @@ a:hover { text-decoration: underline; }
 }
 
 #nyhetshjul-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  justify-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+  padding: 0 1rem;
+  scrollbar-width: none; /* skjul scrollbar i Firefox */
+}
+#nyhetshjul-grid::-webkit-scrollbar {
+  display: none; /* skjul scrollbar i Chrome/Safari */
 }
 
 .nyhetshjul-card {
+  flex: 0 0 300px;              /* bredde per kort */
+  scroll-snap-align: start;     /* snap-effekt ved scrolling */
   background: #111;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .nyhetshjul-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.55);
 }
 
 .nyhetshjul-card img {
   width: 100%;
-  height: 180px;
+  height: 240px;
   object-fit: cover;
-  object-position: center 47%; /* balanserer bildet */
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  object-position: center 50%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   display: block;
 }
 
-/* Dynamisk tittel og ingress i nyhetshjul */
 .nyhetshjul-card h3 {
   font-size: clamp(1rem, 1.6vw + 0.2rem, 1.3rem);
   font-weight: 700;
@@ -161,7 +165,7 @@ a:hover { text-decoration: underline; }
   overflow: hidden;
   text-overflow: ellipsis;
   color: #fff;
-  margin: 0.5rem;
+  margin: 0.75rem 0.75rem 0.4rem;
 }
 
 .nyhetshjul-card p {
@@ -172,7 +176,7 @@ a:hover { text-decoration: underline; }
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin: 0 0.5rem 1rem;
+  margin: 0 0.75rem 1rem;
 }
 
 /* ================================
