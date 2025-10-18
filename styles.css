@@ -113,7 +113,7 @@ a:hover { text-decoration: underline; }
 }
 
 /* ================================
-   🟡 NYHETSHJUL (rullbart)
+   🟡 NYHETSHJUL (oppgradert versjon)
    ================================ */
 #nyhetshjul {
   padding: 1.2rem 1rem 2rem;
@@ -121,24 +121,20 @@ a:hover { text-decoration: underline; }
 }
 
 #nyhetshjul-grid {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 16px;
-  padding: 0 1rem;
-  scrollbar-width: none; /* skjul scrollbar i Firefox */
-}
-#nyhetshjul-grid::-webkit-scrollbar {
-  display: none; /* skjul scrollbar i Chrome/Safari */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .nyhetshjul-card {
-  flex: 0 0 300px;              /* bredde per kort */
-  scroll-snap-align: start;     /* snap-effekt ved scrolling */
   background: #111;
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 .nyhetshjul-card:hover {
   transform: translateY(-4px);
@@ -147,9 +143,9 @@ a:hover { text-decoration: underline; }
 
 .nyhetshjul-card img {
   width: 100%;
-  height: 240px;
+  height: 240px;               /* større bildeboks */
   object-fit: cover;
-  object-position: center 50%;
+  object-position: center 50%; /* balansert plassering */
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   display: block;
