@@ -143,9 +143,9 @@ a:hover { text-decoration: underline; }
 
 .nyhetshjul-card img {
   width: 100%;
-  height: 240px;               /* større bildeboks */
-  object-fit: cover;
-  object-position: center 50%; /* balansert plassering */
+  height: 240px;              /* behold fast høyde */
+  object-fit: cover;          /* fyller kortet */
+  object-position: top center;/* viser hele toppen, beskjærer bare nederst */
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   display: block;
