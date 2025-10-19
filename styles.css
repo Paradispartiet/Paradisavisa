@@ -369,3 +369,22 @@ a:hover { text-decoration: underline; }
   margin: 1rem auto 1.5rem auto;
   max-width: 100%;
 }
+.system-artikkel {
+  background: #000;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+
+/* Flytende bilde på høyre side */
+.float-img {
+  width: 40%;
+  max-width: 380px;
+  float: right;
+  margin: 0 0 1rem 1.5rem;
+  border-radius: 6px;
+  border: 2px solid #000;
+}
