@@ -1,30 +1,243 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smågutta boys og det farlige.</title>
-  <link rel="stylesheet" href="../styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smågutta boys og det farlige | Paradisavisa</title>
+
+  <meta name="description" content="Kommentar: hvorfor trekkes unge gutter mot det farlige, våpen og eksplosiver?">
+  <meta property="og:title" content="Smågutta boys og det farlige | Paradisavisa">
+  <meta property="og:description" content="Eksplosjonen i Oslo føyer seg inn i et gammelt mønster: smågutter har alltid latt seg fascinere av det farlige.">
+  <meta property="og:image" content="../Nyhetshjul/smagutta.PNG">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Paradisavisa">
+
+  <link rel="icon" href="../ikon-paradis.png">
+  <link rel="stylesheet" href="../styles.css?v=13">
+
+  <style>
+    /* --- lokal tillegg: sikre notisbånd + fade + float-bilde --- */
+    /* sticky notisbånd (samme stil som index.css, men sikrer denne siden) */
+    .notisbånd {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      background: #000;
+      border-bottom: 2px solid #f6c800;
+      box-shadow: 0 2px 8px rgba(255,214,0,0.35);
+      color: #eee;
+      font-size: 0.95rem;
+      padding: 0.4rem 0;
+      z-index: 9999;
+    }
+    .notisinnhold {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 75s linear infinite;
+    }
+    .notisinnhold span {
+      display: inline-block;
+      margin-right: 4rem;
+      opacity: 0.95;
+    }
+    .notisinnhold strong { color: #f6c800; font-weight: 700; margin-right: 0.3rem; }
+    .notisinnhold a { color: #f6c800; text-decoration: none; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+    /* header konsistent */
+    .avis-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(to bottom, #000 0%, #0a0a0a 100%);
+      padding: 1rem 1rem 0.6rem;
+      text-align: center;
+      margin-top: 48px; /* plass for sticky notisbånd */
+    }
+    .avis-logo { font-size: 3rem; font-weight: 900; letter-spacing: 2px; color: #f6c800; margin-bottom: 0.05rem; }
+
+    /* fade-in for innhold */
+    .page-fade {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .page-fade.show {
+      opacity: 1;
+    }
+
+    /* flytende bilde midt i teksten */
+    .float-img {
+      width: 40%;
+      max-width: 380px;
+      float: right;
+      margin: 0 0 1rem 1.5rem;
+      border-radius: 6px;
+      border: 2px solid #000;
+    }
+
+    /* Flere artikler - kort nederst */
+    .related {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 2rem;
+    }
+    .related .card {
+      background: #111;
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+    }
+    .related .card img {
+      width: 84px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .related .card .meta { font-size: 0.85rem; color: #bbb; }
+    .related .card h4 { margin: 0; font-size: 0.95rem; color: #fff; }
+    .related .card p { margin: 0.25rem 0 0 0; font-size: 0.82rem; color: #bbb; }
+    @media (max-width: 800px) {
+      .float-img { width: 100%; float: none; margin: 1rem auto; display: block; }
+    }
+
+    /* fjern default body padding kollisjon */
+    body { padding-top: 0; }
+  </style>
 </head>
+
 <body>
-<article>
+  <!-- sticky notisbånd (innhold fylles av script.js hvis tilgjengelig, ellers har vi fallback) -->
+  <div class="notisbånd" aria-hidden="false">
+    <div class="notisinnhold" id="notis-ticker">
+      <span><a href="../index.html">Paradisavisa</a> · Kommentarer, analyser og nyheter</span>
+      <span><a href="../kategori/debatt.html">Debatt</a></span>
+      <span><a href="../kategori/kultur.html">Kultur</a></span>
+      <span><a href="../kategori/samfunn.html">Samfunn</a></span>
+    </div>
+  </div>
 
-<p>Smågutta boys og det farlige.</p>
+  <!-- header (identisk med forsiden) -->
+  <header class="avis-header" id="top">
+    <a href="../index.html" class="avis-logo">PARADISAVISA</a>
+    <p class="avis-tagline">Objektivt sett, fra vår synsvinkel</p>
+  </header>
 
-<p>Fire unge gutter er siktet etter en eksplosjon i Oslo. Hendelsen sjokkerer, men den kan plasseres inn i et kjent mønster: smågutter har til alle tider blitt trukket mot våpen, ild og eksplosiver. Fascinasjonen for det farlige er ikke ny, og historien er full av slike episoder. På 1800-tallet finner vi rettssaker i England der barn ned mot tiårsalderen ble tatt for ildspåsettelser og innbrudd. De søkte spenning, i en tid der hverdagen var sterkt regulert og mulighetene små. I Oslo på 1920-tallet stjal gutter dynamitt fra byggeplasser og sprengte postkasser. Det ble kalt «guttestreker» i avisen, men handlingene var livsfarlige. Fra Nord-Norge på 1970-tallet finnes flere saker der smågutter fant patroner og prøvde lage små sprengladninger. Også da handlet det om eksperimentering og spenning, mer enn bevisst kriminalitet. Overalt finner vi de samme mønstrene: gutter som bygde hjemmelagde bomber i USA etter krigen, inspirert av militær teknologi de hadde sett, eller barn i Tyskland på 1970-tallet som eksperimenterte med udetonert ammunisjon.</p>
+  <!-- artikkelinnhold - fade container -->
+  <main class="page-fade" id="page-content">
+    <article class="article">
+      <h1>Smågutta boys og det farlige</h1>
 
-<p>Felles for hendelsene er at smågutter ofte trekkes mot risikofylte handlinger. Det som er forbudt eller farlig gir opplevelsen av intensitet. Når samfunnet ellers er trygt og beskyttet, blir kontrasten større, og fristelsen sterkere.</p>
+      <div class="meta">
+        Av Mats Gran · <time datetime="2025-10-19">19. oktober 2025</time>
+      </div>
 
-<p>Slike handlinger kan også gi status. I små vennekretser kan den som tør å leke med fyrstikker, patroner eller sprengstoff oppfattes som modigere enn andre. Oppmerksomheten i seg selv er en belønning.</p>
+      <p>Fire unge gutter er siktet etter en eksplosjon i Oslo. Hendelsen sjokkerer, men den kan plasseres inn i et kjent mønster: smågutter har til alle tider blitt trukket mot våpen, ild og eksplosiver. Fascinasjonen for det farlige er ikke ny, og historien er full av slike episoder. På 1800-tallet finner vi rettssaker i England der barn ned mot tiårsalderen ble tatt for ildspåsettelser og innbrudd. De søkte spenning, i en tid der hverdagen var sterkt regulert og mulighetene små. I Oslo på 1920-tallet stjal gutter dynamitt fra byggeplasser og sprengte postkasser. Det ble kalt «guttestreker» i avisen, men handlingene var livsfarlige.</p>
 
-<p>Og til sist: ofte er det voksne som åpner dørene. I slike saker må, man prøve finne ut hvem som står bak, hvem gir disse guttene oppdrag. Det er lite trolig at de yngste styrer butikken, noen bruker ungdommers fascinasjon for egne formål. Det er her det virkelige problemet ligger. Smågutter er lette å fascinere og dra inn, men de som trekker i trådene er voksne. Bakmenn organiserer, setter rammer og bruker ungdommens spenningstrang til å utføre handlinger de selv ikke vil ta i.</p>
+      <p>Fra Nord-Norge på 1970-tallet finnes flere saker der smågutter fant patroner og prøvde lage små sprengladninger. Også da handlet det om eksperimentering og spenning, mer enn bevisst kriminalitet. Overalt finner vi de samme mønstrene: gutter som bygde hjemmelagde bomber i USA etter krigen, inspirert av militær teknologi de hadde sett, eller barn i Tyskland på 1970-tallet som eksperimenterte med udetonert ammunisjon.</p>
 
-<p>I Sverige har de såkalte «svenske tilstander», der rekrutteres svært unge gutter til grov kriminalitet. Ikke fordi de er mer tilbøyelige til vold enn andre, men fordi mange lever i et system der livet oppleves som meningsløst. De står nederst i et hierarki bygget på utpressing og konkurranse, uten mulighet til å vinne. Samtidig er de fininnstilt til å ville vinne, så deseeter seg  helt uoppnåelige mål som de prøver å realisere i drømmeaktig sekvenser av ruspåvirket virkelighet. Hvor mye mer skjønner de av det de er med på enn at det er jævlig gøy? Når fremtiden er blokkert, blir kjedsomheten eneste vei – og spenning blor katalysator for liv, og status blir belønningen, noe de spenningssøkende unge menneskene tror er det egentlige grunnen til at de er med, endelig skjer det noe.</p>
+      <!-- flytende bilde midt i teksten -->
+      <img src="../Nyhetshjul/smagutta.png" alt="Ungdom og bylandskap – illustrasjon" class="float-img" loading="lazy">
 
-<p>Hendelsen sier også noe om storbyens framvekst. Storbyen skaper nye rom for spenning og uorden. Arkitekturen, klimaet og de trange rammene for sosiale, frie møteplasser gir undergrunnsmiljøer boltreplass. Storbyens framvekst, byens lite gjestmilde klima, den stramme arkitektur, gir undergrunnsmiljøet boltreplass, skaper gode vekstvilkår for selvdestruktiv adferd. I slike mellomrom vokser miljøer frem som utnytter både ungdommens risikovilje og samfunnets gråsoner. Det brukes i disse miljøene mye narkotika, og kampen om pengene blir følgelig grotesk, men ville de ikke forsvunnet og endret karakter drastisk ved legalisering? Spørsmålet melder seg: ville miljøene vært så presset og helseskadelige dersom narkotika var legalisert? Legalisering ville drastisk endret miljøenes karakter og økonomi. Når svarte markeder forsvinner, svekkes også den strukturen som trekker unge inn.</p>
+      <p>Felles for hendelsene er at smågutter ofte trekkes mot risikofylte handlinger. Det som er forbudt eller farlig gir opplevelsen av intensitet. Når samfunnet ellers er trygt og beskyttet, blir kontrasten større, og fristelsen sterkere.</p>
 
-<p>Eksplosjonen i Oslo er dermed ikke bare en isolert hendelse, men en del av et mønster. Historien viser at smågutter alltid har latt seg trekke mot det farlige. Storbyens ørken gir deg hemmelige gjemmesteder, og så lenge unge gutter er gutter, og narkotikaøkonomien flyter fritt, vil slike hendelser ikke bare være uhell – men symptomer på et system som skaper sine egne undergrunner.</p>
+      <p>Slike handlinger kan også gi status. I små vennekretser kan den som tør å leke med fyrstikker, patroner eller sprengstoff oppfattes som modigere enn andre. Oppmerksomheten i seg selv er en belønning.</p>
 
-</article>
+      <p>Og til sist: ofte er det voksne som åpner dørene. I slike saker må man prøve å finne ut hvem som står bak – hvem gir disse guttene oppdrag. Det er lite trolig at de yngste styrer butikken; noen bruker ungdommers fascinasjon for egne formål. Det er her det virkelige problemet ligger. Smågutter er lette å fascinere og dra inn, men de som trekker i trådene er voksne. Bakmenn organiserer, setter rammer og bruker ungdommens spenningstrang til å utføre handlinger de selv ikke vil ta i.</p>
+
+      <p>I Sverige har de såkalte «svenske tilstander», der rekrutteres svært unge gutter til grov kriminalitet. Ikke fordi de er mer tilbøyelige til vold enn andre, men fordi mange lever i et system der livet oppleves som meningsløst. De står nederst i et hierarki bygget på utpressing og konkurranse, uten mulighet til å vinne. Samtidig er de fininnstilt til å ville vinne, så de setter seg helt uoppnåelige mål som de prøver å realisere i drømmeaktige sekvenser av ruspåvirket virkelighet. Når fremtiden er blokkert, blir kjedsomheten eneste vei – og spenning blir katalysator for liv. Status blir belønningen: endelig skjer det noe.</p>
+
+      <p>Hendelsen sier også noe om storbyens framvekst. Storbyen skaper nye rom for spenning og uorden. Arkitekturen, klimaet og de trange rammene for sosiale, frie møteplasser gir undergrunnsmiljøer boltreplass. I slike mellomrom vokser miljøer frem som utnytter både ungdommens risikovilje og samfunnets gråsoner. Det brukes mye narkotika, og kampen om pengene blir grotesk. Men ville de ikke forsvunnet og endret karakter drastisk ved legalisering? Spørsmålet melder seg: ville miljøene vært så presset og helseskadelige dersom narkotika var legalisert? Legalisering ville drastisk endret miljøenes karakter og økonomi. Når svarte markeder forsvinner, svekkes også strukturen som trekker unge inn.</p>
+
+      <p>Eksplosjonen i Oslo er dermed ikke bare en isolert hendelse, men en del av et mønster. Historien viser at smågutter alltid har latt seg trekke mot det farlige. Storbyens ørken gir dem hemmelige gjemmesteder, og så lenge unge gutter er gutter, og narkotikaøkonomien flyter fritt, vil slike hendelser ikke bare være uhell – men symptomer på et system som skaper sine egne undergrunner.</p>
+
+      <!-- Flere artikler (mini-kort) — ekte lenker fra posts.json -->
+      <section aria-labelledby="relatert" style="margin-top:2rem;">
+        <h3 id="relatert" style="color:#f6c800; margin-bottom:0.8rem;">Flere artikler</h3>
+        <div class="related" id="related-cards">
+          <!-- Kort genereres statisk her med ekte lenker -->
+          <a class="card" href="../posts/2025-10-19-den-friksjonslose-hjernen.html">
+            <img src="../Nyhetshjul/AI-hjerne.png" alt="Den friksjonsløse hjernen">
+            <div>
+              <h4>Den friksjonsløse hjernen</h4>
+              <p class="meta">Hvordan teknologiens friksjonsfrie løfter gjør tanken tregere.</p>
+            </div>
+          </a>
+
+          <a class="card" href="../posts/2025-09-25-paradis-modellen.html">
+            <img src="../Nyhetshjul/eksempel.png" alt="Hva er Paradismodellen?">
+            <div>
+              <h4>Hva er Paradismodellen – kort forklart</h4>
+              <p class="meta">Grunnbehov sikres mot 10–15 timer felles arbeid i uka.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- footer -->
+  <footer class="site-footer" style="margin-top:2rem;">
+    <p>© 2025 Paradisavisa</p>
+    <p>
+      <a href="../index.html" target="_self">Forsiden</a> ·
+      <a href="../posts/2025-10-19-den-friksjonslose-hjernen.html" target="_self">Den friksjonsløse hjernen</a> ·
+      <a href="../posts/2025-09-25-paradis-modellen.html" target="_self">Hva er Paradismodellen</a>
+    </p>
+  </footer>
+
+  <!-- script: fade-in og sikre at notisbånd henter fra notiser.json hvis tilgjengelig -->
+  <script>
+    // fade-in
+    document.addEventListener('DOMContentLoaded', () => {
+      const page = document.getElementById('page-content');
+      requestAnimationFrame(() => page.classList.add('show'));
+    });
+
+    // notis-ticker: forsøk å hente notiser fra notiser.json hvis fil finnes
+    (function loadNotiser() {
+      fetch('../notiser.json', {cache: 'no-store'})
+        .then(r => {
+          if (!r.ok) throw new Error('no notiser');
+          return r.json();
+        })
+        .then(items => {
+          const el = document.getElementById('notis-ticker');
+          if (!el) return;
+          el.innerHTML = '';
+          items.forEach(n => {
+            const span = document.createElement('span');
+            span.innerHTML = n.url ? `<a href="${n.url}"><strong>${n.category}:</strong></a> ${n.text}` : `<strong>${n.category}:</strong> ${n.text}`;
+            el.appendChild(span);
+          });
+        })
+        .catch(()=> {
+          // fallback: beholde statisk innhold allerede i HTML
+        });
+    })();
+
+    // myk sideovergang ved interne klikk (progressive enhancement)
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      const href = a.getAttribute('href');
+      // bare interne lenker til samme site
+      if (!href || href.startsWith('http') || href.startsWith('mailto:') || a.target === '_blank') return;
+      // la eksterne ankre synke normalt
+      e.preventDefault();
+      document.getElementById('page-content').classList.remove('show');
+      setTimeout(() => {
+        window.location.href = href;
+      }, 300); // samme tid som CSS fade
+    });
+  </script>
 </body>
 </html>
