@@ -11,11 +11,15 @@ function loadNyhetshjul() {
     .then(r => r.json())
     .then(items => {
       if (!items.length) return;
+
+      // sorter nyeste først
       items.sort((a, b) => new Date(b.date) - new Date(a.date));
-      const top3 = items.slice(0, 3);
+
+      // bygg opp hele nyhetshjulet
       const grid = document.getElementById("nyhetshjul-grid");
       grid.innerHTML = "";
-      top3.forEach(item => {
+
+      items.forEach(item => {
         const card = document.createElement("a");
         card.className = "nyhetshjul-card";
         card.href = item.url;
