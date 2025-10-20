@@ -17,7 +17,7 @@ body {
 }
 
 /* ================================
-   🟡 NOTISBÅND – gul bakgrunn m/fade
+   🟡 NOTISBÅND – Paradisavisa original
    ================================ */
 .notisbånd {
   position: fixed;
@@ -26,15 +26,14 @@ body {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  background: #ffce40;           /* GUL bakgrunn */
-  border-bottom: 2px solid #000; /* Sort linje under */
-  color: #000;                   /* Sort tekst */
+  background: #000;                        /* Sort bakgrunn */
+  border-bottom: 2px solid var(--yellow);  /* Gul linje under */
+  color: #eee;                             /* Lys tekst */
   font-size: 0.95rem;
-  font-weight: 600;
   padding: 0.4rem 0;
   z-index: 9999;
 
-  /* Myk fade i kantene (samme som før) */
+  /* Myk fade i kantene */
   mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
@@ -43,7 +42,7 @@ body {
   display: inline-block;
   padding-left: 100%;
   animation: ticker 60s linear infinite; /* Rolig fart */
-  animation-play-state: paused; /* Starter først når alt er klart */
+  animation-play-state: paused;          /* Starter først når siden er klar */
 }
 
 body.loaded .notisinnhold {
@@ -51,19 +50,19 @@ body.loaded .notisinnhold {
 }
 
 @keyframes ticker {
-  0% { transform: translateX(0); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
 
 /* Mellomrom og farger i teksten */
 .notisinnhold span {
-  margin-right: 1.5rem; /* mellomrom mellom notiser */
+  margin-right: 1.5rem;
 }
 
 .notisinnhold strong {
-  color: #000;          /* Sort kategori for kontrast */
+  color: var(--yellow); /* Gule kategorier */
   margin-right: 0.3rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .notisinnhold a {
@@ -72,7 +71,7 @@ body.loaded .notisinnhold {
 }
 
 .notisinnhold a:hover {
-  color: #111;
+  color: var(--yellow);
   text-decoration: underline;
 }
 
