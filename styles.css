@@ -1,7 +1,3 @@
-/* ================================
-   🎯 PARADISAVISA – HOVEDSTIL
-   ================================ */
-
 :root {
   --yellow: #f6c800;
   --bg: #000;
@@ -9,24 +5,16 @@
   --muted: #bbb;
 }
 
-/* RESET OG BASE */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  padding-top: 2.6rem; /* plass til ticker øverst */
+  padding-top: 2.6rem;
+  margin: 0;
 }
 
-/* LENKER */
-a { color: var(--yellow); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-/* ================================
-   🟡 NOTISBÅND
-   ================================ */
+/* ---------- NOTISBÅND ---------- */
 .notisbånd {
   position: fixed;
   top: 0;
@@ -36,7 +24,6 @@ a:hover { text-decoration: underline; }
   white-space: nowrap;
   background: #000;
   border-bottom: 2px solid var(--yellow);
-  box-shadow: 0 2px 8px rgba(255,214,0,0.35);
   color: #eee;
   font-size: 0.95rem;
   padding: 0.4rem 0;
@@ -46,345 +33,125 @@ a:hover { text-decoration: underline; }
 .notisinnhold {
   display: inline-block;
   padding-left: 100%;
-  animation: ticker 75s linear infinite;
+  animation: ticker 35s linear infinite;
 }
-
-.notisinnhold span {
-  display: inline-block;
-  margin-right: 4rem;
-  opacity: 0.9;
-}
-
-.notisinnhold strong { color: var(--yellow); font-weight: 700; margin-right: 0.3rem; }
-.notisinnhold span { color: #f2f2f2; font-weight: 400; }
-
 @keyframes ticker {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
 
-/* ================================
-   🟡 HEADER
-   ================================ */
+/* ---------- HEADER ---------- */
 .avis-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to bottom, #000 0%, #0a0a0a 100%);
   padding: 1rem 1rem 0.4rem;
   text-align: center;
+  background: linear-gradient(to bottom, #000, #0a0a0a);
 }
-
 .avis-logo {
   font-size: 3rem;
   font-weight: 900;
   letter-spacing: 2px;
   color: var(--yellow);
-  text-shadow: 0 0 10px rgba(246,200,0,0.3);
   margin-bottom: 0.05rem;
 }
-
-/* Slagord – metallisk gull, uten skygge */
 .avis-tagline {
-  margin: 0;
-  font-style: italic;
   font-size: 0.95rem;
-  letter-spacing: 0.3px;
-  background: linear-gradient(90deg,
-    rgba(255,220,100,1) 0%,
-    rgba(246,200,0,1) 40%,
-    rgba(230,180,40,1) 70%,
-    rgba(246,200,0,1) 100%);
+  font-style: italic;
+  background: linear-gradient(90deg,#ffdc64,#f6c800,#e6b428,#f6c800);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin: 0;
 }
 
-/* Skygge under header */
-.avis-header::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 35px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
-  pointer-events: none;
-}
-
-/* ================================
-   🟡 NYHETSHJUL (oppgradert versjon)
-   ================================ */
-#nyhetshjul {
-  padding: 1.2rem 1rem 2rem;
-  text-align: center;
-}
-
-#nyhetshjul-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-  justify-items: center;
-  max-width: 1080px;
-  margin: 0 auto;
-}
-
-.nyhetshjul-card {
-  background: #111;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-}
-.nyhetshjul-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.55);
-}
-
-.nyhetshjul-card img {
-  width: 100%;
-  height: 240px;              /* behold fast høyde */
-  object-fit: cover;          /* fyller kortet */
-  object-position: top center;/* viser hele toppen, beskjærer bare nederst */
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  display: block;
-}
-
-.nyhetshjul-card h3 {
-  font-size: clamp(1rem, 1.6vw + 0.2rem, 1.3rem);
+/* ---------- SEKSJONSTITLER ---------- */
+.seksjonstittel {
+  color: rgba(246, 200, 0, 0.85);
+  font-size: 1.05rem;
   font-weight: 700;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #fff;
-  margin: 0.75rem 0.75rem 0.4rem;
+  border-left: 2px solid rgba(246, 200, 0, 0.6);
+  padding-left: 0.4rem;
+  margin: 0;
+  text-transform: uppercase;
 }
 
-.nyhetshjul-card p {
-  font-size: clamp(0.85rem, 1vw, 1rem);
-  line-height: 1.5;
-  color: #bbb;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0 0.75rem 1rem;
+/* ---------- GENERELT ---------- */
+section { margin: 0; padding: 0; }
+#nyhetshjul-grid, #sportshjul-grid, .kommentar-innlegg, .debatt-innlegg {
+  margin: 0; padding: 0; gap: 8px;
 }
 
-/* ================================
-   🟡 ARTIKLER OG KORT
-   ================================ */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-  padding: 24px 16px;
-  max-width: 1080px;
-  margin: 0 auto;
-}
-
-.card {
-  background: #111;
-  border-radius: 8px;
-  padding: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
-
-/* Dynamisk tittel og ingress i kort */
-.card h3 {
-  font-size: clamp(1rem, 1.6vw + 0.2rem, 1.3rem);
-  font-weight: 700;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  color: #fff;
-  margin-bottom: .3rem;
-}
-.card p {
-  font-size: clamp(0.85rem, 1vw, 1rem);
-  line-height: 1.5;
-  color: #bbb;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* ================================
-   🟡 DEBATT
-   ================================ */
-#debatt {
-  padding: 2rem 1rem;
-  max-width: 1080px;
-  margin: 0 auto;
-}
-#debatt h2 {
-  color: var(--yellow);
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  text-align: left;
-}
-.debatt-innlegg {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-.debatt-innlegg .card {
-  background: #111;
-  border-radius: 8px;
-  padding: 14px;
-}
-.debatt-innlegg h3 { color: #fff; font-size: 0.9rem; margin-bottom: 0.25rem; }
-.debatt-innlegg p { color: #bbb; font-size: 0.8rem; line-height: 1.4; }
-.btn-container { text-align: right; margin-top: 0.8rem; margin-right: 0.5rem; }
-.btn-container a { color: var(--yellow); font-weight: 600; }
-.btn-container a:hover { opacity: 0.8; text-decoration: underline; }
-
-/* ================================
-   🟡 FOOTER
-   ================================ */
-.site-footer {
-  position: relative;
-  background: linear-gradient(to top, #000 0%, #0a0a0a 100%);
-  color: #aaa;
-  font-size: 0.95rem;
-  text-align: center;
-  padding: 1.8rem 1rem 1.2rem;
-  margin-top: 2rem;
-  border-top: 1px solid rgba(255, 214, 0, 0.15);
-  box-shadow: 0 -4px 20px rgba(246, 200, 0, 0.08);
-}
-.site-footer a {
-  color: #f6c800;
-  text-decoration: none;
-  font-weight: 500;
-  transition: opacity 0.2s ease;
-}
-.site-footer a:hover { opacity: 0.8; }
-.site-footer::before {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -20px;
-  height: 20px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
-  pointer-events: none;
-}
-/* ================================
-   🟡 MOBIL
-   ================================ */
-@media (max-width: 600px) {
-  .avis-logo { font-size: 2.4rem; }
-  .cards { grid-template-columns: 1fr; }
-  .debatt-innlegg { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-
-  /* Nyhetshjul – mobil */
-  #nyhetshjul-grid {
-    gap: 8px;
-    padding: 0 0.5rem;
-  }
-
-  .nyhetshjul-card {
-    flex: 0 0 220px; /* litt smalere kort på mobil */
-  }
-
-  .nyhetshjul-card img {
-    height: 130px; /* lavere bilde */
-  }
-
-  .nyhetshjul-card h3 {
-    font-size: 0.8rem;
-    margin: 0.5rem 0.4rem 0.2rem;
-  }
-
-  .nyhetshjul-card p {
-    font-size: 0.7rem;
-    margin: 0 0.4rem 0.6rem;
-  }
-}
-
-/* ================================
-   🟡 FJERN UNDERSTREKING I KORT
-   ================================ */
-.nyhetshjul-card a,
-.cards a { text-decoration: none !important; }
-
-.nyhetshjul-card a:hover,
-.cards a:hover { text-decoration: none !important; }
-
-/* ================================
-   🟡 RULLBART NYHETSHJUL
-   ================================ */
+/* ---------- NYHETSHJUL ---------- */
 #nyhetshjul-grid {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   gap: 16px;
   padding: 0 1rem;
-  scrollbar-width: none; /* skjul scrollbar (Firefox) */
+  scrollbar-width: none;
 }
-#nyhetshjul-grid::-webkit-scrollbar { display: none; } /* skjul scrollbar (Chrome) */
-
+#nyhetshjul-grid::-webkit-scrollbar { display: none; }
 .nyhetshjul-card {
   flex: 0 0 300px;
   scroll-snap-align: start;
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+.nyhetshjul-card:hover { transform: translateY(-3px); }
+.nyhetshjul-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
 }
 
-.article {
-  background: #000;           /* sørger for at artikkelområdet har ren svart bakgrunn */
-  border: 2px solid #000;     /* sort ramme rundt hele artikkelen */
-  border-radius: 10px;        /* myke hjørner (kan fjernes) */
-  padding: 2rem;              /* luft inni artikkelen */
-  margin: 2rem auto;          /* luft rundt artikkelen */
-  max-width: 900px;           /* behagelig bredde */
-  box-sizing: border-box;     /* unngå overlapp med padding */
+/* ---------- SPORTSHJUL ---------- */
+#sportshjul-grid {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 10px;
+  padding: 0 1rem;
+  scrollbar-width: none;
 }
-.megler-artikkel {
+#sportshjul-grid::-webkit-scrollbar { display: none; }
+.sport-card {
+  flex: 0 0 260px;
+  background: #0f0f0f;
+}
+.sport-card img {
+  height: 130px;
+  object-fit: cover;
+}
+
+/* ---------- KOMMENTARER ---------- */
+.kommentar-innlegg {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  padding: 0 1rem;
+}
+.kommentar-meta {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+/* ---------- DEBATT ---------- */
+.debatt-innlegg {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  padding: 0 1rem;
+}
+
+/* ---------- FOOTER ---------- */
+.site-footer {
   background: #000;
-  border: 2px solid #000;      /* helsvart ramme */
-  border-radius: 10px;
-  padding: 2rem;
-  margin: 2rem auto;
-  max-width: 900px;
-  box-sizing: border-box;
-}
-
-.megler-bilde {
-  border: 2px solid #000;      /* svart ramme rundt bildet */
-  border-radius: 6px;
-  display: block;
-  margin: 1rem auto 1.5rem auto;
-  max-width: 100%;
-}
-.system-artikkel {
-  background: #000;
-  border: 2px solid #000;
-  border-radius: 10px;
-  padding: 2rem;
-  margin: 2rem auto;
-  max-width: 900px;
-  box-sizing: border-box;
-}
-
-/* Flytende bilde på høyre side */
-.float-img {
-  width: 40%;
-  max-width: 380px;
-  float: right;
-  margin: 0 0 1rem 1.5rem;
-  border-radius: 6px;
-  border: 2px solid #000;
+  color: #aaa;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1rem;
 }
