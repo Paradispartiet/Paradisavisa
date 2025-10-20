@@ -17,7 +17,7 @@ body {
 }
 
 /* ================================
-   🟡 NOTISBÅND – Paradisavisa original
+   🟡 NOTISBÅND
    ================================ */
 .notisbånd {
   position: fixed;
@@ -26,51 +26,32 @@ body {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  background: #000;                        /* Sort bakgrunn */
-  border-bottom: 2px solid var(--yellow);  /* Gul linje under */
-  color: #eee;                             /* Lys tekst */
+  background: #000;
+  border-bottom: 2px solid var(--yellow);
+  color: #eee;
   font-size: 0.95rem;
   padding: 0.4rem 0;
   z-index: 9999;
-
 }
-
 .notisinnhold {
   display: inline-block;
   padding-left: 100%;
-  animation: ticker 60s linear infinite; /* Rolig fart */
-  animation-play-state: paused;          /* Starter først når siden er klar */
+  animation: ticker 60s linear infinite;
+  animation-play-state: paused;
 }
-
-body.loaded .notisinnhold {
-  animation-play-state: running;
-}
-
+body.loaded .notisinnhold { animation-play-state: running; }
 @keyframes ticker {
-  0%   { transform: translateX(0); }
+  0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
-
-/* Mellomrom og farger i teksten */
-.notisinnhold span {
-  margin-right: 1.5rem;
-}
-
+.notisinnhold span { margin-right: 1.5rem; }
 .notisinnhold strong {
-  color: var(--yellow); /* Gule kategorier */
+  color: var(--yellow);
   margin-right: 0.3rem;
   font-weight: 600;
 }
-
-.notisinnhold a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.notisinnhold a:hover {
-  color: var(--yellow);
-  text-decoration: underline;
-}
+.notisinnhold a { color: inherit; text-decoration: none; }
+.notisinnhold a:hover { color: var(--yellow); text-decoration: underline; }
 
 /* ---------- HEADER ---------- */
 .avis-header {
@@ -103,8 +84,8 @@ body.loaded .notisinnhold {
   font-weight: 700;
   padding: 0.3rem 1rem;
   text-transform: uppercase;
-  background: #000;  /* helt sort bakgrunn */
-  border: none;      /* ingen linjer */
+  background: #000;
+  border: none;
 }
 
 /* ---------- NYHETSHJUL ---------- */
@@ -167,7 +148,7 @@ body.loaded .notisinnhold {
   border-top-right-radius: 8px;
 }
 
-/* ---------- KULTUR OG UNDERHOLDNING ---------- */
+/* ---------- KULTURHJUL ---------- */
 #kulturhjul-grid {
   display: flex;
   overflow-x: auto;
@@ -179,18 +160,17 @@ body.loaded .notisinnhold {
 #kulturhjul-grid::-webkit-scrollbar { display: none; }
 
 #kulturhjul-grid .nyhetshjul-card {
-  flex: 0 0 260px;            /* samme bredde som sportskort */
+  flex: 0 0 260px;
   background: #111;
   border-radius: 8px;
   overflow: hidden;
   scroll-snap-align: start;
   transition: transform 0.2s ease;
   color: var(--text);
-  text-decoration: none;
 }
 #kulturhjul-grid .nyhetshjul-card img {
   width: 100%;
-  height: 130px;              /* samme høyde som sportskort */
+  height: 130px;
   object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -205,11 +185,49 @@ body.loaded .notisinnhold {
   margin: 0 0.6rem 0.8rem;
   color: #aaa;
 }
-#kulturhjul-grid .nyhetshjul-card:hover {
-  transform: translateY(-3px);
-}
+#kulturhjul-grid .nyhetshjul-card:hover { transform: translateY(-3px); }
 
-/* ---------- DEBATT (behold grid) ---------- */
+/* ---------- KOMMENTARHJUL ---------- */
+#kommentarhjul-grid {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 12px;
+  padding: 0.5rem 1rem;
+  scrollbar-width: none;
+  background: #000;
+}
+#kommentarhjul-grid::-webkit-scrollbar { display: none; }
+
+#kommentarhjul-grid .card {
+  flex: 0 0 220px;
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  transition: transform 0.2s ease;
+  color: var(--text);
+}
+#kommentarhjul-grid .card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+#kommentarhjul-grid .card h3 {
+  font-size: 0.85rem;
+  margin: 0.5rem 0.6rem 0;
+  color: #fff;
+}
+#kommentarhjul-grid .card p {
+  font-size: 0.75rem;
+  margin: 0 0.6rem 0.8rem;
+  color: var(--muted);
+}
+#kommentarhjul-grid .card:hover { transform: translateY(-3px); }
+
+/* ---------- DEBATT ---------- */
 .debatt-innlegg {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -226,22 +244,15 @@ body.loaded .notisinnhold {
   color: var(--text);
 }
 .debatt-innlegg .card:hover { transform: translateY(-3px); }
-
 .debatt-meta {
   font-size: 0.8rem;
   color: var(--muted);
 }
 
 /* ---------- LENKER ---------- */
-a {
-  color: var(--yellow);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
+a { color: var(--yellow); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-/* Fjern understreking i kort */
 .nyhetshjul-card,
 .nyhetshjul-card a,
 .card,
@@ -270,7 +281,7 @@ a:hover {
 }
 .site-footer a:hover { text-decoration: underline; }
 
-/* === Nobelpris History Go-kort === */
+/* ---------- NOBELKORT ---------- */
 .kort {
   float: left;
   width: 220px;
