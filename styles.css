@@ -178,7 +178,7 @@ body.loaded .notisinnhold {
 }
 #kulturhjul-grid::-webkit-scrollbar { display: none; }
 
-#kulturhjul-grid .card {
+#kulturhjul-grid .nyhetshjul-card {
   flex: 0 0 260px;            /* samme bredde som sportskort */
   background: #111;
   border-radius: 8px;
@@ -186,25 +186,26 @@ body.loaded .notisinnhold {
   scroll-snap-align: start;
   transition: transform 0.2s ease;
   color: var(--text);
+  text-decoration: none;
 }
-#kulturhjul-grid .card img {
+#kulturhjul-grid .nyhetshjul-card img {
   width: 100%;
   height: 130px;              /* samme høyde som sportskort */
   object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
-#kulturhjul-grid .card h3 {
+#kulturhjul-grid .nyhetshjul-card h3 {
   font-size: 0.9rem;
   margin: 0.6rem;
   color: #fff;
 }
-#kulturhjul-grid .card p {
+#kulturhjul-grid .nyhetshjul-card p {
   font-size: 0.8rem;
   margin: 0 0.6rem 0.8rem;
   color: #aaa;
 }
-#kulturhjul-grid .card:hover {
+#kulturhjul-grid .nyhetshjul-card:hover {
   transform: translateY(-3px);
 }
 
