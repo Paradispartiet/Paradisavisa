@@ -3,40 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- 📄 Grunnleggende SEO -->
   <meta name="description" content="Paradisavisa – en ideologisk og samfunnskritisk nettavis. Objektivt sett, fra vår synsvinkel.">
-  <meta name="keywords" content="Paradisavisa, Paradispartiet, samfunn, politikk, ideer, kultur, Oslo, nyheter, debatt">
+  <meta name="keywords" content="Paradisavisa, Paradispartiet, politikk, samfunn, Oslo, nyheter, sport, debatt, kommentarer">
   <meta name="robots" content="index, follow">
 
-  <!-- 🪩 Open Graph / deling -->
   <meta property="og:title" content="Paradisavisa">
-  <meta property="og:description" content="Paradisavisa – nyheter, debatt og idéer fra Paradispartiet.">
+  <meta property="og:description" content="Nyheter, sport, kommentarer og debatt – objektivt sett, fra vår synsvinkel.">
   <meta property="og:image" content="https://paradispartiet.github.io/Paradisavisa/og-image.PNG">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://paradispartiet.github.io/Paradisavisa/">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- 🟡 Farger og favicon -->
   <meta name="theme-color" content="#000000">
   <link rel="icon" type="image/png" href="favicon.PNG">
 
-  <!-- 📰 Tittel -->
   <title>Paradisavisa</title>
-
-  <!-- ✍️ Skrift og stil -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=13">
-
-  <!-- ⚙️ Script -->
-  <script defer src="script.js?v=11"></script>
+  <link rel="stylesheet" href="styles.css?v=12">
+  <script defer src="script.js?v=12"></script>
 </head>
 
 <body>
 
-  <!-- 🟡 Notisbånd (øverst) -->
+  <!-- 🟡 Notisbånd -->
   <div class="notisbånd">
     <div class="notisinnhold"></div>
   </div>
@@ -49,44 +38,29 @@
 
   <!-- 🟡 Nyhetshjul -->
   <section id="nyhetshjul">
+    <h2 class="seksjonstittel">Nyheter</h2>
     <div id="nyhetshjul-grid"></div>
   </section>
 
-  <!-- 🟡 Nyheter -->
-  <section id="nyheter" class="cards"></section>
+  <!-- 🟡 Sport -->
+  <section id="sportshjul">
+    <h2 class="seksjonstittel">Sport</h2>
+    <div id="sportshjul-grid"></div>
+  </section>
 
-<!-- SPORTSHJUL -->
-<section id="sportshjul">
-  <h2>Sport</h2>
-  <div id="sportshjul-grid"></div>
-</section>
+  <!-- 🟡 Kommentarer -->
+  <section id="kommentarer">
+    <h2 class="seksjonstittel">Kommentar</h2>
+    <div class="kommentar-innlegg"></div>
+  </section>
 
-<!-- KOMMENTARER -->
-<section id="kommentarer">
-  <h2>Kommentarer</h2>
-  <div class="kommentar-innlegg"></div>
-</section>
-  
   <!-- 🟡 Debatt -->
   <section id="debatt">
-    <h2>Debatt</h2>
+    <h2 class="seksjonstittel">Debatt</h2>
     <div class="debatt-innlegg"></div>
     <div class="btn-container">
       <a class="btn" href="skriv-innlegg.html">Skriv innlegg</a>
     </div>
-  </section>
-
-  <!-- 🟡 Om -->
-  <section class="article" id="om">
-    <h1>Om Paradisavisa</h1>
-    <p class="lead">
-      Paradisavisa er en enkel, gratis nettavis for stoff knyttet til Paradispartiet, idéutvikling, kultur og politikk. 
-      Ingen annonser. Ingen klikkjakt.
-    </p>
-    <p>
-      Vi publiserer korte, tydelige tekster og debattinnlegg. 
-      Vil du bidra? Skriv til oss via <a href="kontakt.html">kontakt</a>.
-    </p>
   </section>
 
   <!-- 🟡 Footer -->
