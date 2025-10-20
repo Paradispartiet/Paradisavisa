@@ -5,7 +5,7 @@
   --muted: #bbb;
 }
 
-/* ---------- BASE ---------- */
+/* === BASE === */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -16,13 +16,10 @@ body {
   padding-top: 2.6rem;
 }
 
-/* ================================
-   🟡 NOTISBÅND
-   ================================ */
+/* === NOTISBÅND === */
 .notisbånd {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -40,44 +37,32 @@ body {
   animation-play-state: paused;
 }
 body.loaded .notisinnhold { animation-play-state: running; }
-@keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 .notisinnhold span { margin-right: 1.5rem; }
-.notisinnhold strong {
-  color: var(--yellow);
-  margin-right: 0.3rem;
-  font-weight: 600;
-}
+.notisinnhold strong { color: var(--yellow); margin-right: 0.3rem; font-weight: 600; }
 .notisinnhold a { color: inherit; text-decoration: none; }
 .notisinnhold a:hover { color: var(--yellow); text-decoration: underline; }
 
-/* ---------- HEADER ---------- */
+/* === HEADER === */
 .avis-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: flex; flex-direction: column; align-items: center;
   padding: 1rem 1rem 0.4rem;
   text-align: center;
   background: linear-gradient(to bottom, #000, #0a0a0a);
 }
 .avis-logo {
-  font-size: 3rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  color: var(--yellow);
+  font-size: 3rem; font-weight: 900;
+  letter-spacing: 2px; color: var(--yellow);
   margin-bottom: 0.1rem;
 }
 .avis-tagline {
-  font-size: 0.95rem;
-  font-style: italic;
+  font-size: 0.95rem; font-style: italic;
   background: linear-gradient(90deg, #ffdc64, #f6c800, #e6b428, #f6c800);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* ---------- SEKSJONSTITLER ---------- */
+/* === SEKSJONSTITLER === */
 .seksjonstittel {
   color: var(--yellow);
   font-size: 1rem;
@@ -88,78 +73,18 @@ body.loaded .notisinnhold { animation-play-state: running; }
   border: none;
 }
 
-/* ---------- NYHETSHJUL ---------- */
-#nyhetshjul-grid {
+/* === FELLES STIL FOR HJUL === */
+.hjul-grid {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  gap: 16px;
+  gap: 12px;
   padding: 0.6rem 1rem;
   scrollbar-width: none;
 }
-#nyhetshjul-grid::-webkit-scrollbar { display: none; }
+.hjul-grid::-webkit-scrollbar { display: none; }
 
-.nyhetshjul-card {
-  flex: 0 0 300px;
-  scroll-snap-align: start;
-  background: #111;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.2s ease;
-  color: var(--text);
-}
-.nyhetshjul-card:hover { transform: translateY(-3px); }
-.nyhetshjul-card img {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  object-position: center 47%;
-}
-.nyhetshjul-card h3 {
-  font-size: 1rem;
-  margin: 0.6rem;
-  color: #fff;
-}
-.nyhetshjul-card p {
-  font-size: 0.85rem;
-  margin: 0 0.6rem 0.8rem;
-  color: var(--muted);
-}
-
-/* ---------- SPORTSHJUL ---------- */
-#sportshjul-grid {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 12px;
-  padding: 0.5rem 1rem;
-  scrollbar-width: none;
-}
-#sportshjul-grid::-webkit-scrollbar { display: none; }
-.sport-card {
-  flex: 0 0 260px;
-  background: #0f0f0f;
-  border-radius: 8px;
-}
-.sport-card img {
-  height: 130px;
-  object-fit: cover;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-/* ---------- KULTURHJUL ---------- */
-#kulturhjul-grid {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 12px;
-  padding: 0.5rem 1rem;
-  scrollbar-width: none;
-}
-#kulturhjul-grid::-webkit-scrollbar { display: none; }
-
-#kulturhjul-grid .nyhetshjul-card {
+.hjul-card {
   flex: 0 0 260px;
   background: #111;
   border-radius: 8px;
@@ -167,67 +92,40 @@ body.loaded .notisinnhold { animation-play-state: running; }
   scroll-snap-align: start;
   transition: transform 0.2s ease;
   color: var(--text);
+  text-decoration: none;
 }
-#kulturhjul-grid .nyhetshjul-card img {
+.hjul-card:hover { transform: translateY(-3px); }
+
+.hjul-card img {
   width: 100%;
   height: 130px;
   object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
-#kulturhjul-grid .nyhetshjul-card h3 {
+.hjul-card h3 {
   font-size: 0.9rem;
   margin: 0.6rem;
   color: #fff;
 }
-#kulturhjul-grid .nyhetshjul-card p {
+.hjul-card p {
   font-size: 0.8rem;
-  margin: 0 0.6rem 0.8rem;
-  color: #aaa;
-}
-#kulturhjul-grid .nyhetshjul-card:hover { transform: translateY(-3px); }
-
-/* ---------- KOMMENTARHJUL ---------- */
-#kommentarhjul-grid {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 12px;
-  padding: 0.5rem 1rem;
-  scrollbar-width: none;
-  background: #000;
-}
-#kommentarhjul-grid::-webkit-scrollbar { display: none; }
-
-#kommentarhjul-grid .card {
-  flex: 0 0 220px;
-  background: #111;
-  border-radius: 8px;
-  overflow: hidden;
-  scroll-snap-align: start;
-  transition: transform 0.2s ease;
-  color: var(--text);
-}
-#kommentarhjul-grid .card img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-#kommentarhjul-grid .card h3 {
-  font-size: 0.85rem;
-  margin: 0.5rem 0.6rem 0;
-  color: #fff;
-}
-#kommentarhjul-grid .card p {
-  font-size: 0.75rem;
   margin: 0 0.6rem 0.8rem;
   color: var(--muted);
 }
-#kommentarhjul-grid .card:hover { transform: translateY(-3px); }
 
-/* ---------- DEBATT ---------- */
+/* === SPESIFIKKE HJUL === */
+#nyhetshjul-grid,
+#sportshjul-grid,
+#kulturhjul-grid,
+#kommentarhjul-grid {
+  composes: hjul-grid;
+}
+
+#nyhetshjul-grid .hjul-card { flex: 0 0 300px; }
+#kommentarhjul-grid .hjul-card { flex: 0 0 220px; }
+
+/* === DEBATT === */
 .debatt-innlegg {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -244,29 +142,15 @@ body.loaded .notisinnhold { animation-play-state: running; }
   color: var(--text);
 }
 .debatt-innlegg .card:hover { transform: translateY(-3px); }
-.debatt-meta {
-  font-size: 0.8rem;
-  color: var(--muted);
-}
+.debatt-meta { font-size: 0.8rem; color: var(--muted); }
 
-/* ---------- LENKER ---------- */
+/* === LENKER === */
 a { color: var(--yellow); text-decoration: none; }
 a:hover { text-decoration: underline; }
+.hjul-card:hover h3,
+.card:hover h3 { color: var(--yellow); text-decoration: none; }
 
-.nyhetshjul-card,
-.nyhetshjul-card a,
-.card,
-.card a {
-  text-decoration: none !important;
-  color: inherit;
-}
-.nyhetshjul-card:hover h3,
-.card:hover h3 {
-  color: var(--yellow);
-  text-decoration: none;
-}
-
-/* ---------- FOOTER ---------- */
+/* === FOOTER === */
 .site-footer {
   background: #000;
   color: #aaa;
@@ -281,7 +165,7 @@ a:hover { text-decoration: underline; }
 }
 .site-footer a:hover { text-decoration: underline; }
 
-/* ---------- NOBELKORT ---------- */
+/* === NOBELKORT === */
 .kort {
   float: left;
   width: 220px;
@@ -291,54 +175,4 @@ a:hover { text-decoration: underline; }
   width: 100%;
   border-radius: 8px;
   display: block;
-}
-/* ---------- KOMMENTARHJUL (FIX) ---------- */
-#kommentarhjul-grid {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 12px;
-  padding: 0.5rem 1rem;
-  scrollbar-width: none;
-  background: #000;
-}
-#kommentarhjul-grid::-webkit-scrollbar { display: none; }
-
-#kommentarhjul-grid .card {
-  flex: 0 0 220px;             /* små kort */
-  background: #111;
-  border-radius: 8px;
-  overflow: hidden;
-  scroll-snap-align: start;
-  transition: transform 0.2s ease;
-  color: var(--text);
-  text-decoration: none;
-}
-#kommentarhjul-grid .card:hover { transform: translateY(-3px); }
-
-#kommentarhjul-grid .card img {
-  display: block;
-  width: 100%;
-  height: 120px !important;    /* tvungen høyde – hindrer gigantiske bilder */
-  object-fit: cover;
-  object-position: center;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-#kommentarhjul-grid .card h3 {
-  font-size: 0.9rem;
-  margin: 0.55rem 0.6rem 0;
-  color: #fff;
-}
-#kommentarhjul-grid .card p {
-  font-size: 0.78rem;
-  margin: 0 0.6rem 0.8rem;
-  color: var(--muted);
-}
-
-/* belt-and-suspenders: ingen andre bilder får vokse i kommentarseksjonen */
-section#kommentarer img:not(.thumb) {
-  max-height: 120px;
-  object-fit: cover;
 }
