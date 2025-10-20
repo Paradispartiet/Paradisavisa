@@ -1,5 +1,5 @@
 // service-worker.js
-const VERSION = "v2.1.1.3"; // endre dette hver gang du laster opp en ny versjon
+const VERSION = "v2.1.1.4"; // endre dette hver gang du laster opp en ny versjon
 
 self.addEventListener("install", event => {
   console.log("Service Worker installert – versjon:", VERSION);
