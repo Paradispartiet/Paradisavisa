@@ -29,32 +29,16 @@
       margin-bottom: 1.5em;
     }
 
-    /* --- Første bilde med flyt --- */
-    .hovedbilde {
-      float: right;
-      width: 45%;
-      margin: 0 0 1rem 1.5rem;
-      border-radius: 8px;
-    }
-
-    /* --- Bildekarusell --- */
-    .bildekarusell {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 10px;
-      padding: 1rem 0;
-      scrollbar-width: none;
-    }
-    .bildekarusell::-webkit-scrollbar { display: none; }
-
-    .bildekarusell img {
-      flex: 0 0 80%;
-      max-width: 80%;
+    /* --- Flytende bilder --- */
+    img {
+      width: 40%;
+      max-width: 350px;
       border-radius: 6px;
-      scroll-snap-align: center;
+      margin: 0.4rem 1.2rem 0.8rem 0;
       object-fit: cover;
     }
+    .høyre { float: right; }
+    .venstre { float: left; }
 
     p { margin-top: 1.2em; }
 
@@ -68,10 +52,11 @@
     }
 
     @media (max-width: 720px) {
-      .hovedbilde {
+      img {
         float: none;
+        display: block;
         width: 100%;
-        margin: 0 0 1rem 0;
+        margin: 1rem 0;
       }
     }
   </style>
@@ -86,8 +71,7 @@
     og mennesker bar historiene sine uten å vise dem frem.
   </p>
 
-  <!-- Første illustrasjon -->
-  <img src="../Bilder/Kunst-majorstua.PNG" alt="Majorstua 1983 – Blue Master plakat" class="hovedbilde">
+  <img src="../Bilder/Kunst-majorstua.PNG" alt="Majorstua 1983 – Blue Master plakat" class="høyre">
 
   <p>
     Serien <em>Grafisk memoar</em> er bygget på et enkelt premiss: å se tilbake uten sentimentalitet, 
@@ -95,6 +79,7 @@
     <strong>Blue Master</strong>-uttrykket henter fargepaletten fra 1980-tallets 
     Oslo — en tid der stillheten hadde vekt, og lysrørene kastet lange skygger over hverdagsrommene.
   </p>
+
   <p>
     Bildene henter sin ro fra reklameplakatens språk og byens overflater – 
     det som en gang var bakgrunn for alt, men som nå fremstår som stille vitner.  
@@ -103,12 +88,7 @@
     Estetikken er både urban og personlig: en slags poetisk dokumentar uten mennesker.
   </p>
 
-  <div class="bildekarusell">
-    <img src="../Bilder/Inlove.jpeg.png" alt="Hopelessly in love with myself">
-    <img src="../Bilder/B52.jpg" alt="B52 plakat">
-    <img src="../Bilder/Turist.jpg" alt="I just want to be a tourist">
-    <img src="../Bilder/Scareme.jpg" alt="Scare me out of here">
-  </div>
+  <img src="../Bilder/Inlove.jpeg.png" alt="Hopelessly in love with myself" class="venstre">
 
   <p>
     <em>Blue Master</em> er ikke bare en farge, men en tilstand – et mørkt lys fra et annet Oslo.  
@@ -117,12 +97,35 @@
     Om alt som en gang betydde noe, men aldri helt ble sagt høyt.
   </p>
 
-  <div class="bildekarusell">
-    <img src="../Bilder/kunst-lokka.PNG" alt="Grünerløkka 2001 plakat">
-    <img src="../Bilder/Kunst-lys.PNG" alt="Kunstinstallasjon lys">
-    <img src="../Bilder/Kunst-lys2.PNG" alt="Kunstinstallasjon lys 2">
-    <img src="../Bilder/kunst-bamser.PNG" alt="Bamser på trikken – kollektiv melankoli">
-  </div>
+  <img src="../Bilder/B52.jpg" alt="B52 plakat" class="høyre">
+  <p>
+    Motivene skildrer et Oslo som ikke lenger finnes: barene med speilvegger, 
+    lukten av tobakk og papp, den kalde luften fra T-banen som blander seg 
+    med blå neon. Dette var byens språk – en rytme av lys og fravær, 
+    et visuelt ekko fra en tid som fortsatt sitter igjen i veggene.
+  </p>
+
+  <img src="../Bilder/Turist.jpg" alt="I just want to be a tourist" class="venstre">
+  <img src="../Bilder/Scareme.jpg" alt="Scare me out of here" class="høyre">
+
+  <p>
+    Prosjektet er et forsøk på å hente frem det tause.  
+    Ikke å gjenskape fortiden, men å peke på hvordan minner blir arkitektur:  
+    hvordan en plakat, en flate, et lysrør kan bli en måte å huske på.
+  </p>
+
+  <img src="../Bilder/kunst-lokka.PNG" alt="Grünerløkka 2001 plakat" class="venstre">
+  <img src="../Bilder/Kunst-lys.PNG" alt="Kunstinstallasjon lys" class="høyre">
+  <img src="../Bilder/Kunst-lys2.PNG" alt="Kunstinstallasjon lys 2" class="venstre">
+  <img src="../Bilder/kunst-bamser.PNG" alt="Bamser på trikken – kollektiv melankoli" class="høyre">
+
+  <p>
+    Serien viser at selv de mest trivielle objekter kan romme poesi, 
+    og at en by ikke bare består av bygninger, men av blikk – 
+    av alt som er sett og glemt.  
+    <em>Blue Master</em> er et portrett av en tid, men også en tilstand:  
+    melankoliens Oslo.
+  </p>
 
   <footer>
     Av Mats Gran — Publisert 8. oktober 2025
