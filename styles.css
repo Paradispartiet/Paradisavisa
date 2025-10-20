@@ -17,6 +17,7 @@ body {
 }
 
 /* ---------- NOTISBÅND ---------- */
+/* ---------- NOTISBÅND ---------- */
 .notisbånd {
   position: fixed;
   top: 0;
@@ -31,17 +32,18 @@ body {
   padding: 0.4rem 0;
   z-index: 9999;
 }
+
 .notisinnhold {
   display: inline-block;
   padding-left: 100%;
-  animation: ticker 60s linear infinite; /* saktere og jevnere */
-  animation-play-state: paused; /* stopper til alt er klart */
+  animation: ticker 60s linear infinite; /* rolig og jevn */
+  animation-play-state: paused; /* venter til innhold er klart */
 }
 
 body.loaded .notisinnhold {
   animation-play-state: running; /* starter når JS sier "klart" */
 }
-}
+
 @keyframes ticker {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
