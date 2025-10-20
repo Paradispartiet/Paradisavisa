@@ -17,7 +17,9 @@ body {
 }
 
 /* ---------- NOTISBÅND ---------- */
-/* ---------- NOTISBÅND ---------- */
+/* ================================
+   🟡 NOTISBÅND – endelig versjon
+   ================================ */
 .notisbånd {
   position: fixed;
   top: 0;
@@ -31,22 +33,47 @@ body {
   font-size: 0.95rem;
   padding: 0.4rem 0;
   z-index: 9999;
+
+  /* Myk fade i kantene */
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
 .notisinnhold {
   display: inline-block;
   padding-left: 100%;
-  animation: ticker 60s linear infinite; /* rolig og jevn */
-  animation-play-state: paused; /* venter til innhold er klart */
+  animation: ticker 60s linear infinite; /* Rolig fart */
+  animation-play-state: paused; /* Starter først når alt er klart */
 }
 
 body.loaded .notisinnhold {
-  animation-play-state: running; /* starter når JS sier "klart" */
+  animation-play-state: running;
 }
 
 @keyframes ticker {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
+}
+
+/* Mellomrom og farger i teksten */
+.notisinnhold span {
+  margin-right: 1.5rem; /* lite mellomrom mellom notiser */
+}
+
+.notisinnhold strong {
+  color: var(--yellow);  /* gul kategori */
+  margin-right: 0.3rem;
+  font-weight: 600;
+}
+
+.notisinnhold a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.notisinnhold a:hover {
+  color: var(--yellow);
+  text-decoration: underline;
 }
 
 /* ---------- HEADER ---------- */
