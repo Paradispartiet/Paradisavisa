@@ -81,25 +81,24 @@ function loadSportshjul() {
     .catch(err => console.error("Sportshjul feilet:", err));
 }
 
-/* ---------- Kommentarer ---------- */
-function loadKommentarer() {
-  fetch("kommentarer.json", { cache: "no-store" })
-    .then(r => r.json())
-    .then(items => {
-      const container = document.querySelector(".kommentar-innlegg");
-      if (!container || !items.length) return;
-      container.innerHTML = "";
-      items.forEach(k => {
-        container.innerHTML += `
-          <a class="card" href="${k.url}">
-            <h3>${escapeHtml(k.title)}</h3>
-            <p class="kommentar-meta">${escapeHtml(k.author)} · ${escapeHtml(k.date)}</p>
-            <p>${escapeHtml(k.excerpt.split(' ').slice(0, 20).join(' '))}...</p>
-          </a>`;
-      });
-    })
-    .catch(err => console.error("Kommentarer feilet:", err));
-}
+// === KOMMENTARHJUL ===
+fetch('kommentarer.json')
+  .then(response => response.json())
+  .then(data => {
+    const kommentarerGrid = document.getElementById('kommentarer-grid');
+    data.forEach(item => {
+      const card = document.createElement('a');
+      card.href = item.url;
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.title}">
+        <h3>${item.title}</h3>
+        <p>${item.excerpt}</p>
+      `;
+      kommentarerGrid.appendChild(card);
+    });
+  })
+  .catch(err => console.error('Feil ved lasting av kommentarer:', err));
 
 /* ---------- Debatt ---------- */
 function loadDebatt() {
