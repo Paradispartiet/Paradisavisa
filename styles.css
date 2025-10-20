@@ -167,3 +167,20 @@ body.loaded .notisinnhold { animation-play-state: running; }
   border-radius: 8px;
   display: block;
 }
+/* === FLYTENDE BILDER (STANDARD FOR ALLE ARTIKLER) === */
+.flyt-bilde {
+  float: right;
+  width: 320px;
+  margin: 1rem 0 1rem 1.5rem;
+  border-radius: 8px;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .flyt-bilde {
+    float: none;
+    display: block;
+    margin: 1.2rem auto;
+    width: 200px;
+  }
+}
