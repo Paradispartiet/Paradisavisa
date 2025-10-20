@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grafisk memoar: Majorstua (Blue Master) | Paradisavisa</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      background: #000;
+      color: #eaeaea;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 2rem;
+    }
+    article {
+      max-width: 880px;
+      margin: auto;
+      line-height: 1.7;
+    }
+    h1 {
+      font-size: 2em;
+      color: #fff;
+      margin-bottom: 0.4em;
+    }
+    .ingress {
+      font-size: 1.1em;
+      color: #f2f2f2;
+      margin-bottom: 1.5em;
+    }
+
+    /* --- Bildekarusell --- */
+    .bildekarusell {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      padding: 1rem 0;
+      scrollbar-width: none;
+    }
+    .bildekarusell::-webkit-scrollbar { display: none; }
+
+    .bildekarusell img {
+      flex: 0 0 80%;
+      max-width: 80%;
+      border-radius: 6px;
+      scroll-snap-align: center;
+      object-fit: cover;
+    }
+
+    p { margin-top: 1.2em; }
+
+    footer {
+      margin-top: 3em;
+      border-top: 1px solid #333;
+      padding-top: 1em;
+      color: #888;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+<article>
+  <h1>Grafisk memoar: Majorstua (Blue Master)</h1>
+  <p class="ingress">
+    En visuell serie om nostalgi, byliv og minner i røyk og blåtoner. 
+    Plakatene og motivene fanger en tid da hverdagen var langsommere, 
+    og mennesker bar historiene sine uten å vise dem frem.
+  </p>
+
+  <div class="bildekarusell">
+    <img src="../Bilder/Kunst/Kunst-majorstua.PNG" alt="Majorstua 1983 – Blue Master plakat">
+    <img src="../Bilder/Kunst/Inlove.jpeg.png" alt="Hopelessly in love with myself">
+    <img src="../Bilder/Kunst/B52.jpg" alt="B52 plakat">
+    <img src="../Bilder/Kunst/Turist.jpg" alt="I just want to be a tourist">
+    <img src="../Bilder/Kunst/Scareme.jpg" alt="Scare me out of here">
+  </div>
+
+  <p>
+    Serien <em>Grafisk memoar</em> er bygget på et enkelt premiss: å se tilbake uten sentimentalitet, 
+    men med et blikk for hvordan estetikk bærer minner. 
+    <strong>Blue Master</strong>-uttrykket henter fargepaletten fra 1980-tallets 
+    Oslo — en tid der stillheten hadde vekt, og lysrørene kastet lange skygger over hverdagsrommene.
+  </p>
+
+  <div class="bildekarusell">
+    <img src="../Bilder/Kunst/kunst-lokka.PNG" alt="Grünerløkka 2001 plakat">
+    <img src="../Bilder/Kunst/Kunst-lys.PNG" alt="Kunstinstallasjon lys">
+    <img src="../Bilder/Kunst/Kunst-lys2.PNG" alt="Kunstinstallasjon lys 2">
+    <img src="../Bilder/Kunst/kunst-bamser.PNG" alt="Bamser på trikken – kollektiv melankoli">
+  </div>
+
+  <p>
+    <em>Blue Master</em> er ikke bare en farge, men en tilstand – et mørkt lys fra et annet Oslo.  
+    Den minner oss om byens røykfylte rom, om menn med frakker og kvinner med tid.  
+    Om trikker som stanser mellom epoker.  
+    Om alt som en gang betydde noe, men aldri helt ble sagt høyt.
+  </p>
+
+  <footer>
+    Av Mats Gran — Publisert 8. oktober 2025
+  </footer>
+</article>
+</body>
+</html>
