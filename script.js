@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
     if (document.getElementById("sportshjul-grid")) loadSportshjul();
     if (document.getElementById("kulturhjul-grid")) loadKulturhjul();
-    if (document.querySelector(".kommentar-innlegg")) loadKommentarer();
+if (document.getElementById("kommentarhjul-grid")) loadKommentarer();
     if (document.querySelector(".debatt-innlegg")) loadDebatt();
   });
 });
@@ -103,24 +103,26 @@ function loadKulturhjul() {
     .catch(err => console.error("Kulturhjul feilet:", err));
 }
 
-// === KOMMENTARHJUL ===
-fetch('kommentarer.json')
-  .then(response => response.json())
-  .then(data => {
-    const kommentarerGrid = document.getElementById('kommentarer-grid');
-    data.forEach(item => {
-      const card = document.createElement('a');
-      card.href = item.url;
-      card.className = 'card';
-      card.innerHTML = `
-        <img src="${item.image}" alt="${item.title}">
-        <h3>${item.title}</h3>
-        <p>${item.excerpt}</p>
-      `;
-      kommentarerGrid.appendChild(card);
-    });
-  })
-  .catch(err => console.error('Feil ved lasting av kommentarer:', err));
+/* ---------- Kommentarhjul ---------- */
+function loadKommentarer() {
+  fetch("kommentarer.json", { cache: "no-store" })
+    .then(r => r.json())
+    .then(items => {
+      const grid = document.getElementById("kommentarhjul-grid");
+      if (!grid || !items.length) return;
+      grid.innerHTML = "";
+      items.sort((a, b) => new Date(b.date) - new Date(a.date));
+      items.forEach(item => {
+        grid.innerHTML += `
+          <a class="card" href="${item.url}">
+            <img src="${item.image}" alt="${escapeHtml(item.title)}">
+            <h3>${escapeHtml(item.title)}</h3>
+            <p>${escapeHtml(item.excerpt)}</p>
+          </a>`;
+      });
+    })
+    .catch(err => console.error("Kommentarhjul feilet:", err));
+}
 
 /* ---------- Debatt ---------- */
 function loadDebatt() {
