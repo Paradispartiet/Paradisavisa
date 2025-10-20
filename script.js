@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   // 🟡 Last notisbåndet FØRST
   loadNotiser().then(() => {
-    // markerer at alt er klart → starter animasjonen i CSS
-    document.body.classList.add("loaded");
+    // Liten pause for jevn start (hindrer hakking)
+    setTimeout(() => {
+      document.body.classList.add("loaded"); // starter CSS-animasjonen
+    }, 300); // 0,3 sek forsinkelse
 
     // 🟡 Deretter resten av seksjonene
     if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
