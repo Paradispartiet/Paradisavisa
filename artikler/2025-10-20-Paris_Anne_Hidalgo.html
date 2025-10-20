@@ -13,6 +13,7 @@
       margin: 0;
       padding: 2rem;
     }
+
     article {
       max-width: 800px;
       margin: auto;
@@ -21,35 +22,56 @@
       background-color: #0a0a0a;
       border-radius: 8px;
     }
+
     h1 {
       color: #ffce40;
       font-weight: 600;
       margin-bottom: 0.3em;
     }
+
     em {
       color: #bbb;
     }
+
     .ingress {
       font-size: 1.2em;
       color: #f2f2f2;
       margin: 1.5em 0;
     }
-    img {
-      display: block;
-      width: 100%;
-      max-width: 800px;
-      margin: 1.5em auto;
+
+    /* Små flytende bilder */
+    .flyt-bilde {
+      float: left;
+      width: 180px;
+      height: auto;
+      margin: 0 1em 1em 0;
       border-radius: 6px;
     }
+
+    .flyt-bilde-hoyre {
+      float: right;
+      width: 180px;
+      height: auto;
+      margin: 0 0 1em 1em;
+      border-radius: 6px;
+    }
+
     strong {
       color: #ffce40;
     }
+
     .kilder {
       font-size: 0.9em;
       color: #aaa;
       border-top: 1px solid #222;
       margin-top: 2em;
       padding-top: 1em;
+      clear: both; /* sørger for at kildene ikke flyter rundt bilder */
+    }
+
+    /* Rydd opp etter flytende bilder */
+    .clear {
+      clear: both;
     }
   </style>
 </head>
@@ -60,12 +82,11 @@
   <p><em>Kommentar – av Mats Gran | Publisert 20. oktober 2025</em></p>
 
   <p class="ingress">
-    66 prosent av pariserne har stemt for å stenge 500 gater for biltrafikk. 
+    66 prosent av pariserne har stemt for å stenge 500 gater for biltrafikk.
+    <img src="../Nyhetshjul/Anne_Hidalgo.JPG" alt="Anne Hidalgo" class="flyt-bilde">
     Under borgermester <strong>Anne Hidalgo</strong> har Paris gjennomgått et tiår med radikal urban transformasjon: 
     fra motorvei til menneskeby, fra fart til nærvær.
   </p>
-
-  <img src="../Nyhetshjul/Anne_Hidalgo.JPG" alt="Anne Hidalgo foran en grønn byhorisont.">
 
   <p>
     Paris har stemt for å erstatte asfalt med trær, grønne soner og stille nabolag. 
@@ -78,14 +99,13 @@
 
   <p>
     Tiltakene springer ut av ideen om <strong>la ville du quart d’heure</strong> – 
-    «byen på femten minutter». 
+    «byen på femten minutter».
+    <img src="../Nyhetshjul/paris_gate.JPG" alt="Bilfri gate i Paris" class="flyt-bilde-hoyre">
     Tanken er at alt et menneske trenger, fra barnehage til matbutikk, 
     skal finnes innenfor kort gang- eller sykkelavstand. 
     Den representerer et oppgjør med bilbyen: et skifte fra mobilitet til nærhet, 
     fra tidsklemme til tilstedeværelse.
   </p>
-
-  <img src="../Nyhetshjul/paris_gate.JPG" alt="Bilfri gate i Paris med trær og syklister.">
 
   <p>
     Den nye planen skal skape fem til åtte grønne gater i hvert arrondissement. 
@@ -105,7 +125,8 @@
 
   <p>
     Likevel har Hidalgo oppnådd noe sjeldent i europeisk bypolitikk: 
-    å gjøre klimahandling synlig i hverdagen. 
+    å gjøre klimahandling synlig i hverdagen.
+    <img src="../Nyhetshjul/Paris.PNG" alt="Utsikt over Paris" class="flyt-bilde">
     Hun har forbudt gjennomfartstrafikk i sentrum, 
     gjort Seinen trygg å bade i igjen innen 2025, 
     og forvandlet Champs-Élysées til et grønt byrom. 
@@ -128,20 +149,7 @@
     en grønn by kan også bli en dyr by.
   </p>
 
-  <img src="../Nyhetshjul/Paris.PNG" alt="Utsikt over Paris med grønne gater og Eiffeltårnet i bakgrunnen.">
-
-  <p>
-    Paris’ urbane revolusjon er dermed både inspirerende og advarende. 
-    Den viser at klimaomstillingen kan bli håndfast, 
-    men også at den må forhandles frem i hver eneste gate, 
-    mellom hver parkbenk og hvert fortau.
-    Når bilen forsvinner, må politikken fylle tomrommet med fellesskap.
-  </p>
-
-  <p>
-    Hidalgo selv kaller det ikke en revolusjon, men en <em>réparation</em> – 
-    et forsøk på å sy sammen en by som ble bygget for biler, ikke for mennesker.
-  </p>
+  <div class="clear"></div> <!-- rydder float før kilder -->
 
   <div class="kilder">
     <strong>Kilder:</strong> The Washington Post (Annabelle Timsit, 2025), 
