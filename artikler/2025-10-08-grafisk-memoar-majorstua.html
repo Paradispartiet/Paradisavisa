@@ -29,6 +29,14 @@
       margin-bottom: 1.5em;
     }
 
+    /* --- Første bilde med flyt --- */
+    .hovedbilde {
+      float: right;
+      width: 45%;
+      margin: 0 0 1rem 1.5rem;
+      border-radius: 8px;
+    }
+
     /* --- Bildekarusell --- */
     .bildekarusell {
       display: flex;
@@ -56,6 +64,15 @@
       padding-top: 1em;
       color: #888;
       font-size: 0.9em;
+      clear: both;
+    }
+
+    @media (max-width: 720px) {
+      .hovedbilde {
+        float: none;
+        width: 100%;
+        margin: 0 0 1rem 0;
+      }
     }
   </style>
 </head>
@@ -69,13 +86,8 @@
     og mennesker bar historiene sine uten å vise dem frem.
   </p>
 
-  <div class="bildekarusell">
-    <img src="../Bilder/Kunst-majorstua.PNG" alt="Majorstua 1983 – Blue Master plakat">
-    <img src="../Bilder/Inlove.jpeg.png" alt="Hopelessly in love with myself">
-    <img src="../Bilder/B52.jpg" alt="B52 plakat">
-    <img src="../Bilder/Turist.jpg" alt="I just want to be a tourist">
-    <img src="../Bilder/Scareme.jpg" alt="Scare me out of here">
-  </div>
+  <!-- Første illustrasjon -->
+  <img src="../Bilder/Kunst-majorstua.PNG" alt="Majorstua 1983 – Blue Master plakat" class="hovedbilde">
 
   <p>
     Serien <em>Grafisk memoar</em> er bygget på et enkelt premiss: å se tilbake uten sentimentalitet, 
@@ -83,12 +95,19 @@
     <strong>Blue Master</strong>-uttrykket henter fargepaletten fra 1980-tallets 
     Oslo — en tid der stillheten hadde vekt, og lysrørene kastet lange skygger over hverdagsrommene.
   </p>
+  <p>
+    Bildene henter sin ro fra reklameplakatens språk og byens overflater – 
+    det som en gang var bakgrunn for alt, men som nå fremstår som stille vitner.  
+    Serien er en påminnelse om at selv en gate, en vindusrute eller en røykstrek 
+    kan romme tidens avtrykk.  
+    Estetikken er både urban og personlig: en slags poetisk dokumentar uten mennesker.
+  </p>
 
   <div class="bildekarusell">
-    <img src="../Bilder/kunst-lokka.PNG" alt="Grünerløkka 2001 plakat">
-    <img src="../Bilder/Kunst-lys.PNG" alt="Kunstinstallasjon lys">
-    <img src="../Bilder/Kunst-lys2.PNG" alt="Kunstinstallasjon lys 2">
-    <img src="../Bilder/kunst-bamser.PNG" alt="Bamser på trikken – kollektiv melankoli">
+    <img src="../Bilder/Inlove.jpeg.png" alt="Hopelessly in love with myself">
+    <img src="../Bilder/B52.jpg" alt="B52 plakat">
+    <img src="../Bilder/Turist.jpg" alt="I just want to be a tourist">
+    <img src="../Bilder/Scareme.jpg" alt="Scare me out of here">
   </div>
 
   <p>
@@ -97,6 +116,13 @@
     Om trikker som stanser mellom epoker.  
     Om alt som en gang betydde noe, men aldri helt ble sagt høyt.
   </p>
+
+  <div class="bildekarusell">
+    <img src="../Bilder/kunst-lokka.PNG" alt="Grünerløkka 2001 plakat">
+    <img src="../Bilder/Kunst-lys.PNG" alt="Kunstinstallasjon lys">
+    <img src="../Bilder/Kunst-lys2.PNG" alt="Kunstinstallasjon lys 2">
+    <img src="../Bilder/kunst-bamser.PNG" alt="Bamser på trikken – kollektiv melankoli">
+  </div>
 
   <footer>
     Av Mats Gran — Publisert 8. oktober 2025
