@@ -72,9 +72,8 @@ body {
   font-weight: 700;
   padding: 0.3rem 1rem;
   text-transform: uppercase;
-  background: #000;
-  border-top: 1px solid rgba(255, 214, 0, 0.15);
-  border-bottom: 1px solid rgba(255, 214, 0, 0.15);
+  background: #000;  /* helt sort bakgrunn */
+  border: none;      /* ingen linjer */
 }
 
 /* ---------- NYHETSHJUL ---------- */
