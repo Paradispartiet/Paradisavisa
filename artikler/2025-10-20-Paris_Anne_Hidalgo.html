@@ -13,21 +13,6 @@
       margin: 0;
       padding: 2rem;
     }
-<!DOCTYPE html>
-<html lang="no">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paris kutter 500 gater for biler – Anne Hidalgo fullfører det urbane eksperimentet | Paradisavisa</title>
-  <link rel="stylesheet" href="../styles.css">
-  <style>
-    body {
-      background-color: #000;
-      color: #eaeaea;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 2rem;
-    }
     article {
       max-width: 800px;
       margin: auto;
@@ -49,6 +34,35 @@
       color: #f2f2f2;
       margin: 1.5em 0;
     }
+    img {
+      width: 40%;
+      max-width: 300px;
+      margin: 0 1em 1em 0;
+      border-radius: 6px;
+    }
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+      margin: 0 0 1em 1em;
+    }
+    article::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    @media (max-width: 600px) {
+      img {
+        width: 100%;
+        max-width: 100%;
+        margin: 1em 0;
+      }
+      .left, .right {
+        float: none;
+        margin: 1em 0;
+      }
+    }
     strong {
       color: #ffce40;
     }
@@ -58,41 +72,6 @@
       border-top: 1px solid #222;
       margin-top: 2em;
       padding-top: 1em;
-    }
-
-    /* ===============================
-       Flytende bilder
-    =============================== */
-    .flyt-bilde-liten {
-      float: left;
-      width: 150px;
-      height: auto;
-      margin: 0 1em 1em 0;
-      border-radius: 6px;
-    }
-    .flyt-bilde-medium {
-      float: right;
-      width: 220px;
-      height: auto;
-      margin: 0 0 1em 1em;
-      border-radius: 6px;
-    }
-    .flyt-bilde-stor {
-      float: left;
-      width: 250px;
-      height: auto;
-      margin: 0 1em 1em 0;
-      border-radius: 6px;
-    }
-
-    @media (max-width: 600px) {
-      .flyt-bilde-liten, .flyt-bilde-medium, .flyt-bilde-stor {
-        float: none;
-        display: block;
-        width: 100%;
-        max-width: 300px;
-        margin: 1em auto;
-      }
     }
   </style>
 </head>
@@ -108,7 +87,7 @@
     fra motorvei til menneskeby, fra fart til nærvær.
   </p>
 
-  <img src="../Nyhetshjul/Anne_Hidalgo.JPG" class="flyt-bilde-liten" alt="Anne Hidalgo foran en grønn byhorisont.">
+  <img src="../Nyhetshjul/Anne_Hidalgo.JPG" alt="Anne Hidalgo foran en grønn byhorisont." class="left">
 
   <p>
     Paris har stemt for å erstatte asfalt med trær, grønne soner og stille nabolag. 
@@ -128,7 +107,7 @@
     fra tidsklemme til tilstedeværelse.
   </p>
 
-  <img src="../Nyhetshjul/paris_gate.JPG" class="flyt-bilde-medium" alt="Bilfri gate i Paris med trær og syklister.">
+  <img src="../Nyhetshjul/paris_gate.JPG" alt="Bilfri gate i Paris med trær og syklister." class="right">
 
   <p>
     Den nye planen skal skape fem til åtte grønne gater i hvert arrondissement. 
@@ -171,7 +150,7 @@
     en grønn by kan også bli en dyr by.
   </p>
 
-  <img src="../Nyhetshjul/Paris.PNG" class="flyt-bilde-stor" alt="Utsikt over Paris med grønne gater og Eiffeltårnet i bakgrunnen.">
+  <img src="../Nyhetshjul/Paris.PNG" alt="Utsikt over Paris med grønne gater og Eiffeltårnet i bakgrunnen." class="left">
 
   <p>
     Paris’ urbane revolusjon er dermed både inspirerende og advarende. 
@@ -185,155 +164,6 @@
     Hidalgo selv kaller det ikke en revolusjon, men en <em>réparation</em> – 
     et forsøk på å sy sammen en by som ble bygget for biler, ikke for mennesker.
   </p>
-
-  <div class="kilder">
-    <strong>Kilder:</strong> The Washington Post (Annabelle Timsit, 2025), 
-    Folha de S. Paulo (Rafael Balago, 2020), 
-    Transport & Environment (T&E), 
-    Clean Cities Campaign (CCC), 
-    C40 Cities (2016–2019), 
-    United Nations Climate Action Award (COP26), 
-    Le Monde / Publico (2024–2025).
-  </div>
-</article>
-</body>
-</html>
-    article {
-      max-width: 800px;
-      margin: auto;
-      border: 1px solid #333;
-      padding: 2rem;
-      background-color: #0a0a0a;
-      border-radius: 8px;
-    }
-
-    h1 {
-      color: #ffce40;
-      font-weight: 600;
-      margin-bottom: 0.3em;
-    }
-
-    em {
-      color: #bbb;
-    }
-
-    .ingress {
-      font-size: 1.2em;
-      color: #f2f2f2;
-      margin: 1.5em 0;
-    }
-
-    /* Små flytende bilder */
-    .flyt-bilde {
-      float: left;
-      width: 180px;
-      height: auto;
-      margin: 0 1em 1em 0;
-      border-radius: 6px;
-    }
-
-    .flyt-bilde-hoyre {
-      float: right;
-      width: 180px;
-      height: auto;
-      margin: 0 0 1em 1em;
-      border-radius: 6px;
-    }
-
-    strong {
-      color: #ffce40;
-    }
-
-    .kilder {
-      font-size: 0.9em;
-      color: #aaa;
-      border-top: 1px solid #222;
-      margin-top: 2em;
-      padding-top: 1em;
-      clear: both; /* sørger for at kildene ikke flyter rundt bilder */
-    }
-
-    /* Rydd opp etter flytende bilder */
-    .clear {
-      clear: both;
-    }
-  </style>
-</head>
-
-<body>
-<article>
-  <h1>Paris kutter 500 gater for biler – Anne Hidalgo fullfører det urbane eksperimentet</h1>
-  <p><em>Kommentar – av Mats Gran | Publisert 20. oktober 2025</em></p>
-
-  <p class="ingress">
-    66 prosent av pariserne har stemt for å stenge 500 gater for biltrafikk.
-    <img src="../Nyhetshjul/Anne_Hidalgo.JPG" alt="Anne Hidalgo" class="flyt-bilde">
-    Under borgermester <strong>Anne Hidalgo</strong> har Paris gjennomgått et tiår med radikal urban transformasjon: 
-    fra motorvei til menneskeby, fra fart til nærvær.
-  </p>
-
-  <p>
-    Paris har stemt for å erstatte asfalt med trær, grønne soner og stille nabolag. 
-    Vedtaket er ikke juridisk bindende, men markerer et klart signal: byens innbyggere ønsker en 
-    <em>ville qui respire</em> – en by som puster. 
-    Under Anne Hidalgos ledelse har byen redusert biltrafikken med over 40 prosent siden 2011, 
-    fjernet titusenvis av parkeringsplasser og bygget mer enn tusen kilometer med sykkelveier. 
-    For mange er det blitt en ny normal; for andre – særlig pendlere fra forstedene – et symbol på et Paris som stenger seg om seg selv.
-  </p>
-
-  <p>
-    Tiltakene springer ut av ideen om <strong>la ville du quart d’heure</strong> – 
-    «byen på femten minutter».
-    <img src="../Nyhetshjul/paris_gate.JPG" alt="Bilfri gate i Paris" class="flyt-bilde-hoyre">
-    Tanken er at alt et menneske trenger, fra barnehage til matbutikk, 
-    skal finnes innenfor kort gang- eller sykkelavstand. 
-    Den representerer et oppgjør med bilbyen: et skifte fra mobilitet til nærhet, 
-    fra tidsklemme til tilstedeværelse.
-  </p>
-
-  <p>
-    Den nye planen skal skape fem til åtte grønne gater i hvert arrondissement. 
-    Størstedelen av de 500 gatene vil omgjøres til trerekker, møteplasser og 
-    midlertidige byrom etter prinsippet om <strong>urbanisme tactique</strong> – 
-    midlertidige strukturer som testes av innbyggerne før de blir permanente. 
-    Benker, lekeapparater og grønne lommer skal erstatte parkeringsplassene.
-  </p>
-
-  <p>
-    Kritikerne mener tiltaket er for symbolsk og uavklart. 
-    «Hvordan kan vi stemme uten å vite hvilke gater det gjelder, hvilke kostnader det får, 
-    og hva slags vegetasjon som skal plantes?» spurte 
-    presidentrådgiver <strong>Guillaume Rozier</strong> på X. 
-    Andre peker på at unge trær ikke kan erstatte de økologiske fordelene til gamle, etablerte trær.
-  </p>
-
-  <p>
-    Likevel har Hidalgo oppnådd noe sjeldent i europeisk bypolitikk: 
-    å gjøre klimahandling synlig i hverdagen.
-    <img src="../Nyhetshjul/Paris.PNG" alt="Utsikt over Paris" class="flyt-bilde">
-    Hun har forbudt gjennomfartstrafikk i sentrum, 
-    gjort Seinen trygg å bade i igjen innen 2025, 
-    og forvandlet Champs-Élysées til et grønt byrom. 
-    Over 170 000 trær skal plantes før 2026, 
-    og de olympiske lekene i 2024 blir testen på om denne saktebyen faktisk fungerer under press.
-  </p>
-
-  <p>
-    Som leder for <strong>C40 Cities</strong> mellom 2016 og 2019 løftet Hidalgo byenes rolle i klimakampen. 
-    Paris mottok FNs <strong>Climate Action Award</strong> under COP26 for sin konkrete omstilling, 
-    og ble et forbilde for byer som Oslo, Milano og Barcelona. 
-    Ifølge <strong>Clean Cities Campaign</strong> støtter et flertall av innbyggerne i 15 europeiske byer lignende tiltak.
-  </p>
-
-  <p>
-    Hidalgo har også konfrontert sosial ulikhet i sin miljøpolitikk. 
-    Hun har innført subsidierte elsykkelordninger på opptil 400 euro, 
-    utvidet rimelig boligbygging og forsøkt å bremse turistutleie som driver opp leieprisene. 
-    Men spenningen mellom økologi og sosial rettferdighet består – 
-    en grønn by kan også bli en dyr by.
-  </p>
-
-  <div class="clear"></div> <!-- rydder float før kilder -->
 
   <div class="kilder">
     <strong>Kilder:</strong> The Washington Post (Annabelle Timsit, 2025), 
