@@ -124,3 +124,11 @@ function escapeHtml(str) {
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[s])
   );
 }
+/* ---------- Service Worker registrering ---------- */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log('🟢 Service Worker registrert:', reg.scope))
+      .catch(err => console.error('🔴 Feil ved registrering av SW:', err));
+  });
+}
