@@ -16,9 +16,8 @@ body {
   padding-top: 2.6rem;
 }
 
-/* ---------- NOTISBÅND ---------- */
 /* ================================
-   🟡 NOTISBÅND – endelig versjon
+   🟡 NOTISBÅND – gul bakgrunn m/fade
    ================================ */
 .notisbånd {
   position: fixed;
@@ -27,14 +26,15 @@ body {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  background: #000;
-  border-bottom: 2px solid var(--yellow);
-  color: #eee;
+  background: #ffce40;           /* GUL bakgrunn */
+  border-bottom: 2px solid #000; /* Sort linje under */
+  color: #000;                   /* Sort tekst */
   font-size: 0.95rem;
+  font-weight: 600;
   padding: 0.4rem 0;
   z-index: 9999;
 
-  /* Myk fade i kantene */
+  /* Myk fade i kantene (samme som før) */
   mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
@@ -57,13 +57,13 @@ body.loaded .notisinnhold {
 
 /* Mellomrom og farger i teksten */
 .notisinnhold span {
-  margin-right: 1.5rem; /* lite mellomrom mellom notiser */
+  margin-right: 1.5rem; /* mellomrom mellom notiser */
 }
 
 .notisinnhold strong {
-  color: var(--yellow);  /* gul kategori */
+  color: #000;          /* Sort kategori for kontrast */
   margin-right: 0.3rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .notisinnhold a {
@@ -72,7 +72,7 @@ body.loaded .notisinnhold {
 }
 
 .notisinnhold a:hover {
-  color: var(--yellow);
+  color: #111;
   text-decoration: underline;
 }
 
