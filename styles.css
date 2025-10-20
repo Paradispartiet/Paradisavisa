@@ -292,3 +292,53 @@ a:hover { text-decoration: underline; }
   border-radius: 8px;
   display: block;
 }
+/* ---------- KOMMENTARHJUL (FIX) ---------- */
+#kommentarhjul-grid {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 12px;
+  padding: 0.5rem 1rem;
+  scrollbar-width: none;
+  background: #000;
+}
+#kommentarhjul-grid::-webkit-scrollbar { display: none; }
+
+#kommentarhjul-grid .card {
+  flex: 0 0 220px;             /* små kort */
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  transition: transform 0.2s ease;
+  color: var(--text);
+  text-decoration: none;
+}
+#kommentarhjul-grid .card:hover { transform: translateY(-3px); }
+
+#kommentarhjul-grid .card img {
+  display: block;
+  width: 100%;
+  height: 120px !important;    /* tvungen høyde – hindrer gigantiske bilder */
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#kommentarhjul-grid .card h3 {
+  font-size: 0.9rem;
+  margin: 0.55rem 0.6rem 0;
+  color: #fff;
+}
+#kommentarhjul-grid .card p {
+  font-size: 0.78rem;
+  margin: 0 0.6rem 0.8rem;
+  color: var(--muted);
+}
+
+/* belt-and-suspenders: ingen andre bilder får vokse i kommentarseksjonen */
+section#kommentarer img:not(.thumb) {
+  max-height: 120px;
+  object-fit: cover;
+}
