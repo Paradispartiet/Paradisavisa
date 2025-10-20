@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uno-X klare for WorldTour – norsk sykkel på toppnivå | Paradisavisa</title>
+
+  <meta name="description" content="Uno-X sikret opprykk til WorldTour etter nervepirrende avslutning. Laget får nå automatisk plass i Tour de France, Giro d’Italia og Vuelta a España.">
+  <meta property="og:title" content="Uno-X klare for WorldTour – norsk sykkel på toppnivå">
+  <meta property="og:description" content="Uno-X sikret opprykk til WorldTour etter dramatisk duell mot Cofidis. En historisk dag for norsk sykkelsport.">
+  <meta property="og:image" content="../Nyhetshjul/Uno_X.PNG">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Paradisavisa">
+
+  <link rel="icon" href="../ikon-paradis.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+<div id="header-placeholder"></div>
+
+<article class="article" style="border:1px solid #222; padding:2rem; border-radius:10px; background:#000;">
+  <h1>Uno-X klare for WorldTour – norsk sykkel på toppnivå</h1>
+
+  <div class="meta">
+    Av <strong>Redaksjonen Paradisavisa</strong> · <time datetime="2025-10-19">19. oktober 2025</time>
+  </div>
+
+  <img src="../Nyhetshjul/Uno_X.PNG" alt="Uno-X ryttere feirer seier" loading="lazy" style="float:right; width:40%; margin:0 0 1em 1.5em; border-radius:6px;">
+
+  <p class="lead">
+    Etter en nervepirrende duell mot franske Cofidis sikret Uno-X plass i sykkelsportens øverste liga. 
+    Seieren i Veneto Classic ble avgjørende – og markerer et historisk øyeblikk for norsk idrett.
+  </p>
+
+  <p>
+    Lagsjef <strong>Thor Hushovd</strong> kaller det «heilt ellevilt». Det norske laget, med bare nordmenn og dansker, tok inn 200 poeng gjennom 
+    <strong>Sakarias Koller Lølands</strong> første proffsiger i Veneto Classic. Dermed kunne Uno-X slippe jubelen løs: 
+    Norge har fått sitt første lag på <strong>WorldTour-nivå</strong>.
+  </p>
+
+  <p>
+    Bak resultatet ligger flere år med oppbygging, støttet av <strong>Reitan Retail</strong> og ledet med tålmodig struktur. 
+    Uno-X har brukt enkle prinsipper: nordisk base, helprofesjonell drift – og ryttere som faktisk kjenner hverandre. 
+    Resultatet er en stabil poengfangst som nå gir lisens til alle tre Grand Tours: <em>Tour de France, Giro d’Italia</em> og <em>La Vuelta</em>.
+  </p>
+
+  <p>
+    Veteranen <strong>Alexander Kristoff</strong> takker av etter å ha levert 12 triumfer for laget, og sier at han gleder seg til å følge Uno-X fra sofaen. 
+    Sammen med ryttere som <strong>Jonas Abrahamsen</strong> og <strong>Søren Wærenskjold</strong> har han vært en nøkkel i løftet opp til verdensnivået.
+  </p>
+
+  <p>
+    «Få hadde trudd dette var mogleg,» sier NRKs sykkelekspert <strong>Sondre Gjerdevik Sørtveit</strong>. 
+    Han mener opprykket er en milepæl ikke bare for Uno-X, men for hele norsk sykkelsport.
+  </p>
+
+  <p>
+    De neste tre årene blir laget fast deltaker i de største rittene på kalenderen – og et symbol på hva en nordisk modell kan få til når systemet bygges nedenfra.
+  </p>
+
+  <hr style="margin-top:2em; border-color:#333;">
+
+  <p style="font-size:0.9em; color:#aaa;">
+    <strong>Kilde:</strong> NRK / NTB (18. oktober 2025)
+  </p>
+
+</article>
+
+<footer class="site-footer">
+  <p>© 2025 Paradisavisa</p>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
