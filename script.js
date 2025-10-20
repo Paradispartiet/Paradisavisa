@@ -1,30 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
   // 🟡 Last notisbåndet FØRST
-  loadNotiser();
+  loadNotiser().then(() => {
+    // markerer at alt er klart → starter animasjonen i CSS
+    document.body.classList.add("loaded");
 
-  // 🟡 Deretter resten av seksjonene
-  if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
-  if (document.getElementById("sportshjul-grid")) loadSportshjul();
-  if (document.querySelector(".kommentar-innlegg")) loadKommentarer();
-  if (document.querySelector(".debatt-innlegg")) loadDebatt();
+    // 🟡 Deretter resten av seksjonene
+    if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
+    if (document.getElementById("sportshjul-grid")) loadSportshjul();
+    if (document.querySelector(".kommentar-innlegg")) loadKommentarer();
+    if (document.querySelector(".debatt-innlegg")) loadDebatt();
+  });
 });
 
 /* ---------- Notisbånd ---------- */
 function loadNotiser() {
-  fetch("notiser.json", { cache: "no-store" })
+  return fetch("notiser.json", { cache: "no-store" })
     .then(r => r.json())
     .then(items => {
       const band = document.querySelector(".notisbånd");
       const innhold = document.querySelector(".notisinnhold");
       if (!band || !innhold) return;
 
-      // Sikrer plassering øverst
       band.style.position = "fixed";
       band.style.top = "0";
       band.style.left = "0";
       band.style.zIndex = "9999";
 
-      // Fyll inn nyhetene
       innhold.innerHTML = "";
       items.forEach(n => {
         const span = document.createElement("span");
