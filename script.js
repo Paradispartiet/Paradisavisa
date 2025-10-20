@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 🟡 Deretter resten av seksjonene
     if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
     if (document.getElementById("sportshjul-grid")) loadSportshjul();
+    if (document.getElementById("kulturhjul-grid")) loadKulturhjul();
     if (document.querySelector(".kommentar-innlegg")) loadKommentarer();
     if (document.querySelector(".debatt-innlegg")) loadDebatt();
   });
@@ -79,6 +80,27 @@ function loadSportshjul() {
       });
     })
     .catch(err => console.error("Sportshjul feilet:", err));
+}
+
+/* ---------- Kultur og underholdning ---------- */
+function loadKulturhjul() {
+  fetch("Kulturhjul.json", { cache: "no-store" })
+    .then(r => r.json())
+    .then(items => {
+      const grid = document.getElementById("kulturhjul-grid");
+      if (!items.length || !grid) return;
+      grid.innerHTML = "";
+      items.sort((a, b) => new Date(b.date) - new Date(a.date));
+      items.forEach(item => {
+        grid.innerHTML += `
+          <a class="nyhetshjul-card" href="${item.url}">
+            <img src="${item.image}" alt="${escapeHtml(item.title)}">
+            <h3>${escapeHtml(item.title)}</h3>
+            <p>${escapeHtml(item.excerpt)}</p>
+          </a>`;
+      });
+    })
+    .catch(err => console.error("Kulturhjul feilet:", err));
 }
 
 // === KOMMENTARHJUL ===
