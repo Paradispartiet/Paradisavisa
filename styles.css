@@ -167,9 +167,8 @@ body.loaded .notisinnhold {
   border-top-right-radius: 8px;
 }
 
- /* ---------- KOMMENTARER OG DEBATT ---------- */
-/* ---------- KOMMENTARHJUL – samme størrelse som sport ---------- */
-#kommentarer-grid {
+/* ---------- KULTUR OG UNDERHOLDNING ---------- */
+#kulturhjul-grid {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -177,9 +176,9 @@ body.loaded .notisinnhold {
   padding: 0.5rem 1rem;
   scrollbar-width: none;
 }
-#kommentarer-grid::-webkit-scrollbar { display: none; }
+#kulturhjul-grid::-webkit-scrollbar { display: none; }
 
-#kommentarer-grid .card {
+#kulturhjul-grid .card {
   flex: 0 0 260px;            /* samme bredde som sportskort */
   background: #111;
   border-radius: 8px;
@@ -188,24 +187,26 @@ body.loaded .notisinnhold {
   transition: transform 0.2s ease;
   color: var(--text);
 }
-#kommentarer-grid .card img {
+#kulturhjul-grid .card img {
   width: 100%;
-  height: 130px;              /* 🔸 samme høyde som sportskort */
+  height: 130px;              /* samme høyde som sportskort */
   object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
-#kommentarer-grid .card h3 {
+#kulturhjul-grid .card h3 {
   font-size: 0.9rem;
   margin: 0.6rem;
   color: #fff;
 }
-#kommentarer-grid .card p {
+#kulturhjul-grid .card p {
   font-size: 0.8rem;
   margin: 0 0.6rem 0.8rem;
   color: #aaa;
 }
-#kommentarer-grid .card:hover { transform: translateY(-3px); }
+#kulturhjul-grid .card:hover {
+  transform: translateY(-3px);
+}
 
 /* ---------- DEBATT (behold grid) ---------- */
 .debatt-innlegg {
