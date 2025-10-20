@@ -147,9 +147,11 @@ section { margin: 0; padding: 0; }
 /* ---------- KOMMENTARER ---------- */
 .kommentar-innlegg {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* to kolonner */
   gap: 12px;
   padding: 0.5rem 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 .kommentar-meta {
   font-size: 0.8rem;
@@ -159,9 +161,19 @@ section { margin: 0; padding: 0; }
 /* ---------- DEBATT ---------- */
 .debatt-innlegg {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* to kolonner */
   gap: 12px;
   padding: 0.5rem 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ---------- MOBIL (én kolonne) ---------- */
+@media (max-width: 650px) {
+  .kommentar-innlegg,
+  .debatt-innlegg {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- FOOTER ---------- */
