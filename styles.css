@@ -168,7 +168,34 @@ body.loaded .notisinnhold {
 }
 
 /* ---------- KOMMENTARER OG DEBATT ---------- */
-.kommentar-innlegg,
+/* ---------- KOMMENTARHJUL – mindre ---------- */
+.kommentar-innlegg {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 10px;
+  padding: 0.4rem 1rem;
+  scrollbar-width: none;
+}
+.kommentar-innlegg::-webkit-scrollbar { display: none; }
+
+.kommentar-innlegg .card {
+  flex: 0 0 220px;             /* mindre bredde */
+  background: #111;
+  border-radius: 6px;
+  padding: 0.8rem;
+  color: var(--text);
+  scroll-snap-align: start;
+  transition: transform 0.2s ease;
+}
+.kommentar-innlegg .card:hover { transform: translateY(-2px); }
+
+.kommentar-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ---------- DEBATT (behold grid) ---------- */
 .debatt-innlegg {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -177,7 +204,6 @@ body.loaded .notisinnhold {
   max-width: 1000px;
   margin: 0 auto;
 }
-.kommentar-innlegg .card,
 .debatt-innlegg .card {
   background: #111;
   border-radius: 8px;
@@ -185,22 +211,11 @@ body.loaded .notisinnhold {
   transition: transform 0.2s ease;
   color: var(--text);
 }
-.kommentar-innlegg .card:hover,
-.debatt-innlegg .card:hover {
-  transform: translateY(-3px);
-}
-.kommentar-meta,
+.debatt-innlegg .card:hover { transform: translateY(-3px); }
+
 .debatt-meta {
   font-size: 0.8rem;
   color: var(--muted);
-}
-
-/* ---------- MOBIL (én kolonne) ---------- */
-@media (max-width: 650px) {
-  .kommentar-innlegg,
-  .debatt-innlegg {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ---------- LENKER ---------- */
