@@ -190,3 +190,28 @@ section { margin: 0; padding: 0; }
   text-decoration: none;
 }
 .site-footer a:hover { text-decoration: underline; }
+
+/* ---------- LENKESTIL / KORT ---------- */
+a:link,
+a:visited {
+  color: var(--yellow);
+  text-decoration: none;
+}
+a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Fjern understreking i kort og behold ens farge */
+.nyhetshjul-card,
+.nyhetshjul-card a,
+.card,
+.card a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.nyhetshjul-card:hover h3,
+.card:hover h3 {
+  text-decoration: underline; /* Valgfri hover-effekt */
+}
