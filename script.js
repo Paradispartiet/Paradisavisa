@@ -1,16 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 🟡 Last notisbåndet FØRST
+  // 🟡 Last notisbåndet først
   loadNotiser().then(() => {
-    // Liten pause for jevn start (hindrer hakking)
     setTimeout(() => {
-      document.body.classList.add("loaded"); // starter CSS-animasjonen
-    }, 300); // 0,3 sek forsinkelse
+      document.body.classList.add("loaded");
+    }, 300);
 
-    // 🟡 Deretter resten av seksjonene
+    // 🟡 Deretter hjul og seksjoner
     if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
     if (document.getElementById("sportshjul-grid")) loadSportshjul();
     if (document.getElementById("kulturhjul-grid")) loadKulturhjul();
-if (document.getElementById("kommentarhjul-grid")) loadKommentarer();
+    if (document.getElementById("kommentarhjul-grid")) loadKommentarer();
     if (document.querySelector(".debatt-innlegg")) loadDebatt();
   });
 });
@@ -20,14 +19,10 @@ function loadNotiser() {
   return fetch("notiser.json", { cache: "no-store" })
     .then(r => r.json())
     .then(items => {
+      if (!items || !items.length) return;
       const band = document.querySelector(".notisbånd");
       const innhold = document.querySelector(".notisinnhold");
       if (!band || !innhold) return;
-
-      band.style.position = "fixed";
-      band.style.top = "0";
-      band.style.left = "0";
-      band.style.zIndex = "9999";
 
       innhold.innerHTML = "";
       items.forEach(n => {
@@ -51,7 +46,7 @@ function loadNyhetshjul() {
       items.sort((a, b) => new Date(b.date) - new Date(a.date));
       items.forEach(item => {
         grid.innerHTML += `
-          <a class="nyhetshjul-card" href="${item.url}">
+          <a class="hjul-card" href="${item.url}">
             <img src="${item.image}" alt="${escapeHtml(item.title)}">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
@@ -72,7 +67,7 @@ function loadSportshjul() {
       items.sort((a, b) => new Date(b.date) - new Date(a.date));
       items.forEach(item => {
         grid.innerHTML += `
-          <a class="nyhetshjul-card sport-card" href="${item.url}">
+          <a class="hjul-card" href="${item.url}">
             <img src="${item.image}" alt="${escapeHtml(item.title)}">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
@@ -82,7 +77,7 @@ function loadSportshjul() {
     .catch(err => console.error("Sportshjul feilet:", err));
 }
 
-/* ---------- Kultur og underholdning ---------- */
+/* ---------- Kulturhjul ---------- */
 function loadKulturhjul() {
   fetch("Kulturhjul.json", { cache: "no-store" })
     .then(r => r.json())
@@ -93,7 +88,7 @@ function loadKulturhjul() {
       items.sort((a, b) => new Date(b.date) - new Date(a.date));
       items.forEach(item => {
         grid.innerHTML += `
-          <a class="nyhetshjul-card" href="${item.url}">
+          <a class="hjul-card" href="${item.url}">
             <img src="${item.image}" alt="${escapeHtml(item.title)}">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
@@ -107,14 +102,13 @@ function loadKulturhjul() {
 function loadKommentarer() {
   fetch("kommentarer.json", { cache: "no-store" })
     .then(r => r.json())
-    .then(items => {
+    .then(data => {
       const grid = document.getElementById("kommentarhjul-grid");
-      if (!grid || !items.length) return;
+      if (!data.length || !grid) return;
       grid.innerHTML = "";
-      items.sort((a, b) => new Date(b.date) - new Date(a.date));
-      items.forEach(item => {
+      data.forEach(item => {
         grid.innerHTML += `
-          <a class="card" href="${item.url}">
+          <a class="hjul-card" href="${item.url}">
             <img src="${item.image}" alt="${escapeHtml(item.title)}">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
@@ -149,12 +143,4 @@ function escapeHtml(str) {
   return String(str || "").replace(/[&<>"']/g, s =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[s])
   );
-}
-/* ---------- Service Worker registrering ---------- */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js')
-      .then(reg => console.log('🟢 Service Worker registrert:', reg.scope))
-      .catch(err => console.error('🔴 Feil ved registrering av SW:', err));
-  });
 }
