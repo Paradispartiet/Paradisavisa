@@ -74,7 +74,11 @@ body.loaded .notisinnhold { animation-play-state: running; }
 }
 
 /* === FELLES STIL FOR HJUL === */
-.hjul-grid {
+.hjul-grid,
+#nyhetshjul-grid,
+#sportshjul-grid,
+#kulturhjul-grid,
+#kommentarhjul-grid {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -82,7 +86,11 @@ body.loaded .notisinnhold { animation-play-state: running; }
   padding: 0.6rem 1rem;
   scrollbar-width: none;
 }
-.hjul-grid::-webkit-scrollbar { display: none; }
+.hjul-grid::-webkit-scrollbar,
+#nyhetshjul-grid::-webkit-scrollbar,
+#sportshjul-grid::-webkit-scrollbar,
+#kulturhjul-grid::-webkit-scrollbar,
+#kommentarhjul-grid::-webkit-scrollbar { display: none; }
 
 .hjul-card {
   flex: 0 0 260px;
@@ -114,17 +122,6 @@ body.loaded .notisinnhold { animation-play-state: running; }
   color: var(--muted);
 }
 
-/* === SPESIFIKKE HJUL === */
-#nyhetshjul-grid,
-#sportshjul-grid,
-#kulturhjul-grid,
-#kommentarhjul-grid {
-  composes: hjul-grid;
-}
-
-#nyhetshjul-grid .hjul-card { flex: 0 0 300px; }
-#kommentarhjul-grid .hjul-card { flex: 0 0 220px; }
-
 /* === DEBATT === */
 .debatt-innlegg {
   display: grid;
@@ -143,12 +140,6 @@ body.loaded .notisinnhold { animation-play-state: running; }
 }
 .debatt-innlegg .card:hover { transform: translateY(-3px); }
 .debatt-meta { font-size: 0.8rem; color: var(--muted); }
-
-/* === LENKER === */
-a { color: var(--yellow); text-decoration: none; }
-a:hover { text-decoration: underline; }
-.hjul-card:hover h3,
-.card:hover h3 { color: var(--yellow); text-decoration: none; }
 
 /* === FOOTER === */
 .site-footer {
