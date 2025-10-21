@@ -184,3 +184,56 @@ body.loaded .notisinnhold { animation-play-state: running; }
     width: 200px;
   }
 }
+
+/* === FAKTABOKSER === */
+.factbox {
+  margin: 2rem 0;
+  border: 1px solid #333;
+  background-color: #0d0d0d;
+  padding: 1rem 1.2rem;
+  border-radius: 4px;
+}
+
+.toggle-btn {
+  background: #111;
+  color: var(--text);
+  border: 1px solid #333;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: left;
+  width: 100%;
+  transition: background 0.2s, color 0.2s;
+}
+
+.toggle-btn:hover {
+  background: #181818;
+  color: var(--yellow);
+}
+
+.factbox-content {
+  display: none;
+  margin-top: 1rem;
+}
+
+.factbox-content h3 {
+  color: var(--yellow);
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.factbox-content p {
+  margin-bottom: 0.8rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.factbox-content a {
+  color: var(--yellow);
+  text-decoration: none;
+}
+
+.factbox-content a:hover {
+  text-decoration: underline;
+}
