@@ -19,7 +19,8 @@ body {
 /* === NOTISBÅND === */
 .notisbånd {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -33,25 +34,39 @@ body {
 
 .notisinnhold {
   display: inline-block;
-  padding-left: 100%;
-  animation: ticker 120s linear infinite; /* <– farten justeres her */
+  white-space: nowrap;
+  animation: ticker linear infinite;
   animation-play-state: paused;
 }
 
-body.loaded .notisinnhold { 
-  animation-play-state: running; 
+body.loaded .notisinnhold {
+  animation-play-state: running;
 }
 
-/* Ny bevegelse: hele skjermen + tekstens lengde */
 @keyframes ticker {
-  0%   { transform: translateX(100%); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
 
-.notisinnhold span { margin-right: 1.5rem; }
-.notisinnhold strong { color: var(--yellow); margin-right: 0.3rem; font-weight: 600; }
-.notisinnhold a { color: inherit; text-decoration: none; }
-.notisinnhold a:hover { color: var(--yellow); text-decoration: underline; }
+.notisinnhold span {
+  margin-right: 2rem; /* litt mer luft mellom notiser */
+}
+
+.notisinnhold strong {
+  color: var(--yellow);
+  margin-right: 0.3rem;
+  font-weight: 600;
+}
+
+.notisinnhold a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.notisinnhold a:hover {
+  color: var(--yellow);
+  text-decoration: underline;
+}
 
 /* === HEADER === */
 .avis-header {
