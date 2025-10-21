@@ -120,6 +120,8 @@ body.loaded .notisinnhold {
   margin: 0;
 }
 
+body { padding-top: 6.4rem; } /* gir bedre luft mellom topp og første seksjon */
+
 /* === SEKSJONSTITLER === */
 .seksjonstittel {
   color: var(--yellow);
