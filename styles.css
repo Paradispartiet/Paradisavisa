@@ -305,3 +305,39 @@ article h1, article h2, article h3 {
   border-top: 1px solid #222;
   padding-top: 1.5rem;
 }
+/* === TITTELLINJE MED GLØD === */
+.tittellinje {
+  position: sticky;
+  top: 2.1rem; /* rett under notisbåndet */
+  z-index: 998;
+  background: linear-gradient(90deg, #000 0%, #0a0a0a 50%, #000 100%);
+  border-bottom: 1px solid #222;
+  text-align: center;
+  padding: 0.8rem 1rem;
+  letter-spacing: 2px;
+}
+
+.tittellinje h1 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+  background: linear-gradient(90deg, #f6c800, #ffd94a, #f6c800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 6px rgba(246, 200, 0, 0.35);
+  animation: shimmer 6s linear infinite;
+}
+
+/* svak glødbevegelse */
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* juster padding på body for ny høyde */
+body {
+  padding-top: 4.8rem;
+}
