@@ -305,102 +305,31 @@ article h1, article h2, article h3 {
   border-top: 1px solid #222;
   padding-top: 1.5rem;
 }
-/* === TITTELLINJE MED GLØD === */
-.tittellinje {
-  position: sticky;
-  top: 2.1rem; /* rett under notisbåndet */
-  z-index: 998;
-  background: linear-gradient(90deg, #000 0%, #0a0a0a 50%, #000 100%);
-  border-bottom: 1px solid #222;
-  text-align: center;
-  padding: 0.8rem 1rem;
-  letter-spacing: 2px;
-}
-
-.tittellinje h1 {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.6rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  margin: 0;
-  background: linear-gradient(90deg, #f6c800, #ffd94a, #f6c800);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 6px rgba(246, 200, 0, 0.35);
-  animation: shimmer 6s linear infinite;
-}
-
-/* svak glødbevegelse */
-@keyframes shimmer {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* juster padding på body for ny høyde */
-body {
-  padding-top: 4.8rem;
-}
-/* === TITTELLINJE MED UNDERTITTEL (RESPONSIV + DISKRÉ SKYGGE) === */
+/* === TITTELLINJE – TYNN SOM VG === */
 .tittellinje {
   position: sticky;
   top: 1.9rem; /* rett under notisbåndet */
   z-index: 998;
-  background:
-    radial-gradient(circle at center, rgba(255, 230, 100, 0.05) 0%, transparent 70%),
-    linear-gradient(90deg, #000 0%, #0a0a0a 50%, #000 100%);
-  border-bottom: 1px solid #222;
-  text-align: center;
-  padding: 0.75rem 1rem 0.85rem;
-  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  background: #000;
+  border-bottom: 1px solid #333; /* tynn linje */
+  padding: 0.35rem 1.2rem;      /* lav høyde */
+  height: 2.1rem;
 }
 
 .tittellinje h1 {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 900;
   text-transform: uppercase;
+  color: #f6c800; /* klar gul */
+  letter-spacing: 1.5px;
   margin: 0;
-  background: linear-gradient(90deg, #f6c800, #ffd94a, #f6c800);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow:
-    0 0 8px rgba(246, 200, 0, 0.6),
-    0 0 20px rgba(246, 200, 0, 0.4);
-  animation: shimmer 6s linear infinite;
 }
 
-.tittellinje p {
-  margin: 0.25rem 0 0;
-  font-size: 0.9rem;
-  font-weight: 400;
-  font-style: italic;
-  color: #bbb;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5); /* diskret kontrastforsterkning */
-}
-
-/* 🔹 Responsiv typografi */
-@media (max-width: 800px) {
-  .tittellinje h1 { font-size: 1.3rem; }
-  .tittellinje p  { font-size: 0.85rem; }
-}
-@media (max-width: 500px) {
-  .tittellinje h1 {
-    font-size: 1.15rem;
-    letter-spacing: 1px;
-  }
-  .tittellinje p  { font-size: 0.8rem; }
-}
-
-/* Glødbevegelse */
-@keyframes shimmer {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Høydekompensasjon */
+/* kompensasjon for lavere høyde */
 body {
-  padding-top: 4.9rem;
+  padding-top: 4.1rem;
+}
 }
