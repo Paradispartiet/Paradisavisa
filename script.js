@@ -36,21 +36,18 @@ function loadNotiser() {
         span.innerHTML = n.url ? `<a href="${n.url}">${content}</a>` : content;
         innhold.appendChild(span);
 
-        // legg til et lite grått mellomroms-symbol mellom notiser
         if (i < items.length - 1) {
           const sep = document.createElement("span");
           sep.textContent = " • ";
-          sep.style.color = "#666";      // nøytral grå
-          sep.style.fontSize = "0.9em";  // litt mindre
+          sep.style.color = "#666";
+          sep.style.fontSize = "0.9em";
           sep.style.marginRight = "1.5rem";
           innhold.appendChild(sep);
         }
       });
 
-      // dynamisk fart basert på tekstlengde
-      const totalLength = innhold.textContent.length;
-      const speed = Math.max(10, totalLength / 4);
-      innhold.style.animationDuration = `${speed}s`;
+      // 🟡 Fast fart: 25 sekunder
+      innhold.style.animationDuration = "25s";
 
       // start animasjonen
       document.body.classList.add("loaded");
