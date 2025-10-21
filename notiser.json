@@ -1,57 +1,127 @@
 [
   {
-    "category": "USA",
-    "text": "Titusener fylte Times Square i protest mot Trump – demonstrantene ropte «No Kings».",
-    "date": "2025-10-18"
+    "category": "Økonomi",
+    "text": "Gullprisen har steget 47 % siden nyttår – sterkeste økning siden 1979, ifølge World Gold Council. Analytikere peker på geopolitisk uro og sviktende tillit til dollaren som hovedårsak.",
+    "date": "2025-10-20"
   },
   {
-    "category": "Fotball",
-    "text": "Erling Braut Haaland scoret to ganger mot Everton – står nå med elleve mål på åtte ligakamper.",
-    "date": "2025-10-18"
+    "category": "Næringsliv",
+    "text": "L’Oréal kjøper Kerings skjønnhetsavdeling for 47 mrd. kroner – inkludert parfymehuset Creed og Gucci-lisensen. Oppkjøpet styrker L’Oréal som verdens største aktør innen luksuskosmetikk.",
+    "date": "2025-10-20"
   },
   {
-    "category": "Litteratur",
-    "text": "Forfatter Roy Jacobsen er død. Han ble 70 år og etterlater seg et stort forfatterskap.",
-    "date": "2025-10-18"
+    "category": "Verden",
+    "text": "Japan får sin første kvinnelige statsminister – Sanae Takaichi (64) valgt av nasjonalforsamlingen i Tokyo. Hun varsler økt satsing på økonomisk vekst og et fast grep over pengepolitikken.",
+    "date": "2025-10-20"
   },
   {
-    "category": "Kongehus",
-    "text": "Prins Andrew gir fra seg alle kongelige titler – også hertugdømmet av York.",
-    "date": "2025-10-18"
+  "category": "Sport",
+  "text": "Alexander Kristoff avslutter en 20 år lang karriere som proffsyklist. Han legger opp som Norges mestvinnende rytter med 98 seire – blant dem Milano–Sanremo og Flandern rundt.",
+  "date": "2025-10-21"
+},
+  {
+    "category": "Økonomi",
+    "text": "Nikkei-indeksen steg til nær rekordnivå etter valget av Sanae Takaichi – opp over 9 prosent siste måned. Markedet reagerte positivt på løfter om økte investeringer og lavere renter.",
+    "date": "2025-10-20"
   },
   {
-    "category": "Midtøsten",
-    "text": "Israel holder Rafah-grensen mot Egypt stengt på ubestemt tid – krever at Hamas returnerer levninger etter døde gisler.",
-    "date": "2025-10-18"
+    "category": "Teknologi",
+    "text": "Apple lanserer iPad Pro og MacBook Pro med ny M5-brikke – opptil 3,5 ganger bedre AI-ytelse enn forgjengeren. Produktene kan forhåndsbestilles nå og slippes i butikk 22. oktober.",
+    "date": "2025-10-20"
   },
   {
-    "category": "Norge",
-    "text": "Et ras i Trøndelag har stengt både E6 og jernbanen ved Røra. Arbeid pågår for å sikre området.",
-    "date": "2025-10-18"
+    "category": "Vitenskap",
+    "text": "To kometer, Lemmon og SWAN, passerer Jorden denne uken – et sjeldent dobbeltfenomen synlig med det blotte øye. Beste tid å se dem er ved solnedgang mot vesthimmelen.",
+    "date": "2025-10-20"
   },
   {
-    "category": "Tennis",
-    "text": "Casper Ruud er klar for finale i Stockholm etter seier over Denis Shapovalov. Møter franske Humbert i finalen.",
-    "date": "2025-10-18"
+    "category": "Miljø",
+    "text": "EUs miljøministre samles for å forberede unionens felles posisjon før klimatoppmøtet COP30 i Brasil. Målet er å enes om nye utslippsmål og større klimabistand til utviklingsland.",
+    "date": "2025-10-20"
   },
   {
-    "category": "Fotball",
-    "text": "Nottingham Forest sparker trener Ange Postecoglou etter seks uker – klubben jakter ny leder.",
-    "date": "2025-10-18"
-  },
-  {
-    "category": "Reise",
-    "text": "Færøyske fans «invaderer» Oslo i 2026 - Partybåten Norröna fra Smyril Line klapper til ligge til kai under håndball-EM i januar.",
-    "date": "2025-10-18"
-  },
-  {
-    "category": "Vær",
-    "text": "Vindkast på over 60 meter i sekundet målt på fjellet Mannen – den kraftigste vinden registrert i Norge på flere år.",
-    "date": "2025-10-18"
+    "category": "Sport",
+    "text": "Toronto Blue Jays er klare for World Series for første gang siden 1993, mens Los Angeles Dodgers jakter sin andre tittel på rad.",
+    "date": "2025-10-20"
   },
   {
     "category": "Kultur",
-    "text": "NRK-legenden Vidar Lønn-Arnesen er død, 85 år gammel. Han ledet «Da Capo» og ble en institusjon i norsk radio og TV.",
-    "date": "2025-10-18"
+    "text": "Dramatisk ran på Louvre i Paris – tyver stakk av med kongelige smykker i et dagslysangrep på motorsykler.",
+    "date": "2025-10-20"
+  },
+  {
+    "category": "Politikk",
+    "text": "En «blå bølge» skyller over Latin-Amerika – flere land skifter fra venstreorienterte til konservative, USA-vennlige regjeringer. Skiftet merkes særlig i Bolivia, Uruguay og Paraguay.",
+    "date": "2025-10-21"
+  },
+  {
+  "category": "Fotball",
+  "text": "Lyn imponerer i Obosligaen under ny trener Magnus Aadland og kjemper skulder ved skulder med Start om direkte opprykk til Eliteserien.",
+  "date": "2025-10-21"
+},
+  {
+    "category": "Kultur",
+    "text": "Sør-Korea arrangerer en virkelighetsversjon av «Squid Game» med internasjonale deltakere – et PR-stunt for å lokke turister tilbake etter pandemien.",
+    "date": "2025-10-21"
+  },
+  {
+    "category": "Miljø",
+    "text": "Urfolklederen Raoni Metuktire advarer om at Amazonas står ved et vendepunkt. Han ber verdenssamfunnet beskytte både regnskogen og de tradisjonene som holder den levende.",
+    "date": "2025-10-21"
+  },
+  {
+    "category": "Samfunn",
+    "text": "Generasjon Z leder nye protestbølger i land som Kenya, Peru og Madagaskar – unge mobiliserer via sosiale medier med krav om rettferdighet og politisk endring.",
+    "date": "2025-10-21"
+  },
+  {
+    "category": "Helse",
+    "text": "Frankrike hever fugleinfluensa-beredskapen til høyeste nivå etter nye utbrudd blant villfugl og fjørfe. Myndighetene frykter smitte til kommersielle gårder i flere regioner.",
+    "date": "2025-10-21"
+  },
+  {
+    "category": "Europa",
+    "text": "Polen har den største nedgangen i trafikkdødsfall i EU – over 10 % færre omkomne første halvår 2025. Myndighetene tilskriver nedgangen bedre veier og strengere fartskontroller.",
+    "date": "2025-10-21"
+  },
+  {
+  "category": "Sport",
+  "text": "Norway Chess lanserer en ny «World Championship Tour» med flere disipliner. Turneringen skal samle verdens beste spillere i både klassisk, lyn- og hurtigsjakk i en samlet verdensserie.",
+  "date": "2025-10-21"
+},
+  {
+    "category": "Europa",
+    "text": "Den nye motorveien Via Baltica åpnet i Øst-Europa og binder sammen de baltiske statene med Polen. Prosjektet styrker handel, transport og forsvarsforbindelser i regionen.",
+    "date": "2025-10-21"
+  },
+  {
+    "category": "Brasil",
+    "text": "Petrobras får grønt lys til å bore etter olje ved munningen av Amazonas. Tillatelsen utløser sterk miljøkritikk i forkant av COP30 i Brasil, der regnskog og havvern står høyt på agendaen.",
+    "date": "2025-10-21"
+  },
+  {
+    "category": "Afrika",
+    "text": "I Mali har jihadistgruppen JNIM innført drivstoffblokkade mot hovedstaden Bamako. Mangelen på drivstoff har ført til strømbrudd, stengte butikker og økende uro i landet.",
+    "date": "2025-10-21"
+  },
+  {
+    "category": "Sport",
+    "text": "Shaheen Afridi tar over som kaptein for Pakistans cricketlag i ODI-formatet etter Mohammad Rizwan. Lederskiftet kommer etter svak innsats i årets internasjonale turneringer.",
+    "date": "2025-10-21"
+  },
+  {
+    "category": "Afrika",
+    "text": "Somalias president Hassan Sheikh Mohamud søker støtte fra regionen Jubaland for å forlenge sin embetsperiode. Forhandlingene viser økende politisk spenning mellom sentralmakten og delstatene.",
+    "date": "2025-10-21"
+  },
+  {
+    "category": "Asia",
+    "text": "Pakistan og Afghanistan har inngått våpenhvile etter flere uker med grensekamper. Fredssamtalene i Doha ble ledet av Qatar, men usikkerheten er stor om avtalen vil holde over tid.",
+    "date": "2025-10-21"
+  },
+  {
+    "category": "Norge",
+    "text": "En tidligere ansatt ved den amerikanske ambassaden i Oslo er dømt til tre år og sju måneder fengsel for spionasje for Russland og Iran. Dommen omtales som en av de mest alvorlige spionsakene i nyere tid.",
+    "date": "2025-10-21"
   }
 ]
