@@ -14,7 +14,7 @@
       padding: 2rem;
     }
     article {
-      max-width: 880px;
+      max-width: 850px;
       margin: auto;
       line-height: 1.7;
     }
@@ -29,10 +29,10 @@
       margin-bottom: 1.5em;
     }
 
-    /* --- Flytende bilder --- */
+    /* --- Flytende bilder (små) --- */
     img {
-      width: 40%;
-      max-width: 350px;
+      width: 25%;
+      max-width: 240px;
       border-radius: 6px;
       margin: 0.4rem 1.2rem 0.8rem 0;
       object-fit: cover;
@@ -42,13 +42,30 @@
 
     p { margin-top: 1.2em; }
 
+    /* --- Lys-bildene nederst --- */
+    .lys-seksjon {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #333;
+    }
+    .lys-seksjon img {
+      width: 180px;
+      max-width: 40%;
+      border-radius: 6px;
+    }
+
     footer {
-      margin-top: 3em;
+      margin-top: 2em;
       border-top: 1px solid #333;
       padding-top: 1em;
       color: #888;
       font-size: 0.9em;
       clear: both;
+      text-align: center;
     }
 
     @media (max-width: 720px) {
@@ -58,6 +75,11 @@
         width: 100%;
         margin: 1rem 0;
       }
+      .lys-seksjon {
+        flex-direction: column;
+        align-items: center;
+      }
+      .lys-seksjon img { width: 80%; }
     }
   </style>
 </head>
@@ -115,17 +137,22 @@
   </p>
 
   <img src="../Bilder/kunst-lokka.PNG" alt="Grünerløkka 2001 plakat" class="venstre">
-  <img src="../Bilder/Kunst-lys.PNG" alt="Kunstinstallasjon lys" class="høyre">
-  <img src="../Bilder/Kunst-lys2.PNG" alt="Kunstinstallasjon lys 2" class="venstre">
   <img src="../Bilder/kunst-bamser.PNG" alt="Bamser på trikken – kollektiv melankoli" class="høyre">
 
   <p>
-    Serien viser at selv de mest trivielle objekter kan romme poesi, 
-    og at en by ikke bare består av bygninger, men av blikk – 
-    av alt som er sett og glemt.  
+    Serien viser ekte liv – ikke det som er oppstilt, men det som finnes i glimt.  
+    Den handler om hvordan blikket er rettet mot oss like mye som vi ser ut,  
+    og hvordan sansene forvirrer oss når vi forsøker å forstå verden.  
+    Det er en fortelling om kjærlighet, men alltid med betingelser –  
+    slik byen også elsker, uten å love noe tilbake.  
     <em>Blue Master</em> er et portrett av en tid, men også en tilstand:  
     melankoliens Oslo.
   </p>
+
+  <div class="lys-seksjon">
+    <img src="../Bilder/Kunst-lys.PNG" alt="Kunstinstallasjon lys">
+    <img src="../Bilder/Kunst-lys2.PNG" alt="Kunstinstallasjon lys 2">
+  </div>
 
   <footer>
     Av Mats Gran — Publisert 8. oktober 2025
