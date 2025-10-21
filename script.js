@@ -66,7 +66,7 @@ function loadNyhetshjul() {
         grid.innerHTML += `
           <a class="hjul-card" href="${item.url}">
             <img src="${item.image}" alt="${escapeHtml(item.title)}"
-                 style="object-position:${item.position || 'center'} center;">
+                 style="object-position:${item.position || 'center center'};">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
           </a>`;
@@ -88,7 +88,7 @@ function loadSportshjul() {
         grid.innerHTML += `
           <a class="hjul-card" href="${item.url}">
             <img src="${item.image}" alt="${escapeHtml(item.title)}"
-                 style="object-position:${item.position || 'center'} center;">
+                 style="object-position:${item.position || 'center center'};">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
           </a>`;
@@ -110,7 +110,7 @@ function loadKulturhjul() {
         grid.innerHTML += `
           <a class="hjul-card" href="${item.url}">
             <img src="${item.image}" alt="${escapeHtml(item.title)}"
-                 style="object-position:${item.position || 'center'} center;">
+                 style="object-position:${item.position || 'center center'};">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
           </a>`;
@@ -131,7 +131,7 @@ function loadKommentarer() {
         grid.innerHTML += `
           <a class="hjul-card" href="${item.url}">
             <img src="${item.image}" alt="${escapeHtml(item.title)}"
-                 style="object-position:${item.position || 'center'} center;">
+                 style="object-position:${item.position || 'center center'};">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
           </a>`;
