@@ -19,18 +19,41 @@ function loadNotiser() {
   return fetch("notiser.json", { cache: "no-store" })
     .then(r => r.json())
     .then(items => {
-      if (!items || !items.length) return;
       const band = document.querySelector(".notisbånd");
       const innhold = document.querySelector(".notisinnhold");
       if (!band || !innhold) return;
 
+      band.style.position = "fixed";
+      band.style.top = "0";
+      band.style.left = "0";
+      band.style.zIndex = "9999";
+
+      // bygg notiser
       innhold.innerHTML = "";
-      items.forEach(n => {
+      items.forEach((n, i) => {
         const span = document.createElement("span");
         const content = `<strong>${escapeHtml(n.category)}:</strong> ${escapeHtml(n.text)}`;
         span.innerHTML = n.url ? `<a href="${n.url}">${content}</a>` : content;
         innhold.appendChild(span);
+
+        // legg til et lite grått mellomroms-symbol mellom notiser
+        if (i < items.length - 1) {
+          const sep = document.createElement("span");
+          sep.textContent = " • ";
+          sep.style.color = "#666";      // nøytral grå
+          sep.style.fontSize = "0.9em";  // litt mindre
+          sep.style.marginRight = "1.5rem";
+          innhold.appendChild(sep);
+        }
       });
+
+      // dynamisk fart basert på tekstlengde
+      const totalLength = innhold.textContent.length;
+      const speed = Math.max(80, totalLength / 3);
+      innhold.style.animationDuration = `${speed}s`;
+
+      // start animasjonen
+      document.body.classList.add("loaded");
     })
     .catch(err => console.error("Notisbånd feilet:", err));
 }
