@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notiser | Paradisavisa</title>
+
+  <meta name="description" content="Alle notiser fra Paradisavisa – korte nyheter i et levende grid.">
+  <meta property="og:title" content="Notiser | Paradisavisa">
+  <meta property="og:description" content="Alle notiser fra Paradisavisa – korte nyheter i et levende grid.">
+  <meta property="og:image" content="Bilder/og-image.PNG">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Paradisavisa">
+
+  <link rel="icon" href="ikon-paradis.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="notisbånd"><div class="notisinnhold"></div></div>
+  <div class="tittellinje"><h1>Paradisavisa</h1></div>
+
+  <article class="notisgrid-container">
+    <a href="index.html" class="tilbake-link">← Til forsiden</a>
+    <h2>Notiser</h2>
+    <div id="notisgrid" class="notisgrid"></div>
+    <a href="index.html" class="tilbake-link nederst">← Til forsiden</a>
+  </article>
+
+  <footer class="site-footer">
+    <p>© 2025 Paradisavisa</p>
+    <p>
+      <a href="https://paradispartiet.github.io/Paradispartiet" target="_blank">Paradispartiet</a> ·
+      <a href="https://paradispartiet.github.io/Teorien-om-lyset" target="_blank">Teorien om lyset</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  fetch('notiser.json')
+    .then(r => r.json())
+    .then(data => {
+      const grid = document.getElementById('notisgrid');
+      const sorterte = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      sorterte.forEach((n, i) => {
+        const el = document.createElement('div');
+        el.className = 'notis-rute ' + ['liten','mellom','stor'][i % 3]; // veksler størrelse
+        el.innerHTML = `
+          <div class="notis-header">
+            <span class="notis-kategori">${n.category}</span>
+            <span class="notis-dato">${n.date}</span>
+          </div>
+          <p>${n.text}</p>
+        `;
+        grid.appendChild(el);
+      });
+    });
+  </script>
+</body>
+</html>
