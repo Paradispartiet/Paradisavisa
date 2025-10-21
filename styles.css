@@ -23,13 +23,20 @@ body {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  background: #000;
-  border: 1px solid var(--yellow);
-  color: #eee;
-  font-size: 0.95rem;
-  padding: 0.4rem 0;
+  background: var(--yellow);
+  color: #000;
+  font-size: .95rem;
+  font-weight: 600;
+  padding: .4rem 0;
   z-index: 9999;
   box-sizing: border-box;
+
+  /* Kun topp og bunn-linje */
+  border-top: 1px solid var(--yellow);
+  border-bottom: 1px solid var(--yellow);
+  border-left: none;
+  border-right: none;
+  box-shadow: none;
 }
 
 .notisinnhold {
@@ -38,10 +45,7 @@ body {
   animation: ticker 220s linear infinite;
   animation-play-state: paused;
 }
-
-body.loaded .notisinnhold {
-  animation-play-state: running;
-}
+body.loaded .notisinnhold { animation-play-state: running; }
 
 @keyframes ticker {
   0%   { transform: translateX(0); }
@@ -54,31 +58,31 @@ body.loaded .notisinnhold {
 .notisinnhold a:hover { color: var(--yellow); text-decoration: underline; }
 
 /* === TITTELLINJE – SORT VERSJON === */
+/* === TITTELLINJE === */
 .tittellinje {
   position: fixed;
-  top: 1.7rem;
+  top: 2.5rem; /* senket fra 1.7rem */
   left: 0;
   width: 100%;
-  z-index: 9998;
-  background: #000;               /* svart bakgrunn */
+  background: var(--yellow);
+  color: #000;
   text-align: left;
-  padding: 0.7rem 1.6rem 0.75rem;
-  height: 3rem;
+  padding: 0.7rem 1.6rem 0.6rem;
+  z-index: 9998;
   border: none;
-  box-shadow: none;
-  margin: 0;
-  border-bottom: 1px solid var(--yellow); /* tynn gul linje under, valgfritt */
 }
 
 .tittellinje h1 {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: var(--yellow);            /* gul tekst på sort bakgrunn */
-  letter-spacing: 1.8px;
-  margin: 0;
+  letter-spacing: 2px;
+  color: #000;
   line-height: 1.6rem;
+  margin: 0;
+  text-align: left;
+  border: none; /* fjerner eventuell gul linje under */
 }
 
 /* justér body-padding for total topphøyde */
