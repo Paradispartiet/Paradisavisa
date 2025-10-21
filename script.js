@@ -49,7 +49,7 @@ function loadNotiser() {
 
       // dynamisk fart basert på tekstlengde
       const totalLength = innhold.textContent.length;
-      const speed = Math.max(20, totalLength / 4);
+      const speed = Math.max(10, totalLength / 4);
       innhold.style.animationDuration = `${speed}s`;
 
       // start animasjonen
