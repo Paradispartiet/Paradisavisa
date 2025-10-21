@@ -541,3 +541,22 @@ article h3 {
     grid-template-columns: 1fr;
   }
 }
+/* === FAST SVART TEKST PÅ GUL BAKGRUNN === */
+.notisbånd,
+.tittellinje {
+  color: #000 !important;
+}
+
+.notisbånd a,
+.notisbånd strong,
+.tittellinje a,
+.tittellinje strong {
+  color: #000 !important;
+  text-decoration: none;
+}
+
+.notisbånd a:hover,
+.tittellinje a:hover {
+  color: #222 !important;
+  text-decoration: underline;
+}
