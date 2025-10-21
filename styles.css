@@ -68,17 +68,17 @@ body.loaded .notisinnhold {
   color: var(--yellow);
   text-decoration: underline;
 }
-/* === TITTELLINJE – FAST, GUL MED SORT TEKST, LITT HØYERE === */
+/* === TITTELLINJE – FAST, GUL MED SORT TEKST, PERFEKT SENTRERT === */
 .tittellinje {
-  position: fixed;       
-  top: 1.6rem;            /* rett under notisbåndet */
+  position: fixed;
+  top: 1.7rem;            /* litt lenger ned fra notisbåndet */
   left: 0;
   width: 100%;
   z-index: 9998;
   background: #f6c800;    /* gul flate */
   text-align: left;
-  padding: 0.6rem 1.6rem 0.65rem; /* mer luft oppe og nede */
-  height: 2.8rem;         /* høyere linje */
+  padding: 0.7rem 1.6rem 0.75rem; /* mer luft oppe og nede */
+  height: 3rem;           /* høyere linje */
   border: none;
   box-shadow: none;
   margin: 0;
@@ -86,20 +86,19 @@ body.loaded .notisinnhold {
 
 .tittellinje h1 {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.35rem;     /* større skrift */
+  font-size: 1.35rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: #000 !important; /* tvungen kullsort tekst */
+  color: #000 !important; /* kullsort tekst */
   letter-spacing: 1.8px;
   margin: 0;
   line-height: 1.6rem;
 }
 
-/* justér body-padding for ny høyde */
+/* justér body-padding for ny totalhøyde */
 body {
-  padding-top: 5.2rem;
+  padding-top: 5.4rem;
 }
-
 /* === SEKSJONSTITLER === */
 .seksjonstittel {
   color: var(--yellow);
