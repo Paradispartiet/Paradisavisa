@@ -68,6 +68,33 @@ body.loaded .notisinnhold {
   color: var(--yellow);
   text-decoration: underline;
 }
+/* === TITTELLINJE – GUL, SVART TEKST, FLUSH MOT NOTISBÅND === */
+.tittellinje {
+  position: sticky;
+  top: 0;                 /* legg helt øverst i flowen */
+  z-index: 998;
+  background: #f6c800;    /* gul flate */
+  text-align: left;
+  padding: 0.25rem 1.4rem 0.3rem;
+  height: 1.9rem;
+  border: none;
+  box-shadow: none;
+  margin: -1px 0 0 0;     /* overlapper 1px for å fjerne enhver synlig «skillelinje» */
+}
+
+.tittellinje h1 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #000;            /* kullsort tekst */
+  letter-spacing: 1.8px;
+  margin: 0;
+  line-height: 1.4rem;
+}
+
+/* Total topphøyde (notisbånd + tittellinje) */
+body { padding-top: 3.8rem; }
 
 /* === HEADER === */
 .avis-header {
@@ -305,35 +332,6 @@ article h1, article h2, article h3 {
   font-size: 1rem;
   border-top: 1px solid #222;
   padding-top: 1.5rem;
-}
-/* === TITTELLINJE – GUL MED SORT TEKST, UDEN SKILLE === */
-.tittellinje {
-  position: sticky;
-  top: 0; /* legger seg direkte under notisbåndet uten sort linje mellom */
-  z-index: 998;
-  background: #f6c800; /* klar gul bakgrunn */
-  text-align: left;
-  padding: 0.25rem 1.4rem 0.3rem; /* tynn høyde */
-  height: 1.9rem;
-  border: none;          /* ingen kantlinje */
-  box-shadow: none;      /* ingen skygge */
-  margin-top: 0;         /* ingen avstand til notisbåndet */
-}
-
-.tittellinje h1 {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: #000; /* kullsort tekst */
-  letter-spacing: 1.8px;
-  margin: 0;
-  line-height: 1.4rem;
-}
-
-/* kompensasjon for total topphøyde */
-body {
-  padding-top: 3.8rem;
 }
 
 /* === MOBILJUSTERING AV NOTISBÅND + TITTELLINJE === */
