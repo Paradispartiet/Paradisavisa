@@ -78,5 +78,13 @@
     </p>
   </footer>
 
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(reg => console.log('✅ Service worker registrert:', reg.scope))
+    .catch(err => console.error('❌ Feil ved registrering:', err));
+}
+</script>
+  
 </body>
 </html>
