@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nyhetstittel | Paradisavisa</title>
+
+  <meta name="description" content="Kort ingress eller beskrivelse av nyheten.">
+  <meta property="og:title" content="Nyhetstittel | Paradisavisa">
+  <meta property="og:description" content="Kort ingress eller beskrivelse av nyheten.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Paradisavisa">
+
+  <link rel="icon" href="../ikon-paradis.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+<a href="../index.html" class="tilbake-link">← Til forsiden</a>
+
+<article>
+  <h1>Nyhetstittel</h1>
+  <p class="ingress">Kort ingress – to til tre linjer som oppsummerer saken.</p>
+
+  <img src="../Bilder/nyhet.jpg" alt="Beskrivende bildetekst" class="flyt-bilde">
+
+  <p>Første avsnitt. Nyheten presenteres kort og konkret, med fokus på fakta og kontekst.</p>
+  <p>Videre tekst som utdyper saken og viser bakgrunn eller reaksjoner.</p>
+
+  <div class="factbox">
+    <button class="toggle-btn" onclick="toggleBox('nyhet-fakta')">Vis fakta</button>
+    <div id="nyhet-fakta" class="factbox-content">
+      <h3>Fakta</h3>
+      <p>Kort faktainformasjon eller tall som utdyper saken.</p>
+    </div>
+  </div>
+
+  <a href="../index.html" class="tilbake-link nederst">← Til forsiden</a>
+</article>
+
+<footer class="site-footer">
+  <p>© 2025 Paradisavisa</p>
+  <p>
+    <a href="https://paradispartiet.github.io/Paradispartiet" target="_blank">Paradispartiet</a> ·
+    <a href="https://paradispartiet.github.io/Teorien-om-lyset" target="_blank">Teorien om lyset</a>
+  </p>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
