@@ -227,3 +227,95 @@ article h3 {
   article { max-width: 90%; font-size: 1.05rem; line-height: 1.7; }
   .ingress { font-size: 1.1rem; }
 }
+/* === NOTISGRID / TAVLE === */
+.notisgrid-container {
+  max-width: 1100px;
+  margin: 3.5rem auto;
+  padding: 0 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.notisgrid-container h2 {
+  color: var(--yellow);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 1.4px;
+}
+
+/* GRIDEN */
+.notisgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--yellow) 0 1px,
+    transparent 1px 100%
+  ),
+  repeating-linear-gradient(
+    180deg,
+    var(--yellow) 0 1px,
+    transparent 1px 100%
+  );
+  background-size: 260px 220px;
+  padding: 1rem;
+  border: 2px solid var(--yellow);
+  border-radius: 8px;
+}
+
+/* RUTENE */
+.notis-rute {
+  background: #0a0a0a;
+  border: 2px solid var(--yellow);
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem;
+  color: #eee;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notis-rute:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 12px rgba(255, 214, 0, 0.25);
+}
+
+/* ULIKE STØRRELSER */
+.notis-rute.liten { grid-row: span 1; min-height: 180px; }
+.notis-rute.mellom { grid-row: span 2; min-height: 260px; }
+.notis-rute.stor { grid-row: span 3; min-height: 340px; }
+
+/* HEADER */
+.notis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.notis-kategori {
+  color: var(--yellow);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.notis-dato {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+/* TEKST */
+.notis-rute p {
+  font-size: 0.95rem;
+  color: #ddd;
+  line-height: 1.55;
+}
+
+/* MOBIL */
+@media (max-width: 700px) {
+  .notisgrid {
+    grid-template-columns: 1fr;
+    background: none;
+  }
+}
