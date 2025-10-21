@@ -120,9 +120,6 @@ body.loaded .notisinnhold {
   margin: 0;
 }
 
-/* justér topp-padding for total høyde (notisbånd + tittel + header) */
-body { padding-top: 5.6rem; }  /* juster ±0.2rem
-}
 /* === SEKSJONSTITLER === */
 .seksjonstittel {
   color: var(--yellow);
