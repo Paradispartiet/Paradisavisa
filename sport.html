@@ -15,14 +15,40 @@
 
   <link rel="icon" href="ikon-paradis.png">
   <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* 🟡 Fast tittelbjelke under notisbåndet */
+    .sport-banner {
+      position: fixed;
+      top: 2.3rem; /* rett under notisbåndet */
+      left: 0;
+      width: 100%;
+      background: var(--yellow);
+      color: #000;
+      text-align: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      padding: 0.5rem 0;
+      z-index: 9998; /* rett under notisbåndet */
+      border-bottom: 1px solid #222;
+    }
+
+    /* Skyv resten av siden litt ned */
+    body {
+      padding-top: 5rem;
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- 🟡 Notisbånd for sport -->
+  <!-- 🟡 Notisbånd -->
   <div class="notisbånd">
     <div class="notisinnhold"></div>
   </div>
+
+  <!-- 🟡 Gul tittelbjelke følger notisbåndet -->
+  <div class="sport-banner">SPORT</div>
 
   <!-- 🟡 Til forsiden øverst -->
   <a href="index.html" class="tilbake-link" style="margin-left:1rem;">← Til forsiden</a>
@@ -33,9 +59,9 @@
     <p class="avis-tagline">Objektivt sett, fra vår synsvinkel</p>
   </header>
 
-  <!-- 🟡 Seksjonstittel -->
+  <!-- 🟡 Seksjon -->
   <section id="sport">
-    <h2 class="seksjonstittel">Sport</h2>
+    <h2 class="seksjonstittel">Siste sportssaker</h2>
     <div id="sportshjul-grid"></div>
   </section>
 
