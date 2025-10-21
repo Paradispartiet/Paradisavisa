@@ -144,3 +144,10 @@ function escapeHtml(str) {
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[s])
   );
 }
+
+/* ---------- Faktaboks ---------- */
+function toggleBox(id) {
+  const box = document.getElementById(id);
+  if (!box) return;
+  box.style.display = (box.style.display === "block") ? "none" : "block";
+}
