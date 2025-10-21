@@ -170,7 +170,6 @@ body {
   margin: 0 0.6rem 0.9rem;
   color: var(--muted);
 }
-}
 
 /* === MOBILJUSTERING === */
 @media (max-width: 600px) {
@@ -297,23 +296,51 @@ body {
   text-decoration: underline;
 }
 
-/* === ARTIKKELSTIL === */
+/* === ARTIKKELSTIL – STØRRE OG SMALERE === */
 article {
-  max-width: 750px;      /* gjør teksten smalere */
-  margin: 2rem auto;     /* sentrerer og gir luft */
-  font-size: 1.1rem;     /* større tekst */
-  line-height: 1.7;      /* bedre lesbarhet */
-  padding: 0 1.5rem;     /* litt innrykk på mobil */
+  max-width: 680px;
+  margin: 3rem auto;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  padding: 0 1.2rem;
+  color: var(--text);
 }
 
 article p {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
-article h1, article h2, article h3 {
-  line-height: 1.3;
-  margin-top: 1.6rem;
+article h2 {
+  font-size: 1.6rem;
+  margin-top: 1.8rem;
+  color: #fff;
 }
+
+article h3 {
+  font-size: 1.25rem;
+  margin-top: 1.4rem;
+  color: var(--yellow);
+}
+
+.ingress {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #ddd;
+  margin-bottom: 1.6rem;
+}
+
+/* === MOBILJUSTERING AV ARTIKKELSTIL === */
+@media (max-width: 600px) {
+  article {
+    max-width: 90%;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  .ingress {
+    font-size: 1.1rem;
+  }
+}
+  
 /* === TILBAKE-TIL-FORSIDEN-LENKE === */
 .tilbake-link {
   display: inline-block;
