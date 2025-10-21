@@ -68,7 +68,7 @@ body.loaded .notisinnhold {
   color: var(--yellow);
   text-decoration: underline;
 }
-/* === TITTELLINJE – FAST, GUL MED SORT TEKST, TYDELIGERE HØYDE === */
+/* === TITTELLINJE – FAST, GUL MED SORT TEKST, LITT HØYERE === */
 .tittellinje {
   position: fixed;       
   top: 1.6rem;            /* rett under notisbåndet */
@@ -77,8 +77,8 @@ body.loaded .notisinnhold {
   z-index: 9998;
   background: #f6c800;    /* gul flate */
   text-align: left;
-  padding: 0.45rem 1.6rem 0.55rem; /* litt mer luft oppe og nede */
-  height: 2.4rem;         /* høyere linje */
+  padding: 0.6rem 1.6rem 0.65rem; /* mer luft oppe og nede */
+  height: 2.8rem;         /* høyere linje */
   border: none;
   box-shadow: none;
   margin: 0;
@@ -86,40 +86,18 @@ body.loaded .notisinnhold {
 
 .tittellinje h1 {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.25rem;     /* litt større */
+  font-size: 1.35rem;     /* større skrift */
   font-weight: 900;
   text-transform: uppercase;
-  color: #000000;         /* kullsort tekst */
+  color: #000 !important; /* tvungen kullsort tekst */
   letter-spacing: 1.8px;
   margin: 0;
-  line-height: 1.5rem;
+  line-height: 1.6rem;
 }
 
 /* justér body-padding for ny høyde */
 body {
-  padding-top: 4.9rem;
-}
-
-/* Total topphøyde (notisbånd + tittellinje) */
-body { padding-top: 3.8rem; }
-
-/* === HEADER === */
-.avis-header {
-  display: flex; flex-direction: column; align-items: center;
-  padding: 1rem 1rem 0.4rem;
-  text-align: center;
-  background: linear-gradient(to bottom, #000, #0a0a0a);
-}
-.avis-logo {
-  font-size: 3rem; font-weight: 900;
-  letter-spacing: 2px; color: var(--yellow);
-  margin-bottom: 0.1rem;
-}
-.avis-tagline {
-  font-size: 0.95rem; font-style: italic;
-  background: linear-gradient(90deg, #ffdc64, #f6c800, #e6b428, #f6c800);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  padding-top: 5.2rem;
 }
 
 /* === SEKSJONSTITLER === */
