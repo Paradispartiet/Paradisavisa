@@ -25,17 +25,18 @@ body {
   overflow: hidden;
   white-space: nowrap;
   background: #000;
-  border-bottom: 2px solid var(--yellow);
+  border: 1px solid var(--yellow); /* 🟡 gul linje rundt hele notisbåndet */
   color: #eee;
   font-size: 0.95rem;
   padding: 0.4rem 0;
   z-index: 9999;
+  box-sizing: border-box; /* gjør at rammen ikke utvider feltet */
 }
 
 .notisinnhold {
   display: inline-block;
   white-space: nowrap;
-  animation: ticker 160s linear infinite;  /* 🟡 Fast fart – 25 sekunder per runde */
+  animation: ticker 160s linear infinite; /* rolig fart */
   animation-play-state: paused;
 }
 
@@ -305,17 +306,18 @@ article h1, article h2, article h3 {
   border-top: 1px solid #222;
   padding-top: 1.5rem;
 }
-/* === TITTELLINJE – GUL, SVART TEKST, EKSTRA TYNN === */
+/* === TITTELLINJE – GUL MED SORT TEKST, UDEN SKILLE === */
 .tittellinje {
   position: sticky;
-  top: 1.9rem; /* rett under notisbåndet */
+  top: 0; /* legger seg direkte under notisbåndet uten sort linje mellom */
   z-index: 998;
   background: #f6c800; /* klar gul bakgrunn */
   text-align: left;
-  padding: 0.25rem 1.4rem 0.3rem; /* lav høyde, tynn stripe */
+  padding: 0.25rem 1.4rem 0.3rem; /* tynn høyde */
   height: 1.9rem;
-  border: none;
-  box-shadow: none;
+  border: none;          /* ingen kantlinje */
+  box-shadow: none;      /* ingen skygge */
+  margin-top: 0;         /* ingen avstand til notisbåndet */
 }
 
 .tittellinje h1 {
@@ -323,16 +325,17 @@ article h1, article h2, article h3 {
   font-size: 1.1rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: #000; /* sort tekst */
+  color: #000; /* kullsort tekst */
   letter-spacing: 1.8px;
   margin: 0;
-  line-height: 1.4rem; /* sentrert vertikalt */
+  line-height: 1.4rem;
 }
 
-/* justér body-padding for lav høyde */
+/* kompensasjon for total topphøyde */
 body {
   padding-top: 3.8rem;
 }
+
 /* === MOBILJUSTERING AV NOTISBÅND + TITTELLINJE === */
 @media (max-width: 600px) {
 
@@ -398,4 +401,22 @@ body {
     margin: 0.8rem 0 1.5rem;
     display: inline-block;
   }
+}
+/* === ENS FARGE MELLOM NOTISBÅND OG TITTELLINJE === */
+.notisbånd {
+  background: #000;
+  border-bottom: none;  /* ingen linje mellom felt */
+  color: #eee;
+}
+
+.notisinnhold strong {
+  color: #f6c800; /* samme gul som tittellinjen */
+}
+
+.notisinnhold a:hover {
+  color: #f6c800;
+}
+
+.notisinnhold span {
+  margin-right: 2rem;
 }
