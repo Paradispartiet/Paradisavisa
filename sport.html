@@ -3,34 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sport – Paradisavisa</title>
-  <meta name="description" content="Sport og fysisk liv i Paradisavisa – fotball, pingpong og mer.">
+  <title>Sport | Paradisavisa</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Siste nytt fra sportens verden – Paradisavisa.">
+  <meta property="og:title" content="Sport | Paradisavisa">
+  <meta property="og:description" content="Siste nytt fra sportens verden – Paradisavisa.">
+  <meta property="og:image" content="https://paradispartiet.github.io/Paradisavisa/og-image.PNG">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Paradisavisa">
+
   <link rel="icon" href="ikon-paradis.png">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header class="avis-header">
-    <img src="ikon-paradis.png" class="brand-icon" alt="Logo">
-    <div class="brand-text">
-      <h1>PARADISAVISA</h1>
-      <p class="slagord">Objektivt sett, fra vår synsvinkel</p>
-    </div>
+  <!-- 🟡 Notisbånd for sport -->
+  <div class="notisbånd">
+    <div class="notisinnhold"></div>
+  </div>
+
+  <!-- 🟡 Header -->
+  <header class="avis-header" id="top">
+    <a href="index.html" class="avis-logo">PARADISAVISA</a>
+    <p class="avis-tagline">Objektivt sett, fra vår synsvinkel</p>
   </header>
 
-  <!-- Meny -->
-  <nav class="kategori-nav">
-    <a href="nyheter.html">Nyheter</a>
-    <a href="kultur.html">Kultur</a>
-    <a href="sport.html" class="active">Sport</a>
-  </nav>
-
-  <!-- Sportsartikler -->
-  <section class="cards" id="sport">
-    <!-- Artikler fra posts.json med kategori: sport -->
+  <!-- 🟡 Seksjonstittel -->
+  <section id="sport">
+    <h2 class="seksjonstittel">Sport</h2>
+    <div id="sportshjul-grid"></div>
   </section>
 
+  <!-- 🟡 Til forsiden -->
+  <a href="index.html" class="tilbake-link nederst">← Til forsiden</a>
+
+  <!-- 🟡 Footer -->
   <footer class="site-footer">
     <p>© 2025 Paradisavisa</p>
     <p>
@@ -39,6 +48,36 @@
     </p>
   </footer>
 
+  <!-- 🟡 Script -->
   <script src="script.js"></script>
+  <script>
+    // Hent egne sportsnotiser
+    fetch("sport-notiser.json", { cache: "no-store" })
+      .then(r => r.json())
+      .then(items => {
+        const innhold = document.querySelector(".notisinnhold");
+        if (!innhold) return;
+        innhold.innerHTML = "";
+        items.forEach((n, i) => {
+          const span = document.createElement("span");
+          span.innerHTML = `<strong>${n.category}:</strong> ${n.text}`;
+          innhold.appendChild(span);
+          if (i < items.length - 1) {
+            const sep = document.createElement("span");
+            sep.textContent = " • ";
+            sep.style.color = "#666";
+            sep.style.marginRight = "1.5rem";
+            innhold.appendChild(sep);
+          }
+        });
+        innhold.style.animationDuration = "25s";
+        document.body.classList.add("loaded");
+      })
+      .catch(err => console.error("Sport-notiser feilet:", err));
+
+    // Hent sportshjul
+    if (document.getElementById("sportshjul-grid")) loadSportshjul();
+  </script>
+
 </body>
 </html>
