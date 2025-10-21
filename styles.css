@@ -305,31 +305,31 @@ article h1, article h2, article h3 {
   border-top: 1px solid #222;
   padding-top: 1.5rem;
 }
-/* === TITTELLINJE – TYNN SOM VG === */
+/* === TITTELLINJE – GUL, SVART TEKST, EKSTRA TYNN === */
 .tittellinje {
   position: sticky;
   top: 1.9rem; /* rett under notisbåndet */
   z-index: 998;
-  display: flex;
-  align-items: center;
-  background: #000;
-  border-bottom: 1px solid #333; /* tynn linje */
-  padding: 0.35rem 1.2rem;      /* lav høyde */
-  height: 2.1rem;
+  background: #f6c800; /* klar gul bakgrunn */
+  text-align: left;
+  padding: 0.25rem 1.4rem 0.3rem; /* lav høyde, tynn stripe */
+  height: 1.9rem;
+  border: none;
+  box-shadow: none;
 }
 
 .tittellinje h1 {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: #f6c800; /* klar gul */
-  letter-spacing: 1.5px;
+  color: #000; /* sort tekst */
+  letter-spacing: 1.8px;
   margin: 0;
+  line-height: 1.4rem; /* sentrert vertikalt */
 }
 
-/* kompensasjon for lavere høyde */
+/* justér body-padding for lav høyde */
 body {
-  padding-top: 4.1rem;
-}
+  padding-top: 3.8rem;
 }
