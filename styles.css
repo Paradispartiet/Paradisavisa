@@ -69,24 +69,28 @@ body.loaded .notisinnhold {
   text-decoration: underline;
 }
 
-/* === TITTELLINJE OG HEADER – SMELTET TOPP === */
+/* === TITTELLINJE – GUL FLATE, VENSTRESTILT === */
 .tittellinje {
   position: fixed;
   top: 1.7rem; left: 0; width: 100%;
-  background: var(--yellow); color: #000;
+  background: var(--yellow);
+  color: #000;                         /* ← svart tekst */
   text-align: left;
   padding: .65rem 1.6rem .55rem;
   z-index: 9998;
-  border: none;               /* ← ingen streker */
-  box-shadow: none;           /* ← ingen skygger */
+  border: none; box-shadow: none;      /* ← ingen streker midt i banneret */
   margin: 0;
 }
 .tittellinje h1 {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.5rem; font-weight: 900; letter-spacing: 2px;
+  font-size: 1.5rem;
+  font-weight: 900;
   text-transform: uppercase;
-  color: #000 !important;     /* ← tving svart tekst */
-  margin: 0; line-height: 1.6rem; text-align: left;
+  letter-spacing: 2px;
+  color: #000;                         /* ← tving svart tekst */
+  margin: 0;
+  line-height: 1.6rem;
+  text-align: left;
 }
 
 
