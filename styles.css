@@ -157,7 +157,7 @@ body { padding-top: 6.4rem; } /* gir bedre luft mellom topp og første seksjon *
 
 /* === NYHETSHJUL – KORT OG BILDER (UTVIDET HØYDE) === */
 .hjul-card {
-  flex: 0 0 280px;
+  flex: 0 0 260px;
   background: #111;
   border-radius: 8px;
   overflow: hidden;
@@ -165,8 +165,9 @@ body { padding-top: 6.4rem; } /* gir bedre luft mellom topp og første seksjon *
   transition: transform 0.2s ease;
   color: var(--text);
   text-decoration: none;
-  min-height: 400px; /* 🔼 økt totalhøyde */
+  min-height: 400px; /* høyere total, men ikke mer tekst */
 }
+
 
 .hjul-card:hover {
   transform: translateY(-3px);
@@ -174,12 +175,11 @@ body { padding-top: 6.4rem; } /* gir bedre luft mellom topp og første seksjon *
 
 .hjul-card img {
   width: 100%;
-  height: 220px; /* 🔼 høyere bilder */
+  height: 260px; /* større bilde, fyller høyden */
   object-fit: cover;
-  object-position: center center;
+  object-position: center 45%;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  transition: height 0.3s ease;
 }
 
 .hjul-card h3 {
