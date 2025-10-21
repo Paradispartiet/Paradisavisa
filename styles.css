@@ -133,9 +133,10 @@ body.loaded .notisinnhold {
   width: 100%;
   height: 130px;
   object-fit: cover;
-  object-position: top center; /* viser toppen av bildet, ikke midten */
+  object-position: center center; /* standard – midtstilt */
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+}
 }
 .hjul-card h3 {
   font-size: 0.9rem;
