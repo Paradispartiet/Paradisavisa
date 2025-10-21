@@ -48,8 +48,6 @@ function loadNotiser() {
 
       // 🟡 Fast fart: 25 sekunder
       innhold.style.animationDuration = "25s";
-
-      // start animasjonen
       document.body.classList.add("loaded");
     })
     .catch(err => console.error("Notisbånd feilet:", err));
@@ -67,7 +65,8 @@ function loadNyhetshjul() {
       items.forEach(item => {
         grid.innerHTML += `
           <a class="hjul-card" href="${item.url}">
-            <img src="${item.image}" alt="${escapeHtml(item.title)}">
+            <img src="${item.image}" alt="${escapeHtml(item.title)}"
+                 style="object-position:${item.position || 'center'} center;">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
           </a>`;
@@ -88,7 +87,8 @@ function loadSportshjul() {
       items.forEach(item => {
         grid.innerHTML += `
           <a class="hjul-card" href="${item.url}">
-            <img src="${item.image}" alt="${escapeHtml(item.title)}">
+            <img src="${item.image}" alt="${escapeHtml(item.title)}"
+                 style="object-position:${item.position || 'center'} center;">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
           </a>`;
@@ -109,7 +109,8 @@ function loadKulturhjul() {
       items.forEach(item => {
         grid.innerHTML += `
           <a class="hjul-card" href="${item.url}">
-            <img src="${item.image}" alt="${escapeHtml(item.title)}">
+            <img src="${item.image}" alt="${escapeHtml(item.title)}"
+                 style="object-position:${item.position || 'center'} center;">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
           </a>`;
@@ -129,7 +130,8 @@ function loadKommentarer() {
       data.forEach(item => {
         grid.innerHTML += `
           <a class="hjul-card" href="${item.url}">
-            <img src="${item.image}" alt="${escapeHtml(item.title)}">
+            <img src="${item.image}" alt="${escapeHtml(item.title)}"
+                 style="object-position:${item.position || 'center'} center;">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
           </a>`;
