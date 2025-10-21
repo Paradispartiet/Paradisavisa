@@ -33,7 +33,7 @@ body {
 .notisinnhold {
   display: inline-block;
   padding-left: 100%;
-  animation: ticker 330s linear infinite;
+  animation: ticker 550s linear infinite;
   animation-play-state: paused;
 }
 body.loaded .notisinnhold { animation-play-state: running; }
