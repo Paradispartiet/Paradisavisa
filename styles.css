@@ -1,5 +1,5 @@
 :root {
-  --yellow: #f6c800;
+  --yellow: #d9b200;   /* mørkere, roligere gul */
   --bg: #000;
   --text: #eee;
   --muted: #bbb;
@@ -16,24 +16,22 @@ body {
   padding-top: 2.6rem;
 }
 
-/* === NOTISBÅND === */
 .notisbånd {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  background: var(--yellow);      /* 🟡 gul bakgrunn */
-  border: 1px solid #000;         /* svart ramme rundt hele båndet */
-  color: #000;                    /* svart tekst */
-  font-size: 0.95rem;
-  font-weight: 600;
-  padding: 0.4rem 0;
+  top: 0; left: 0; width: 100%;
+  overflow: hidden; white-space: nowrap;
+  background: var(--yellow);
+  color: #000;
+  font-size: .95rem; font-weight: 600;
+  padding: .4rem 0;
   z-index: 9999;
-  box-sizing: border-box;         /* holder rammen på plass */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+  box-sizing: border-box;
+  border: none;               /* ← fjerner streken */
+  box-shadow: none;           /* ← fjerner skygge-linje */
 }
+.notisinnhold strong { color: #000; }
+.notisinnhold a { color: #000; text-decoration: none; }
+.notisinnhold a:hover { color: #222; text-decoration: underline; }
 
 .notisinnhold {
   display: inline-block;
@@ -74,37 +72,33 @@ body.loaded .notisinnhold {
 /* === TITTELLINJE OG HEADER – SMELTET TOPP === */
 .tittellinje {
   position: fixed;
-  top: 1.7rem;           /* rett under notisbåndet */
-  left: 0;
-  width: 100%;
-  background: var(--yellow);   /* samme gule flate */
-  text-align: center;
-  padding: 0.6rem 1rem 0.4rem;
-  height: auto;
-  border: none;
-  box-shadow: none;
+  top: 1.7rem; left: 0; width: 100%;
+  background: var(--yellow); color: #000;
+  text-align: left;
+  padding: .65rem 1.6rem .55rem;
   z-index: 9998;
+  border: none;               /* ← ingen streker */
+  box-shadow: none;           /* ← ingen skygger */
   margin: 0;
 }
-
 .tittellinje h1 {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-size: 1.5rem; font-weight: 900; letter-spacing: 2px;
   text-transform: uppercase;
-  color: #000;
-  letter-spacing: 2px;
-  margin: 0;
-  line-height: 1.6rem;
+  color: #000 !important;     /* ← tving svart tekst */
+  margin: 0; line-height: 1.6rem; text-align: left;
 }
+
 
 /* Headeren ligger i samme flate og har ingen ny bakgrunn */
 .avis-header {
-  background: none;
-  padding: 0.4rem 1rem 0.6rem;
-  text-align: center;
-  border: none;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 0; overflow: hidden;  /* skjul hvis ikke i bruk */
 }
+
 
 .avis-logo {
   color: #000;
@@ -123,8 +117,7 @@ body.loaded .notisinnhold {
 }
 
 /* justér topp-padding for total høyde (notisbånd + tittel + header) */
-body {
-  padding-top: 6.2rem;
+body { padding-top: 5.6rem; }  /* juster ±0.2rem
 }
 /* === SEKSJONSTITLER === */
 .seksjonstittel {
