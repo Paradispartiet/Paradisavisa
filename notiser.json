@@ -1,15 +1,5 @@
 [
   {
-    "category": "Økonomi",
-    "text": "Gullprisen har steget 47 % siden nyttår – sterkeste økning siden 1979, ifølge World Gold Council. Analytikere peker på geopolitisk uro og sviktende tillit til dollaren som hovedårsak.",
-    "date": "2025-10-20"
-  },
-  {
-    "category": "Næringsliv",
-    "text": "L’Oréal kjøper Kerings skjønnhetsavdeling for 47 mrd. kroner – inkludert parfymehuset Creed og Gucci-lisensen. Oppkjøpet styrker L’Oréal som verdens største aktør innen luksuskosmetikk.",
-    "date": "2025-10-20"
-  },
-  {
     "category": "Verden",
     "text": "Japan får sin første kvinnelige statsminister – Sanae Takaichi (64) valgt av nasjonalforsamlingen i Tokyo. Hun varsler økt satsing på økonomisk vekst og et fast grep over pengepolitikken.",
     "date": "2025-10-20"
@@ -89,6 +79,11 @@
   "text": "Norway Chess lanserer en ny «World Championship Tour» med flere disipliner. Turneringen skal samle verdens beste spillere i både klassisk, lyn- og hurtigsjakk i en samlet verdensserie.",
   "date": "2025-10-21"
 },
+    {
+    "category": "Økonomi",
+    "text": "Gullprisen har steget 47 % siden nyttår – sterkeste økning siden 1979, ifølge World Gold Council. Analytikere peker på geopolitisk uro og sviktende tillit til dollaren som hovedårsak.",
+    "date": "2025-10-20"
+  },
   {
     "category": "Europa",
     "text": "Den nye motorveien Via Baltica åpnet i Øst-Europa og binder sammen de baltiske statene med Polen. Prosjektet styrker handel, transport og forsvarsforbindelser i regionen.",
@@ -98,6 +93,11 @@
     "category": "Brasil",
     "text": "Petrobras får grønt lys til å bore etter olje ved munningen av Amazonas. Tillatelsen utløser sterk miljøkritikk i forkant av COP30 i Brasil, der regnskog og havvern står høyt på agendaen.",
     "date": "2025-10-21"
+  },
+  {
+    "category": "Næringsliv",
+    "text": "L’Oréal kjøper Kerings skjønnhetsavdeling for 47 mrd. kroner – inkludert parfymehuset Creed og Gucci-lisensen. Oppkjøpet styrker L’Oréal som verdens største aktør innen luksuskosmetikk.",
+    "date": "2025-10-20"
   },
   {
     "category": "Afrika",
