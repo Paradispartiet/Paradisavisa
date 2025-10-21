@@ -24,13 +24,15 @@ body {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  background: #000;
-  border: 1px solid var(--yellow); /* 🟡 gul linje rundt hele notisbåndet */
-  color: #eee;
+  background: var(--yellow);      /* 🟡 gul bakgrunn */
+  border: 1px solid #000;         /* svart ramme rundt hele båndet */
+  color: #000;                    /* svart tekst */
   font-size: 0.95rem;
+  font-weight: 600;
   padding: 0.4rem 0;
   z-index: 9999;
-  box-sizing: border-box; /* gjør at rammen ikke utvider feltet */
+  box-sizing: border-box;         /* holder rammen på plass */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
 }
 
 .notisinnhold {
@@ -54,20 +56,21 @@ body.loaded .notisinnhold {
 }
 
 .notisinnhold strong {
-  color: var(--yellow);
+  color: #000;              /* svart kategori */
   margin-right: 0.3rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .notisinnhold a {
-  color: inherit;
+  color: #000;              /* svart lenker */
   text-decoration: none;
 }
 
 .notisinnhold a:hover {
-  color: var(--yellow);
+  color: #222;              /* mørkere ved hover */
   text-decoration: underline;
 }
+
 /* === TITTELLINJE – FAST, GUL MED SORT TEKST, PERFEKT SENTRERT === */
 .tittellinje {
   position: fixed;
