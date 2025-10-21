@@ -123,12 +123,16 @@ body {
   padding: 0.6rem 1rem;
   scrollbar-width: none;
 }
+
 .hjul-grid::-webkit-scrollbar,
 #nyhetshjul-grid::-webkit-scrollbar,
 #sportshjul-grid::-webkit-scrollbar,
 #kulturhjul-grid::-webkit-scrollbar,
-#kommentarhjul-grid::-webkit-scrollbar { display: none; }
+#kommentarhjul-grid::-webkit-scrollbar {
+  display: none;
+}
 
+/* === NYHETSHJUL – KORT OG BILDER (UTVIDET HØYDE) === */
 .hjul-card {
   flex: 0 0 260px;
   background: #111;
@@ -138,29 +142,44 @@ body {
   transition: transform 0.2s ease;
   color: var(--text);
   text-decoration: none;
+  min-height: 310px; /* 🔼 økt totalhøyde */
 }
-.hjul-card:hover { transform: translateY(-3px); }
+
+.hjul-card:hover {
+  transform: translateY(-3px);
+}
 
 .hjul-card img {
   width: 100%;
-  height: 180px; /* 🔼 økt høyde */
+  height: 180px; /* 🔼 høyere bilder */
   object-fit: cover;
   object-position: center center;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  transition: height 0.3s ease; /* jevn overgang om du endrer senere */
+  transition: height 0.3s ease;
 }
-}
+
 .hjul-card h3 {
   font-size: 0.9rem;
-  margin: 0.6rem;
+  margin: 0.7rem 0.6rem 0.4rem;
   color: #fff;
 }
+
 .hjul-card p {
   font-size: 0.8rem;
-  margin: 0 0.6rem 0.8rem;
+  margin: 0 0.6rem 0.9rem;
   color: var(--muted);
 }
+}
+
+/* === MOBILJUSTERING === */
+@media (max-width: 600px) {
+  .hjul-card {
+    min-height: 270px; /* litt lavere kort på mobil */
+  }
+  .hjul-card img {
+    height: 140px; /* lavere bildehøyde på mobil */
+  }
 
 /* === DEBATT === */
 .debatt-innlegg {
