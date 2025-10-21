@@ -9,10 +9,10 @@
 /* BASE                                                                */
 /* =================================================================== */
 *{box-sizing:border-box;margin:0;padding:0;}
-html,body{color-scheme:dark;} /* hindrer autokontrast i Safari/iOS */
+html,body{color-scheme:light dark;} /* hindrer autokontrast i Safari/iOS */
 
 /* =================================================================== */
-/* TOPP: NOTISBÅND + TITTELLINJE (LASTES FØR body-farge for å vinne)   */
+/* TOPP: NOTISBÅND + TITTELLINJE                                       */
 /* =================================================================== */
 
 /* Notisbånd */
@@ -35,7 +35,7 @@ body.loaded .notisinnhold{animation-play-state:running;}
 .notisinnhold a{color:#000 !important;text-decoration:none;-webkit-text-fill-color:#000;}
 .notisinnhold a:hover{color:#222 !important;text-decoration:underline;}
 
-/* Tittellinje (venstrestilt) */
+/* Tittellinje */
 .tittellinje{
   position:fixed;top:1.7rem;left:0;width:100%;
   background:var(--yellow) !important;
@@ -51,20 +51,20 @@ body.loaded .notisinnhold{animation-play-state:running;}
   -webkit-text-fill-color:#000;
 }
 
-/* Header – neutraliser alt så den ikke lager hvit tekst/stripe */
+/* Header (nøytral) */
 .avis-header{background:transparent !important;border:none !important;padding:0 !important;margin:0 !important;height:0;overflow:hidden;}
 .avis-header, .avis-header *{color:#000 !important;-webkit-text-fill-color:#000 !important;text-shadow:none !important;}
 
 /* =================================================================== */
-/* Nå kan vi definere body-farge uten å påvirke toppen ved render      */
+/* BODY                                                                */
 /* =================================================================== */
 body{
   font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   background:var(--bg);
   line-height:1.5;
-  padding-top:6.4rem; /* god luft mellom topp og første seksjon */
+  padding-top:6.4rem;
   color:var(--text);
-  transition:color 0s; /* hindrer «blink» ved last */
+  transition:color 0s;
 }
 
 /* =================================================================== */
@@ -91,7 +91,7 @@ body{
 .hjul-card{
   flex:0 0 260px;background:#111;border-radius:8px;overflow:hidden;
   scroll-snap-align:start;transition:transform .2s ease;color:var(--text);
-  text-decoration:none;min-height:400px; /* høyere kort, ikke mer tekst */
+  text-decoration:none;min-height:400px;
 }
 .hjul-card:hover{transform:translateY(-3px);}
 .hjul-card img{
@@ -174,15 +174,27 @@ article h3{font-size:1.25rem;margin-top:1.4rem;color:var(--yellow);}
   .notisbånd{font-size:.85rem;padding:.35rem 0;}
   .tittellinje{top:1.7rem;padding:.25rem 1rem .3rem;}
   .tittellinje h1{font-size:1rem;line-height:1.3rem;letter-spacing:1.4px;}
-  body{padding-top:3.9rem;} /* totalhøyde topp på mobil */
-
+  body{padding-top:3.9rem;}
   article{max-width:90%;font-size:1.05rem;line-height:1.7;}
   .ingress{font-size:1.1rem;}
 }
 
 /* =================================================================== */
-/* EKSTRA SIKKERHETSNETT FOR TOPP                                     */
+/* SAFARI / IOS FIX FOR HVIT TEKST PÅ GUL BAKGRUNN                     */
 /* =================================================================== */
-.notisbånd,.tittellinje,.notisbånd *,.tittellinje *{
-  color:#000 !important;-webkit-text-fill-color:#000 !important;text-shadow:none !important;
+.notisbånd, .tittellinje, .notisbånd *, .tittellinje * {
+  color:#000 !important;
+  -webkit-text-fill-color:#000 !important;
+  text-shadow:none !important;
+  mix-blend-mode:normal !important;
+  isolation:isolate !important;
+  filter:none !important;
+  background:#f6b800 !important;
+}
+@supports (-webkit-overflow-scrolling: touch) {
+  html, body {
+    -webkit-text-size-adjust:100% !important;
+    -webkit-font-smoothing:antialiased !important;
+    color-scheme:light !important;
+  }
 }
