@@ -122,6 +122,12 @@ body.loaded .notisinnhold {
 
 body { padding-top: 6.4rem; } /* gir bedre luft mellom topp og første seksjon */
 
+/* === TVING SORT TEKST I GULE FELT === */
+.notisbånd, .notisbånd * ,
+.tittellinje, .tittellinje * {
+  color: #000 !important;
+}
+
 /* === SEKSJONSTITLER === */
 .seksjonstittel {
   color: var(--yellow);
