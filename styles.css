@@ -431,3 +431,20 @@ article h3 {
     display: inline-block;
   }
 }
+/* === KULTURARTIKKEL – STORT BILDE ØVERST === */
+.artikkel-header img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+  margin-top: 5.4rem; /* justert for notisbånd + tittellinje */
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+  .artikkel-header img {
+    height: 250px;
+    margin-bottom: 1.5rem;
+  }
+}
