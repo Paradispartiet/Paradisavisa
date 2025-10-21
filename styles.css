@@ -400,21 +400,3 @@ article h1, article h2, article h3 {
     display: inline-block;
   }
 }
-/* === ENS FARGE MELLOM NOTISBÅND OG TITTELLINJE === */
-.notisbånd {
-  background: #000;
-  border-bottom: none;  /* ingen linje mellom felt */
-  color: #eee;
-}
-
-.notisinnhold strong {
-  color: #f6c800; /* samme gul som tittellinjen */
-}
-
-.notisinnhold a:hover {
-  color: #f6c800;
-}
-
-.notisinnhold span {
-  margin-right: 2rem;
-}
