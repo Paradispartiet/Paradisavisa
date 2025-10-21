@@ -35,7 +35,7 @@ body {
 .notisinnhold {
   display: inline-block;
   white-space: nowrap;
-  animation: ticker linear infinite;
+  animation: ticker 25s linear infinite;  /* 🟡 Fast fart – 25 sekunder per runde */
   animation-play-state: paused;
 }
 
@@ -49,7 +49,7 @@ body.loaded .notisinnhold {
 }
 
 .notisinnhold span {
-  margin-right: 2rem; /* litt mer luft mellom notiser */
+  margin-right: 2rem; /* luft mellom notiser */
 }
 
 .notisinnhold strong {
