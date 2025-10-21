@@ -36,7 +36,7 @@ body {
 .notisinnhold {
   display: inline-block;
   white-space: nowrap;
-  animation: ticker 160s linear infinite; /* rolig fart */
+  animation: ticker 220s linear infinite; /* rolig fart */
   animation-play-state: paused;
 }
 
