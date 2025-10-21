@@ -46,8 +46,6 @@ function loadNotiser() {
         }
       });
 
-      // 🟡 Fast fart: 25 sekunder
-      innhold.style.animationDuration = "25s";
       document.body.classList.add("loaded");
     })
     .catch(err => console.error("Notisbånd feilet:", err));
