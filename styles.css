@@ -41,7 +41,21 @@ body {
   z-index: 9999;
   box-sizing: border-box;
 }
+.notisinnhold {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 220s linear infinite;
+  animation-play-state: paused;
+}
 
+body.loaded .notisinnhold {
+  animation-play-state: running;
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
 /* =================================================================== */
 /* TITTELLINJE – gjennomsiktig bånd, sort boks med gul ramme           */
 /* =================================================================== */
