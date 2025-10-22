@@ -75,8 +75,7 @@ body{
   border-radius: 0;                 /* ingen avrunding */
   padding: 0.45rem 1.4rem 0.55rem;
   display: inline-block;
-  box-shadow: 0 0 8px rgba(255, 214, 0, 0.25);
-  margin-left: 0;
+  margin-left: 0;                  /* 🟡 helt inntil venstre kant */
 }
 
 /* === TITTELLINJE ================================================== */
