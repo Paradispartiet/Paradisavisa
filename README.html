@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>README | Paradisavisa</title>
+<style>
+  body {
+    background: #000;
+    color: #eee;
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+  h1, h2, h3 { color: #ffd500; margin-top: 2rem; }
+  code, pre {
+    background: #111;
+    color: #ffd500;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+  }
+  pre { display: block; white-space: pre-wrap; word-break: break-word; margin: 1rem 0; }
+  a { color: #ffd500; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th, td { border: 1px solid #333; padding: 0.6rem; text-align: left; }
+  th { background: #111; color: #ffd500; }
+  ul { margin-left: 1.4rem; }
+  .muted { color: #aaa; font-size: 0.9rem; }
+</style>
+</head>
+
+<body>
+<h1>🌑 Paradisavisa</h1>
+
+<p><strong>Paradisavisa</strong> er en ideologisk og samfunnskritisk nettavis bygget som et statisk nettsted på <strong>GitHub Pages</strong>.<br>
+Forsiden (<code>index.html</code>) genererer automatisk nyheter, sport, kultur, kommentarer og debatt fra flere <code>JSON</code>-filer.<br>
+Systemet er lettvekts, raskt, og fullt vedlikeholdbart direkte via GitHub – uten behov for CMS.</p>
+
+<p><em>Dette er en videreutvikling av den opprinnelige versjonen av Paradisavisa, som brukte én samlet <code>posts.json</code>-fil. I dag er innholdet delt opp i flere seksjoner – et “hjul”-system – som gir bedre oversikt og dynamikk.</em></p>
+
+---
+
+<h2>📂 Mappestruktur (oppdatert)</h2>
+
+<pre><code>
+Bilder/
+Maler/
+Nyhetshjul/
+artikler/
+posts/
+
+Kulturhjul.json
+Nyhetshjul.json
+Sportshjul.json
+kommentarer.json
+debatt.json
+notiser.json
+index.html
+styles.css
+script.js
+service-worker.js
+feed.html
+kontakt.html
+nyheter.html
+kultur.html
+sport.html
+notiser.html
+README.html
+</code></pre>
+
+<ul>
+  <li><code>index.html</code> – forsiden med dynamiske hjul og notisbånd</li>
+  <li><code>styles.css</code> – hoveddesign (sort/gul tema, toppfelt, seksjonshjul)</li>
+  <li><code>script.js</code> – henter alle JSON-data og bygger seksjonene</li>
+  <li><code>service-worker.js</code> – cache og offline-funksjon</li>
+  <li><code>Maler/</code> – HTML-maler for nye artikler</li>
+  <li><code>Nyhetshjul/</code> – bilder brukt i forsiden</li>
+  <li><code>artikler/</code> – publiserte artikler (enkeltfiler)</li>
+  <li><code>posts/</code> – eldre struktur (beholdt for bakoverkompatibilitet)</li>
+</ul>
+
+---
+
+<h2>📰 Legge til ny artikkel</h2>
+
+<ol>
+  <li>Lag en ny fil i <code>/artikler/</code>, f.eks.:
+  <pre><code>artikler/2025-10-21-paris-bilfri.html</code></pre></li>
+  <li>Bruk en mal fra <code>Maler/</code> (for eksempel <code>mal-nyhet.html</code> eller <code>mal-kultur.html</code>).</li>
+  <li>Legg artikkelen inn i riktig JSON-fil:
+  <pre><code>{
+  "title": "Paris kutter 500 gater for biler",
+  "excerpt": "Fra motorvei til menneskeby – byen fullfører sitt urbane eksperiment.",
+  "image": "Nyhetshjul/Paris.PNG",
+  "url": "artikler/2025-10-21-paris-bilfri.html",
+  "date": "2025-10-21"
+}</code></pre></li>
+</ol>
+
+<h3>Tips</h3>
+<ul>
+  <li>Husk komma <code>,</code> mellom objektene i JSON-filene.</li>
+  <li>Nyeste artikler vises automatisk øverst (sortert på <code>date</code>).</li>
+  <li>Datoformat: <code>YYYY-MM-DD</code>.</li>
+</ul>
+
+---
+
+<h2>💬 Debatt og kommentarer</h2>
+
+<h3>Debatt</h3>
+<pre><code>{
+  "title": "Debatt: Hvem eier egentlig tiden vår?",
+  "url": "artikler/2025-10-01-tid.html",
+  "author": "Mats Gran",
+  "date": "2025-10-01",
+  "excerpt": "Arbeidslivet tar mer og mer av vår våkne tid. Paradismodellen tilbyr en enkel løsning: felles innsats, fri tid."
+}</code></pre>
+
+<h3>Kommentarer</h3>
+<p>Fil: <code>kommentarer.json</code><br>Vises i eget “kommentarhjul” på forsiden.</p>
+
+---
+
+<h2>🔄 Versjonshåndtering og cache</h2>
+
+<p>Paradisavisa bruker to nivåer av versjonsstyring for å sikre at endringer lastes riktig i nettleseren:</p>
+
+<table>
+<tr><th>Nivå</th><th>Brukes til</th><th>Når du skal endre</th></tr>
+<tr><td><code>?v=</code> i HTML</td><td>Tvinger nettleseren til å hente ny CSS/JS</td><td>Ved små designendringer</td></tr>
+<tr><td><code>const VERSION</code> i <code>service-worker.js</code></td><td>Full cache-reset</td><td>Ved nye filer eller strukturendringer</td></tr>
+</table>
+
+<h3>📋 Anbefalt rutine</h3>
+<ol>
+  <li>Endre <code>?v=</code> når du oppdaterer design eller små detaljer.</li>
+  <li>Endre <code>VERSION</code> i <code>service-worker.js</code> når du legger til nye filer.</li>
+  <li>Etter commit → vent 1–2 minutter → oppdater siden med <strong>Ctrl + F5</strong>.</li>
+</ol>
+
+---
+
+<h2>🧭 Designstandard</h2>
+
+<table>
+<tr><th>Element</th><th>Farge/stil</th><th>Kommentar</th></tr>
+<tr><td>Bakgrunn</td><td>#000</td><td>Hel sort</td></tr>
+<tr><td>Tekst</td><td>#eee</td><td>Lys grå hovedtekst</td></tr>
+<tr><td>Aksent (gul)</td><td>#ffd500</td><td>Klar, ren gul brukt i rammer og lenker</td></tr>
+<tr><td>Font</td><td>Inter</td><td>Sans-serif fra Google Fonts</td></tr>
+<tr><td>Notisbånd</td><td>Sort med gul topp/bunn-linje</td><td>Fast øverst</td></tr>
+<tr><td>Tittellinje</td><td>Sort felt med gul ramme rundt teksten</td><td>PARADISAVISA</td></tr>
+</table>
+
+---
+
+<h2>🧩 HTML-maler</h2>
+
+<table>
+<tr><th>Mal</th><th>Brukes til</th><th>Kjennetegn</th></tr>
+<tr><td><code>mal-nyhet.html</code></td><td>Vanlige nyheter</td><td>Faktaboks + flytende bilde</td></tr>
+<tr><td><code>mal-kommentar.html</code></td><td>Personlige tekster</td><td>Kort ingress i kursiv + signatur</td></tr>
+<tr><td><code>mal-kultur.html</code></td><td>Kulturelle tekster</td><td>Stort toppbilde + reflekterende tone</td></tr>
+<tr><td><code>mal-sport.html</code></td><td>Sportssaker</td><td>Gul SPORT-banner + energisk språk</td></tr>
+</table>
+
+---
+
+<h2>⚙️ Publisering via GitHub Pages</h2>
+
+<ol>
+  <li>Last opp eller rediger filer direkte i GitHub.</li>
+  <li>Trykk <strong>Commit changes</strong>.</li>
+  <li>GitHub Pages oppdaterer automatisk (tar 1–2 min).</li>
+  <li>Sjekk nettstedet:<br><code>https://&lt;brukernavn&gt;.github.io/Paradisavisa/</code></li>
+</ol>
+
+<h3>Hvis oppdateringen ikke vises:</h3>
+<ul>
+  <li>Øk <code>?v=</code>-nummeret i <code>index.html</code>.</li>
+  <li>Eller oppdater <code>VERSION</code> i <code>service-worker.js</code>.</li>
+  <li>Oppdater siden med <strong>Ctrl + F5</strong>.</li>
+</ul>
+
+---
+
+<h2>🧾 Endringslogg</h2>
+<table>
+<tr><th>Dato</th><th>Endring</th></tr>
+<tr><td>2025-10-22</td><td>Ny sort topp + gul ramme rundt tittel, klar gul aksent</td></tr>
+<tr><td>2025-10-21</td><td>Nye JSON-hjul og notisbåndstruktur</td></tr>
+<tr><td>2025-10-20</td><td>Service-worker v2.1.1.16 lagt til</td></tr>
+<tr><td>2025-09-26</td><td>Første struktur for Paradisavisa lansert</td></tr>
+</table>
+
+---
+
+<h2>🧠 Vedlikeholdssammendrag</h2>
+
+<ul>
+  <li>Data ligger i JSON-filer i rotmappen.</li>
+  <li>Forsiden oppdateres automatisk når JSON endres.</li>
+  <li>Artikler legges i <code>/artikler/</code> og lenkes fra riktig JSON.</li>
+  <li>GitHub Pages hoster alt statisk – ingen server nødvendig.</li>
+  <li>Bruk <code>?v=</code> for små endringer, <code>VERSION</code> for større.</li>
+  <li>Gamle filer (<code>posts.json</code>) beholdes for referanse.</li>
+</ul>
+
+<p class="muted">© 2025 Paradisavisa · En ideologisk og samfunnskritisk nettavis<br>
+<em>Objektivt sett, fra vår synsvinkel.</em></p>
+</body>
+</html>
