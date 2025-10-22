@@ -1,5 +1,5 @@
 :root {
-  --yellow: #FFD600;   /* 💛 AHA-gul – fast hovedfarge */
+  --yellow: #FFEB00;   /* 💛 AHA-gul – fast hovedfarge */
   --bg: #000;
   --text: #eee;
   --muted: #bbb;
@@ -80,6 +80,9 @@ body.loaded .notisinnhold {
 /* TITTEL (PARADISAVISA)                                               */
 /* =================================================================== */
 .tittellinje h1 {
+  margin-left: 0;
+  margin-right: auto;
+  transform: translateX
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
