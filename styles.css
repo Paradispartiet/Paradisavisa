@@ -29,11 +29,11 @@ body {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  background: #000;                 /* sort felt */
+  background: #000;                 
   border-top: 4px solid var(--yellow);
   border-bottom: 4px solid var(--yellow);
   color: #eee;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   padding: 0.4rem 0;
   z-index: 9999;
 }
@@ -60,44 +60,55 @@ body.loaded .notisinnhold {
   font-weight: 600;
 }
 
+.notisinnhold span { margin-right: 2rem; }
+
+.notisinnhold a {
+  color: var(--yellow);
+  text-decoration: none;
+}
+.notisinnhold a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
 /* =================================================================== */
 /* TITTELLINJE – fullstendig gjennomsiktig bakgrunn                    */
 /* =================================================================== */
 .tittellinje {
   position: fixed;
-  top: 1.5rem;                      /* 🔸 løftet litt for å overlappe notisbåndet */
+  top: 1.5rem;
   left: 0;
   width: 100%;
-  background: transparent;          /* helt gjennomsiktig */
+  background: transparent;       /* helt gjennomsiktig */
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 0.7rem 1.6rem 0.75rem;
   z-index: 9998;
   border: none;
-  pointer-events: none;             /* lar notisbåndet fortsatt være klikkbart */
+  pointer-events: none;
 }
 
 /* =================================================================== */
 /* TITTEL (PARADISAVISA) – sort boks med gul ramme                     */
 /* =================================================================== */
 .tittellinje h1 {
-  pointer-events: auto;             /* tittelen kan fortsatt velges/kopieres */
+  pointer-events: auto;
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: var(--yellow);             /* gul tekst */
-  background: #000;                 /* sort boks inni rammen */
+  color: var(--yellow);
+  background: #000;                  /* sort inni rammen */
   letter-spacing: 2px;
   line-height: 1.7rem;
-  border: 4px solid var(--yellow);  /* tynn gul ramme */
+  border: 4px solid var(--yellow);   /* tynn gul ramme */
   border-radius: 0;
   padding: 0.45rem 1.4rem 0.55rem;
   display: inline-block;
   margin-left: 0;
   margin-right: auto;
-  transform: translateX(-1.8rem);   /* helt venstre, overlapper kanten */
+  transform: translateX(-1.8rem);    /* helt venstre */
   box-shadow: none;
 }
 
@@ -156,9 +167,7 @@ article h3 {
   color: var(--yellow);
 }
 
-article p {
-  margin-bottom: 1.4rem;
-}
+article p { margin-bottom: 1.4rem; }
 
 .ingress {
   font-size: 1.2rem;
@@ -197,11 +206,8 @@ article p {
   padding: 0.8rem 1rem 1rem;
   border-top: 1px solid rgba(255, 214, 0, 0.15);
 }
-
 .site-footer a {
   color: var(--yellow);
   text-decoration: none;
 }
-.site-footer a:hover {
-  text-decoration: underline;
-}
+.site-footer a:hover { text-decoration: underline; }
