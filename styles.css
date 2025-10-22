@@ -1,5 +1,5 @@
 :root{
-  --yellow:#ffd500;   /* klar og ren gul */
+  --yellow: #FFD600;   /* 💛 AHA-gul – fast hovedfarge */
   --bg:#000;
   --text:#eee;
   --muted:#bbb;
@@ -72,28 +72,50 @@ body.loaded .notisinnhold{animation-play-state:running;}
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: var(--yellow);
-  background: #000;                /* svart kjerne inni boksen */
+  color: #FFD600;              /* samme gulfarge som AHA */
+  background: #000;            /* svart kjerne inni boksen */
   letter-spacing: 2px;
   margin: 0;
   line-height: 1.7rem;
-  border: 4px solid var(--yellow); /* tydelig gul ramme */
-  border-radius: 6px;              /* mykere kanter */
+  border: 8px solid #FFD600;   /* dobbel tykkelse på rammen */
+  border-radius: 8px;          /* litt mykere hjørner */
   padding: 0.45rem 1.4rem 0.55rem;
   display: inline-block;
-  box-shadow: 0 0 8px rgba(255, 214, 0, 0.25); /* svak glød */
+  box-shadow: 0 0 8px rgba(255, 214, 0, 0.25);
+  margin-left: 0;              /* helt venstre */
+}
+/* =================================================================== */
+/* FELLES SEKSJONSTITLER – PARADISAVISA STANDARD                      */
+/* =================================================================== */
+
+/* Grunnstil for alle overskrifter i seksjoner */
+.seksjonstittel,
+.debatt-tittel,
+.kommentar-tittel,
+.kultur-tittel,
+.sport-tittel {
+  color: var(--yellow);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #000;
+  border: 2px solid var(--yellow);
+  border-radius: 4px;
+  display: inline-block;
+  padding: 0.4rem 1rem 0.45rem;
+  margin: 0.8rem 1rem 0.5rem;
+  letter-spacing: 1px;
 }
 
-/* =================================================================== */
-/* SEKSJONSTITLER                                                      */
-/* =================================================================== */
-.seksjonstittel{
-  color:var(--yellow);
-  font-size:1rem;font-weight:700;
-  padding:0.3rem 1rem;
-  text-transform:uppercase;
-  background:#000;
-  border:none;
+/* Hover-effekt: subtil glød */
+.seksjonstittel:hover,
+.debatt-tittel:hover,
+.kommentar-tittel:hover,
+.kultur-tittel:hover,
+.sport-tittel:hover {
+  box-shadow: 0 0 8px rgba(255, 214, 0, 0.25);
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
 }
 
 /* =================================================================== */
