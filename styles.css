@@ -32,8 +32,8 @@ body {
   overflow: hidden;
   white-space: nowrap;
   background: #000;
-  border-top: 8px solid #FFD600;     /* klar, ren gul */
-  border-bottom: 8px solid #FFD600;  /* like tykk som tittellinje */
+  border-top: 8px solid #FFEB00;     /* 🌕 klar, ren gul */
+  border-bottom: 8px solid #FFEB00;  /* like tykk som tittellinje */
   border-radius: 0;
   color: #eee;
   font-size: 0.95rem;
@@ -41,6 +41,7 @@ body {
   z-index: 9999;
   box-sizing: border-box;
 }
+
 .notisinnhold {
   display: inline-block;
   white-space: nowrap;
@@ -56,23 +57,24 @@ body.loaded .notisinnhold {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
+
 /* =================================================================== */
 /* TITTELLINJE – gjennomsiktig bånd, sort boks med gul ramme           */
 /* =================================================================== */
 .tittellinje {
   position: fixed;
-  top: 2.2rem;                      /* ligger rett under notisbåndet */
+  top: 2.2rem;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.0);   /* helt gjennomsiktig bakgrunn */
-  backdrop-filter: blur(4px);       /* subtil glass-effekt */
+  background: rgba(0, 0, 0, 0.0);   /* helt gjennomsiktig */
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 0.7rem 1.6rem 0.75rem;
   z-index: 9998;
   border: none;
-  border-radius: 0;                 /* skarpe hjørner */
+  border-radius: 0;
   box-shadow: none;
 }
 
@@ -82,11 +84,11 @@ body.loaded .notisinnhold {
 .tittellinje h1 {
   margin-left: 0;
   margin-right: auto;
-  transform: translateX(-1.6rem);   /* 🟡 skyver boksen helt til venstre */
+  transform: translateX(-1.6rem);   /* flytter boksen helt til venstre */
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: #FFEB00;                   /* klarere gul */
+  color: #FFEB00;                   /* samme gulfarge som notisbåndet */
   background: #000;                 /* sort boks */
   letter-spacing: 2px;
   line-height: 1.7rem;
@@ -94,7 +96,7 @@ body.loaded .notisinnhold {
   border-radius: 0;                 /* ingen avrunding */
   padding: 0.45rem 1.4rem 0.55rem;
   display: inline-block;
-  box-shadow: none;                 /* ingen glød, ren stil */
+  box-shadow: none;                 /* ingen glød */
 }
 
   border-top:2px solid var(--yellow);
