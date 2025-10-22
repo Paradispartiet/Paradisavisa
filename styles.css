@@ -97,7 +97,7 @@ body.loaded .notisinnhold { animation-play-state: running; }
   background: #000;
   letter-spacing: 2px;
   line-height: 1.7rem;
-    border: 0 4px 4px 4px solid var(--yellow); /* ingen toppkant */
+  border: 4px solid var(--yellow);
   border-top: none;
   border-radius: 0;
   padding: 0.45rem 1.4rem 0.55rem;
