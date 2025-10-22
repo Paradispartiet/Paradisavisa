@@ -82,20 +82,18 @@ body.loaded .notisinnhold {
 .tittellinje h1 {
   margin-left: 0;
   margin-right: auto;
-  transform: translateX
+  transform: translateX(-1.6rem);   /* 🟡 skyver boksen helt til venstre */
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: #FFD600;                   /* AHA-gul tekst */
+  color: #FFEB00;                   /* klarere gul */
   background: #000;                 /* sort boks */
   letter-spacing: 2px;
-  margin: 0;
   line-height: 1.7rem;
-  border: 8px solid #FFD600;        /* samme tykkelse som notisbåndet */
+  border: 8px solid #FFEB00;        /* samme tykkelse som notisbåndet */
   border-radius: 0;                 /* ingen avrunding */
   padding: 0.45rem 1.4rem 0.55rem;
   display: inline-block;
-  margin-left: 0;                   /* helt inntil venstre kant */
   box-shadow: none;                 /* ingen glød, ren stil */
 }
 
