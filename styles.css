@@ -29,13 +29,14 @@ body {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  background: #000;                 
+  background: #000;
   border-top: 4px solid var(--yellow);
   border-bottom: 4px solid var(--yellow);
   color: #eee;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   padding: 0.4rem 0;
   z-index: 9999;
+  box-sizing: border-box;
 }
 
 .notisinnhold {
@@ -44,10 +45,7 @@ body {
   animation: ticker 220s linear infinite;
   animation-play-state: paused;
 }
-
-body.loaded .notisinnhold {
-  animation-play-state: running;
-}
+body.loaded .notisinnhold { animation-play-state: running; }
 
 @keyframes ticker {
   0% { transform: translateX(0); }
@@ -59,9 +57,7 @@ body.loaded .notisinnhold {
   margin-right: 0.3rem;
   font-weight: 600;
 }
-
 .notisinnhold span { margin-right: 2rem; }
-
 .notisinnhold a {
   color: var(--yellow);
   text-decoration: none;
@@ -72,14 +68,14 @@ body.loaded .notisinnhold {
 }
 
 /* =================================================================== */
-/* TITTELLINJE – fullstendig gjennomsiktig bakgrunn                    */
+/* TITTELLINJE – gjennomsiktig bakgrunn                                */
 /* =================================================================== */
 .tittellinje {
   position: fixed;
   top: 1.5rem;
   left: 0;
   width: 100%;
-  background: transparent;       /* helt gjennomsiktig */
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -90,30 +86,29 @@ body.loaded .notisinnhold {
 }
 
 /* =================================================================== */
-/* TITTEL (PARADISAVISA) – sort boks med gul ramme                     */
+/* TITTEL (PARADISAVISA)                                               */
 /* =================================================================== */
 .tittellinje h1 {
   pointer-events: auto;
-  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
   color: var(--yellow);
-  background: #000;                  /* sort inni rammen */
+  background: #000;
   letter-spacing: 2px;
   line-height: 1.7rem;
-  border: 4px solid var(--yellow);   /* tynn gul ramme */
+  border: 4px solid var(--yellow);
   border-radius: 0;
   padding: 0.45rem 1.4rem 0.55rem;
   display: inline-block;
   margin-left: 0;
   margin-right: auto;
-  transform: translateX(-1.8rem);    /* helt venstre */
+  transform: translateX(-1.8rem);
   box-shadow: none;
 }
 
 /* =================================================================== */
-/* SEKSJONSTITLER – standard stil                                      */
+/* SEKSJONSTITLER                                                      */
 /* =================================================================== */
 .seksjonstittel,
 .debatt-tittel,
@@ -132,7 +127,6 @@ body.loaded .notisinnhold {
   margin: 0.8rem 1rem 0.5rem;
   letter-spacing: 1px;
 }
-
 .seksjonstittel:hover,
 .debatt-tittel:hover,
 .kommentar-tittel:hover,
@@ -141,6 +135,59 @@ body.loaded .notisinnhold {
   box-shadow: 0 0 8px rgba(255, 214, 0, 0.25);
   transform: translateY(-1px);
   transition: all 0.2s ease;
+}
+
+/* =================================================================== */
+/* NYHETSHJUL                                                          */
+/* =================================================================== */
+.hjul-grid,
+#nyhetshjul-grid,
+#sportshjul-grid,
+#kulturhjul-grid,
+#kommentarhjul-grid {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 12px;
+  padding: 0.6rem 1rem;
+  scrollbar-width: none;
+}
+.hjul-grid::-webkit-scrollbar,
+#nyhetshjul-grid::-webkit-scrollbar,
+#sportshjul-grid::-webkit-scrollbar,
+#kulturhjul-grid::-webkit-scrollbar,
+#kommentarhjul-grid::-webkit-scrollbar { display: none; }
+
+.hjul-card {
+  flex: 0 0 260px;
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  transition: transform 0.2s ease;
+  color: var(--text);
+  text-decoration: none;
+  min-height: 340px;
+}
+.hjul-card:hover { transform: translateY(-3px); }
+
+.hjul-card img {
+  width: 100%;
+  height: 180px;              /* 🔸 lavere bilder */
+  object-fit: cover;
+  object-position: center 45%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.hjul-card h3 {
+  font-size: 0.9rem;
+  margin: 0.7rem 0.6rem 0.4rem;
+  color: #fff;
+}
+.hjul-card p {
+  font-size: 0.8rem;
+  margin: 0 0.6rem 0.9rem;
+  color: var(--muted);
 }
 
 /* =================================================================== */
@@ -154,21 +201,17 @@ article {
   padding: 0 1.2rem;
   color: var(--text);
 }
-
 article h2 {
   font-size: 1.6rem;
   margin-top: 1.8rem;
   color: #fff;
 }
-
 article h3 {
   font-size: 1.25rem;
   margin-top: 1.4rem;
   color: var(--yellow);
 }
-
 article p { margin-bottom: 1.4rem; }
-
 .ingress {
   font-size: 1.2rem;
   line-height: 1.7;
