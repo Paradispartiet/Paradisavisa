@@ -7,7 +7,7 @@
 }
 
 /* =================================================================== */
-/* NOTISBÅND – tynnere linjer, klar gul, gjennomsiktig bakgrunn        */
+/* NOTISBÅND – sort felt med tynnere gule linjer                      */
 /* =================================================================== */
 .notisbånd {
   position: fixed;
@@ -16,8 +16,8 @@
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  background: transparent;           /* helt gjennomsiktig bakgrunn */
-  border-top: 4px solid #FFEB00;     /* 🌕 klar gul, tynnere linjer */
+  background: #000;                 /* 🖤 helsort bånd, ikke gjennomsiktig */
+  border-top: 4px solid #FFEB00;    /* 🌕 klar gul, tynnere linjer */
   border-bottom: 4px solid #FFEB00;
   border-radius: 0;
   color: #eee;
@@ -45,14 +45,14 @@ body.loaded .notisinnhold {
 }
 
 /* =================================================================== */
-/* TITTELLINJE – full transparens, bare sort bak tittelen              */
+/* TITTELLINJE – gjennomsiktig, bare sort boks rundt tittelen          */
 /* =================================================================== */
 .tittellinje {
   position: fixed;
-  top: 1.8rem;                       /* ligger rett under notisbåndet */
+  top: 1.8rem;
   left: 0;
   width: 100%;
-  background: transparent;           /* helt gjennomsiktig */
+  background: transparent;           /* gjennomsiktig */
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -69,15 +69,15 @@ body.loaded .notisinnhold {
 .tittellinje h1 {
   margin-left: 0;
   margin-right: auto;
-  transform: translateX(-1.6rem);   /* skyver helt til venstre */
+  transform: translateX(-1.6rem);   /* skyver boksen helt til venstre */
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
   color: #FFEB00;                   /* klar gul tekst */
-  background: #000;                 /* sort boks – for kontrast mot gjennomsiktig bakgrunn */
+  background: #000;                 /* sort boks bak tittelen */
   letter-spacing: 2px;
   line-height: 1.7rem;
-  border: 4px solid #FFEB00;        /* tynnere gul ramme */
+  border: 4px solid #FFEB00;        /* tynnere ramme */
   border-radius: 0;
   padding: 0.45rem 1.4rem 0.55rem;
   display: inline-block;
