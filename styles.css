@@ -24,15 +24,60 @@ body{
 /* =================================================================== */
 /* NOTISBÅND – sort, kun gul topp og bunnlinje                         */
 /* =================================================================== */
-.notisbånd{
-  position:fixed;
-  top:0;left:0;width:100%;
-  overflow:hidden;white-space:nowrap;
-  background:var(--header-bg);
-  color:var(--text);
-  font-size:.95rem;font-weight:600;
-  padding:.4rem 0;
-  z-index:9999;box-sizing:border-box;
+/* === NOTISBÅND ==================================================== */
+.notisbånd {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background: #000;
+  border-top: 8px solid var(--yellow);     /* samme tykkelse som tittellinjerammen */
+  border-bottom: 8px solid var(--yellow);
+  border-radius: 6px;
+  color: #eee;
+  font-size: 0.95rem;
+  padding: 0.4rem 0;
+  z-index: 9999;
+  box-sizing: border-box;
+}
+
+/* === TITTELLINJE ================================================== */
+.tittellinje {
+  position: fixed;
+  top: 2.2rem;                     /* 🔸 justert for perfekt linjeføring */
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);  /* halvtransparent bakgrunn */
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.7rem 1.6rem 0.75rem;
+  z-index: 9998;
+  border: none;
+  box-shadow: none;
+  border-radius: 6px;
+}
+
+/* === TITTEL (PARADISAVISA) ======================================= */
+.tittellinje h1 {
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #FFD600;
+  background: #000;
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1.7rem;
+  border: 8px solid #FFD600;      /* samme tykkelse som notisbåndets linjer */
+  border-radius: 8px;
+  padding: 0.45rem 1.4rem 0.55rem;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(255, 214, 0, 0.25);
+  margin-left: 0;
+}
 
   border-top:2px solid var(--yellow);
   border-bottom:2px solid var(--yellow);
@@ -56,36 +101,37 @@ body.loaded .notisinnhold{animation-play-state:running;}
 /* =================================================================== */
 .tittellinje {
   position: fixed;
-  top: 1.8rem;                     /* tett på notisbåndet */
+  top: 2.2rem;                     /* 🔸 justert for perfekt linjeføring */
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.4);  /* halvtransparent sort */
-  backdrop-filter: blur(4px);      /* subtil glass-effekt */
+  background: rgba(0, 0, 0, 0.4);  /* halvtransparent bakgrunn */
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0.6rem 1.6rem 0.7rem;
+  padding: 0.7rem 1.6rem 0.75rem;
   z-index: 9998;
   border: none;
-  box-shadow: 0 -1px 0 var(--yellow); /* gul linje sømløst mellom felt */
-  border-radius: 3px;              /* myk overgang i hjørnene */
+  box-shadow: none;
+  border-radius: 6px;
 }
-..tittellinje h1 {
+
+.tittellinje h1 {
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: #FFD600;              /* AHA-gul */
-  background: #000;            /* helsvart kjerne */
+  color: #FFD600;
+  background: #000;
   letter-spacing: 2px;
   margin: 0;
   line-height: 1.7rem;
-  border: 8px solid #FFD600;   /* tykk gul ramme */
-  border-radius: 8px;          /* myke hjørner */
+  border: 8px solid #FFD600;      /* samme tykkelse som notisbåndets linjer */
+  border-radius: 8px;
   padding: 0.45rem 1.4rem 0.55rem;
   display: inline-block;
   box-shadow: 0 0 8px rgba(255, 214, 0, 0.25);
   margin-left: 0;
-}             /* helt venstre */
+}
 }
 /* =================================================================== */
 /* FELLES SEKSJONSTITLER – PARADISAVISA STANDARD                      */
