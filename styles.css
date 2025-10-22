@@ -7,22 +7,7 @@
 }
 
 /* =================================================================== */
-/* BASE                                                                */
-/* =================================================================== */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { color-scheme: light dark; }
-
-body {
-  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.5;
-  padding-top: 6.6rem;
-  transition: color 0s;
-}
-
-/* =================================================================== */
-/* NOTISBÅND                                                           */
+/* NOTISBÅND – tynnere linjer, klar gul, gjennomsiktig bakgrunn        */
 /* =================================================================== */
 .notisbånd {
   position: fixed;
@@ -31,15 +16,16 @@ body {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
-  background: #000;
-  border-top: 8px solid #FFEB00;     /* 🌕 klar, ren gul */
-  border-bottom: 8px solid #FFEB00;  /* like tykk som tittellinje */
+  background: transparent;           /* helt gjennomsiktig bakgrunn */
+  border-top: 4px solid #FFEB00;     /* 🌕 klar gul, tynnere linjer */
+  border-bottom: 4px solid #FFEB00;
   border-radius: 0;
   color: #eee;
   font-size: 0.95rem;
   padding: 0.4rem 0;
   z-index: 9999;
   box-sizing: border-box;
+  will-change: transform;
 }
 
 .notisinnhold {
@@ -59,15 +45,14 @@ body.loaded .notisinnhold {
 }
 
 /* =================================================================== */
-/* TITTELLINJE – gjennomsiktig bånd, sort boks med gul ramme           */
+/* TITTELLINJE – full transparens, bare sort bak tittelen              */
 /* =================================================================== */
 .tittellinje {
   position: fixed;
-  top: 2.2rem;
+  top: 1.8rem;                       /* ligger rett under notisbåndet */
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.0);   /* helt gjennomsiktig */
-  backdrop-filter: blur(4px);
+  background: transparent;           /* helt gjennomsiktig */
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -84,19 +69,19 @@ body.loaded .notisinnhold {
 .tittellinje h1 {
   margin-left: 0;
   margin-right: auto;
-  transform: translateX(-1.6rem);   /* flytter boksen helt til venstre */
+  transform: translateX(-1.6rem);   /* skyver helt til venstre */
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: #FFEB00;                   /* samme gulfarge som notisbåndet */
-  background: #000;                 /* sort boks */
+  color: #FFEB00;                   /* klar gul tekst */
+  background: #000;                 /* sort boks – for kontrast mot gjennomsiktig bakgrunn */
   letter-spacing: 2px;
   line-height: 1.7rem;
-  border: 8px solid #FFEB00;        /* samme tykkelse som notisbåndet */
-  border-radius: 0;                 /* ingen avrunding */
+  border: 4px solid #FFEB00;        /* tynnere gul ramme */
+  border-radius: 0;
   padding: 0.45rem 1.4rem 0.55rem;
   display: inline-block;
-  box-shadow: none;                 /* ingen glød */
+  box-shadow: none;
 }
 
   border-top:2px solid var(--yellow);
