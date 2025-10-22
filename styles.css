@@ -65,22 +65,24 @@ body.loaded .notisinnhold {
 /* =================================================================== */
 .tittellinje {
   position: fixed;
-  top: 1.8rem;
+  top: 1.5rem;                      /* 🔸 løftet litt for å overlappe notisbåndet */
   left: 0;
   width: 100%;
-  background: transparent;           /* helt gjennomsiktig */
+  background: transparent;          /* helt gjennomsiktig */
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 0.7rem 1.6rem 0.75rem;
   z-index: 9998;
   border: none;
+  pointer-events: none;             /* lar notisbåndet fortsatt være klikkbart */
 }
 
 /* =================================================================== */
 /* TITTEL (PARADISAVISA) – sort boks med gul ramme                     */
 /* =================================================================== */
 .tittellinje h1 {
+  pointer-events: auto;             /* tittelen kan fortsatt velges/kopieres */
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-size: 1.4rem;
   font-weight: 900;
@@ -95,7 +97,7 @@ body.loaded .notisinnhold {
   display: inline-block;
   margin-left: 0;
   margin-right: auto;
-  transform: translateX(-1.6rem);   /* helt venstre */
+  transform: translateX(-1.8rem);   /* helt venstre, overlapper kanten */
   box-shadow: none;
 }
 
