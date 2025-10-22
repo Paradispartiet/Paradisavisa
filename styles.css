@@ -58,7 +58,6 @@ body{
   padding: 0.7rem 1.6rem 0.75rem;
   z-index: 9998;
   border: none;
-  box-shadow: none;
   border-radius: 0;                 /* skarpe hjørner */
 }
 
