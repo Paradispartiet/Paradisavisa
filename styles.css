@@ -32,7 +32,7 @@ body {
   background: #000;
   border-top: 4px solid var(--yellow);
   border-bottom: 4px solid var(--yellow);
-  color: var(--yellow);
+  color: color: #eee;;
   font-size: 1.1rem;
   padding: 0.4rem 0;
   z-index: 9999;
