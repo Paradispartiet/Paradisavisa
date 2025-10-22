@@ -1,27 +1,29 @@
-:root{
+:root {
   --yellow: #FFD600;   /* 💛 AHA-gul – fast hovedfarge */
-  --bg:#000;
-  --text:#eee;
-  --muted:#bbb;
-  --header-bg:#000;
+  --bg: #000;
+  --text: #eee;
+  --muted: #bbb;
+  --header-bg: #000;
 }
 
 /* =================================================================== */
 /* BASE                                                                */
 /* =================================================================== */
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{color-scheme:light dark;}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { color-scheme: light dark; }
 
-body{
-  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.5;
-  padding-top:6.6rem;
-  transition:color 0s;
+body {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding-top: 6.6rem;
+  transition: color 0s;
 }
 
-/* === NOTISBÅND ==================================================== */
+/* =================================================================== */
+/* NOTISBÅND                                                           */
+/* =================================================================== */
 .notisbånd {
   position: fixed;
   top: 0;
@@ -31,8 +33,8 @@ body{
   white-space: nowrap;
   background: #000;
   border-top: 8px solid #FFD600;     /* klar, ren gul */
-  border-bottom: 8px solid #FFD600;
-  border-radius: 0;                  /* fjerner myke kanter */
+  border-bottom: 8px solid #FFD600;  /* like tykk som tittellinje */
+  border-radius: 0;
   color: #eee;
   font-size: 0.95rem;
   padding: 0.4rem 0;
@@ -40,14 +42,16 @@ body{
   box-sizing: border-box;
 }
 
-/* === TITTELLINJE ================================================== */
+/* =================================================================== */
+/* TITTELLINJE – gjennomsiktig bånd, sort boks med gul ramme           */
+/* =================================================================== */
 .tittellinje {
   position: fixed;
-  top: 2.2rem;
+  top: 2.2rem;                      /* ligger rett under notisbåndet */
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.0;
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.0);   /* helt gjennomsiktig bakgrunn */
+  backdrop-filter: blur(4px);       /* subtil glass-effekt */
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -55,59 +59,27 @@ body{
   z-index: 9998;
   border: none;
   border-radius: 0;                 /* skarpe hjørner */
+  box-shadow: none;
 }
 
-/* === TITTEL (PARADISAVISA) ======================================= */
+/* =================================================================== */
+/* TITTEL (PARADISAVISA)                                               */
+/* =================================================================== */
 .tittellinje h1 {
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
-  color: #FFD600;                   /* samme AHA-gul */
-  background: #000;
+  color: #FFD600;                   /* AHA-gul tekst */
+  background: #000;                 /* sort boks */
   letter-spacing: 2px;
   margin: 0;
   line-height: 1.7rem;
-  border: 8px solid #FFD600;        /* identisk tykkelse som notisbånd */
+  border: 8px solid #FFD600;        /* samme tykkelse som notisbåndet */
   border-radius: 0;                 /* ingen avrunding */
   padding: 0.45rem 1.4rem 0.55rem;
   display: inline-block;
-  margin-left: 0;                  /* 🟡 helt inntil venstre kant */
-}
-
-/* === TITTELLINJE ================================================== */
-.tittellinje {
-  position: fixed;
-  top: 2.2rem;                     /* 🔸 justert for perfekt linjeføring */
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.4);  /* halvtransparent bakgrunn */
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0.7rem 1.6rem 0.75rem;
-  z-index: 9998;
-  border: none;
-  box-shadow: none;
-  border-radius: 6px;
-}
-
-/* === TITTEL (PARADISAVISA) ======================================= */
-.tittellinje h1 {
-  font-size: 1.4rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: #FFD600;
-  background: #000;
-  letter-spacing: 2px;
-  margin: 0;
-  line-height: 1.7rem;
-  border: 8px solid #FFD600;      /* samme tykkelse som notisbåndets linjer */
-  border-radius: 8px;
-  padding: 0.45rem 1.4rem 0.55rem;
-  display: inline-block;
-  box-shadow: 0 0 8px rgba(255, 214, 0, 0.25);
-  margin-left: 0;
+  margin-left: 0;                   /* helt inntil venstre kant */
+  box-shadow: none;                 /* ingen glød, ren stil */
 }
 
   border-top:2px solid var(--yellow);
