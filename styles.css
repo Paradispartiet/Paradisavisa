@@ -329,3 +329,11 @@ a:hover {
   color: #fff;
   text-decoration: underline;
 }
+/* =================================================================== */
+/* DEBATTSEKSJON – fjern understrek på lenker                         */
+/* =================================================================== */
+.debatt-seksjon a,
+.debatt-seksjon a:visited,
+.debatt-seksjon a:hover {
+  text-decoration: none !important;
+}
