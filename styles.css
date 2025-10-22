@@ -269,3 +269,52 @@ a.tilbake-link:hover {
   color: #fff;
   text-decoration: underline;
 }
+/* =================================================================== */
+/* DEBATT-SEKSJON – justert layout                                     */
+/* =================================================================== */
+
+.debatt-innlegg {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* to i bredden */
+  gap: 14px;
+  padding: 1rem 1rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.debatt-innlegg .card {
+  background: #111;
+  border-radius: 6px;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+  color: #fff;                    /* hvit tekst */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.debatt-innlegg .card:hover {
+  transform: translateY(-3px);
+}
+
+.debatt-innlegg .card h3 {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.debatt-innlegg .card p {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* gjør kortene (hjulene) litt mindre */
+#debatt-hjul .hjul-card {
+  flex: 0 0 220px;
+  min-height: 280px;
+}
+
+@media (max-width: 700px) {
+  .debatt-innlegg {
+    grid-template-columns: 1fr;
+  }
+}
