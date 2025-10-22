@@ -255,3 +255,17 @@ article p { margin-bottom: 1.4rem; }
   text-decoration: none;
 }
 .site-footer a:hover { text-decoration: underline; }
+/* =================================================================== */
+/* TIL FORSIDEN-LENKE – GUL SOM ØVRIG DESIGN                          */
+/* =================================================================== */
+a.tilbake-link {
+  color: var(--yellow);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+a.tilbake-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
