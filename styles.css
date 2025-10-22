@@ -54,15 +54,18 @@ body.loaded .notisinnhold{animation-play-state:running;}
 /* =================================================================== */
 /* TITTELLINJE – sort med gul kant rundt teksten                       */
 /* =================================================================== */
-.tittellinje{
-  position:fixed;
-  top:2.6rem;
-  left:0;width:100%;
-  background:var(--header-bg);
-  text-align:center;
-  padding:.9rem 0;
-  z-index:9998;
-  border:none;
+.tittellinje {
+  position: fixed;
+  top: 2.6rem;
+  left: 0;
+  width: 100%;
+  background: var(--header-bg);
+  display: flex;               /* bruker flex for presis justering */
+  align-items: center;         /* vertikalt sentrert */
+  justify-content: flex-start; /* venstrestilt tekst */
+  padding: 0.9rem 1.6rem;      /* jevnt innrykk fra venstre */
+  z-index: 9998;
+  border: none;
 }
 .tittellinje h1{
   display:inline-block;
