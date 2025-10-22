@@ -318,3 +318,14 @@ a.tilbake-link:hover {
     grid-template-columns: 1fr;
   }
 }
+/* =================================================================== */
+/* DEBATT – LENKER I BUNNEN                                           */
+/* =================================================================== */
+a {
+  color: var(--yellow);
+  text-decoration: none;
+}
+a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
