@@ -11,7 +11,7 @@
     "title": "Den friksjonsløse hjernen",
     "excerpt": "Hvordan teknologiens friksjonsfrie løfter gjør tanken tregere – og hjernen mindre tilstede.",
     "image": "Nyhetshjul/AI-hjerne.PNG",
-    "position": "center",
+"position": "center top"
     "url": "artikler/2025-10-19-den-friksjonslose-hjernen.html",
     "date": "2025-10-19"
   },
@@ -19,7 +19,8 @@
     "title": "Isbjørnene tar over forlatt forskningsstasjon",
     "excerpt": "En flokk isbjørner har gjort en gammel sovjetisk værstasjon til sitt hjem.",
     "image": "Nyhetshjul/Isbjornene.PNG",
-    "position": "50% 20%",
+    "position": "center top"
+
     "url": "artikler/2025-10-18-iskoljudsjinoya.html",
     "date": "2025-10-18"
   }
