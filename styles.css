@@ -117,16 +117,16 @@ body.loaded .notisinnhold { animation-play-state: running; }
 .kultur-tittel,
 .sport-tittel {
   color: var(--yellow);
-  font-size: 1rem;
+  font-size: 0.85rem;        /* 🔸 mindre tekst */
   font-weight: 700;
   text-transform: uppercase;
   background: #000;
   border: 2px solid var(--yellow);
   border-radius: 4px;
   display: inline-block;
-  padding: 0.4rem 1rem 0.45rem;
-  margin: 0.8rem 1rem 0.5rem;
-  letter-spacing: 1px;
+  padding: 0.25rem 0.8rem 0.3rem; /* 🔸 tynnere padding */
+  margin: 0.6rem 1rem 0.4rem;
+  letter-spacing: 0.8px;
 }
 .seksjonstittel:hover,
 .debatt-tittel:hover,
@@ -181,9 +181,11 @@ body.loaded .notisinnhold { animation-play-state: running; }
   border-top-right-radius: 8px;
 }
 .hjul-card h3 {
-  font-size: 0.9rem;
-  margin: 0.7rem 0.6rem 0.4rem;
-  color: #fff;
+  font-size:1.1rem;         /* 🔸 større tekst */
+  font-weight:700;          /* tydeligere vekt */
+  line-height:1.4;
+  margin:.7rem .6rem .4rem;
+  color:#fff;
 }
 .hjul-card p {
   font-size: 0.8rem;
