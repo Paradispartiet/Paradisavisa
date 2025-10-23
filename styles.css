@@ -192,6 +192,14 @@ body.loaded .notisinnhold { animation-play-state: running; }
   margin: 0 0.6rem 0.9rem;
   color: var(--muted);
 }
+#nyhetshjul2 {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+  padding: 1rem 0;
+}
 
 /* =================================================================== */
 /* ARTIKLER OG BILDER                                                  */
