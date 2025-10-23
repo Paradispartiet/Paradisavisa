@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 🟡 Deretter hjul og seksjoner
     if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
+    if (document.getElementById("nyhetshjul2-grid")) loadNyhetshjul2();
     if (document.getElementById("sportshjul-grid")) loadSportshjul();
     if (document.getElementById("kulturhjul-grid")) loadKulturhjul();
     if (document.getElementById("kommentarhjul-grid")) loadKommentarer();
@@ -71,6 +72,26 @@ function loadNyhetshjul() {
       });
     })
     .catch(err => console.error("Nyhetshjul feilet:", err));
+}
+
+function loadNyhetshjul2() {
+  fetch("Nyhetshjul2.json", { cache: "no-store" })
+    .then(r => r.json())
+    .then(items => {
+      const grid = document.getElementById("nyhetshjul2-grid");
+      if (!items.length || !grid) return;
+      grid.innerHTML = "";
+      items.sort((a, b) => new Date(b.date) - new Date(a.date));
+      items.forEach(item => {
+        grid.innerHTML += `
+          <a class="hjul-card" href="${item.url}">
+            <img src="${item.image}" alt="${escapeHtml(item.title)}">
+            <h3>${escapeHtml(item.title)}</h3>
+            <p>${escapeHtml(item.excerpt)}</p>
+          </a>`;
+      });
+    })
+    .catch(err => console.error("Nyhetshjul2 feilet:", err));
 }
 
 /* ---------- Sportshjul ---------- */
