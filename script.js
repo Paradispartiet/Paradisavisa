@@ -85,7 +85,8 @@ function loadNyhetshjul2() {
       items.forEach(item => {
         grid.innerHTML += `
           <a class="hjul-card" href="${item.url}">
-            <img src="${item.image}" alt="${escapeHtml(item.title)}">
+            <img src="${item.image}" alt="${escapeHtml(item.title)}"
+                 style="object-position:${item.position || 'center center'};">
             <h3>${escapeHtml(item.title)}</h3>
             <p>${escapeHtml(item.excerpt)}</p>
           </a>`;
@@ -93,7 +94,6 @@ function loadNyhetshjul2() {
     })
     .catch(err => console.error("Nyhetshjul2 feilet:", err));
 }
-
 /* ---------- Sportshjul ---------- */
 function loadSportshjul() {
   fetch("Sportshjul.json", { cache: "no-store" })
