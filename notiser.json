@@ -1,13 +1,13 @@
 [
+{
+  "category": "Klima",
+  "text": "Greenpeace har brakt Norge inn for menneskerettsdomstolen i Strasbourg. Søksmålet gjelder nye olje- og gassfelt som organisasjonen mener bryter retten til et levelig klima.",
+  "date": "2025-10-24"
+},
   {
-    "category": "Verden",
-    "text": "Japan får sin første kvinnelige statsminister – Sanae Takaichi (64) valgt av nasjonalforsamlingen i Tokyo. Hun varsler økt satsing på økonomisk vekst og et fast grep over pengepolitikken.",
-    "date": "2025-10-20"
-  },
-  {
-  "category": "Sport",
-  "text": "Alexander Kristoff avslutter en 20 år lang karriere som proffsyklist. Han legger opp som Norges mestvinnende rytter med 98 seire – blant dem Milano–Sanremo og Flandern rundt.",
-  "date": "2025-10-21"
+  "category": "Helse",
+  "text": "Universitetssykehuset Nord-Norge styrer mot et underskudd på rundt 250 millioner kroner i år. Sykehuset peker på høye lønnsutgifter og økt pasientpress som hovedårsaker.",
+  "date": "2025-10-24"
 },
   {
     "category": "Økonomi",
@@ -20,10 +20,10 @@
     "date": "2025-10-20"
   },
   {
-    "category": "Vitenskap",
-    "text": "To kometer, Lemmon og SWAN, passerer Jorden denne uken – et sjeldent dobbeltfenomen synlig med det blotte øye. Beste tid å se dem er ved solnedgang mot vesthimmelen.",
-    "date": "2025-10-20"
-  },
+  "category": "Norge",
+  "text": "Nav har behandlet årets etteroppgjør for uføretrygd og tillegg. Ordningen sikrer at utbetalingene samsvarer med fjorårets inntekter.",
+  "date": "2025-10-21"
+},
   {
     "category": "Miljø",
     "text": "EUs miljøministre samles for å forberede unionens felles posisjon før klimatoppmøtet COP30 i Brasil. Målet er å enes om nye utslippsmål og større klimabistand til utviklingsland.",
