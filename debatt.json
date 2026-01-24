@@ -1,14 +1,16 @@
 [
-{
-  "title": "Kulturens påståtte forfall",
-  "date": "2026-01-23",
-  "url": "artikler/toje-kultur-forfall.html",
-  "type": "debatt"
-},
-{
-  "title": "Frykt som voldens forsterker: når litteratur kveler orientering",
-  "date": "2026-01-23",
-  "url": "artikler/frykt-som-voldens-forsterker.html",
-  "type": "debatt"
-}
+  {
+    "title": "Kulturens påståtte forfall",
+    "author": "Mats Gran",
+    "date": "2026-01-23",
+    "excerpt": "Toje proklamerer kultirens endelikt og hevder vi lever i en tid som vil glemme, men Norge har brukt de siste fem og sytti årene på nettopp det motsatte.",
+    "url": "artikler/toje-kultur-forfall.html"
+  },
+  {
+    "title": "Frykt som voldens forsterker: når litteratur kveler orientering",
+    "author": "Mats Gran",
+    "date": "2026-01-23",
+    "excerpt": "Når frykt blir voldens siste triumf, er det fordi den slår i orienteringen og gjør voldens konsekvenser varige også etter handlingen.",
+    "url": "artikler/frykt-som-voldens-forsterker.html"
+  }
 ]
