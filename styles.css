@@ -409,3 +409,12 @@ a:hover {
 #debatt .btn:hover::after {
   transform: translateX(3px);
 }
+
+
+.arkiv-merke {
+  font-size: 0.85rem;
+  color: #bbb;
+  border-left: 3px solid var(--yellow);
+  padding-left: 0.75rem;
+  margin: 0.5rem 0 1.5rem;
+}
