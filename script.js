@@ -166,13 +166,27 @@ function loadDebatt() {
     .then(items => {
       const container = document.querySelector(".debatt-innlegg");
       if (!container || !items.length) return;
+
       container.innerHTML = "";
+
       items.forEach(innlegg => {
         container.innerHTML += `
-          <a class="card" href="${innlegg.url}">
-            <h3>${escapeHtml(innlegg.title)}</h3>
-            <p class="debatt-meta">${escapeHtml(innlegg.author)} · ${escapeHtml(innlegg.date)}</p>
-            <p class="debatt-excerpt">${escapeHtml(innlegg.excerpt.split(' ').slice(0, 14).join(' '))}...</p>
+          <a class="card debatt-card" href="${innlegg.url}">
+            ${innlegg.image ? `
+              <img class="debatt-img"
+                   src="${innlegg.image}"
+                   alt="${escapeHtml(innlegg.title)}">
+            ` : ""}
+
+            <div class="debatt-content">
+              <h3>${escapeHtml(innlegg.title)}</h3>
+              <p class="debatt-meta">
+                ${escapeHtml(innlegg.author)} · ${escapeHtml(innlegg.date)}
+              </p>
+              <p class="debatt-excerpt">
+                ${escapeHtml(innlegg.excerpt.split(' ').slice(0, 16).join(' '))}...
+              </p>
+            </div>
           </a>`;
       });
     })
