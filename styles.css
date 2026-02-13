@@ -379,6 +379,25 @@ a:hover {
 .debatt-seksjon a:hover {
   text-decoration: none !important;
 }
+
+
+.debatt-card {
+  display: flex;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.debatt-img {
+  width: 140px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.debatt-content {
+  flex: 1;
+}
+
 /* =================================================================== */
 /* SKRIV INNLEGG – høyrejustert i debattseksjonen                      */
 /* =================================================================== */
