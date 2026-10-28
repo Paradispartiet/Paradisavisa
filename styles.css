@@ -39,6 +39,16 @@ body {
   box-sizing: border-box;
 }
 
+/* Tekstfeltet slutter før pauseknappen, så tekst ikke skjules bak knappen. */
+.notis-visning {
+  width: calc(100% - 78px);
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+.notis-visning:focus-within .notisinnhold {
+  animation-play-state: paused;
+}
 /* To identiske sekvenser gir en sømløs ticker uten hopp ved omstart.
    Varigheten måles i JavaScript for jevn hastighet uansett tekstlengde. */
 .notisinnhold {
@@ -98,7 +108,16 @@ body {
 }
 .notis-pause:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
+  /* Ingen automatisk bevegelse. Alle notiser kan leses ved å bla vannrett. */
+  .notis-visning {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--yellow) #222;
+  }
   .notisinnhold.is-running { animation: none; transform: none; }
+  .notis-sekvens[aria-hidden="true"] { display: none; }
   .notis-pause { display: none; }
 }
 
