@@ -63,8 +63,10 @@ body {
   align-items: center;
   gap: 1.4rem;
   margin-right: 0;
+  padding-right: 1.4rem; /* naturlig avstand mellom siste og første notis */
 }
-.notisinnhold .notis-sekvens > span { margin-right: 0; }
+.notisinnhold .notis-sekvens > span,
+.notisinnhold .notis-tekst { margin-right: 0; }
 .notisinnhold .notis-skille {
   color: #858585;
   font-size: .85em;
