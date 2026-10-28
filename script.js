@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  initAvisaMenu();
   // 🟡 Last notisbåndet først
   loadNotiser().then(() => {
     setTimeout(() => {
@@ -14,6 +15,45 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector(".debatt-innlegg")) loadDebatt();
   });
 });
+
+/* ---------- Navigasjon – tilgjengelig også med tastatur og berøring ---------- */
+function initAvisaMenu() {
+  const headers = document.querySelectorAll(".avis-topp");
+  headers.forEach(header => {
+    const button = header.querySelector(".nav-toggle");
+    const nav = header.querySelector(".avisa-menu");
+    if (!button || !nav) return;
+
+    function setOpen(open) {
+      nav.hidden = !open;
+      button.setAttribute("aria-expanded", String(open));
+      button.setAttribute("aria-label", open ? "Lukk meny" : "Åpne meny");
+      const glyph = button.querySelector(".nav-toggle-icon");
+      if (glyph) glyph.textContent = open ? "×" : "☰";
+    }
+
+    setOpen(false);
+    button.hidden = false;
+    document.documentElement.classList.add("avis-meny-klar");
+
+    button.addEventListener("click", () => setOpen(nav.hidden));
+
+    nav.addEventListener("click", e => {
+      if (e.target.closest("a")) setOpen(false);
+    });
+
+    document.addEventListener("click", e => {
+      if (!header.contains(e.target)) setOpen(false);
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && !nav.hidden) {
+        setOpen(false);
+        button.focus();
+      }
+    });
+  });
+}
 
 /* ---------- Notisbånd: rolig, jevn og sømløs bevegelse ---------- */
 function loadNotiser() {
