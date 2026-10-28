@@ -73,7 +73,7 @@ body {
 }
 .notisbånd.is-paused .notisinnhold { animation-play-state: paused; }
 @media (hover: hover) and (pointer: fine) {
-  .notisbånd:hover .notisinnhold { animation-play-state: paused; }
+  .notisinnhold:hover { animation-play-state: paused; }
 }
 .notis-pause {
   position: absolute;
