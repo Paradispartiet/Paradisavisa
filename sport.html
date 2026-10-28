@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="Paradisavisa">
 
   <link rel="icon" href="ikon-paradis.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=26">
 
   <style>
     /* 🟡 Fast tittelbjelke under notisbåndet */
@@ -78,35 +78,10 @@
   </footer>
 
   <!-- 🟡 Script -->
-  <script src="script.js"></script>
-  <script>
-    // Hent egne sportsnotiser
-    fetch("sport-notiser.json", { cache: "no-store" })
-      .then(r => r.json())
-      .then(items => {
-        const innhold = document.querySelector(".notisinnhold");
-        if (!innhold) return;
-        innhold.innerHTML = "";
-        items.forEach((n, i) => {
-          const span = document.createElement("span");
-          span.innerHTML = `<strong>${n.category}:</strong> ${n.text}`;
-          innhold.appendChild(span);
-          if (i < items.length - 1) {
-            const sep = document.createElement("span");
-            sep.textContent = " • ";
-            sep.style.color = "#666";
-            sep.style.marginRight = "1.5rem";
-            innhold.appendChild(sep);
-          }
-        });
-        innhold.style.animationDuration = "25s";
-        document.body.classList.add("loaded");
-      })
-      .catch(err => console.error("Sport-notiser feilet:", err));
+  <script src="script.js?v=25"></script>
+  <!-- Sport-notisene og sportshjulet lastes nå via felles script.js.
+       Unngår at to skript overskriver samme notisbånd. -->
 
-    // Hent sportshjul
-    if (document.getElementById("sportshjul-grid")) loadSportshjul();
-  </script>
 
 </body>
 </html>

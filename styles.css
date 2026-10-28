@@ -30,26 +30,95 @@ body {
   overflow: hidden;
   white-space: nowrap;
   background: #000;
-  border-top: 4px solid var(--yellow);
-  border-bottom: 4px solid var(--yellow);
-  color: color: #eee;;
+  border-top: 2px solid var(--yellow);
+  border-bottom: 2px solid var(--yellow);
+  color: #eee;
   font-size: 1.1rem;
   padding: 0.4rem 0;
   z-index: 9999;
   box-sizing: border-box;
 }
 
-.notisinnhold {
-  display: inline-block;
-  white-space: nowrap;
-  animation: ticker 220s linear infinite;
+/* Tekstfeltet slutter før pauseknappen, så tekst ikke skjules bak knappen. */
+.notis-visning {
+  width: calc(100% - 78px);
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+.notis-visning:focus-within .notisinnhold {
   animation-play-state: paused;
 }
-body.loaded .notisinnhold { animation-play-state: running; }
-
-@keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+/* To identiske sekvenser gir en sømløs ticker uten hopp ved omstart.
+   Varigheten måles i JavaScript for jevn hastighet uansett tekstlengde. */
+.notisinnhold {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  max-width: none;
+  white-space: nowrap;
+  transform: translate3d(0, 0, 0);
+}
+.notisinnhold.is-running {
+  animation: ticker-smooth var(--ticker-duration, 220s) linear infinite;
+  will-change: transform;
+}
+@keyframes ticker-smooth {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.notisinnhold .notis-sekvens {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 1.4rem;
+  margin-right: 0;
+  padding-right: 1.4rem; /* naturlig avstand mellom siste og første notis */
+}
+.notisinnhold .notis-sekvens > span,
+.notisinnhold .notis-tekst { margin-right: 0; }
+.notisinnhold .notis-skille {
+  color: #858585;
+  font-size: .85em;
+}
+.notisbånd.is-paused .notisinnhold { animation-play-state: paused; }
+@media (hover: hover) and (pointer: fine) {
+  .notisinnhold:hover { animation-play-state: paused; }
+}
+.notis-pause {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: .35rem;
+  transform: translateY(-50%);
+  min-width: 66px;
+  min-height: 34px;
+  padding: .25rem .55rem;
+  border: 1px solid #696969;
+  border-radius: 4px;
+  color: #f2f2f2;
+  background: #111;
+  font: 600 .78rem/1.2 'Inter', system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: -12px 0 15px #000;
+}
+.notis-pause:hover, .notis-pause:focus-visible {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+.notis-pause:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  /* Ingen automatisk bevegelse. Alle notiser kan leses ved å bla vannrett. */
+  .notis-visning {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--yellow) #222;
+  }
+  .notisinnhold.is-running { animation: none; transform: none; }
+  .notis-sekvens[aria-hidden="true"] { display: none; }
+  .notis-pause { display: none; }
 }
 
 .notisinnhold strong {
@@ -97,7 +166,7 @@ body.loaded .notisinnhold { animation-play-state: running; }
   background: #000;
   letter-spacing: 2px;
   line-height: 1.7rem;
-  border: 4px solid var(--yellow);
+  border: 2px solid var(--yellow);
   border-top: none;
   border-radius: 0;
   padding: 0.95rem 1.4rem 0.45rem;
