@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Paradisavisa – en ideologisk og samfunnskritisk nettavis. Objektivt sett, fra vår synsvinkel.">
+  <meta name="description" content="Paradisavisa – nyheter, samfunn, kultur og debatt. Objektivt sett, fra vår synsvinkel.">
   <meta name="keywords" content="Paradisavisa, Paradispartiet, politikk, samfunn, Oslo, nyheter, sport, debatt, kommentarer">
   <meta name="robots" content="index, follow">
 
   <meta property="og:title" content="Paradisavisa">
-  <meta property="og:description" content="Nyheter, sport, kommentarer og debatt – objektivt sett, fra vår synsvinkel.">
+  <meta property="og:description" content="Nyheter, kultur, sport og debatt – objektivt sett, fra vår synsvinkel.">
   <meta property="og:image" content="https://paradispartiet.github.io/Paradisavisa/og-image.PNG">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://paradispartiet.github.io/Paradisavisa/">
@@ -19,21 +19,45 @@
 
   <title>Paradisavisa</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=26">
-<script defer src="script.js?v=25"></script>
+<link rel="stylesheet" href="styles.css?v=27">
+<script defer src="script.js?v=26"></script>
 </head>
 
-<body>
+<body class="avis-forside">
+  <a class="hopp-til-innhold" href="#nyhetshjul">Hopp til nyhetene</a>
 
   <!-- 🟡 Notisbånd -->
   <div class="notisbånd">
     <div class="notisinnhold"></div>
   </div>
 
-<!-- 🟡 TITTELLINJE -->
-<div class="tittellinje">
-  <h1>PARADISAVISA</h1>
-</div>
+<!-- Avisens faste visuelle identitet: svart og gult, tydelig motto. -->
+<header class="tittellinje avis-topp">
+  <div class="avis-topp-inner">
+    <div class="avis-identitet">
+      <p class="avis-kategorier">Nyheter <span aria-hidden="true">·</span> Kultur <span aria-hidden="true">·</span> Debatt</p>
+      <h1><a href="index.html">PARADISAVISA</a></h1>
+      <p class="avis-motto">Objektivt sett, fra vår synsvinkel.</p>
+    </div>
+    <div class="avis-topp-handlinger">
+      <a class="avis-topp-siste" href="#nyhetshjul">Siste saker</a>
+      <button class="nav-toggle" type="button" aria-controls="avis-hovedmeny" aria-expanded="false" aria-label="Åpne meny" hidden>
+        <span class="nav-toggle-icon" aria-hidden="true">☰</span><span>Meny</span>
+      </button>
+    </div>
+    <nav id="avis-hovedmeny" class="site-nav avisa-menu" aria-label="Hovedmeny">
+      <a href="#nyhetshjul">Nyheter</a>
+      <a href="#nyhetshjul2">Flere nyheter</a>
+      <a href="#sportshjul">Sport</a>
+      <a href="#kulturhjul">Kultur</a>
+      <a href="#kommentarer">Kommentarer</a>
+      <a href="#debatt">Debatt</a>
+      <a href="notiser.html">Notiser</a>
+      <a href="skriv-innlegg.html">Skriv innlegg</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
+</header>
 
   <!-- 🟡 Nyhetshjul -->
   <section id="nyhetshjul">
