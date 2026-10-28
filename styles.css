@@ -32,24 +32,72 @@ body {
   background: #000;
   border-top: 2px solid var(--yellow);
   border-bottom: 2px solid var(--yellow);
-  color: color: #eee;;
+  color: #eee;
   font-size: 1.1rem;
   padding: 0.4rem 0;
   z-index: 9999;
   box-sizing: border-box;
 }
 
+/* To identiske sekvenser gir en sømløs ticker uten hopp ved omstart.
+   Varigheten måles i JavaScript for jevn hastighet uansett tekstlengde. */
 .notisinnhold {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  max-width: none;
   white-space: nowrap;
-  animation: ticker 220s linear infinite;
-  animation-play-state: paused;
+  transform: translate3d(0, 0, 0);
 }
-body.loaded .notisinnhold { animation-play-state: running; }
-
-@keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+.notisinnhold.is-running {
+  animation: ticker-smooth var(--ticker-duration, 220s) linear infinite;
+  will-change: transform;
+}
+@keyframes ticker-smooth {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.notisinnhold .notis-sekvens {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 1.4rem;
+  margin-right: 0;
+}
+.notisinnhold .notis-sekvens > span { margin-right: 0; }
+.notisinnhold .notis-skille {
+  color: #858585;
+  font-size: .85em;
+}
+.notisbånd.is-paused .notisinnhold { animation-play-state: paused; }
+@media (hover: hover) and (pointer: fine) {
+  .notisbånd:hover .notisinnhold { animation-play-state: paused; }
+}
+.notis-pause {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: .35rem;
+  transform: translateY(-50%);
+  min-width: 66px;
+  min-height: 34px;
+  padding: .25rem .55rem;
+  border: 1px solid #696969;
+  border-radius: 4px;
+  color: #f2f2f2;
+  background: #111;
+  font: 600 .78rem/1.2 'Inter', system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: -12px 0 15px #000;
+}
+.notis-pause:hover, .notis-pause:focus-visible {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+.notis-pause:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .notisinnhold.is-running { animation: none; transform: none; }
+  .notis-pause { display: none; }
 }
 
 .notisinnhold strong {
