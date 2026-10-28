@@ -30,8 +30,8 @@ body {
   overflow: hidden;
   white-space: nowrap;
   background: #000;
-  border-top: 4px solid var(--yellow);
-  border-bottom: 4px solid var(--yellow);
+  border-top: 2px solid var(--yellow);
+  border-bottom: 2px solid var(--yellow);
   color: color: #eee;;
   font-size: 1.1rem;
   padding: 0.4rem 0;
@@ -97,7 +97,7 @@ body.loaded .notisinnhold { animation-play-state: running; }
   background: #000;
   letter-spacing: 2px;
   line-height: 1.7rem;
-  border: 4px solid var(--yellow);
+  border: 2px solid var(--yellow);
   border-top: none;
   border-radius: 0;
   padding: 0.95rem 1.4rem 0.45rem;
