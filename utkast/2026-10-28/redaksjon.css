@@ -1,0 +1,78 @@
+/* Paradisavisa: redaksjonelle utkast fra 28. oktober 2026.
+   Samme svarte og gule identitet, men tydelig redaksjonelt skille. */
+:root { --yellow:#ffd600; --ink:#f2f0e9; --muted:#b6b4ae; --paper:#0b0b0b; }
+html {scroll-behavior:smooth;}
+body.utkast-artikkel {
+  background:#000; color:var(--ink);
+  font: 17px/1.72 Georgia, "Times New Roman", serif;
+  padding:0; margin:0; overflow-x:hidden;
+}
+.utkast-skip { position:absolute;top:-5rem;left:1rem;z-index:5;background:var(--yellow);color:#000;padding:.6rem .9rem; }
+.utkast-skip:focus {top:0;color:#000;}
+.utkast-masthead {
+  display:flex;gap:1rem;align-items:center;justify-content:space-between;
+  border-top:2px solid var(--yellow);border-bottom:1px solid #434343;
+  padding:1rem max(1.25rem,calc((100% - 1100px)/2));background:#090909;
+}
+.utkast-logo {font:800 1.4rem/1.05 Inter,system-ui,sans-serif;color:var(--yellow);text-decoration:none;letter-spacing:-.04em;}
+.utkast-logo:hover {color:#ffe868;text-decoration:none;}
+.utkast-motto {font:italic .88rem/1.4 Georgia,serif;color:#d4d2ce;text-align:right;}
+.utkast-tekst {
+  margin:0 auto;padding:3rem 1.2rem 5rem;
+  max-width:800px;border:0;background:transparent;
+  font:inherit;color:inherit;
+}
+.utkast-etikett {
+  display:inline-block;background:#262013;color:#ffdf7a;border:1px solid #655420;
+  font:700 .78rem/1.4 Inter,system-ui,sans-serif;
+  letter-spacing:.02em;padding:.35rem .65rem;border-radius:3px;margin:0 0 2.3rem;
+}
+.utkast-kategori {
+  color:#d9c36d;
+  font:700 .8rem/1.5 Inter,system-ui,sans-serif;
+  letter-spacing:.075em;text-transform:uppercase;margin:0 0 .75rem;
+}
+.utkast-tekst h1 {
+  color:#f6f4ee;font:800 clamp(2.25rem,4.6vw,3.65rem)/1.13 Georgia,serif;
+  letter-spacing:-.037em;margin:0 0 1.2rem;
+}
+.utkast-ingress {
+  color:#e2dfd7;font:1.26rem/1.66 Georgia,serif;margin:0 0 2rem;
+}
+.utkast-illustrasjon {margin:2.5rem 0 2.8rem;}
+.utkast-illustrasjon img {
+  display:block;width:100%;height:auto;max-height:480px;object-fit:cover;border-radius:2px;
+  border:1px solid #363636;background:#141414;
+}
+.utkast-illustrasjon figcaption {
+  color:#b9b6af;font:.83rem/1.55 Inter,system-ui,sans-serif;
+  margin-top:.75rem;
+}
+.utkast-tekst > p:not(.utkast-etikett):not(.utkast-kategori):not(.utkast-ingress) {
+  font:1.12rem/1.87 Georgia,serif;color:#e4e2dc;margin:1.15rem 0;
+}
+.utkast-tekst h2 {
+  color:#f1df93;font:750 clamp(1.5rem,2.5vw,1.9rem)/1.3 Georgia,serif;
+  letter-spacing:-.025em;margin:2.7rem 0 1rem;
+}
+.utkast-tekst strong {color:#f6f5ef;}
+.utkast-kilder {
+  border-top:1px solid #49402a;margin-top:3.5rem;padding:1.7rem 0 0;
+}
+.utkast-kilder h2 {font:750 1.22rem/1.3 Inter,system-ui,sans-serif;color:var(--yellow);margin:0 0 1rem;}
+.utkast-kilder ul {padding-left:1.3rem;}
+.utkast-kilder li {margin:.55rem 0;font:1rem/1.6 Inter,system-ui,sans-serif;}
+.utkast-kilder a {color:#ffde67;text-decoration:underline;text-underline-offset:.2em;}
+.utkast-kilder p {font: .96rem/1.65 Inter,system-ui,sans-serif;color:#c9c5bc;margin:1.1rem 0;}
+.utkast-footer {
+  border-top:1px solid #393939;background:#0a0a0a;padding:1.5rem max(1.2rem,calc((100% - 1000px)/2));
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;color:#aeaaa2;font: .85rem/1.5 Inter,system-ui,sans-serif;
+}
+.utkast-footer a {color:var(--yellow);}
+@media(max-width:600px) {
+ .utkast-tekst {padding:2rem 1rem 3.5rem;}
+ .utkast-tekst > p:not(.utkast-etikett):not(.utkast-kategori):not(.utkast-ingress) {font-size:1.04rem;line-height:1.82;}
+ .utkast-ingress {font-size:1.11rem;}
+ .utkast-masthead,.utkast-footer {flex-direction:column;align-items:flex-start;}
+ .utkast-motto {text-align:left;}
+}
