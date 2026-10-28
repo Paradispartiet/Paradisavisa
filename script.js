@@ -15,39 +15,102 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* ---------- Notisbånd ---------- */
+/* ---------- Notisbånd: rolig, jevn og sømløs bevegelse ---------- */
 function loadNotiser() {
-  return fetch("notiser.json", { cache: "no-store" })
-    .then(r => r.json())
+  // Sportsiden bruker sitt eget notisutvalg, alle andre sider notiser.json.
+  const source = document.querySelector(".sport-banner") ? "sport-notiser.json" : "notiser.json";
+  return fetch(source, { cache: "no-store" })
+    .then(response => {
+      if (!response.ok) throw new Error("Kunne ikke hente notiser");
+      return response.json();
+    })
     .then(items => {
       const band = document.querySelector(".notisbånd");
-      const innhold = document.querySelector(".notisinnhold");
-      if (!band || !innhold) return;
+      const innhold = band?.querySelector(".notisinnhold");
+      if (!band || !innhold || !Array.isArray(items)) return;
 
-      band.style.position = "fixed";
-      band.style.top = "0";
-      band.style.left = "0";
-      band.style.zIndex = "9999";
+      innhold.classList.remove("is-running");
+      innhold.replaceChildren();
+      band.querySelector(".notis-pause")?.remove();
+      if (!items.length) return;
 
-      // bygg notiser
-      innhold.innerHTML = "";
-      items.forEach((n, i) => {
-        const span = document.createElement("span");
-        const content = `<strong>${escapeHtml(n.category)}:</strong> ${escapeHtml(n.text)}`;
-        span.innerHTML = n.url ? `<a href="${n.url}">${content}</a>` : content;
-        innhold.appendChild(span);
+      const sekvens = document.createElement("span");
+      sekvens.className = "notis-sekvens";
 
-        if (i < items.length - 1) {
-          const sep = document.createElement("span");
-          sep.textContent = " • ";
-          sep.style.color = "#666";
-          sep.style.fontSize = "0.9em";
-          sep.style.marginRight = "1.5rem";
-          innhold.appendChild(sep);
+      items.forEach(n => {
+        const item = document.createElement("span");
+        item.className = "notis-tekst";
+        const category = document.createElement("strong");
+        category.textContent = String(n.category || "") + ":";
+        item.append(category, document.createTextNode(" " + String(n.text || "")));
+
+        let wrapper = item;
+        if (n.url) {
+          try {
+            const url = new URL(n.url, window.location.href);
+            if (url.protocol === "http:" || url.protocol === "https:") {
+              const link = document.createElement("a");
+              link.href = url.href;
+              link.appendChild(item);
+              wrapper = link;
+            }
+          } catch (_) {
+            // Notisen vises fortsatt som ren tekst ved ugyldig URL.
+          }
         }
+
+        const skille = document.createElement("span");
+        skille.className = "notis-skille";
+        skille.textContent = "•";
+        sekvens.append(wrapper, skille);
       });
 
-      document.body.classList.add("loaded");
+      innhold.appendChild(sekvens);
+
+      // Gjenta korte notislister så sekvensen minst dekker synlig bredde.
+      // Ekstra gjentakelser leses ikke opp av skjermlesere.
+      const original = Array.from(sekvens.children).map(node => node.cloneNode(true));
+      for (let n = 0; n < 24 && sekvens.getBoundingClientRect().width < band.clientWidth + 40; n++) {
+        original.forEach(node => {
+          const copy = node.cloneNode(true);
+          copy.setAttribute("aria-hidden", "true");
+          copy.querySelectorAll("a").forEach(link => link.tabIndex = -1);
+          if (copy.matches("a")) copy.tabIndex = -1;
+          sekvens.appendChild(copy);
+        });
+      }
+
+      // To like sekvenser og bevegelse på nøyaktig én sekvensbredde:
+      // ingen blank pause eller hopp når animasjonen starter på nytt.
+      const kopi = sekvens.cloneNode(true);
+      kopi.setAttribute("aria-hidden", "true");
+      kopi.querySelectorAll("a").forEach(link => link.tabIndex = -1);
+      innhold.appendChild(kopi);
+
+      const oppdaterHastighet = () => {
+        const bredde = sekvens.getBoundingClientRect().width;
+        if (bredde > 0) {
+          // Ca. 38 bildepunkter per sekund, uansett antall notiser.
+          innhold.style.setProperty("--ticker-duration", (bredde / 38).toFixed(2) + "s");
+        }
+      };
+      oppdaterHastighet();
+      if (document.fonts?.ready) document.fonts.ready.then(oppdaterHastighet);
+
+      const knapp = document.createElement("button");
+      knapp.type = "button";
+      knapp.className = "notis-pause";
+      knapp.textContent = "Pause";
+      knapp.setAttribute("aria-label", "Pause notisbåndet");
+      knapp.setAttribute("aria-pressed", "false");
+      knapp.addEventListener("click", () => {
+        const stoppet = band.classList.toggle("is-paused");
+        knapp.textContent = stoppet ? "Start" : "Pause";
+        knapp.setAttribute("aria-label", stoppet ? "Start notisbåndet" : "Pause notisbåndet");
+        knapp.setAttribute("aria-pressed", String(stoppet));
+      });
+      band.appendChild(knapp);
+      innhold.classList.add("is-running");
     })
     .catch(err => console.error("Notisbånd feilet:", err));
 }
