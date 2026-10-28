@@ -102,12 +102,12 @@ function loadNotiser() {
       const oppdaterHastighet = () => {
         const bredde = sekvens.getBoundingClientRect().width;
         if (bredde > 0) {
-          // Ca. 38 bildepunkter per sekund, uansett antall notiser.
-          innhold.style.setProperty("--ticker-duration", (bredde / 38).toFixed(2) + "s");
+          // Mobil: 30 px/s. Større skjermer: 38 px/s.
+          // Hastigheten er konstant gjennom hele løkken.
+          const fart = window.matchMedia("(max-width: 700px)").matches ? 30 : 38;
+          innhold.style.setProperty("--ticker-duration", (bredde / fart).toFixed(2) + "s");
         }
       };
-      oppdaterHastighet();
-      if (document.fonts?.ready) document.fonts.ready.then(oppdaterHastighet);
 
       const knapp = document.createElement("button");
       knapp.type = "button";
@@ -122,7 +122,18 @@ function loadNotiser() {
         knapp.setAttribute("aria-pressed", String(stoppet));
       });
       band.appendChild(knapp);
-      innhold.classList.add("is-running");
+
+      // Mål tekstbredden etter at typografien er klar. Da unngår vi at
+      // animasjonen endrer varighet og hopper idet nettfonten lastes.
+      const start = () => {
+        oppdaterHastighet();
+        innhold.classList.add("is-running");
+      };
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(start, start);
+      } else {
+        start();
+      }
     })
     .catch(err => console.error("Notisbånd feilet:", err));
 }
