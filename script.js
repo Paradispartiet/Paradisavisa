@@ -29,6 +29,18 @@ function loadNotiser() {
       const innhold = band?.querySelector(".notisinnhold");
       if (!band || !innhold || !Array.isArray(items)) return;
 
+      band.setAttribute("aria-label", "Notisbånd");
+      band.setAttribute("aria-live", "off");
+
+      // Egen klippet lesesone for teksten: pauseknappen dekker ingen ord.
+      let visning = band.querySelector(".notis-visning");
+      if (!visning) {
+        visning = document.createElement("div");
+        visning.className = "notis-visning";
+        innhold.before(visning);
+        visning.appendChild(innhold);
+      }
+
       innhold.classList.remove("is-running");
       innhold.replaceChildren();
       band.querySelector(".notis-pause")?.remove();
@@ -70,7 +82,7 @@ function loadNotiser() {
       // Gjenta korte notislister så sekvensen minst dekker synlig bredde.
       // Ekstra gjentakelser leses ikke opp av skjermlesere.
       const original = Array.from(sekvens.children).map(node => node.cloneNode(true));
-      for (let n = 0; n < 24 && sekvens.getBoundingClientRect().width < band.clientWidth + 40; n++) {
+      for (let n = 0; n < 24 && sekvens.getBoundingClientRect().width < visning.clientWidth + 40; n++) {
         original.forEach(node => {
           const copy = node.cloneNode(true);
           copy.setAttribute("aria-hidden", "true");
