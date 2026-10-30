@@ -754,3 +754,19 @@ html.avis-meny-klar .avis-topp .avisa-menu:not([hidden]) {
 @media (prefers-reduced-motion: reduce) {
   .avis-topp .nav-toggle { transition: none; }
 }
+
+
+/* Leser- og tastaturvennlige overskrifter uten å påvirke layouten. */
+.visuelt-skjult {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+#hovedinnhold { display: block; }
+#hovedinnhold section[id] { scroll-margin-top: 3.5rem; }
