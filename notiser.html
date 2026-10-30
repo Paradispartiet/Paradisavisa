@@ -22,7 +22,8 @@
 
   <article class="notisgrid-container">
     <a href="index.html" class="tilbake-link">← Til forsiden</a>
-    <h2>Notiser</h2>
+    <h2>Notisarkiv</h2>
+    <p>Her finner du tidligere notiser. Sjekk datoen – eldre notiser er ikke nødvendigvis oppdaterte.</p>
     <div id="notisgrid" class="notisgrid"></div>
     <a href="index.html" class="tilbake-link nederst">← Til forsiden</a>
   </article>
@@ -37,24 +38,41 @@
 
   <script src="script.js?v=27"></script>
   <script>
-  fetch('notiser.json')
-    .then(r => r.json())
-    .then(data => {
-      const grid = document.getElementById('notisgrid');
-      const sorterte = data.sort((a, b) => new Date(b.date) - new Date(a.date));
-      sorterte.forEach((n, i) => {
-        const el = document.createElement('div');
-        el.className = 'notis-rute ' + ['liten','mellom','stor'][i % 3]; // veksler størrelse
-        el.innerHTML = `
-          <div class="notis-header">
-            <span class="notis-kategori">${n.category}</span>
-            <span class="notis-dato">${n.date}</span>
-          </div>
-          <p>${n.text}</p>
-        `;
-        grid.appendChild(el);
+    // Arkivnotiser settes inn som tekst, aldri som ufiltrert HTML.
+    fetch("notiser.json", { cache: "no-store" })
+      .then(response => {
+        if (!response.ok) throw new Error("Kunne ikke hente notisarkivet");
+        return response.json();
+      })
+      .then(data => {
+        const grid = document.getElementById("notisgrid");
+        if (!grid || !Array.isArray(data)) return;
+        grid.replaceChildren();
+        data.sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")))
+          .forEach((item, i) => {
+            const card = document.createElement("article");
+            card.className = "notis-rute " + ["liten", "mellom", "stor"][i % 3];
+            const header = document.createElement("div");
+            header.className = "notis-header";
+            const category = document.createElement("span");
+            category.className = "notis-kategori";
+            category.textContent = String(item.category || "Notis");
+            const date = document.createElement("time");
+            date.className = "notis-dato";
+            date.dateTime = String(item.date || "");
+            date.textContent = String(item.date || "");
+            const description = document.createElement("p");
+            description.textContent = String(item.text || "");
+            header.append(category, date);
+            card.append(header, description);
+            grid.appendChild(card);
+          });
+      })
+      .catch(error => {
+        console.error(error);
+        const grid = document.getElementById("notisgrid");
+        if (grid) grid.textContent = "Notisarkivet kunne ikke lastes. Prøv igjen senere.";
       });
-    });
   </script>
 </body>
 </html>
