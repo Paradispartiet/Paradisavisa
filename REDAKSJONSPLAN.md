@@ -40,12 +40,13 @@ Ved eventuelle nye høringer, domstolsavgjørelser eller rapporter bør original
 
 ## Konkret utgaveplan – 30. oktober og 2. november 2026
 
-### Fredag 30. oktober – fire nyhetsutkast, alle under gjennomgang
+### Fredag 30. oktober – fem nyhetsutkast, alle under gjennomgang
 Utkastene er tilgjengelige i `utkast/2026-10-30/index.html`:
 - **Hav:** Hvor godt beskyttet er egentlig norske havområder? Krever kontroll av avgrensning, verneområder og arealbaserte tiltak.
 - **Egenberedskap:** Hva gjør du når mobilnettet og internett forsvinner? Krever kontroll av oppdatert informasjon og lokale kontaktpunkter.
 - **Pensjon:** Regjeringen vil gjøre pensjon enklere å forstå. Høringen må ikke forveksles med vedtatte endringer i pensjonsreglene.
 - **Arbeidsliv:** Én av seks oppgir å stå utenfor de vanlige arbeidstidsreglene. Rapportfunnene er selvrapporterte; juridisk status må ikke overdrives.
+- **Kultur:** 15 millioner til Ibsen i folkebibliotekene. Skill de avsatte midlene fra faktiske tildelinger; Nasjonalbiblioteket skal avklare ordningen.
 
 Mulig supplering fra `utkast/2026-10-28/`: oppdatert Meta-sak etter Oslo tingretts beslutning 28. oktober, samt sakene om cyberrisiko, Ukraina-samtalene, Equinor og WMO.
 
