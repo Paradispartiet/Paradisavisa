@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   initAvisaMenu();
+  initSharedHeader();
   // 🟡 Last notisbåndet først
   loadNotiser().then(() => {
     setTimeout(() => {
@@ -15,6 +16,54 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector(".debatt-innlegg")) loadDebatt();
   });
 });
+
+/* ---------- Felles toppmeny på artikkel- og debattsider ---------- */
+function initSharedHeader() {
+  const placeholder = document.getElementById("header-placeholder");
+  if (!placeholder) return Promise.resolve();
+
+  // Løs lenker fra plasseringen til script.js: samme kode fungerer for
+  // både rotfiler og artikkelundersider under /artikler/ og /posts/.
+  const script = Array.from(document.scripts).find(el =>
+    /\/script\.js(?:\?.*)?$/.test(el.src)
+  );
+  const root = script ? new URL(".", script.src) : new URL("../", location.href);
+
+  // Behold alltid en synlig vei tilbake selv om lasting feiler.
+  const fallback = document.createElement("a");
+  fallback.href = new URL("index.html", root).href;
+  fallback.textContent = "← Til Paradisavisa";
+  fallback.className = "avis-fallback-link";
+  placeholder.replaceChildren(fallback);
+
+  return fetch(new URL("header.html", root), { cache: "no-store" })
+    .then(response => {
+      if (!response.ok) throw new Error("Toppmenyen kunne ikke lastes");
+      return response.text();
+    })
+    .then(html => {
+      const template = document.createElement("template");
+      template.innerHTML = html.trim();
+      const header = template.content.querySelector("header.avisa-shared-header");
+      if (!header) throw new Error("Felles toppmeny mangler header");
+
+      // Innholdet kommer fra prosjektets egen header.html. Normaliser alle
+      // interne lenker slik at de fungerer også fra artikler/ og posts/.
+      header.querySelectorAll("a[href]").forEach(link => {
+        const raw = link.getAttribute("href");
+        if (raw && !raw.startsWith("#")) link.href = new URL(raw, root).href;
+      });
+      placeholder.replaceWith(header);
+      if (!document.querySelector(".notisbånd")) {
+        document.body.classList.add("har-felles-header");
+      }
+      initAvisaMenu();
+    })
+    .catch(err => {
+      console.error("Felles toppmeny feilet:", err);
+      // Den synlige fallback-lenken beholdes.
+    });
+}
 
 /* ---------- Navigasjon – tilgjengelig også med tastatur og berøring ---------- */
 function initAvisaMenu() {
