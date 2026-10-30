@@ -1,0 +1,24 @@
+name: Kontroller Paradisavisas redaksjonelle utkast
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - avistopp-motto-meny-redaksjonell-profil-2026
+  workflow_dispatch:
+
+jobs:
+  kontroll:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Hent kildekoden
+        uses: actions/checkout@v4
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Valider utkast, bilder og nyhetsstrømmer
+        run: node scripts/valider-utgaver.cjs
