@@ -19,12 +19,12 @@
 
   <title>Paradisavisa</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=27">
+<link rel="stylesheet" href="styles.css?v=28">
 <script defer src="script.js?v=26"></script>
 </head>
 
 <body class="avis-forside">
-  <a class="hopp-til-innhold" href="#nyhetshjul">Hopp til nyhetene</a>
+  <a class="hopp-til-innhold" href="#hovedinnhold">Hopp til hovedinnholdet</a>
 
   <!-- 🟡 Notisbånd -->
   <div class="notisbånd">
@@ -59,13 +59,16 @@
   </div>
 </header>
 
+<main id="hovedinnhold">
   <!-- 🟡 Nyhetshjul -->
-  <section id="nyhetshjul">
+  <section id="nyhetshjul" aria-labelledby="siste-nyheter-tittel">
+    <h2 id="siste-nyheter-tittel" class="visuelt-skjult">Siste nyheter</h2>
     <div id="nyhetshjul-grid"></div>
   </section>
 
 <!-- 🟡 Nyhetshjul 2 -->
-<section id="nyhetshjul2">
+<section id="nyhetshjul2" aria-labelledby="flere-nyheter-tittel">
+  <h2 id="flere-nyheter-tittel" class="visuelt-skjult">Flere nyheter</h2>
   <div id="nyhetshjul2-grid"></div>
 </section>
   
@@ -100,9 +103,11 @@
     </div>
   </section>
 
+</main>
+
   <!-- 🟡 Footer -->
   <footer class="site-footer">
-    <p>© 2025 Paradisavisa</p>
+    <p>© 2025–2026 Paradisavisa</p>
     <p>
       <a href="https://paradispartiet.github.io/Paradispartiet" target="_blank">Paradispartiet</a> ·
       <a href="https://paradispartiet.github.io/Teorien-om-lyset" target="_blank">Teorien om lyset</a>
