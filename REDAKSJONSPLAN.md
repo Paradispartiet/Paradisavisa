@@ -46,7 +46,9 @@ Utkastene er tilgjengelige i `utkast/2026-10-30/index.html`:
 - **Egenberedskap:** Hva gjør du når mobilnettet og internett forsvinner? Krever kontroll av oppdatert informasjon og lokale kontaktpunkter.
 - **Pensjon:** Regjeringen vil gjøre pensjon enklere å forstå. Høringen må ikke forveksles med vedtatte endringer i pensjonsreglene.
 - **Arbeidsliv:** Én av seks oppgir å stå utenfor de vanlige arbeidstidsreglene. Rapportfunnene er selvrapporterte; juridisk status må ikke overdrives.
-- **Kultur:** 15 millioner til Ibsen i folkebibliotekene. Skill de avsatte midlene fra faktiske tildelinger; Nasjonalbiblioteket skal avklare ordningen.
+- **Kultur:** MATATA tilbake på Oslo World med `Poverty Slaps, But We Slap Back Harder`. Sammenlign spillesteder, datoer og klokkeslett i Oslo Worlds og Nordic Black Theatres oversikter før publisering; dette er forhåndsomtale, **ikke anmeldelse**.
+
+**Ute av fredagsutgaven:** Utkastet om Ibsen-bevilgningen står fortsatt i `utkast/2026-10-30/ibsen-bibliotek.html`, men er tatt ut av fredagens utvalgte saker. Det skal ikke stå i nyhetshjulene uten en ny redaksjonell vurdering.
 
 Mulig supplering fra `utkast/2026-10-28/`: oppdatert Meta-sak etter Oslo tingretts beslutning 28. oktober, samt sakene om cyberrisiko, Ukraina-samtalene, Equinor og WMO.
 
