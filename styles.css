@@ -881,3 +881,12 @@ body.har-felles-header .avis-fallback-link { display: none; }
   color: #f0d36d;
   font: 650 .82rem/1.5 Inter,system-ui,sans-serif;
 }
+
+
+/* Felles meny under notisbåndet på de to spesialsidene. */
+body.notiser-side { padding-top: 3rem; }
+body.sport-side { padding-top: 5rem; }
+body.notiser-side .avisa-shared-header,
+body.sport-side .avisa-shared-header { margin-bottom: 1.3rem; }
+body.notiser-side .avisa-shared-header .avis-topp-inner,
+body.sport-side .avisa-shared-header .avis-topp-inner { padding-top: .95rem; padding-bottom: .95rem; }
