@@ -76,3 +76,29 @@ body.utkast-artikkel {
  .utkast-masthead,.utkast-footer {flex-direction:column;align-items:flex-start;}
  .utkast-motto {text-align:left;}
 }
+
+
+/* Utdypende journalistikk: listepunkter, kildehenvisninger og krysslenker. */
+.utkast-tekst > ul, .utkast-tekst > ol {
+  padding-left: 1.45rem;
+  margin: 1.5rem 0 2rem;
+  color: #e4e2dc;
+  font: 1.08rem/1.85 Georgia, "Times New Roman", serif;
+}
+.utkast-tekst > li { margin-bottom: .7rem; }
+.utkast-tekst > ul li, .utkast-tekst > ol li {
+  padding-left: .25rem;
+  margin-bottom: .88rem;
+}
+.utkast-tekst > ol li::marker { color: var(--yellow); font-weight: 700; }
+.utkast-tekst > p a,
+.utkast-tekst > ol a,
+.utkast-tekst > ul a {
+  color: #ffdd69;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+}
+.utkast-tekst > p a:hover,
+.utkast-tekst > ol a:hover,
+.utkast-tekst > ul a:hover { color: #fff2a9; }
