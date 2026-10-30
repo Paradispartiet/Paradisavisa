@@ -1,20 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   initAvisaMenu();
   initSharedHeader();
-  // 🟡 Last notisbåndet først
-  loadNotiser().then(() => {
-    setTimeout(() => {
-      document.body.classList.add("loaded");
-    }, 300);
 
-    // 🟡 Deretter hjul og seksjoner
-    if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
-    if (document.getElementById("nyhetshjul2-grid")) loadNyhetshjul2();
-    if (document.getElementById("sportshjul-grid")) loadSportshjul();
-    if (document.getElementById("kulturhjul-grid")) loadKulturhjul();
-    if (document.getElementById("kommentarhjul-grid")) loadKommentarer();
-    if (document.querySelector(".debatt-innlegg")) loadDebatt();
-  });
+  // Nyhetsinnhold lastes uavhengig av notisbåndet. Nettfeil i en
+  // enkelt JSON-fil skal aldri hindre andre seksjoner i å vises.
+  if (document.querySelector(".notisbånd")) loadNotiser();
+  if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
+  if (document.getElementById("nyhetshjul2-grid")) loadNyhetshjul2();
+  if (document.getElementById("sportshjul-grid")) loadSportshjul();
+  if (document.getElementById("kulturhjul-grid")) loadKulturhjul();
+  if (document.getElementById("kommentarhjul-grid")) loadKommentarer();
+  if (document.querySelector(".debatt-innlegg")) loadDebatt();
+  if (document.querySelector("[data-artikkelkategori]")) loadCategoryArchive();
+  document.body.classList.add("loaded");
 });
 
 /* ---------- Felles toppmeny på artikkel- og debattsider ---------- */
@@ -101,6 +99,84 @@ function initAvisaMenu() {
         button.focus();
       }
     });
+  });
+}
+
+
+/* ---------- Kategoriarkiv: tydelig dato, ingen gamle saker som "ferske" ---------- */
+function loadCategoryArchive() {
+  const container = document.querySelector("[data-artikkelkategori]");
+  if (!container) return;
+  const type = container.dataset.artikkelkategori;
+  if (!["nyheter", "kultur"].includes(type)) return;
+
+  const sources = type === "kultur"
+    ? ["Kulturhjul.json"]
+    : ["Nyhetshjul.json", "Nyhetshjul2.json"];
+
+  Promise.all(sources.map(path =>
+    fetch(path, { cache: "no-store" }).then(response => {
+      if (!response.ok) throw new Error("Kunne ikke hente " + path);
+      return response.json();
+    })
+  )).then(groups => {
+    const seen = new Set();
+    const items = groups.flat()
+      .filter(x => x && x.url && x.title)
+      .filter(x => {
+        if (seen.has(x.url)) return false;
+        seen.add(x.url);
+        return true;
+      })
+      .sort((a,b) => String(b.date||"").localeCompare(String(a.date||"")));
+
+    container.replaceChildren();
+    if (!items.length) {
+      const empty = document.createElement("p");
+      empty.textContent = "Ingen arkiverte saker i denne kategorien ennå.";
+      container.appendChild(empty);
+      return;
+    }
+
+    items.forEach(item => {
+      const card = document.createElement("a");
+      card.className = "hjul-card";
+      card.href = item.url;
+      if (item.image) {
+        const image = document.createElement("img");
+        image.src = item.image;
+        image.alt = "";
+        image.loading = "lazy";
+        card.appendChild(image);
+      }
+      const heading = document.createElement("h3");
+      heading.textContent = item.title;
+      card.appendChild(heading);
+      if (item.date) {
+        const time = document.createElement("time");
+        time.className = "arkiv-dato";
+        time.dateTime = item.date;
+        try {
+          time.textContent = new Date(item.date + "T12:00:00").toLocaleDateString(
+            "nb-NO", {day:"numeric",month:"long",year:"numeric"}
+          );
+        } catch (_) {
+          time.textContent = item.date;
+        }
+        card.appendChild(time);
+      }
+      if (item.excerpt) {
+        const excerpt = document.createElement("p");
+        excerpt.textContent = item.excerpt;
+        card.appendChild(excerpt);
+      }
+      container.appendChild(card);
+    });
+  }).catch(err => {
+    console.error("Kategoriarkivet feilet:", err);
+    const fallback = document.createElement("p");
+    fallback.textContent = "Arkivet kunne ikke lastes. Prøv å åpne siden på nytt.";
+    container.replaceChildren(fallback);
   });
 }
 
