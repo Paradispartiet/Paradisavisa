@@ -809,3 +809,75 @@ body.har-felles-header .avis-fallback-link { display: none; }
   .avisa-shared-header .avis-topp-inner { padding: 1rem .95rem; }
   .avisa-shared-header .avis-motto { font-size: .83rem; }
 }
+
+
+/* Ryddige kategoriarkiver – opprinnelig stoff beholdes, datoer vises. */
+.arkiv-hoved {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(2.2rem,5vw,4.1rem) 1.25rem 5rem;
+}
+.arkiv-kategori {
+  margin: 0 0 .7rem;
+  color: var(--yellow);
+  font: 700 .8rem/1.4 Inter,system-ui,sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+.arkiv-hoved h1 {
+  margin: 0 0 1rem;
+  color: #f4f1e8;
+  font: 800 clamp(2.3rem,4.2vw,3.5rem)/1.1 Georgia,serif;
+  letter-spacing: -.035em;
+}
+.arkiv-ingress {
+  max-width: 740px;
+  color: #d2d0c9;
+  font: 1.08rem/1.76 Inter,system-ui,sans-serif;
+  margin: 0 0 2.3rem;
+}
+.kategori-artikler-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,300px),1fr));
+  gap: 1.2rem;
+}
+.kategori-artikler-grid .hjul-card {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1.2rem;
+  border: 1px solid #333;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #141414;
+  color: #eee;
+  box-shadow: none;
+  text-decoration: none;
+}
+.kategori-artikler-grid .hjul-card:hover,
+.kategori-artikler-grid .hjul-card:focus-visible {
+  border-color: var(--yellow);
+  transform: translateY(-2px);
+}
+.kategori-artikler-grid .hjul-card img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  margin: 0 0 .4rem;
+}
+.kategori-artikler-grid .hjul-card h3 {
+  margin: .7rem 1.25rem .5rem;
+  color: #f5f1e6;
+  font: 720 1.34rem/1.32 Georgia,serif;
+}
+.kategori-artikler-grid .hjul-card p {
+  margin: .3rem 1.25rem .7rem;
+  color: #c6c4bd;
+  font-size: .96rem;
+  line-height: 1.6;
+}
+.kategori-artikler-grid .arkiv-dato {
+  margin: .2rem 1.25rem .4rem;
+  color: #f0d36d;
+  font: 650 .82rem/1.5 Inter,system-ui,sans-serif;
+}
