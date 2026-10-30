@@ -770,3 +770,42 @@ html.avis-meny-klar .avis-topp .avisa-menu:not([hidden]) {
 }
 #hovedinnhold { display: block; }
 #hovedinnhold section[id] { scroll-margin-top: 3.5rem; }
+
+
+/* Felles toppmeny på arkiv-, artikkel- og kontaktsider. */
+.avisa-shared-header {
+  position: relative;
+  z-index: 8000;
+  border-top: 2px solid var(--yellow);
+  border-bottom: 1px solid #3c3626;
+  background: #080808;
+}
+.avisa-shared-header .avis-topp-inner {
+  padding-top: 1.15rem;
+  padding-bottom: 1.15rem;
+}
+.avisa-shared-header .avis-motto { margin-top: .4rem; }
+.avis-kompakt-merke {
+  display: inline-block;
+  color: var(--yellow);
+  font: 800 clamp(1.5rem, 3.4vw, 2.2rem)/1.1 'Inter', system-ui, sans-serif;
+  letter-spacing: -.045em;
+  text-decoration: none;
+}
+.avis-kompakt-merke:hover { color: #ffec86; text-decoration: none; }
+body.har-felles-header { padding-top: 0; }
+.avis-fallback-link {
+  display: inline-flex;
+  margin: 1.1rem;
+  padding: .6rem 1rem;
+  border: 1px solid #61571c;
+  border-radius: 4px;
+  font: 700 .9rem/1.4 'Inter', system-ui, sans-serif;
+  color: var(--yellow);
+  text-decoration: none;
+}
+body.har-felles-header .avis-fallback-link { display: none; }
+@media (max-width: 700px) {
+  .avisa-shared-header .avis-topp-inner { padding: 1rem .95rem; }
+  .avisa-shared-header .avis-motto { font-size: .83rem; }
+}
