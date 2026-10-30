@@ -48,6 +48,14 @@ Utkastene er tilgjengelige i `utkast/2026-10-30/index.html`:
 - **Arbeidsliv:** Én av seks oppgir å stå utenfor de vanlige arbeidstidsreglene. Rapportfunnene er selvrapporterte; juridisk status må ikke overdrives.
 - **Kultur:** MATATA tilbake på Oslo World med `Poverty Slaps, But We Slap Back Harder`. Sammenlign spillesteder, datoer og klokkeslett i Oslo Worlds og Nordic Black Theatres oversikter før publisering; dette er forhåndsomtale, **ikke anmeldelse**.
 
+
+**Tre supplerende kulturutkast til fredagen og helgen:**
+- **Dokumentar:** `Hex` om Witch Club Satan, norsk kinopremiere 30. oktober. Verifiser opplysninger mot NFI og distributøren.
+- **Spillefilm:** `Markens grøde` av Hans Petter Moland, kinopremiere 30. oktober. Vær tydelig om Hamsuns både litterære og politiske ettermæle, og skill forhåndsomtale fra anmeldelse.
+- **Musikk:** Renata Flores, konserten på Oslo World 31. oktober. Sjekk klokkeslett for samtalen om quechua: Oslo Worlds programsider oppgir ulike tidspunkter. Ikke gjør forhåndsomtalen til en anmeldelse.
+
+MATATA beholdes som den prioriterte scenekunstsaken. Tilleggssakene kan publiseres separat ved redaksjonell godkjenning; det er ikke nødvendig å fylle alle plasser i én og samme utgave.
+
 **Ute av fredagsutgaven:** Utkastet om Ibsen-bevilgningen står fortsatt i `utkast/2026-10-30/ibsen-bibliotek.html`, men er tatt ut av fredagens utvalgte saker. Det skal ikke stå i nyhetshjulene uten en ny redaksjonell vurdering.
 
 Mulig supplering fra `utkast/2026-10-28/`: oppdatert Meta-sak etter Oslo tingretts beslutning 28. oktober, samt sakene om cyberrisiko, Ukraina-samtalene, Equinor og WMO.
