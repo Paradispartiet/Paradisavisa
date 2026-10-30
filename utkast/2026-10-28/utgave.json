@@ -1,0 +1,50 @@
+{
+  "dato": "2026-10-28",
+  "utgave_dag": "onsdag",
+  "publisert": false,
+  "status": "til_gjennomgang",
+  "saker": [
+    {
+      "fil": "cyberrisiko.html",
+      "bilde": "bilder/cyberrisiko.svg",
+      "kategori": "nyheter",
+      "rolle": "hovedsak",
+      "status": "redaksjonelt-utkast",
+      "godkjent": false
+    },
+    {
+      "fil": "medier-meta.html",
+      "bilde": "bilder/medier-meta.svg",
+      "kategori": "nyheter",
+      "rolle": "nyhet",
+      "status": "redaksjonelt-utkast",
+      "godkjent": false
+    },
+    {
+      "fil": "store-stubb-putin.html",
+      "bilde": "bilder/diplomati.svg",
+      "kategori": "utenriks",
+      "rolle": "nyhet",
+      "status": "redaksjonelt-utkast",
+      "godkjent": false
+    },
+    {
+      "fil": "equinor-resultat.html",
+      "bilde": "bilder/energi.svg",
+      "kategori": "okonomi",
+      "rolle": "nyhet",
+      "status": "redaksjonelt-utkast",
+      "godkjent": false
+    },
+    {
+      "fil": "wmo-klimagasser.html",
+      "bilde": "bilder/klima.svg",
+      "kategori": "klima",
+      "rolle": "nyhet",
+      "status": "redaksjonelt-utkast",
+      "godkjent": false
+    }
+  ],
+  "redaksjonell_merknad": "Meta-saken er oppdatert etter rettens midlertidige forføyning; NSM-saken etter myndighetenes oppfølging 29. oktober.",
+  "redaksjonelt_krav": "Hver sak krever oppdatert faktakontroll, rett bildebruk, vurdering av involverte parter og eksplisitt publiseringsbeslutning."
+}
