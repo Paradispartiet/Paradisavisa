@@ -1,44 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="no">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kultur – Paradisavisa</title>
-  <meta name="description" content="Kulturstoff fra Paradisavisa – kunst, musikk, film og idéliv.">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kulturarkiv | Paradisavisa</title>
+  <meta name="description" content="Her finner du tidligere kulturartikler fra Paradisavisa om film, musikk, litteratur og scenekunst. Arkivstoffet har sin opprinnelige publiseringsdato.">
   <link rel="icon" href="ikon-paradis.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=29">
+  <script defer src="script.js?v=27"></script>
 </head>
-<body>
-
-  <!-- Header -->
-  <header class="avis-header">
-    <img src="ikon-paradis.png" class="brand-icon" alt="Logo">
-    <div class="brand-text">
-      <h1>PARADISAVISA</h1>
-      <p class="slagord">Objektivt sett, fra vår synsvinkel</p>
+<body class="arkiv-side">
+  <div id="header-placeholder"><a class="avis-fallback-link" href="index.html">← Til Paradisavisa</a></div>
+  <main id="hovedinnhold" class="arkiv-hoved">
+    <p class="arkiv-kategori">Paradisavisa · Arkiv</p>
+    <h1>Kultur og underholdning</h1>
+    <p class="arkiv-ingress">Her finner du tidligere kulturartikler fra Paradisavisa om film, musikk, litteratur og scenekunst. Arkivstoffet har sin opprinnelige publiseringsdato.</p>
+    <div class="kategori-artikler-grid" data-artikkelkategori="kultur" aria-label="Kultur og underholdning fra arkivet">
+      <p>Laster arkivet …</p>
     </div>
-  </header>
-
-  <!-- Meny -->
-  <nav class="kategori-nav">
-    <a href="nyheter.html">Nyheter</a>
-    <a href="kultur.html" class="active">Kultur</a>
-    <a href="sport.html">Sport</a>
-  </nav>
-
-  <!-- Kulturartikler -->
-  <section class="cards" id="kultur">
-    <!-- Artikler fra posts.json med kategori: kultur -->
-  </section>
-
+  </main>
   <footer class="site-footer">
-    <p>© 2025 Paradisavisa</p>
-    <p>
-      <a href="https://paradispartiet.github.io/Paradispartiet" target="_blank">Paradispartiet</a> ·
-      <a href="https://paradispartiet.github.io/Teorien-om-lyset" target="_blank">Teorien om lyset</a>
-    </p>
+    <p>© 2025–2026 Paradisavisa</p>
+    <p><a href="index.html">Til forsiden</a> · <a href="kontakt.html">Kontakt</a></p>
   </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+</body></html>
