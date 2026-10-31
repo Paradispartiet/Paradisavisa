@@ -32,6 +32,19 @@ Et utkast kan ha disse statusene: `utkast` (under arbeid), `arkivert` (ikke prio
 
 **Praktisk eksempel:** Hvis Meta-saken er faktasjekket klokken 10.15, kan den publiseres da. Kulturstoffet trenger ikke være ferdig, og ingen annen utgave må «komme ut» samme dag.
 
+## Sikker klargjøring av en godkjent artikkel
+
+Skriptet `scripts/publiser-artikkel.cjs` klargjør **én** artikkel i en lokal arbeidskopi. Det publiserer **ikke** automatisk på GitHub og kjører aldri over alle utkast.
+
+1. Gjør ferdig journalistisk faktakontroll og korrektur. Ingen metadataflagg kan erstatte dette arbeidet.
+2. Godkjenn individuelt i `utkast/artikler.json`: `status: "godkjent"`, `godkjent: true`, `faktasjekk: "godkjent"`. De øvrige sakene skal beholde sine statuser.
+3. Se planen uten endringer: `node scripts/publiser-artikkel.cjs <artikkel-id> 2026-11-02`. Bruk riktig faktisk publiseringsdato.
+4. Klargjør bare denne saken: `node scripts/publiser-artikkel.cjs <artikkel-id> 2026-11-02 --publiser`.
+5. Kontroller de nye filene i `artikler/` og `Bilder/Artikler/`, samt den relevante JSON-strømmen og artikkelkøen. Skriptet oppdaterer lenker, dato, illustrasjon og synlig kildeoversikt.
+6. Kontroller `node scripts/valider-artikler.cjs` og nettleservisning. Commit og merge/publisering må fortsatt skje som en eksplisitt handling.
+
+**Sperrer:** Skriptet avviser ukontrollerte utkast, tidligere publiserte saker, ugyldige datoer, dupliserte artikler og direkte lenker til andre upubliserte artikkelutkast. Samtidig publisering av flere saker er ikke nødvendig.
+
 ## Spesielle oppfølgingspunkter i eksisterende utkast
 
 - **Helsereformutvalget:** Rapporten er varslet 2. november 2026 kl. 11.00. Den forberedte bakgrunnsteksten må kontrolleres etter offentliggjøringen før den eventuelt omtaler konklusjoner. Kilde: https://www.regjeringen.no/no/aktuelt/helsereformutvalet-legg-fram-si-utgreiing/id3178280/
