@@ -57,6 +57,20 @@ async function run(){
       for(const id of storyGrids){
         await page.locator(id+" .hjul-card").first().waitFor({timeout:12000});
       }
+      // Transparens: vis leseren publiseringsdato, og merk gamle saker som arkiv.
+      for(const id of storyGrids){
+        const card=page.locator(id+" .hjul-card").first();
+        check(await card.locator("time.forside-dato").count()===1,
+          label+": en sak mangler publiseringsdato i "+id);
+        const section=page.locator(id).locator("xpath=..");
+        const status=section.locator("[data-nyhetsstatus]");
+        check((await status.count())===1,
+          label+": seksjonen mangler statuslinje "+id);
+        if(await status.count()){
+          check(!(await status.textContent()).includes("Kontrollerer publiseringsdatoer"),
+            label+": statuslinje ikke oppdatert "+id);
+        }
+      }
       const layout=await page.evaluate(async () => {
         const ids=["nyhetshjul-grid","nyhetshjul2-grid","sportshjul-grid",
           "kulturhjul-grid","kommentarhjul-grid"];
