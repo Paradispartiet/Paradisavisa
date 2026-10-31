@@ -145,6 +145,39 @@ async function run(){
             "mobil: kortene er for smale i "+grid.id);
         }
       }
+      // Redaksjonell visuell kontroll: profesjonelt hierarki, ingen
+      // «knappebokser» rundt seksjonstitlene, og en stor førstesak på PC.
+      const editorialLayout=await page.evaluate(()=>{
+        const heading=document.querySelector("#nyhetshjul .seksjonstittel");
+        const headStyle=getComputedStyle(heading);
+        const cards=[...document.querySelectorAll("#nyhetshjul-grid .hjul-card")];
+        const first=cards[0].getBoundingClientRect();
+        const second=cards[1].getBoundingClientRect();
+        const firstTitle=cards[0].querySelector("h3");
+        const secondTitle=cards[1].querySelector("h3");
+        return {
+          headingBorder:parseFloat(headStyle.borderTopWidth)+parseFloat(headStyle.borderBottomWidth),
+          headingBackground:headStyle.backgroundColor,
+          headingFont:parseFloat(headStyle.fontSize),
+          firstTitleFont:parseFloat(getComputedStyle(firstTitle).fontSize),
+          secondTitleFont:parseFloat(getComputedStyle(secondTitle).fontSize),
+          firstWidth:first.width,secondWidth:second.width,
+          secondTop:second.top,firstBottom:first.bottom,
+          gridColumns:getComputedStyle(document.getElementById("nyhetshjul-grid")).gridTemplateColumns
+        };
+      });
+      check(editorialLayout.headingBorder===0,
+        label+": seksjonsoverskriftene har fortsatt dekorative bokser");
+      check(editorialLayout.headingBackground==="rgba(0, 0, 0, 0)",
+        label+": seksjonsoverskriftene skal ha transparent bakgrunn");
+      check(editorialLayout.headingFont>=26,
+        label+": seksjonsoverskriften er for liten");
+      if(label==="pc"){
+        check(editorialLayout.firstWidth > editorialLayout.secondWidth*1.4,
+          "pc: førstesaken har ikke tydelig større plass");
+        check(editorialLayout.firstTitleFont > editorialLayout.secondTitleFont*1.35,
+          "pc: førstesakens overskrift er ikke tydelig større");
+      }
       await page.screenshot({path:path.join(output,"forside-"+label+".png"),fullPage:true});
       const toggle=page.locator(".avis-topp .nav-toggle");
       await toggle.click();
