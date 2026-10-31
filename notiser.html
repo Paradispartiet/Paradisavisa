@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Notiser | Paradisavisa</title>
 
-  <meta name="description" content="Alle notiser fra Paradisavisa – korte nyheter i et levende grid.">
+  <meta name="description" content="Notisarkivet i Paradisavisa – korte saker med opprinnelige publiseringsdatoer.">
   <meta property="og:title" content="Notiser | Paradisavisa">
   <meta property="og:description" content="Alle notiser fra Paradisavisa – korte nyheter i et levende grid.">
   <meta property="og:image" content="https://paradispartiet.github.io/Paradisavisa/og-image.PNG">
@@ -14,20 +14,19 @@
 
   <link rel="icon" href="ikon-paradis.png">
   <link rel="stylesheet" href="styles.css?v=32">
-  <link rel="stylesheet" href="avisdesign.css?v=1">
+  <link rel="stylesheet" href="avisdesign.css?v=2">
 </head>
 <body class="notiser-side">
 
   <div class="notisbånd"><div class="notisinnhold"></div></div>
   <div id="header-placeholder"><a href="index.html" class="avis-fallback-link">← Til Paradisavisa</a></div>
 
-  <article class="notisgrid-container">
-    <a href="index.html" class="tilbake-link">← Til forsiden</a>
-    <h2>Notisarkiv</h2>
-    <p>Her finner du tidligere notiser. Sjekk datoen – eldre notiser er ikke nødvendigvis oppdaterte.</p>
-    <div id="notisgrid" class="notisgrid"></div>
-    <a href="index.html" class="tilbake-link nederst">← Til forsiden</a>
-  </article>
+  <main id="hovedinnhold" class="arkiv-hoved notis-arkiv-hoved">
+    <p class="arkiv-kategori">Paradisavisa / Korte nyheter</p>
+    <h1>Notisarkiv</h1>
+    <p class="arkiv-ingress">Korte nyheter fra tidligere publiseringer. Hver notis beholder sin dato; eldre opplysninger er ikke nødvendigvis oppdaterte.</p>
+    <div id="notisgrid" class="notisgrid" aria-label="Tidligere publiserte notiser"></div>
+  </main>
 
   <footer class="site-footer">
     <p>© 2025–2026 Paradisavisa</p>
@@ -37,7 +36,7 @@
     </p>
   </footer>
 
-  <script src="script.js?v=28"></script>
+  <script defer src="script.js?v=28"></script>
   <script>
     // Arkivnotiser settes inn som tekst, aldri som ufiltrert HTML.
     fetch("notiser.json", { cache: "no-store" })
