@@ -890,3 +890,120 @@ body.notiser-side .avisa-shared-header,
 body.sport-side .avisa-shared-header { margin-bottom: 1.3rem; }
 body.notiser-side .avisa-shared-header .avis-topp-inner,
 body.sport-side .avisa-shared-header .avis-topp-inner { padding-top: .95rem; padding-bottom: .95rem; }
+
+
+/* Oppdaget ved skjermbildekontroll 31.10.2026:
+   Den eldre horisontale kortkarusellen skar av titler på mobil og
+   etterlot store tomrom på PC. Bruk responsivt kortgitter i stedet. */
+.avis-forside #hovedinnhold > section:not(#debatt),
+.sport-side #sport {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#nyhetshjul-grid,
+#nyhetshjul2-grid,
+#sportshjul-grid,
+#kulturhjul-grid,
+#kommentarhjul-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  align-items: stretch;
+  gap: 1.2rem;
+  padding: .75rem clamp(1rem, 2vw, 1.5rem) 1.5rem;
+  overflow: visible;
+  scroll-snap-type: none;
+}
+#nyhetshjul-grid .hjul-card,
+#nyhetshjul2-grid .hjul-card,
+#sportshjul-grid .hjul-card,
+#kulturhjul-grid .hjul-card,
+#kommentarhjul-grid .hjul-card {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid #2c2c2c;
+  border-radius: 7px;
+  scroll-snap-align: none;
+  background: #121212;
+}
+#nyhetshjul-grid .hjul-card:hover,
+#nyhetshjul2-grid .hjul-card:hover,
+#sportshjul-grid .hjul-card:hover,
+#kulturhjul-grid .hjul-card:hover,
+#kommentarhjul-grid .hjul-card:hover {
+  border-color: #b99d39;
+}
+#nyhetshjul-grid .hjul-card img,
+#nyhetshjul2-grid .hjul-card img,
+#sportshjul-grid .hjul-card img,
+#kulturhjul-grid .hjul-card img,
+#kommentarhjul-grid .hjul-card img {
+  width: 100%;
+  height: clamp(175px, 19vw, 230px);
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+#nyhetshjul-grid .hjul-card h3,
+#nyhetshjul2-grid .hjul-card h3,
+#sportshjul-grid .hjul-card h3,
+#kulturhjul-grid .hjul-card h3,
+#kommentarhjul-grid .hjul-card h3 {
+  margin: 1rem 1rem .5rem;
+  font-size: clamp(1.1rem,1.4vw,1.35rem);
+  line-height: 1.32;
+}
+#nyhetshjul-grid .hjul-card p,
+#nyhetshjul2-grid .hjul-card p,
+#sportshjul-grid .hjul-card p,
+#kulturhjul-grid .hjul-card p,
+#kommentarhjul-grid .hjul-card p {
+  margin: 0 1rem 1.25rem;
+  font-size: .94rem;
+  line-height: 1.62;
+}
+.avis-forside #hovedinnhold > section:not(#debatt) { margin-top: 1rem; }
+@media (max-width: 700px) {
+  #nyhetshjul-grid,
+  #nyhetshjul2-grid,
+  #sportshjul-grid,
+  #kulturhjul-grid,
+  #kommentarhjul-grid {
+    grid-template-columns: minmax(0,1fr);
+    gap: 1.15rem;
+    padding: 1rem .9rem 1.4rem;
+  }
+  #nyhetshjul-grid .hjul-card,
+  #nyhetshjul2-grid .hjul-card,
+  #sportshjul-grid .hjul-card,
+  #kulturhjul-grid .hjul-card,
+  #kommentarhjul-grid .hjul-card {
+    min-height: 0;
+    max-width: 100%;
+  }
+  #nyhetshjul-grid .hjul-card img,
+  #nyhetshjul2-grid .hjul-card img,
+  #sportshjul-grid .hjul-card img,
+  #kulturhjul-grid .hjul-card img,
+  #kommentarhjul-grid .hjul-card img {
+    height: clamp(200px, 60vw, 265px);
+  }
+  #nyhetshjul-grid .hjul-card h3,
+  #nyhetshjul2-grid .hjul-card h3,
+  #sportshjul-grid .hjul-card h3,
+  #kulturhjul-grid .hjul-card h3,
+  #kommentarhjul-grid .hjul-card h3 {
+    font-size: 1.21rem;
+  }
+  #nyhetshjul-grid .hjul-card p,
+  #nyhetshjul2-grid .hjul-card p,
+  #sportshjul-grid .hjul-card p,
+  #kulturhjul-grid .hjul-card p,
+  #kommentarhjul-grid .hjul-card p {
+    font-size: .96rem;
+  }
+}
