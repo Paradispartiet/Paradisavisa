@@ -53,6 +53,7 @@ let html=draft.replace('<meta name="robots" content="noindex, nofollow">',
  .replaceAll('href="../../index.html"','href="../index.html"')
  .replaceAll('href="../../styles.css"','href="../styles.css"')
  .replaceAll('href="../2026-10-28/redaksjon.css"','href="../utkast/2026-10-28/redaksjon.css"')
+ .replaceAll('href="redaksjon.css"','href="../utkast/2026-10-28/redaksjon.css"')
  .replace('src="'+imageName+'"','src="../'+publicImage+'"')
  .replace(/<p class="utkast-etikett">REDAKSJONELT UTKAST[^<]*<\/p>/,"")
  .replace(/<p class="utkast-kategori">([^<]*)<\/p>/,
