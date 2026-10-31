@@ -188,23 +188,31 @@ async function run(){
           await page.screenshot({path:path.join(output,name.replace(".html","")+"-"+label+".png"),fullPage:true});
         }
       }
-      // Arbeidsoversikten må hente status fra faktiske utgave.json-filer.
+      // Én løpende artikkelkø. Ingen mandag/onsdag/fredag-utgaver.
       await page.goto(base+"/utkast/index.html",{waitUntil:"domcontentloaded"});
-      await page.locator(".issue-grid .issue").nth(2).waitFor({timeout:12000});
-      check((await page.locator(".issue-grid .issue").count())===3,
-        label+": oversikt må vise tre utgaver");
-      const counts=await page.locator(".issue-grid .issue .count").allTextContents();
-      check(counts.includes("2 artikler · 0 redaksjonelt godkjent"),
-        label+": manglende status for mandag");
-      check(counts.includes("8 artikler · 0 redaksjonelt godkjent"),
-        label+": manglende status for fredag");
-      check(counts.includes("5 artikler · 0 redaksjonelt godkjent"),
-        label+": manglende status for onsdag");
-      check((await page.locator(".draft").textContent()).includes("INGEN ARTIKLER ER PUBLISERT"),
-        label+": redaksjonell utkastmerking mangler");
-      await page.screenshot({
-        path:path.join(output,"redaksjonell-oversikt-"+label+".png"),fullPage:true
-      });
+      await page.locator(".katalog .sak").first().waitFor({timeout:12000});
+      check((await page.locator("#antall-utkast").textContent())==="15",
+        label+": forventet 15 aktive artikkelutkast");
+      check((await page.locator("#antall-arkiv").textContent())==="1",
+        label+": arkivert Ibsen-artikkel mangler");
+      check((await page.locator("#antall-godkjent").textContent())==="0",
+        label+": artikler er merket godkjent uten beslutning");
+      check((await page.locator(".katalog .sak").count())===15,
+        label+": aktiv kø skal vise 15 uavhengige artikler");
+      check((await page.locator(".merking").textContent()).includes("IKKE PUBLISERT"),
+        label+": arbeidskø er ikke merket som upublisert");
+      check((await page.locator("h1").textContent())==="Artikler til gjennomgang",
+        label+": gammelt utgavesystem er ikke fjernet");
+      await page.screenshot({path:path.join(output,"lopende-artikkelkø-"+label+".png"),fullPage:true});
+      await page.locator("#sok").fill("MATATA");
+      check((await page.locator(".katalog .sak").count())===1,
+        label+": søk i artikkelkø fungerer ikke");
+      await page.locator("#sok").fill("");
+      await page.locator("#tilstand").selectOption("arkivert");
+      check((await page.locator(".katalog .sak").count())===1,
+        label+": det arkiverte Ibsen-utkastet vises ikke");
+      check((await page.locator(".katalog .sak h2").textContent()).includes("Ibsen"),
+        label+": feil artikkel vises som arkivert");
       await context.close();
     }
 
