@@ -12,6 +12,8 @@ Paradisavisa skal være en selvstendig nyhets- og kulturavis, ikke et organ som 
 - KI-genererte bilder merkes **Illustrasjon**, ikke som dokumentarfoto.
 - Saker med manglende kildekontroll publiseres ikke bare for å fylle en utgave.
 
+**Redaksjonell oversikt:** `utkast/index.html` samler utgavene og viser antall saker og faktisk godkjenningsstatus fra `utgave.json`. Den er merket som arbeidsutkast (`noindex`) og er ikke en offentlig nyhetsforside. Ingen sak blir publisert ved å åpne oversikten.
+
 ## Publiseringsdager
 **Mandag, onsdag og fredag.** Målet er kl. 18 norsk tid, etter redaksjonell godkjenning. Faste dager er et mål; kvalitet og etterrettelighet går foran forhastet publisering.
 
