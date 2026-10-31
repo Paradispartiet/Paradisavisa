@@ -383,7 +383,7 @@ function buildArticleCard(item) {
 function displayFreshness(items, gridId) {
   const container = document.getElementById(gridId);
   if (!container) return;
-  const parent = container.closest("section");
+  const parent = container.closest("section, main");
   const label = parent?.querySelector("[data-nyhetsstatus]");
   if (!label) return;
 
