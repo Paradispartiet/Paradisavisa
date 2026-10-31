@@ -31,7 +31,7 @@ const server=http.createServer((req,res)=>{
     res.end(data);
   });
 });
-const check=(ok,what)=>{if(!ok)errors.push(what);};
+const check=(ok,what)=>{if(!ok){errors.push(what);console.error("AVVIK: "+what);}};
 async function run(){
   fs.mkdirSync(output,{recursive:true});
   await new Promise(resolve=>server.listen(0,"127.0.0.1",resolve));
@@ -40,6 +40,9 @@ async function run(){
   try {
     for(const [label,size] of [["mobil",{width:390,height:844}],["pc",{width:1366,height:900}]]){
       const context=await browser.newContext({viewport:size,deviceScaleFactor:1});
+      context.setDefaultTimeout(12000);
+      context.setDefaultNavigationTimeout(15000);
+      console.log("Starter nettlesersjekk: "+label+" ("+size.width+"px)");
       await context.route("https://fonts.googleapis.com/**",route=>route.abort());
       await context.route("https://fonts.gstatic.com/**",route=>route.abort());
       const page=await context.newPage();
@@ -52,6 +55,7 @@ async function run(){
         label+": motto mangler");
       // Den klassiske avisoverskriften skal være STOR, uten innrammet boks,
       // og menyknappen skal ligge diskret til høyre over avisnavnet.
+      console.log(label+": masthead og meny er aktive");
       const masthead=await page.evaluate(()=>{
         const wordmark=document.querySelector(".avis-masthead h1");
         const link=wordmark.querySelector("a");
@@ -117,6 +121,7 @@ async function run(){
             label+": statuslinje ikke oppdatert "+id);
         }
       }
+      console.log(label+": alle redaksjonelle kort finnes, kontrollerer bilder og geometri");
       const layout=await page.evaluate(async () => {
         const ids=["nyhetshjul-grid","nyhetshjul2-grid","sportshjul-grid",
           "kulturhjul-grid","kommentarhjul-grid"];
@@ -128,11 +133,19 @@ async function run(){
           })};
         });
         const images=[...document.querySelectorAll("#hovedinnhold .hjul-card img")];
-        await Promise.all(images.map(img=>img.decode().catch(()=>null)));
+        // decode() på lazy bilder utenfor synsfeltet kan vente uendelig.
+        // Tving alle bilder til eager, og bruk en tidsavgrenset sjekk.
+        images.forEach(img => { img.loading = "eager"; });
+        await Promise.race([
+          Promise.all(images.map(img=>img.decode().catch(()=>null))),
+          new Promise(resolve=>setTimeout(resolve,10000))
+        ]);
         return {width:window.innerWidth,grids,
-          broken:images.filter(img=>!img.naturalWidth).map(img=>img.getAttribute("src"))};
+          broken:images.filter(img=>img.complete&&!img.naturalWidth).map(img=>img.getAttribute("src")),
+          pending:images.filter(img=>!img.complete).map(img=>img.getAttribute("src"))};
       });
       check(!layout.broken.length,label+": manglende bilder: "+layout.broken.join(", "));
+      check(!layout.pending.length,label+": bilder ble ikke lastet innen 10 sekunder: "+layout.pending.join(", "));
       for(const grid of layout.grids){
         for(const r of grid.rects){
           check(r.left>=-2 && r.right<=layout.width+2,
@@ -178,7 +191,8 @@ async function run(){
         check(editorialLayout.firstTitleFont > editorialLayout.secondTitleFont*1.35,
           "pc: førstesakens overskrift er ikke tydelig større");
       }
-      await page.screenshot({path:path.join(output,"forside-"+label+".png"),fullPage:true});
+      await page.screenshot({path:path.join(output,"forside-"+label+".png"),fullPage:true,timeout:15000});
+      console.log(label+": forsidebilde lagret");
       const toggle=page.locator(".avis-topp .nav-toggle");
       await toggle.click();
       check(await toggle.getAttribute("aria-expanded")==="true",label+": meny åpnes ikke");
@@ -208,8 +222,11 @@ async function run(){
           const brokenArchiveImages=await page.locator("[data-artikkelkategori] img")
             .evaluateAll(async imgs => {
               imgs.forEach(img=>{img.loading="eager"});
-              await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
-              return imgs.filter(img=>!img.naturalWidth).map(img=>img.getAttribute("src"));
+              await Promise.race([
+                Promise.all(imgs.map(img=>img.decode().catch(()=>null))),
+                new Promise(resolve=>setTimeout(resolve,10000))
+              ]);
+              return imgs.filter(img=>!img.complete||!img.naturalWidth).map(img=>img.getAttribute("src"));
             });
           check(!brokenArchiveImages.length,
             label+": manglende bilder i "+name+": "+brokenArchiveImages.join(", "));
