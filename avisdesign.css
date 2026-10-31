@@ -412,3 +412,151 @@
   .arkiv-side .arkiv-hoved {padding:2rem .9rem 3rem}
   .arkiv-side .kategori-artikler-grid {grid-template-columns:minmax(0,1fr)}
 }
+
+
+/* Sportssiden bruker samme struktur som resten av nettavisa, ikke et
+   ekstra, fast gult banner under notisbåndet. */
+body.sport-side,body.notiser-side {padding-top:46px}
+.sport-side #sport.arkiv-hoved {
+  width:100%;
+  max-width:1180px;
+  margin:0 auto;
+  padding:clamp(2rem,4vw,3.7rem) 1.2rem 5rem;
+}
+.sport-side #sport .arkiv-kategori {
+  font:700 .72rem/1.4 Inter,system-ui,sans-serif;
+  color:var(--yellow);
+  letter-spacing:.12em;
+}
+.sport-side #sport h1 {
+  font:760 clamp(2.5rem,4.8vw,4.3rem)/1.1 Georgia,serif;
+  letter-spacing:-.045em;
+  color:#f1eee6;
+  margin:.7rem 0 1rem;
+}
+.sport-side #sport .arkiv-ingress {
+  max-width:650px;
+  margin:0 0 1.6rem;
+}
+.sport-side #sport .seksjonsinfo {
+  padding:1.15rem 0 .8rem;
+  margin:0;
+  border-top:1px solid #665b45;
+  color:#bdb6a7;
+  font:.8rem/1.4 Inter,system-ui,sans-serif;
+}
+.sport-side #sportshjul-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.65rem;
+  width:100%;
+  padding:0;
+}
+.sport-side #sportshjul-grid .hjul-card {
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:0;
+  width:100%;
+  padding:0 0 1.4rem;
+  border:0;
+  border-top:1px solid #494136;
+  border-radius:0;
+  background:transparent;
+  scroll-snap-align:none;
+  transform:none;
+}
+.sport-side #sportshjul-grid .hjul-card img {
+  width:100%;
+  height:auto;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  margin:0 0 .85rem;
+  border-radius:0;
+}
+.sport-side #sportshjul-grid .hjul-card h3 {
+  margin:0 0 .65rem;
+  color:#f3efe6;
+  font:750 clamp(1.25rem,1.6vw,1.55rem)/1.26 Georgia,serif;
+  letter-spacing:-.025em;
+}
+.sport-side #sportshjul-grid .hjul-card .forside-dato {
+  margin:0 0 .6rem;
+  color:#c4a543;
+}
+.sport-side #sportshjul-grid .hjul-card p {
+  margin:0;
+  color:#c6c1b7;
+  font:400 .92rem/1.65 Inter,system-ui,sans-serif;
+}
+
+/* Notiser: kompakte, lesbare datokort, uten vilkårlige bredder fra
+   eldre formatklasser som «liten», «mellom» og «stor». */
+.notiser-side .notis-arkiv-hoved {
+  max-width:1180px;
+  width:100%;
+  margin:0 auto;
+  padding:clamp(2rem,4vw,3.7rem) 1.2rem 5rem;
+}
+.notiser-side .notis-arkiv-hoved .arkiv-ingress {max-width:680px}
+.notiser-side .notisgrid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.5rem;
+  margin:0;
+  padding:1.4rem 0 0;
+  border-top:1px solid #665b45;
+}
+.notiser-side .notisgrid .notis-rute {
+  display:block;
+  max-width:none;
+  width:auto;
+  min-width:0;
+  min-height:0;
+  margin:0;
+  padding:1rem 0 1.25rem;
+  border:0;
+  border-top:1px solid #454039;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  color:#e9e6df;
+  font:400 .93rem/1.68 Inter,system-ui,sans-serif;
+}
+.notiser-side .notisgrid .notis-header {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:.4rem .8rem;
+  margin:0 0 .65rem;
+}
+.notiser-side .notisgrid .notis-kategori {
+  color:var(--yellow);
+  font:750 .72rem/1.4 Inter,system-ui,sans-serif;
+  letter-spacing:.04em;
+}
+.notiser-side .notisgrid .notis-dato {
+  color:#aca79d;
+  font:550 .75rem/1.4 Inter,system-ui,sans-serif;
+}
+.notiser-side .notisgrid .notis-rute p {
+  color:#e1ddd4;
+  font:400 .94rem/1.65 Inter,system-ui,sans-serif;
+  margin:0;
+  overflow-wrap:anywhere;
+}
+@media (min-width:701px) and (max-width:1000px) {
+  .sport-side #sportshjul-grid,.notiser-side .notisgrid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media (max-width:700px) {
+  .sport-side #sport.arkiv-hoved,
+  .notiser-side .notis-arkiv-hoved {padding:2rem .9rem 3.5rem}
+  .sport-side #sportshjul-grid,
+  .notiser-side .notisgrid {
+    grid-template-columns:minmax(0,1fr);
+    gap:1.05rem;
+  }
+  .sport-side #sportshjul-grid .hjul-card h3 {font-size:1.42rem}
+}
