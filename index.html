@@ -19,8 +19,8 @@
 
   <title>Paradisavisa</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=31">
-<script defer src="script.js?v=27"></script>
+<link rel="stylesheet" href="styles.css?v=32">
+<script defer src="script.js?v=28"></script>
 </head>
 
 <body class="avis-forside">
@@ -40,7 +40,7 @@
       <p class="avis-motto">Objektivt sett, fra vår synsvinkel.</p>
     </div>
     <div class="avis-topp-handlinger">
-      <a class="avis-topp-siste" href="#nyhetshjul">Siste saker</a>
+      <a class="avis-topp-siste" href="nyheter.html">Nyhetsarkiv</a>
       <button class="nav-toggle" type="button" aria-controls="avis-hovedmeny" aria-expanded="false" aria-label="Åpne meny" hidden>
         <span class="nav-toggle-icon" aria-hidden="true">☰</span><span>Meny</span>
       </button>
@@ -62,13 +62,15 @@
 <main id="hovedinnhold">
   <!-- 🟡 Nyhetshjul -->
   <section id="nyhetshjul" aria-labelledby="siste-nyheter-tittel">
-    <h2 id="siste-nyheter-tittel" class="visuelt-skjult">Siste nyheter</h2>
+    <h2 id="siste-nyheter-tittel" class="seksjonstittel">Nyheter</h2>
+    <p class="seksjonsinfo" data-nyhetsstatus>Kontrollerer publiseringsdatoer …</p>
     <div id="nyhetshjul-grid"></div>
   </section>
 
 <!-- 🟡 Nyhetshjul 2 -->
 <section id="nyhetshjul2" aria-labelledby="flere-nyheter-tittel">
-  <h2 id="flere-nyheter-tittel" class="visuelt-skjult">Flere nyheter</h2>
+  <h2 id="flere-nyheter-tittel" class="seksjonstittel">Flere nyheter</h2>
+  <p class="seksjonsinfo" data-nyhetsstatus>Kontrollerer publiseringsdatoer …</p>
   <div id="nyhetshjul2-grid"></div>
 </section>
   
@@ -79,18 +81,21 @@
       Sport →
     </a>
   </h2>
+  <p class="seksjonsinfo" data-nyhetsstatus>Kontrollerer publiseringsdatoer …</p>
   <div id="sportshjul-grid"></div>
 </section>
 
   <!-- 🟡 Kultur og underholdning -->
   <section id="kulturhjul">
     <h2 class="seksjonstittel">Kultur og underholdning</h2>
+    <p class="seksjonsinfo" data-nyhetsstatus>Kontrollerer publiseringsdatoer …</p>
     <div id="kulturhjul-grid"></div>
   </section>
 
   <!-- 🟡 Kommentarer -->
   <section id="kommentarer">
     <h2 class="seksjonstittel">Kommentarer</h2>
+    <p class="seksjonsinfo" data-nyhetsstatus>Kontrollerer publiseringsdatoer …</p>
     <div id="kommentarhjul-grid"></div>
   </section>
 
