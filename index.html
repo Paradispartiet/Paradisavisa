@@ -20,6 +20,7 @@
   <title>Paradisavisa</title>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,700;6..96,800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=33">
+<link rel="stylesheet" href="avisdesign.css?v=1">
 <script defer src="script.js?v=28"></script>
 </head>
 
@@ -62,55 +63,81 @@
   </div>
 </header>
 
-<main id="hovedinnhold">
-  <!-- 🟡 Nyhetshjul -->
-  <section id="nyhetshjul" aria-labelledby="siste-nyheter-tittel">
-    <h2 id="siste-nyheter-tittel" class="seksjonstittel">Nyheter</h2>
-    <p class="seksjonsinfo" data-nyhetsstatus>Kontrollerer publiseringsdatoer …</p>
-    <div id="nyhetshjul-grid"></div>
+<main id="hovedinnhold" class="avis-redaksjonell-forside">
+  <div class="avis-leserinfo">
+    <p>Nyheter, kultur og perspektiver. Artikler publiseres fortløpende, med tydelige datoer og kildegrunnlag.</p>
+    <a href="nyheter.html">Hele nyhetsarkivet <span aria-hidden="true">→</span></a>
+  </div>
+
+  <section id="nyhetshjul" class="avis-seksjon avis-hovedsaker" aria-labelledby="siste-nyheter-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">01 / Nyheter og bakgrunn</span>
+        <h2 id="siste-nyheter-tittel" class="seksjonstittel">Nyheter</h2>
+      </div>
+      <a class="avis-seksjonslenke" href="nyheter.html">Nyhetsarkiv <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
+    <div id="nyhetshjul-grid" class="avis-ledergrid"></div>
   </section>
 
-<!-- 🟡 Nyhetshjul 2 -->
-<section id="nyhetshjul2" aria-labelledby="flere-nyheter-tittel">
-  <h2 id="flere-nyheter-tittel" class="seksjonstittel">Flere nyheter</h2>
-  <p class="seksjonsinfo" data-nyhetsstatus>Kontrollerer publiseringsdatoer …</p>
-  <div id="nyhetshjul2-grid"></div>
-</section>
-  
-  <!-- 🟡 Sport -->
-  <section id="sportshjul">
-  <h2 class="seksjonstittel">
-    <a href="sport.html" style="color:var(--yellow); text-decoration:none;">
-      Sport →
-    </a>
-  </h2>
-  <p class="seksjonsinfo" data-nyhetsstatus>Kontrollerer publiseringsdatoer …</p>
-  <div id="sportshjul-grid"></div>
-</section>
+  <section id="nyhetshjul2" class="avis-seksjon" aria-labelledby="flere-nyheter-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">02 / Flere historier</span>
+        <h2 id="flere-nyheter-tittel" class="seksjonstittel">Flere nyheter</h2>
+      </div>
+    </div>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
+    <div id="nyhetshjul2-grid"></div>
+  </section>
 
-  <!-- 🟡 Kultur og underholdning -->
-  <section id="kulturhjul">
-    <h2 class="seksjonstittel">Kultur og underholdning</h2>
-    <p class="seksjonsinfo" data-nyhetsstatus>Kontrollerer publiseringsdatoer …</p>
+  <section id="kulturhjul" class="avis-seksjon" aria-labelledby="kultur-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">03 / Film, litteratur og scene</span>
+        <h2 id="kultur-tittel" class="seksjonstittel">Kultur</h2>
+      </div>
+      <a class="avis-seksjonslenke" href="kultur.html">Kulturarkiv <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
     <div id="kulturhjul-grid"></div>
   </section>
 
-  <!-- 🟡 Kommentarer -->
-  <section id="kommentarer">
-    <h2 class="seksjonstittel">Kommentarer</h2>
-    <p class="seksjonsinfo" data-nyhetsstatus>Kontrollerer publiseringsdatoer …</p>
+  <section id="sportshjul" class="avis-seksjon" aria-labelledby="sport-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">04 / Sport og idrett</span>
+        <h2 id="sport-tittel" class="seksjonstittel">Sport</h2>
+      </div>
+      <a class="avis-seksjonslenke" href="sport.html">Flere sportssaker <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
+    <div id="sportshjul-grid"></div>
+  </section>
+
+  <section id="kommentarer" class="avis-seksjon avis-perspektiver" aria-labelledby="kommentarer-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">05 / Analyse og meninger</span>
+        <h2 id="kommentarer-tittel" class="seksjonstittel">Kommentarer</h2>
+      </div>
+    </div>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
     <div id="kommentarhjul-grid"></div>
   </section>
 
-  <!-- 🟡 Debatt -->
-  <section id="debatt">
-    <h2 class="seksjonstittel">Debatt</h2>
-    <div class="debatt-innlegg"></div>
-    <div class="btn-container">
-      <a class="btn" href="skriv-innlegg.html">Skriv innlegg</a>
+  <section id="debatt" class="avis-seksjon avis-debatt" aria-labelledby="debatt-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">06 / Åpen debatt</span>
+        <h2 id="debatt-tittel" class="seksjonstittel">Debatt</h2>
+      </div>
+      <a class="avis-seksjonslenke" href="skriv-innlegg.html">Send inn ditt innlegg <span aria-hidden="true">→</span></a>
     </div>
+    <div class="debatt-innlegg"></div>
+    <div class="btn-container"><a class="btn" href="skriv-innlegg.html">Skriv innlegg</a></div>
   </section>
-
 </main>
 
   <!-- 🟡 Footer -->
