@@ -1,99 +1,50 @@
-# Paradisavisa – redaksjonell arbeidsplan
+# Paradisavisa – fortløpende redaksjonell publisering
 
 **Motto: «Objektivt sett, fra vår synsvinkel.»**
 
-## Redaksjonell profil
-Paradisavisa skal være en selvstendig nyhets- og kulturavis, ikke et organ som gjengir Paradispartiets vurderinger som fakta. Valg av tema og vinkling kan ha et tydelig redaksjonelt blikk, men:
-- Nyheter bygger på etterprøvbare opplysninger fra identifiserbare kilder.
-- Vi skiller alltid nyheter fra kommentarer, debattinnlegg og analyser.
-- Vi skal også undersøke fakta som utfordrer egne antakelser.
-- Unngå oppdiktede sitater, intervjuer, øyenvitneskildringer og bilder som utgir seg for å dokumentere en hendelse.
-- Ved alvorlig kritikk gis berørte parter anledning til å svare før publisering.
-- KI-genererte bilder merkes **Illustrasjon**, ikke som dokumentarfoto.
-- Saker med manglende kildekontroll publiseres ikke bare for å fylle en utgave.
+## Slik skal avisa fungere
 
-**Redaksjonell oversikt:** `utkast/index.html` samler utgavene og viser antall saker og faktisk godkjenningsstatus fra `utgave.json`. Den er merket som arbeidsutkast (`noindex`) og er ikke en offentlig nyhetsforside. Ingen sak blir publisert ved å åpne oversikten.
+**Vi publiserer hver artikkel fortløpende når den er ferdig, dokumentert og godkjent.** Det finnes ingen mandags-, onsdags- eller fredagsutgaver, ingen faste slippetider og ingen plikt til å vente på andre artikler.
 
-## Publiseringsdager
-**Mandag, onsdag og fredag.** Målet er kl. 18 norsk tid, etter redaksjonell godkjenning. Faste dager er et mål; kvalitet og etterrettelighet går foran forhastet publisering.
+Nyhetshjulene på forsiden oppdateres når en enkelt sak publiseres. De viser faktiske publiseringsdatoer, og tidligere artikler beholdes som arkivstoff. Ikke gi eldre tekst ny dato bare fordi siden bygges om.
 
-| Dag | Forslag til profil | Vanlig omfang |
-| --- | --- | --- |
-| Mandag | Helgens utvikling, ukestart, norsk samfunn | 1 hovedsak, 2 øvrige saker, 3–5 notiser |
-| Onsdag | Aktuelle hendelser, økonomi, institusjoner og internasjonalt | 1 hovedsak, 2 øvrige saker, 3–5 notiser |
-| Fredag | Ukeoppsummering, forklaring, kultur, sport og fordypning | 1 hovedsak, 2 øvrige saker, 3–5 notiser |
+Paradisavisa er en selvstendig nettavis, ikke et partiorgan. Stoffvalg kan ha et gjenkjennelig redaksjonelt blikk, men nyheter skal bygge på etterprøvbare fakta – ikke på Paradispartiets standpunkter. Kommentarer, analyser og debattinnlegg merkes tydelig.
 
-## Arbeidsgang
-1. **Kildesamling:** Finn de viktigste nyhetene siden forrige utgave; noter hendelsesdato og publiseringsdato hver for seg.
-2. **Prioritering:** Ranger etter nyhetsverdi, samfunnsbetydning, dokumentasjon og leserverdi. Velg et beskjedent antall saker som kan gjøres ordentlig.
-3. **Originalkilder:** Les rapporter, vedtak, regnskap og pressemeldinger der de finnes. Skill hva kilden faktisk dokumenterer, fra kildeorganisasjonens egen vurdering.
-4. **Supplerende kontroll:** Bruk flere uavhengige kilder og innhent uttalelser fra parter ved behov.
-5. **Skriv selvstendig:** Presis tittel, dekkende ingress, kontekst, ulike perspektiver og synlige kilder. Ikke kopier tekst fra andre medier.
-6. **Bilder:** Bruk egne bilder, illustrasjoner, eller bilder med avklart lisens. Kunstig genererte illustrasjoner skal merkes.
-7. **Sluttkontroll:** Kontroller navn, tall, dato, rettslig status og siste hendelsesutvikling på selve publiseringsdagen.
-8. **Publisering:** Flytt godkjent artikkel fra `utkast/` til `artikler/` og legg til metadata i riktig JSON-nyhetshjul. Unngå at eldre stoff framstår som ferske hendelser.
-9. **Oppfølging:** Korriger feil åpent og dater eventuelle vesentlige oppdateringer.
+## Løpende arbeidsflyt – én sak om gangen
 
-## Utkast 28. oktober 2026
-Fem kildelagte nyhetsutkast ligger i `utkast/2026-10-28/`, med egen gjennomgangsside. De er **ikke publisert**, og må oppdateres og godkjennes før de eventuelt flyttes inn i avisens `artikler/`-område.
+1. **Finn en reell nyhet.** Følg utviklingen i relevante primærkilder og flere redaktørstyrte medier. Prioriter etter vesentlighet, relevans og dokumentasjon.
+2. **Lag ett utkast.** Skriv presis overskrift, dekkende ingress og forklarende hovedtekst i Paradisavisas stil. Oppgi kildegrunnlaget og skill mellom hva som er bekreftet, omstridt og uavklart.
+3. **Kontroller kilder.** Les originalrapporter, vedtak, regnskap og pressemeldinger. Suppler med uavhengige kilder og relevante motforestillinger; gi omtalte parter mulighet til å svare på alvorlig kritikk.
+4. **Lag bilde.** Bruk eget eller lovlig lisensiert bilde. Originale/AI-genererte illustrasjoner merkes som **Illustrasjon**, ikke dokumentarfotografi. Ikke oppfinn intervjuer eller beskrivelser fra en hendelse vi ikke har observert.
+5. **Sjekk ferskhet.** Før publisering må datoer, sakens status, tall og eventuelle nye hendelser kontrolleres på nytt. Særlig konsertomtaler, domstolsavgjørelser og planlagte rapporter kan bli utdatert raskt.
+6. **Godkjenn enkeltvis.** Kontroller kvalitet, kildehenvisninger, bildebruk, balanse, tittel og korrektur for akkurat den saken. Ingen annen artikkel må være ferdig først.
+7. **Publiser én sak.** Etter uttrykkelig redaksjonell beslutning flyttes den godkjente artikkelen fra `utkast/` til `artikler/`. Bruk reelle lenker til bilder og CSS. Oppgi faktisk publiseringsdato i relevant JSON-strøm (`Nyhetshjul.json`, `Kulturhjul.json` osv.). Ikke publiser et helt mappesett samlet.
+8. **Følg opp.** Korriger feil åpent, merk vesentlige endringer og dater oppdateringer. Arkivstoff skal ikke framstå som nytt.
 
-Ved eventuelle nye høringer, domstolsavgjørelser eller rapporter bør originaldokumentene sjekkes på nytt. En dato i denne planen er ikke en automatisk publiseringsgodkjenning.
+## Redaksjonell arbeidskø
 
+- `utkast/artikler.json` er **den ene oversikten** over de individuelle utkastene. Den inneholder tittel, kategori, filbane, bilde, arbeidsmappens dato, status, faktasjekk og godkjenning.
+- `utkast/index.html` viser denne artikkelkøen med søk, aktive og arkiverte tekster og kontrollstatus. Den er `noindex` og er **ikke** en offentlig avisforside eller en publiseringsknapp.
+- Eksisterende arbeidsmapper `utkast/2026-10-28/`, `utkast/2026-10-30/` og `utkast/2026-11-02/` beholdes fordi de inneholder artikler, illustrasjoner og kilder. **Dato i mappen er ikke en utgave- eller publiseringsdato.**
+- Den eldre Ibsen-teksten er merket arkivert, men ikke slettet. Andre artikler står som aktive utkast. Ingen av dem har automatisk publiseringsgodkjenning.
 
-## Konkret utgaveplan – 30. oktober og 2. november 2026
+Et utkast kan ha disse statusene: `utkast` (under arbeid), `arkivert` (ikke prioritert), `godkjent` (redaksjonelt klar) og `publisert` (lagt ut). Status og publisering må stemme med faktiske filer; oppdater aldri `publisert` uten å gjennomføre publiseringen.
 
-### Fredag 30. oktober – fem nyhetsutkast, alle under gjennomgang
-Utkastene er tilgjengelige i `utkast/2026-10-30/index.html`:
-- **Hav:** Hvor godt beskyttet er egentlig norske havområder? Krever kontroll av avgrensning, verneområder og arealbaserte tiltak.
-- **Egenberedskap:** Hva gjør du når mobilnettet og internett forsvinner? Krever kontroll av oppdatert informasjon og lokale kontaktpunkter.
-- **Pensjon:** Regjeringen vil gjøre pensjon enklere å forstå. Høringen må ikke forveksles med vedtatte endringer i pensjonsreglene.
-- **Arbeidsliv:** Én av seks oppgir å stå utenfor de vanlige arbeidstidsreglene. Rapportfunnene er selvrapporterte; juridisk status må ikke overdrives.
-- **Kultur:** MATATA tilbake på Oslo World med `Poverty Slaps, But We Slap Back Harder`. Sammenlign spillesteder, datoer og klokkeslett i Oslo Worlds og Nordic Black Theatres oversikter før publisering; dette er forhåndsomtale, **ikke anmeldelse**.
+**Praktisk eksempel:** Hvis Meta-saken er faktasjekket klokken 10.15, kan den publiseres da. Kulturstoffet trenger ikke være ferdig, og ingen annen utgave må «komme ut» samme dag.
 
+## Spesielle oppfølgingspunkter i eksisterende utkast
 
-**Tre supplerende kulturutkast til fredagen og helgen:**
-- **Dokumentar:** `Hex` om Witch Club Satan, norsk kinopremiere 30. oktober. Verifiser opplysninger mot NFI og distributøren.
-- **Spillefilm:** `Markens grøde` av Hans Petter Moland, kinopremiere 30. oktober. Vær tydelig om Hamsuns både litterære og politiske ettermæle, og skill forhåndsomtale fra anmeldelse.
-- **Musikk:** Renata Flores, konserten på Oslo World 31. oktober. Sjekk klokkeslett for samtalen om quechua: Oslo Worlds programsider oppgir ulike tidspunkter. Ikke gjør forhåndsomtalen til en anmeldelse.
+- **Helsereformutvalget:** Rapporten er varslet 2. november 2026 kl. 11.00. Den forberedte bakgrunnsteksten må kontrolleres etter offentliggjøringen før den eventuelt omtaler konklusjoner. Kilde: https://www.regjeringen.no/no/aktuelt/helsereformutvalet-legg-fram-si-utgreiing/id3178280/
+- **Prosjekt X:** Skill opplevd bedre samarbeid fra uavhengig dokumenterte resultater og politiske vedtak. Suppler med partenes vurderinger der det er relevant.
+- **Meta:** Kontroller siste rettslige status og eventuelle uttalelser fra begge parter.
+- **Kultur:** Kontroller program, billetter og om arrangementet har funnet sted; en forhåndsomtale blir ikke automatisk en anmeldelse.
+- **Beredskap og cyberrisiko:** Oppgi datoen for myndighetenes varsel og skill mulige risikoer fra dokumenterte hendelser.
 
-MATATA beholdes som den prioriterte scenekunstsaken. Tilleggssakene kan publiseres separat ved redaksjonell godkjenning; det er ikke nødvendig å fylle alle plasser i én og samme utgave.
+## Teknisk kontroll
 
-**Ute av fredagsutgaven:** Utkastet om Ibsen-bevilgningen står fortsatt i `utkast/2026-10-30/ibsen-bibliotek.html`, men er tatt ut av fredagens utvalgte saker. Det skal ikke stå i nyhetshjulene uten en ny redaksjonell vurdering.
+- Kjør `node scripts/valider-utgaver.cjs`. Den kontrollerer nå **enkeltartikler** i `utkast/artikler.json`, lenker, bildebaner, kildeavsnitt, utkastmerking, farger og at upubliserte sider ikke finnes i offentlige JSON-strømmer.
+- `scripts/visuell-sjekk.cjs` kjører en faktisk Chromium-kontroll av mobil/PC, stor klassisk avisoverskrift, diskret meny, nyhetshjul og søkbar artikkelkø.
+- GitHub Actions lagrer testresultater og skjermbilder. Et godkjent testresultat bekrefter tekniske forhold – **ikke** at teksten er journalistisk faktasjekket.
+- Inntil den enkelte sak er godkjent skal artikkelen ligge som tydelig merket utkast med `noindex`.
 
-Mulig supplering fra `utkast/2026-10-28/`: oppdatert Meta-sak etter Oslo tingretts beslutning 28. oktober, samt sakene om cyberrisiko, Ukraina-samtalene, Equinor og WMO.
-
-**Ikke publiser kun fordi utkastet er skrevet.** Vurder nyhetsverdi, eventuelle nye hendelser fredag, kildegrunnlag, behov for kommentarer fra parter og faktisk kapasitet. En grundig artikkel er bedre enn fire uferdige.
-
-### Mandag 2. november – forberedelser, ikke påstander om fremtiden
-Helsereformutvalget skal etter planen legge fram utredningen kl. 11.00 mandag 2. november. Kilde: https://www.regjeringen.no/no/aktuelt/helsereformutvalet-legg-fram-si-utgreiing/id3178280/
-
-Før rapporten er lagt fram, kan redaksjonen gjøre bakgrunnsresearch om mandat og tidligere reformer. **Ikke skriv at bestemte forslag er fremmet før dokumentet foreligger.** Etter presentasjonen: les sammendraget og sentrale kapitler, sammenlign anbefalingene med mandatet, hent reaksjoner og skill vedtatte endringer fra utvalgets forslag.
-
-### Praktisk publiseringskontroll
-- [ ] Dato for hendelse og dato for artikkel er korrekte.
-- [ ] Saken er oppdatert mot kildepubliseringer på utgivelsesdagen.
-- [ ] Overskrift og ingress dokumenteres av artikkelteksten.
-- [ ] Alle navngitte kilder og tall er kontrollert.
-- [ ] Motsigelser, berørte interesser og relevante innvendinger er representert.
-- [ ] Ingen oppdiktede sitater, intervjuer eller påstander om egen tilstedeværelse.
-- [ ] Originalbildet er avklart; genererte illustrasjoner er tydelig merket.
-- [ ] En ansvarlig redaksjonell gjennomgang er gjennomført.
-- [ ] Artiklene er flyttet til `artikler/` og nyhetshjulene endres **først etter** publiseringsgodkjenning.
-- [ ] Nettleserkontroll på mobil og PC viser korrekte lenker og bilder.
-
-## Redaksjonell forberedelse – mandag 2. november 2026
-
-To nye bakgrunnsutkast med egne illustrasjoner og kildeavsnitt er samlet i `utkast/2026-11-02/index.html`:
-
-- **Helsereformutvalget:** «Helsereformen: Dette er spørsmålene utvalget skal svare på». Går gjennom mandatet, ansvarsfordeling, finansiering, personell, teknologi og pasientrettigheter.
-- **Prosjekt X:** «14 helsepiloter prøver å tette gapet mellom sykehus og kommuner». Forklarer utvalgte piloter og skillet mellom prosjektmål og dokumenterte resultater.
-
-**Kl. 11.00 mandag:** Utvalget legger etter planen fram sin utredning, jf. https://www.regjeringen.no/no/aktuelt/helsereformutvalet-legg-fram-si-utgreiing/id3178280/ . Før publisering skal redaksjonen lese NOU-en og kontrollere eventuelle nye forslag og reelle reaksjoner. Utvalgets anbefalinger må ikke omtales som vedtatt politikk.
-
-### Automatisk kontroll – teknisk, ikke journalistisk
-- Kjør `node scripts/valider-utgaver.cjs` for å kontrollere HTML, kildeavsnitt, utgavemanifester, illustrasjoner og at upubliserte saker ikke ligger i offentlig nyhetsstrøm.
-- `scripts/visuell-sjekk.cjs` er en Playwright-test med reell Chromium for mobil og PC. Den kontrollerer menyknapp, Escape, notisbånd, arkivsider, tilgjengelig navigasjon uten JavaScript og tar skjermbilder.
-- GitHub Actions-filen `.github/workflows/visuell-sjekk.yml` skal kjøre testen når CI er tilgjengelig, og lagre skjermbildene som artefakter. Kontroller faktisk testresultat før sammenslåing; at testen er skrevet er **ikke** bevis for at testen har bestått.
-- Før sammenslåing: gjennomgå eventuelle feil i skjermbildene, særlig på mobil, og dokumentér korrigeringer.
-
-**Publiseringsregel:** Å slå sammen kodeendringene er ikke ensbetydende med at redaksjonen har godkjent artiklene. Artiklene i `utkast/` forblir utkast. Flytting til `artikler/` og oppføring i nyhetshjul krever egen publiseringsbeslutning.
+Det er aldri nødvendig å vente til en bestemt ukedag for å publisere en ferdig, kontrollert artikkel.
