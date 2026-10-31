@@ -22,11 +22,18 @@ const home=read("index.html");
 expect(home.includes("Objektivt sett, fra vår synsvinkel."),"Motto mangler på forsiden");
 expect(home.includes('class="tittellinje avis-topp avis-masthead"'),"Klassisk avisoverskrift mangler");
 expect(home.includes('aria-controls="avis-hovedmeny"'),"Menyknappen mangler");
-expect(home.includes('href="avisdesign.css?v=1"'),"Forsiden mangler redaksjonelt designsystem");
+expect(home.includes('href="avisdesign.css?v=2"'),"Forsiden mangler redaksjonelt designsystem");
 expect(home.includes('class="avis-ledergrid"'),"Forsiden mangler definert hovedsak");
 const design=read("avisdesign.css");
 expect(design.includes("grid-row:1/span 2"),"Hovedsaken mangler stor layout på PC");
 expect(design.includes("grid-template-columns:minmax(0,1fr)"),"Mobiloppsettet mangler enkeltkolonne");
+const sport=read("sport.html");
+const notiser=read("notiser.html");
+expect(!sport.includes('class="sport-banner"'),"Sportssiden skal ikke bruke ekstra gul tittelbjelke");
+expect(sport.includes('class="arkiv-hoved sport-arkiv-hoved"'),"Sport mangler felles avisside-layout");
+expect(notiser.includes('class="arkiv-hoved notis-arkiv-hoved"'),"Notisarkivet mangler avisside-layout");
+expect(design.includes(".notiser-side .notisgrid"),"Notisarkivet mangler lesbart grid");
+
 
 const css=read("styles.css");
 expect(css.includes("--yellow: #FFD600")&&css.includes("--bg: #000"),"Svart/gul fargeprofil er endret");
