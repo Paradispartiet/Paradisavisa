@@ -1037,3 +1037,207 @@ body.sport-side .avisa-shared-header .avis-topp-inner { padding-top: .95rem; pad
 .sport-side .hjul-card .forside-dato + p {
   margin-top: 0;
 }
+
+
+/* ================================================================
+   PARADISAVISA – KLASSISK AVISMASTHEAD
+   Avisnavnet er typografi, ikke en innrammet logo eller en boks.
+   Menyknappen ligger diskret øverst til høyre, under notisbåndet.
+   ================================================================ */
+.avis-forside .tittellinje.avis-masthead {
+  display: block;
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: #000;
+  box-shadow: none;
+  pointer-events: auto;
+}
+.avis-forside .avis-masthead .avis-topp-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  max-width: 1540px;
+  margin: 0 auto;
+  padding: .75rem clamp(.85rem, 3vw, 3.5rem) 1.15rem;
+}
+.avis-forside .avis-masthead-rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2.55rem;
+}
+.avis-forside .avis-masthead .avis-kategorier {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  color: #a9a59a;
+  font: 600 .69rem/1.5 'Inter',system-ui,sans-serif;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.avis-forside .avis-masthead .avis-kategorier span {
+  color: var(--yellow);
+  margin: 0 .45rem;
+}
+.avis-forside .avis-masthead .avis-topp-handlinger {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-left: auto;
+}
+.avis-forside .avis-masthead .nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 36px;
+  padding: .35rem .6rem;
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: none;
+  color: #d4d0c2;
+  font: 650 .78rem/1.2 'Inter',system-ui,sans-serif;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.avis-forside .avis-masthead .nav-toggle-icon {
+  color: var(--yellow);
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.avis-forside .avis-masthead .nav-toggle:hover,
+.avis-forside .avis-masthead .nav-toggle[aria-expanded="true"] {
+  background: #181818;
+  color: var(--yellow);
+}
+.avis-forside .avis-masthead .nav-toggle:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 3px;
+}
+.avis-forside .avis-masthead .avis-identitet {
+  width: 100%;
+  min-width: 0;
+  margin: clamp(.2rem, 1vw, 1rem) auto 0;
+  text-align: center;
+}
+.avis-forside .avis-masthead .avis-identitet h1 {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--yellow);
+  font-family: 'Bodoni Moda', 'Bodoni MT', Didot, Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: clamp(2.1rem, 9.1vw, 9rem);
+  font-weight: 800;
+  letter-spacing: -.065em;
+  line-height: 1.04;
+  white-space: nowrap;
+}
+.avis-forside .avis-masthead .avis-identitet h1 a {
+  display: inline-block;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+.avis-forside .avis-masthead .avis-identitet h1 a:hover {
+  color: #ffeb70;
+}
+.avis-forside .avis-masthead .avis-motto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.55rem, 1.7vw, 1.25rem);
+  margin: clamp(.55rem, 1.15vw, 1rem) auto 0;
+  color: #e4dfd0;
+  font: italic clamp(.9rem, 1.3vw, 1.05rem)/1.5 Georgia,serif;
+  letter-spacing: .018em;
+  text-align: center;
+}
+.avis-forside .avis-masthead .avis-motto::before,
+.avis-forside .avis-masthead .avis-motto::after {
+  content: "";
+  flex: 0 1 110px;
+  height: 1px;
+  background: rgba(255,214,0,.52);
+}
+.avis-forside .avis-masthead .avis-identitet::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin: clamp(1.1rem,2vw,1.8rem) auto 0;
+  background: linear-gradient(90deg,transparent,rgba(255,214,0,.55) 15%,rgba(255,214,0,.55) 85%,transparent);
+}
+html.avis-meny-klar .avis-forside .avis-masthead .avisa-menu:not([hidden]) {
+  top: 3.3rem;
+  right: clamp(.85rem,3vw,3.5rem);
+  width: min(420px,calc(100vw - 1.7rem));
+  border: 1px solid #49402c;
+  border-top: 2px solid var(--yellow);
+  background: #101010;
+  box-shadow: 0 18px 42px rgba(0,0,0,.8);
+  z-index: 9005;
+}
+@media (max-width: 700px) {
+  .avis-forside .avis-masthead .avis-topp-inner {
+    padding: .65rem .85rem 1rem;
+  }
+  .avis-forside .avis-masthead-rail {
+    gap: .45rem;
+    min-height: 2.35rem;
+  }
+  .avis-forside .avis-masthead .avis-kategorier {
+    font-size: .6rem;
+    letter-spacing: .065em;
+  }
+  .avis-forside .avis-masthead .avis-kategorier span {
+    margin: 0 .13rem;
+  }
+  .avis-forside .avis-masthead .nav-toggle {
+    min-height: 36px;
+    gap: .3rem;
+    font-size: .7rem;
+    letter-spacing: .04em;
+    padding: .35rem .3rem;
+  }
+  .avis-forside .avis-masthead .avis-identitet {
+    margin-top: .65rem;
+  }
+  .avis-forside .avis-masthead .avis-identitet h1 {
+    font-size: clamp(1.9rem,10vw,4.4rem);
+    letter-spacing: -.065em;
+    line-height: 1.06;
+  }
+  .avis-forside .avis-masthead .avis-motto {
+    font-size: .86rem;
+    gap: .48rem;
+  }
+  .avis-forside .avis-masthead .avis-motto::before,
+  .avis-forside .avis-masthead .avis-motto::after {
+    flex-basis: 22px;
+  }
+  html.avis-meny-klar .avis-forside .avis-masthead .avisa-menu:not([hidden]) {
+    top: 2.9rem;
+    right: .75rem;
+  }
+}
+@media (max-width: 350px) {
+  .avis-forside .avis-masthead .avis-kategorier { font-size: .54rem; }
+  .avis-forside .avis-masthead .avis-identitet h1 { font-size: 9.6vw; }
+}
