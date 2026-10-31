@@ -78,3 +78,20 @@ Før rapporten er lagt fram, kan redaksjonen gjøre bakgrunnsresearch om mandat 
 - [ ] En ansvarlig redaksjonell gjennomgang er gjennomført.
 - [ ] Artiklene er flyttet til `artikler/` og nyhetshjulene endres **først etter** publiseringsgodkjenning.
 - [ ] Nettleserkontroll på mobil og PC viser korrekte lenker og bilder.
+
+## Redaksjonell forberedelse – mandag 2. november 2026
+
+To nye bakgrunnsutkast med egne illustrasjoner og kildeavsnitt er samlet i `utkast/2026-11-02/index.html`:
+
+- **Helsereformutvalget:** «Helsereformen: Dette er spørsmålene utvalget skal svare på». Går gjennom mandatet, ansvarsfordeling, finansiering, personell, teknologi og pasientrettigheter.
+- **Prosjekt X:** «14 helsepiloter prøver å tette gapet mellom sykehus og kommuner». Forklarer utvalgte piloter og skillet mellom prosjektmål og dokumenterte resultater.
+
+**Kl. 11.00 mandag:** Utvalget legger etter planen fram sin utredning, jf. https://www.regjeringen.no/no/aktuelt/helsereformutvalet-legg-fram-si-utgreiing/id3178280/ . Før publisering skal redaksjonen lese NOU-en og kontrollere eventuelle nye forslag og reelle reaksjoner. Utvalgets anbefalinger må ikke omtales som vedtatt politikk.
+
+### Automatisk kontroll – teknisk, ikke journalistisk
+- Kjør `node scripts/valider-utgaver.cjs` for å kontrollere HTML, kildeavsnitt, utgavemanifester, illustrasjoner og at upubliserte saker ikke ligger i offentlig nyhetsstrøm.
+- `scripts/visuell-sjekk.cjs` er en Playwright-test med reell Chromium for mobil og PC. Den kontrollerer menyknapp, Escape, notisbånd, arkivsider, tilgjengelig navigasjon uten JavaScript og tar skjermbilder.
+- GitHub Actions-filen `.github/workflows/visuell-sjekk.yml` skal kjøre testen når CI er tilgjengelig, og lagre skjermbildene som artefakter. Kontroller faktisk testresultat før sammenslåing; at testen er skrevet er **ikke** bevis for at testen har bestått.
+- Før sammenslåing: gjennomgå eventuelle feil i skjermbildene, særlig på mobil, og dokumentér korrigeringer.
+
+**Publiseringsregel:** Å slå sammen kodeendringene er ikke ensbetydende med at redaksjonen har godkjent artiklene. Artiklene i `utkast/` forblir utkast. Flytting til `artikler/` og oppføring i nyhetshjul krever egen publiseringsbeslutning.
