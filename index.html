@@ -18,8 +18,8 @@
   <link rel="icon" type="image/png" href="favicon.PNG">
 
   <title>Paradisavisa</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=32">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,700;6..96,800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=33">
 <script defer src="script.js?v=28"></script>
 </head>
 
@@ -31,25 +31,28 @@
     <div class="notisinnhold"></div>
   </div>
 
-<!-- Avisens faste visuelle identitet: svart og gult, tydelig motto. -->
-<header class="tittellinje avis-topp">
+<!-- Klassisk avisforside: et stort, uinnrammet avisnavn og diskret meny. -->
+<header class="tittellinje avis-topp avis-masthead">
   <div class="avis-topp-inner">
+    <div class="avis-masthead-rail">
+      <p class="avis-kategorier">NYHETER <span aria-hidden="true">·</span> KULTUR <span aria-hidden="true">·</span> SPORT <span aria-hidden="true">·</span> DEBATT</p>
+      <div class="avis-topp-handlinger">
+        <button class="nav-toggle" type="button" aria-controls="avis-hovedmeny" aria-expanded="false" aria-label="Åpne meny" hidden>
+          <span class="nav-toggle-icon" aria-hidden="true">☰</span>
+          <span class="nav-toggle-label">Meny</span>
+        </button>
+      </div>
+    </div>
     <div class="avis-identitet">
-      <p class="avis-kategorier">Nyheter <span aria-hidden="true">·</span> Kultur <span aria-hidden="true">·</span> Debatt</p>
       <h1><a href="index.html">PARADISAVISA</a></h1>
       <p class="avis-motto">Objektivt sett, fra vår synsvinkel.</p>
     </div>
-    <div class="avis-topp-handlinger">
-      <a class="avis-topp-siste" href="nyheter.html">Nyhetsarkiv</a>
-      <button class="nav-toggle" type="button" aria-controls="avis-hovedmeny" aria-expanded="false" aria-label="Åpne meny" hidden>
-        <span class="nav-toggle-icon" aria-hidden="true">☰</span><span>Meny</span>
-      </button>
-    </div>
     <nav id="avis-hovedmeny" class="site-nav avisa-menu" aria-label="Hovedmeny">
       <a href="#nyhetshjul">Nyheter</a>
-      <a href="#nyhetshjul2">Flere nyheter</a>
+      <a href="nyheter.html">Nyhetsarkiv</a>
       <a href="#sportshjul">Sport</a>
       <a href="#kulturhjul">Kultur</a>
+      <a href="kultur.html">Kulturarkiv</a>
       <a href="#kommentarer">Kommentarer</a>
       <a href="#debatt">Debatt</a>
       <a href="notiser.html">Notiser</a>
