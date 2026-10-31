@@ -1,0 +1,331 @@
+/* Paradisavisa – redaksjonell typografi og forsidehierarki, oktober 2026.
+   Eget lag oppå eksisterende styles.css for å unngå å endre eldre artikler.
+   Uten innrammede overskrifter eller dekorative kortbokser. */
+.avis-forside {
+  --avis-bredde: 1180px;
+  --avis-papir: #f2efe7;
+  --avis-dempa: #b8b6ae;
+  --avis-linje: #403d34;
+  background:#080808;
+  color:var(--avis-papir);
+  -webkit-font-smoothing:antialiased;
+}
+.avis-forside a:focus-visible {
+  outline:2px solid var(--yellow);
+  outline-offset:4px;
+}
+.avis-forside .avis-masthead {
+  background:#080808;
+}
+.avis-forside .avis-masthead .avis-topp-inner {
+  max-width:1320px;
+  padding-bottom:1.15rem;
+}
+.avis-forside .avis-masthead .avis-identitet h1 {
+  text-shadow:none;
+}
+.avis-forside .avis-masthead .avis-identitet::after {
+  margin-top:1.25rem;
+  height:2px;
+  background:var(--yellow);
+}
+.avis-forside .avis-masthead .avis-kategorier {
+  color:#b9b5a8;
+  font-weight:550;
+  letter-spacing:.14em;
+}
+.avis-forside .avis-masthead .nav-toggle {
+  border:1px solid transparent;
+  font-size:.75rem;
+}
+.avis-forside .avis-masthead .nav-toggle:hover {
+  border-color:#504a37;
+  background:#131313;
+}
+
+/* Redaksjonell introduksjon og seksjonsoverskrifter. */
+.avis-forside .avis-redaksjonell-forside {
+  display:block;
+  max-width:calc(var(--avis-bredde) + 2.5rem);
+  margin:0 auto;
+  padding:0 1.25rem 4.5rem;
+}
+.avis-forside .avis-leserinfo {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.3rem;
+  margin:0 0 1.8rem;
+  padding:.7rem 0 1rem;
+  border-bottom:1px solid var(--avis-linje);
+}
+.avis-forside .avis-leserinfo p {
+  color:#bbb7ae;
+  font:500 .8rem/1.6 'Inter',system-ui,sans-serif;
+}
+.avis-forside .avis-leserinfo a,
+.avis-forside .avis-seksjonslenke {
+  flex:0 0 auto;
+  color:#e2dcd0;
+  font:650 .78rem/1.3 'Inter',system-ui,sans-serif;
+  text-decoration:none;
+  letter-spacing:.015em;
+  border-bottom:1px solid transparent;
+  padding-bottom:.25rem;
+}
+.avis-forside .avis-leserinfo a:hover,
+.avis-forside .avis-seksjonslenke:hover {
+  color:var(--yellow);
+  border-color:var(--yellow);
+}
+.avis-forside #hovedinnhold > section.avis-seksjon {
+  width:100%;
+  max-width:none;
+  margin:0 0 clamp(2.5rem,4.5vw,4.25rem);
+  padding:0;
+  border:0;
+}
+.avis-forside .avis-seksjonshode {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:1rem;
+  border-top:1px solid #6b6250;
+  padding:1.05rem 0 .55rem;
+}
+.avis-forside .avis-seksjonsidentitet {min-width:0}
+.avis-forside .avis-seksjonsmerke {
+  display:block;
+  color:var(--yellow);
+  font:700 .69rem/1.4 'Inter',system-ui,sans-serif;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin:0 0 .6rem;
+}
+.avis-forside #hovedinnhold .avis-seksjon .seksjonstittel {
+  display:block;
+  width:auto;
+  max-width:none;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+  text-transform:none;
+  padding:0;
+  margin:0;
+  color:var(--avis-papir);
+  font:750 clamp(1.7rem,2.65vw,2.55rem)/1.12 Georgia,'Times New Roman',serif;
+  letter-spacing:-.035em;
+}
+.avis-forside #hovedinnhold .avis-seksjon .seksjonstittel:hover {
+  box-shadow:none;
+  transform:none;
+}
+.avis-forside .avis-seksjon .seksjonsinfo {
+  max-width:none;
+  margin:.05rem 0 1rem;
+  padding:0;
+  color:#a8a49a;
+  font:500 .76rem/1.5 'Inter',system-ui,sans-serif;
+}
+.avis-forside #hovedinnhold .avis-seksjon .avis-seksjonslenke {
+  margin:0 0 .35rem;
+}
+
+/* Et luftig magasin-/avisgrid, ikke flere likeverdige svarte bokser. */
+.avis-forside #nyhetshjul-grid,
+.avis-forside #nyhetshjul2-grid,
+.avis-forside #sportshjul-grid,
+.avis-forside #kulturhjul-grid,
+.avis-forside #kommentarhjul-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(1.1rem,2vw,1.8rem);
+  width:100%;
+  padding:0;
+  align-items:stretch;
+  overflow:visible;
+  scroll-snap-type:none;
+}
+.avis-forside #nyhetshjul2-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+.avis-forside #hovedinnhold .hjul-card {
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  width:100%;
+  min-height:0;
+  height:auto;
+  padding:0 0 1.1rem;
+  border:0;
+  border-top:1px solid #38352e;
+  border-radius:0;
+  background:transparent;
+  color:var(--avis-papir);
+  text-decoration:none;
+  box-shadow:none;
+  transform:none;
+  scroll-snap-align:none;
+  transition:none;
+}
+.avis-forside #hovedinnhold .hjul-card:hover,
+.avis-forside #hovedinnhold .hjul-card:focus-visible {
+  border-color:#a88f37;
+  transform:none;
+}
+.avis-forside #hovedinnhold .hjul-card img {
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  border-radius:0;
+  margin:0 0 .85rem;
+  filter:saturate(.94);
+}
+.avis-forside #hovedinnhold .hjul-card h3 {
+  margin:.1rem 0 .55rem;
+  color:#f5f2eb;
+  font:740 clamp(1.16rem,1.5vw,1.42rem)/1.26 Georgia,'Times New Roman',serif;
+  letter-spacing:-.02em;
+}
+.avis-forside #hovedinnhold .hjul-card:hover h3 {
+  color:#ffdc4c;
+}
+.avis-forside #hovedinnhold .hjul-card .forside-dato {
+  display:block;
+  margin:.15rem 0 .6rem;
+  padding:0;
+  color:#c9aa4c;
+  font:670 .72rem/1.45 'Inter',system-ui,sans-serif;
+  letter-spacing:.025em;
+}
+.avis-forside #hovedinnhold .hjul-card p {
+  margin:0;
+  padding:0;
+  color:#c6c2b9;
+  font:400 .91rem/1.62 'Inter',system-ui,sans-serif;
+}
+
+/* Hovedsaken får plass som en hovedsak i en papiravis. */
+@media (min-width:1000px) {
+  .avis-forside #nyhetshjul-grid {
+    grid-template-columns:minmax(0,1.63fr) minmax(0,1fr);
+    grid-template-rows:repeat(2,minmax(0,auto));
+    gap:1.15rem 2.2rem;
+  }
+  .avis-forside #nyhetshjul-grid .hjul-card:first-child {
+    grid-column:1;
+    grid-row:1/span 2;
+    border-top:0;
+    padding-right:2.15rem;
+    border-right:1px solid #38352e;
+  }
+  .avis-forside #nyhetshjul-grid .hjul-card:first-child img {
+    aspect-ratio:16/10;
+    margin-bottom:1.3rem;
+  }
+  .avis-forside #nyhetshjul-grid .hjul-card:first-child h3 {
+    font-size:clamp(2rem,3vw,2.85rem);
+    line-height:1.12;
+    letter-spacing:-.045em;
+    margin-bottom:.8rem;
+  }
+  .avis-forside #nyhetshjul-grid .hjul-card:first-child p {
+    font-size:1rem;
+    max-width:56ch;
+  }
+  .avis-forside #nyhetshjul-grid .hjul-card:not(:first-child) img {
+    aspect-ratio:16/6.6;
+    margin-bottom:.65rem;
+  }
+  .avis-forside #nyhetshjul-grid .hjul-card:not(:first-child) h3 {
+    font-size:clamp(1.2rem,1.5vw,1.56rem);
+    line-height:1.23;
+  }
+}
+.avis-forside #nyhetshjul2-grid .hjul-card img {
+  aspect-ratio:16/8.8;
+}
+
+/* Debatt og kontakt er et redaksjonelt felt, ikke en reklameknapp. */
+.avis-forside #debatt .debatt-innlegg {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.5rem;
+  padding:0;
+  margin:1rem 0;
+}
+.avis-forside #debatt .btn-container {
+  margin:1.25rem 0 0;
+  text-align:left;
+}
+.avis-forside #debatt .btn {
+  display:inline-block;
+  padding:.65rem .9rem;
+  color:#111;
+  background:var(--yellow);
+  border:1px solid var(--yellow);
+  border-radius:2px;
+  font-size:.83rem;
+  font-weight:800;
+  letter-spacing:.03em;
+}
+.avis-forside #debatt .btn:hover {color:var(--yellow);background:transparent}
+.avis-forside .site-footer {border-top:1px solid #504b40}
+
+/* Tablet: ordinært tospaltet grid. Mobil: lesbare artikler i én kolonne. */
+@media (min-width:701px) and (max-width:999px) {
+  .avis-forside #nyhetshjul-grid,
+  .avis-forside #sportshjul-grid,
+  .avis-forside #kulturhjul-grid,
+  .avis-forside #kommentarhjul-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media (max-width:700px) {
+  .avis-forside .avis-redaksjonell-forside {
+    padding:0 .9rem 2.7rem;
+  }
+  .avis-forside .avis-leserinfo {
+    display:block;
+    padding:.85rem 0 1rem;
+    margin-bottom:1.4rem;
+  }
+  .avis-forside .avis-leserinfo p {font-size:.76rem}
+  .avis-forside .avis-leserinfo a {display:inline-block;margin-top:.6rem}
+  .avis-forside .avis-seksjonshode {
+    padding-top:.9rem;
+    gap:.65rem;
+  }
+  .avis-forside .avis-seksjonsmerke {font-size:.63rem;letter-spacing:.1em}
+  .avis-forside #hovedinnhold .avis-seksjon .seksjonstittel {font-size:1.8rem}
+  .avis-forside .avis-seksjonslenke {font-size:.7rem}
+  .avis-forside #nyhetshjul-grid,
+  .avis-forside #nyhetshjul2-grid,
+  .avis-forside #sportshjul-grid,
+  .avis-forside #kulturhjul-grid,
+  .avis-forside #kommentarhjul-grid {
+    grid-template-columns:minmax(0,1fr);
+    gap:1.2rem;
+    padding:0;
+  }
+  .avis-forside #hovedinnhold .hjul-card {
+    padding:0 0 1.4rem;
+  }
+  .avis-forside #hovedinnhold .hjul-card img {
+    height:auto;
+    aspect-ratio:16/9;
+    margin-bottom:.75rem;
+  }
+  .avis-forside #nyhetshjul-grid .hjul-card:first-child h3 {
+    font-size:1.75rem;
+    line-height:1.2;
+  }
+  .avis-forside #hovedinnhold .hjul-card h3 {font-size:1.34rem}
+  .avis-forside #debatt .debatt-innlegg {grid-template-columns:minmax(0,1fr)}
+  .avis-forside #hovedinnhold > section.avis-seksjon {margin-bottom:2.65rem}
+}
+@media (prefers-reduced-motion:reduce) {
+  .avis-forside #hovedinnhold .hjul-card {transition:none}
+}
