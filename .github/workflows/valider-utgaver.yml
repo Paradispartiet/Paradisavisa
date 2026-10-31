@@ -1,4 +1,4 @@
-name: Kontroller Paradisavisas redaksjonelle utkast
+name: Kontroller fortløpende artikler i Paradisavisa
 
 on:
   pull_request:
@@ -20,5 +20,5 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Valider utkast, bilder og nyhetsstrømmer
-        run: node scripts/valider-utgaver.cjs
+      - name: Valider enkeltartikler, bilder og nyhetsstrømmer
+        run: node scripts/valider-artikler.cjs
