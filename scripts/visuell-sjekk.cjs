@@ -217,6 +217,9 @@ async function run(){
           check((await page.locator("#sport h1").textContent())==="Sport",
             label+": sportssiden mangler stor hovedoverskrift");
           await page.locator("#sportshjul-grid .hjul-card").first().waitFor({timeout:10000});
+          const sportStatus=await page.locator("#sport [data-nyhetsstatus]").textContent();
+          check(sportStatus.includes("Sist publisert")&&sportStatus.includes("Fra arkivet"),
+            label+": sportssaker har ikke fått korrekt datert arkivmerking");
         }
         if(name==="notiser.html"){
           check((await page.locator(".notis-arkiv-hoved h1").textContent())==="Notisarkiv",
