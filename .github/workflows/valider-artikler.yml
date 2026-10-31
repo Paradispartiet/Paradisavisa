@@ -5,8 +5,11 @@ on:
   push:
     branches:
       - main
-      - avistopp-motto-meny-redaksjonell-profil-2026
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   kontroll:
