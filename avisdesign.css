@@ -329,3 +329,86 @@
 @media (prefers-reduced-motion:reduce) {
   .avis-forside #hovedinnhold .hjul-card {transition:none}
 }
+
+/* Samme redaksjonelle formspråk på undersider og arkiv – uten å endre artiklene. */
+.avisa-shared-header {
+  background:#080808;
+  border-top:2px solid var(--yellow);
+  border-bottom:1px solid #494536;
+}
+.avisa-shared-header .avis-topp-inner {
+  max-width:1180px;
+  padding:1.05rem 1.2rem;
+}
+.avisa-shared-header .avis-kompakt-merke {
+  color:var(--yellow);
+  font:800 clamp(1.6rem,3vw,2.15rem)/1.1 Georgia,serif;
+  letter-spacing:-.06em;
+}
+.avisa-shared-header .avis-motto {
+  font:italic .84rem/1.45 Georgia,serif;
+  color:#d3cbbb;
+}
+.avisa-shared-header .nav-toggle {
+  border:1px solid transparent;
+  background:transparent;
+  font-size:.78rem;
+}
+.avisa-shared-header .nav-toggle:hover {border-color:#564b30}
+.arkiv-side .arkiv-hoved {
+  max-width:1180px;
+  padding:clamp(2.2rem,5vw,4.2rem) 1.2rem 5rem;
+}
+.arkiv-side .arkiv-hoved h1 {
+  font:760 clamp(2.3rem,4vw,3.8rem)/1.1 Georgia,serif;
+  letter-spacing:-.045em;
+  color:#f1eee6;
+}
+.arkiv-side .arkiv-ingress {
+  max-width:700px;
+  color:#c3bfb5;
+  line-height:1.7;
+}
+.arkiv-side .kategori-artikler-grid {
+  gap:1.5rem;
+  padding-top:1.3rem;
+  border-top:1px solid #605849;
+}
+.arkiv-side .kategori-artikler-grid .hjul-card {
+  background:transparent;
+  border:0;
+  border-top:1px solid #3f3b32;
+  border-radius:0;
+  padding-bottom:1.5rem;
+  box-shadow:none;
+  transform:none;
+}
+.arkiv-side .kategori-artikler-grid .hjul-card:hover {
+  border-color:#b4963b;
+  transform:none;
+}
+.arkiv-side .kategori-artikler-grid .hjul-card img {
+  margin:0 0 .8rem;
+  height:auto;
+  aspect-ratio:16/10;
+  object-fit:cover;
+}
+.arkiv-side .kategori-artikler-grid .hjul-card h3 {
+  margin:0 0 .55rem;
+  font:750 1.45rem/1.28 Georgia,serif;
+  letter-spacing:-.025em;
+}
+.arkiv-side .kategori-artikler-grid .hjul-card .arkiv-dato {
+  margin:.15rem 0 .65rem;
+  color:#c7a84c;
+}
+.arkiv-side .kategori-artikler-grid .hjul-card p {
+  margin:0;
+  color:#c1bdb4;
+  line-height:1.65;
+}
+@media(max-width:700px) {
+  .avisa-shared-header .avis-topp-inner {padding:.9rem}
+  .arkiv-side .arkiv-hoved {padding:2rem .9rem 3rem}
+  .arkiv-side .kategori-artikler-grid {grid-template-columns:minmax(0,1fr)}
+}
