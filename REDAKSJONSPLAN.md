@@ -42,7 +42,7 @@ Et utkast kan ha disse statusene: `utkast` (under arbeid), `arkivert` (ikke prio
 
 ## Teknisk kontroll
 
-- Kjør `node scripts/valider-utgaver.cjs`. Den kontrollerer nå **enkeltartikler** i `utkast/artikler.json`, lenker, bildebaner, kildeavsnitt, utkastmerking, farger og at upubliserte sider ikke finnes i offentlige JSON-strømmer.
+- Kjør `node scripts/valider-artikler.cjs`. Den kontrollerer nå **enkeltartikler** i `utkast/artikler.json`, lenker, bildebaner, kildeavsnitt, utkastmerking, farger og at upubliserte sider ikke finnes i offentlige JSON-strømmer.
 - `scripts/visuell-sjekk.cjs` kjører en faktisk Chromium-kontroll av mobil/PC, stor klassisk avisoverskrift, diskret meny, nyhetshjul og søkbar artikkelkø.
 - GitHub Actions lagrer testresultater og skjermbilder. Et godkjent testresultat bekrefter tekniske forhold – **ikke** at teksten er journalistisk faktasjekket.
 - Inntil den enkelte sak er godkjent skal artikkelen ligge som tydelig merket utkast med `noindex`.
