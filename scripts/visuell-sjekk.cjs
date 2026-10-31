@@ -50,6 +50,41 @@ async function run(){
       check((await title.textContent()).includes("PARADISAVISA"),label+": mangler avisnavn");
       check((await page.locator(".avis-motto").textContent()).includes("Objektivt sett, fra vår synsvinkel."),
         label+": motto mangler");
+      // Vent på at alle innholdsseksjonene faktisk er fylt. Et tomt felt
+      // ved første skjermbilde kan ellers maskere problemer med kortene.
+      const storyGrids=["#nyhetshjul-grid","#nyhetshjul2-grid",
+        "#sportshjul-grid","#kulturhjul-grid","#kommentarhjul-grid"];
+      for(const id of storyGrids){
+        await page.locator(id+" .hjul-card").first().waitFor({timeout:12000});
+      }
+      const layout=await page.evaluate(async () => {
+        const ids=["nyhetshjul-grid","nyhetshjul2-grid","sportshjul-grid",
+          "kulturhjul-grid","kommentarhjul-grid"];
+        const grids=ids.map(id=>{
+          const cards=[...document.getElementById(id).querySelectorAll(".hjul-card")];
+          return {id,rects:cards.map(card=>{
+            const r=card.getBoundingClientRect();
+            return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width};
+          })};
+        });
+        const images=[...document.querySelectorAll("#hovedinnhold .hjul-card img")];
+        await Promise.all(images.map(img=>img.decode().catch(()=>null)));
+        return {width:window.innerWidth,grids,
+          broken:images.filter(img=>!img.naturalWidth).map(img=>img.getAttribute("src"))};
+      });
+      check(!layout.broken.length,label+": manglende bilder: "+layout.broken.join(", "));
+      for(const grid of layout.grids){
+        for(const r of grid.rects){
+          check(r.left>=-2 && r.right<=layout.width+2,
+            label+": avkuttet kort i "+grid.id+" ("+r.left+"–"+r.right+")");
+        }
+        if(label==="mobil" && grid.rects.length>1){
+          check(grid.rects[1].top>=grid.rects[0].bottom-2,
+            "mobil: kortene ligger fortsatt side om side i "+grid.id);
+          check(grid.rects[0].width>=layout.width*.80,
+            "mobil: kortene er for smale i "+grid.id);
+        }
+      }
       await page.screenshot({path:path.join(output,"forside-"+label+".png"),fullPage:true});
       const toggle=page.locator(".avis-topp .nav-toggle");
       await toggle.click();
