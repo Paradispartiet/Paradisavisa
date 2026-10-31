@@ -22,3 +22,11 @@ jobs:
           node-version: '22'
       - name: Valider enkeltartikler, bilder og nyhetsstrømmer
         run: node scripts/valider-artikler.cjs
+      - name: Sjekk at ukontrollert utkast ikke kan publiseres
+        run: |
+          if node scripts/publiser-artikkel.cjs cyberrisiko 2026-10-31; then
+            echo "Utkast ble tillatt publisert uten godkjenning"
+            exit 1
+          fi
+          echo "Publiseringssperren er aktiv"
+
