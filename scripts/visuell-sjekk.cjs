@@ -211,6 +211,33 @@ async function run(){
       for(const name of files.filter(x=>x!=="index.html")){
         await page.goto(base+"/"+name,{waitUntil:"domcontentloaded"});
         await page.locator(".avisa-shared-header .nav-toggle:not([hidden])").waitFor({timeout:10000});
+        if(name==="sport.html"){
+          check((await page.locator(".sport-banner").count())===0,
+            label+": gammel gul sportsbanner finnes fortsatt");
+          check((await page.locator("#sport h1").textContent())==="Sport",
+            label+": sportssiden mangler stor hovedoverskrift");
+          await page.locator("#sportshjul-grid .hjul-card").first().waitFor({timeout:10000});
+        }
+        if(name==="notiser.html"){
+          check((await page.locator(".notis-arkiv-hoved h1").textContent())==="Notisarkiv",
+            label+": notisarkivet mangler egen hovedoverskrift");
+          await page.locator("#notisgrid .notis-rute").first().waitFor({timeout:10000});
+          const layout=await page.evaluate(()=>{
+            const grid=document.getElementById("notisgrid");
+            const cards=[...grid.querySelectorAll(".notis-rute")];
+            const r=cards[0].getBoundingClientRect();
+            return {columns:getComputedStyle(grid).gridTemplateColumns.split(" ").length,
+              firstWidth:r.width,viewport:innerWidth,count:cards.length};
+          });
+          check(layout.count>0,label+": tomt notisarkiv");
+          if(label==="mobil"){
+            check(layout.columns===1,label+": notiser skal stå i én kolonne på mobil");
+            check(layout.firstWidth>layout.viewport*.8,label+": notisene blir for smale på mobil");
+          }else{
+            check(layout.columns>=2,label+": notisarkivet skal bruke flere kolonner på PC");
+            check(layout.firstWidth>250,label+": notisene er for smale på PC");
+          }
+        }
         if(name==="nyheter.html"||name==="kultur.html"){
           await page.locator("[data-artikkelkategori] a.hjul-card").first().waitFor({timeout:10000});
           check((await page.locator("[data-artikkelkategori] a.hjul-card").count())>0,
