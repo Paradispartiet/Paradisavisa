@@ -551,3 +551,693 @@ a:hover {
   }
 
 }
+
+
+/* ===============================================================
+   AVISTOPP 2026 – Paradisavisas egen redaksjonelle identitet
+   Beholder opprinnelig svart og gult. Ikke et partibanner.
+   =============================================================== */
+body.avis-forside {
+  /* Notisbåndet er fast plassert og ca. 44 px høyt. */
+  padding-top: 46px;
+}
+.hopp-til-innhold {
+  position: absolute;
+  left: 1rem;
+  top: -8rem;
+  z-index: 10020;
+  background: var(--yellow);
+  color: #050505;
+  padding: .75rem 1rem;
+  border-radius: 0 0 4px 4px;
+  font-weight: 700;
+}
+.hopp-til-innhold:focus { top: 0; color: #050505; }
+
+/* Sidens hovedtittel er ikke lenger fast over nyhetsinnholdet. */
+.avis-forside .tittellinje.avis-topp {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  display: block;
+  padding: 0;
+  z-index: 9000;
+  pointer-events: auto;
+  background: #070707;
+  border: 0;
+  border-bottom: 1px solid rgba(255,214,0,.38);
+}
+.avis-topp-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(1.45rem,3vw,2.4rem) 1.5rem 1.6rem;
+}
+.avis-identitet { min-width: 0; }
+.avis-kategorier {
+  color: #a9a9a9;
+  font-size: .73rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  margin: 0 0 .45rem;
+}
+.avis-kategorier span { color: var(--yellow); margin: 0 .35rem; }
+.avis-forside .tittellinje h1 {
+  font-family: 'Inter',system-ui,sans-serif;
+  font-size: clamp(2.25rem,5vw,4rem);
+  letter-spacing: -.055em;
+  line-height: 1.06;
+  font-weight: 800;
+  border: 0;
+  border-top: 0;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  transform: none;
+  text-transform: uppercase;
+  white-space: normal;
+  display: block;
+  box-shadow: none;
+  color: var(--yellow);
+}
+.avis-forside .tittellinje h1 a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+}
+.avis-forside .tittellinje h1 a:hover { color: #ffe85c; }
+.avis-motto {
+  color: #e3e1dc;
+  font-size: clamp(.91rem,1.4vw,1.05rem);
+  letter-spacing: .015em;
+  line-height: 1.5;
+  margin: .65rem 0 0;
+  font-weight: 450;
+  font-style: italic;
+}
+.avis-topp-handlinger {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  align-self: center;
+}
+.avis-topp-siste {
+  color: #d4d4d4;
+  font-size: .92rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid #555;
+  padding: .5rem .15rem;
+}
+.avis-topp-siste:hover { color: var(--yellow); border-bottom-color: var(--yellow); text-decoration: none; }
+.avis-topp .nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  min-height: 46px;
+  padding: .62rem .95rem;
+  border-radius: 4px;
+  border: 1px solid var(--yellow);
+  background: transparent;
+  color: var(--yellow);
+  font: 700 .91rem/1 'Inter',system-ui,sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .2s ease,color .2s ease;
+}
+.avis-topp .nav-toggle:hover,
+.avis-topp .nav-toggle[aria-expanded="true"] {
+  color: #050505;
+  background: var(--yellow);
+}
+.avis-topp .nav-toggle:focus-visible,
+.avis-topp .site-nav a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+.avis-topp .nav-toggle[hidden],
+.avis-topp .avisa-menu[hidden] { display: none !important; }
+.avis-topp .nav-toggle-icon { font-size: 1.15rem; line-height: 1; }
+
+/* Navigasjonen er synlig uten JavaScript. Når knappen er klar, vises
+   samme lenker som et diskret nedtrekk. */
+.avis-topp .avisa-menu {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: .3rem;
+  padding: 1rem;
+  background: #131313;
+  border: 1px solid #414141;
+  border-radius: 4px;
+}
+html.avis-meny-klar .avis-topp .avisa-menu:not([hidden]) {
+  position: absolute;
+  top: calc(100% - .3rem);
+  right: 1.5rem;
+  width: min(415px,calc(100vw - 2rem));
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  z-index: 9001;
+  box-shadow: 0 18px 48px rgba(0,0,0,.65);
+}
+.avis-topp .avisa-menu a {
+  display: block;
+  color: #eceae3;
+  background: transparent;
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 3px;
+  padding: .85rem .75rem;
+}
+.avis-topp .avisa-menu a:hover {
+  color: var(--yellow);
+  background: #242424;
+  text-decoration: none;
+}
+@media (max-width: 700px) {
+  .avis-topp-inner {
+    padding: 1.15rem .95rem 1.2rem;
+    gap: .7rem;
+  }
+  .avis-kategorier { font-size: .62rem; letter-spacing: .09em; }
+  .avis-kategorier span { margin: 0 .12rem; }
+  .avis-forside .tittellinje h1 {
+    font-size: clamp(1.8rem,7.3vw,2.7rem);
+    letter-spacing: -.055em;
+  }
+  .avis-motto { font-size: .88rem; margin-top: .45rem; }
+  .avis-topp-siste { display: none; }
+  .avis-topp .nav-toggle {
+    padding: .55rem .68rem;
+    min-height: 42px;
+    font-size: .82rem;
+    gap: .3rem;
+  }
+  .avis-topp .avisa-menu { grid-template-columns: repeat(2,minmax(0,1fr)); padding: .55rem; }
+  html.avis-meny-klar .avis-topp .avisa-menu:not([hidden]) {
+    right: .7rem;
+    top: calc(100% - .2rem);
+  }
+}
+@media (max-width: 370px) {
+  .avis-forside .tittellinje h1 { font-size: 1.67rem; }
+  .avis-kategorier { font-size: .59rem; }
+  .avis-topp .nav-toggle { padding: .5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .avis-topp .nav-toggle { transition: none; }
+}
+
+
+/* Leser- og tastaturvennlige overskrifter uten å påvirke layouten. */
+.visuelt-skjult {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+#hovedinnhold { display: block; }
+#hovedinnhold section[id] { scroll-margin-top: 3.5rem; }
+
+
+/* Felles toppmeny på arkiv-, artikkel- og kontaktsider. */
+.avisa-shared-header {
+  position: relative;
+  z-index: 8000;
+  border-top: 2px solid var(--yellow);
+  border-bottom: 1px solid #3c3626;
+  background: #080808;
+}
+.avisa-shared-header .avis-topp-inner {
+  padding-top: 1.15rem;
+  padding-bottom: 1.15rem;
+}
+.avisa-shared-header .avis-motto { margin-top: .4rem; }
+.avis-kompakt-merke {
+  display: inline-block;
+  color: var(--yellow);
+  font: 800 clamp(1.5rem, 3.4vw, 2.2rem)/1.1 'Inter', system-ui, sans-serif;
+  letter-spacing: -.045em;
+  text-decoration: none;
+}
+.avis-kompakt-merke:hover { color: #ffec86; text-decoration: none; }
+body.har-felles-header { padding-top: 0; }
+.avis-fallback-link {
+  display: inline-flex;
+  margin: 1.1rem;
+  padding: .6rem 1rem;
+  border: 1px solid #61571c;
+  border-radius: 4px;
+  font: 700 .9rem/1.4 'Inter', system-ui, sans-serif;
+  color: var(--yellow);
+  text-decoration: none;
+}
+body.har-felles-header .avis-fallback-link { display: none; }
+@media (max-width: 700px) {
+  .avisa-shared-header .avis-topp-inner { padding: 1rem .95rem; }
+  .avisa-shared-header .avis-motto { font-size: .83rem; }
+}
+
+
+/* Ryddige kategoriarkiver – opprinnelig stoff beholdes, datoer vises. */
+.arkiv-hoved {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(2.2rem,5vw,4.1rem) 1.25rem 5rem;
+}
+.arkiv-kategori {
+  margin: 0 0 .7rem;
+  color: var(--yellow);
+  font: 700 .8rem/1.4 Inter,system-ui,sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+.arkiv-hoved h1 {
+  margin: 0 0 1rem;
+  color: #f4f1e8;
+  font: 800 clamp(2.3rem,4.2vw,3.5rem)/1.1 Georgia,serif;
+  letter-spacing: -.035em;
+}
+.arkiv-ingress {
+  max-width: 740px;
+  color: #d2d0c9;
+  font: 1.08rem/1.76 Inter,system-ui,sans-serif;
+  margin: 0 0 2.3rem;
+}
+.kategori-artikler-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,300px),1fr));
+  gap: 1.2rem;
+}
+.kategori-artikler-grid .hjul-card {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1.2rem;
+  border: 1px solid #333;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #141414;
+  color: #eee;
+  box-shadow: none;
+  text-decoration: none;
+}
+.kategori-artikler-grid .hjul-card:hover,
+.kategori-artikler-grid .hjul-card:focus-visible {
+  border-color: var(--yellow);
+  transform: translateY(-2px);
+}
+.kategori-artikler-grid .hjul-card img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  margin: 0 0 .4rem;
+}
+.kategori-artikler-grid .hjul-card h3 {
+  margin: .7rem 1.25rem .5rem;
+  color: #f5f1e6;
+  font: 720 1.34rem/1.32 Georgia,serif;
+}
+.kategori-artikler-grid .hjul-card p {
+  margin: .3rem 1.25rem .7rem;
+  color: #c6c4bd;
+  font-size: .96rem;
+  line-height: 1.6;
+}
+.kategori-artikler-grid .arkiv-dato {
+  margin: .2rem 1.25rem .4rem;
+  color: #f0d36d;
+  font: 650 .82rem/1.5 Inter,system-ui,sans-serif;
+}
+
+
+/* Felles meny under notisbåndet på de to spesialsidene. */
+body.notiser-side { padding-top: 3rem; }
+body.sport-side { padding-top: 5rem; }
+body.notiser-side .avisa-shared-header,
+body.sport-side .avisa-shared-header { margin-bottom: 1.3rem; }
+body.notiser-side .avisa-shared-header .avis-topp-inner,
+body.sport-side .avisa-shared-header .avis-topp-inner { padding-top: .95rem; padding-bottom: .95rem; }
+
+
+/* Oppdaget ved skjermbildekontroll 31.10.2026:
+   Den eldre horisontale kortkarusellen skar av titler på mobil og
+   etterlot store tomrom på PC. Bruk responsivt kortgitter i stedet. */
+.avis-forside #hovedinnhold > section:not(#debatt),
+.sport-side #sport {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#nyhetshjul-grid,
+#nyhetshjul2-grid,
+#sportshjul-grid,
+#kulturhjul-grid,
+#kommentarhjul-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  align-items: stretch;
+  gap: 1.2rem;
+  padding: .75rem clamp(1rem, 2vw, 1.5rem) 1.5rem;
+  overflow: visible;
+  scroll-snap-type: none;
+}
+#nyhetshjul-grid .hjul-card,
+#nyhetshjul2-grid .hjul-card,
+#sportshjul-grid .hjul-card,
+#kulturhjul-grid .hjul-card,
+#kommentarhjul-grid .hjul-card {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid #2c2c2c;
+  border-radius: 7px;
+  scroll-snap-align: none;
+  background: #121212;
+}
+#nyhetshjul-grid .hjul-card:hover,
+#nyhetshjul2-grid .hjul-card:hover,
+#sportshjul-grid .hjul-card:hover,
+#kulturhjul-grid .hjul-card:hover,
+#kommentarhjul-grid .hjul-card:hover {
+  border-color: #b99d39;
+}
+#nyhetshjul-grid .hjul-card img,
+#nyhetshjul2-grid .hjul-card img,
+#sportshjul-grid .hjul-card img,
+#kulturhjul-grid .hjul-card img,
+#kommentarhjul-grid .hjul-card img {
+  width: 100%;
+  height: clamp(175px, 19vw, 230px);
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+#nyhetshjul-grid .hjul-card h3,
+#nyhetshjul2-grid .hjul-card h3,
+#sportshjul-grid .hjul-card h3,
+#kulturhjul-grid .hjul-card h3,
+#kommentarhjul-grid .hjul-card h3 {
+  margin: 1rem 1rem .5rem;
+  font-size: clamp(1.1rem,1.4vw,1.35rem);
+  line-height: 1.32;
+}
+#nyhetshjul-grid .hjul-card p,
+#nyhetshjul2-grid .hjul-card p,
+#sportshjul-grid .hjul-card p,
+#kulturhjul-grid .hjul-card p,
+#kommentarhjul-grid .hjul-card p {
+  margin: 0 1rem 1.25rem;
+  font-size: .94rem;
+  line-height: 1.62;
+}
+.avis-forside #hovedinnhold > section:not(#debatt) { margin-top: 1rem; }
+@media (max-width: 700px) {
+  #nyhetshjul-grid,
+  #nyhetshjul2-grid,
+  #sportshjul-grid,
+  #kulturhjul-grid,
+  #kommentarhjul-grid {
+    grid-template-columns: minmax(0,1fr);
+    gap: 1.15rem;
+    padding: 1rem .9rem 1.4rem;
+  }
+  #nyhetshjul-grid .hjul-card,
+  #nyhetshjul2-grid .hjul-card,
+  #sportshjul-grid .hjul-card,
+  #kulturhjul-grid .hjul-card,
+  #kommentarhjul-grid .hjul-card {
+    min-height: 0;
+    max-width: 100%;
+  }
+  #nyhetshjul-grid .hjul-card img,
+  #nyhetshjul2-grid .hjul-card img,
+  #sportshjul-grid .hjul-card img,
+  #kulturhjul-grid .hjul-card img,
+  #kommentarhjul-grid .hjul-card img {
+    height: clamp(200px, 60vw, 265px);
+  }
+  #nyhetshjul-grid .hjul-card h3,
+  #nyhetshjul2-grid .hjul-card h3,
+  #sportshjul-grid .hjul-card h3,
+  #kulturhjul-grid .hjul-card h3,
+  #kommentarhjul-grid .hjul-card h3 {
+    font-size: 1.21rem;
+  }
+  #nyhetshjul-grid .hjul-card p,
+  #nyhetshjul2-grid .hjul-card p,
+  #sportshjul-grid .hjul-card p,
+  #kulturhjul-grid .hjul-card p,
+  #kommentarhjul-grid .hjul-card p {
+    font-size: .96rem;
+  }
+}
+
+
+/* Publiseringsdato er en del av journalistikken, ikke metadata som skjules.
+   Eldre saker markeres automatisk som arkiv i hver forside-seksjon. */
+.seksjonsinfo {
+  color: #bfbcb2;
+  max-width: 1240px;
+  margin: -.3rem auto .25rem;
+  padding: 0 clamp(1rem,2vw,1.5rem);
+  font: 500 .9rem/1.55 'Inter',system-ui,sans-serif;
+}
+#hovedinnhold .seksjonstittel {
+  max-width: 1240px;
+  margin: 1.6rem auto .45rem;
+  padding: 0 clamp(1rem,2vw,1.5rem);
+  font-size: clamp(1.5rem,2.5vw,2rem);
+  line-height: 1.25;
+}
+#hovedinnhold .hjul-card .forside-dato,
+.sport-side .hjul-card .forside-dato {
+  display: block;
+  margin: .1rem 1rem .72rem;
+  color: #f0d16b;
+  font: 650 .8rem/1.45 'Inter',system-ui,sans-serif;
+  letter-spacing: .025em;
+}
+#hovedinnhold .hjul-card .forside-dato + p,
+.sport-side .hjul-card .forside-dato + p {
+  margin-top: 0;
+}
+
+
+/* ================================================================
+   PARADISAVISA – KLASSISK AVISMASTHEAD
+   Avisnavnet er typografi, ikke en innrammet logo eller en boks.
+   Menyknappen ligger diskret øverst til høyre, under notisbåndet.
+   ================================================================ */
+.avis-forside .tittellinje.avis-masthead {
+  display: block;
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: #000;
+  box-shadow: none;
+  pointer-events: auto;
+}
+.avis-forside .avis-masthead .avis-topp-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  max-width: 1540px;
+  margin: 0 auto;
+  padding: .75rem clamp(.85rem, 3vw, 3.5rem) 1.15rem;
+}
+.avis-forside .avis-masthead-rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2.55rem;
+}
+.avis-forside .avis-masthead .avis-kategorier {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  color: #a9a59a;
+  font: 600 .69rem/1.5 'Inter',system-ui,sans-serif;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.avis-forside .avis-masthead .avis-kategorier span {
+  color: var(--yellow);
+  margin: 0 .45rem;
+}
+.avis-forside .avis-masthead .avis-topp-handlinger {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-left: auto;
+}
+.avis-forside .avis-masthead .nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 36px;
+  padding: .35rem .6rem;
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: none;
+  color: #d4d0c2;
+  font: 650 .78rem/1.2 'Inter',system-ui,sans-serif;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.avis-forside .avis-masthead .nav-toggle-icon {
+  color: var(--yellow);
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.avis-forside .avis-masthead .nav-toggle:hover,
+.avis-forside .avis-masthead .nav-toggle[aria-expanded="true"] {
+  background: #181818;
+  color: var(--yellow);
+}
+.avis-forside .avis-masthead .nav-toggle:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 3px;
+}
+.avis-forside .avis-masthead .avis-identitet {
+  width: 100%;
+  min-width: 0;
+  margin: clamp(.2rem, 1vw, 1rem) auto 0;
+  text-align: center;
+}
+.avis-forside .avis-masthead .avis-identitet h1 {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--yellow);
+  font-family: 'Bodoni Moda', 'Bodoni MT', Didot, Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: clamp(2.1rem, 9.1vw, 9rem);
+  font-weight: 800;
+  letter-spacing: -.065em;
+  line-height: 1.04;
+  white-space: nowrap;
+}
+.avis-forside .avis-masthead .avis-identitet h1 a {
+  display: inline-block;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+.avis-forside .avis-masthead .avis-identitet h1 a:hover {
+  color: #ffeb70;
+}
+.avis-forside .avis-masthead .avis-motto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.55rem, 1.7vw, 1.25rem);
+  margin: clamp(.55rem, 1.15vw, 1rem) auto 0;
+  color: #e4dfd0;
+  font: italic clamp(.9rem, 1.3vw, 1.05rem)/1.5 Georgia,serif;
+  letter-spacing: .018em;
+  text-align: center;
+}
+.avis-forside .avis-masthead .avis-motto::before,
+.avis-forside .avis-masthead .avis-motto::after {
+  content: "";
+  flex: 0 1 110px;
+  height: 1px;
+  background: rgba(255,214,0,.52);
+}
+.avis-forside .avis-masthead .avis-identitet::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin: clamp(1.1rem,2vw,1.8rem) auto 0;
+  background: linear-gradient(90deg,transparent,rgba(255,214,0,.55) 15%,rgba(255,214,0,.55) 85%,transparent);
+}
+html.avis-meny-klar .avis-forside .avis-masthead .avisa-menu:not([hidden]) {
+  top: 3.3rem;
+  right: clamp(.85rem,3vw,3.5rem);
+  width: min(420px,calc(100vw - 1.7rem));
+  border: 1px solid #49402c;
+  border-top: 2px solid var(--yellow);
+  background: #101010;
+  box-shadow: 0 18px 42px rgba(0,0,0,.8);
+  z-index: 9005;
+}
+@media (max-width: 700px) {
+  .avis-forside .avis-masthead .avis-topp-inner {
+    padding: .65rem .85rem 1rem;
+  }
+  .avis-forside .avis-masthead-rail {
+    gap: .45rem;
+    min-height: 2.35rem;
+  }
+  .avis-forside .avis-masthead .avis-kategorier {
+    font-size: .6rem;
+    letter-spacing: .065em;
+  }
+  .avis-forside .avis-masthead .avis-kategorier span {
+    margin: 0 .13rem;
+  }
+  .avis-forside .avis-masthead .nav-toggle {
+    min-height: 36px;
+    gap: .3rem;
+    font-size: .7rem;
+    letter-spacing: .04em;
+    padding: .35rem .3rem;
+  }
+  .avis-forside .avis-masthead .avis-identitet {
+    margin-top: .65rem;
+  }
+  .avis-forside .avis-masthead .avis-identitet h1 {
+    font-size: clamp(1.9rem,10vw,4.4rem);
+    letter-spacing: -.065em;
+    line-height: 1.06;
+  }
+  .avis-forside .avis-masthead .avis-motto {
+    font-size: .86rem;
+    gap: .48rem;
+  }
+  .avis-forside .avis-masthead .avis-motto::before,
+  .avis-forside .avis-masthead .avis-motto::after {
+    flex-basis: 22px;
+  }
+  html.avis-meny-klar .avis-forside .avis-masthead .avisa-menu:not([hidden]) {
+    top: 2.9rem;
+    right: .75rem;
+  }
+}
+@media (max-width: 350px) {
+  .avis-forside .avis-masthead .avis-kategorier { font-size: .54rem; }
+  .avis-forside .avis-masthead .avis-identitet h1 { font-size: 9.6vw; }
+}

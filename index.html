@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Paradisavisa – en ideologisk og samfunnskritisk nettavis. Objektivt sett, fra vår synsvinkel.">
+  <meta name="description" content="Paradisavisa – nyheter, samfunn, kultur og debatt. Objektivt sett, fra vår synsvinkel.">
   <meta name="keywords" content="Paradisavisa, Paradispartiet, politikk, samfunn, Oslo, nyheter, sport, debatt, kommentarer">
   <meta name="robots" content="index, follow">
 
   <meta property="og:title" content="Paradisavisa">
-  <meta property="og:description" content="Nyheter, sport, kommentarer og debatt – objektivt sett, fra vår synsvinkel.">
+  <meta property="og:description" content="Nyheter, kultur, sport og debatt – objektivt sett, fra vår synsvinkel.">
   <meta property="og:image" content="https://paradispartiet.github.io/Paradisavisa/og-image.PNG">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://paradispartiet.github.io/Paradisavisa/">
@@ -18,67 +18,131 @@
   <link rel="icon" type="image/png" href="favicon.PNG">
 
   <title>Paradisavisa</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=26">
-<script defer src="script.js?v=25"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,700;6..96,800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=33">
+<link rel="stylesheet" href="avisdesign.css?v=2">
+<script defer src="script.js?v=29"></script>
 </head>
 
-<body>
+<body class="avis-forside">
+  <a class="hopp-til-innhold" href="#hovedinnhold">Hopp til hovedinnholdet</a>
 
   <!-- 🟡 Notisbånd -->
   <div class="notisbånd">
     <div class="notisinnhold"></div>
   </div>
 
-<!-- 🟡 TITTELLINJE -->
-<div class="tittellinje">
-  <h1>PARADISAVISA</h1>
-</div>
+<!-- Klassisk avisforside: et stort, uinnrammet avisnavn og diskret meny. -->
+<header class="tittellinje avis-topp avis-masthead">
+  <div class="avis-topp-inner">
+    <div class="avis-masthead-rail">
+      <p class="avis-kategorier">NYHETER <span aria-hidden="true">·</span> KULTUR <span aria-hidden="true">·</span> SPORT <span aria-hidden="true">·</span> DEBATT</p>
+      <div class="avis-topp-handlinger">
+        <button class="nav-toggle" type="button" aria-controls="avis-hovedmeny" aria-expanded="false" aria-label="Åpne meny" hidden>
+          <span class="nav-toggle-icon" aria-hidden="true">☰</span>
+          <span class="nav-toggle-label">Meny</span>
+        </button>
+      </div>
+    </div>
+    <div class="avis-identitet">
+      <h1><a href="index.html">PARADISAVISA</a></h1>
+      <p class="avis-motto">Objektivt sett, fra vår synsvinkel.</p>
+    </div>
+    <nav id="avis-hovedmeny" class="site-nav avisa-menu" aria-label="Hovedmeny">
+      <a href="#nyhetshjul">Nyheter</a>
+      <a href="nyheter.html">Nyhetsarkiv</a>
+      <a href="#sportshjul">Sport</a>
+      <a href="#kulturhjul">Kultur</a>
+      <a href="kultur.html">Kulturarkiv</a>
+      <a href="#kommentarer">Kommentarer</a>
+      <a href="#debatt">Debatt</a>
+      <a href="notiser.html">Notiser</a>
+      <a href="skriv-innlegg.html">Skriv innlegg</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- 🟡 Nyhetshjul -->
-  <section id="nyhetshjul">
-    <div id="nyhetshjul-grid"></div>
+<main id="hovedinnhold" class="avis-redaksjonell-forside">
+  <div class="avis-leserinfo">
+    <p>Nyheter, kultur og perspektiver. Artikler publiseres fortløpende, med tydelige datoer og kildegrunnlag.</p>
+    <a href="nyheter.html">Hele nyhetsarkivet <span aria-hidden="true">→</span></a>
+  </div>
+
+  <section id="nyhetshjul" class="avis-seksjon avis-hovedsaker" aria-labelledby="siste-nyheter-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">01 / Nyheter og bakgrunn</span>
+        <h2 id="siste-nyheter-tittel" class="seksjonstittel">Nyheter</h2>
+      </div>
+      <a class="avis-seksjonslenke" href="nyheter.html">Nyhetsarkiv <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
+    <div id="nyhetshjul-grid" class="avis-ledergrid"></div>
   </section>
 
-<!-- 🟡 Nyhetshjul 2 -->
-<section id="nyhetshjul2">
-  <div id="nyhetshjul2-grid"></div>
-</section>
-  
-  <!-- 🟡 Sport -->
-  <section id="sportshjul">
-  <h2 class="seksjonstittel">
-    <a href="sport.html" style="color:var(--yellow); text-decoration:none;">
-      Sport →
-    </a>
-  </h2>
-  <div id="sportshjul-grid"></div>
-</section>
+  <section id="nyhetshjul2" class="avis-seksjon" aria-labelledby="flere-nyheter-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">02 / Flere historier</span>
+        <h2 id="flere-nyheter-tittel" class="seksjonstittel">Flere nyheter</h2>
+      </div>
+    </div>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
+    <div id="nyhetshjul2-grid"></div>
+  </section>
 
-  <!-- 🟡 Kultur og underholdning -->
-  <section id="kulturhjul">
-    <h2 class="seksjonstittel">Kultur og underholdning</h2>
+  <section id="kulturhjul" class="avis-seksjon" aria-labelledby="kultur-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">03 / Film, litteratur og scene</span>
+        <h2 id="kultur-tittel" class="seksjonstittel">Kultur</h2>
+      </div>
+      <a class="avis-seksjonslenke" href="kultur.html">Kulturarkiv <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
     <div id="kulturhjul-grid"></div>
   </section>
 
-  <!-- 🟡 Kommentarer -->
-  <section id="kommentarer">
-    <h2 class="seksjonstittel">Kommentarer</h2>
+  <section id="sportshjul" class="avis-seksjon" aria-labelledby="sport-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">04 / Sport og idrett</span>
+        <h2 id="sport-tittel" class="seksjonstittel">Sport</h2>
+      </div>
+      <a class="avis-seksjonslenke" href="sport.html">Flere sportssaker <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
+    <div id="sportshjul-grid"></div>
+  </section>
+
+  <section id="kommentarer" class="avis-seksjon avis-perspektiver" aria-labelledby="kommentarer-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">05 / Analyse og meninger</span>
+        <h2 id="kommentarer-tittel" class="seksjonstittel">Kommentarer</h2>
+      </div>
+    </div>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
     <div id="kommentarhjul-grid"></div>
   </section>
 
-  <!-- 🟡 Debatt -->
-  <section id="debatt">
-    <h2 class="seksjonstittel">Debatt</h2>
-    <div class="debatt-innlegg"></div>
-    <div class="btn-container">
-      <a class="btn" href="skriv-innlegg.html">Skriv innlegg</a>
+  <section id="debatt" class="avis-seksjon avis-debatt" aria-labelledby="debatt-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">06 / Åpen debatt</span>
+        <h2 id="debatt-tittel" class="seksjonstittel">Debatt</h2>
+      </div>
+      <a class="avis-seksjonslenke" href="skriv-innlegg.html">Send inn ditt innlegg <span aria-hidden="true">→</span></a>
     </div>
+    <div class="debatt-innlegg"></div>
+    <div class="btn-container"><a class="btn" href="skriv-innlegg.html">Skriv innlegg</a></div>
   </section>
+</main>
 
   <!-- 🟡 Footer -->
   <footer class="site-footer">
-    <p>© 2025 Paradisavisa</p>
+    <p>© 2025–2026 Paradisavisa</p>
     <p>
       <a href="https://paradispartiet.github.io/Paradispartiet" target="_blank">Paradispartiet</a> ·
       <a href="https://paradispartiet.github.io/Teorien-om-lyset" target="_blank">Teorien om lyset</a>

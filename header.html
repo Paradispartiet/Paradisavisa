@@ -1,16 +1,26 @@
-<header class="site-header">
-  <a class="brand" href="index.html" aria-label="Paradisavisa">
-    <img src="assets/ikon-paradis.png" alt="logo" class="brand-icon">
-    <span class="brand-title">Paradisavisa</span>
-  </a>
-
-  <button class="nav-toggle" aria-label="Meny" aria-expanded="false">☰</button>
-
-  <nav class="site-nav" aria-label="Hovedmeny">
-    <a href="index.html" class="active">Forside</a>
-    <a href="index.html#nyheter">Nyheter</a>
-    <a href="index.html#debatt">Debatt</a>
-    <a href="index.html#kultur">Kultur</a>
-    <a href="index.html#om">Om</a>
-  </nav>
+<!-- Felles avistopp for undersider. Lenkene normaliseres fra nettstedets rot av script.js. -->
+<header class="avis-topp avisa-shared-header">
+  <div class="avis-topp-inner">
+    <div class="avis-identitet">
+      <a class="avis-kompakt-merke" href="index.html" aria-label="Paradisavisa – forsiden">PARADISAVISA</a>
+      <p class="avis-motto">Objektivt sett, fra vår synsvinkel.</p>
+    </div>
+    <div class="avis-topp-handlinger">
+      <a class="avis-topp-siste" href="index.html">Forsiden</a>
+      <button class="nav-toggle" type="button" aria-controls="avis-hovedmeny" aria-expanded="false" aria-label="Åpne meny" hidden>
+        <span class="nav-toggle-icon" aria-hidden="true">☰</span><span>Meny</span>
+      </button>
+    </div>
+    <nav id="avis-hovedmeny" class="site-nav avisa-menu" aria-label="Hovedmeny">
+      <a href="nyheter.html">Nyhetsarkiv</a>
+      <a href="index.html#nyhetshjul2">Flere nyheter</a>
+      <a href="sport.html">Sport</a>
+      <a href="kultur.html">Kulturarkiv</a>
+      <a href="index.html#kommentarer">Kommentarer</a>
+      <a href="index.html#debatt">Debatt</a>
+      <a href="notiser.html">Notiser</a>
+      <a href="skriv-innlegg.html">Skriv innlegg</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </div>
 </header>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="tt dd">
+<title id="tt">Markens grøde – norsk kinopremiere</title><desc id="dd">Symbolsk filmillustrasjon av et lite trehus i en norsk fjelldal, åker og filmstripe i svart og gull</desc>
+<defs><radialGradient id="glow"><stop stop-color="#725921"/><stop offset=".6" stop-color="#1d190f"/><stop offset="1" stop-color="#080808"/></radialGradient><linearGradient id="gold" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#fff1ad"/><stop offset=".6" stop-color="#ffd600"/><stop offset="1" stop-color="#92701c"/></linearGradient></defs>
+<rect width="1200" height="675" fill="url(#glow)"/><rect x="26" y="26" width="1148" height="623" fill="none" stroke="#ffd600" stroke-opacity=".30" stroke-width="3"/>
+<g fill="#161914" stroke="#b69b44" stroke-width="4"><path d="M0 438L243 193L436 385L639 155L864 367L995 210L1200 428V620H0Z"/></g>
+<g fill="#22241c"><path d="M0 463L213 320L424 464L625 289L825 456L1015 328L1200 483V624H0Z"/></g>
+<circle cx="968" cy="157" r="65" fill="#ffd600" opacity=".62"/>
+<path d="M72 524Q582 448 1128 524L1190 609H12Z" fill="#49401f"/>
+<g stroke="#bbaa6c" stroke-width="7" fill="none"><path d="M0 561Q600 482 1200 562"/><path d="M0 592Q600 513 1200 593"/><path d="M234 522L213 612M369 513L351 612M505 504L489 612M640 505L635 612M770 505L791 612M908 514L934 612"/></g>
+<rect x="457" y="350" width="285" height="153" fill="#161511" stroke="#f0ca51" stroke-width="9"/>
+<path d="M433 356L600 236L770 356Z" fill="#181716" stroke="#ffd600" stroke-width="10" stroke-linejoin="round"/>
+<rect x="563" y="405" width="80" height="98" fill="#a48a3d" stroke="#ffd600" stroke-width="6"/>
+<rect x="483" y="382" width="53" height="53" fill="#d2b759"/><rect x="665" y="382" width="53" height="53" fill="#d2b759"/>
+<g fill="#0c0c0c" stroke="#e6c556" stroke-width="4"><rect x="85" y="88" width="1029" height="62" rx="8"/><rect x="85" y="150" width="1029" height="20"/></g>
+<rect x="108" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="178" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="248" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="318" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="388" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="458" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="528" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="598" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="668" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="738" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="808" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="878" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="948" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/><rect x="1018" y="105" width="34" height="28" rx="3" fill="#d8b34f" opacity=".75"/>
+<path d="M65 600H1135" stroke="#ffd600" stroke-opacity=".44" stroke-width="3"/></svg>
