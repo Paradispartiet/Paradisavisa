@@ -61,6 +61,19 @@ for(const article of catalog.artikler||[]){
     expect(article.publisert===false,"Ikke-godkjent artikkel kan ikke publiseres: "+htmlPath);
     expect(/(?:REDAKSJONELT|ARKIVERT) UTKAST/.test(html),"Tydelig utkastmerking mangler: "+htmlPath);
   }
+  if(article.publisert===true) {
+    expect(article.status==="publisert"&&article.godkjent===true&&article.faktasjekk==="godkjent",
+      "Publisert artikkel krever dokumentert individuell godkjenning: "+htmlPath);
+    expect(typeof article.publisert_dato==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(article.publisert_dato),
+      "Publisert artikkel mangler dato: "+htmlPath);
+    expect(typeof article.publisert_url==="string"&&/^artikler\/[a-z0-9-]+\.html$/.test(article.publisert_url),
+      "Publisert artikkel mangler gyldig offentlig filbane: "+htmlPath);
+    if(typeof article.publisert_url==="string"&&/^artikler\/[a-z0-9-]+\.html$/.test(article.publisert_url)) {
+      const publicHtml=read(article.publisert_url);
+      expect(publicHtml.includes('name="robots" content="index, follow"'),
+        "Publisert artikkel må være tilgjengelig for søk: "+article.publisert_url);
+    }
+  }
   if(typeof imagePath!=="string"||!/^utkast\/\d{4}-\d{2}-\d{2}\/bilder\/[a-z0-9-]+\.svg$/.test(imagePath)){
     errors.push("Ugyldig bildebane: "+slug);
   }else{
