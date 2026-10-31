@@ -50,6 +50,52 @@ async function run(){
       check((await title.textContent()).includes("PARADISAVISA"),label+": mangler avisnavn");
       check((await page.locator(".avis-motto").textContent()).includes("Objektivt sett, fra vår synsvinkel."),
         label+": motto mangler");
+      // Den klassiske avisoverskriften skal være STOR, uten innrammet boks,
+      // og menyknappen skal ligge diskret til høyre over avisnavnet.
+      const masthead=await page.evaluate(()=>{
+        const wordmark=document.querySelector(".avis-masthead h1");
+        const link=wordmark.querySelector("a");
+        const button=document.querySelector(".avis-masthead .nav-toggle");
+        const header=document.querySelector(".avis-masthead");
+        const ticker=document.querySelector(".notisbånd");
+        const rule=wordmark.getBoundingClientRect();
+        const titleBounds=link.getBoundingClientRect();
+        const buttonBounds=button.getBoundingClientRect();
+        const style=getComputedStyle(wordmark);
+        return {
+          fontSize:parseFloat(style.fontSize),
+          borderTop:parseFloat(style.borderTopWidth),
+          borderRight:parseFloat(style.borderRightWidth),
+          borderBottom:parseFloat(style.borderBottomWidth),
+          borderLeft:parseFloat(style.borderLeftWidth),
+          fontFamily:style.fontFamily,
+          background:style.backgroundColor,
+          left:titleBounds.left,right:titleBounds.right,
+          buttonRight:buttonBounds.right,
+          buttonLeft:buttonBounds.left,
+          buttonTop:buttonBounds.top,
+          titleTop:rule.top,
+          headerTop:header.getBoundingClientRect().top,
+          tickerBottom:ticker.getBoundingClientRect().bottom,
+          viewport:innerWidth
+        };
+      });
+      check(masthead.fontSize >= (label==="mobil"?30:95),
+        label+": avisoverskriften er for liten ("+masthead.fontSize+"px)");
+      check(masthead.borderTop===0&&masthead.borderRight===0&&
+            masthead.borderBottom===0&&masthead.borderLeft===0,
+        label+": avisoverskriften har fortsatt ramme/boks");
+      check(masthead.background==="rgba(0, 0, 0, 0)",
+        label+": avisoverskriften har egen bakgrunn i stedet for å ligge fritt");
+      check(masthead.left>=0&&masthead.right<=masthead.viewport+2,
+        label+": gammeldags avisnavn går utenfor skjermbredden");
+      check(masthead.buttonLeft > masthead.viewport * .65,
+        label+": menyknappen ligger ikke til høyre");
+      check(masthead.buttonTop < masthead.titleTop,
+        label+": menyknappen ligger ikke over avisnavnet");
+      check(masthead.headerTop >= masthead.tickerBottom - 3,
+        label+": avisoverskriften overlapper notisbåndet");
+
       // Vent på at alle innholdsseksjonene faktisk er fylt. Et tomt felt
       // ved første skjermbilde kan ellers maskere problemer med kortene.
       const storyGrids=["#nyhetshjul-grid","#nyhetshjul2-grid",
