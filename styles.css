@@ -1007,3 +1007,33 @@ body.sport-side .avisa-shared-header .avis-topp-inner { padding-top: .95rem; pad
     font-size: .96rem;
   }
 }
+
+
+/* Publiseringsdato er en del av journalistikken, ikke metadata som skjules.
+   Eldre saker markeres automatisk som arkiv i hver forside-seksjon. */
+.seksjonsinfo {
+  color: #bfbcb2;
+  max-width: 1240px;
+  margin: -.3rem auto .25rem;
+  padding: 0 clamp(1rem,2vw,1.5rem);
+  font: 500 .9rem/1.55 'Inter',system-ui,sans-serif;
+}
+#hovedinnhold .seksjonstittel {
+  max-width: 1240px;
+  margin: 1.6rem auto .45rem;
+  padding: 0 clamp(1rem,2vw,1.5rem);
+  font-size: clamp(1.5rem,2.5vw,2rem);
+  line-height: 1.25;
+}
+#hovedinnhold .hjul-card .forside-dato,
+.sport-side .hjul-card .forside-dato {
+  display: block;
+  margin: .1rem 1rem .72rem;
+  color: #f0d16b;
+  font: 650 .8rem/1.45 'Inter',system-ui,sans-serif;
+  letter-spacing: .025em;
+}
+#hovedinnhold .hjul-card .forside-dato + p,
+.sport-side .hjul-card .forside-dato + p {
+  margin-top: 0;
+}
