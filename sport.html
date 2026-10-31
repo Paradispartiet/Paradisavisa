@@ -1,88 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="no">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sport | Paradisavisa</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Siste nytt fra sportens verden – Paradisavisa.">
+  <meta name="description" content="Sportssaker fra Paradisavisa, med originale publiseringsdatoer og arkivmerking.">
   <meta property="og:title" content="Sport | Paradisavisa">
-  <meta property="og:description" content="Siste nytt fra sportens verden – Paradisavisa.">
+  <meta property="og:description" content="Sport og idrett i Paradisavisa – artikler og arkiv.">
   <meta property="og:image" content="https://paradispartiet.github.io/Paradisavisa/og-image.PNG">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Paradisavisa">
-
   <link rel="icon" href="ikon-paradis.png">
   <link rel="stylesheet" href="styles.css?v=32">
-  <link rel="stylesheet" href="avisdesign.css?v=1">
-
-  <style>
-    /* 🟡 Fast tittelbjelke under notisbåndet */
-    .sport-banner {
-      position: fixed;
-      top: 2.3rem; /* rett under notisbåndet */
-      left: 0;
-      width: 100%;
-      background: var(--yellow);
-      color: #000;
-      text-align: center;
-      font-weight: 800;
-      font-size: 1.2rem;
-      padding: 0.5rem 0;
-      z-index: 9998; /* rett under notisbåndet */
-      border-bottom: 1px solid #222;
-    }
-
-    /* Skyv resten av siden litt ned */
-    body {
-      padding-top: 5rem;
-    }
-  </style>
+  <link rel="stylesheet" href="avisdesign.css?v=2">
+  <script defer src="script.js?v=28"></script>
 </head>
-
 <body class="sport-side">
-
-  <!-- 🟡 Notisbånd -->
-  <div class="notisbånd">
-    <div class="notisinnhold"></div>
-  </div>
-
-  <!-- 🟡 Gul tittelbjelke følger notisbåndet -->
-  <div class="sport-banner">SPORT</div>
-
+  <a href="#sport" class="hopp-til-innhold">Hopp til sportssakene</a>
+  <div class="notisbånd"><div class="notisinnhold"></div></div>
   <div id="header-placeholder"><a href="index.html" class="avis-fallback-link">← Til Paradisavisa</a></div>
-
-  <!-- 🟡 Til forsiden øverst -->
-  <a href="index.html" class="tilbake-link" style="margin-left:1rem;">← Til forsiden</a>
-
-  <!-- 🟡 Header -->
-  
-
-  <!-- 🟡 Seksjon -->
-  <section id="sport">
-    <h2 class="seksjonstittel">Sportssaker</h2>
-    <p class="seksjonsinfo" data-nyhetsstatus>Kontrollerer publiseringsdatoer …</p>
-    <div id="sportshjul-grid"></div>
-  </section>
-
-  <!-- 🟡 Til forsiden nederst -->
-  <a href="index.html" class="tilbake-link nederst">← Til forsiden</a>
-
-  <!-- 🟡 Footer -->
+  <main id="sport" class="arkiv-hoved sport-arkiv-hoved">
+    <p class="arkiv-kategori">Paradisavisa / Sport</p>
+    <h1>Sport</h1>
+    <p class="arkiv-ingress">Fotball, idrett og sportsdebatt. Sakene vises med publiseringsdato, slik at eldre stoff er lett å kjenne igjen.</p>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
+    <div id="sportshjul-grid" aria-label="Sportssaker fra Paradisavisa"></div>
+  </main>
   <footer class="site-footer">
     <p>© 2025–2026 Paradisavisa</p>
-    <p>
-      <a href="https://paradispartiet.github.io/Paradispartiet" target="_blank">Paradispartiet</a> ·
-      <a href="https://paradispartiet.github.io/Teorien-om-lyset" target="_blank">Teorien om lyset</a>
-    </p>
+    <p><a href="index.html">Forsiden</a> · <a href="kontakt.html">Kontakt</a></p>
   </footer>
-
-  <!-- 🟡 Script -->
-  <script src="script.js?v=28"></script>
-  <!-- Sport-notisene og sportshjulet lastes nå via felles script.js.
-       Unngår at to skript overskriver samme notisbånd. -->
-
-
 </body>
 </html>
