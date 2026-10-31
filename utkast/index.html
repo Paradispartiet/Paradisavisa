@@ -1,94 +1,143 @@
 <!doctype html>
 <html lang="no">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>Redaksjonell oversikt – Paradisavisa (utkast)</title>
-  <meta name="description" content="Internt redaksjonelt arbeidsområde med utkast som ikke er publisert.">
+  <title>Løpende artikkelkø – Paradisavisa</title>
+  <meta name="description" content="Redaksjonell oversikt over upubliserte artikler som vurderes individuelt.">
   <style>
-    :root{color-scheme:dark;--gold:#ffd600;--ink:#f4f2ec;--muted:#c4c0b9}
-    *{box-sizing:border-box}
-    body{margin:0;background:#050505;color:var(--ink);font:16px/1.65 system-ui,-apple-system,sans-serif}
-    a{color:#f9d957;text-underline-offset:.2em}
-    a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
-    header{border-top:2px solid var(--gold);border-bottom:1px solid #35302b;padding:1.3rem max(1rem,calc((100% - 1100px)/2));display:flex;justify-content:space-between;gap:1.2rem;align-items:center}
-    .brand{color:var(--gold);font-size:clamp(1.3rem,3vw,1.8rem);font-weight:850;letter-spacing:-.05em;text-decoration:none}
-    .motto{margin:0;color:#dad4c2;font-family:Georgia,serif;font-style:italic;text-align:right}
-    main{max-width:1100px;margin:0 auto;padding:3rem 1rem 5rem}
-    .draft{display:inline-block;color:#ffdf72;border:1px solid #7d641d;padding:.3rem .65rem;font-size:.78rem;font-weight:750;letter-spacing:.04em}
-    h1{font:800 clamp(2.1rem,4vw,3.4rem)/1.1 Georgia,serif;letter-spacing:-.03em;margin:1rem 0}
-    .intro{max-width:800px;font-size:1.1rem;color:#d3d0c9}
-    .issue-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1.15rem;margin:2.5rem 0}
-    .issue{padding:1.5rem;background:#141414;border:1px solid #3b3b3b;border-radius:6px;min-width:0}
-    .issue h2{font:750 1.55rem/1.25 Georgia,serif;margin:.3rem 0 .8rem}
-    .issue p{color:var(--muted)}
-    .issue .count{font-weight:750;color:var(--gold)}
-    .issue a{display:inline-block;margin-top:.5rem;font-weight:700}
-    .notice{padding:1.5rem;background:#111;border-top:2px solid var(--gold)}
-    .notice h2{font-size:1.1rem;color:var(--gold);margin-top:0}
-    .notice li{margin:.4rem 0}
-    @media(max-width:620px){header{flex-direction:column;align-items:flex-start}.motto{text-align:left}main{padding:2rem .9rem 3rem}}
+  :root{color-scheme:dark;--gul:#ffd600;--tekst:#f1eee6;--dempet:#c5c1b6}
+  *{box-sizing:border-box}
+  body{margin:0;background:#050505;color:var(--tekst);font:16px/1.65 'Inter',system-ui,sans-serif}
+  a{color:#ffde69;text-underline-offset:.2em}
+  a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gul);outline-offset:3px}
+  header{border-top:2px solid var(--gul);border-bottom:1px solid #3d3627;padding:1.2rem max(1rem,calc((100% - 1120px)/2));display:flex;justify-content:space-between;align-items:center;gap:1rem}
+  .logo{color:var(--gul);font:850 clamp(1.4rem,3.1vw,1.9rem)/1.1 Georgia,serif;text-decoration:none;letter-spacing:-.045em}
+  .motto{margin:0;color:#d9d3c3;font:italic .88rem/1.5 Georgia,serif;text-align:right}
+  main{max-width:1140px;margin:0 auto;padding:clamp(1.6rem,4vw,3rem) 1rem 5rem}
+  .merking{display:inline-block;padding:.28rem .6rem;color:#ffe288;border:1px solid #75612d;font-size:.75rem;font-weight:750;letter-spacing:.08em}
+  h1{font:800 clamp(2.3rem,4.5vw,3.7rem)/1.1 Georgia,serif;letter-spacing:-.035em;margin:1rem 0}
+  .innledning{max-width:860px;color:#d3cec3;font:1.05rem/1.75 system-ui,sans-serif;margin:0 0 1.6rem}
+  .status{display:flex;flex-wrap:wrap;gap:1.2rem;border-top:1px solid #574a2b;border-bottom:1px solid #3e3e3e;padding:1.05rem 0;margin:1.6rem 0 2rem}
+  .status strong{color:var(--gul);font-size:1.45rem}
+  .status span{display:block;color:var(--dempet);font-size:.85rem}
+  .filter{display:flex;gap:1rem;flex-wrap:wrap;align-items:end;margin:0 0 1.5rem}
+  .filter label{font-size:.85rem;font-weight:700;color:#ddd9ce;display:block;margin-bottom:.4rem}
+  .filter input,.filter select{width:min(100%,330px);min-height:42px;border:1px solid #655b3e;border-radius:3px;background:#151515;color:#f4f1e6;padding:.58rem .7rem;font:1rem/1.4 inherit}
+  .filter select{min-width:190px;max-width:270px}
+  .katalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,275px),1fr));gap:1rem;margin:1.2rem 0 3rem}
+  .sak{background:#121212;border:1px solid #383838;border-radius:4px;overflow:hidden;min-width:0}
+  .sak:hover{border-color:#a78c3a}
+  .sak img{display:block;width:100%;height:174px;object-fit:cover;background:#181818}
+  .sak-innhold{padding:1.05rem}
+  .sak-kategori{font-size:.72rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:var(--gul)}
+  .sak h2{font:750 1.27rem/1.35 Georgia,serif;margin:.5rem 0 .7rem}
+  .sak h2 a{color:#f2efe9;text-decoration:none}
+  .sak h2 a:hover{text-decoration:underline;text-decoration-color:var(--gul)}
+  .sak time,.sak-tilstand{font-size:.82rem;color:#c2bcb0}
+  .sak-tilstand{margin-top:.5rem}
+  .arkivert{opacity:.72}
+  .arkivert .sak-tilstand{color:#d8ac78}
+  .sjekk{border-top:2px solid var(--gul);background:#111;padding:1.5rem}
+  .sjekk h2{font:750 1.3rem/1.3 Georgia,serif;color:var(--gul);margin:0 0 .7rem}
+  .sjekk li{margin:.45rem 0}
+  .sjekk p{color:var(--dempet)}
+  @media(max-width:600px){header{flex-direction:column;align-items:flex-start}.motto{text-align:left}.status{gap:.8rem}.filter>div{width:100%}.filter input,.filter select{width:100%;max-width:none}}
   </style>
 </head>
 <body>
   <header>
-    <a class="brand" href="../index.html">PARADISAVISA</a>
+    <a href="../index.html" class="logo">PARADISAVISA</a>
     <p class="motto">Objektivt sett, fra vår synsvinkel.</p>
   </header>
   <main>
-    <p class="draft">REDAKSJONELLE UTKAST – INGEN ARTIKLER ER PUBLISERT HER</p>
-    <h1>Utgaver til gjennomgang</h1>
-    <p class="intro">Dette er en arbeidsoversikt for utgavene mandag, onsdag og fredag. Hver utgave inneholder saker som må kontrolleres og godkjennes enkeltvis. Det er ikke en offentlig nyhetsforside eller et publiseringssystem.</p>
-
-    <noscript><p>JavaScript er slått av. Åpne utkastoversiktene direkte: <a href="2026-11-02/index.html">mandag 2. november</a>, <a href="2026-10-30/index.html">fredag 30. oktober</a> og <a href="2026-10-28/index.html">onsdag 28. oktober</a>.</p></noscript>
-    <div id="utgaver" class="issue-grid" aria-live="polite">
-      <p>Henter status fra redaksjonens utgavemanifester …</p>
+    <p class="merking">REDAKSJONELL ARBEIDSKØ · IKKE PUBLISERT</p>
+    <h1>Artikler til gjennomgang</h1>
+    <p class="innledning">Paradisavisa publiserer <strong>fortløpende</strong>, uten faste utgaver eller publiseringsdager. Hver artikkel kan legges ut separat straks kildearbeid, korrektur, bildebruk og redaksjonell godkjenning er fullført. Datoene nedenfor viser når utkastene ble organisert, ikke planlagt publiseringsdato.</p>
+    <div class="status" aria-label="Redaksjonell status">
+      <div><strong id="antall-utkast">–</strong><span>Aktive utkast</span></div>
+      <div><strong id="antall-arkiv">–</strong><span>Arkiverte utkast</span></div>
+      <div><strong id="antall-godkjent">–</strong><span>Godkjent for publisering</span></div>
     </div>
-    <section class="notice" aria-labelledby="arbeidsrutine">
-      <h2 id="arbeidsrutine">Før en utgave kan publiseres</h2>
+    <div class="filter">
+      <div><label for="sok">Søk i utkastene</label><input id="sok" type="search" placeholder="Tittel eller stoffområde"></div>
+      <div><label for="tilstand">Vis artikler</label><select id="tilstand"><option value="utkast">Aktive utkast</option><option value="alle">Alle, inkludert arkiverte</option><option value="arkivert">Bare arkiverte</option></select></div>
+    </div>
+    <div id="artikler" class="katalog" aria-live="polite"><p>Henter redaksjonell artikkelkø …</p></div>
+    <noscript>
+      <p>JavaScript er avslått. Åpne arbeidsmappene direkte: <a href="2026-11-02/index.html">helsebakgrunn</a>,
+      <a href="2026-10-30/index.html">nyheter og kultur</a> og <a href="2026-10-28/index.html">tidligere nyhetsutkast</a>.</p>
+    </noscript>
+    <section class="sjekk" aria-labelledby="rutine">
+      <h2 id="rutine">Publiser én sak når den er klar</h2>
       <ol>
-        <li>Kontroller nyeste hendelser og les originaldokumentene.</li>
-        <li>Kontroller datoer, sitater, tall og kildehenvisninger i hver artikkel.</li>
-        <li>Kontroller illustrasjoner, titler og rett til samtidig imøtegåelse ved kritikk.</li>
-        <li>Marker kun redaksjonelt godkjente saker som klare i arbeidsprosessen.</li>
-        <li>Be om en uttrykkelig beslutning før artiklene legges i offentlige nyhetshjul.</li>
+        <li>Les og kontroller primærkilder på publiseringsdagen. Undersøk nye hendelser siden utkastet ble skrevet.</li>
+        <li>Kontroller fakta, datoer, overskrift og at berørte parter kommer til orde ved alvorlig kritikk.</li>
+        <li>Kontroller illustrasjon, billedtekst, rettigheter og tilgjengelighet.</li>
+        <li>Godkjenn artikkelen individuelt – aldri hele en datomappe samtidig.</li>
+        <li>Flytt bare den godkjente saken til <code>artikler/</code>, sett faktisk publiseringsdato, og legg den i relevant JSON-strøm.</li>
       </ol>
-      <p>Planlagt rytme: mandag, onsdag og fredag. <a href="../REDAKSJONSPLAN.md">Full redaksjonsplan i GitHub-filen</a>.</p>
+      <p>Utkastene har ikke publiseringsgodkjenning og skal ikke legges i avisens offentlige nyhetsstrøm automatisk.
+      <a href="../REDAKSJONSPLAN.md">Redaksjonell arbeidsplan</a>.</p>
     </section>
   </main>
   <script>
-    (async()=>{
-      const dates=["2026-11-02","2026-10-30","2026-10-28"];
-      const place=document.getElementById("utgaver");
-      place.replaceChildren();
-      for(const date of dates){
-        const card=document.createElement("article");
-        card.className="issue";
-        const title=document.createElement("h2");
-        title.textContent=new Intl.DateTimeFormat("nb-NO",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"UTC"})
-          .format(new Date(date+"T12:00:00Z"));
-        const count=document.createElement("p");
-        count.className="count";
-        const message=document.createElement("p");
-        const link=document.createElement("a");
-        link.href=date+"/index.html";
-        link.textContent="Åpne utkastene";
-        try{
-          const response=await fetch(date+"/utgave.json",{cache:"no-store"});
-          if(!response.ok)throw new Error("Statusfil er ikke tilgjengelig");
-          const m=await response.json();
-          const total=Array.isArray(m.saker)?m.saker.length:0;
-          const approved=Array.isArray(m.saker)?m.saker.filter(s=>s.godkjent===true).length:0;
-          count.textContent=total+" artikler · "+approved+" redaksjonelt godkjent";
-          message.textContent=m.publisert===true?"Utgave markert publisert i manifestet":"Ikke publisert · krever redaksjonell kontroll";
-        }catch(e){
-          count.textContent="Status kunne ikke lastes";
-          message.textContent="Gå til utgaven og kontroller manifestet direkte.";
+  (async()=>{
+    const container=document.getElementById("artikler");
+    const search=document.getElementById("sok");
+    const state=document.getElementById("tilstand");
+    try {
+      const response=await fetch("artikler.json",{cache:"no-store"});
+      if(!response.ok) throw new Error("Kunne ikke laste køen");
+      const catalog=await response.json();
+      if(!Array.isArray(catalog.artikler))throw new Error("Uventet format");
+      const articles=catalog.artikler.slice().sort((a,b)=>String(b.registrert||"").localeCompare(String(a.registrert||"")));
+      document.getElementById("antall-utkast").textContent=articles.filter(x=>x.status==="utkast"&&!x.publisert).length;
+      document.getElementById("antall-arkiv").textContent=articles.filter(x=>x.status==="arkivert").length;
+      document.getElementById("antall-godkjent").textContent=articles.filter(x=>x.godkjent===true&&!x.publisert).length;
+
+      function redraw() {
+        const q=search.value.trim().toLocaleLowerCase("nb-NO");
+        const selected=state.value;
+        container.replaceChildren();
+        const visible=articles.filter(x=>(selected==="alle"||x.status===selected) &&
+          (!q||(String(x.tittel)+" "+String(x.kategori)).toLocaleLowerCase("nb-NO").includes(q)));
+        if(!visible.length) {
+          const empty=document.createElement("p");
+          empty.textContent="Ingen artikler passer til søket.";
+          container.appendChild(empty);
+          return;
         }
-        card.append(title,count,message,link);
-        place.append(card);
+        for(const article of visible){
+          const card=document.createElement("article");card.className="sak";
+          if(article.status==="arkivert")card.classList.add("arkivert");
+          const picture=document.createElement("img");
+          picture.src="../"+article.bilde;
+          picture.alt="Redaksjonell illustrasjon";
+          picture.loading="lazy";
+          const body=document.createElement("div");body.className="sak-innhold";
+          const category=document.createElement("p");category.className="sak-kategori";category.textContent=article.kategori;
+          const h2=document.createElement("h2");
+          const link=document.createElement("a");link.href="../"+article.artikkel;link.textContent=article.tittel;
+          h2.appendChild(link);
+          const date=document.createElement("time");date.dateTime=article.registrert;
+          date.textContent="Arbeidsmappe: "+article.registrert;
+          const note=document.createElement("p");note.className="sak-tilstand";
+          note.textContent=article.status==="arkivert"?"Arkivert – ikke i aktiv kø":
+            article.godkjent?"Godkjent, men ikke publisert":"Utkast – kildekontroll og godkjenning gjenstår";
+          body.append(category,h2,date,note);card.append(picture,body);
+          container.appendChild(card);
+        }
       }
-    })();
+      search.addEventListener("input",redraw);
+      state.addEventListener("change",redraw);
+      redraw();
+    }catch(err){
+      console.error(err);
+      container.textContent="Artikkelkøen kunne ikke lastes. Kontroller artikler.json.";
+    }
+  })();
   </script>
 </body>
 </html>
