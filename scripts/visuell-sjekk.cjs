@@ -110,6 +110,16 @@ async function run(){
             label+": tomt kategoriarkiv "+name);
           check((await page.locator("[data-artikkelkategori] time.arkiv-dato").count())>0,
             label+": mangler dato i "+name);
+          // Lazy loading er nyttig i nettleseren, men fullsideskjermbilder
+          // kan ellers vise tomme bildefelt. Last alle bilder før QA-bildet.
+          const brokenArchiveImages=await page.locator("[data-artikkelkategori] img")
+            .evaluateAll(async imgs => {
+              imgs.forEach(img=>{img.loading="eager"});
+              await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
+              return imgs.filter(img=>!img.naturalWidth).map(img=>img.getAttribute("src"));
+            });
+          check(!brokenArchiveImages.length,
+            label+": manglende bilder i "+name+": "+brokenArchiveImages.join(", "));
         }
         const overflow=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:window.innerWidth}));
         check(overflow.width<=overflow.viewport+4,
