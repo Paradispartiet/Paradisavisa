@@ -142,6 +142,23 @@ async function run(){
           await page.screenshot({path:path.join(output,name.replace(".html","")+"-"+label+".png"),fullPage:true});
         }
       }
+      // Arbeidsoversikten må hente status fra faktiske utgave.json-filer.
+      await page.goto(base+"/utkast/index.html",{waitUntil:"domcontentloaded"});
+      await page.locator(".issue-grid .issue").nth(2).waitFor({timeout:12000});
+      check((await page.locator(".issue-grid .issue").count())===3,
+        label+": oversikt må vise tre utgaver");
+      const counts=await page.locator(".issue-grid .issue .count").allTextContents();
+      check(counts.includes("2 artikler · 0 redaksjonelt godkjent"),
+        label+": manglende status for mandag");
+      check(counts.includes("8 artikler · 0 redaksjonelt godkjent"),
+        label+": manglende status for fredag");
+      check(counts.includes("5 artikler · 0 redaksjonelt godkjent"),
+        label+": manglende status for onsdag");
+      check((await page.locator(".draft").textContent()).includes("INGEN ARTIKLER ER PUBLISERT"),
+        label+": redaksjonell utkastmerking mangler");
+      await page.screenshot({
+        path:path.join(output,"redaksjonell-oversikt-"+label+".png"),fullPage:true
+      });
       await context.close();
     }
 
