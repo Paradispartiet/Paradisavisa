@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Paradisavisa//Nyhetskalender//NO
+CALSCALE:GREGORIAN
+X-WR-CALNAME:Paradisavisa nyhetskalender
+BEGIN:VEVENT
+UID:helsereform-20261102@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART:20261102T100000Z
+DTEND:20261102T120000Z
+SUMMARY:Helsereformutvalget legger fram utredningen
+DESCRIPTION:Redaksjonell oppfolging. Ingen automatisk publisering.
+URL:https://www.regjeringen.no/no/aktuelt/helsereformutvalet-legg-fram-si-utgreiing/id3178280/
+END:VEVENT
+BEGIN:VEVENT
+UID:matsystem-20261106@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART:20261106T083000Z
+DTEND:20261106T093000Z
+SUMMARY:NOU Matsystemet mot 2050
+DESCRIPTION:Les original-NOU for eventuell ny sak.
+URL:https://www.regjeringen.no/no/aktuelt/fremleggelse-av-nou-matsystemet-mot-2050/id3183627/
+END:VEVENT
+END:VCALENDAR
