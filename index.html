@@ -19,7 +19,7 @@
 
   <title>Paradisavisa</title>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,700;6..96,800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=34">
+<link rel="stylesheet" href="styles.css?v=35">
 <link rel="stylesheet" href="avisdesign.css?v=3">
 <script defer src="script.js?v=29"></script>
 </head>
@@ -57,11 +57,6 @@
     </nav>
   </div>
 </header>
-
-<!-- Notisbåndet skal ligge etter avisens faste overskriftsfelt. -->
-<div class="notisbånd">
-  <div class="notisinnhold"></div>
-</div>
 
 <main id="hovedinnhold" class="avis-redaksjonell-forside">
   <section id="nyhetshjul" class="avis-seksjon avis-hovedsaker" aria-labelledby="siste-nyheter-tittel">
@@ -143,6 +138,11 @@
       <a href="https://paradispartiet.github.io/Teorien-om-lyset" target="_blank">Teorien om lyset</a>
     </p>
   </footer>
+
+<!-- Fast nyhetsbånd nederst i vinduet, også under scrolling. -->
+<div class="notisbånd">
+  <div class="notisinnhold"></div>
+</div>
 
 <script>
 if ('serviceWorker' in navigator) {
