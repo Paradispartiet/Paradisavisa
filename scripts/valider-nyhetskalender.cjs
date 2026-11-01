@@ -48,11 +48,28 @@ for(const e of log.hendelser||[]){
  const uid="UID:"+e.id+"@paradisavisa.no";
  const inCalendar=e.dato&&e.dato>=log.oppdatert&&e.status!=="utsatt";
  expect(ics.includes(uid)===Boolean(inCalendar),"iCalendar-samsvar feil: "+e.id);
+ if(inCalendar) {
+   const compact=e.dato.replaceAll("-","");
+   const start=e.klokkeslett
+      ?"DTSTART;TZID=Europe/Oslo:"+compact+"T"+e.klokkeslett.replace(":","")+"00"
+      :"DTSTART;VALUE=DATE:"+compact;
+   expect(ics.includes(start),"iCalendar mangler riktig dato/tidssone: "+e.id);
+   if(e.slutt_dato&&e.klokkeslett===null) {
+     const end=new Date(e.slutt_dato+"T12:00:00Z");
+     end.setUTCDate(end.getUTCDate()+1);
+     const exclusive=end.toISOString().slice(0,10).replaceAll("-","");
+     expect(ics.includes("DTEND;VALUE=DATE:"+exclusive),"iCalendar har feil sluttdato: "+e.id);
+   }
+ }
 }
 for(const a of queue.filter(a=>a.status==="utkast"))expect(linkedArticles.has(a.id),"Aktivt utkast uten oppfølgingspunkt: "+a.id);
 expect(html.includes('name="robots" content="noindex, nofollow"'),"Kalendersiden mangler noindex/nofollow");
 expect(html.includes('fetch("nyhetskalender.json"'),"Kalendersiden mangler tilkoblet datakilde");
 expect(ics.includes("BEGIN:VCALENDAR")&&ics.includes("END:VCALENDAR"),"iCalendar-filen er ugyldig");
+expect(ics.includes("BEGIN:VTIMEZONE")&&ics.includes("TZID:Europe/Oslo")&&ics.includes("END:VTIMEZONE"),
+  "Kalenderimporten mangler Europe/Oslo vinter-/sommertid");
+expect(!/DTSTART:\d{8}T\d{6}Z/.test(ics),"Klokkeslett må ikke hardkodes som UTC: bruk Europe/Oslo");
+expect(html.includes('id="search"')&&html.includes('id="priority"'),"Søk og prioritetsfilter må finnes i kalenderen");
 const count=(ics.match(/BEGIN:VEVENT/g)||[]).length;
 const expected=log.hendelser.filter(e=>e.dato&&e.dato>=log.oppdatert&&e.status!=="utsatt").length;
 expect(count===expected,"Ulikt antall tidsfestede kalenderoppføringer: "+count+" mot "+expected);
