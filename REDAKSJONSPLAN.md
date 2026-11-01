@@ -10,29 +10,33 @@ Nyhetshjulene på forsiden oppdateres når en enkelt sak publiseres. De viser fa
 
 Paradisavisa er en selvstendig nettavis, ikke et partiorgan. Stoffvalg kan ha et gjenkjennelig redaksjonelt blikk, men nyheter skal bygge på etterprøvbare fakta – ikke på Paradispartiets standpunkter. Kommentarer, analyser og debattinnlegg merkes tydelig.
 
-## Redaksjonell prioritet: de store og viktige sakene (1. november 2026)
+## Redaksjonell særverdi: Store saker som tilfører leseren noe (1. november 2026)
 
-**Paradisavisa skal ikke fungere som et referatarkiv for pressemeldinger, høringer eller små administrative tiltak.** Det avgjørende er hva som faktisk skjer, hvem som rammes, og hvor stor betydning utviklingen har. Vi publiserer heller få sterke saker enn mange svake.
+**Paradisavisa skal ikke være en dårligere kopi av de store nyhetsmediene.** At en hendelse er viktig globalt, gjør ikke en generell oppsummering til en god Paradisavisa-sak. Vi skal publisere færre, mer selvstendige artikler med tydelig nyhetsverdi for leseren.
 
-Før et utkast settes i arbeid, skal redaksjonen kunne svare på:
+En sak må oppfylle **begge** vilkårene:
+1. **Vesentlighet:** Saken angår betydelige forhold i samfunnet, mennesker, økonomi, rettigheter, natur, teknologi eller kultur – enten i stort omfang eller med stor betydning for dem det gjelder.
+2. **Eget journalistisk bidrag:** Artikkelen dokumenterer noe nytt, avdekker en oversett konsekvens, undersøker en konkret motsetning, forklarer et viktig spørsmål bedre enn standarddekningen, eller bygger på egne kilder, dokumenter eller originale analyser.
 
-1. **Betydning:** Påvirker saken mange mennesker, vesentlige samfunnsfunksjoner, store økonomiske verdier, sikkerhet, rettigheter eller en stor kulturell hendelse?
-2. **Reell nyhet:** Har noe konkret skjedd eller blitt dokumentert – og er det viktig nå? En kunngjøring eller rapport er ikke automatisk en nyhet.
-3. **Konsekvenser:** Kan vi forklare hva dette betyr, hvilke konsekvenser som er bekreftet, hvem som berøres, og hva som fortsatt er uklart?
-4. **Selvstendig journalistikk:** Kan vi kontrollere originale dokumenter, lete etter motargumenter, innhente flere kilder og avdekke noe utover avsenderens fortelling?
-5. **Riktig format:** Skal dette bli en større nyhet, en dyptgående forklaringsartikkel, en kort oppfølging, et internt tips – eller ingenting?
+**Spørsmålet før en sak skrives:** «Hva lærer leseren her som vedkommende trolig ikke allerede har fått med seg – og hvordan kan vi dokumentere det?» Et svar som bare gjentar «det har skjedd noe viktig» er ikke tilstrekkelig.
+
+Arbeidsrutine:
+- Sjekk først hva de etablerte mediene allerede har publisert. Ikke påstå at noe er nytt eller oversett uten å undersøke det.
+- Formuler en *konkret undersøkbar påstand eller problemstilling* før en tittel bestemmes. Be om originale data og dokumenter; hent inn relevante motstemmer og tilsvar.
+- Skill tydelig mellom **dokumenterte funn**, **hypoteser som skal undersøkes**, og **kjente bakgrunnsfakta**.
+- Bruk kunngjøringer, rapporter, pressemeldinger og allerede kjente utenriksnyheter som **kildetips** når de ikke tilfører selvstendig nyhetsverdi.
+- Gi plass til originale kulturfortellinger og underbelyste, men betydningsfulle samfunnsspørsmål – ikke bare de emnene som topper nasjonale nyhetslister.
 
 **Stoppregler:**
-- En ordinær høring, strategi, arbeidsgruppe, liten pilot eller planlagt møte skal ikke bli egen sak *bare fordi* noen har sendt ut en pressemelding.
-- Ikke lag saker for å nå et bestemt antall artikler eller for å fylle et nyhetshjul.
-- Ikke fremstille antydninger, mål, mulige framtidige vedtak eller foreslåtte modeller som gjennomførte endringer.
-- Ikke framstill en påstand fra én part som uavhengig bekreftet.
-- Knytt løpende saker til større sammenheng og følg dokumenterte konsekvenser over tid.
-- Kulturstoff skal ha tydelig selvstendig betydning, original journalistikk eller dokumentert stor offentlig interesse. Lokale programomtaler kan forbli tips eller bakgrunnsstoff.
+- Ikke bygg en stor artikkel utelukkende på kjent dramatikk, et gjengitt nyhetsbyråoppslag eller en pressemelding; størrelsen på temaet kompenserer ikke for manglende egenverdi.
+- Ikke framstill en interessant hypotese, et mulig problem eller et uavklart utfall som et avdekket funn.
+- Ikke fyll forsiden, utkastkøen eller nyhetshjulene for å oppnå et antall saker.
+- Ikke gjør departementale prosesser og små administrative innfall til nyheter uten påviselig betydelige konsekvenser.
+- Nyheter skal være faktabaserte og uavhengige; meningsstoff merkes tydelig.
 
-**Arbeidsmodell:** Prioriter nyhetsbildet først; bestem deretter hvilke eksisterende utkast som faktisk er verdt å videreutvikle. Godkjenning og publisering skjer fortsatt for **én artikkel om gangen** etter den ordinære publiseringssperren. Ingen prioriteringsliste gir automatisk publiseringstillatelse.
+**Beslutning:** Kan ingen i redaksjonen forklare både sakens betydning og avisens konkrete tilleggsverdi, skal saken **ikke godkjennes som egen artikkel**. Den kan bevares som et internt research-tips. Godkjenning og publisering skjer fremdeles individuelt, etter redaksjonell og teknisk sluttkontroll.
 
-Den konkrete, foreløpige gjennomgangen av de 15 aktive utkastene og ideene til nye hovedsaker ligger i `utkast/STORE_SAKER_2026-11-01.md`. Den er en intern redaksjonell beslutningsstøtte, ikke en avisutgave eller en nyhetsstrøm.
+Den foreløpige gjennomgangen av de 15 aktive utkastene finnes i `utkast/STORE_SAKER_2026-11-01.md`. Den er et redaksjonelt arbeidsdokument og gir ikke publiseringstillatelse.
 
 ## Løpende arbeidsflyt – én sak om gangen
 
