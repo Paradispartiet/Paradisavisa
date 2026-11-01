@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="tt dd">
+<title id="tt">Renata Flores – quechua og moderne popmusikk</title><desc id="dd">Symbolsk lydgrafikk med Andes-fjell, mikrofon og lysende rytmestreker. Ikke portrett av artisten</desc>
+<defs><radialGradient id="glow"><stop stop-color="#725921"/><stop offset=".6" stop-color="#1d190f"/><stop offset="1" stop-color="#080808"/></radialGradient><linearGradient id="gold" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#fff1ad"/><stop offset=".6" stop-color="#ffd600"/><stop offset="1" stop-color="#92701c"/></linearGradient></defs>
+<rect width="1200" height="675" fill="url(#glow)"/><rect x="26" y="26" width="1148" height="623" fill="none" stroke="#ffd600" stroke-opacity=".30" stroke-width="3"/>
+<path d="M0 483L186 288L352 436L535 216L705 413L884 251L1200 491V625H0Z" fill="#111612" stroke="#caaa48" stroke-width="4"/>
+<path d="M0 546L224 388L391 520L614 346L838 515L1025 369L1200 513V625H0Z" fill="#242419"/>
+<path d="M452 325V170A148 148 0 0 1 748 170V325A148 148 0 0 1 452 325Z" fill="#151515" stroke="url(#gold)" stroke-width="14"/>
+<path d="M495 203H705M495 250H705M495 297H705" stroke="#ffd600" stroke-width="12" opacity=".65"/>
+<path d="M393 300Q393 461 600 461Q807 461 807 300" fill="none" stroke="#ffd600" stroke-width="14" stroke-linecap="round"/>
+<path d="M600 460V548M503 548H697" stroke="#ffd600" stroke-width="18" stroke-linecap="round"/>
+<g stroke="#ffd600" stroke-width="9" stroke-linecap="round" opacity=".74"><path d="M195 323V365M235 297V394M275 279V420M315 314V384"/><path d="M902 332V360M942 289V401M982 261V430M1022 307V388"/></g>
+<circle cx="600" cy="207" r="325" fill="none" stroke="#e7c95f" stroke-width="2" stroke-opacity=".17"/>
+<path d="M65 600H1135" stroke="#ffd600" stroke-opacity=".44" stroke-width="3"/></svg>

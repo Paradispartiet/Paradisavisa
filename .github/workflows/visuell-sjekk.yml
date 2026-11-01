@@ -1,0 +1,41 @@
+name: Visuell nettlesersjekk av Paradisavisa
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  nettleser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - name: Hent nettstedet
+        uses: actions/checkout@v4
+      - name: Sett opp Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer Playwright
+        run: npm install --no-save playwright@1.56.1
+      - name: Installer Chromium og systembiblioteker
+        run: npx playwright install --with-deps chromium
+      - name: Test faktiske nettsider på mobil og PC
+        run: node scripts/visuell-sjekk.cjs
+      - name: Behold skjermbilder også ved feil
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paradisavisa-visuell-kontroll
+          path: qa-screenshots/
+          if-no-files-found: ignore
+          retention-days: 7

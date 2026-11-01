@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="ttl desc">
+<title id="ttl">Scenekunst, rytme og bevegelse</title><desc id="desc">Symbolsk illustrasjon av dansere på en opplyst teaterscene. Viser ikke de faktiske utøverne i MATATA.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#080807"/><stop offset=".7" stop-color="#18150c"/><stop offset="1" stop-color="#282014"/></linearGradient>
+ <radialGradient id="light"><stop stop-color="#ffd600" stop-opacity=".4"/><stop offset="1" stop-color="#ffd600" stop-opacity="0"/></radialGradient>
+ <linearGradient id="beam"><stop stop-color="#ffd600" stop-opacity=".52"/><stop offset="1" stop-color="#ffd600" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<g fill="#dab646" opacity=".14"><path d="M235 40L85 593H470Z"/><path d="M605 22L347 596H846Z"/><path d="M953 39L721 593H1120Z"/></g>
+<circle cx="600" cy="325" r="330" fill="url(#light)"/>
+<g fill="#ffdf74"><circle cx="235" cy="45" r="14"/><circle cx="605" cy="38" r="14"/><circle cx="953" cy="45" r="14"/></g>
+<g fill="#060606" stroke="#f4cf53" stroke-width="4">
+<!-- three generic stylized performers, not portraits -->
+<circle cx="340" cy="265" r="42"/><path d="M301 322Q342 298 379 325L397 455L455 525L425 551L343 484L290 549L252 529L305 442Z"/>
+<circle cx="612" cy="219" r="45"/><path d="M564 283L662 280L693 423L761 493L730 520L617 441L508 524L480 495L560 401Z"/>
+<circle cx="865" cy="270" r="42"/><path d="M823 324L904 327L946 446L929 545L889 535L892 457L826 454L787 533L747 512L785 412Z"/>
+</g>
+<g stroke="#f4cf53" stroke-width="25" stroke-linecap="round" fill="none">
+<path d="M315 329L231 238"/><path d="M371 321L444 250"/>
+<path d="M579 287L532 182"/><path d="M652 286L733 204"/>
+<path d="M834 328L771 257"/><path d="M889 331L964 265"/>
+</g>
+<g fill="#070707" stroke="#e6be4b" stroke-width="4">
+<ellipse cx="600" cy="602" rx="525" ry="47"/>
+<path d="M45 575Q604 540 1155 575V674H45Z"/>
+</g>
+<g fill="none" stroke="#ffd600" stroke-width="4" opacity=".4">
+<path d="M100 86H1100"/><path d="M100 580H1100"/><rect x="24" y="24" width="1152" height="627" rx="5"/>
+</g>
+<g fill="#ffd600" opacity=".72"><circle cx="164" cy="570" r="6"/><circle cx="1005" cy="572" r="6"/></g>
+</svg>

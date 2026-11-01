@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Arbeidstid og arbeidsmiljø</title><desc id="desc">Grafisk illustrasjon av tidsmåling og arbeidsliv med gul og svart fargepalett</desc>
+<defs><radialGradient id="g"><stop stop-color="#302910"/><stop offset="1" stop-color="#050505"/></radialGradient></defs>
+<rect width="1200" height="675" fill="url(#g)"/><rect x="26" y="26" width="1148" height="623" fill="none" stroke="#ffd600" stroke-opacity=".35" stroke-width="2"/>
+<g fill="none" stroke="#ffd600" stroke-width="10"><circle cx="540" cy="339" r="211"/><circle cx="540" cy="339" r="182" stroke-width="3" stroke-opacity=".45"/></g>
+<g stroke="#dcc16b" stroke-width="6"><path d="M540.0 179.0L540.0 160.0"/><path d="M620.0 200.4L629.5 184.0"/><path d="M678.6 259.0L695.0 249.5"/><path d="M700.0 339.0L719.0 339.0"/><path d="M678.6 419.0L695.0 428.5"/><path d="M620.0 477.6L629.5 494.0"/><path d="M540.0 499.0L540.0 518.0"/><path d="M460.0 477.6L450.5 494.0"/><path d="M401.4 419.0L385.0 428.5"/><path d="M380.0 339.0L361.0 339.0"/><path d="M401.4 259.0L385.0 249.5"/><path d="M460.0 200.4L450.5 184.0"/></g>
+<path d="M540 219V338L636 390" stroke="#ffd600" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="540" cy="338" r="13" fill="#ffd600"/>
+<g fill="#151515" stroke="#e6c45d" stroke-width="7"><rect x="833" y="230" width="175" height="227" rx="14"/><rect x="875" y="191" width="91" height="39" rx="8"/></g>
+<path d="M861 297H978M861 335H978M861 373H947" stroke="#dbc068" stroke-width="9" stroke-linecap="round"/>
+<path d="M179 444V270M235 444V219M291 444V307M347 444V174" stroke="#ffd600" stroke-width="22" stroke-linecap="round" stroke-opacity=".8"/>
+<path d="M91 548H1110" stroke="#ffd600" stroke-opacity=".5" stroke-width="3"/></svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="tt dd">
+<title id="tt">Hex – dokumentar om Witch Club Satan</title><desc id="dd">En symbolsk black metal-scene med tre anonyme musikere i motlys, en filmstripe og gyllent scenelys</desc>
+<defs><radialGradient id="glow"><stop stop-color="#725921"/><stop offset=".6" stop-color="#1d190f"/><stop offset="1" stop-color="#080808"/></radialGradient><linearGradient id="gold" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#fff1ad"/><stop offset=".6" stop-color="#ffd600"/><stop offset="1" stop-color="#92701c"/></linearGradient></defs>
+<rect width="1200" height="675" fill="url(#glow)"/><rect x="26" y="26" width="1148" height="623" fill="none" stroke="#ffd600" stroke-opacity=".30" stroke-width="3"/>
+<path d="M125 83L320 513H40Z" fill="#e4b445" opacity=".22"/><path d="M600 45L775 530H410Z" fill="#ffd600" opacity=".12"/><path d="M1065 77L1170 513H875Z" fill="#e4b445" opacity=".22"/>
+<g fill="#080808" stroke="#c7a13c" stroke-width="5">
+<circle cx="325" cy="271" r="54"/><path d="M287 322Q326 300 363 330L403 493L266 495Z"/>
+<circle cx="603" cy="223" r="60"/><path d="M559 281Q604 262 649 292L688 519L525 519Z"/>
+<circle cx="866" cy="281" r="55"/><path d="M827 333Q860 310 901 340L941 495L801 495Z"/></g>
+<g stroke="url(#gold)" stroke-width="15" stroke-linecap="round" fill="none"><path d="M288 350L220 244M363 346L439 258M556 327L505 208M649 330L711 204M824 359L766 257M899 356L983 250"/></g>
+<g fill="#121212" stroke="#ffd600" stroke-width="6"><path d="M439 369L497 341L532 486L468 502Z"/><path d="M645 345L705 361L681 506L616 479Z"/></g>
+<path d="M86 547H1127" stroke="#b99c4d" stroke-width="13"/><g fill="#ddbc5c"><circle cx="183" cy="554" r="7"/><circle cx="1014" cy="554" r="7"/></g>
+<g fill="none" stroke="#ffd600" stroke-opacity=".52" stroke-width="4"><path d="M85 130H225M975 130H1110"/></g>
+<path d="M65 600H1135" stroke="#ffd600" stroke-opacity=".44" stroke-width="3"/></svg>

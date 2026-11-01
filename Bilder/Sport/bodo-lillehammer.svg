@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="t d">
+<title id="t">Fotballstadion i Bodø – redaksjonell illustrasjon</title>
+<desc id="d">Symbolsk stadion med fotballbane, tribunelys og nordnorske fjell i svart og gult. Ikke et fotografi av en planlagt utbygging.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#060a0e"/><stop offset="1" stop-color="#29251b"/></linearGradient><linearGradient id="field" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#355639"/><stop offset="1" stop-color="#182b22"/></linearGradient></defs>
+<rect width="1200" height="675" fill="url(#sky)"/>
+<path d="M0 334L164 163L295 305L431 110L591 327L765 139L924 306L1063 196L1200 330V675H0Z" fill="#252d33" stroke="#a69b6f" stroke-width="3"/>
+<path d="M0 372L133 244L291 356L443 191L603 360L786 233L936 367L1114 240L1200 341V675H0Z" fill="#111a1b" stroke="#716c52" stroke-width="2"/>
+<path d="M65 406L302 325L901 325L1135 408L1126 528L914 596L291 596L73 526Z" fill="#141414" stroke="#ffd600" stroke-width="10"/>
+<path d="M122 435L326 371L873 371L1074 435L1056 501L875 547L326 547L144 501Z" fill="#42453a" stroke="#dbbd58" stroke-width="5"/>
+<g stroke="#ffd600" stroke-width="5" opacity=".75"><path d="M147 453H1052M142 476H1060"/><path d="M326 371L291 595M873 371L913 595"/></g>
+<path d="M300 451L442 408H758L900 451L838 509H361Z" fill="url(#field)" stroke="#f3e4ac" stroke-width="5"/>
+<g stroke="#f6e9bc" fill="none" stroke-width="4"><path d="M600 408V510"/><ellipse cx="600" cy="460" rx="53" ry="31"/><path d="M366 446L453 421V500L366 478Z"/><path d="M834 445L747 421V499L834 477Z"/></g>
+<g stroke="#ffd600" stroke-width="10"><path d="M124 405V253M1078 408V253M300 361V213M903 362V213"/></g>
+<g fill="#fff0aa"><rect x="83" y="230" width="81" height="22" rx="7"/><rect x="1035" y="230" width="81" height="22" rx="7"/><rect x="260" y="190" width="81" height="22" rx="7"/><rect x="864" y="190" width="81" height="22" rx="7"/></g>
+<path d="M75 627H1125" stroke="#ffd600" stroke-width="4" stroke-opacity=".7"/>
+<rect x="25" y="25" width="1150" height="625" rx="8" fill="none" stroke="#ffd600" stroke-width="3" stroke-opacity=".4"/>
+</svg>
