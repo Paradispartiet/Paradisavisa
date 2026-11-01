@@ -46,7 +46,7 @@ small,.footnote{color:var(--muted)}
 <body>
 <header>
 <a class="logo" href="../index.html">PARADISAVISA</a>
-<nav aria-label="Redaksjonell navigasjon"><a href="index.html">Artikkelkø</a><a href="NYHETSKALENDER.md">Kalenderlogg (Markdown)</a><a href="nyhetskalender.json">Hendelsesdata (JSON)</a><a href="../REDAKSJONSPLAN.md">Redaksjonsplan</a></nav>
+<nav aria-label="Redaksjonell navigasjon"><a href="index.html">Artikkelkø</a><a href="NYHETSKALENDER.md">Kalenderlogg (Markdown)</a><a href="nyhetskalender.json">Hendelsesdata (JSON)</a><a href="nyhetskalender.ics">Importer kalender (.ics)</a><a href="../REDAKSJONSPLAN.md">Redaksjonsplan</a></nav>
 </header>
 <main>
 <p class="mark">REDAKSJONELT ARBEIDSVERKTØY – IKKE PUBLISERING</p>
@@ -54,7 +54,7 @@ small,.footnote{color:var(--muted)}
 <p class="intro">Kommende pressekonferanser, frister, arrangementer og åpne saker som krever oppfølging. Kalenderen bygger på kontrollerte kilder, men er et <strong>statisk øyeblikksbilde</strong> som ikke overvåker endringer automatisk. Et annonsert tidspunkt er ikke bevis for at hendelsen faktisk fant sted.</p>
 <p id="updated">Henter kalender …</p>
 <div class="stats" aria-label="Antall hendelser">
-<div><strong id="count-next">–</strong><span>Daterte kommende</span></div>
+<div><strong id="count-next">–</strong><span>Daterte kommende og pågående</span></div>
 <div><strong id="count-unknown">–</strong><span>Uten bekreftet dato</span></div>
 <div><strong id="count-past">–</strong><span>Historikk / etterkontroll</span></div>
 </div>
@@ -86,17 +86,25 @@ small,.footnote{color:var(--muted)}
   const data=await response.json();
   const entries=data.hendelser;
   if(!Array.isArray(entries))throw Error("Feil kalenderformat");
-  document.getElementById("updated").textContent="Sist oppdatert: "+format(data.oppdatert)+" · "+entries.length+" hendelser og kontrollpunkter.";
-  const previous=e=>e.status==="etterkontroll"||(e.dato&&e.dato<today&&e.status!=="utsatt");
+  const latest=new Date(data.oppdatert+"T12:00:00Z");
+  const daysOld=Math.floor((new Date(today+"T12:00:00Z")-latest)/86400000);
+  document.getElementById("updated").textContent="Sist redaksjonelt oppdatert: "+format(data.oppdatert)+" · "+entries.length+" hendelser og kontrollpunkter."+
+    (daysOld>7?" OBS: Kalenderen er over sju dager gammel og må gjennomgås mot kildene.":"");
+  const previous=e=>e.status==="etterkontroll"||(e.dato&&(e.slutt_dato||e.dato)<today&&e.status!=="utsatt");
   const next=e=>e.dato&&!previous(e)&&e.status!=="utsatt";
+  const focusDate=new Date(today+"T12:00:00Z");
+  focusDate.setUTCDate(focusDate.getUTCDate()+6);
+  const nextSeven=focusDate.toISOString().slice(0,10);
+  const soon=e=>next(e)&&e.dato<=nextSeven;
   document.getElementById("count-next").textContent=entries.filter(next).length;
   document.getElementById("count-unknown").textContent=entries.filter(e=>!e.dato).length;
   document.getElementById("count-past").textContent=entries.filter(previous).length;
   const sections=[
-   {heading:"Kommende hendelser og frister",select:next,sort:(a,b)=>a.dato.localeCompare(b.dato)},
-   {heading:"Endrede eller utsatte datoer",select:e=>e.status==="utsatt",sort:(a,b)=>a.dato.localeCompare(b.dato)},
-   {heading:"Viktige saker uten fast dato",select:e=>!e.dato,sort:(a,b)=>a.prioritet.localeCompare(b.prioritet)},
-   {heading:"Tidligere hendelser – etterkontroll",select:previous,sort:(a,b)=>b.dato.localeCompare(a.dato)}
+   {heading:"Neste sju dager – prioriterte oppfølgingspunkter",select:soon,sort:(a,b)=>a.dato.localeCompare(b.dato)||(a.klokkeslett||"").localeCompare(b.klokkeslett||"")},
+   {heading:"Senere kommende hendelser og frister",select:e=>next(e)&&!soon(e),sort:(a,b)=>a.dato.localeCompare(b.dato)},
+   {heading:"Tidligere hendelser – må etterkontrolleres",select:previous,sort:(a,b)=>b.dato.localeCompare(a.dato)},
+   {heading:"Viktige saker uten fast dato",select:e=>!e.dato,sort:(a,b)=>({"kritisk":0,"hoy":1,"normal":2}[a.prioritet])-({"kritisk":0,"hoy":1,"normal":2}[b.prioritet])},
+   {heading:"Endrede eller utsatte datoer",select:e=>e.status==="utsatt",sort:(a,b)=>a.dato.localeCompare(b.dato)}
   ];
   function redraw(){
    const q=search.value.toLocaleLowerCase("nb-NO").trim();
@@ -115,7 +123,8 @@ small,.footnote{color:var(--muted)}
      const card=el("article","entry"+(e.prioritet==="kritisk"?" urgent":""));
      card.appendChild(el("div","when",label(e)));
      card.appendChild(el("h3",null,e.tittel));
-     card.appendChild(el("div","kind",e.prioritet.toUpperCase()+" · "+e.status.replaceAll("-"," ")));
+     card.appendChild(el("div","kind",e.prioritet.toUpperCase()+" · "+e.status.replaceAll("-"," ")+
+       (previous(e)&&e.status!=="etterkontroll"?" · TIDSPUNKT PASSERT – KONTROLLER UTFALLET":"")));
      card.appendChild(el("p","action",e.handling));
      if(e.merknad)card.appendChild(el("p","note",e.merknad));
      const links=el("div","links");
