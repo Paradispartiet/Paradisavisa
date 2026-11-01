@@ -4,21 +4,169 @@ PRODID:-//Paradisavisa//Nyhetskalender//NO
 CALSCALE:GREGORIAN
 X-WR-CALNAME:Paradisavisa nyhetskalender
 BEGIN:VEVENT
-UID:helsereform-20261102@paradisavisa.no
+UID:helsereform-nou@paradisavisa.no
 DTSTAMP:20261101T120000Z
 DTSTART:20261102T100000Z
 DTEND:20261102T120000Z
-SUMMARY:Helsereformutvalget legger fram utredningen
-DESCRIPTION:Redaksjonell oppfolging. Ingen automatisk publisering.
-URL:https://www.regjeringen.no/no/aktuelt/helsereformutvalet-legg-fram-si-utgreiing/id3178280/
+SUMMARY:Helsereformutvalget overleverer NOU
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Overlevering kl. 11.00 i Marmorhallen\; stream
+  tilgjengelig. Eventuelle endringer kontrolleres direkte
+ .
+URL:https://www.regjeringen.no/no/aktuelt/helsereformutv
+ alet-legg-fram-si-utgreiing/id3178280/
+STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
-UID:matsystem-20261106@paradisavisa.no
+UID:matata-ekstra@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261102
+DTEND;VALUE=DATE:20261105
+SUMMARY:MATATA – ekstra forestillinger ved Nordic Black 
+ Theatre
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Arrangørens sider har motstridende tidsfelt (1
+ 8.00/18.30/19.00). Ingen starttid registrert som sikker.
+URL:https://nordicblacktheatre.no/program/matata-poverty
+ -slaps-but-we-slap-back-harder-29-10-2026
+STATUS:TENTATIVE
+END:VEVENT
+BEGIN:VEVENT
+UID:matsystem-nou-paamelding@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261105
+DTEND;VALUE=DATE:20261106
+SUMMARY:Frist for eventuell pressepåmelding til NOU om m
+ atsystemet
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Presseinvitasjonen oppgir påmelding innen 5. n
+ ovember. Ingen kontakt er tatt.
+URL:https://www.regjeringen.no/no/aktuelt/fremleggelse-a
+ v-nou-matsystemet-mot-2050/id3183627/
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:matsystem-nou@paradisavisa.no
 DTSTAMP:20261101T120000Z
 DTSTART:20261106T083000Z
 DTEND:20261106T093000Z
-SUMMARY:NOU Matsystemet mot 2050
-DESCRIPTION:Les original-NOU for eventuell ny sak.
-URL:https://www.regjeringen.no/no/aktuelt/fremleggelse-av-nou-matsystemet-mot-2050/id3183627/
+SUMMARY:NOU «Matsystemet mot 2050» legges fram
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Marmorhallen i Oslo\; annonsert presentasjon k
+ l. 09.30–10.30. Ikke ennå en sak i artikkelkøen.
+URL:https://www.regjeringen.no/no/aktuelt/fremleggelse-a
+ v-nou-matsystemet-mot-2050/id3183627/
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cop31-start@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+SUMMARY:COP31 starter i Antalya
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Konferanseperioden er 9.–20. november. Ingen b
+ estemt pressemøtetid loggført.
+URL:https://unfccc.int/cop31/
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cop31-topmoete@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261113
+SUMMARY:COP31 – toppmøte for stats- og regjeringssjefer
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Toppmøtet er annonsert 11.–12. november\; enke
+ ltmøter må kontrolleres i konferansekalenderen.
+URL:https://unfccc.int/cop31/about
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:efa-nominasjoner@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:European Film Awards: hovednominasjoner
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Nominasjoner i de fleste kategorier 14. novemb
+ er. Tidspunkt ikke annonsert.
+URL:https://www.europeanfilmawards.eu/campaign-rules/
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:cop31-slutt@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:COP31 avsluttes etter planen
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Avslutningsdato er planlagt og kan endres ved 
+ overtid.
+URL:https://unfccc.int/cop31/ifp
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:oscar-kortliste@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Oscar-akademiet offentliggjør kortlister
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Dato oppgitt i akademiets offisielle plan\; ti
+ dspunkt ikke bekreftet.
+URL:https://www.oscars.org/99th-oscars-and-academy-key-d
+ ates
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:efa-prisfest@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20270116
+DTEND;VALUE=DATE:20270117
+SUMMARY:39. European Film Awards i Athen
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Riktig dato er 16. januar 2027\, ikke 17. janu
+ ar.
+URL:https://www.europeanfilmawards.eu/campaign-rules/
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:oscar-nominasjoner@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20270121
+DTEND;VALUE=DATE:20270122
+SUMMARY:Oscar-nominasjoner offentliggjøres
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Dato og tidspunkt kan endres av akademiet.
+URL:https://www.oscars.org/99th-oscars-and-academy-key-d
+ ates
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:pensjon-horingsfrist@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20270127
+DTEND;VALUE=DATE:20270128
+SUMMARY:Høringsfrist: strategi for pensjonsinformasjon
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Høringsstatus var «På høring» ved kontroll 1. 
+ november.
+URL:https://www.regjeringen.no/no/dokumenter/horing-utka
+ st-til-en-helhetlig-strategi-for-informasjon-pa-pensjons
+ omradet/id3184403/
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:oscars-seremoni@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20270314
+DTEND;VALUE=DATE:20270315
+SUMMARY:99. Oscar-utdeling
+DESCRIPTION:Redaksjonell kontroll – ingen automatisk pub
+ lisering. Dato kan endres.
+URL:https://www.oscars.org/99th-oscars-and-academy-key-d
+ ates
+STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR
