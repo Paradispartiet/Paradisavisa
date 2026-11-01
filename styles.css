@@ -25,7 +25,7 @@ body {
 /* =================================================================== */
 .notisbånd {
   position: fixed;
-  top: 0; left: 0;
+  top: auto; bottom: 0; left: 0;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -34,20 +34,17 @@ body {
   border-bottom: 2px solid var(--yellow);
   color: #eee;
   font-size: 1.1rem;
-  padding: 0.4rem 0;
+  padding: 0.4rem 0 calc(0.4rem + env(safe-area-inset-bottom, 0px));
   z-index: 9999;
   box-sizing: border-box;
 }
 
-/* På forsiden og i arkivene ligger notisbåndet under overskriftsfeltet,
-   i vanlig dokumentflyt, i stedet for festet øverst i vinduet. */
-body.avis-forside .notisbånd,
-body.sport-side .notisbånd,
-body.notiser-side .notisbånd {
-  position: relative;
-  top: auto;
-  left: auto;
-  z-index: 1;
+/* Gi innhold og bunnlenker plass over det fastmonterte nyhetsbåndet. */
+body.avis-forside,
+body.sport-side,
+body.notiser-side,
+body:has(> .notisbånd) {
+  padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px));
 }
 
 /* Tekstfeltet slutter før pauseknappen, så tekst ikke skjules bak knappen. */
@@ -569,7 +566,7 @@ a:hover {
    Beholder opprinnelig svart og gult. Ikke et partibanner.
    =============================================================== */
 body.avis-forside {
-  /* Overskriften og nyhetsbåndet tar sin egen plass i dokumentflyten. */
+  /* Avisoverskriften ligger øverst, notisbåndet er fast nederst. */
   padding-top: 0;
 }
 .hopp-til-innhold {
@@ -901,7 +898,7 @@ body.har-felles-header .avis-fallback-link { display: none; }
 }
 
 
-/* Felles meny under notisbåndet på de to spesialsidene. */
+/* Felles toppmeny på de to spesialsidene. */
 body.notiser-side { padding-top: 3rem; }
 body.sport-side { padding-top: 5rem; }
 body.notiser-side .avisa-shared-header,
@@ -1060,7 +1057,7 @@ body.sport-side .avisa-shared-header .avis-topp-inner { padding-top: .95rem; pad
 /* ================================================================
    PARADISAVISA – KLASSISK AVISMASTHEAD
    Avisnavnet er typografi, ikke en innrammet logo eller en boks.
-   Menyknappen ligger diskret øverst til høyre, over notisbåndet.
+   Menyknappen ligger diskret øverst til høyre, notisbåndet nederst.
    ================================================================ */
 .avis-forside .tittellinje.avis-masthead {
   display: block;
