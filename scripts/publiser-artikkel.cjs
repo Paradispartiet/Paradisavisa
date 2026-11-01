@@ -4,6 +4,7 @@
    Ingen push eller merge; status og faktakontroll må være godkjent. */
 "use strict";
 const fs=require("node:fs"),path=require("node:path"),root=path.resolve(__dirname,"..");
+const {finnLenkerTilUtkast,fjernInterneNotater}=require("./redaksjonelle-sperrer.cjs");
 const [id,date,flag]=process.argv.slice(2);
 function stop(msg){console.error("Publisering avvist: "+msg);process.exit(1)}
 function read(p){return fs.readFileSync(path.join(root,p),"utf8")}
@@ -30,8 +31,9 @@ const draft=read(a.artikkel),image=read(a.bilde);
 if(!draft.includes("REDAKSJONELT UTKAST")||!draft.includes("Kilder og dokumentasjon"))
  stop("Utkastet mangler tydelig merking eller kilder");
 if(!image.startsWith("<svg")||!image.trimEnd().endsWith("</svg>"))stop("Ugyldig SVG");
-if(/href="\.\.\/\d{4}-\d{2}-\d{2}\/[^"]+\.html"/.test(draft))
- stop("Utkastet lenker til en annen upublisert artikkel – oppdater lenken først");
+const upubliserteLenker=finnLenkerTilUtkast(draft,a.artikkel);
+if(upubliserteLenker.length)
+ stop("Utkastet lenker til upubliserte artikler: "+upubliserteLenker.join(", "));
 const publicHtml="artikler/"+date+"-"+id+".html";
 const publicImage="Bilder/Artikler/"+date+"-"+id+".svg";
 if(fs.existsSync(path.join(root,publicHtml))||fs.existsSync(path.join(root,publicImage)))
@@ -58,7 +60,8 @@ let html=draft.replace('<meta name="robots" content="noindex, nofollow">',
  .replace(/<p class="utkast-etikett">REDAKSJONELT UTKAST[^<]*<\/p>/,"")
  .replace(/<p class="utkast-kategori">([^<]*)<\/p>/,
   (_,label)=>'<p class="utkast-kategori">'+label.split("·")[0].trim()+' · <time datetime="'+date+'">Publisert '+pretty+'</time></p>')
- .replace(/<p><strong>Før publisering:<\/strong>[\s\S]*?<\/p>/g,"");
+;
+html=fjernInterneNotater(html);
 if(html.includes('noindex, nofollow')||html.includes("REDAKSJONELT UTKAST")||
    !html.includes('href="../styles.css"')||!html.includes('src="../'+publicImage+'"'))
  stop("Publiseringskopien bestod ikke grunnkontrollen");
