@@ -85,7 +85,9 @@ async function run(){
           tickerTop:ticker.getBoundingClientRect().top,
           tickerBottom:ticker.getBoundingClientRect().bottom,
           tickerPosition:getComputedStyle(ticker).position,
-          viewport:innerWidth
+          viewport:innerWidth,
+          viewportHeight:innerHeight,
+          reservedBottom:parseFloat(getComputedStyle(document.body).paddingBottom)
         };
       });
       check(masthead.fontSize >= (label==="mobil"?30:95),
@@ -103,10 +105,12 @@ async function run(){
         label+": menyknappen ligger ikke over avisnavnet");
       check(masthead.headerPosition==="sticky",
         label+": avisoverskriften er ikke fast under rulling");
-      check(masthead.tickerPosition!=="fixed",
-        label+": notisbåndet ligger fortsatt fast i toppen av appen");
-      check(masthead.tickerTop >= masthead.headerBottom - 3,
-        label+": notisbåndet ligger ikke under overskriftsfeltet");
+      check(masthead.tickerPosition==="fixed",
+        label+": notisbåndet er ikke fastmontert");
+      check(Math.abs(masthead.tickerBottom-masthead.viewportHeight)<=2,
+        label+": notisbåndet ligger ikke i bunnen av skjermen");
+      check(masthead.reservedBottom >= masthead.tickerBottom-masthead.tickerTop,
+        label+": innholdet har ikke nok bunnplass over notisbåndet");
       check((await page.locator(".avis-leserinfo").count())===0,
         label+": den gamle introduksjonslinjen er ikke fjernet");
 
@@ -119,9 +123,15 @@ async function run(){
       }
       // Kontroller at avisoverskriften forblir synlig når innholdet rulles.
       await page.evaluate(() => window.scrollTo(0, 600));
-      const scrolledHeaderTop=await page.locator(".avis-masthead").evaluate(el => el.getBoundingClientRect().top);
-      check(Math.abs(scrolledHeaderTop) <= 2,
+      const scrollPositions=await page.evaluate(() => ({
+        headerTop:document.querySelector(".avis-masthead").getBoundingClientRect().top,
+        tickerBottom:document.querySelector(".notisbånd").getBoundingClientRect().bottom,
+        viewportHeight:innerHeight
+      }));
+      check(Math.abs(scrollPositions.headerTop) <= 2,
         label+": avisoverskriften forsvinner når man ruller");
+      check(Math.abs(scrollPositions.tickerBottom-scrollPositions.viewportHeight)<=2,
+        label+": notisbåndet flytter seg når man ruller");
       await page.evaluate(() => window.scrollTo(0, 0));
 
       // Transparens: vis leseren publiseringsdato, og merk gamle saker som arkiv.
@@ -228,6 +238,15 @@ async function run(){
       for(const name of files.filter(x=>x!=="index.html")){
         await page.goto(base+"/"+name,{waitUntil:"domcontentloaded"});
         await page.locator(".avisa-shared-header .nav-toggle:not([hidden])").waitFor({timeout:10000});
+        if(name==="sport.html" || name==="notiser.html"){
+          const fixedBand=await page.locator(".notisbånd").evaluate(el => ({
+            position:getComputedStyle(el).position,
+            bottom:el.getBoundingClientRect().bottom,
+            height:innerHeight
+          }));
+          check(fixedBand.position==="fixed" && Math.abs(fixedBand.bottom-fixedBand.height)<=2,
+            label+": notisbåndet er ikke fast nederst på "+name);
+        }
         if(name==="sport.html"){
           check((await page.locator(".sport-banner").count())===0,
             label+": gammel gul sportsbanner finnes fortsatt");
