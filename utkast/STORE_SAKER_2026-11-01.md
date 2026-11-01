@@ -1,75 +1,69 @@
-# Paradisavisa – redaksjonell prioritering av store saker
+# Paradisavisa – saker med egen journalistisk verdi
 
 **Dato:** 1. november 2026  
-**Status:** ARBEIDSDOKUMENT – ikke publisert, ikke godkjent  
-**Grunnlag:** 15 aktive artikkelutkast i `utkast/artikler.json`, samt nytt kildearbeid. Den arkiverte Ibsen-saken er ikke med i de 15.  
-**Formål:** Beholde bare stoff som kan bli betydningsfull, etterprøvbar journalistikk. Det gis **ingen automatisk publiserings- eller arkiveringsbeslutning** i dette dokumentet.
+**Status:** REDAKSJONELT ARBEIDSDOKUMENT – verken godkjenning eller publisering  
+**Omfang:** Alle 15 aktive utkast i `utkast/artikler.json`. Den tidligere arkiverte Ibsen-saken er ikke en del av disse 15.
 
-## Fire hovedløp: arbeid videre med stor nyhetsverdi
+## Redaksjonelt valg: betydning er ikke nok
 
-| Utkast | Hvorfor det kan bli en hovedsak | Konkrete neste oppgaver |
+**En stor kjent nyhet uten noe nytt fra oss er ikke automatisk relevant for Paradisavisa.** Vi skal ikke fylle avisen med generelle oppsummeringer av krig, renter, klimagasser, offentlige utvalg eller lokale programposter. Et emne kan være enormt viktig, men selve artikkelen må dokumentere noe som er nytt, forsømt, overraskende eller særlig klargjørende.
+
+Før en sak får grønt lys skal redaksjonen kunne svare på:
+1. Hva vet publikum allerede fra NRK, VG, NTB og andre medier?
+2. **Hva undersøker eller dokumenterer vi som gjør saken verdt å lese hos oss?**
+3. Hvilke primærkilder, data, mennesker eller dokumenter kan faktisk underbygge det?
+4. Hvorfor har opplysningen betydning for leserne – og hva kan vi ikke konkludere med?
+
+Hvis vi ikke har et konkret svar på punkt 2 og 3, er materialet **research**, ikke en artikkel som nærmer seg publisering.
+
+## Fire konkrete undersøkelsesspor – ikke godkjente hovedsaker
+
+Disse utkastene rommer spørsmål som kan føre til selvstendig journalistikk. At de står her, innebærer ikke at de er viktige nok til publisering slik de nå er.
+
+| Eksisterende utkast | Konkrete spørsmål som kan gi egenverdi | Dokumentasjon som må skaffes |
 | --- | --- | --- |
-| `cyberrisiko` – NSMs høye cyberrisiko | Nasjonal sikkerhet og mulig svikt i viktige tjenester. | Sjekk fortsatt risikonivå; undersøk leverandøravhengighet og faktiske tiltak hos kommuner, operatører og større virksomheter. Skill varslet risiko fra inntrufne angrep. |
-| `store-stubb-putin` – Ukraina og nordisk diplomati | Krig, sivile konsekvenser og Europas sikkerhet. Telefonsamtalen 27. oktober er bare én del av historien. | Sett utviklingen i sammenheng med angrepene på kraftsystemet 1. november, lokale humanitære våpenhviler, reaksjoner og norsk energistøtte. Ikke skriv at forhandlinger lykkes uten dokumentasjon. |
-| `equinor-resultat` – Energiøkonomi | Internasjonal uro påvirker både norsk petroleumseksport og husholdningenes kostnader. | Sjekk rapportens ulike resultatmål. Sett pris- og inntektsutviklingen i forhold til rente, krone, energi- og prispress. Skill selskapets gevinst fra samfunnets samlede virkning. |
-| `wmo-klimagasser` – Globalt klima | Verdensomspennende målinger med langsiktige konsekvenser. | Kontroller 2025-målinger og datametode, konsekvenser og sammenheng med COP31. Unngå å gjøre WMO-målingene til bare en pressemelding. |
+| `medier-meta` | Hva står faktisk i de foreslåtte vilkårene og tingrettens forføyning, og hvilke rettigheter kan aviser miste eller beholde? | Originale vilkår, rettens kjennelse, rettslig oppfølging, Meta og medienes svar. |
+| `norske-havomrader` | Hva betyr «bevart» i praksis i områdene som inngår i de rapporterte 13,3 prosentene? Er naturtilstanden dokumentert? | Offisielle kart, kriterier, konkrete områderegler, naturdata og uavhengig faglig vurdering. Ikke anta at beskyttelsen er dårlig uten belegg. |
+| `arbeidstid` | Hvorfor oppgir så mange arbeidstakere at de står utenfor ordinære arbeidstidsregler, og har arbeidshverdagen reell selvstendighet? | Hele AFI-rapporten, metode, lovgrunnlag og partenes vurderinger. Ikke påstå ulovlig praksis uten særskilt dokumentasjon. |
+| `cyberrisiko` | Hvilke **dokumenterte** sårbarheter eller konkrete beredskapsgap finnes i viktige tjenester, utover at NSM har hevet risikonivået? | Etterprøvbare tilsyn, åpne revisjoner, leverandørforhold og uttalelser fra ansvarlige. Unngå spekulasjon om faktiske angrep. |
 
-**Hovedløp betyr videre journalistisk arbeid, ikke at artiklene er godkjent.**
+## Fire utkast med mulig egenverdi, men uten klar sak ennå
 
-## Seks saker med mulig stor betydning – krever ny dokumentasjon eller ny vinkling
-
-| Utkast | Hva må avklares før det eventuelt får stor plass? |
+| Utkast | Hvorfor det ikke er publiseringsklart som en egen Paradisavisa-sak |
 | --- | --- |
-| `medier-meta` | Om rettens midlertidige avgjørelse får prinsipiell betydning for mediers rettigheter, KI og plattformmakt. Kontroller siste rettslige status og begge sider. |
-| `norske-havomrader` | Om de rapporterte 13,3 prosentene gir faktisk beskyttelse for naturen – dokumenter områdekart, metode og uavhengige fagvurderinger. |
-| `arbeidstid` | Om AFI-rapportens 16 prosent peker på en større endring i arbeidslivet. Les originalrapporten, undersøk svakheter og reaksjoner fra arbeidsgiver-/arbeidstakersiden. |
-| `helsereformutvalget-bakgrunn` | Etter varslet rapport 2. november: gjelder dette vesentlige endringer i sykehus, pasientrettigheter, helsepersonell og finansiering – eller bare løse modeller? Ikke publiser forhåndsspekulasjon som nyhet. |
-| `uten-mobilnett` | Vurder som integrert faktaboks eller grundig tjenestejournalistikk under cyberrisiko; unngå dobbel dekning. |
-| `markens-grode-premiere` | Mulig større kultursak ved dokumentert internasjonal betydning, egen filmkritikk eller bredere kulturhistorisk analyse. Ikke en oppblåst premiereomtale. |
+| `equinor-resultat` | Kvartalstallene er offentlig kjent. Trenger en dokumentert økonomisk sammenheng, et originalt funn eller konsekvenser som andre artikler ikke har forklart godt. |
+| `helsereformutvalget-bakgrunn` | At en rapport legges fram, er ikke nok. Etter 2. november må en konkret og vesentlig endring undersøkes; ikke lag en hovedsak av mulige modeller. |
+| `uten-mobilnett` | Generelle beredskapsråd er tilgjengelige fra DSB. Relevant først ved selvstendig kartlegging, nyttig dokumentasjon eller en oversett lokal svakhet. |
+| `markens-grode-premiere` | En kinopremiere og prislister er ikke automatisk en stor kultursak. Krever egen vurdering, dyptgående kulturhistorie eller dokumentert særskilt betydning. |
 
-## Fem saker som foreslås satt på is
+## Sju utkast foreslås foreløpig satt på is
 
 | Utkast | Begrunnelse |
 | --- | --- |
-| `pensjonsinformasjon` | Høring om informasjonsstrategi, uten dokumentert stor endring for pensjonister nå. Kan inngå i en større sak om faktisk pensjonsøkonomi senere. |
-| `prosjekt-x-14-helsepiloter` | Pilotprosjekter og departemental oppsummering er ikke i seg selv en stor nyhet. Løftes først ved solid dokumenterte endringer for pasienter eller tjenester. |
-| `matata-oslo-world` | Lokal program- og forhåndsomtale. Kan tas opp igjen ved egen reportasje eller betydelig dokumentert kulturell hendelse. |
-| `hex-witch-club-satan` | Premieren alene er lite til å bære en hovedsak. Krever egen filmkritikk eller større selvstendig historie. |
-| `renata-flores-quechua` | Konsertforhåndsomtale etter passert dato; kan bli en sterkere sak om språk, kultur og internasjonal musikk med selvstendige kilder. |
+| `store-stubb-putin` | Gjengivelse av offentlig kjent diplomatisk kontakt og Ukraina-bakgrunn. Ingen dokumentert ny Paradisavisa-opplysning. |
+| `wmo-klimagasser` | Viktige, men allerede offentliggjorte globale målinger. Ingen original analyse eller ny følgekonsekvens foreløpig. |
+| `pensjonsinformasjon` | Administrativ høring uten dokumentert stor virkning for den enkelte på nåværende tidspunkt. |
+| `prosjekt-x-14-helsepiloter` | Gjengivelse av pilotbeskrivelser og offentlige oppsummeringer. Krever egne dokumenterte pasientresultater eller vesentlige følger. |
+| `matata-oslo-world` | Programomtale fra arrangør, ikke egen reportasje eller betydelig nytt funn. |
+| `hex-witch-club-satan` | Premieren og distribusjonsopplysningene er kjent fra produsent og filminstitutt. Mangler egen filmkritikk eller større funn. |
+| `renata-flores-quechua` | Forhåndsomtale av passert konsert uten eget intervju, konsertreportasje eller selvstendig dokumentasjon. |
 
-Forslaget er en **redaksjonell prioritering**, ikke en endring i `utkast/artikler.json`: alle nåværende godkjennings-/publiseringsflagg forblir urørt. Sakene i nederste gruppe er ikke automatisk slettet eller arkivert.
+Dette er **forslag til intern prioritering**. Ingen status-, godkjennings- eller publiseringsflagg i `utkast/artikler.json` er endret. Ingen saker er slettet eller arkivert automatisk.
 
-## Nye store nyhetsspor som er kontrollert 1. november
+## Nye ideer skal begynne med et spørsmål, ikke med en ferdig vinklet overskrift
 
-### A. Ukraina: energiforsyningen blir et hovedmål i vinterkrigen
+Gode researchoppgaver kan for eksempel være:
+- **Reell naturbeskyttelse:** Undersøk kart og regler for sjøområder som regnes som bevart. Sammenlign med observerbar påvirkning – uten å forskuttere konklusjonen.
+- **Plattformenes vilkår og pressefrihet:** Undersøk hva Meta-konflikten konkret betyr for mindre norske mediehus, i stedet for bare å gjenfortelle rettssaken.
+- **Arbeidslivets uavhengige stillinger:** Finn ut hva unntakene betyr i praksis, og hvor tallene i AFI-rapporten kommer fra.
+- **Samfunnskritisk drift:** Bruk dokumenterte tilsyns- og revisjonsfunn til å undersøke konkrete svakheter i stedet for å gjenta nasjonale risikovarsler.
 
-**Arbeidstittel:** Strømmen som krigsmål: Hundretusener rammet før vinteren i Ukraina  
-**Belegg:** Reuters/ukrainske myndigheter om nye angrep 1. november; FN om sivile konsekvenser og granskning; norsk regjering om 500 millioner kroner i energistøtte 27. oktober.  
-**Arbeidsutkast:** `utkast/arbeidsnotater/2026-11-01-ukraina-stromkrise.md`  
-**Må undersøkes:** Oppdaterte og uavhengige anslag over berørte, faktiske strøm-/varmeavbrudd, reparasjonsbehov, hvordan norsk støtte benyttes, Russlands uttalelser og krigens utvikling.
+Disse er **undersøkelsesspørsmål, ikke avsløringer**. Dersom kildearbeidet ikke bærer en ny og vesentlig fortelling, skal ideen legges bort uten artikkel.
 
-Kilder:
-- Reuters (1. november): https://www.reuters.com/world/europe/russian-strikes-cut-power-thousands-ukraine-drones-damage-russian-facility-2026-11-01/
-- FN – menneskerettighetsobservatører (16. oktober): https://ukraine.un.org/en/324562-civilian-casualties-remain-record-levels-amid-intensifying-attacks-energy-winter-approaches
-- FNs uavhengige kommisjon (26. oktober): https://ukraine.un.org/en/325200-russian-authorities-committed-crimes-against-humanity-through-attacks-ukraine%E2%80%99s-energy
-- Norsk regjering (27. oktober): https://www.regjeringen.no/no/aktuelt/norge-og-ukraina-styrker-energisamarbeidet/id3184399/
+## Tidligere Ukraina-idé er trukket tilbake
 
-### B. Norsk økonomi: dyrtid og 4,5 prosent styringsrente
+Et generelt arbeidsutkast om angrep mot Ukrainas energiforsyning og norsk støtte ble opprettet i denne arbeidsgrenen. Det tok for stor plass i et nyhetsbilde som allerede er kjent fra andre medier, og manglet et nytt journalistisk bidrag fra Paradisavisa. Filen er derfor trukket fra denne PR-en. Det er ikke en vurdering av om krigen er viktig; det er en vurdering av om **vår artikkel ville tilført leseren noe**.
 
-**Arbeidstittel:** Høy rente og internasjonalt energipress: Hva skjer med norske husholdninger?  
-**Reell hendelse:** Norges Bank hevet styringsrenten til 4,5 prosent 24. september og har varslet neste rentebeslutning 5. november.  
-**Må undersøkes:** Friske tall om husholdningsgjeld, kjøpekraft, mat- og energipriser, arbeidsmarked og bransjeforskjeller. Ikke spekuler i neste rentebeslutning.  
-**Kilde:** https://www.norges-bank.no/aktuelt/nyheter/Pressemeldinger/2026/2026-09-24-rente/
+## Publiseringssperrer
 
-### C. Norsk samfunnssikkerhet: hva kan faktisk falle ut?
-
-**Arbeidstittel:** Norge varsler høyt cyberrisikonivå: Hvor sårbart er strøm, vann og mobilnett?  
-**Reell hendelse:** NSM hevet risikonivået 27. oktober og rapporterte en tredobling av vellykkede operasjoner siste halvår.  
-**Må undersøkes:** Kommuner, ekom, kritiske leverandører og kvaliteten på sikkerhetstiltak. Ikke beskriv hypotetiske utfall som faktiske strømbrudd eller cyberangrep.  
-**Kilder:** https://nsm.no/aktuelt/nsm-hever-det-nasjonale-cyberrisikonivaet-til-hoyt og https://nkom.no/aktuelt/nsm-hever-trusselnivaet-for-cyberangrep
-
-## Journalistisk sperre før publisering
-
-Kildebaserte arbeidsutkast kan inneholde uavklarte tall og påstander. Kontroller alle tidsavhengige fakta mot ferske kilder, innhent relevante motforestillinger og eventuelle tilsvar, vær presis om hva parter *hevder*, og vurder om saken har sterk nok selvstendig betydning. Det er ikke nok at GitHub Actions viser grønt.
-
-**Ingen sak i dette dokumentet er godkjent, publisert eller satt i offentlig nyhetsstrøm.**
+Ingen av punktene over er publiseringsgodkjenning. Etter eventuell selvstendig research må hvert enkelt utkast faktasjekkes, korrekturleses og godkjennes uttrykkelig før det kan publiseres. `main`, offentlige nyhetsstrømmer og artikkelstatus skal være urørt inntil videre.
