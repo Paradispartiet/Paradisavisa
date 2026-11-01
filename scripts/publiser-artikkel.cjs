@@ -59,8 +59,7 @@ let html=draft.replace('<meta name="robots" content="noindex, nofollow">',
  .replace('src="'+imageName+'"','src="../'+publicImage+'"')
  .replace(/<p class="utkast-etikett">REDAKSJONELT UTKAST[^<]*<\/p>/,"")
  .replace(/<p class="utkast-kategori">([^<]*)<\/p>/,
-  (_,label)=>'<p class="utkast-kategori">'+label.split("·")[0].trim()+' · <time datetime="'+date+'">Publisert '+pretty+'</time></p>')
-;
+  (_,label)=>'<p class="utkast-kategori">'+label.split("·")[0].trim()+' · <time datetime="'+date+'">Publisert '+pretty+'</time></p>');
 html=fjernInterneNotater(html);
 if(html.includes('noindex, nofollow')||html.includes("REDAKSJONELT UTKAST")||
    !html.includes('href="../styles.css"')||!html.includes('src="../'+publicImage+'"'))
