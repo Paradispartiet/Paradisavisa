@@ -416,7 +416,7 @@
 
 /* Sportssiden bruker samme struktur som resten av nettavisa, ikke et
    ekstra, fast gult banner under notisbåndet. */
-body.sport-side,body.notiser-side {padding-top:46px}
+body.sport-side,body.notiser-side {padding-top:0}
 .sport-side #sport.arkiv-hoved {
   width:100%;
   max-width:1180px;
