@@ -39,6 +39,17 @@ body {
   box-sizing: border-box;
 }
 
+/* På forsiden og i arkivene ligger notisbåndet under overskriftsfeltet,
+   i vanlig dokumentflyt, i stedet for festet øverst i vinduet. */
+body.avis-forside .notisbånd,
+body.sport-side .notisbånd,
+body.notiser-side .notisbånd {
+  position: relative;
+  top: auto;
+  left: auto;
+  z-index: 1;
+}
+
 /* Tekstfeltet slutter før pauseknappen, så tekst ikke skjules bak knappen. */
 .notis-visning {
   width: calc(100% - 78px);
@@ -558,8 +569,8 @@ a:hover {
    Beholder opprinnelig svart og gult. Ikke et partibanner.
    =============================================================== */
 body.avis-forside {
-  /* Notisbåndet er fast plassert og ca. 44 px høyt. */
-  padding-top: 46px;
+  /* Overskriften og nyhetsbåndet tar sin egen plass i dokumentflyten. */
+  padding-top: 0;
 }
 .hopp-til-innhold {
   position: absolute;
@@ -574,11 +585,11 @@ body.avis-forside {
 }
 .hopp-til-innhold:focus { top: 0; color: #050505; }
 
-/* Sidens hovedtittel er ikke lenger fast over nyhetsinnholdet. */
+/* Avisens hovedtittel skal bli stående når leseren ruller nedover. */
 .avis-forside .tittellinje.avis-topp {
-  position: relative;
-  top: auto;
-  left: auto;
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
   display: block;
   padding: 0;
@@ -770,11 +781,18 @@ html.avis-meny-klar .avis-topp .avisa-menu:not([hidden]) {
 }
 #hovedinnhold { display: block; }
 #hovedinnhold section[id] { scroll-margin-top: 3.5rem; }
+/* Ankerlenker må ikke havne skjult bak den klebrige, store mastheaden. */
+.avis-forside #hovedinnhold,
+.avis-forside #hovedinnhold section[id] {
+  scroll-margin-top: clamp(11rem, 22vw, 20rem);
+}
 
 
 /* Felles toppmeny på arkiv-, artikkel- og kontaktsider. */
 .avisa-shared-header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 9000;
   z-index: 8000;
   border-top: 2px solid var(--yellow);
   border-bottom: 1px solid #3c3626;
@@ -1042,13 +1060,13 @@ body.sport-side .avisa-shared-header .avis-topp-inner { padding-top: .95rem; pad
 /* ================================================================
    PARADISAVISA – KLASSISK AVISMASTHEAD
    Avisnavnet er typografi, ikke en innrammet logo eller en boks.
-   Menyknappen ligger diskret øverst til høyre, under notisbåndet.
+   Menyknappen ligger diskret øverst til høyre, over notisbåndet.
    ================================================================ */
 .avis-forside .tittellinje.avis-masthead {
   display: block;
-  position: relative;
-  top: auto;
-  left: auto;
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
   padding: 0;
   border: 0;
