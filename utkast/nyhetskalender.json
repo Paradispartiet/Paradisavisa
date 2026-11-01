@@ -722,6 +722,50 @@
       "sist_kontrollert": "2026-11-01",
       "merknad": "Arrangementenes gjennomføring og ulike spilletider er ikke bekreftet.",
       "tidshorisont": ""
+    },
+    {
+      "id": "efa-kortfilmnominasjon",
+      "dato": "2026-11-04",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "European Film Awards: kortfilmnominasjon kunngjøres",
+      "type": "kultur",
+      "prioritet": "normal",
+      "status": "bekreftet",
+      "handling": "Kontroller den europeiske kortfilmnominasjonen. Dette er en annen kategori og annen dato enn hovednominasjonene 14. november; må ikke forveksles med status for «Markens grøde».",
+      "artikkel_ider": [],
+      "pr_numre": [],
+      "kilder": [
+        {
+          "navn": "European Film Academy – offentlig tidsplan",
+          "url": "https://www.europeanfilmawards.eu/campaign-rules/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Akademiet oppgir 4. november for European Short Film – Prix Vimeo; ingen bestemt klokkeslett oppgitt.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "digitaliseringsraad-seminar",
+      "dato": "2026-11-11",
+      "slutt_dato": null,
+      "klokkeslett": "09:00",
+      "tittel": "Digitaliseringsrådets erfaringsseminar: ti år med digital omstilling",
+      "type": "digitalisering",
+      "prioritet": "normal",
+      "status": "bekreftet",
+      "handling": "Følg offentlig direktesending eller etterfølgende dokumentasjon; vurder om læringspunkter om offentlig digitalisering og styring gir grunnlag for ny artikkel. Ikke skriv at konklusjonene er kjent på forhånd.",
+      "artikkel_ider": [],
+      "pr_numre": [],
+      "kilder": [
+        {
+          "navn": "Regjeringen – oversikt over kommende nett-TV-sendinger",
+          "url": "https://www.regjeringen.no/no/aktuelt/nett-tv/id2000007/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Oppført 11. november kl. 09.00 hos regjeringen. Sluttid er ikke kjent. Ingen artikkel er opprettet.",
+      "tidshorisont": ""
     }
   ]
 }
