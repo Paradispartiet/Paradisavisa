@@ -80,7 +80,11 @@ async function run(){
           buttonTop:buttonBounds.top,
           titleTop:rule.top,
           headerTop:header.getBoundingClientRect().top,
+          headerBottom:header.getBoundingClientRect().bottom,
+          headerPosition:getComputedStyle(header).position,
+          tickerTop:ticker.getBoundingClientRect().top,
           tickerBottom:ticker.getBoundingClientRect().bottom,
+          tickerPosition:getComputedStyle(ticker).position,
           viewport:innerWidth
         };
       });
@@ -97,8 +101,14 @@ async function run(){
         label+": menyknappen ligger ikke til høyre");
       check(masthead.buttonTop < masthead.titleTop,
         label+": menyknappen ligger ikke over avisnavnet");
-      check(masthead.headerTop >= masthead.tickerBottom - 3,
-        label+": avisoverskriften overlapper notisbåndet");
+      check(masthead.headerPosition==="sticky",
+        label+": avisoverskriften er ikke fast under rulling");
+      check(masthead.tickerPosition!=="fixed",
+        label+": notisbåndet ligger fortsatt fast i toppen av appen");
+      check(masthead.tickerTop >= masthead.headerBottom - 3,
+        label+": notisbåndet ligger ikke under overskriftsfeltet");
+      check((await page.locator(".avis-leserinfo").count())===0,
+        label+": den gamle introduksjonslinjen er ikke fjernet");
 
       // Vent på at alle innholdsseksjonene faktisk er fylt. Et tomt felt
       // ved første skjermbilde kan ellers maskere problemer med kortene.
@@ -107,6 +117,13 @@ async function run(){
       for(const id of storyGrids){
         await page.locator(id+" .hjul-card").first().waitFor({timeout:12000});
       }
+      // Kontroller at avisoverskriften forblir synlig når innholdet rulles.
+      await page.evaluate(() => window.scrollTo(0, 600));
+      const scrolledHeaderTop=await page.locator(".avis-masthead").evaluate(el => el.getBoundingClientRect().top);
+      check(Math.abs(scrolledHeaderTop) <= 2,
+        label+": avisoverskriften forsvinner når man ruller");
+      await page.evaluate(() => window.scrollTo(0, 0));
+
       // Transparens: vis leseren publiseringsdato, og merk gamle saker som arkiv.
       for(const id of storyGrids){
         const card=page.locator(id+" .hjul-card").first();
