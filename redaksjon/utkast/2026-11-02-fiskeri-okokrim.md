@@ -23,6 +23,12 @@ Politiets mistanke er mer alvorlig enn tilfeldige skrivefeil. Etterforskerne vur
 
 Slik systematisk manipulasjon *kan*, dersom den dokumenteres, skape økonomiske fordeler og samtidig undergrave forvaltningen av en felles naturressurs. Det betyr ikke at alle fiskemottak eller fiskere arbeider slik, eller at de siktede foretakene allerede er skyldige.
 
+## Berørt fiskemottak avviser bevisst feilføring
+
+Et av mottakene der politiet har gjennomført aksjon, Myre Fiskemottak, har gjennom advokat Thomas Skjelbred i Elden Advokatfirma avvist at det har skjedd bevisst feilføring. Ifølge advokaten erkjenner ikke selskapet straffskyld, men samarbeider med Økokrim. Driften går som normalt mens etterforskningen pågår, opplyser advokaten til bransjenettstedet Kystmagasinet.
+
+Advokaten viser også til at saken rammer rundt 230 ansatte og deres familier. Det gir en annen side av den store politiaksjonen: En siktelse og en offentlig etterforskning får konsekvenser for arbeidsplasser og lokalsamfunn før skyldspørsmålet er avgjort. Disse opplysningene er formidlet gjennom selskapets advokat og er ikke selvstendig kontrollert av Paradisavisa.
+
 ## Nettverk, mistanke og rettssikkerhet
 
 Økokrim mener etterforskningen har karakter av organisert økonomisk kriminalitet. Påtalemyndigheten har vist til fare for bevisforspillelse i forbindelse med varetektsfengslingene.
@@ -39,6 +45,7 @@ Det er først når disse spørsmålene er besvart med dokumenter og uavhengige k
 - VG, Økokrims pressekonferanse 29. oktober: https://www.vg.no/nyheter/i/b8VQdv/oekokrim-30-personer-paagrepet-i-politiaksjon-mot-fiskerinaeringen
 - Aftenposten/NTB, 29. oktober: https://www.aftenposten.no/norge/i/OgVlrl/oekokrim-mistenker-fiskerikriminalitet-i-100-millonersklassen-30-personer-paagrepet
 - Finansavisen/NTB, 29. oktober: https://www.finansavisen.no/sjomat/2026/10/29/8391731/okokrim-mistenker-fiskerikriminalitet-i-100-millionersklassen-30-personer-pagrepet
+- Kystmagasinet, 30. oktober, Myre Fiskemottaks advokats tilsvar: https://www.kystmagasinet.no/fiskemottak-fiskerikriminalitet-havoysund/driften-gar-som-normalt-etter-politiaksjonen/2203805
 - VG, 27. oktober, Økokrims første uttalelser og tips: https://www.vg.no/nyheter/i/Qge9j4/oekokrim-flere-personer-paagrepet-i-etterforskning-av-fiskerikriminalitet
 
-**Før eventuell publisering:** Innhent Økokrims opprinnelige pressemelding og tilgjengelige fengslingskjennelser; kontroller status på siktelser og beslag og innhent tilsvar fra berørte. Ikke gjett på dokumentert modus eller endelig økonomisk omfang.
+**Før eventuell publisering:** Innhent Økokrims opprinnelige pressemelding og tilgjengelige fengslingskjennelser; kontroller status på siktelser og beslag. Det publiserte tilsvaret fra ett mottak er inkludert, men innhent direkte kommentar og gi andre konkret kritiserte parter en tilsvarsmulighet. Ikke gjett på dokumentert modus eller endelig økonomisk omfang.
