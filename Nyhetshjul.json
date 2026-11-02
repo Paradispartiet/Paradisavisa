@@ -1,5 +1,12 @@
 [
-
+  {
+    "title": "Støre–Stubb: Den diplomatiske muligheten – og risikoen",
+    "excerpt": "Kan nordisk diplomati åpne for reelle forhandlinger uten å svekke Europas samhold om Ukraina? En analyse av Putin-samtalen.",
+    "image": "Bilder/store-stubb-diplomati-2026.svg",
+    "position": "center",
+    "url": "artikler/2026-11-02-store-stubb-diplomatisk-mulighet.html",
+    "date": "2026-11-02"
+  },
   {
     "title": "Paris gjør fem hundre gater bilfrie",
     "excerpt": "Anne Hidalgo fullfører det urbane eksperimentet: Paris velger en by som puster – med fem hundre nye grønne gater og en struktur bygget for den 15-minutters byen.",
@@ -12,7 +19,7 @@
     "title": "Den friksjonsløse hjernen",
     "excerpt": "Hvordan teknologiens friksjonsfrie løfter gjør tanken tregere – og hjernen mindre tilstede.",
     "image": "Nyhetshjul/AI-hjerne.PNG",
-"position": "center top",
+    "position": "center top",
     "url": "artikler/2025-10-19-den-friksjonslose-hjernen.html",
     "date": "2025-10-19"
   },
