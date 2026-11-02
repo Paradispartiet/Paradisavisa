@@ -29,7 +29,7 @@ Her er det lett å blande sammen tre helt forskjellige ting: **stjålne verdier*
 
 Selskapet anslår tyveriet til omkring 6,3 milliarder dollar. Binance opplyste 30. oktober at partnere hadde bidratt til å fryse rundt 3 milliarder dollar i berørte verdier på blokkjeden. Men fryste midler er ikke automatisk levert tilbake. De må håndteres juridisk og teknisk før de eventuelt kan tilbakeføres.
 
-Samtidig har Binance satt av egne ressurser for å dekke beholdningene som ble tappet. Selskapet oppga 31. oktober at om lag 90 prosent av berørte eiendeler var erstattet i reservene. **1. november oppjusterte Binance tallet til rundt 95 prosent.** De resterende rundt fem prosentene var, ifølge selskapet, mindre likvide kryptovalutaer som tar lengre tid å kjøpe inn i store mengder.
+Samtidig har Binance satt av egne ressurser for å dekke beholdningene som ble tappet. Selskapet oppga 31. oktober at om lag 90 prosent av berørte eiendeler var erstattet i reservene. **1. november oppjusterte Binance tallet til rundt 95 prosent.** De resterende rundt fem prosentene var, ifølge selskapet, mindre likvide kryptovalutaer som tar lengre tid å kjøpe inn i store mengder. **Selskapets oppdatering 1. november er en påstand om reserveoppfylling, ikke en full, uavhengig revisjon av tilbakebetalinger til alle kunder.**
 
 Pengene skal komme fra tre kilder: sikkerhetsfondet **SAFU**, deler av børsens **Futures Insurance Fund**, og selskapets egne midler. Dette betyr ikke at hackerne har levert tilbake 95 prosent av det de tok. Det betyr at Binance sier det har skaffet tilsvarende eiendeler til reservene for å dekke det meste av tapet. Dette er selskapets egen opplysning og bør kontrolleres mot senere uavhengig dokumentasjon.
 
@@ -37,7 +37,7 @@ Pengene skal komme fra tre kilder: sikkerhetsfondet **SAFU**, deler av børsens 
 
 Børsen stanset uttak mens sikkerhetssystemene ble kontrollert. Binance har understreket at innskudd ikke var rammet av stansen. Søndag 1. november startet Binance en gradvis gjenåpning på utvalgte kryptonettverk, ifølge selskapets egen oppdatering. Tilgjengeligheten kan fortsatt variere mellom ulike valutaer og nettverk.
 
-Binance har også varslet en ny kontroll av reserver, der kundene skal kunne undersøke om visse beholdninger er dekket minst én-til-én. Binance opplyste 1. november at reserveoversikter for ti store kryptovalutaer kunne kontrolleres av kundene, mens andre mindre likvide eiendeler fortsatt manglet full dekning. Et slikt reservebevis er nyttig, men det er ikke i seg selv en full uavhengig revisjon av selskapets gjeld, interne kontroller eller konsekvensene av tyveriet.
+Binance har også varslet en ny kontroll av reserver, der kundene skal kunne undersøke om visse beholdninger er dekket minst én-til-én. Binance opplyste 1. november at reserver for ti store kryptovalutaer var dekket fullt ut og at et reserveøyeblikksbilde var tilgjengelig. Selskapet ventet at den tilhørende fullstendige kryptografiske verifikasjonen kunne bli klar **3. november**. Det er en planlagt milepæl, ikke noe Paradisavisa kan skrive at allerede er ferdig 2. november. Et slikt reservebevis er nyttig, men det er ikke i seg selv en full uavhengig revisjon av selskapets gjeld, interne kontroller eller konsekvensene av tyveriet.
 
 Da uttak ble åpnet gradvis igjen søndag 1. november, oppsto et nytt spørsmål: Ville kundene flytte pengene sine? Reuters rapporterte 2. november om netto uttak på rundt 3,64 milliarder dollar i de første ni og en halv timene etter gjenåpningen. Det er penger kundene tok ut, ikke en del av det opprinnelige tyveriet. Reuters oppga at dette tilsvarte omtrent 2,1 prosent av børsens eiendeler.
 
@@ -50,6 +50,7 @@ Spørsmålet som gjenstår, er todelt: Hvor mye av det stjålne beløpet kan ett
 - Binance, teknisk førstevurdering omtalt av BleepingComputer, 30. oktober: https://www.bleepingcomputer.com/news/security/binance-links-63-billion-crypto-theft-to-compromised-devops-laptop/
 - Binance, oppdatering 31. oktober: https://www.binance.com/en/square/post/383244799724069
 - Binance, uttak og 95 prosent dekning, 1. november: https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-4-withdrawals-resume-in-phases-2026-11-01-73911fb819b240f88b88256bdd318eda
+- Binance, 31. oktober, reserveøyeblikksbilde og anslått verifisering 3. november: https://www.binance.com/en/square/post/383244799724069
 - Reuters, 1. november: https://www.reuters.com/legal/government/binance-resume-withdrawals-after-recovering-bulk-6-billion-stolen-funds-2026-11-01/
 - Reuters, 2. november, uttak og markedsreaksjon: https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/
 
