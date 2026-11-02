@@ -19,11 +19,11 @@ Innenriksdepartementets rapport omtalte også en nedgang i deltakelsen fra 410 0
 
 ## En annen protestbevegelse i Tyskland
 
-Samtidig var unge demonstranter ute i gatene i Tyskland. Ifølge Financial Times, som rapporterte 2. november, deltok anslagsvis 100 000 mennesker i Berlin og omkring 30 andre tyske byer. Her handlet kravene om høye levekostnader og kutt i offentlige budsjetter, men også om utsiktene til gjeninnført militær verneplikt. Politiet rapporterte om vold og skadde tjenestepersoner under deler av protestene, særlig i Frankfurt. Arrangørene tok avstand fra volden.
+Samtidig var unge demonstranter ute i gatene i Tyskland. Ifølge tyske Tagesschau 1. november anslo arrangørene at rundt 120 000 mennesker deltok på landsbasis. Politiet anslo omtrent 5 000 demonstranter i Berlin, mot arrangørenes anslag på 10 000. Det ble demonstrert i mer enn 30 tyske byer. Her handlet kravene om høye levekostnader og kutt i offentlige budsjetter, men også om utsiktene til gjeninnført militær verneplikt. Politiet rapporterte om vold og skadde tjenestepersoner under deler av protestene, særlig i Frankfurt. Arrangørene tok avstand fra volden.
 
 Det er dermed flere fellestrekk, men også en viktig forskjell: Mens franske demonstranter blant annet protesterer mot levekostnader og utdanningspolitikk, dreier den tyske mobiliseringen seg også om hvem som skal måtte tjenestegjøre i militæret. Dette er ingen dokumentasjon for at protestene er styrt av én felles organisasjon eller har ett felles politisk mål.
 
-En selvstendig Paradisavisa-reportasje bør derfor undersøke **hvilke konkrete beslutninger protestene retter seg mot i hvert land**, hvem som organiserer dem, og om noen forsøker å bygge politiske allianser på tvers av grensene. Vi har ikke dokumentert grunnlag for å ta Portugal med i denne sammenligningen.
+Det avgjørende spørsmålet er **hvilke konkrete beslutninger protestene retter seg mot i hvert land**, hvem som organiserer dem, og om noen forsøker å bygge politiske allianser på tvers av grensene. Sammenligningen gjelder de dokumenterte mobiliseringene i Frankrike og Tyskland, ikke en påstått felles europeisk organisasjon.
 
 Den mest interessante historien er kanskje ikke at ungdom gjør opprør. Den er hva som skal til for at de opplever at demokratiet svarer når de protesterer – og hvordan politiet og myndighetene balanserer sikkerhet med retten til å demonstrere.
 
@@ -31,6 +31,7 @@ Den mest interessante historien er kanskje ikke at ungdom gjør opprør. Den er 
 - Frankrikes innenriksdepartement, offisiell opptelling 1. november: https://www.interieur.gouv.fr/actualites/communiques-de-presse/bilan-de-journee-de-mobilisation-du-31-octobre-2026-et-de-soiree-dhalloween
 - AFP, demonstrasjoner 31. oktober: https://www.afp.com/en/thousands-turn-france-protests-amid-tight-security
 - Le Monde, reportasje 1. november: https://www.lemonde.fr/en/france/article/2026/11/01/i-am-protesting-so-that-we-can-protest-festive-and-determined-demonstrators-march-across-france-amid-heavy-police-presence_6768742_7.html
+- Tagesschau, 1. november, protestdeltakelse i Tyskland: https://www.tagesschau.de/inland/gesellschaft/demonstration-protest-genz-100.html
 - Financial Times, 2. november, tyske protester: https://www.ft.com/content/4ffb1a86-853b-4151-9902-2ff302e79d24
 
 **Før eventuell publisering:** Skaff direkte dokumentasjon på protestene i andre land og unges krav; uten dette bør vinklingen snevres inn til Frankrike. Ikke påstå én samlet europeisk bevegelse.
