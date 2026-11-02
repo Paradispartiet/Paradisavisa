@@ -24,11 +24,7 @@
 .avis-forside .avis-masthead .avis-identitet h1 {
   text-shadow:none;
 }
-.avis-forside .avis-masthead .avis-identitet::after {
-  margin-top:1.25rem;
-  height:2px;
-  background:var(--yellow);
-}
+.avis-forside .avis-masthead .avis-identitet::after {display:none}
 .avis-forside .avis-masthead .avis-kategorier {
   color:#b9b5a8;
   font-weight:550;
