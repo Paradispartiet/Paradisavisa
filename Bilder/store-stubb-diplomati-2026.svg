@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="810" viewBox="0 0 1440 810" role="img" aria-labelledby="title desc">
+<title id="title">Diplomatiske forbindelser over Europa</title><desc id="desc">Symbolsk, mørk illustrasjon av nordisk diplomati: telefonlinjer mellom nordiske flagg, Ukraina og Russland over et kartinspirert landskap.</desc>
+<defs><linearGradient id="sky" x2="1" y2="1"><stop stop-color="#07101c"/><stop offset=".54" stop-color="#0b1f38"/><stop offset="1" stop-color="#170d1b"/></linearGradient><radialGradient id="light"><stop stop-color="#ffd28a" stop-opacity=".45"/><stop offset="1" stop-color="#ffd28a" stop-opacity="0"/></radialGradient><linearGradient id="line" x2="1"><stop stop-color="#76bdff"/><stop offset=".5" stop-color="#ffdfa7"/><stop offset="1" stop-color="#d46c67"/></linearGradient><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".8" fill="#b5dcf1" opacity=".23"/></pattern><filter id="glow"><feGaussianBlur stdDeviation="10"/></filter></defs>
+<rect width="1440" height="810" fill="url(#sky)"/><rect width="1440" height="810" fill="url(#dots)"/>
+<circle cx="715" cy="430" r="360" fill="url(#light)"/>
+<g fill="#34485a" stroke="#b2bfcb" stroke-opacity=".22" stroke-width="3" opacity=".65">
+<path d="M543 87l49 15 42 45-23 44 24 47-12 74-40 48-37 15-29 80-32 43-28-10-12-71 27-70-16-76 34-57z"/>
+<path d="M650 95l47-31 62 17 25 71-35 49-22 84 6 98-54 32-20-73 7-65-32-45 18-68z"/>
+<path d="M499 389l-39 42 12 79 63 22 29 62-15 71 71 41 74-25 55-74-19-74 59-44-42-56-71 16-51-36-58 25z"/>
+<path d="M779 350l90-29 96 43 27 76 120 10 52 85-55 66-155 7-49-42-101 31-48-56 25-65-31-66z"/>
+<path d="M801 594l58-29 80 10 44 38-23 51-70 15-88-27z" fill="#b99a46" opacity=".98"/>
+<path d="M1005 115l84-44 102 17 92 101 38 100-36 113-94 19-72-56-115-20-29-92z" fill="#553548"/>
+</g>
+<path d="M315 524C475 700 610 687 724 540S991 407 1143 533" fill="none" stroke="url(#line)" stroke-width="18" stroke-opacity=".35" filter="url(#glow)"/>
+<path d="M315 524C475 700 610 687 724 540S991 407 1143 533" fill="none" stroke="url(#line)" stroke-width="5" stroke-linecap="round"/>
+<g transform="translate(175 385)" fill="#dce8f2"><circle cx="98" cy="50" r="65" opacity=".92"/><path d="M10 242q5-125 88-125t88 125" opacity=".85"/></g>
+<g transform="translate(445 390)" fill="#c9d8e7"><circle cx="100" cy="54" r="63" opacity=".87"/><path d="M12 245q5-125 88-125t88 125" opacity=".8"/></g>
+<g transform="translate(1064 385)" fill="#b4aeb6"><circle cx="100" cy="50" r="66" opacity=".85"/><path d="M10 242q4-125 90-125t90 125" opacity=".8"/></g>
+<g transform="translate(50 38)" opacity=".9"><path d="M0 0h104v67H0z" fill="#bf2c39"/><path d="M31 0v67M0 33h104" stroke="#fff" stroke-width="18"/><path d="M31 0v67M0 33h104" stroke="#1b3a82" stroke-width="10"/></g>
+<g transform="translate(174 38)" opacity=".9"><path d="M0 0h104v67H0z" fill="#f9fafb"/><path d="M31 0v67M0 33h104" stroke="#2464a5" stroke-width="19"/></g>
+<g transform="translate(1280 38)" opacity=".9"><path d="M0 0h112v67H0z" fill="#fff"/><path d="M0 22h112" stroke="#185ba6" stroke-width="45"/><path d="M0 44h112" stroke="#c84245" stroke-width="23"/></g>
+<rect y="755" width="1440" height="55" fill="#000" opacity=".55"/>
+</svg>
