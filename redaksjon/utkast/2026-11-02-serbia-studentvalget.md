@@ -19,9 +19,9 @@ Det gjorde den også sårbar. SNS og Vučić har framstilt deler av protestene s
 
 ## Fra gatene til stemmesedlene
 
-25. oktober gikk serberne til nyvalg. Ifølge en orientering fra biblioteket ved det britiske Underhuset fikk studentlisten 53,7 prosent av stemmene og 141 av 250 mandater, mot 103 mandater for SNS-ledede United Serbia. Reuters rapporterte senere om den samme mandatfordelingen.
+25. oktober gikk serberne til nyvalg. **2. november publiserte Serbias valgkommisjon resultater fra samtlige 8 392 valglokaler etter omvalg ved 53 av dem. Studentlisten fikk 53,01 prosent av stemmene, mot 38,98 prosent for SNS-ledede United Serbia.**
 
-**Viktig tallforbehold:** Serbias egen valgkommisjons foreløpige oversikt 26. oktober, da 97,56 prosent av valglokalene var registrert, viste derimot 140 mandater til studentlisten og 104 til SNS-listen. Tallene viser at man må oppgi nøyaktig hvilken opptelling som brukes; endelige, offisielle mandater skal kontrolleres før publisering.
+Tidligere opptellinger og analyser ga ulike mandatanslag: Valgkommisjonens foreløpige opptelling 26. oktober viste 140 av 250 mandater til studentlisten og 104 til SNS-ledede United Serbia, mens en senere orientering fra biblioteket ved det britiske Underhuset oppga 141 mot 103. Den nye offentliggjøringen 2. november bekrefter stemmeprosentene, men oppgir ikke en endelig mandatfordeling i selve kunngjøringen. Mandattall må derfor avstemmes mot offisiell mandatprotokoll før publisering.
 
 Selv med dette forbeholdet er retningen klar: Den studentstøttede listen vant en historisk valgseier etter to år med protester. Vučić erkjente nederlaget, samtidig som han har fremmet udokumenterte påstander om utenlandsk støtte til motstanderne.
 
@@ -36,7 +36,8 @@ Det er kanskje derfor bildene fra Novi Sad betyr mer enn valgseieren alene. Beve
 ### Kilder
 - Serbias valgkommisjon, foreløpige resultater 26. oktober: https://www.rik.parlament.gov.rs/vest/en/4385/70th-session-of-the-republic-electoral-commission-.php
 - Serbias regjering, foreløpig mandatfordeling 26. oktober: https://www.srbija.gov.rs/vest/en/290661/preliminary-election-results-from-8187-polling-stations-determined.php
+- Serbias valgkommisjon via regjeringen, resultater fra alle valglokaler 2. november: https://www.srbija.gov.rs/vest/en/290805/rik-publishes-results-from-all-8392-polling-stations.php
 - House of Commons Library, 30. oktober: https://commonslibrary.parliament.uk/research-briefings/cbp-12267/
 - Reuters, minnemarkering 1. november: https://www.reuters.com/world/serbians-mark-railway-disaster-that-led-rise-victorious-student-movement-2026-11-01/
 
-**Før eventuell publisering:** Kontroller 140/141-mandatforskjellen mot ny valgkommisjonsprotokoll, og kontroller rettsstatus etter jernbanekatastrofen. Ingen intervjuer gjennomført av Paradisavisa.
+**Før eventuell publisering:** Kontroller 140/141-mandatforskjellen mot endelig offisiell mandatprotokoll (ikke gjenbruk foreløpige prosenter), og kontroller rettsstatus etter jernbanekatastrofen. Ingen intervjuer gjennomført av Paradisavisa.
