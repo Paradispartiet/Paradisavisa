@@ -58,8 +58,14 @@ let html=draft.replace('<meta name="robots" content="noindex, nofollow">',
  .replace(/<p class="utkast-etikett">REDAKSJONELT UTKAST[^<]*<\/p>/,"")
  .replace(/<p class="utkast-kategori">([^<]*)<\/p>/,
   (_,label)=>'<p class="utkast-kategori">'+label.split("·")[0].trim()+' · <time datetime="'+date+'">Publisert '+pretty+'</time></p>')
- .replace(/<p><strong>Før publisering:<\/strong>[\s\S]*?<\/p>/g,"");
+ .replace(/<p><strong>Før (?:eventuell )?publisering:<\/strong>[\s\S]*?<\/p>/g,"")
+ .replace(/<p[^>]*>Dette er et upublisert redaksjonelt utkast\.[\s\S]*?<\/p>/g,"")
+ .replace(/\s*\| Paradisavisa – (?:intern forhåndsvisning|redaksjonelt utkast|utkast)/g," | Paradisavisa")
+ .replace(/<p>Ingen originale intervjuer er gjennomført[^<]*<\/p>/g,"");
 if(html.includes('noindex, nofollow')||html.includes("REDAKSJONELT UTKAST")||
+   html.includes("Dette er et upublisert redaksjonelt utkast")||
+   html.includes("Før eventuell publisering:")||
+   html.includes("Før publisering:")||
    !html.includes('href="../styles.css"')||!html.includes('src="../'+publicImage+'"'))
  stop("Publiseringskopien bestod ikke grunnkontrollen");
 const record={title:a.tittel,excerpt:excerpt.replaceAll("&quot;",'"').replaceAll("&amp;","&"),
