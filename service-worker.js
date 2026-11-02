@@ -1,6 +1,6 @@
 /* Paradisavisa: sikker mellomlagring innenfor eget GitHub Pages-område.
    Viktig: gamle stilark og nyhetsfiler hentes fra nett først. */
-const VERSION = "paradisavisa-v3-2026-11-02";
+const VERSION = "paradisavisa-v4-2026-11-02";
 const CACHE_PREFIX = "paradisavisa-";
 const SCOPE = new URL(self.registration.scope);
 
@@ -27,8 +27,11 @@ self.addEventListener("fetch", event => {
   // Ikke berør andre nettsteder eller andre Pages-prosjekter.
   if (url.origin !== SCOPE.origin || !url.pathname.startsWith(SCOPE.pathname)) return;
 
+  // Safari skal alltid forsøke fersk HTML/JS/CSS fra nettet.
+  // Tidligere lagret innhold brukes bare når nettverket er utilgjengelig.
+  const isAppCode = request.mode === "navigate" || /\\.(?:html|css|js)$/i.test(url.pathname);
   event.respondWith(
-    fetch(request)
+    fetch(request, isAppCode ? { cache: "no-store" } : undefined)
       .then(response => {
         if (response.ok) {
           const copy = response.clone();
