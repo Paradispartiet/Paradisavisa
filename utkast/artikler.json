@@ -17,15 +17,17 @@
     },
     {
       "id": "medier-meta",
-      "tittel": "Norske mediehus fikk medhold: Retten stanser Metas nye vilkår",
+      "tittel": "Hvem bestemmer over journalistikken når plattformene setter vilkårene?",
       "kategori": "Medier og teknologi",
       "artikkel": "utkast/2026-10-28/medier-meta.html",
-      "bilde": "utkast/2026-10-28/bilder/medier-meta.svg",
+      "bilde": "utkast/2026-10-28/bilder/meta-portvakt.svg",
       "registrert": "2026-10-28",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-02",
+      "publisert_url": "artikler/2026-11-02-meta-plattformmakt-pressefrihet.html"
     },
     {
       "id": "store-stubb-putin",
@@ -214,10 +216,12 @@
       "artikkel": "utkast/2026-11-02/binance-hacking.html",
       "bilde": "utkast/2026-11-02/bilder/binance.svg",
       "registrert": "2026-11-02",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-02",
+      "publisert_url": "artikler/2026-11-02-binance-hacking.html"
     },
     {
       "id": "trump-wsj-dom",
@@ -226,10 +230,12 @@
       "artikkel": "utkast/2026-11-02/trump-wsj-dom.html",
       "bilde": "utkast/2026-11-02/bilder/trump-wsj.svg",
       "registrert": "2026-11-02",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-02",
+      "publisert_url": "artikler/2026-11-02-trump-wsj-dom.html"
     },
     {
       "id": "serbia-studentvalget",
@@ -238,10 +244,12 @@
       "artikkel": "utkast/2026-11-02/serbia-studentvalget.html",
       "bilde": "utkast/2026-11-02/bilder/serbia.svg",
       "registrert": "2026-11-02",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-02",
+      "publisert_url": "artikler/2026-11-02-serbia-studentvalget.html"
     },
     {
       "id": "spania-togulykke",
