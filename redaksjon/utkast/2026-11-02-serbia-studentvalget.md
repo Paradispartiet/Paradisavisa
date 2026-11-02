@@ -9,7 +9,7 @@ Søndag 1. november samlet mennesker seg ved jernbanestasjonen i Novi Sad. De la
 
 Da taket raste i 2024, var stasjonsområdet nylig renovert som del av et større jernbaneprosjekt. Det førte raskt til spørsmål om anbud, tilsyn, ansvar og mulig korrupsjon. Demonstranter krevde innsyn i dokumentene og at ansvarlige ble stilt til ansvar. Myndighetenes håndtering av protestene, og senere påstander om maktmisbruk mot demonstranter, gjorde konflikten større.
 
-Det som startet som krav om sannhet etter 16 dødsfall, ble en bevegelse mot styresettet til president Aleksandar Vučić og hans serbiske progressive parti, SNS.
+Det som startet som krav om sannhet etter 16 dødsfall, ble en bevegelse mot styresettet til daværende president Aleksandar Vučić og hans serbiske progressive parti, SNS. Vučić gikk av som president 27. september 2026, før parlamentsvalget.
 
 ## En protest uten en vanlig partileder
 
@@ -40,6 +40,7 @@ Det er kanskje derfor bildene fra Novi Sad betyr mer enn valgseieren alene. Beve
 - Serbias regjering, foreløpig mandatfordeling 26. oktober: https://www.srbija.gov.rs/vest/en/290661/preliminary-election-results-from-8187-polling-stations-determined.php
 - Serbias valgkommisjon via regjeringen, resultater fra alle valglokaler 2. november: https://www.srbija.gov.rs/vest/en/290805/rik-publishes-results-from-all-8392-polling-stations.php
 - House of Commons Library, 30. oktober: https://commonslibrary.parliament.uk/research-briefings/cbp-12267/
+- Reuters, Vučićs avgang 27. september: https://www.reuters.com/world/europe/serbias-president-vucic-resigns-paving-way-early-elections-2026-09-27/
 - Reuters, minnemarkering 1. november: https://www.reuters.com/world/serbians-mark-railway-disaster-that-led-rise-victorious-student-movement-2026-11-01/
 - CRTA-beregning etter omvalget, rapportert av N2 1. november: https://n2.rs/politika/crta-ponovljeno-glasanje-promenilo-raspodelu-mandata-zukorliceva-lista-ulazi-u-parlament/
 - 021, omtale av CRTAs mandatberegning 1. november: https://www.021.rs/info/srbija/460030/crta-studentska-lista-sa-jednim-mandatom-manje-lista-usame-zukorlica-usla-u-parlament
