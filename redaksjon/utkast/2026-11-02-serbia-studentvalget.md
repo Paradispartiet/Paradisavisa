@@ -21,7 +21,9 @@ Det gjorde den også sårbar. SNS og Vučić har framstilt deler av protestene s
 
 25. oktober gikk serberne til nyvalg. **2. november publiserte Serbias valgkommisjon resultater fra samtlige 8 392 valglokaler etter omvalg ved 53 av dem. Studentlisten fikk 53,01 prosent av stemmene, mot 38,98 prosent for SNS-ledede United Serbia.**
 
-Tidligere opptellinger og analyser ga ulike mandatanslag: Valgkommisjonens foreløpige opptelling 26. oktober viste 140 av 250 mandater til studentlisten og 104 til SNS-ledede United Serbia, mens en senere orientering fra biblioteket ved det britiske Underhuset oppga 141 mot 103. Den nye offentliggjøringen 2. november bekrefter stemmeprosentene, men oppgir ikke en endelig mandatfordeling i selve kunngjøringen. Mandattall må derfor avstemmes mot offisiell mandatprotokoll før publisering.
+**En håndfull stemmer endret mandatregnestykket.** Da valget ble gjentatt på 53 stemmesteder 1. november, skjedde det noe som har fått liten oppmerksomhet utenfor Serbia. Ifølge valgobservatørene i CRTA var om lag tolv stemmer utslagsgivende for at listen til Usame Zukorlić fikk ett mandat. I CRTAs beregning falt dermed den studentstøttede listen fra 141 til **140 av 250 seter**, mens Vučićs liste fikk **103**. Det er en foreløpig beregning fra uavhengige valgobservatører, ikke en endelig mandatfordeling godkjent av valgkommisjonen.
+
+Valgkommisjonen har publisert stemmetall fra alle valglokalene, men ikke en endelig mandatprotokoll i kunngjøringen 2. november. Selv med 140 mandater vil studentlisten ha flertall alene: 126 trengs i et parlament med 250 representanter. Den dramatiske endringen er dermed ikke hvem som vant, men hvor få stemmer som kan være avgjørende for hvilke mindre partier som blir representert. CRTA har også uttrykt bekymring over meldinger om mulig stemmekjøp knyttet til dette mandatet. Dette er en bekymring fra observatørene, ikke et fastslått lovbrudd.
 
 Selv med dette forbeholdet er retningen klar: Den studentstøttede listen vant en historisk valgseier etter to år med protester. Vučić erkjente nederlaget, samtidig som han har fremmet udokumenterte påstander om utenlandsk støtte til motstanderne.
 
@@ -39,5 +41,7 @@ Det er kanskje derfor bildene fra Novi Sad betyr mer enn valgseieren alene. Beve
 - Serbias valgkommisjon via regjeringen, resultater fra alle valglokaler 2. november: https://www.srbija.gov.rs/vest/en/290805/rik-publishes-results-from-all-8392-polling-stations.php
 - House of Commons Library, 30. oktober: https://commonslibrary.parliament.uk/research-briefings/cbp-12267/
 - Reuters, minnemarkering 1. november: https://www.reuters.com/world/serbians-mark-railway-disaster-that-led-rise-victorious-student-movement-2026-11-01/
+- CRTA-beregning etter omvalget, rapportert av N2 1. november: https://n2.rs/politika/crta-ponovljeno-glasanje-promenilo-raspodelu-mandata-zukorliceva-lista-ulazi-u-parlament/
+- 021, omtale av CRTAs mandatberegning 1. november: https://www.021.rs/info/srbija/460030/crta-studentska-lista-sa-jednim-mandatom-manje-lista-usame-zukorlica-usla-u-parlament
 
-**Før eventuell publisering:** Kontroller 140/141-mandatforskjellen mot endelig offisiell mandatprotokoll (ikke gjenbruk foreløpige prosenter), og kontroller rettsstatus etter jernbanekatastrofen. Ingen intervjuer gjennomført av Paradisavisa.
+**Før eventuell publisering:** Kontroller mandatfordelingen i endelig offisiell protokoll. Vurder dokumentasjonen bak CRTAs opplysning om tolv avgjørende stemmer og deres bekymring om stemmekjøp; innhent eventuell reaksjon fra Zukorlić-listen. Kontroller rettsstatus etter jernbanekatastrofen. Ingen intervjuer gjennomført av Paradisavisa.
