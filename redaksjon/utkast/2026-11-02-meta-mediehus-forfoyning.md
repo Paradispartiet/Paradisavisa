@@ -38,3 +38,22 @@ Kjennelsens fullstendige tekst og den aktuelle avtaleversjonen mangler fortsatt 
 - Kampanje, oppfølgingssak 2. november: https://www.kampanje.com/premium/medie-norge-har-funnet-et-nytt-vapen-i-kampen-mot-meta/1038775
 
 **Status:** Arbeidsmanus, ikke godkjent og ikke publisert. Ordinær artikkel ligger fortsatt bare i `utkast/2026-10-28/medier-meta.html`. Ingen part er intervjuet av Paradisavisa.
+
+## Supplerende originalkildekontroll – 2. november 2026, kveldsrunde
+
+**Kjennelsen:** Jeg fant ikke et komplett, offentlig tilgjengelig dokument med hele Oslo tingretts kjennelse av 28. oktober. NTB/Aftenposten siterer slutningen, og gjengir at Meta ble pålagt sakskostnader på 1,2 millioner kroner og at berørte kan kreve etterfølgende muntlig forhandling. Korrekt kildebeskrivelse er derfor «NTBs gjengivelse av kjennelsen», ikke «originalkjennelsen gjennomgått». Andre presseoppslag bekrefter den samme hovedslutningen. Ingen offentlig kilde funnet i denne runden dokumenterer at Meta faktisk har krevd ny forhandling, anket eller at det er inngått forlik. Uten rettslogg kan slike prosesskritt heller ikke utelukkes.
+
+**Innsynsrute:** Domstoladministrasjonens veiledning sier at en konkret beskrevet sivil sak kan være tilstrekkelig for å be om utskrift uten oppgitt saksnummer: https://www.domstol.no/no/for-journalister/offentlighetsregler-for-pressen. Oslo tingrett er oppført med kontaktadressen `oslo.tingrett@domstol.no` i offentlig Doffin-kunngjøring 27.10.2026: https://www.doffin.no/notices/2026-116628. Et Gmail-utkast til rettens postmottak er klargjort for gjennomlesing og manuell utsendelse. **Det er ikke sendt.** Forespørselen gjelder fullstendig kjennelse, saksnummer, gjengivelsesbegrensninger og eventuell ny prosessuell utvikling.
+
+**Metas egen avtaletekst:** Den angitte primærsiden er https://www.facebook.com/legal/commercial_terms_preview. Direkte lesning fra åpne nettsøk var blokkert/ikke tilgjengelig. Metas nåværende vilkår ligger også på https://www.facebook.com/legal/commercial_terms, men denne siden krevde innlogging i kontrollen. Begge må betraktes som **ikke direkte gjennomgått**. Sekundærkilder dokumenterer at en amerikansk-engelsk versjon ble revidert midt i oktober, med endret formålsbeskrivelse, mens andre språkversjoner kan ha vist eldre dato og ordlyd. Det gir ikke grunnlag for å fastslå hvilken norsk avtaleversjon retten vurderte.
+
+**Dokumentkontroll av avtalen:** Hent en datert originalkopi av den norske/aktuelle avtaleversjonen som var bilag til begjæringen, og noter språk, dokumentdato, ikrafttredelsesdato, full ordlyd om automatisk innhenting, testtilganger, KI-bruk og `robots.txt`. Sammenlign mot den amerikansk-engelske versjonen fra 16.–23. oktober og eventuelle endringer. Ikke behandle en amerikansk forhåndsvisning som rettslig identisk med avtalebetingelsene i Norge.
+
+**Ytterligere kilder kontrollert:**
+- NTB/Aftenposten, 28.10, rettens ordlyd, prosess og kostnader: https://www.aftenposten.no/norge/i/ylAk9a/norske-medier-vant-fram-med-krav-mot-meta-i-retten-forbys-aa-innfoere-endringer
+- Reuters, 28.10, Metas utsatte innføring og konsultasjoner: https://www.reuters.com/business/media-telecom/meta-delays-indefinitely-its-rollout-new-commercial-terms-after-publishers-2026-10-28/
+- Relevantaudience, 20.–24.10, direkte kontroll av Meta-vilkårenes amerikansk-engelske versjon og datoforskjeller: https://www.relevantaudience.com/meta/meta-commercial-terms-removes-train-keeps-crawling-clause/ og https://www.relevantaudience.com/meta/meta-commercial-terms-delayed-to-november-20-2026/
+- PPC Land, 23.10, ulik oppdatering av språkversjoner: https://ppc.land/meta-delays-website-crawling-terms-to-nov-20-after-publisher-complaints/
+- Kampanje, 02.11, norsk rettslig strategi og Metas kommentar: https://www.kampanje.com/premium/medie-norge-har-funnet-et-nytt-vapen-i-kampen-mot-meta/1038775
+
+**Redaksjonell sperre uendret:** Én ordinær sak, `medier-meta`, ligger fortsatt som `utkast` med `faktasjekk: kreves`, `godkjent: false`, `publisert: false`. Ingen offentlig HTML-artikkel, nyhetsstrøm eller metadata oppdateres i denne runden.
