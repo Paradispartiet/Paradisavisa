@@ -5,7 +5,7 @@
 
 **Ingress:** Et signalsystem falt ut. Flere tog stoppet. Så fikk ett høyhastighetstog tillatelse til å fortsette. Rundt 17 minutter senere, etter den offentlige rekonstruksjonen, hadde det kjørt inn i et annet tog. Minst 69 mennesker mistet livet i Urda i Spania.
 
-Klokken var rundt 08.30 onsdag 28. oktober da det oppsto feil i togkontrollsystemet LZB på deler av høyhastighetslinjen mellom Madrid og Sevilla. Når et slikt system faller ut, er hovedutfordringen enkel å beskrive, men vanskelig å løse i en travel trafikkontroll: Hvordan kan man være sikker på at to tog ikke ender på samme sporavsnitt?
+Klokken var **08.31**, ifølge den uavhengige havarimyndigheten AITATs første undersøkelsesmelding, da det oppsto feil i togkontrollsystemet LZB på deler av høyhastighetslinjen mellom Madrid og Sevilla. Når et slikt system faller ut, er hovedutfordringen enkel å beskrive, men vanskelig å løse i en travel trafikkontroll: Hvordan kan man være sikker på at to tog ikke ender på samme sporavsnitt?
 
 Feilen påvirket flere tog. Ett av dem var Iryo 6076, som ble stående nær Urda i Toledo-provinsen. Et annet var Renfes AVE 2080, på vei sørover med flere hundre passasjerer.
 
@@ -25,9 +25,15 @@ I lydmaterialet som er referert i pressen, finnes det ingen tilsvarende ordre om
 
 AVE-toget traff bakenden av Iryo-toget. Transportministeren har lagt **cirka klokken 08.53** til grunn for kollisjonen, og analyser av togets posisjonsdata i elDiario.es tyder på **08.53–08.54**. Kilder nær Iryo oppga derimot **08.48** i den første omtalen. Før endelig teknisk gransking skal ingen av disse tidspunktene presenteres som et ubestridt sekundnøyaktig faktum. De «17 minuttene» beskriver tidsrommet i myndighetenes foreløpige rekonstruksjon fra klokken 08.36. 29. oktober ble dødstallet justert fra tidligere meldte 74 til 69. Ifølge den spanske allmennkringkasteren RTVE og domstolsmyndighetenes opplysninger var **66 av de 69 omkomne identifisert ved inngangen til 2. november**, mens tre ennå ikke var identifisert. Dødstallet er fortsatt foreløpig.
 
+## Hva vet den uavhengige havarimyndigheten?
+
+AITAT åpnet undersøkelse **146/2026** etter kollisjonen. I sin første melding etter 24 timers arbeid beskriver myndigheten en **kjede av feil, instrukser og handlinger** som kan ha ført til sammenstøtet, uten at nødvendige sikkerhetsbarrierer stanset hendelsesforløpet. Meldingen er en foreløpig faktainnsamling, ikke en konklusjon om skyld eller den endelige årsaken.
+
+AITAT anslår foreløpig at AVE-toget kan ha kjørt **mellom 160 og 200 km/t** da det traff det stillestående Iryo-toget. Det er ikke en bekreftet eksakt hastighet: Hastighets- og hendelsesdata fra togets registreringsutstyr skal analyseres. Etterforskerne har sikret opptak av kommunikasjon, loggførte togbevegelser og dokumentasjon fra Adifs kontrollsenter i Atocha. Da den første meldingen ble skrevet, hadde de ennå ikke intervjuet de direkte involverte førerne og trafikklederne.
+
 Tallene beskriver den menneskelige katastrofen. Men for å forstå hvordan den kunne skje, er det ikke nok å peke på en datamaskinfeil. Sikkerheten i jernbanen er nettopp bygget for at ett system skal kunne svikte uten at resultatet blir en kollisjon.
 
-Det spanske transportdepartementet og etterforskerne gransker nå både signalanlegg, driftsprosedyrer, kommunikasjon og eventuelle tidligere sammenlignbare hendelser. Transportminister Óscar Puente har kritisert beslutningen om å la toget fortsette, men ansvarsforhold og årsak er ikke endelig fastslått.
+AITAT og de rettslige etterforskerne gransker nå både signalanlegg, driftsprosedyrer, kommunikasjon og eventuelle tidligere sammenlignbare hendelser. Den tekniske undersøkelsen skal forebygge ulykker; etterforskningen i domstolene har et annet formål. Transportminister Óscar Puente har kritisert beslutningen om å la toget fortsette, men ansvarsforhold og årsak er ikke endelig fastslått.
 
 ## Var dette et engangstilfelle?
 
@@ -40,6 +46,8 @@ Dette kan bli det viktigste spørsmålet i etterforskningen: Var tillatelsen til
 En framtidig granskningsrapport må forklare hvorfor føreren fikk beskjed om å kjøre, hva trafikkledelsen visste om det andre toget, og hvilke sikkerhetsbarrierer som ikke fanget opp den farlige situasjonen.
 
 ### Kilder
+- AITATs foreløpige undersøkelsesmelding etter 24 timer, gjengitt i fulltekst 30. oktober: https://gacetadelturismo.com/actualidad/nota-informativa-de-la-aitat-sobre-la-investigacion-del-accidente-de-urda-informacion-disponible-tras-las-primeras-24-horas-del-suceso/
+- El País, 29. oktober, AITATs foreløpige hastighetsanslag og uavklart årsak: https://elpais.com/espana/2026-10-29/el-primer-informe-tecnico-del-accidente-fija-en-160-a-200-kilometros-por-hora-la-velocidad-del-ave-que-choco-en-urda.html
 - Euronews, tidslinje 29. oktober: https://www.euronews.com/2026/10/29/spain-train-crash-what-happened-in-the-17-minutes-before-the-collision
 - RTVE, rekonstruksjon med ulike tidsangivelser fra ministeren og Iryo: https://www.rtve.es/noticias/20261028/accidente-tren-urda-mapa-datos/17287369.shtml
 - RTVE, 29. oktober, motstridende forklaringer om kjøretillatelsen: https://www.rtve.es/noticias/20261029/accidente-tren-urda-toledo-rescate-investigacion/17287958.shtml
@@ -50,4 +58,4 @@ En framtidig granskningsrapport må forklare hvorfor føreren fikk beskjed om å
 - El País, 2. november, undersøkelse av tidligere LZB-feil og trafikkprosedyrer: https://elpais.com/espana/2026-11-02/la-investigacion-del-siniestro-de-urda-analiza-si-adif-uso-el-protocolo-erroneo-mas-veces.html
 - RTVE, 1. november, Renfes nye obligatoriske 40 km/t-instruks: https://www.rtve.es/noticias/20261101/renfe-consigna-maquinistas-limitar-velocidad-40-km-sistema-lzb/17295757.shtml
 
-**Før eventuell publisering:** Les tilgjengelige primærrapporter fra AITAT, trafikklogger og infrastrukturforvalteren Adif; kontroller ministerens 170- og 13-tall, undersøk tidsavviket mellom 08.48 og cirka 08.53 og om Iryo-føreren fikk kjøretillatelse, dokumenter eksisterende 40 km/t-protokoll og hva Renfes nye instruks faktisk endrer, og oppdater døds- og skadetall. Ikke tildel strafferettslig skyld før etterforskning.
+**Før eventuell publisering:** AITATs første melding er gjennomgått via fulltekstgjengivelse og uavhengige referater, men selve myndighetens originalfil er ennå ikke kontrollert direkte. Skaff den og tilgjengelige trafikklogger fra Adif; kontroller ministerens 170- og 13-tall, undersøk tidsavviket mellom 08.48 og cirka 08.53 og om Iryo-føreren fikk kjøretillatelse, dokumenter eksisterende 40 km/t-protokoll og hva Renfes nye instruks faktisk endrer, og oppdater døds- og skadetall. Ikke tildel strafferettslig skyld før etterforskning.
