@@ -35,3 +35,15 @@ Ingen vinkling er automatisk godkjent av dette dokumentet. En godkjent *vinkling
 
 ## Fortsettelsen
 Det ferdigskrevne researchmaterialet skal kontrolleres av journalist/redaktør, innhente nødvendige originaldokumenter og få egne eventuelle kommentarer. De åtte sakene bør publiseres én og én *bare etter særskilt godkjenning og etter at tekstene er flyttet inn i avisens ordinære publiseringsløp*. Denne grenen er intern redaksjonell produksjon, ikke publikasjon.
+
+## Forhåndsvisning i avisens design
+Alle åtte er i tillegg konvertert til HTML med Paradisavisas mørke/gule artikkelstil, kildehenvisninger som lenker, utkastmerking og `noindex`. Dette er en **egen forhåndsvisningsmappe i PR-grenen**, ikke registrert eller publisert på avisens forside.
+
+[Åpne samlet oversikt over de åtte HTML-forhåndsvisningene](forhandsvisning/index.html). GitHubs filvisning kan vise HTML-kilden fremfor en kjørbar forhåndsvisning; de redigerbare Markdown-manusene er fortsatt de primære arbeidsdokumentene.
+
+### Viktige forbedringer i siste runde
+- **Spania:** Renfe **sendte 1. november ut** en obligatorisk 40 km/t-instruks ved den aktuelle LZB-feilen, ifølge RTVE. Tidligere tekst om at instruksen ennå ikke var utstedt, er rettet.
+- **Fiskeri:** Gjengir Myre Fiskemottaks offentlig publiserte tilsvar gjennom advokat Thomas Skjelbred. Selskapet avviser bevisst feilføring og erkjenner ikke straffskyld. Parter som omtales med kritikk må fortsatt kontaktes direkte før publisering.
+- **Meta:** Tre konkrete krav fra MBL lagt inn og tydelig merket som **mediebransjens krav**, ikke som endelige rettspålegg.
+
+Fortsatt sperre: Intet er godkjent eller publisert. Manus og HTML må holdes synkronisert ved senere rettelser.
