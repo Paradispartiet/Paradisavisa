@@ -3,7 +3,7 @@
 **KRIM / TEKNOLOGI · REDAKSJONELT UTKAST – IKKE PUBLISERT**  
 **Researchstatus: 2. november 2026. Vinkling og artikkel er ikke godkjent.**
 
-**Ingress:** På under en halvtime forsvant kryptovaluta for anslagsvis 6,3 milliarder dollar fra Binance. FBI peker mot nordkoreanske hackere. Men hvordan fikk de tilgang til pengene – og hvorfor sier selskapet at det, ikke kundene, skal ta regningen?
+**Ingress:** Kryptovaluta for anslagsvis 6,3 milliarder dollar ble tappet fra Binances nettilkoblede lommebøker 29. oktober. FBI peker mot nordkoreanske hackere. Men hvordan fikk de tilgang til pengene – og hvorfor sier selskapet at det, ikke kundene, skal ta regningen?
 
 ## Hvem gjorde det?
 
@@ -31,13 +31,15 @@ Selskapet anslår tyveriet til omkring 6,3 milliarder dollar. Binance opplyste 3
 
 Samtidig har Binance satt av egne ressurser for å dekke beholdningene som ble tappet. Selskapet oppga 31. oktober at om lag 90 prosent av berørte eiendeler var erstattet i reservene. **1. november oppjusterte Binance tallet til rundt 95 prosent.** De resterende rundt fem prosentene var, ifølge selskapet, mindre likvide kryptovalutaer som tar lengre tid å kjøpe inn i store mengder.
 
-Pengene skal komme fra tre kilder: sikkerhetsfondet **SAFU**, deler av børsens **Futures Insurance Fund**, og selskapets egne midler. Dette betyr ikke at hackerne har levert tilbake 95 prosent av det de tok. Det betyr at Binance sier det har skaffet tilsvarende eiendeler for å dekke det meste av tapet.
+Pengene skal komme fra tre kilder: sikkerhetsfondet **SAFU**, deler av børsens **Futures Insurance Fund**, og selskapets egne midler. Dette betyr ikke at hackerne har levert tilbake 95 prosent av det de tok. Det betyr at Binance sier det har skaffet tilsvarende eiendeler til reservene for å dekke det meste av tapet. Dette er selskapets egen opplysning og bør kontrolleres mot senere uavhengig dokumentasjon.
 
 ## Hva skjer med kundene?
 
 Børsen stanset uttak mens sikkerhetssystemene ble kontrollert. Søndag 1. november startet Binance en gradvis gjenåpning på utvalgte kryptonettverk, ifølge selskapets egen oppdatering. Tilgjengeligheten kan fortsatt variere mellom ulike valutaer og nettverk.
 
 Binance har også varslet en ny kontroll av reserver, der kundene skal kunne undersøke om visse beholdninger er dekket minst én-til-én. Et slikt reservebevis er nyttig, men det er ikke i seg selv en full revisjon av selskapets gjeld, interne kontroller eller konsekvensene av tyveriet.
+
+Da uttak ble åpnet gradvis igjen søndag 1. november, oppsto et nytt spørsmål: Ville kundene flytte pengene sine? Reuters rapporterte 2. november om netto uttak på rundt 3,64 milliarder dollar i de første ni og en halv timene etter gjenåpningen. Det er penger kundene tok ut, ikke en del av det opprinnelige tyveriet. Reuters oppga at dette tilsvarte omtrent 2,1 prosent av børsens eiendeler.
 
 Spørsmålet som gjenstår, er todelt: Hvor mye av det stjålne beløpet kan etterforskerne faktisk hente hjem, og hvilke svakheter i Binances systemer lot et så stort tap skje? Kundene har mest å tjene på at begge blir besvart – uavhengig av hvor raskt selskapet kan kjøpe nye kryptovalutaer.
 
@@ -48,5 +50,6 @@ Spørsmålet som gjenstår, er todelt: Hvor mye av det stjålne beløpet kan ett
 - Binance, oppdatering 31. oktober: https://www.binance.com/en/square/post/383244799724069
 - Binance, uttak og 95 prosent dekning, 1. november: https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-4-withdrawals-resume-in-phases-2026-11-01-73911fb819b240f88b88256bdd318eda
 - Reuters, 1. november: https://www.reuters.com/legal/government/binance-resume-withdrawals-after-recovering-bulk-6-billion-stolen-funds-2026-11-01/
+- Reuters, 2. november, uttak og markedsreaksjon: https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/
 
 **Før eventuell publisering:** Hent teknisk post-mortem og bekreft siste reserve-/uttaksstatus; vurder uavhengig sikkerhetsfaglig kommentar. Ingen originale intervjuer er gjennomført. Ingen offentlig publisering.
