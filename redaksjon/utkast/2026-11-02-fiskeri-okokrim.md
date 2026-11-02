@@ -11,7 +11,7 @@ Det er nettopp dette dokumentet politiet nå undersøker.
 
 ## En storstilt aksjon
 
-29. oktober opplyste Økokrim at mer enn 30 personer var pågrepet i en landsomfattende etterforskning. 20 selskaper var siktet, og sju personer varetektsfengslet. Aksjonene hadde omfattet rundt 50 steder i flere politidistrikter, med bistand fra blant annet Fiskeridirektoratet og Kystvakten. Kildene oppgir ulikt antall involverte politidistrikter, så dette bør avstemmes mot Økokrims primærinformasjon.
+29. oktober opplyste Økokrim at mer enn 30 personer var pågrepet i en landsomfattende etterforskning. 20 selskaper var siktet, og sju personer varetektsfengslet. Aksjonene hadde omfattet rundt 50 steder i flere politidistrikter, med bistand fra blant annet Fiskeridirektoratet og Kystvakten.
 
 Politiet sa det hadde sikret verdier i hundremillionersklassen, og mistenkte organisert, systematisk feilregistrering eller feilrapportering av hvitfiskfangst. Økokrim sier at etterforskningen startet etter tips og opplysninger som kom inn over tid. Aksjonene ble gjort i samarbeid med politi, Fiskeridirektoratet, Kystvakten og Justervesenet. Dette gjør kontrollsystemet rundt landing og måling av fangst til en del av historien, ikke bare politiaksjonens størrelse. Det er viktig å lese disse tallene nøyaktig. Verdier som er sikret gjennom beslag og andre tiltak, er ikke automatisk det samme som et endelig beregnet økonomisk tap, ulovlig fortjeneste eller verdien av feilrapporterte fiskemengder.
 
@@ -45,7 +45,7 @@ Det er først når disse spørsmålene er besvart med dokumenter og uavhengige k
 - VG, Økokrims pressekonferanse 29. oktober: https://www.vg.no/nyheter/i/b8VQdv/oekokrim-30-personer-paagrepet-i-politiaksjon-mot-fiskerinaeringen
 - Aftenposten/NTB, 29. oktober: https://www.aftenposten.no/norge/i/OgVlrl/oekokrim-mistenker-fiskerikriminalitet-i-100-millonersklassen-30-personer-paagrepet
 - Finansavisen/NTB, 29. oktober: https://www.finansavisen.no/sjomat/2026/10/29/8391731/okokrim-mistenker-fiskerikriminalitet-i-100-millionersklassen-30-personer-pagrepet
-- Elden Advokatfirma, primæruttalelse for Myre Fiskemottak 29. oktober: https://www.elden.no/aktuelt/myre-fiskemottak-driften-g%C3%A5r-som-normalt-selskapet-samarbeider-med-%C3%B8kokrim
+- Elden Advokatfirma, opprinnelig pressemelding publisert via NTB 29. oktober: https://kommunikasjon.ntb.no/pressemelding/19123218/myre-fiskemottak-driften-gar-som-normalt-selskapet-samarbeider-med-okokrim?lang=no&publisherId=17848232
 - Kystmagasinet, 30. oktober, Myre Fiskemottaks advokats tilsvar: https://www.kystmagasinet.no/fiskemottak-fiskerikriminalitet-havoysund/driften-gar-som-normalt-etter-politiaksjonen/2203805
 - VG, 27. oktober, Økokrims første uttalelser og tips: https://www.vg.no/nyheter/i/Qge9j4/oekokrim-flere-personer-paagrepet-i-etterforskning-av-fiskerikriminalitet
 
