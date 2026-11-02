@@ -22,7 +22,7 @@ const home=read("index.html");
 expect(home.includes("Objektivt sett, fra vår synsvinkel."),"Motto mangler på forsiden");
 expect(home.includes('class="tittellinje avis-topp avis-masthead"'),"Klassisk avisoverskrift mangler");
 expect(home.includes('aria-controls="avis-hovedmeny"'),"Menyknappen mangler");
-expect(home.includes('href="avisdesign.css?v=2"'),"Forsiden mangler redaksjonelt designsystem");
+expect(/href="avisdesign\.css\?v=\d+"/.test(home),"Forsiden mangler redaksjonelt designsystem");
 expect(home.includes('class="avis-ledergrid"'),"Forsiden mangler definert hovedsak");
 const design=read("avisdesign.css");
 expect(design.includes("grid-row:1/span 2"),"Hovedsaken mangler stor layout på PC");
