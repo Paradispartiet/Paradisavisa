@@ -1,48 +1,40 @@
-# Norske medier stoppet Meta – men hvem bestemmer over journalistikken?
+# Norske mediehus fikk medhold: Retten stanser Metas nye vilkår
 
-**NORGE / TEKNOLOGI / PRESSEFRIHET · REDAKSJONELT UTKAST – IKKE PUBLISERT**  
-**Researchstatus: 2. november 2026. Denne teksten skal samordnes med eksisterende Meta-utkast før noen videre bearbeiding.**
+**MEDIER OG TEKNOLOGI · REDAKSJONELT UTKAST – IKKE PUBLISERT**  
+**Kildegjennomgang oppdatert 2. november 2026.**  
+**Ingress:** Ti norske medievirksomheter fikk 28. oktober medhold i en midlertidig forføyning mot Metas omstridte kommersielle vilkår. Retten har ikke avgjort endelig om vilkårene er lovlige, og Meta sier at de eksisterende reglene gjelder mens selskapet drøfter endringene med mediebransjen.
 
-**Ingress:** Norske aviser, kringkastere og nyhetsbyråer gjorde noe uvanlig: De gikk samlet til retten for å stanse nye vilkår fra Meta. Oslo tingrett ga dem medhold i en midlertidig forføyning. Men kampen om hvem som kan bruke journalistikk til kunstig intelligens og digitale tjenester, er ikke avgjort.
+## Et foreløpig forbud, ikke en endelig dom
 
-Onsdag 28. oktober fikk norsk mediebransje en foreløpig seier mot et av verdens største teknologiselskaper. Oslo tingrett besluttet at Meta Platforms Ireland ikke kunne innføre en planlagt endring i de kommersielle vilkårene før lovligheten var endelig avklart.
+Oslo tingrett besluttet 28. oktober en midlertidig forføyning som stanser den omstridte endringen i Metas kommersielle vilkår inntil lovligheten er rettskraftig avgjort. NTB har gjengitt slutningen og deler av begrunnelsen. Retten har ikke endelig avgjort lovligheten av alle vilkårene. Meta kan kreve etterfølgende muntlig forhandling; kjennelsen ble avsagt uten at selskapet først fikk uttale seg i rettsmøte. Meta ble også pålagt sakskostnader på omkring 1,2 millioner kroner.
 
-Vedtaket kom etter at NRK, TV 2, Schibsted, Amedia, Polaris, Aller, Dagens Næringsliv, Mentor Medier, NTB og Hordaland Folkeblad hadde tatt saken til retten med støtte fra Mediebedriftenes Landsforening. MBL fremmet tre konkrete krav: Mediehusenes reservasjoner mot innhenting av innhold må respekteres i avtaleteksten, KI-bruk må avtales særskilt, og et nei skal ikke straffes med mindre synlighet i Facebook og Instagram. Dette er **medienes krav**, ikke rettens endelige pålegg om alle framtidige avtaler.
+## Hva striden gjelder
 
-Det spesielle er ikke bare at store og små mediehus sto sammen. Det er at konfliktens kjerne berører noe leserne vanligvis ikke ser: Hva må en avis godta for å være synlig på Facebook og Instagram?
+Ti navngitte medievirksomheter sto bak begjæringen: NRK, TV 2, Schibsted, Amedia, Polaris, Aller, Dagens Næringsliv, Mentor Medier, NTB og Hordaland Folkeblad. Amedia omtaler også rundt 180 mediehus i den bredere bransjekretsen. Dette må ikke forveksles med 180 særskilte, navngitte saksøkere.
 
-## Hva sto på spill?
+Mediene mener avtalen åpner for omfattende skraping av redaksjonelt materiale, også bak betalingsmur, og frykter mulig bruk i KI-produkter uten avtale. MBLs tre krav er: avtalefestet respekt for robots.txt og andre reservasjoner, egne frivillige avtaler om KI-bruk, og ingen trafikkstraff for medier som sier nei. Dette er krav fra bransjen, ikke endelige pålegg fra retten.
 
-Mediehusene mener Metas planlagte avtalevilkår kunne gi selskapet omfattende rettigheter til å hente artikler, bilder og videoer fra medienes nettsteder, også stoff som normalt ligger bak betalingsmur. De frykter at slikt innhold kan brukes i systemer for kunstig intelligens og andre produkter uten en egen avtale om betaling eller bruk.
+## Ordlyden endret før retten grep inn
 
-Meta har bestridt medienes framstilling og gitt uttrykk for at selskapet ønsker dialog. Påstandene om hva vilkårene faktisk ville ha åpnet for, må derfor knyttes til ordlyden i det opprinnelige avtaleutkastet, ikke bare partenes pressemeldinger.
+Nieman Journalism Lab dokumenterte 16.–17. oktober at Meta reviderte en engelskspråklig versjon av vilkårene: Det eksplisitte ordet «train» ble fjernet og beskrivelsen innsnevret til annonse- og forretningsprodukter. Likevel sto den foreslåtte autorisasjonen til automatisk innhenting av innhold fra tilknyttede nettsteder igjen. Jurister mente bestemmelsen fortsatt var vidtrekkende. Meta avviser at endringen gir ny rett til å tilsidesette robots.txt og sier at det gjelder annonser og forretningsprodukter. Vi har ikke direkte kontrollert samtlige språkversjoner eller den versjonen som lå til grunn for den norske rettssaken.
 
-Medienes krav har særlig dreid seg om retten til å reservere innhold, inngå frivillige avtaler om bruk til KI og unngå at et nei til vilkårene skal føre til redusert synlighet.
+## Meta har varslet konsultasjoner
 
-## Retten grep inn før Meta fikk svare
+Opprinnelig ikrafttredelse 30. oktober ble utsatt til 20. november. Meta opplyste 28. oktober at selskapet ikke vil innføre endringen uten full konsultasjon med bransjen. Den kan bli utsatt lenger, og gjeldende vilkår består inntil videre. Denne uttalelsen kan ikke sidestilles med en endelig bindende avtale.
 
-Retten har gitt mediehusene en **midlertidig forføyning**. Det er et rettslig pålegg som hindrer den planlagte endringen mens de underliggende spørsmålene undersøkes. Det er ikke en endelig dom om at enhver del av Metas avtaleutkast er ulovlig.
+## Videre kontroll før publisering
 
-Ifølge omtalen av kjennelsen mente tingretten at vilkårene kunne være urimelige i lys av Metas dominerende stilling og risikere å sette mediehusene i en tvangssituasjon. Retten påla Meta å betale sakskostnader på omkring 1,2 millioner kroner.
-
-**Men kjennelsen ble avsagt uten at Meta først fikk uttale seg i et rettsmøte.** Retten handlet raskt ut fra skriftlig materiale. Meta kan kreve en etterfølgende muntlig forhandling, slik at selskapet får presentere sitt syn. Den vesentlige journalistiske forskjellen er derfor mellom en foreløpig stans og en endelig vurdering av alle partenes argumenter.
-
-Meta har via en talsperson sagt at selskapet ønsker å gjøre dette riktig og ikke planlegger å endre vilkårene uten grundig dialog med bransjeorganisasjonene. Ifølge NTB hadde Meta allerede utsatt den planlagte iverksettelsen til 20. november, og dialogen kunne innebære ytterligere utsettelse. Dette er Metas egen forklaring, ikke et bindende løfte om en bestemt avtaletekst. Kjennelsens ordlyd er gjengitt av NTB, men vi har foreløpig ikke innhentet det fullstendige rettsdokumentet og hele den omstridte avtaleteksten. Det begrenser hvor detaljert vi kan vurdere jussen og rettighetene vilkårene eventuelt ville gi.
-
-## Hvorfor angår dette leserne?
-
-Facebook og Instagram er steder mange finner journalistikk. For avisene har det en verdi å være synlige der. Men dersom vilkårene for å nå publikum også gjør det vanskelig å kontrollere bruken av egen journalistikk, oppstår et avhengighetsforhold.
-
-Her ligger den større historien: En mediebransje som ønsker å bli lest på globale plattformer, må samtidig beskytte rettighetene som gjør det mulig å finansiere journalistikken. Og plattformene mener på sin side at de trenger klare, skalerbare vilkår for tjenester som når svært mange mennesker.
-
-Neste spørsmål er hva som skjer når saken behandles videre. Kommer Meta til å endre vilkårene, forhandle fram avtaler eller utfordre kjennelsen? Og vil resultatet skape en modell også andre land og bransjer må forholde seg til?
+Kjennelsens fullstendige tekst og den aktuelle avtaleversjonen mangler fortsatt i vår dokumentasjon. Offentlig bekreftelse av en ny muntlig behandling, anke eller forlik er ikke funnet per 2. november; dette er ikke bevis på at slike skritt ikke finnes. Det bør gjøres en ny prosessjekk og eventuelt innhentes direkte tilsvar fra partene.
 
 ### Kilder
-- Aftenposten/NTB, 28. oktober, kjennelsen og Metas reaksjon: https://www.aftenposten.no/norge/i/ylAk9a/norske-medier-vant-fram-med-krav-mot-meta-i-retten-forbys-aa-innfoere-endringer
-- MBL, 27. oktober, de tre konkrete kravene: https://www.mediebedriftene.no/artikler/2026/norske-mediehus-gar-til-retten-for-a-stoppe-meta
-- MBL, 28. oktober, partenes omtale av kjennelsen: https://www.mediebedriftene.no/artikler/2026/norske-mediehus-har-vunnet-frem-i-retten-mot-meta/
-- Amedia, 27. oktober, mediehusenes argumenter: https://www.amedia.no/aktuelt/nyheter/gar-til-retten-for-a-stoppe-meta-2
-- Amedia, 28. oktober, rettsavgjørelse: https://www.amedia.no/aktuelt/nyheter/vant-forste-runde-mot-meta
-- Fagpressen, 28.–29. oktober: https://www.fagpressen.no/norske-medier-far-medhold-mot-meta-nye-vilkar-utsettes/3232070
 
-**Før eventuell publisering:** Skaff selve kjennelsen og den omstridte avtaleteksten. Kontroller om Meta har krevd ny behandling eller endret vilkårene siden 28. oktober, og oppdater Metas og mediehusenes svar. Samordne med eksisterende `utkast/2026-10-28/medier-meta.html` og tidligere `redaksjon/utkast/2026-10-28-meta-medier.md`. Ikke lag to nesten identiske publiserte artikler.
+- NTB/Aftenposten, rettens slutning og Meta-svar: https://www.aftenposten.no/norge/i/ylAk9a/norske-medier-vant-fram-med-krav-mot-meta-i-retten-forbys-aa-innfoere-endringer
+- MBL, 27. oktober, begjæringen og de tre kravene: https://www.mediebedriftene.no/artikler/2026/norske-mediehus-gar-til-retten-for-a-stoppe-meta/
+- MBL, 28. oktober, reaksjon på avgjørelsen: https://www.mediebedriftene.no/artikler/2026/norske-mediehus-har-vunnet-frem-i-retten-mot-meta/
+- Amedia, 28. oktober, medienes omtale: https://www.amedia.no/aktuelt/nyheter/vant-forste-runde-mot-meta
+- Nieman Journalism Lab, revidert ordlyd 17. oktober: https://www.niemanlab.org/2026/10/legal-experts-warn-metas-new-terms-still-grant-broad-scraping-permissions-despite-language-changes/
+- Nieman Journalism Lab, utsatt ikrafttredelse 26. oktober: https://www.niemanlab.org/2026/10/meta-delays-rollout-of-terms-that-would-allow-broad-scraping-of-news-sites-legal-experts-are-still-skeptical/
+- Reuters, Metas nye uttalelse 28. oktober: https://www.reuters.com/business/media-telecom/meta-delays-indefinitely-its-rollout-new-commercial-terms-after-publishers-2026-10-28/
+- Kampanje, oppfølgingssak 2. november: https://www.kampanje.com/premium/medie-norge-har-funnet-et-nytt-vapen-i-kampen-mot-meta/1038775
+
+**Status:** Arbeidsmanus, ikke godkjent og ikke publisert. Ordinær artikkel ligger fortsatt bare i `utkast/2026-10-28/medier-meta.html`. Ingen part er intervjuet av Paradisavisa.
