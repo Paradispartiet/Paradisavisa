@@ -1,0 +1,52 @@
+# Hvem stjal 6,3 milliarder dollar fra Binance – og hvem betaler?
+
+**KRIM / TEKNOLOGI · REDAKSJONELT UTKAST – IKKE PUBLISERT**  
+**Researchstatus: 2. november 2026. Vinkling og artikkel er ikke godkjent.**
+
+**Ingress:** På under en halvtime forsvant kryptovaluta for anslagsvis 6,3 milliarder dollar fra Binance. FBI peker mot nordkoreanske hackere. Men hvordan fikk de tilgang til pengene – og hvorfor sier selskapet at det, ikke kundene, skal ta regningen?
+
+## Hvem gjorde det?
+
+Meldingen kom fra FBI 31. oktober: Amerikanske etterforskere tilskriver tyveriet fra Binance 29. oktober en nordkoreansk hackeroperasjon de omtaler som **TraderTraitor**. Etterforskerne sier de har fulgt bevegelser av tyvegods og sett store deler bli konvertert til kryptovalutaen ether. De forventer flere forsøk på å gjøre sporingen vanskelig gjennom desentraliserte vekslingstjenester.
+
+Det er en tydelig tilskrivelse fra amerikanske myndigheter, ikke en rettskraftig dom. FBI har ikke offentliggjort navn på enkeltpersoner som skal ha gjennomført akkurat dette angrepet. Nord-Korea har tidligere avvist anklager om statlig organiserte kryptotyverier. Å skrive at «nordkoreanere er dømt for Binance-angrepet» ville derfor være feil.
+
+Angrepet ligner etter sikkerhetsanalytikeres vurdering tidligere operasjoner mot kryptobørser. Det er særlig én likhet som bekymrer: Angriperne trenger ikke nødvendigvis å bryte kryptografien i selve blokkjeden. Det kan være nok å kompromittere systemene som administrerer og godkjenner utbetalinger.
+
+## Hvordan kom angriperne inn?
+
+Binance har oppgitt at uautoriserte transaksjoner startet sent torsdag 29. oktober. Store beløp ble flyttet fra såkalte *hot wallets*: digitale lommebøker som er tilgjengelige gjennom nettilkoblede tjenester og derfor kan behandle uttak raskt.
+
+I selskapets første tekniske forklaring sto en kompromittert bærbar PC tilhørende en DevOps-ingeniør sentralt. Gjennom denne tilgangen skal en angriper ha kunnet nå en intern tjeneste og sende uautoriserte uttak. Binance har imidlertid understreket at det ikke dreide seg om én enkel klikkhandling, og at etterforskningen har avdekket flere bruddpunkter.
+
+Det avgjørende spørsmålet er derfor ikke bare *hvilken PC* som ble hacket, men **hvorfor ett kompromittert ledd kunne inngå i en kjede som endte med utbetalinger i milliardklassen**. Hvilke interne rettigheter var gitt? Hvilke ekstra kontroller skulle godkjenne store uttak? Hvorfor stoppet ikke systemet transaksjonene tidligere?
+
+Foreløpig finnes det ikke en offentlig, fullstendig teknisk rekonstruksjon som besvarer alle disse spørsmålene. Binance opplyser at en mer detaljert hendelsesrapport skal komme etter etterforskningen. Selskapet har sagt at det så langt ikke har funnet bevis for at de private kryptonøklene ble lekket.
+
+## Hvem tar tapet?
+
+Her er det lett å blande sammen tre helt forskjellige ting: **stjålne verdier**, **fryste verdier** og **penger Binance setter inn for å dekke kundekontoer**.
+
+Selskapet anslår tyveriet til omkring 6,3 milliarder dollar. Binance opplyste 30. oktober at partnere hadde bidratt til å fryse rundt 3 milliarder dollar i berørte verdier på blokkjeden. Men fryste midler er ikke automatisk levert tilbake. De må håndteres juridisk og teknisk før de eventuelt kan tilbakeføres.
+
+Samtidig har Binance satt av egne ressurser for å dekke beholdningene som ble tappet. Selskapet oppga 31. oktober at om lag 90 prosent av berørte eiendeler var erstattet i reservene. **1. november oppjusterte Binance tallet til rundt 95 prosent.** De resterende rundt fem prosentene var, ifølge selskapet, mindre likvide kryptovalutaer som tar lengre tid å kjøpe inn i store mengder.
+
+Pengene skal komme fra tre kilder: sikkerhetsfondet **SAFU**, deler av børsens **Futures Insurance Fund**, og selskapets egne midler. Dette betyr ikke at hackerne har levert tilbake 95 prosent av det de tok. Det betyr at Binance sier det har skaffet tilsvarende eiendeler for å dekke det meste av tapet.
+
+## Hva skjer med kundene?
+
+Børsen stanset uttak mens sikkerhetssystemene ble kontrollert. Søndag 1. november startet Binance en gradvis gjenåpning på utvalgte kryptonettverk, ifølge selskapets egen oppdatering. Tilgjengeligheten kan fortsatt variere mellom ulike valutaer og nettverk.
+
+Binance har også varslet en ny kontroll av reserver, der kundene skal kunne undersøke om visse beholdninger er dekket minst én-til-én. Et slikt reservebevis er nyttig, men det er ikke i seg selv en full revisjon av selskapets gjeld, interne kontroller eller konsekvensene av tyveriet.
+
+Spørsmålet som gjenstår, er todelt: Hvor mye av det stjålne beløpet kan etterforskerne faktisk hente hjem, og hvilke svakheter i Binances systemer lot et så stort tap skje? Kundene har mest å tjene på at begge blir besvart – uavhengig av hvor raskt selskapet kan kjøpe nye kryptovalutaer.
+
+### Kilder
+- FBI, 31. oktober: https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack
+- Reuters, 30. oktober: https://live.euronext.com/en/financial-news/hackers-steal-63-billion-binance-worlds-biggest-crypto-heist
+- Binance, teknisk førstevurdering omtalt av BleepingComputer, 30. oktober: https://www.bleepingcomputer.com/news/security/binance-links-63-billion-crypto-theft-to-compromised-devops-laptop/
+- Binance, oppdatering 31. oktober: https://www.binance.com/en/square/post/383244799724069
+- Binance, uttak og 95 prosent dekning, 1. november: https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-4-withdrawals-resume-in-phases-2026-11-01-73911fb819b240f88b88256bdd318eda
+- Reuters, 1. november: https://www.reuters.com/legal/government/binance-resume-withdrawals-after-recovering-bulk-6-billion-stolen-funds-2026-11-01/
+
+**Før eventuell publisering:** Hent teknisk post-mortem og bekreft siste reserve-/uttaksstatus; vurder uavhengig sikkerhetsfaglig kommentar. Ingen originale intervjuer er gjennomført. Ingen offentlig publisering.
