@@ -213,7 +213,10 @@ function initNotisPosisjon() {
 /* ---------- Notisbånd ---------- */
 function loadNotiser() {
   // Sportsiden bruker sitt eget notisutvalg, alle andre sider notiser.json.
-  const source = document.querySelector(".sport-banner") ? "sport-notiser.json" : "notiser.json";
+  const filename = document.querySelector(".sport-banner") ? "sport-notiser.json" : "notiser.json";
+  // Bruk script.js sin katalog, slik at notiser virker også i /artikler/.
+  const appScript = Array.from(document.scripts).find(el => /\\/script\\.js(?:\\?|$)/.test(el.src));
+  const source = new URL(filename, appScript?.src || window.location.href);
   return fetch(source, { cache: "no-store" })
     .then(response => {
       if (!response.ok) throw new Error("Kunne ikke hente notiser");
