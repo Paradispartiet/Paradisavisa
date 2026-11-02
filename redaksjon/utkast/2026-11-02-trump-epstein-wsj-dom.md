@@ -21,7 +21,7 @@ Lørdag 31. oktober avviste dommer Darrin Gayles Trumps reviderte krav i den fø
 
 En avgjørelse om at en ærekrenkelsessak ikke oppfyller de rettslige vilkårene, er **ikke et rettslig bevis på at alle avisens faktapåstander er sanne**. Trump står fast ved sin benektelse. Samtidig har dommeren vurdert grunnlaget for å føre erstatningssaken videre, og kommet til at det ikke er tilstrekkelig.
 
-Søksmålet ble ifølge AP og Reuters avvist *with prejudice*. Det betyr at Trump ikke kan levere inn samme krav på nytt til samme domstol gjennom enda en endret klage. Det utelukker ikke i seg selv at avgjørelsen kan ankes. Status for en eventuell anke må kontrolleres på publiseringstidspunktet.
+Søksmålet ble ifølge AP og Reuters avvist *with prejudice*. Det betyr at Trump ikke kan levere inn samme krav på nytt til samme domstol gjennom enda en endret klage. Det utelukker ikke i seg selv at avgjørelsen kan ankes. **Trumps juridiske representanter sa etter avgjørelsen at de ville anke.** Dette er et varsel om anke, ikke dokumentasjon for at en anke allerede er levert inn. Status må kontrolleres på publiseringstidspunktet.
 
 ## En sak større enn presidenten
 
@@ -34,5 +34,6 @@ Resultatet gir en viktig påminnelse: I rettssaker om journalistikk er det forsk
 ### Kilder
 - AP, 1. november: https://apnews.com/article/f27c9fa832044f2f9edea9b1fbbba061
 - Reuters, 31. oktober: https://www.fidelity.com/news/article/company-news/202610311641RTRSNEWSCOMBINED_L6N46H07U_1
+- Washington Post, 31. oktober, advokatenes varsel om anke: https://www.washingtonpost.com/business/2026/10/31/judge-tosses-trumps-lawsuit-over-wall-street-journals-epstein-article/
 
 **Før eventuell publisering:** Skaff domsavgjørelsen fra domstolen som primærkilde og kontroller anke. Ikke framstill det omstridte Epstein-dokumentet som autentisert ved domstolsavgjørelsen. Ingen part er intervjuet av Paradisavisa.
