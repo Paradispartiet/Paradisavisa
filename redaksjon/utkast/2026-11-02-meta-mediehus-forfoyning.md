@@ -32,7 +32,7 @@ Meta ble ikke hørt i rettsmøte før den midlertidige kjennelsen. Selskapet kan
 
 Opprinnelig var endringene varslet fra 30. oktober. Datoen ble flyttet til 20. november, og 28. oktober opplyste Meta at innføringen ble utsatt på ubestemt tid mens selskapet konsulterer bransjen. De gjeldende vilkårene skulle fortsette i mellomtiden. Det finnes derfor ingen bekreftet ny startdato per 2. november.
 
-Saken er ikke lenger bare norsk. Den britiske konkurransemyndigheten CMA åpnet 30. oktober en formell undersøkelse av om Metas vilkår kan innebære misbruk av dominerende stilling og urimelige handelsbetingelser for utgivere og andre virksomheter. CMA understreker at undersøkelsen nettopp er startet: Det er ikke fattet noen avgjørelse om Meta har brutt loven.
+Saken er ikke lenger bare norsk. Den britiske konkurransemyndigheten CMA åpnet 30. oktober en formell undersøkelse av om Metas vilkår kan innebære misbruk av dominerende stilling og urimelige handelsbetingelser for utgivere og andre virksomheter. CMA understreker at undersøkelsen nettopp er startet: Det er ikke fattet noen avgjørelse om Meta har brutt loven. Meta sier ifølge Reuters at selskapet ikke mener det finnes grunnlag for en slik undersøkelse, og at det ønsker å forklare sin tilnærming til tilsynet.
 
 Dette angår også mindre aviser. En lokalredaksjon kan være avhengig av å dele lenker til egne saker på store plattformer og samtidig ha små ressurser til forhandlinger om bruksrett og rettslig bistand. At større medieselskaper tar saken til retten, gjør ikke problemstillingen mindre relevant for mindre aktører.
 
