@@ -5,7 +5,7 @@
 
 **Ingress:** Norske aviser, kringkastere og nyhetsbyråer gjorde noe uvanlig: De gikk samlet til retten for å stanse nye vilkår fra Meta. Oslo tingrett ga dem medhold i en midlertidig forføyning. Men kampen om hvem som kan bruke journalistikk til kunstig intelligens og digitale tjenester, er ikke avgjort.
 
-Torsdag 28. oktober fikk norsk mediebransje en foreløpig seier mot et av verdens største teknologiselskaper. Oslo tingrett besluttet at Meta Platforms Ireland ikke kunne innføre en planlagt endring i de kommersielle vilkårene før lovligheten var endelig avklart.
+Onsdag 28. oktober fikk norsk mediebransje en foreløpig seier mot et av verdens største teknologiselskaper. Oslo tingrett besluttet at Meta Platforms Ireland ikke kunne innføre en planlagt endring i de kommersielle vilkårene før lovligheten var endelig avklart.
 
 Vedtaket kom etter at NRK, TV 2, Schibsted, Amedia, Polaris, Aller, Dagens Næringsliv, Mentor Medier, NTB og Hordaland Folkeblad hadde tatt saken til retten med støtte fra Mediebedriftenes Landsforening.
 
