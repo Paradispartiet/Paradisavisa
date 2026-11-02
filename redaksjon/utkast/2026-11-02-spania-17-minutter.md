@@ -29,6 +29,14 @@ Tallene beskriver den menneskelige katastrofen. Men for å forstå hvordan den k
 
 Det spanske transportdepartementet og etterforskerne gransker nå både signalanlegg, driftsprosedyrer, kommunikasjon og eventuelle tidligere sammenlignbare hendelser. Transportminister Óscar Puente har kritisert beslutningen om å la toget fortsette, men ansvarsforhold og årsak er ikke endelig fastslått.
 
+## Var dette et engangstilfelle?
+
+En ny undersøkelse publisert av El País 2. november løfter fram et spørsmål som strekker seg utover de 17 minuttene: **Hvor ofte har tilsvarende feil i LZB-anlegget ført til at trafikkledelsen måtte gi ordre om videre kjøring manuelt?** Ifølge transportministeren var det registrert rundt 170 utfall i LZB-systemet på den aktuelle høyhastighetslinjen i 2026, deriblant 13 på strekningen mellom togene før ulykken. Mange av feilene ble raskt utbedret, og tallene viser ikke i seg selv at de tidligere hendelsene innebar kollisjonsfare.
+
+El País skriver at den tekniske granskningsmyndigheten og politiet skal se nærmere på om feil prosedyrer kan ha vært brukt også ved tidligere systemutfall. I den aktuelle hendelsen ble AVE-toget ifølge rekonstruksjonen gitt en ordre som tillot normal kjøring, mens det ved kjøring på sikt ville gjelde langt strengere fartskrav. Renfe arbeider ifølge avisen med en instruks som tydeliggjør en grense på 40 kilometer i timen ved slike feil, men denne var ennå ikke endelig innført da omtalen ble publisert.
+
+Dette kan bli det viktigste spørsmålet i etterforskningen: Var tillatelsen til å fortsette en isolert feil, eller et tegn på en praksis som hadde utviklet seg over tid? Den foreløpige omtalen dokumenterer at spørsmålet undersøkes, ikke svaret.
+
 En framtidig granskningsrapport må forklare hvorfor føreren fikk beskjed om å kjøre, hva trafikkledelsen visste om det andre toget, og hvilke sikkerhetsbarrierer som ikke fanget opp den farlige situasjonen.
 
 ### Kilder
@@ -36,5 +44,6 @@ En framtidig granskningsrapport må forklare hvorfor føreren fikk beskjed om å
 - Euronews, revidert dødstall 29. oktober: https://www.euronews.com/2026/10/29/death-toll-from-spain-train-crash-rises-to-74-as-royals-visit-victims
 - El País, løpende oppdatering 2. november: https://elpais.com/espana/2026-11-02/ultima-hora-y-reacciones-tras-el-accidente-de-trenes-de-urda-toledo-en-directo.html
 - RTVE, 2. november, identifisering av ofre: https://www.rtve.es/noticias/20261102/accidente-urda-identificados-66-69-muertos/17295877.shtml
+- El País, 2. november, undersøkelse av tidligere LZB-feil og trafikkprosedyrer: https://elpais.com/espana/2026-11-02/la-investigacion-del-siniestro-de-urda-analiza-si-adif-uso-el-protocolo-erroneo-mas-veces.html
 
-**Før eventuell publisering:** Les tilgjengelige primærrapporter fra havarikommisjonen og infrastrukturforvalteren Adif; oppdater døds- og skadetall. Ikke tildel strafferettslig skyld før etterforskning.
+**Før eventuell publisering:** Les tilgjengelige primærrapporter fra AITAT, trafikklogger og infrastrukturforvalteren Adif; kontroller ministerens 170- og 13-tall, status på instruksen om 40 km/t, og oppdater døds- og skadetall. Ikke tildel strafferettslig skyld før etterforskning.
