@@ -214,10 +214,12 @@
       "artikkel": "utkast/2026-11-02/binance-hacking.html",
       "bilde": "utkast/2026-11-02/bilder/binance.svg",
       "registrert": "2026-11-02",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-02",
+      "publisert_url": "artikler/2026-11-02-binance-hacking.html"
     },
     {
       "id": "trump-wsj-dom",
