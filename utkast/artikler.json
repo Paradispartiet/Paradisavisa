@@ -17,15 +17,17 @@
     },
     {
       "id": "medier-meta",
-      "tittel": "Norske mediehus fikk medhold: Retten stanser Metas nye vilkår",
+      "tittel": "Hvem bestemmer over journalistikken når plattformene setter vilkårene?",
       "kategori": "Medier og teknologi",
       "artikkel": "utkast/2026-10-28/medier-meta.html",
-      "bilde": "utkast/2026-10-28/bilder/medier-meta.svg",
+      "bilde": "utkast/2026-10-28/bilder/meta-portvakt.svg",
       "registrert": "2026-10-28",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-02",
+      "publisert_url": "artikler/2026-11-02-meta-plattformmakt-pressefrihet.html"
     },
     {
       "id": "store-stubb-putin",
