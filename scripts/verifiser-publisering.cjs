@@ -1,6 +1,5 @@
 "use strict";
 const fs = require("node:fs");
-const path = require("node:path");
 
 const origin = "https://paradispartiet.github.io/Paradisavisa/";
 const sha = process.env.GITHUB_SHA || "manual";
@@ -21,12 +20,17 @@ if (eventPath && fs.existsSync(eventPath)) {
 }
 
 const candidates = [...new Set([...required, ...changed])].filter(file => {
-  if (!/\\.(?:html|css|js|json|xml|txt|svg|webmanifest)$/i.test(file)) return false;
+  if (!/\.(?:html|css|js|json|xml|txt|svg|webmanifest)$/i.test(file)) return false;
   if (file.split("/").some(part => part.startsWith("."))) return false;
   if (file.startsWith("scripts/") || file.startsWith("node_modules/")) return false;
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return false;
   return fs.statSync(file).size <= 2_000_000;
 });
+
+if (candidates.length === 0) {
+  console.error("Ingen offentlige filer å verifisere – kontrollen kan ikke godkjennes.");
+  process.exit(1);
+}
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
