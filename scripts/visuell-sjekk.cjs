@@ -85,6 +85,9 @@ async function run(){
           tickerTop:ticker.getBoundingClientRect().top,
           tickerBottom:ticker.getBoundingClientRect().bottom,
           tickerPosition:getComputedStyle(ticker).position,
+          tickerHeight:ticker.getBoundingClientRect().height,
+          headerBorder:parseFloat(getComputedStyle(header).borderBottomWidth),
+          headerRule:getComputedStyle(header.querySelector(".avis-identitet"),"::after").display,
           viewport:innerWidth,
           viewportHeight:innerHeight,
           reservedBottom:parseFloat(getComputedStyle(document.body).paddingBottom)
@@ -105,6 +108,10 @@ async function run(){
         label+": menyknappen ligger ikke over avisnavnet");
       check(masthead.headerPosition==="sticky",
         label+": avisoverskriften er ikke fast under rulling");
+      check(masthead.headerBorder===0 && masthead.headerRule==="none",
+        label+": gul skillelinje under avisoverskriften finnes fortsatt");
+      check(masthead.tickerHeight<=42,
+        label+": notisbåndet er for høyt ("+masthead.tickerHeight+"px)");
       check(masthead.tickerPosition==="fixed",
         label+": notisbåndet er ikke fastmontert");
       check(Math.abs(masthead.tickerBottom-masthead.viewportHeight)<=2,
@@ -131,7 +138,11 @@ async function run(){
       check(Math.abs(scrollPositions.headerTop) <= 2,
         label+": avisoverskriften forsvinner når man ruller");
       check(Math.abs(scrollPositions.tickerBottom-scrollPositions.viewportHeight)<=2,
-        label+": notisbåndet flytter seg når man ruller");
+        label+": notisbåndet flytter seg når man ruller ned");
+      await page.evaluate(() => window.scrollTo(0, 250));
+      const oppover=await page.locator(".notisbånd").evaluate(el => el.getBoundingClientRect().bottom);
+      check(Math.abs(oppover-scrollPositions.viewportHeight)<=2,
+        label+": notisbåndet forsvinner når man ruller opp");
       await page.evaluate(() => window.scrollTo(0, 0));
 
       // Transparens: vis leseren publiseringsdato, og merk gamle saker som arkiv.
@@ -230,10 +241,34 @@ async function run(){
       check(!(await page.locator("#avis-hovedmeny").isVisible()),label+": meny forblir synlig");
       const pause=page.locator(".notis-pause");
       await pause.waitFor({timeout:10000});
+      check(await pause.locator("svg").count()===1,
+        label+": pauseknappen skal være et lite ikon");
       await pause.click();
-      check(await pause.textContent()==="Start",label+": pauseknapp virker ikke");
+      check(await pause.getAttribute("aria-label")==="Start notisbåndet",
+        label+": pauseikonet virker ikke");
       await pause.click();
-      check(await pause.textContent()==="Pause",label+": startknapp virker ikke");
+      check(await pause.getAttribute("aria-label")==="Pause notisbåndet",
+        label+": startikonet virker ikke");
+      const fartknapp=page.locator(".notis-fartknapp");
+      await fartknapp.click();
+      const alternativer=page.locator(".notis-fartmeny button[data-fart]");
+      check(await alternativer.count()===4,
+        label+": notisbåndet har ikke fire fartstrinn");
+      check(await page.locator(".notis-fartmeny").isVisible(),
+        label+": fartmenyen vises ikke");
+      const menyPlass=await page.evaluate(()=>({
+        menyBunn:document.querySelector(".notis-fartmeny").getBoundingClientRect().bottom,
+        båndTopp:document.querySelector(".notisbånd").getBoundingClientRect().top
+      }));
+      check(menyPlass.menyBunn<=menyPlass.båndTopp+3,
+        label+": fartmenyen er skjult bak båndet");
+      await page.locator('.notis-fartmeny button[data-fart="1.5"]').click();
+      check((await fartknapp.textContent())==="1,5×",
+        label+": valgt fart vises ikke på knappen");
+      await fartknapp.click();
+      await page.locator('.notis-fartmeny button[data-fart="1"]').click();
+      check((await fartknapp.textContent())==="1×",
+        label+": normalhastigheten kan ikke velges igjen");
 
       for(const name of files.filter(x=>x!=="index.html")){
         await page.goto(base+"/"+name,{waitUntil:"domcontentloaded"});
