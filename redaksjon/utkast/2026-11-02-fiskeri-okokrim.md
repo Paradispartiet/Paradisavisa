@@ -11,7 +11,7 @@ Det er nettopp dette dokumentet politiet nå undersøker.
 
 ## En storstilt aksjon
 
-29. oktober opplyste Økokrim at mer enn 30 personer var pågrepet i en landsomfattende etterforskning. 20 selskaper var siktet, og sju personer varetektsfengslet. Aksjonene hadde omfattet rundt 50 steder i ni politidistrikter, med bistand fra blant annet Fiskeridirektoratet og Kystvakten.
+29. oktober opplyste Økokrim at mer enn 30 personer var pågrepet i en landsomfattende etterforskning. 20 selskaper var siktet, og sju personer varetektsfengslet. Aksjonene hadde omfattet rundt 50 steder i flere politidistrikter, med bistand fra blant annet Fiskeridirektoratet og Kystvakten. Kildene oppgir ulikt antall involverte politidistrikter, så dette bør avstemmes mot Økokrims primærinformasjon.
 
 Politiet sa det hadde sikret verdier i hundremillionersklassen, og mistenkte organisert, systematisk feilregistrering eller feilrapportering av hvitfiskfangst. Det er viktig å lese disse tallene nøyaktig. Verdier som er sikret gjennom beslag og andre tiltak, er ikke automatisk det samme som et endelig beregnet økonomisk tap, ulovlig fortjeneste eller verdien av feilrapporterte fiskemengder.
 
