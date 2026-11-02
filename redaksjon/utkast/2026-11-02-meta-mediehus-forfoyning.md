@@ -7,7 +7,7 @@
 
 Onsdag 28. oktober fikk norsk mediebransje en foreløpig seier mot et av verdens største teknologiselskaper. Oslo tingrett besluttet at Meta Platforms Ireland ikke kunne innføre en planlagt endring i de kommersielle vilkårene før lovligheten var endelig avklart.
 
-Vedtaket kom etter at NRK, TV 2, Schibsted, Amedia, Polaris, Aller, Dagens Næringsliv, Mentor Medier, NTB og Hordaland Folkeblad hadde tatt saken til retten med støtte fra Mediebedriftenes Landsforening.
+Vedtaket kom etter at NRK, TV 2, Schibsted, Amedia, Polaris, Aller, Dagens Næringsliv, Mentor Medier, NTB og Hordaland Folkeblad hadde tatt saken til retten med støtte fra Mediebedriftenes Landsforening. MBL fremmet tre konkrete krav: Mediehusenes reservasjoner mot innhenting av innhold må respekteres i avtaleteksten, KI-bruk må avtales særskilt, og et nei skal ikke straffes med mindre synlighet i Facebook og Instagram. Dette er **medienes krav**, ikke rettens endelige pålegg om alle framtidige avtaler.
 
 Det spesielle er ikke bare at store og små mediehus sto sammen. Det er at konfliktens kjerne berører noe leserne vanligvis ikke ser: Hva må en avis godta for å være synlig på Facebook og Instagram?
 
@@ -39,6 +39,8 @@ Neste spørsmål er hva som skjer når saken behandles videre. Kommer Meta til �
 
 ### Kilder
 - Aftenposten/NTB, 28. oktober, kjennelsen og Metas reaksjon: https://www.aftenposten.no/norge/i/ylAk9a/norske-medier-vant-fram-med-krav-mot-meta-i-retten-forbys-aa-innfoere-endringer
+- MBL, 27. oktober, de tre konkrete kravene: https://www.mediebedriftene.no/artikler/2026/norske-mediehus-gar-til-retten-for-a-stoppe-meta
+- MBL, 28. oktober, partenes omtale av kjennelsen: https://www.mediebedriftene.no/artikler/2026/norske-mediehus-har-vunnet-frem-i-retten-mot-meta/
 - Amedia, 27. oktober, mediehusenes argumenter: https://www.amedia.no/aktuelt/nyheter/gar-til-retten-for-a-stoppe-meta-2
 - Amedia, 28. oktober, rettsavgjørelse: https://www.amedia.no/aktuelt/nyheter/vant-forste-runde-mot-meta
 - Fagpressen, 28.–29. oktober: https://www.fagpressen.no/norske-medier-far-medhold-mot-meta-nye-vilkar-utsettes/3232070
