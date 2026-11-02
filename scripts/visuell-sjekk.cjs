@@ -10,6 +10,12 @@ const assert=require("node:assert/strict");
 const {chromium}=require("playwright");
 const root=path.resolve(__dirname,"..");
 const output=path.join(root,"qa-screenshots");
+// Bruk samme register som den faktiske køsiden. Et hardkodet antall
+// gjør at korrekt registrering av nye artikler feilaktig stopper QA.
+const artikkelkatalog=JSON.parse(fs.readFileSync(path.join(root,"utkast/artikler.json"),"utf8"));
+const antallAktive=artikkelkatalog.artikler.filter(a=>a.status==="utkast"&&!a.publisert).length;
+const antallArkiverte=artikkelkatalog.artikler.filter(a=>a.status==="arkivert").length;
+const antallGodkjente=artikkelkatalog.artikler.filter(a=>a.godkjent===true&&!a.publisert).length;
 const mime={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",
   ".js":"text/javascript; charset=utf-8",".json":"application/json; charset=utf-8",
   ".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",
@@ -342,14 +348,14 @@ async function run(){
       // Én løpende artikkelkø. Ingen mandag/onsdag/fredag-utgaver.
       await page.goto(base+"/utkast/index.html",{waitUntil:"domcontentloaded"});
       await page.locator(".katalog .sak").first().waitFor({timeout:12000});
-      check((await page.locator("#antall-utkast").textContent())==="15",
-        label+": forventet 15 aktive artikkelutkast");
-      check((await page.locator("#antall-arkiv").textContent())==="1",
-        label+": arkivert Ibsen-artikkel mangler");
-      check((await page.locator("#antall-godkjent").textContent())==="0",
-        label+": artikler er merket godkjent uten beslutning");
-      check((await page.locator(".katalog .sak").count())===15,
-        label+": aktiv kø skal vise 15 uavhengige artikler");
+      check((await page.locator("#antall-utkast").textContent())===String(antallAktive),
+        label+": køens antall aktive utkast avviker fra artikkelregisteret ("+antallAktive+")");
+      check((await page.locator("#antall-arkiv").textContent())===String(antallArkiverte),
+        label+": køens antall arkiverte artikler avviker fra artikkelregisteret ("+antallArkiverte+")");
+      check((await page.locator("#antall-godkjent").textContent())===String(antallGodkjente),
+        label+": køens antall godkjente artikler avviker fra artikkelregisteret ("+antallGodkjente+")");
+      check((await page.locator(".katalog .sak").count())===antallAktive,
+        label+": aktiv kø skal vise alle "+antallAktive+" uavhengige utkast");
       check((await page.locator(".merking").textContent()).includes("IKKE PUBLISERT"),
         label+": arbeidskø er ikke merket som upublisert");
       check((await page.locator("h1").textContent())==="Artikler til gjennomgang",
@@ -360,8 +366,8 @@ async function run(){
         label+": søk i artikkelkø fungerer ikke");
       await page.locator("#sok").fill("");
       await page.locator("#tilstand").selectOption("arkivert");
-      check((await page.locator(".katalog .sak").count())===1,
-        label+": det arkiverte Ibsen-utkastet vises ikke");
+      check((await page.locator(".katalog .sak").count())===antallArkiverte,
+        label+": arkivfilteret stemmer ikke med "+antallArkiverte+" arkiverte artikler");
       check((await page.locator(".katalog .sak h2").textContent()).includes("Ibsen"),
         label+": feil artikkel vises som arkivert");
       await context.close();
