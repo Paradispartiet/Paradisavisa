@@ -1,7 +1,7 @@
 {
   "arbeidsflyt": "fortlopende",
   "beskrivelse": "Hver artikkel behandles og publiseres enkeltvis når den er faktakontrollert og godkjent. Datoen registrert angir arbeidsmappen, ikke publiseringsdato eller utgave.",
-  "oppdatert": "2026-10-31",
+  "oppdatert": "2026-11-02",
   "artikler": [
     {
       "id": "cyberrisiko",
@@ -191,6 +191,90 @@
       "bilde": "utkast/2026-10-30/bilder/ibsen.svg",
       "registrert": "2026-10-30",
       "status": "arkivert",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "europa-protester",
+      "tittel": "En generasjon går i gatene – men kjemper de for det samme?",
+      "kategori": "Utenriks og samfunn",
+      "artikkel": "utkast/2026-11-02/europa-protester.html",
+      "bilde": "utkast/2026-11-02/bilder/protester.svg",
+      "registrert": "2026-11-02",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "binance-hacking",
+      "tittel": "Hvem stjal 6,3 milliarder dollar fra Binance – og hvem betaler?",
+      "kategori": "Teknologi og kriminalitet",
+      "artikkel": "utkast/2026-11-02/binance-hacking.html",
+      "bilde": "utkast/2026-11-02/bilder/binance.svg",
+      "registrert": "2026-11-02",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "trump-wsj-dom",
+      "tittel": "Trump krevde ti milliarder dollar fra en avis. Dommeren avviste søksmålet.",
+      "kategori": "Utenriks og medier",
+      "artikkel": "utkast/2026-11-02/trump-wsj-dom.html",
+      "bilde": "utkast/2026-11-02/bilder/trump-wsj.svg",
+      "registrert": "2026-11-02",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "serbia-studentvalget",
+      "tittel": "De sørget i 16 minutter. To år senere vant studentbevegelsen valget.",
+      "kategori": "Utenriks",
+      "artikkel": "utkast/2026-11-02/serbia-studentvalget.html",
+      "bilde": "utkast/2026-11-02/bilder/serbia.svg",
+      "registrert": "2026-11-02",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "spania-togulykke",
+      "tittel": "De 17 minuttene før togkatastrofen i Spania",
+      "kategori": "Utenriks",
+      "artikkel": "utkast/2026-11-02/spania-togulykke.html",
+      "bilde": "utkast/2026-11-02/bilder/spania.svg",
+      "registrert": "2026-11-02",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "israel-valget",
+      "tittel": "Israel har valgt – men ingen vet hvem som får makten",
+      "kategori": "Utenriks",
+      "artikkel": "utkast/2026-11-02/israel-valget.html",
+      "bilde": "utkast/2026-11-02/bilder/israel.svg",
+      "registrert": "2026-11-02",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "fiskeri-okokrim",
+      "tittel": "Fangsten på papiret: Derfor etterforsker politiet fisk for hundrevis av millioner",
+      "kategori": "Norge og kriminalitet",
+      "artikkel": "utkast/2026-11-02/fiskeri-okokrim.html",
+      "bilde": "utkast/2026-11-02/bilder/fiskeri.svg",
+      "registrert": "2026-11-02",
+      "status": "utkast",
       "faktasjekk": "kreves",
       "godkjent": false,
       "publisert": false
