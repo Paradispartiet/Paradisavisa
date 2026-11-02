@@ -23,7 +23,7 @@ I lydmaterialet som er referert i pressen, finnes det ingen tilsvarende ordre om
 
 ## Klokken 08.53
 
-AVE-toget traff bakenden av Iryo-toget. 29. oktober ble dødstallet justert fra tidligere meldte 74 til 69. Per morgenen 2. november var identifiseringen av ofre og arbeidet på ulykkesstedet fortsatt i gang.
+AVE-toget traff bakenden av Iryo-toget. 29. oktober ble dødstallet justert fra tidligere meldte 74 til 69. Ifølge den spanske allmennkringkasteren RTVE og domstolsmyndighetenes opplysninger var **66 av de 69 omkomne identifisert ved inngangen til 2. november**, mens tre ennå ikke var identifisert. Dødstallet er fortsatt foreløpig.
 
 Tallene beskriver den menneskelige katastrofen. Men for å forstå hvordan den kunne skje, er det ikke nok å peke på en datamaskinfeil. Sikkerheten i jernbanen er nettopp bygget for at ett system skal kunne svikte uten at resultatet blir en kollisjon.
 
@@ -35,5 +35,6 @@ En framtidig granskningsrapport må forklare hvorfor føreren fikk beskjed om å
 - Euronews, tidslinje 29. oktober: https://www.euronews.com/2026/10/29/spain-train-crash-what-happened-in-the-17-minutes-before-the-collision
 - Euronews, revidert dødstall 29. oktober: https://www.euronews.com/2026/10/29/death-toll-from-spain-train-crash-rises-to-74-as-royals-visit-victims
 - El País, løpende oppdatering 2. november: https://elpais.com/espana/2026-11-02/ultima-hora-y-reacciones-tras-el-accidente-de-trenes-de-urda-toledo-en-directo.html
+- RTVE, 2. november, identifisering av ofre: https://www.rtve.es/noticias/20261102/accidente-urda-identificados-66-69-muertos/17295877.shtml
 
 **Før eventuell publisering:** Les tilgjengelige primærrapporter fra havarikommisjonen og infrastrukturforvalteren Adif; oppdater døds- og skadetall. Ikke tildel strafferettslig skyld før etterforskning.
