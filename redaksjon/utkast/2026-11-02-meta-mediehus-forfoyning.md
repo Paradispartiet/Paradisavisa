@@ -19,11 +19,15 @@ Meta har bestridt medienes framstilling og gitt uttrykk for at selskapet ønsker
 
 Medienes krav har særlig dreid seg om retten til å reservere innhold, inngå frivillige avtaler om bruk til KI og unngå at et nei til vilkårene skal føre til redusert synlighet.
 
-## En seier – men ikke en endelig dom
+## Retten grep inn før Meta fikk svare
 
 Retten har gitt mediehusene en **midlertidig forføyning**. Det er et rettslig pålegg som hindrer den planlagte endringen mens de underliggende spørsmålene undersøkes. Det er ikke en endelig dom om at enhver del av Metas avtaleutkast er ulovlig.
 
-Ifølge omtalen av kjennelsen mente tingretten at vilkårene kunne være urimelige i lys av Metas dominerende stilling. En fullstendig juridisk analyse krever at man leser rettens egen begrunnelse og ikke bare gjenforteller de involverte virksomhetenes tolkning.
+Ifølge omtalen av kjennelsen mente tingretten at vilkårene kunne være urimelige i lys av Metas dominerende stilling og risikere å sette mediehusene i en tvangssituasjon. Retten påla Meta å betale sakskostnader på omkring 1,2 millioner kroner.
+
+**Men kjennelsen ble avsagt uten at Meta først fikk uttale seg i et rettsmøte.** Retten handlet raskt ut fra skriftlig materiale. Meta kan kreve en etterfølgende muntlig forhandling, slik at selskapet får presentere sitt syn. Den vesentlige journalistiske forskjellen er derfor mellom en foreløpig stans og en endelig vurdering av alle partenes argumenter.
+
+Meta har via en talsperson sagt at selskapet ønsker å gjøre dette riktig og ikke ser for seg å innføre vilkårsendrede løsninger uten omfattende dialog med bransjeorganisasjoner. Dette er Metas egen forklaring, ikke et bindende løfte om en bestemt avtaletekst. En fullstendig juridisk analyse krever at man leser rettens egen begrunnelse og ikke bare gjenforteller partenes tolkning.
 
 ## Hvorfor angår dette leserne?
 
@@ -34,7 +38,7 @@ Her ligger den større historien: En mediebransje som ønsker å bli lest på gl
 Neste spørsmål er hva som skjer når saken behandles videre. Kommer Meta til å endre vilkårene, forhandle fram avtaler eller utfordre kjennelsen? Og vil resultatet skape en modell også andre land og bransjer må forholde seg til?
 
 ### Kilder
-- Aftenposten/NTB, 28. oktober, kjennelsen: https://www.aftenposten.no/norge/i/ylAk9a/norske-medier-vant-fram-med-krav-mot-meta-i-retten-forbys-aa-innfoere-endringer
+- Aftenposten/NTB, 28. oktober, kjennelsen og Metas reaksjon: https://www.aftenposten.no/norge/i/ylAk9a/norske-medier-vant-fram-med-krav-mot-meta-i-retten-forbys-aa-innfoere-endringer
 - Amedia, 27. oktober, mediehusenes argumenter: https://www.amedia.no/aktuelt/nyheter/gar-til-retten-for-a-stoppe-meta-2
 - Amedia, 28. oktober, rettsavgjørelse: https://www.amedia.no/aktuelt/nyheter/vant-forste-runde-mot-meta
 - Fagpressen, 28.–29. oktober: https://www.fagpressen.no/norske-medier-far-medhold-mot-meta-nye-vilkar-utsettes/3232070
