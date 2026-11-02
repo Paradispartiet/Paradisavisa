@@ -15,6 +15,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <meta name="theme-color" content="#000000">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <link rel="icon" type="image/png" href="favicon.PNG">
 
   <title>Paradisavisa</title>
@@ -146,9 +147,19 @@
 
 <script>
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-    .then(reg => console.log('✅ Service worker registrert:', reg.scope))
-    .catch(err => console.error('❌ Feil ved registrering:', err));
+  // Ny service worker aktiveres uten gammel mellomlagret kode.
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    const key = 'paradisavisa-siste-sw-oppdatering';
+    let nyligLastet = false;
+    try {
+      nyligLastet = Date.now() - Number(sessionStorage.getItem(key) || 0) < 30000;
+      sessionStorage.setItem(key, String(Date.now()));
+    } catch (_) { /* Privat nettlesermodus kan begrense lagring. */ }
+    if (!nyligLastet) location.reload();
+  });
+  navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' })
+    .then(reg => reg.update())
+    .catch(err => console.error('Service worker kunne ikke oppdateres:', err));
 }
 </script>
   
