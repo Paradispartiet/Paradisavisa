@@ -37,11 +37,11 @@ Advokaten viser også til at saken rammer rundt 230 ansatte og deres familier. D
 
 Etterforskningen er likevel på et tidlig stadium. Pågripelse og siktelse er formelle mistankestatuser; de er ikke domfellelser. Ingen navngitte bedrifter eller personer bør utpekes som skyldige uten godt dokumenterte opplysninger og en reell mulighet til tilsvar.
 
-Den neste store journalistiske oppgaven er å finne ut **hvordan et dokument som skal sikre bærekraftig kvotekontroll, eventuelt kunne bli brukt til å omgå den**. Førstestatsadvokat Elisabeth Harbo-Lervik har forklart at uriktige sluttsedler kan føre til at myndighetene mister oversikten over ressursuttaket. Det kan skade både fellesskapets fiskeressurser og de aktørene som driver lovlig. Dette er påtalemyndighetens begrunnelse for alvorligheten, ikke et fastslått hendelsesforløp hos de siktede.
+Det sentrale spørsmålet er nå **hvordan dokumenter som skal sikre bærekraftig kvotekontroll, eventuelt kan ha blitt brukt til å omgå den**. Førstestatsadvokat Elisabeth Harbo-Lervik har forklart at uriktige sluttsedler kan føre til at myndighetene mister oversikten over ressursuttaket. Det kan skade både fellesskapets fiskeressurser og de aktørene som driver lovlig. Dette er påtalemyndighetens begrunnelse for alvorligheten, ikke et fastslått hendelsesforløp hos de siktede.
 
-Den neste store journalistiske oppgaven er å finne ut hvor kontrollen sviktet. Hvilke aktører signerte sluttsedlene? Hvem skulle kontrollere opplysningene? Hvilke mekanismer oppdager avvik? Og hvilke konkrete endringer mener fiskerinæringen selv vil hindre juks uten å gjøre lovlig fiske unødig vanskelig?
+Videre må etterforskningen avklare om og eventuelt hvor kontrollen sviktet. Hvilke aktører signerte sluttsedlene? Hvem skulle kontrollere opplysningene? Hvilke mekanismer oppdager avvik? Og hvilke konkrete endringer mener fiskerinæringen selv vil hindre juks uten å gjøre lovlig fiske unødig vanskelig?
 
-Det er først når disse spørsmålene er besvart med dokumenter og uavhengige kilder at historien kan bli mer enn en oppsummering av en politiaksjon.
+Svarene kan få betydning både for straffesakene, tilliten til kontrollordningene og fiskere og mottak som følger reglene.
 
 ### Kilder
 - Fiskeridirektoratet, forklaring av landings- og sluttsedler: https://www.fiskeridir.no/yrkesfiske/rapportering-ved-landing/landings-og-sluttsedler
