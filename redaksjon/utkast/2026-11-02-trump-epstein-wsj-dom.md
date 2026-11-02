@@ -11,15 +11,17 @@ Det ble en rettssak om en påstand med stor politisk sprengkraft. Men dommeren m
 
 ## Det amerikanske pressevernet
 
-I amerikansk rett har personer med en fremtredende offentlig rolle et høyt beviskrav når de saksøker medier for ærekrenkelser. Det er ikke nok å hevde at en artikkel inneholder feil. Den som går til sak, må sannsynliggjøre den særlige formen for klanderverdig opptreden som på engelsk kalles *actual malice*.
+I amerikansk rett møter offentlige personer et høyt krav når de saksøker medier for ærekrenkelser. På dette tidlige stadiet av en rettssak må stevningen inneholde konkrete påstander som gjør det plausibelt at mediet opptrådte med *actual malice*. Det er noe annet enn en endelig bevisvurdering etter hovedforhandling. Det er ikke nok å hevde at en artikkel er feil.
 
 Dette er en juridisk term. Den innebærer ikke bare at noen var fiendtlig innstilt, men handler om kunnskap om usannhet eller alvorlig skjødesløshet om sannheten i det publiserte.
 
-Lørdag 31. oktober avviste dommer Darrin Gayles Trumps reviderte krav i den føderale domstolen i Sør-Florida. Ifølge Reuters mente dommeren at saksøkerens påstander om at journalistene hadde handlet med slik klanderverdighet, var utilstrekkelige. Dommeren trakk særlig fram avisens undersøkelsesarbeid og forsøk på å få kommentarer, der Trumps benektelse også var tatt med.
+Lørdag 31. oktober avviste dommer Darrin Gayles Trumps endrede stevning i den føderale domstolen i Sør-Florida. I den **20 sider lange kjennelsen, dokument 80 i sak 1:25-cv-23232**, konkluderer retten med at stevningen ikke inneholdt tilstrekkelige konkrete påstander om at journalistene visste at opplysningene var usanne eller bevisst overså alvorlig tvil om sannheten.
+
+Retten viste til avisens kildearbeid og at journalistene hadde forsøkt å innhente kommentarer fra Trump, justismyndighetene, FBI og flere personer knyttet til bursdagsalbumet. Trump og hans medarbeidere benektet at han hadde skrevet brevet, og benektelsen var omtalt i artikkelen. Etter rettens vurdering ga ikke dette grunnlag for å slutte at avisen hadde opptrådt med *actual malice*.
 
 ## To spørsmål som må holdes atskilt
 
-En avgjørelse om at en ærekrenkelsessak ikke oppfyller de rettslige vilkårene, er **ikke et rettslig bevis på at alle avisens faktapåstander er sanne**. Trump står fast ved sin benektelse. Samtidig har dommeren vurdert grunnlaget for å føre erstatningssaken videre, og kommet til at det ikke er tilstrekkelig.
+En avgjørelse om at en ærekrenkelsessak ikke oppfyller de rettslige vilkårene, er **ikke et rettslig bevis på at alle avisens faktapåstander er sanne**. Trump står fast ved sin benektelse. Dommeren har vurdert om den endrede stevningen oppfylte kravene for å føre saken videre, og kommet til at det ikke var tilstrekkelig rettslig grunnlag. Kjennelsen avgjør verken brevets forfatter eller sannheten i enhver opplysning i avisartikkelen.
 
 Søksmålet ble ifølge AP og Reuters avvist *with prejudice*. Det betyr at Trump ikke kan levere inn samme krav på nytt til samme domstol gjennom enda en endret klage. Det utelukker ikke i seg selv at avgjørelsen kan ankes. **Trumps juridiske representanter sa etter avgjørelsen at de ville anke.** Dette er et varsel om anke, ikke dokumentasjon for at en anke allerede er levert inn. Status må kontrolleres på publiseringstidspunktet.
 
@@ -32,8 +34,10 @@ Sterkt vern om journalistikk gjør ikke medier feilfrie. De må fortsatt kontrol
 Resultatet gir en viktig påminnelse: I rettssaker om journalistikk er det forskjell på en uenighet om hva som skjedde, og rettens vurdering av om en avis kan dømmes for å ha skrevet om det.
 
 ### Kilder
+- USAs føderale domstol, kjennelse 31. oktober (dokument 80), gjengitt hos Justia: https://law.justia.com/cases/federal/district-courts/florida/flsdce/1%3A2025cv23232/693830/80/
+- USAs offisielle publiseringsportal GovInfo, rettsavgjørelsen i sak 1:25-cv-23232: https://www.govinfo.gov/app/details/USCOURTS-flsd-1_25-cv-23232
 - AP, 1. november: https://apnews.com/article/f27c9fa832044f2f9edea9b1fbbba061
 - Reuters, 31. oktober: https://www.fidelity.com/news/article/company-news/202610311641RTRSNEWSCOMBINED_L6N46H07U_1
 - Washington Post, 31. oktober, advokatenes varsel om anke: https://www.washingtonpost.com/business/2026/10/31/judge-tosses-trumps-lawsuit-over-wall-street-journals-epstein-article/
 
-**Før eventuell publisering:** Skaff domsavgjørelsen fra domstolen som primærkilde og kontroller anke. Ikke framstill det omstridte Epstein-dokumentet som autentisert ved domstolsavgjørelsen. Ingen part er intervjuet av Paradisavisa.
+**Før eventuell publisering:** Kjennelsen (dokument 80) er nå kontrollert gjennom offentlig rettspublisering. Kontroller fortsatt om en anke faktisk er innlevert etter at advokatene varslet en slik. Ikke framstill det omstridte Epstein-dokumentet som autentisert ved domstolsavgjørelsen. Ingen part er intervjuet av Paradisavisa.

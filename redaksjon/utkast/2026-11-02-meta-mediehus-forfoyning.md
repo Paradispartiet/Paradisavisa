@@ -27,7 +27,7 @@ Ifølge omtalen av kjennelsen mente tingretten at vilkårene kunne være urimeli
 
 **Men kjennelsen ble avsagt uten at Meta først fikk uttale seg i et rettsmøte.** Retten handlet raskt ut fra skriftlig materiale. Meta kan kreve en etterfølgende muntlig forhandling, slik at selskapet får presentere sitt syn. Den vesentlige journalistiske forskjellen er derfor mellom en foreløpig stans og en endelig vurdering av alle partenes argumenter.
 
-Meta har via en talsperson sagt at selskapet ønsker å gjøre dette riktig og ikke ser for seg å innføre vilkårsendrede løsninger uten omfattende dialog med bransjeorganisasjoner. Dette er Metas egen forklaring, ikke et bindende løfte om en bestemt avtaletekst. En fullstendig juridisk analyse krever at man leser rettens egen begrunnelse og ikke bare gjenforteller partenes tolkning.
+Meta har via en talsperson sagt at selskapet ønsker å gjøre dette riktig og ikke planlegger å endre vilkårene uten grundig dialog med bransjeorganisasjonene. Ifølge NTB hadde Meta allerede utsatt den planlagte iverksettelsen til 20. november, og dialogen kunne innebære ytterligere utsettelse. Dette er Metas egen forklaring, ikke et bindende løfte om en bestemt avtaletekst. Kjennelsens ordlyd er gjengitt av NTB, men vi har foreløpig ikke innhentet det fullstendige rettsdokumentet og hele den omstridte avtaleteksten. Det begrenser hvor detaljert vi kan vurdere jussen og rettighetene vilkårene eventuelt ville gi.
 
 ## Hvorfor angår dette leserne?
 
@@ -45,4 +45,4 @@ Neste spørsmål er hva som skjer når saken behandles videre. Kommer Meta til �
 - Amedia, 28. oktober, rettsavgjørelse: https://www.amedia.no/aktuelt/nyheter/vant-forste-runde-mot-meta
 - Fagpressen, 28.–29. oktober: https://www.fagpressen.no/norske-medier-far-medhold-mot-meta-nye-vilkar-utsettes/3232070
 
-**Før eventuell publisering:** Skaff selve kjennelsen, den omstridte avtaleteksten og Metas siste svar. Samordne med eksisterende `utkast/2026-10-28/medier-meta.html` og tidligere `redaksjon/utkast/2026-10-28-meta-medier.md`. Ikke lag to nesten identiske publiserte artikler.
+**Før eventuell publisering:** Skaff selve kjennelsen og den omstridte avtaleteksten. Kontroller om Meta har krevd ny behandling eller endret vilkårene siden 28. oktober, og oppdater Metas og mediehusenes svar. Samordne med eksisterende `utkast/2026-10-28/medier-meta.html` og tidligere `redaksjon/utkast/2026-10-28-meta-medier.md`. Ikke lag to nesten identiske publiserte artikler.
