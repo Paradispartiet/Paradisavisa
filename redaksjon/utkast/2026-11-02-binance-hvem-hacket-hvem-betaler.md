@@ -41,6 +41,8 @@ Binance har også varslet en ny kontroll av reserver, der kundene skal kunne und
 
 Da uttak ble åpnet gradvis igjen søndag 1. november, oppsto et nytt spørsmål: Ville kundene flytte pengene sine? Reuters rapporterte 2. november om rundt 4,65 milliarder dollar i uttak og 1,01 milliarder i innskudd de første ni og en halv timene etter gjenåpningen. Det gir **netto uttak på rundt 3,64 milliarder dollar**, eller om lag 2,1 prosent av børsens eiendeler, ifølge tall Binance selv oppga. Dette er kundebevegelser etter angrepet, ikke en del av tyveriet. Andre blokkjedeanalyse-tjenester har beregnet høyere uttakstall, som Binance bestrider. Målemetode og kilde må derfor oppgis når tallene sammenlignes.
 
+Senere mandag 2. november oppga Reuters, med nye tall fra Binance, at netto kundeuttak hadde økt til omtrent 4,72 milliarder dollar. Det tidligere tallet på 3,64 milliarder gjaldt bare de første ni og en halv timene etter gjenåpningen. Tallene dekker forskjellige perioder og må ikke legges sammen eller forveksles med verdiene som ble stjålet.
+
 Spørsmålet som gjenstår, er todelt: Hvor mye av det stjålne beløpet kan etterforskerne faktisk hente hjem, og hvilke svakheter i Binances systemer lot et så stort tap skje? Kundene har mest å tjene på at begge blir besvart – uavhengig av hvor raskt selskapet kan kjøpe nye kryptovalutaer.
 
 ### Kilder
@@ -52,6 +54,8 @@ Spørsmålet som gjenstår, er todelt: Hvor mye av det stjålne beløpet kan ett
 - Binance, uttak og 95 prosent dekning, 1. november: https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-4-withdrawals-resume-in-phases-2026-11-01-73911fb819b240f88b88256bdd318eda
 - Binance, 31. oktober, reserveøyeblikksbilde og anslått verifisering 3. november: https://www.binance.com/en/square/post/383244799724069
 - Reuters, 1. november: https://www.reuters.com/legal/government/binance-resume-withdrawals-after-recovering-bulk-6-billion-stolen-funds-2026-11-01/
-- Reuters, 2. november, uttak og markedsreaksjon: https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/
+- Reuters, oppdatert 2. november, nettotallet økt til 4,72 milliarder dollar: https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/
+- Bloomberg Law, 2. november, nyere netto uttak: https://news.bloomberglaw.com/business-and-practice/binance-outflows-hit-4-7-billion-after-record-north-korea-hack
+- Reuters, 2. november, første ni og en halv timers uttak: https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/
 
 **Før eventuell publisering:** Hent teknisk post-mortem og bekreft siste reserve-/uttaksstatus; vurder uavhengig sikkerhetsfaglig kommentar. Ingen originale intervjuer er gjennomført. Ingen offentlig publisering.
