@@ -45,6 +45,7 @@ Det er først når disse spørsmålene er besvart med dokumenter og uavhengige k
 - VG, Økokrims pressekonferanse 29. oktober: https://www.vg.no/nyheter/i/b8VQdv/oekokrim-30-personer-paagrepet-i-politiaksjon-mot-fiskerinaeringen
 - Aftenposten/NTB, 29. oktober: https://www.aftenposten.no/norge/i/OgVlrl/oekokrim-mistenker-fiskerikriminalitet-i-100-millonersklassen-30-personer-paagrepet
 - Finansavisen/NTB, 29. oktober: https://www.finansavisen.no/sjomat/2026/10/29/8391731/okokrim-mistenker-fiskerikriminalitet-i-100-millionersklassen-30-personer-pagrepet
+- Elden Advokatfirma, primæruttalelse for Myre Fiskemottak 29. oktober: https://www.elden.no/aktuelt/myre-fiskemottak-driften-g%C3%A5r-som-normalt-selskapet-samarbeider-med-%C3%B8kokrim
 - Kystmagasinet, 30. oktober, Myre Fiskemottaks advokats tilsvar: https://www.kystmagasinet.no/fiskemottak-fiskerikriminalitet-havoysund/driften-gar-som-normalt-etter-politiaksjonen/2203805
 - VG, 27. oktober, Økokrims første uttalelser og tips: https://www.vg.no/nyheter/i/Qge9j4/oekokrim-flere-personer-paagrepet-i-etterforskning-av-fiskerikriminalitet
 
