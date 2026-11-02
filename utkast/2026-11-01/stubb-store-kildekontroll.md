@@ -1,45 +1,37 @@
-# Stubb og Støre – kildekontroll og redaksjonelle valg
+# Støre og Stubb – kilde- og redaksjonskontroll
 
-**Arbeidsdato:** 1. november 2026  
+**Arbeidsdato:** 2. november 2026  
 **Artikkel:** `utkast/2026-11-01/stubb-store-hvem-snakker-for-freden.html`  
-**Status:** Intern kvalitetssjekk. Ingen egen rapportering, intervjuer eller godkjenning.
+**Status:** Upublisert idéorientert utenriksanalyse. Ingen egen intervjurunde, ingen sluttgodkjenning.
 
-## Kontrollerte hovedopplysninger
+## Dokumenterte knutepunkter
 
-| Opplysning | Belegg | Status |
+| Dato | Dokumentert hendelse | Kilde og viktig forbehold |
 | --- | --- | --- |
-| Støre og Stubb møtte Zelenskyj og amerikanske utsendinger i Oslo 20. oktober. Witkoff deltok fysisk og Kushner digitalt; britiske, tyske, italienske, EU- og NATO-rådgivere deltok i arbeidsmiddag. | [Statsministerens kontor, 21. oktober](https://www.regjeringen.no/no/aktuelt/samtaler-om-veien-mot-fred-i-ukraina/id3179845/) | **Bekreftet.** Ikke anta at møtet ga enighet om territorier. |
-| Støre og Stubb ringte Putin 27. oktober i samråd med Ukraina og ikke som representanter for hele Europa. | [Norge, 27. oktober](https://www.regjeringen.no/no/aktuelt/president-stubb-og-statsminister-store-i-telefonsamtale-med-president-putin/id3183597/) og [Finlands president](https://www.presidentti.fi/en/president-stubb-and-prime-minister-store-held-a-phone-call-with-president-putin/) | **Bekreftet.** Initiativet ga ingen kunngjort avtale. |
-| Stubb sa 27. oktober at Putins syn ikke inneholdt overraskelser. | [Tale til Nordisk råd](https://www.presidentti.fi/en/address-by-president-of-the-republic-of-finland-alexander-stubb-at-the-nordic-council-session-in-helsinki-on-27-october-2026/) | **Bekreftet, som Stubbs egen redegjørelse.** |
-| Støre signerte delelinjeavtalen med Lavrov i Murmansk 15. september 2010. | [Utenriksdepartementet](https://www.regjeringen.no/no/tema/utenrikssaker/folkerett/innsikt_delelinje/avtale-med-russland-om-maritim-avgrensning-i-barentshavet-og-polhavet/id2008645/) | **Bekreftet.** Resultatet av rundt 40 års forhandlinger, ikke Støres innsats alene. |
-| Norge og Russland hadde ny fiskeriavtale klar 23. oktober 2026 for 2027, etter forhandlinger i Istanbul. | [Nærings- og fiskeridepartementet](https://www.regjeringen.no/no/aktuelt/enighet-om-norsk-russisk-fiskeriavtale-for-2027/id3181971/) | **Bekreftet.** Ikke dokumentert noen kobling til Putin-samtalen fire dager senere. |
-| Støre og Zelenskyj undertegnet strategisk partnerskap og Drone Deal-forsvarsavtale 23. august 2026. | [Statsministerens kontor](https://www.regjeringen.no/no/aktuelt/strategisk-partnerskap-og-forsvarsavtale-med-ukraina/id3171071/) | **Bekreftet.** Skill mellom praktisk samarbeid og udokumentert personlig innflytelse. |
-| I 2026 er Nansen-programmets ramme 85 mrd. kr. Regjeringens budsjettforslag for 2027 gir en samlet ramme på 344,5 mrd. kr i 2023–2030. | [Finansdepartementets budsjettmelding](https://www.regjeringen.no/no/dokumenter/meld.-st.-1-20262027/id3175768/?ch=3) | **Bekreftet som budsjett- og rammetall, ikke en privat pengesekk for statsministeren.** |
-| Russland–Norge-varehandelen ble langt mindre etter 2022. | [SSB](https://www.ssb.no/utenriksokonomi/utenrikshandel/statistikk/utenrikshandel-med-varer/artikler/norges-handel-med-russland-og-ukraina) | **Bekreftet.** Angi årstall og separate import-/eksportverdier. |
-| Putin sa offentlig 29. oktober at Stubb og Støre hadde gjort rett i å ta kontakt til tross for kritikk. | [Reuters, 29. oktober](https://www.reuters.com/world/europe/putin-says-moscow-seeks-better-european-ties-conflict-will-produce-no-winners-2026-10-29/) | **Bekreftet som uttalelse.** Ikke bekreftelse på endret russisk forhandlingsposisjon. |
-| Støre sa at samtalen gjaldt å framføre europeiske synspunkter og mulige konkrete tiltak for mindre vold. | [Reuters, 28. oktober](https://www.reuters.com/world/europe/norways-premier-says-call-with-putin-was-effort-present-european-views-2026-10-28/) | **Bekreftet som Støres forklaring.** Ikke dokumentasjon for oppnådde tiltak. |
+| 2010 | Støre og Lavrov undertegnet delelinjeavtalen i Murmansk etter langvarige forhandlinger. | [Utenriksdepartementet](https://www.regjeringen.no/no/tema/utenrikssaker/folkerett/innsikt_delelinje/avtale-med-russland-om-maritim-avgrensning-i-barentshavet-og-polhavet/id2008645/). Ikke tilskriv 40 års forhandlingsarbeid til én politiker. |
+| Mai 2024 | Norge og Ukraina inngikk en langsiktig sikkerhetsavtale. | [Regjeringen](https://www.regjeringen.no/no/aktuelt/norge-og-ukraina-har-undertegnet-sikkerhetspolitisk-samarbeidsavtale/id3041413/). |
+| 23. august 2026 | Støre og Zelenskyj undertegnet Ellisiv-avtalen om strategisk partnerskap og en Drone Deal-forsvarsavtale. Støre varslet også forslag om 85 mrd. kr i Ukraina-støtte for 2027. | [Norge](https://www.regjeringen.no/no/aktuelt/strategisk-partnerskap-og-forsvarsavtale-med-ukraina/id3171071/), [Ukraina](https://www.president.gov.ua/en/news/volodimir-zelenskij-i-jonas-gar-stere-pidpisali-ugodu-pro-ob-106013) og [støtteforslaget](https://www.regjeringen.no/no/aktuelt/regjeringen-vil-viderefore-stotten-til-ukraina-pa-85-milliarder-kroner/id3171073/). Forslaget er ikke en personlig bevilgning fra Støre. |
+| 20. oktober 2026 | Støre og Stubb møtte Zelenskyj, Witkoff og Kushner i Oslo. | [Statsministerens kontor](https://www.regjeringen.no/no/aktuelt/samtaler-om-veien-mot-fred-i-ukraina/id3179845/). Kushner deltok digitalt. Ukrainas sikkerhet, gjenoppbygging og territorielle spørsmål var på agendaen, men ingen enighet om vilkårene er dokumentert. |
+| 23. oktober 2026 | Norge og Russland inngikk fiskeriavtale for 2027 etter forhandlinger i Istanbul. | [Nærings- og fiskeridepartementet](https://www.regjeringen.no/no/aktuelt/enighet-om-norsk-russisk-fiskeriavtale-for-2027/id3181971/). **Ingen dokumentert sammenheng med Putin-samtalen.** |
+| 23. oktober 2026 | En lokal humanitær våpenhvile ved Olesjky ble avtalt. | [Reuters](https://www.reuters.com/world/europe/kremlin-confirms-oleshky-ceasefire-says-working-with-ukraine-on-evacuation-timing-2026-10-23/). Avtalen er eldre enn Putin-samtalen og må ikke fremstilles som resultat av nordisk kontakt. |
+| 27. oktober 2026 | Stubb og Støre snakket med Putin fra Helsingfors i samråd med Ukraina og orienterte Zelenskyj etterpå. | [Norge](https://www.regjeringen.no/no/aktuelt/president-stubb-og-statsminister-store-i-telefonsamtale-med-president-putin/id3183597/), [Finland](https://www.presidentti.fi/en/president-stubb-and-prime-minister-store-held-a-phone-call-with-president-putin/). De representerte sine egne land, ikke Europa samlet. |
+| 27. oktober 2026 | Stubb sa til Nordisk råd at Putins standpunkter ikke inneholdt overraskelser. | [Finlands presidentkontor](https://www.presidentti.fi/en/address-by-president-of-the-republic-of-finland-alexander-stubb-at-the-nordic-council-session-in-helsinki-on-27-october-2026/). |
+| 29. oktober 2026 | Putin roste kontakten med de nordiske lederne offentlig. | [Reuters](https://www.reuters.com/world/europe/putin-says-moscow-seeks-better-european-ties-conflict-will-produce-no-winners-2026-10-29/). **Ros er ikke bevis på at russiske krav er endret.** |
+| 28. oktober–2. november 2026 | Den varslede trepartsrunden i Abu Dhabi manglet bekreftet dato i de sist kontrollerte åpne kildene. | [AP](https://apnews.com/article/0f135e71101c48ccd83927efeebf3347) og [Kyiv Independent](https://kyivindependent.com/zelensky-expects-trilateral-peace-talks-in-abu-dhabi-by-nov-10-but-no-firm-date-set/), begge 28. oktober. Oppdater ved senere endringer. |
 
-## Historie og sammenheng
+## Redaksjonelle skiller
 
-- [NOU 2003:32](https://www.regjeringen.no/no/dokumenter/nou-2003-32/id149022/?ch=10) omtaler nordnorsk-russisk pomorhandel og dens økonomiske betydning.
-- [Støres kronikk om 200 år med grensen](https://www.regjeringen.no/no/aktuelt/russland-har-endret-seg.-det-har-ogsa-vart-naboskap/id3160051/) gir regjeringens perspektiv på praktisk naboskap og bruddet etter 2022.
-- [Britisk parlamentsbibliotek om Finland](https://commonslibrary.parliament.uk/research-briefings/cbp-10499/) omtaler krig, den kalde krigens balansering og finsk NATO-medlemskap. Tolk ikke dette som at alle finske politikere har samme holdning til Moskva.
+- **Faktum:** Støre og Stubb tok kontakt med Putin, Støre har et langt dokumentert samarbeid med Zelenskyj, Norge har historiske og nåværende forhandlingskanaler til Russland, og Putin roste samtalen.
+- **Fortolkning:** At Støres omstendelige språk er en styrke eller svakhet, at de to lederne utgjør et «radarpar», eller at økonomisk tyngde bidrar til diplomatisk handlingsrom. Dette er analytiske hypoteser – ikke personlige egenskaper eller uoffisielle forhandlingsfullmakter.
+- **Usikkert:** Om samtalen øker russisk forhandlingsvilje, hva Putin personlig foretrekker, og om den hadde noen direkte virkning på den humanitære våpenhvilen. Ingen slik virkning er dokumentert.
+- **Motforestilling:** Danmark og Sverige kritiserte manglende samordning. Utenrikspolitiske forskere advarer om at Russland kan utnytte inntrykket av europeisk splittelse. Se [The Guardian, 29. oktober](https://www.theguardian.com/world/2026/oct/29/pragmatic-or-pointless-europe-rift-over-pick-up-phone-putin).
+- **Historisk begrensning:** Delelinjeavtalen i 2010 gjaldt to staters havgrense og kan ikke sidestilles med invasjonen av Ukraina.
 
-## Analyser som fortsatt er hypoteser
+## Hva gjenstår?
 
-1. **«Radarpar»** er en beskrivende redaksjonell metafor. Gjentatte felles tiltak er dokumentert; personkjemi, uformelle fullmakter eller et hemmelig mandat er ikke dokumentert.
-2. **«Mannen med pengesekken»** viser Norges økonomiske kapasitet og Nansen-programmet. Ingen offentlig kilde viser at penger ble tilbudt Putin som motytelse.
-3. **«Servil» eller «tåkeprat»** beskriver mulige fortolkninger av Støres språk. Det er ikke målt eller kildebelagt at Putin foretrekker denne stilen. Den bekreftede opplysningen er at Putin offentlig roste kontakten.
-4. **Historisk russlandskompetanse** kan gi forhandlingserfaring. 2010-delelinjen kan ikke direkte sammenliknes med en krig der Ukraina er angrepet.
-5. **Fiskeriavtalen 23. oktober** og **Putin-samtalen 27. oktober** er to faktiske, nærliggende hendelser. Samtidighet er ikke dokumentasjon på direkte koordinering.
+1. Kontrollere utviklingen etter 2. november, særlig eventuelle nye kunngjøringer om forhandlingsdato, deltakere, konkrete deeskaleringstiltak og endrede russiske krav.
+2. Få en uavhengig Russland-forsker eller diplomat til å vurdere hva Norge og Finland kan oppnå uten et samlet europeisk mandat, og hvorfor andre nordiske regjeringer reagerte.
+3. Få en fiskeri- og nordområdeforsker til å vurdere om den nye kvoteavtalen bare illustrerer nødvendig teknisk samarbeid eller sier noe mer om forholdet mellom landene.
+4. Gjennomføre journalistisk faktasjekk, korrektur, kilde-/lenkekontroll og endelig vurdering av sjanger og publisering. Ikke fremstille denne teksten som egen intervjujournalistikk.
 
-## Gjenstår før redaksjonell godkjenning
-
-- Kontroller eventuelle reaksjoner eller senere utvikling etter 29. oktober fra Ukraina, Finland, Norge, Russland og europeiske partnere.
-- Hent inn en uavhengig Russland- eller diplomatiforsker om hvorvidt denne formen for kontakt kan ha betydning uten å gi politiske innrømmelser.
-- Hent inn en selvstendig vurdering av om den norsk-russiske fiskeriavtalen er relevant som parallell eller snarere viser at teknisk samarbeid og krigsforhandlinger foregår på helt ulike nivåer.
-- Be om et konkret svar fra Statsministerens kontor: Var målsettingen å formidle budskap, få til en praktisk deeskalering eller påvirke forhandlingene i Abu Dhabi? Hva, om noe, har endret seg?
-- Gi gjerne leseren én kort, kildebelagt tidslinje (2010 – 2024 – august 2026 – 20./23./27./29. oktober).
-- Gjør full faktasjekk, språkvask og sjangermerking som **analyse** før en eventuell selvstendig publiseringsavgjørelse.
-
-**Denne filen og hovedartikkelen er interne arbeidsdokumenter. Ingen redaksjonell godkjenning eller publisering følger av kildekontrollen.**
+**Verken kildearbeidet eller automatiske GitHub-kontroller innebærer redaksjonell godkjenning eller publisering.**
