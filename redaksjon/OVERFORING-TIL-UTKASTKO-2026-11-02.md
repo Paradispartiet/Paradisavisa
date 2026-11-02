@@ -5,7 +5,7 @@
 ## Bakgrunn
 PR #26 er tidligere merget til `main` og inneholder åtte journalistiske arbeidsmanus i `redaksjon/utkast/`. Arbeid i denne PR-en gjør neste praktiske del av prosessen: gjør sju ikke-registrerte manus til ordinære, upubliserte HTML-utkast under `utkast/2026-11-02/`, med grafiske symbolillustrasjoner og registrering i `utkast/artikler.json`.
 
-**Den åttende saken om Meta** finnes allerede som `utkast/2026-10-28/medier-meta.html`, registrert som `medier-meta`. Ingen dublett er laget. Den nyeste Meta-analysen ligger også som arbeidsutkast i `redaksjon/utkast/2026-11-02-meta-mediehus-forfoyning.md`, og skal samordnes med den eksisterende utkastfilen ved en eventuell individuell artikkeloppdatering.
+**Den åttende saken om Meta** finnes allerede som `utkast/2026-10-28/medier-meta.html`, registrert som `medier-meta`. Ingen dublett er laget. Den nyeste Meta-analysen ligger også som arbeidsutkast i `redaksjon/utkast/2026-11-02-meta-mediehus-forfoyning.md`. Det **eksisterende** HTML-utkastet er nå oppdatert med MBLs tre krav, opplysningen om at Meta ikke var hørt i rettsmøte før kjennelsen, og muligheten for etterfølgende muntlig behandling. Ingen dublett er laget.
 
 ## De sju nye registrerte utkastene
 | Sak | Artikkel | Bilde |
