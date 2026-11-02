@@ -9,7 +9,7 @@
 
 Meldingen kom fra FBI 31. oktober: Amerikanske etterforskere tilskriver tyveriet fra Binance 29. oktober en nordkoreansk hackeroperasjon de omtaler som **TraderTraitor**. Etterforskerne sier de har fulgt bevegelser av tyvegods og sett store deler bli konvertert til kryptovalutaen ether. De forventer flere forsøk på å gjøre sporingen vanskelig gjennom desentraliserte vekslingstjenester.
 
-Det er en tydelig tilskrivelse fra amerikanske myndigheter, ikke en rettskraftig dom. FBI har ikke offentliggjort navn på enkeltpersoner som skal ha gjennomført akkurat dette angrepet. Nord-Korea har tidligere avvist anklager om statlig organiserte kryptotyverier. Å skrive at «nordkoreanere er dømt for Binance-angrepet» ville derfor være feil.
+Det er en tydelig tilskrivelse fra amerikanske myndigheter, ikke en rettskraftig dom. FBI har ikke offentliggjort navn på enkeltpersoner som skal ha gjennomført akkurat dette angrepet. Derimot har byrået offentliggjort kryptoadresser som de sier er kontrollert av eller nært knyttet til de ansvarlige. Det gjør det mulig for kryptoselskaper å forsøke å sperre videre flytting av identifiserte midler. Nord-Korea har tidligere avvist anklager om statlig organiserte kryptotyverier. Å skrive at «nordkoreanere er dømt for Binance-angrepet» ville derfor være feil.
 
 Angrepet ligner etter sikkerhetsanalytikeres vurdering tidligere operasjoner mot kryptobørser. Det er særlig én likhet som bekymrer: Angriperne trenger ikke nødvendigvis å bryte kryptografien i selve blokkjeden. Det kan være nok å kompromittere systemene som administrerer og godkjenner utbetalinger.
 
@@ -35,16 +35,17 @@ Pengene skal komme fra tre kilder: sikkerhetsfondet **SAFU**, deler av børsens 
 
 ## Hva skjer med kundene?
 
-Børsen stanset uttak mens sikkerhetssystemene ble kontrollert. Søndag 1. november startet Binance en gradvis gjenåpning på utvalgte kryptonettverk, ifølge selskapets egen oppdatering. Tilgjengeligheten kan fortsatt variere mellom ulike valutaer og nettverk.
+Børsen stanset uttak mens sikkerhetssystemene ble kontrollert. Binance har understreket at innskudd ikke var rammet av stansen. Søndag 1. november startet Binance en gradvis gjenåpning på utvalgte kryptonettverk, ifølge selskapets egen oppdatering. Tilgjengeligheten kan fortsatt variere mellom ulike valutaer og nettverk.
 
-Binance har også varslet en ny kontroll av reserver, der kundene skal kunne undersøke om visse beholdninger er dekket minst én-til-én. Et slikt reservebevis er nyttig, men det er ikke i seg selv en full revisjon av selskapets gjeld, interne kontroller eller konsekvensene av tyveriet.
+Binance har også varslet en ny kontroll av reserver, der kundene skal kunne undersøke om visse beholdninger er dekket minst én-til-én. Binance opplyste 1. november at reserveoversikter for ti store kryptovalutaer kunne kontrolleres av kundene, mens andre mindre likvide eiendeler fortsatt manglet full dekning. Et slikt reservebevis er nyttig, men det er ikke i seg selv en full uavhengig revisjon av selskapets gjeld, interne kontroller eller konsekvensene av tyveriet.
 
 Da uttak ble åpnet gradvis igjen søndag 1. november, oppsto et nytt spørsmål: Ville kundene flytte pengene sine? Reuters rapporterte 2. november om netto uttak på rundt 3,64 milliarder dollar i de første ni og en halv timene etter gjenåpningen. Det er penger kundene tok ut, ikke en del av det opprinnelige tyveriet. Reuters oppga at dette tilsvarte omtrent 2,1 prosent av børsens eiendeler.
 
 Spørsmålet som gjenstår, er todelt: Hvor mye av det stjålne beløpet kan etterforskerne faktisk hente hjem, og hvilke svakheter i Binances systemer lot et så stort tap skje? Kundene har mest å tjene på at begge blir besvart – uavhengig av hvor raskt selskapet kan kjøpe nye kryptovalutaer.
 
 ### Kilder
-- FBI, 31. oktober: https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack
+- FBI, 31. oktober, tilskrivelse og identifiserte kryptoadresser: https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack
+- Binance, egen første tekniske forklaring 30. oktober: https://www.binance.com/en-GB/support/announcement/security-incident-update-2026-10-30-c5a8729a97ac486d963784d96c5642d7
 - Reuters, 30. oktober: https://live.euronext.com/en/financial-news/hackers-steal-63-billion-binance-worlds-biggest-crypto-heist
 - Binance, teknisk førstevurdering omtalt av BleepingComputer, 30. oktober: https://www.bleepingcomputer.com/news/security/binance-links-63-billion-crypto-theft-to-compromised-devops-laptop/
 - Binance, oppdatering 31. oktober: https://www.binance.com/en/square/post/383244799724069
