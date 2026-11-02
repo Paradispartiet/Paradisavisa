@@ -11,7 +11,7 @@ Feilen påvirket flere tog. Ett av dem var Iryo 6076, som ble stående nær Urda
 
 ## Klokken 08.36
 
-Ifølge rekonstruksjonen fra spanske transportmyndigheter, gjengitt av Euronews og El País, ga kontrollsentralen i Madrid-Atocha AVE-toget tillatelse til å gjenoppta kjøringen. Beskjeden gjaldt normal kjøring under et alternativt signalregime, til tross for feilen i hovedsystemet. Føreren ba om bekreftelse – og fikk den.
+Ifølge rekonstruksjonen fra spanske transportmyndigheter, gjengitt av Euronews og El País, ga kontrollsentralen i Madrid-Atocha AVE-toget tillatelse til å gjenoppta kjøringen. Beskjeden gjaldt normal kjøring under et alternativt signalregime, til tross for feilen i hovedsystemet. Føreren ba om bekreftelse – og fikk den. **Et avgjørende punkt er om begge tog faktisk fikk samme beskjed.** RTVE har referert transportmyndighetenes forklaring om at begge førere fikk kjøre videre, mens kilder nær Iryo sier selskapets lokfører ennå ikke hadde fått en slik tillatelse. Dette er motstridende beskrivelser av kommunikasjonen, som må avklares gjennom originale lydopptak og trafikklogger.
 
 Dette blir et av etterforskningens sentrale punkter. Ved kjøring på sikt etter systemsvikt gjelder strengere begrensninger for fart og avstand, men det var ikke slik ordren lød ifølge den publiserte rekonstruksjonen.
 
@@ -42,6 +42,7 @@ En framtidig granskningsrapport må forklare hvorfor føreren fikk beskjed om å
 ### Kilder
 - Euronews, tidslinje 29. oktober: https://www.euronews.com/2026/10/29/spain-train-crash-what-happened-in-the-17-minutes-before-the-collision
 - RTVE, rekonstruksjon med ulike tidsangivelser fra ministeren og Iryo: https://www.rtve.es/noticias/20261028/accidente-tren-urda-mapa-datos/17287369.shtml
+- RTVE, 29. oktober, motstridende forklaringer om kjøretillatelsen: https://www.rtve.es/noticias/20261029/accidente-tren-urda-toledo-rescate-investigacion/17287958.shtml
 - elDiario.es, posisjonsdata og tidslinje: https://www.eldiario.es/castilla-la-mancha/reconstruccion-minuto-minuto-accidente-ave-iryo_1_13623016.amp.html
 - Euronews, revidert dødstall 29. oktober: https://www.euronews.com/2026/10/29/death-toll-from-spain-train-crash-rises-to-74-as-royals-visit-victims
 - El País, løpende oppdatering 2. november: https://elpais.com/espana/2026-11-02/ultima-hora-y-reacciones-tras-el-accidente-de-trenes-de-urda-toledo-en-directo.html
@@ -49,4 +50,4 @@ En framtidig granskningsrapport må forklare hvorfor føreren fikk beskjed om å
 - El País, 2. november, undersøkelse av tidligere LZB-feil og trafikkprosedyrer: https://elpais.com/espana/2026-11-02/la-investigacion-del-siniestro-de-urda-analiza-si-adif-uso-el-protocolo-erroneo-mas-veces.html
 - RTVE, 1. november, Renfes nye obligatoriske 40 km/t-instruks: https://www.rtve.es/noticias/20261101/renfe-consigna-maquinistas-limitar-velocidad-40-km-sistema-lzb/17295757.shtml
 
-**Før eventuell publisering:** Les tilgjengelige primærrapporter fra AITAT, trafikklogger og infrastrukturforvalteren Adif; kontroller ministerens 170- og 13-tall, undersøk tidsavviket mellom 08.48 og cirka 08.53, dokumenter eksisterende 40 km/t-protokoll og hva Renfes nye instruks faktisk endrer, og oppdater døds- og skadetall. Ikke tildel strafferettslig skyld før etterforskning.
+**Før eventuell publisering:** Les tilgjengelige primærrapporter fra AITAT, trafikklogger og infrastrukturforvalteren Adif; kontroller ministerens 170- og 13-tall, undersøk tidsavviket mellom 08.48 og cirka 08.53 og om Iryo-føreren fikk kjøretillatelse, dokumenter eksisterende 40 km/t-protokoll og hva Renfes nye instruks faktisk endrer, og oppdater døds- og skadetall. Ikke tildel strafferettslig skyld før etterforskning.
