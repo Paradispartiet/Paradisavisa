@@ -21,7 +21,7 @@ I selskapets første tekniske forklaring sto en kompromittert bærbar PC tilhør
 
 Det avgjørende spørsmålet er derfor ikke bare *hvilken PC* som ble hacket, men **hvorfor ett kompromittert ledd kunne inngå i en kjede som endte med utbetalinger i milliardklassen**. Hvilke interne rettigheter var gitt? Hvilke ekstra kontroller skulle godkjenne store uttak? Hvorfor stoppet ikke systemet transaksjonene tidligere?
 
-Foreløpig finnes det ikke en offentlig, fullstendig teknisk rekonstruksjon som besvarer alle disse spørsmålene. Binance opplyser at en mer detaljert hendelsesrapport skal komme etter etterforskningen. Selskapet har sagt at det så langt ikke har funnet bevis for at de private kryptonøklene ble lekket.
+Per 2. november er det ikke dokumentert noen offentlig, fullstendig teknisk rekonstruksjon som besvarer alle disse spørsmålene. Binance opplyser at en mer detaljert hendelsesrapport skal komme etter etterforskningen. Selskapet har sagt at det så langt ikke har funnet bevis for at de private kryptonøklene ble lekket.
 
 ## Hvem tar tapet?
 
@@ -31,7 +31,7 @@ Selskapet anslår tyveriet til omkring 6,3 milliarder dollar. Binance opplyste 3
 
 Samtidig har Binance satt av egne ressurser for å dekke beholdningene som ble tappet. Selskapet oppga 31. oktober at om lag 90 prosent av berørte eiendeler var erstattet i reservene. **1. november oppjusterte Binance tallet til rundt 95 prosent.** De resterende rundt fem prosentene var, ifølge selskapet, mindre likvide kryptovalutaer som tar lengre tid å kjøpe inn i store mengder. **Selskapets oppdatering 1. november er en påstand om reserveoppfylling, ikke en full, uavhengig revisjon av tilbakebetalinger til alle kunder.**
 
-Pengene skal komme fra tre kilder: sikkerhetsfondet **SAFU**, deler av børsens **Futures Insurance Fund**, og selskapets egne midler. Dette betyr ikke at hackerne har levert tilbake 95 prosent av det de tok. Det betyr at Binance sier det har skaffet tilsvarende eiendeler til reservene for å dekke det meste av tapet. Dette er selskapets egen opplysning og bør kontrolleres mot senere uavhengig dokumentasjon.
+Pengene skal komme fra tre kilder: sikkerhetsfondet **SAFU**, deler av børsens **Futures Insurance Fund**, og selskapets egne midler. Dette betyr ikke at hackerne har levert tilbake 95 prosent av det de tok. Det betyr at Binance sier det har skaffet tilsvarende eiendeler til reservene for å dekke det meste av tapet. Ifølge selskapets oppdatering 1. november skulle den resterende delen fortsatt kjøpes inn; det var altså ikke dokumentert at alle berørte eiendeler var erstattet på dette tidspunktet. Dette er selskapets egen opplysning og bør kontrolleres mot senere uavhengig dokumentasjon.
 
 ## Hva skjer med kundene?
 
