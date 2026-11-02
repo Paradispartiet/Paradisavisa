@@ -1,6 +1,6 @@
 /* Paradisavisa: sikker mellomlagring innenfor eget GitHub Pages-område.
    Viktig: gamle stilark og nyhetsfiler hentes fra nett først. */
-const VERSION = "paradisavisa-v3-2026-10-30";
+const VERSION = "paradisavisa-v3-2026-11-02";
 const CACHE_PREFIX = "paradisavisa-";
 const SCOPE = new URL(self.registration.scope);
 
