@@ -1,0 +1,46 @@
+name: Kontroll av publisert Støre–Stubb-sak
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/kontroller-store-stubb-publisering.yml"
+      - "artikler/2026-11-02-store-stubb-diplomatisk-mulighet.html"
+      - "Bilder/store-stubb-diplomati-2026.svg"
+      - "Nyhetshjul.json"
+      - "kommentarer.json"
+
+permissions:
+  contents: read
+
+jobs:
+  kontroller-nettside:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Sjekk offentlig GitHub Pages, ikke bare GitHub-koden
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://paradispartiet.github.io/Paradisavisa"
+          artikkel="$base/artikler/2026-11-02-store-stubb-diplomatisk-mulighet.html"
+          for forsok in $(seq 1 18); do
+            echo "Kontroll $forsok: $artikkel"
+            url="$artikkel?kontroll=${GITHUB_RUN_ID}-$forsok"
+            status=$(curl -L -sS -o /tmp/paradisartikkel.html -w '%{http_code}' --max-time 25 "$url" || true)
+            echo "Artikkelens HTTP-status: $status"
+            if [ "$status" = "200" ] && grep -Fq 'Støre–Stubb: Den diplomatiske muligheten' /tmp/paradisartikkel.html; then
+              for fil in Nyhetshjul.json kommentarer.json; do
+                curl --fail -L -sS --max-time 25 "$base/$fil?kontroll=${GITHUB_RUN_ID}-$forsok" -o "/tmp/$fil"
+                grep -Fq 'artikler/2026-11-02-store-stubb-diplomatisk-mulighet.html' "/tmp/$fil"
+              done
+              curl --fail -L -sS --max-time 25 "$base/Bilder/store-stubb-diplomati-2026.svg?kontroll=${GITHUB_RUN_ID}-$forsok" -o /tmp/illustrasjon.svg
+              grep -Fq '<svg' /tmp/illustrasjon.svg
+              echo "OK: Artikkel, illustrasjon og oppføringer på forsiden er offentlig tilgjengelige."
+              exit 0
+            fi
+            echo "Ikke synlig ennå. Sjekker på nytt."
+            sleep 25
+          done
+          echo "FEIL: Artikkelen er ikke tilgjengelig på det offentlige nettstedet."
+          exit 1
