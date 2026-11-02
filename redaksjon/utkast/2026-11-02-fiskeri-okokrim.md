@@ -13,7 +13,7 @@ Det er nettopp dette dokumentet politiet nå undersøker.
 
 29. oktober opplyste Økokrim at mer enn 30 personer var pågrepet i en landsomfattende etterforskning. 20 selskaper var siktet, og sju personer varetektsfengslet. Aksjonene hadde omfattet rundt 50 steder i flere politidistrikter, med bistand fra blant annet Fiskeridirektoratet og Kystvakten. Kildene oppgir ulikt antall involverte politidistrikter, så dette bør avstemmes mot Økokrims primærinformasjon.
 
-Politiet sa det hadde sikret verdier i hundremillionersklassen, og mistenkte organisert, systematisk feilregistrering eller feilrapportering av hvitfiskfangst. Det er viktig å lese disse tallene nøyaktig. Verdier som er sikret gjennom beslag og andre tiltak, er ikke automatisk det samme som et endelig beregnet økonomisk tap, ulovlig fortjeneste eller verdien av feilrapporterte fiskemengder.
+Politiet sa det hadde sikret verdier i hundremillionersklassen, og mistenkte organisert, systematisk feilregistrering eller feilrapportering av hvitfiskfangst. Økokrim sier at etterforskningen startet etter tips og opplysninger som kom inn over tid. Aksjonene ble gjort i samarbeid med politi, Fiskeridirektoratet, Kystvakten og Justervesenet. Dette gjør kontrollsystemet rundt landing og måling av fangst til en del av historien, ikke bare politiaksjonens størrelse. Det er viktig å lese disse tallene nøyaktig. Verdier som er sikret gjennom beslag og andre tiltak, er ikke automatisk det samme som et endelig beregnet økonomisk tap, ulovlig fortjeneste eller verdien av feilrapporterte fiskemengder.
 
 ## Hvorfor betyr sluttseddelen så mye?
 
@@ -29,6 +29,8 @@ Slik systematisk manipulasjon *kan*, dersom den dokumenteres, skape økonomiske 
 
 Etterforskningen er likevel på et tidlig stadium. Pågripelse og siktelse er formelle mistankestatuser; de er ikke domfellelser. Ingen navngitte bedrifter eller personer bør utpekes som skyldige uten godt dokumenterte opplysninger og en reell mulighet til tilsvar.
 
+Den neste store journalistiske oppgaven er å finne ut **hvordan et dokument som skal sikre bærekraftig kvotekontroll, eventuelt kunne bli brukt til å omgå den**. Førstestatsadvokat Elisabeth Harbo-Lervik har forklart at uriktige sluttsedler kan føre til at myndighetene mister oversikten over ressursuttaket. Det kan skade både fellesskapets fiskeressurser og de aktørene som driver lovlig. Dette er påtalemyndighetens begrunnelse for alvorligheten, ikke et fastslått hendelsesforløp hos de siktede.
+
 Den neste store journalistiske oppgaven er å finne ut hvor kontrollen sviktet. Hvilke aktører signerte sluttsedlene? Hvem skulle kontrollere opplysningene? Hvilke mekanismer oppdager avvik? Og hvilke konkrete endringer mener fiskerinæringen selv vil hindre juks uten å gjøre lovlig fiske unødig vanskelig?
 
 Det er først når disse spørsmålene er besvart med dokumenter og uavhengige kilder at historien kan bli mer enn en oppsummering av en politiaksjon.
@@ -37,5 +39,6 @@ Det er først når disse spørsmålene er besvart med dokumenter og uavhengige k
 - VG, Økokrims pressekonferanse 29. oktober: https://www.vg.no/nyheter/i/b8VQdv/oekokrim-30-personer-paagrepet-i-politiaksjon-mot-fiskerinaeringen
 - Aftenposten/NTB, 29. oktober: https://www.aftenposten.no/norge/i/OgVlrl/oekokrim-mistenker-fiskerikriminalitet-i-100-millonersklassen-30-personer-paagrepet
 - Finansavisen/NTB, 29. oktober: https://www.finansavisen.no/sjomat/2026/10/29/8391731/okokrim-mistenker-fiskerikriminalitet-i-100-millionersklassen-30-personer-pagrepet
+- VG, 27. oktober, Økokrims første uttalelser og tips: https://www.vg.no/nyheter/i/Qge9j4/oekokrim-flere-personer-paagrepet-i-etterforskning-av-fiskerikriminalitet
 
 **Før eventuell publisering:** Innhent Økokrims opprinnelige pressemelding og tilgjengelige fengslingskjennelser; kontroller status på siktelser og beslag og innhent tilsvar fra berørte. Ikke gjett på dokumentert modus eller endelig økonomisk omfang.
