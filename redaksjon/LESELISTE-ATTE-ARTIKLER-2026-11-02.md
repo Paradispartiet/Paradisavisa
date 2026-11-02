@@ -15,6 +15,8 @@
 | 9 | Fangsten på papiret: Derfor etterforsker politiet fisk | [Les](utkast/2026-11-02-fiskeri-okokrim.md) | Siktelse er ikke dom; Økokrims originalsvar, beslagets verdi og berørtes tilsvar |
 | 10 | Norske medier stoppet Meta – men hvem bestemmer over journalistikken? | [Les](utkast/2026-11-02-meta-mediehus-forfoyning.md) | Få tak i rettens kjennelse, faktisk ordlyd i vilkårene og Metas svar; **samordne med eksisterende Meta-utkast** |
 
+**Kildekontroll 2. november:** [Les kvalitetssjekk for alle åtte sakene](KILDEKONTROLL-ATTE-ARTIKLER-2026-11-02.md). Ny offisiell opptelling i Serbia er nå innarbeidet (53,01 % for Studentlisten). Binance- og Spania-utkastene er oppdatert med 2. november-nyheter. **Ingen sak er faktagodkjent eller publisert.**
+
 ## Beslutningspunkt for redaktør
 Les og gi ett av tre signal for hver enkelt artikkel:
 - **Godkjent vinkel, fortsett med ferdigstilling.**
@@ -24,10 +26,10 @@ Les og gi ett av tre signal for hver enkelt artikkel:
 Ingen vinkling er automatisk godkjent av dette dokumentet. En godkjent *vinkling* er heller ikke ferdig faktakontroll, godkjenning for publisering eller tillatelse til å publisere.
 
 ## Viktig kilde- og tidsstatus
-1. **Binance**: 90 prosent var selskapets opplysning per 31. oktober; selskapet oppjusterte til rundt **95 prosent** og begynte en gradvis åpning av uttak 1. november. En påstått full erstatning av kundeeksponering er ikke tilbakeføring av stjålne midler.
-2. **Serbia**: RIKs tidlige telling per 26. oktober oppga **140** studentmandater; senere journalistiske rapporter oppga **141**. Ikke velg ett tall uten samtidig kilde- og tidsmerking.
+1. **Binance**: 90 prosent var selskapets opplysning per 31. oktober; selskapet oppjusterte til rundt **95 prosent** og begynte en gradvis åpning av uttak 1. november. Reuters rapporterte også større kundeuttak 2. november. En påstått full erstatning av kundeeksponering er ikke tilbakeføring av stjålne midler.
+2. **Serbia**: Ny offisiell opptelling fra alle valglokaler 2. november gir Studentlisten **53,01 %**. Endelig mandatfordeling må fortsatt avstemmes mot mandatprotokollen (tidlige/sekundære kilder oppga 140 og 141).
 3. **Frankrike**: Innenriksdepartementet oppga **320 000** deltakere 31. oktober, *lavere* enn 24. og 17. oktober. Det er feil å framstille tallene som et stadig stigende opprør.
-4. **Spania**: Dødstallet på **69** var bekreftet i kilder 2. november; tidligere høyere rapporter var revidert. Årsaken til kollisjonen er ikke endelig fastslått.
+4. **Spania**: **69 omkomne** var foreløpig status 2. november, og **66 var identifisert**. Tidligere høyere tall var revidert. Årsaken til kollisjonen er ikke endelig fastslått.
 5. **Israel**: 53 + 48 + 19 er en mandatinndeling, ikke en avklart regjeringsallianse.
 6. **Meta**: Tingrettens avgjørelse er en *midlertidig forføyning*, ikke endelig dom i alle spørsmål.
 
