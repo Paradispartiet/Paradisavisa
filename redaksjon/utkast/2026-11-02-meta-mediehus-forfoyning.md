@@ -19,6 +19,8 @@ Meta har bestridt medienes framstilling og gitt uttrykk for at selskapet ønsker
 
 Medienes krav har særlig dreid seg om retten til å reservere innhold, inngå frivillige avtaler om bruk til KI og unngå at et nei til vilkårene skal føre til redusert synlighet.
 
+Det er avgjørende å skille mellom **to versjoner av avtaleteksten**. I den første omstridte ordlyden var «train» eksplisitt nevnt som mulig formål. Etter kritikk fjernet Meta ordet og knyttet formålene til «advertising and business products», men beholdt en vid formulering om automatisk innhenting fra nettsteder som er knyttet til bedriftskontoer. Jurister intervjuet av Nieman Lab mener den reviderte teksten fortsatt kan gi omfattende fullmakter. Meta svarer at dette ikke gir nye rettigheter til å omgå nettsteders robots.txt-reservasjoner. Ingen av disse synspunktene må framstilles som en endelig rettsavgjørelse eller bevis for faktisk innhenting bak betalingsmurer.
+
 ## Retten grep inn før Meta fikk svare
 
 Retten har gitt mediehusene en **midlertidig forføyning**. Det er et rettslig pålegg som hindrer den planlagte endringen mens de underliggende spørsmålene undersøkes. Det er ikke en endelig dom om at enhver del av Metas avtaleutkast er ulovlig.
@@ -27,7 +29,7 @@ Ifølge omtalen av kjennelsen mente tingretten at vilkårene kunne være urimeli
 
 **Men kjennelsen ble avsagt uten at Meta først fikk uttale seg i et rettsmøte.** Retten handlet raskt ut fra skriftlig materiale. Meta kan kreve en etterfølgende muntlig forhandling, slik at selskapet får presentere sitt syn. Den vesentlige journalistiske forskjellen er derfor mellom en foreløpig stans og en endelig vurdering av alle partenes argumenter.
 
-Meta har via en talsperson sagt at selskapet ønsker å gjøre dette riktig og ikke planlegger å endre vilkårene uten grundig dialog med bransjeorganisasjonene. Ifølge NTB hadde Meta allerede utsatt den planlagte iverksettelsen til 20. november, og dialogen kunne innebære ytterligere utsettelse. Dette er Metas egen forklaring, ikke et bindende løfte om en bestemt avtaletekst. Kjennelsens ordlyd er gjengitt av NTB, men vi har foreløpig ikke innhentet det fullstendige rettsdokumentet og hele den omstridte avtaleteksten. Det begrenser hvor detaljert vi kan vurdere jussen og rettighetene vilkårene eventuelt ville gi.
+Meta har via en talsperson sagt at selskapet ønsker å gjøre dette riktig og ikke planlegger å endre vilkårene uten grundig dialog med bransjeorganisasjonene. Reuters meldte 28. oktober at Meta har utsatt innføringen av de reviderte kommersielle vilkårene på ubestemt tid. Den tidligere planlagte datoen 20. november er dermed ikke en fast ikrafttredelsesdato; Meta opplyser at eksisterende vilkår gjelder mens dialogen pågår. Dette er Metas egen forklaring, ikke et bindende løfte om en bestemt avtaletekst. Kjennelsens ordlyd er gjengitt av NTB, men vi har foreløpig ikke innhentet det fullstendige rettsdokumentet og hele den omstridte avtaleteksten. Det begrenser hvor detaljert vi kan vurdere jussen og rettighetene vilkårene eventuelt ville gi.
 
 ## Hvorfor angår dette leserne?
 
@@ -38,6 +40,8 @@ Her ligger den større historien: En mediebransje som ønsker å bli lest på gl
 Neste spørsmål er hva som skjer når saken behandles videre. Kommer Meta til å endre vilkårene, forhandle fram avtaler eller utfordre kjennelsen? Og vil resultatet skape en modell også andre land og bransjer må forholde seg til?
 
 ### Kilder
+- Nieman Lab, 16.–17. oktober, ordlydsendringer og motstridende juridiske tolkninger: https://www.niemanlab.org/2026/10/legal-experts-warn-metas-new-terms-still-grant-broad-scraping-permissions-despite-language-changes/
+- Reuters, 28. oktober, utsettelse på ubestemt tid og Metas forklaring: https://www.reuters.com/business/media-telecom/meta-delays-indefinitely-its-rollout-new-commercial-terms-after-publishers-2026-10-28/
 - Aftenposten/NTB, 28. oktober, kjennelsen og Metas reaksjon: https://www.aftenposten.no/norge/i/ylAk9a/norske-medier-vant-fram-med-krav-mot-meta-i-retten-forbys-aa-innfoere-endringer
 - MBL, 27. oktober, de tre konkrete kravene: https://www.mediebedriftene.no/artikler/2026/norske-mediehus-gar-til-retten-for-a-stoppe-meta
 - MBL, 28. oktober, partenes omtale av kjennelsen: https://www.mediebedriftene.no/artikler/2026/norske-mediehus-har-vunnet-frem-i-retten-mot-meta/
