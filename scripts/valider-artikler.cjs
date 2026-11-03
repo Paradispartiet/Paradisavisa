@@ -109,11 +109,30 @@ for(const article of catalog.artikler||[]){
         "Interne kontrollnotater ligger i publisert artikkel: "+article.publisert_url);
     }
   }
-  if(typeof imagePath!=="string"||!/^utkast\/\d{4}-\d{2}-\d{2}\/bilder\/[a-z0-9-]+\.svg$/.test(imagePath)){
+  if(typeof imagePath!=="string"||!/^utkast\/\d{4}-\d{2}-\d{2}\/bilder\/[a-z0-9-]+\.(?:svg|jpg|jpeg|png|webp)$/.test(imagePath)){
     errors.push("Ugyldig bildebane: "+slug);
   }else{
-    const svg=read(imagePath);
-    expect(svg.trimStart().startsWith("<svg")&&svg.trimEnd().endsWith("</svg>"),"Feil SVG: "+imagePath);
+    const filename=path.resolve(root,imagePath);
+    if(!filename.startsWith(root+path.sep)||!fs.existsSync(filename)){
+      errors.push("Mangler bildefil: "+imagePath);
+    }else{
+      const binary=fs.readFileSync(filename);
+      const extension=path.extname(imagePath).toLowerCase();
+      if(extension===".svg"){
+        const svg=binary.toString("utf8").trim();
+        expect(svg.startsWith("<svg")&&svg.endsWith("</svg>"),"Feil SVG: "+imagePath);
+      }else if(extension===".jpg"||extension===".jpeg"){
+        expect(binary.length>1000&&binary[0]===0xff&&binary[1]===0xd8&&
+          binary[binary.length-2]===0xff&&binary[binary.length-1]===0xd9,
+          "Ugyldig JPEG: "+imagePath);
+      }else if(extension===".png"){
+        expect(binary.length>1000&&binary.subarray(0,8).equals(Buffer.from("89504e470d0a1a0a","hex")),
+          "Ugyldig PNG: "+imagePath);
+      }else if(extension===".webp"){
+        expect(binary.length>1000&&binary.toString("ascii",0,4)==="RIFF"&&
+          binary.toString("ascii",8,12)==="WEBP","Ugyldig WebP: "+imagePath);
+      }
+    }
     const relative=imagePath.replace(/^utkast\/\d{4}-\d{2}-\d{2}\//,"");
     expect(html.includes('src="'+relative+'"'),"Artikkel mangler bilde: "+htmlPath);
   }
