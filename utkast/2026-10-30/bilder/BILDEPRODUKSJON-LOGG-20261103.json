@@ -42,6 +42,20 @@
     "output_bytes": 248916
   },
   {
+    "key": "witch_alt",
+    "file": "Witch Club Satan in Metropool Hengelo.jpg",
+    "license": "CC BY-SA 4.0",
+    "sha1": "6f834b94935ce2bd01ebbb698e9963a9842f63a8",
+    "size": [
+      3072,
+      4080
+    ],
+    "bytes": 2287718,
+    "output": "utkast/2026-10-30/bilder/witch-club-satan-portrait-candidate-2026.jpg",
+    "output_sha256": "29b12983099d3b41072eb273260ddc489b1a4b5e9c1b5bee118deeb110c53e12",
+    "output_bytes": 322826
+  },
+  {
     "key": "renata",
     "file": "Renata Flores, Riddu Riđđu 2024 (3).jpg",
     "license": "CC BY-SA 2.0",
