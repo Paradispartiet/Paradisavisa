@@ -1,0 +1,771 @@
+{
+  "tittel": "Paradisavisa – redaksjonell nyhetskalender",
+  "oppdatert": "2026-11-01",
+  "tidssone": "Europe/Oslo",
+  "beskrivelse": "Hendelseslogg og redaksjonelle oppfølgingspunkter. Kalenderen godkjenner eller publiserer ingen artikler. Alle datoer må kontrolleres på nytt før omtale.",
+  "statusforklaring": {
+    "bekreftet": "Dato i offisiell kilde, men tidspunkt kan endres",
+    "annonsert": "Oppført av arrangør, ikke uavhengig bekreftet gjennomført",
+    "etterkontroll": "Tidligere hendelse som må etterprøves",
+    "dato-ikke-bekreftet": "Overvåkingspunkt uten sikker hendelsesdato",
+    "utsatt": "Tidligere meldt dato, men ikke gjeldende frist"
+  },
+  "hendelser": [
+    {
+      "id": "helsereform-nou",
+      "dato": "2026-11-02",
+      "slutt_dato": null,
+      "klokkeslett": "11:00",
+      "tittel": "Helsereformutvalget overleverer NOU",
+      "type": "rapport",
+      "prioritet": "kritisk",
+      "status": "bekreftet",
+      "handling": "Se eller les offentliggjøringen; gjennomgå original-NOU, eventuelle dissenser, økonomi, pasientrettigheter og personell. Oppdater bare artikkelutkast; ikke framstill forslag som vedtak.",
+      "artikkel_ider": [
+        "helsereformutvalget-bakgrunn",
+        "prosjekt-x-14-helsepiloter"
+      ],
+      "pr_numre": [
+        17,
+        18
+      ],
+      "kilder": [
+        {
+          "navn": "HOD – presseinvitasjon",
+          "url": "https://www.regjeringen.no/no/aktuelt/helsereformutvalet-legg-fram-si-utgreiing/id3178280/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Overlevering kl. 11.00 i Marmorhallen; stream tilgjengelig. Eventuelle endringer kontrolleres direkte.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "matata-ekstra",
+      "dato": "2026-11-02",
+      "slutt_dato": "2026-11-04",
+      "klokkeslett": null,
+      "tittel": "MATATA – ekstra forestillinger ved Nordic Black Theatre",
+      "type": "kultur",
+      "prioritet": "hoy",
+      "status": "annonsert",
+      "handling": "Sjekk siste program, faktisk starttid og eventuelle avlysninger. Festivalprogrammet 30. okt.–1. nov. er ikke samme spilleperiode som teatrets.",
+      "artikkel_ider": [
+        "matata-oslo-world"
+      ],
+      "pr_numre": [
+        13
+      ],
+      "kilder": [
+        {
+          "navn": "Nordic Black Theatre – spilleplan",
+          "url": "https://nordicblacktheatre.no/program/matata-poverty-slaps-but-we-slap-back-harder-29-10-2026"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Arrangørens sider har motstridende tidsfelt (18.00/18.30/19.00). Ingen starttid registrert som sikker.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "matsystem-nou-paamelding",
+      "dato": "2026-11-05",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Frist for eventuell pressepåmelding til NOU om matsystemet",
+      "type": "redaksjonell-frist",
+      "prioritet": "normal",
+      "status": "bekreftet",
+      "handling": "Kun vurder dekning og eventuell påmelding hvis uttrykkelig instruert. Ikke send e-post eller meld på automatisk.",
+      "artikkel_ider": [],
+      "pr_numre": [],
+      "kilder": [
+        {
+          "navn": "Regjeringen – Matsystemutvalgets framleggelse",
+          "url": "https://www.regjeringen.no/no/aktuelt/fremleggelse-av-nou-matsystemet-mot-2050/id3183627/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Presseinvitasjonen oppgir påmelding innen 5. november. Ingen kontakt er tatt.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "matsystem-nou",
+      "dato": "2026-11-06",
+      "slutt_dato": null,
+      "klokkeslett": "09:30",
+      "tittel": "NOU «Matsystemet mot 2050» legges fram",
+      "type": "rapport",
+      "prioritet": "hoy",
+      "status": "bekreftet",
+      "handling": "Vurder ny artikkel: matberedskap, folkehelse, natur, klima, landbruk og fiskeri. Les original-NOU før nyhetskonklusjoner.",
+      "artikkel_ider": [],
+      "pr_numre": [],
+      "kilder": [
+        {
+          "navn": "Regjeringen – presseinvitasjon 6. november",
+          "url": "https://www.regjeringen.no/no/aktuelt/fremleggelse-av-nou-matsystemet-mot-2050/id3183627/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Marmorhallen i Oslo; annonsert presentasjon kl. 09.30–10.30. Ikke ennå en sak i artikkelkøen.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "cop31-start",
+      "dato": "2026-11-09",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "COP31 starter i Antalya",
+      "type": "klima",
+      "prioritet": "hoy",
+      "status": "bekreftet",
+      "handling": "Følg forhandlingsagenda, norske posisjoner og eventuelle nye klimapolitiske dokumenter. Ikke bland WMOs målinger for 2025 med 2026-utslipp.",
+      "artikkel_ider": [
+        "wmo-klimagasser"
+      ],
+      "pr_numre": [
+        8
+      ],
+      "kilder": [
+        {
+          "navn": "UNFCCC – COP31",
+          "url": "https://unfccc.int/cop31/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Konferanseperioden er 9.–20. november. Ingen bestemt pressemøtetid loggført.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "cop31-topmoete",
+      "dato": "2026-11-11",
+      "slutt_dato": "2026-11-12",
+      "klokkeslett": null,
+      "tittel": "COP31 – toppmøte for stats- og regjeringssjefer",
+      "type": "klima",
+      "prioritet": "hoy",
+      "status": "bekreftet",
+      "handling": "Følg offisiell dagsorden og uttalelser; kontroller om Norge deltar og hvilken rolle landet har.",
+      "artikkel_ider": [
+        "wmo-klimagasser"
+      ],
+      "pr_numre": [
+        8
+      ],
+      "kilder": [
+        {
+          "navn": "UNFCCC – om COP31",
+          "url": "https://unfccc.int/cop31/about"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Toppmøtet er annonsert 11.–12. november; enkeltmøter må kontrolleres i konferansekalenderen.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "efa-nominasjoner",
+      "dato": "2026-11-14",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "European Film Awards: hovednominasjoner",
+      "type": "kultur",
+      "prioritet": "hoy",
+      "status": "bekreftet",
+      "handling": "Kontroller om «Markens grøde» blir nominert. En kortlisteplass er ikke en nominasjon. Oppdater eventuell sak bare med akademiets faktiske kunngjøring.",
+      "artikkel_ider": [
+        "markens-grode-premiere"
+      ],
+      "pr_numre": [
+        15
+      ],
+      "kilder": [
+        {
+          "navn": "European Film Academy – prisregler og datoer",
+          "url": "https://www.europeanfilmawards.eu/campaign-rules/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Nominasjoner i de fleste kategorier 14. november. Tidspunkt ikke annonsert.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "cop31-slutt",
+      "dato": "2026-11-20",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "COP31 avsluttes etter planen",
+      "type": "klima",
+      "prioritet": "hoy",
+      "status": "bekreftet",
+      "handling": "Kontroller offisielle sluttvedtak, dokumenttekst, eventuelle forsinkelser og Norges reaksjoner før oppsummering.",
+      "artikkel_ider": [
+        "wmo-klimagasser"
+      ],
+      "pr_numre": [
+        8
+      ],
+      "kilder": [
+        {
+          "navn": "UNFCCC – konferansedatoer",
+          "url": "https://unfccc.int/cop31/ifp"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Avslutningsdato er planlagt og kan endres ved overtid.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "meta-gammel-dato",
+      "dato": "2026-11-20",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Meta: tidligere varslet ikrafttredelsesdato – nå utsatt",
+      "type": "digitalt",
+      "prioritet": "hoy",
+      "status": "utsatt",
+      "handling": "Sjekk nye kommersielle vilkår, eventuelt ny dato, norske rettsavgjørelser og CMA-sakens utvikling. Ikke skriv at vilkårene trer i kraft 20. november.",
+      "artikkel_ider": [
+        "medier-meta"
+      ],
+      "pr_numre": [
+        5
+      ],
+      "kilder": [
+        {
+          "navn": "CMA – opplyser at vilkårene er satt på vent",
+          "url": "https://www.gov.uk/government/news/cma-opens-investigation-into-metas-commercial-terms--2"
+        },
+        {
+          "navn": "Nieman Lab – Metas konsultasjonsløfte",
+          "url": "https://www.niemanlab.org/2026/10/meta-pledges-to-consult-publishers-before-finalizing-its-new-terms/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "OBS: 20. november er en historisk kommunisert dato, IKKE en bekreftet gjeldende frist.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "oscar-kortliste",
+      "dato": "2026-12-15",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Oscar-akademiet offentliggjør kortlister",
+      "type": "kultur",
+      "prioritet": "hoy",
+      "status": "bekreftet",
+      "handling": "Kontroller om «Markens grøde» kommer med på kortlisten i International Feature Film. Norges innsending er ikke automatisk nominert.",
+      "artikkel_ider": [
+        "markens-grode-premiere"
+      ],
+      "pr_numre": [
+        15
+      ],
+      "kilder": [
+        {
+          "navn": "Oscars – offisielle datoer for 99. Oscar",
+          "url": "https://www.oscars.org/99th-oscars-and-academy-key-dates"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Dato oppgitt i akademiets offisielle plan; tidspunkt ikke bekreftet.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "efa-prisfest",
+      "dato": "2027-01-16",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "39. European Film Awards i Athen",
+      "type": "kultur",
+      "prioritet": "hoy",
+      "status": "bekreftet",
+      "handling": "Kontroller prisvinnere og eventuelle norske resultater. Rett eldre opplysning om 17. januar i filmutkastet.",
+      "artikkel_ider": [
+        "markens-grode-premiere"
+      ],
+      "pr_numre": [
+        15
+      ],
+      "kilder": [
+        {
+          "navn": "European Film Academy – prisregler",
+          "url": "https://www.europeanfilmawards.eu/campaign-rules/"
+        },
+        {
+          "navn": "European Film Awards 2027",
+          "url": "https://www.europeanfilmawards.eu/award-edition/awards-2027/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Riktig dato er 16. januar 2027, ikke 17. januar.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "oscar-nominasjoner",
+      "dato": "2027-01-21",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Oscar-nominasjoner offentliggjøres",
+      "type": "kultur",
+      "prioritet": "hoy",
+      "status": "bekreftet",
+      "handling": "Kontroller om «Markens grøde» blir nominert. Oppdater artikkelen med dokumentert resultat.",
+      "artikkel_ider": [
+        "markens-grode-premiere"
+      ],
+      "pr_numre": [
+        15
+      ],
+      "kilder": [
+        {
+          "navn": "Oscars – offisielle nøkkeldatoer",
+          "url": "https://www.oscars.org/99th-oscars-and-academy-key-dates"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Dato og tidspunkt kan endres av akademiet.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "pensjon-horingsfrist",
+      "dato": "2027-01-27",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Høringsfrist: strategi for pensjonsinformasjon",
+      "type": "frist",
+      "prioritet": "hoy",
+      "status": "bekreftet",
+      "handling": "Kontroller innkomne høringssvar, eventuelle endringer i frist, og hva departementet gjør videre. Ikke omtale strategi som vedtatte pensjonsregler.",
+      "artikkel_ider": [
+        "pensjonsinformasjon"
+      ],
+      "pr_numre": [
+        11
+      ],
+      "kilder": [
+        {
+          "navn": "Arbeids- og inkluderingsdepartementet – høringsside",
+          "url": "https://www.regjeringen.no/no/dokumenter/horing-utkast-til-en-helhetlig-strategi-for-informasjon-pa-pensjonsomradet/id3184403/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Høringsstatus var «På høring» ved kontroll 1. november.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "oscars-seremoni",
+      "dato": "2027-03-14",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "99. Oscar-utdeling",
+      "type": "kultur",
+      "prioritet": "normal",
+      "status": "bekreftet",
+      "handling": "Følg resultatet hvis en norsk film blir nominert. Ikke anta deltagelse basert på innsending.",
+      "artikkel_ider": [
+        "markens-grode-premiere"
+      ],
+      "pr_numre": [
+        15
+      ],
+      "kilder": [
+        {
+          "navn": "Oscars – datooversikt",
+          "url": "https://www.oscars.org/99th-oscars-and-academy-key-dates"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Dato kan endres.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "renata-flores-etterkontroll",
+      "dato": "2026-10-31",
+      "slutt_dato": null,
+      "klokkeslett": "18:30",
+      "tittel": "Renata Flores – annonsert konsert på Oslo World",
+      "type": "kultur",
+      "prioritet": "normal",
+      "status": "etterkontroll",
+      "handling": "Undersøk om konserten og samtalen faktisk fant sted. Samtaletid var oppgitt både 14.00 og 15.00. Ikke skriv anmeldelse uten egen observasjon.",
+      "artikkel_ider": [
+        "renata-flores-quechua"
+      ],
+      "pr_numre": [
+        16
+      ],
+      "kilder": [
+        {
+          "navn": "Oslo World – konsertprogram",
+          "url": "https://osloworld.no/festival/arrangement/renata-flores"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Programmet dokumenterer annonsert tid, ikke faktisk gjennomføring.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "cma-meta-innledning",
+      "dato": "2026-10-30",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Britisk CMA åpnet etterforskning av Metas vilkår",
+      "type": "digitalt",
+      "prioritet": "normal",
+      "status": "etterkontroll",
+      "handling": "Følg videre saksbehandling, uttalelser og eventuelle vedtak. Ikke framstill åpning som avgjørelse om lovbrudd.",
+      "artikkel_ider": [
+        "medier-meta"
+      ],
+      "pr_numre": [
+        5
+      ],
+      "kilder": [
+        {
+          "navn": "CMA – offisiell presseuttalelse",
+          "url": "https://www.gov.uk/government/news/cma-opens-investigation-into-metas-commercial-terms--2"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Historisk milepæl; videre frister er ikke kunngjort.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "meta-kjennelse",
+      "dato": "2026-10-28",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Oslo tingretts midlertidige Meta-forføyning",
+      "type": "rett",
+      "prioritet": "hoy",
+      "status": "etterkontroll",
+      "handling": "Fremskaff og les originalkjennelse hvis tilgjengelig uten ekstern kontakt; kontroller anke, nye rettsmøter og senere beslutninger. Ingen e-post sendes.",
+      "artikkel_ider": [
+        "medier-meta"
+      ],
+      "pr_numre": [
+        5
+      ],
+      "kilder": [
+        {
+          "navn": "MBL – omtale av avgjørelsen",
+          "url": "https://www.mediebedriftene.no/artikler/2026/norske-mediehus-har-vunnet-frem-i-retten-mot-meta"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Sekundærkilder er gjennomgått; originalkjennelse ikke kontrollert.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "nsm-risiko",
+      "dato": "2026-10-27",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "NSM oppga nasjonalt cyberrisikonivå «høyt»",
+      "type": "beredskap",
+      "prioritet": "normal",
+      "status": "etterkontroll",
+      "handling": "Kontroller om risikonivået er hevet, senket eller presisert før bruk av eldre sak.",
+      "artikkel_ider": [
+        "cyberrisiko",
+        "uten-mobilnett"
+      ],
+      "pr_numre": [
+        3,
+        10
+      ],
+      "kilder": [
+        {
+          "navn": "NSM – risikonivå",
+          "url": "https://nsm.no/aktuelt/nsm-hever-det-nasjonale-cyberrisikonivaet-til-hoyt"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Vurderingen gjelder 27. oktober; ny status må verifiseres.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "stubb-videre-samtaler",
+      "dato": null,
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Mulige videre samtaler om Ukraina og Russland",
+      "type": "uten-dato",
+      "prioritet": "hoy",
+      "status": "dato-ikke-bekreftet",
+      "handling": "Sjekk offisielle kilder fra Ukraina, Norge og Finland for eventuelle møter, dato og resultater. Ikke bruk den tidligere annonserte Abu Dhabi-planen som bekreftet møte.",
+      "artikkel_ider": [
+        "store-stubb-putin"
+      ],
+      "pr_numre": [
+        6
+      ],
+      "kilder": [
+        {
+          "navn": "Statsministerens kontor – samtale med Putin",
+          "url": "https://www.regjeringen.no/no/aktuelt/president-stubb-og-statsminister-store-i-telefonsamtale-med-president-putin/id3183597/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Første halvdel av november ble omtalt som en mulighet; ingen bekreftet dato.",
+      "tidshorisont": "Tidlig november (tentativt)"
+    },
+    {
+      "id": "meta-rettslig-status",
+      "dato": null,
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Meta: norsk rettsprosess og britisk CMA-sak",
+      "type": "uten-dato",
+      "prioritet": "kritisk",
+      "status": "dato-ikke-bekreftet",
+      "handling": "Overvåk kunngjøringer om anke, nye muntlige forhandlinger, originalkjennelse, Cmas foreløpige vurdering eller ny dato for Metas vilkår.",
+      "artikkel_ider": [
+        "medier-meta"
+      ],
+      "pr_numre": [
+        5
+      ],
+      "kilder": [
+        {
+          "navn": "CMA – etterforskningen",
+          "url": "https://www.gov.uk/government/news/cma-opens-investigation-into-metas-commercial-terms--2"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Ikke tildel fiktive frister; oppdater når offentlig dato foreligger.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "equinor-regnskap",
+      "dato": null,
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Equinor: korreksjoner og videre børsmeldinger",
+      "type": "uten-dato",
+      "prioritet": "normal",
+      "status": "dato-ikke-bekreftet",
+      "handling": "Kontroller publiserte børsmeldinger og kvartalsresultat før eventuell oppdatering. Ikke gjett neste rapportdato.",
+      "artikkel_ider": [
+        "equinor-resultat"
+      ],
+      "pr_numre": [
+        7
+      ],
+      "kilder": [
+        {
+          "navn": "Equinor – nyheter",
+          "url": "https://www.equinor.com/news"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Ingen ny konkret publiseringsdato bekreftet.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "hav-oecm",
+      "dato": null,
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Havområder: endelige OECM-rapporter og verneeffekt",
+      "type": "uten-dato",
+      "prioritet": "normal",
+      "status": "dato-ikke-bekreftet",
+      "handling": "Søk etter endelige kart, kriterier, faktisk beskyttelse og reaksjoner fra forskere, naturvern og fiskeri.",
+      "artikkel_ider": [
+        "norske-havomrader"
+      ],
+      "pr_numre": [
+        9
+      ],
+      "kilder": [
+        {
+          "navn": "Miljødirektoratet – havområder",
+          "url": "https://www.miljodirektoratet.no/aktuelt/fagmeldinger/2026/oktober-2026/norske-havomrader-far-utvidet-beskyttelse/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Dato for neste dokument er ikke kjent.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "arbeidstid-rapport",
+      "dato": null,
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Arbeidstidsunntak: original AFI-rapport og rettslige følger",
+      "type": "uten-dato",
+      "prioritet": "normal",
+      "status": "dato-ikke-bekreftet",
+      "handling": "Les hele OsloMet-AFI-rapporten og undersøk metode; innhent synspunkter fra arbeidstaker- og arbeidsgiversiden hvis redaksjonen godkjenner kontakt.",
+      "artikkel_ider": [
+        "arbeidstid"
+      ],
+      "pr_numre": [
+        12
+      ],
+      "kilder": [
+        {
+          "navn": "Regjeringen – rapportomtale",
+          "url": "https://www.regjeringen.no/no/aktuelt/flere-er-unntatt-arbeidstidsreglene/id3183596/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Ingen konkret nytt tidspunkt oppgitt.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "prosjekt-x-evalueringer",
+      "dato": null,
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Prosjekt X: nye pilotevalueringer og beslutning om drift",
+      "type": "uten-dato",
+      "prioritet": "normal",
+      "status": "dato-ikke-bekreftet",
+      "handling": "Se etter uavhengige evalueringer av de 14 pilotene, inklusive mål, kostnader og endelige beslutninger.",
+      "artikkel_ider": [
+        "prosjekt-x-14-helsepiloter"
+      ],
+      "pr_numre": [
+        18
+      ],
+      "kilder": [
+        {
+          "navn": "Regjeringen – Prosjekt X",
+          "url": "https://www.regjeringen.no/no/tema/helse-og-omsorg/innsikt/dette-er-prosjekt-x/id3145374/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Rapport 2026 dokumenterer ikke ferdig effekt for alle 14.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "dsb-beredskap",
+      "dato": null,
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "DSB/Nkom: råd ved bortfall av nett og strøm",
+      "type": "uten-dato",
+      "prioritet": "normal",
+      "status": "dato-ikke-bekreftet",
+      "handling": "Sjekk nye myndighetsråd, endringer i cyberrisikonivå og lokale informasjonssteder før praktisk rådgivning.",
+      "artikkel_ider": [
+        "uten-mobilnett"
+      ],
+      "pr_numre": [
+        10
+      ],
+      "kilder": [
+        {
+          "navn": "Nkom – egenberedskap",
+          "url": "https://nkom.no/sikkerhet-og-beredskap/egenberedskap"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Ingen planlagt fast oppdateringsdato.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "wmo-korreksjoner",
+      "dato": null,
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "WMO: korreksjoner til klimagassmålinger for 2025",
+      "type": "uten-dato",
+      "prioritet": "normal",
+      "status": "dato-ikke-bekreftet",
+      "handling": "Sjekk eventuelle korrigerte tall. Skill 2025-konsentrasjoner fra COP31-forhandlinger i 2026.",
+      "artikkel_ider": [
+        "wmo-klimagasser"
+      ],
+      "pr_numre": [
+        8
+      ],
+      "kilder": [
+        {
+          "navn": "WMO Greenhouse Gas Bulletin nr. 22",
+          "url": "https://wmo.int/resources/publication-series/greenhouse-gas-bulletin/no-22"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Ingen dato for eventuell korreksjon.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "kino-program",
+      "dato": null,
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "Kinovisninger og spesialarrangement: HEX / Markens grøde",
+      "type": "uten-dato",
+      "prioritet": "normal",
+      "status": "dato-ikke-bekreftet",
+      "handling": "Avklar faktiske spesialvisninger og spilletid (HEX: 92/93 min; Markens grøde: 149/155 min) før publisering av publikumstips.",
+      "artikkel_ider": [
+        "hex-witch-club-satan",
+        "markens-grode-premiere"
+      ],
+      "pr_numre": [
+        14,
+        15
+      ],
+      "kilder": [
+        {
+          "navn": "Filmweb – HEX",
+          "url": "https://www.filmweb.no/film/EDI20250688"
+        },
+        {
+          "navn": "NFI – Markens grøde",
+          "url": "https://www.nfi.no/filmer-og-serier/markens-grode"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Arrangementenes gjennomføring og ulike spilletider er ikke bekreftet.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "efa-kortfilmnominasjon",
+      "dato": "2026-11-04",
+      "slutt_dato": null,
+      "klokkeslett": null,
+      "tittel": "European Film Awards: kortfilmnominasjon kunngjøres",
+      "type": "kultur",
+      "prioritet": "normal",
+      "status": "bekreftet",
+      "handling": "Kontroller den europeiske kortfilmnominasjonen. Dette er en annen kategori og annen dato enn hovednominasjonene 14. november; må ikke forveksles med status for «Markens grøde».",
+      "artikkel_ider": [],
+      "pr_numre": [],
+      "kilder": [
+        {
+          "navn": "European Film Academy – offentlig tidsplan",
+          "url": "https://www.europeanfilmawards.eu/campaign-rules/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Akademiet oppgir 4. november for European Short Film – Prix Vimeo; ingen bestemt klokkeslett oppgitt.",
+      "tidshorisont": ""
+    },
+    {
+      "id": "digitaliseringsraad-seminar",
+      "dato": "2026-11-11",
+      "slutt_dato": null,
+      "klokkeslett": "09:00",
+      "tittel": "Digitaliseringsrådets erfaringsseminar: ti år med digital omstilling",
+      "type": "digitalisering",
+      "prioritet": "normal",
+      "status": "bekreftet",
+      "handling": "Følg offentlig direktesending eller etterfølgende dokumentasjon; vurder om læringspunkter om offentlig digitalisering og styring gir grunnlag for ny artikkel. Ikke skriv at konklusjonene er kjent på forhånd.",
+      "artikkel_ider": [],
+      "pr_numre": [],
+      "kilder": [
+        {
+          "navn": "Regjeringen – oversikt over kommende nett-TV-sendinger",
+          "url": "https://www.regjeringen.no/no/aktuelt/nett-tv/id2000007/"
+        }
+      ],
+      "sist_kontrollert": "2026-11-01",
+      "merknad": "Oppført 11. november kl. 09.00 hos regjeringen. Sluttid er ikke kjent. Ingen artikkel er opprettet.",
+      "tidshorisont": ""
+    }
+  ]
+}

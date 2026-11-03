@@ -1,0 +1,234 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Paradisavisa//Nyhetskalender//NO
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Paradisavisa nyhetskalender
+X-WR-TIMEZONE:Europe/Oslo
+BEGIN:VTIMEZONE
+TZID:Europe/Oslo
+BEGIN:STANDARD
+DTSTART:19701025T030000
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+TZNAME:CET
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:19700329T020000
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+TZNAME:CEST
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:matata-ekstra@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261102
+DTEND;VALUE=DATE:20261105
+SUMMARY:MATATA – ekstra forestillinger ved Nordic Black Theatre
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Sjekk siste program\, faktisk starttid og eventuelle avlysninger
+ . Festivalprogrammet 30. okt.–1. nov. er ikke samme spilleperiode
+  som teatrets.\nArrangørens sider har motstridende tidsfelt (18.00
+ /18.30/19.00). Ingen starttid registrert som sikker.
+STATUS:TENTATIVE
+URL:https://nordicblacktheatre.no/program/matata-poverty-slaps-but-w
+ e-slap-back-harder-29-10-2026
+END:VEVENT
+BEGIN:VEVENT
+UID:helsereform-nou@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;TZID=Europe/Oslo:20261102T110000
+SUMMARY:Helsereformutvalget overleverer NOU
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Se eller les offentliggjøringen\; gjennomgå original-NOU\, eve
+ ntuelle dissenser\, økonomi\, pasientrettigheter og personell. Opp
+ dater bare artikkelutkast\; ikke framstill forslag som vedtak.\nOve
+ rlevering kl. 11.00 i Marmorhallen\; stream tilgjengelig. Eventuell
+ e endringer kontrolleres direkte.
+STATUS:CONFIRMED
+URL:https://www.regjeringen.no/no/aktuelt/helsereformutvalet-legg-fr
+ am-si-utgreiing/id3178280/
+END:VEVENT
+BEGIN:VEVENT
+UID:efa-kortfilmnominasjon@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:European Film Awards: kortfilmnominasjon kunngjøres
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Kontroller den europeiske kortfilmnominasjonen. Dette er en anne
+ n kategori og annen dato enn hovednominasjonene 14. november\; må 
+ ikke forveksles med status for «Markens grøde».\nAkademiet oppgi
+ r 4. november for European Short Film – Prix Vimeo\; ingen bestem
+ t klokkeslett oppgitt.
+STATUS:CONFIRMED
+URL:https://www.europeanfilmawards.eu/campaign-rules/
+END:VEVENT
+BEGIN:VEVENT
+UID:matsystem-nou-paamelding@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261105
+DTEND;VALUE=DATE:20261106
+SUMMARY:Frist for eventuell pressepåmelding til NOU om matsystemet
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Kun vurder dekning og eventuell påmelding hvis uttrykkelig inst
+ ruert. Ikke send e-post eller meld på automatisk.\nPresseinvitasjo
+ nen oppgir påmelding innen 5. november. Ingen kontakt er tatt.
+STATUS:CONFIRMED
+URL:https://www.regjeringen.no/no/aktuelt/fremleggelse-av-nou-matsys
+ temet-mot-2050/id3183627/
+END:VEVENT
+BEGIN:VEVENT
+UID:matsystem-nou@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;TZID=Europe/Oslo:20261106T093000
+SUMMARY:NOU «Matsystemet mot 2050» legges fram
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Vurder ny artikkel: matberedskap\, folkehelse\, natur\, klima\, 
+ landbruk og fiskeri. Les original-NOU før nyhetskonklusjoner.\nMar
+ morhallen i Oslo\; annonsert presentasjon kl. 09.30–10.30. Ikke e
+ nnå en sak i artikkelkøen.
+STATUS:CONFIRMED
+URL:https://www.regjeringen.no/no/aktuelt/fremleggelse-av-nou-matsys
+ temet-mot-2050/id3183627/
+END:VEVENT
+BEGIN:VEVENT
+UID:cop31-start@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+SUMMARY:COP31 starter i Antalya
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Følg forhandlingsagenda\, norske posisjoner og eventuelle nye k
+ limapolitiske dokumenter. Ikke bland WMOs målinger for 2025 med 20
+ 26-utslipp.\nKonferanseperioden er 9.–20. november. Ingen bestemt
+  pressemøtetid loggført.
+STATUS:CONFIRMED
+URL:https://unfccc.int/cop31/
+END:VEVENT
+BEGIN:VEVENT
+UID:cop31-topmoete@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261113
+SUMMARY:COP31 – toppmøte for stats- og regjeringssjefer
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Følg offisiell dagsorden og uttalelser\; kontroller om Norge de
+ ltar og hvilken rolle landet har.\nToppmøtet er annonsert 11.–12
+ . november\; enkeltmøter må kontrolleres i konferansekalenderen.
+STATUS:CONFIRMED
+URL:https://unfccc.int/cop31/about
+END:VEVENT
+BEGIN:VEVENT
+UID:digitaliseringsraad-seminar@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;TZID=Europe/Oslo:20261111T090000
+SUMMARY:Digitaliseringsrådets erfaringsseminar: ti år med digital 
+ omstilling
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Følg offentlig direktesending eller etterfølgende dokumentasjo
+ n\; vurder om læringspunkter om offentlig digitalisering og styrin
+ g gir grunnlag for ny artikkel. Ikke skriv at konklusjonene er kjen
+ t på forhånd.\nOppført 11. november kl. 09.00 hos regjeringen. S
+ luttid er ikke kjent. Ingen artikkel er opprettet.
+STATUS:CONFIRMED
+URL:https://www.regjeringen.no/no/aktuelt/nett-tv/id2000007/
+END:VEVENT
+BEGIN:VEVENT
+UID:efa-nominasjoner@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:European Film Awards: hovednominasjoner
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Kontroller om «Markens grøde» blir nominert. En kortlisteplas
+ s er ikke en nominasjon. Oppdater eventuell sak bare med akademiets
+  faktiske kunngjøring.\nNominasjoner i de fleste kategorier 14. no
+ vember. Tidspunkt ikke annonsert.
+STATUS:CONFIRMED
+URL:https://www.europeanfilmawards.eu/campaign-rules/
+END:VEVENT
+BEGIN:VEVENT
+UID:cop31-slutt@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:COP31 avsluttes etter planen
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Kontroller offisielle sluttvedtak\, dokumenttekst\, eventuelle f
+ orsinkelser og Norges reaksjoner før oppsummering.\nAvslutningsdat
+ o er planlagt og kan endres ved overtid.
+STATUS:CONFIRMED
+URL:https://unfccc.int/cop31/ifp
+END:VEVENT
+BEGIN:VEVENT
+UID:oscar-kortliste@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Oscar-akademiet offentliggjør kortlister
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Kontroller om «Markens grøde» kommer med på kortlisten i Int
+ ernational Feature Film. Norges innsending er ikke automatisk nomin
+ ert.\nDato oppgitt i akademiets offisielle plan\; tidspunkt ikke be
+ kreftet.
+STATUS:CONFIRMED
+URL:https://www.oscars.org/99th-oscars-and-academy-key-dates
+END:VEVENT
+BEGIN:VEVENT
+UID:efa-prisfest@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20270116
+DTEND;VALUE=DATE:20270117
+SUMMARY:39. European Film Awards i Athen
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Kontroller prisvinnere og eventuelle norske resultater. Rett eld
+ re opplysning om 17. januar i filmutkastet.\nRiktig dato er 16. jan
+ uar 2027\, ikke 17. januar.
+STATUS:CONFIRMED
+URL:https://www.europeanfilmawards.eu/campaign-rules/
+END:VEVENT
+BEGIN:VEVENT
+UID:oscar-nominasjoner@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20270121
+DTEND;VALUE=DATE:20270122
+SUMMARY:Oscar-nominasjoner offentliggjøres
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Kontroller om «Markens grøde» blir nominert. Oppdater artikke
+ len med dokumentert resultat.\nDato og tidspunkt kan endres av akad
+ emiet.
+STATUS:CONFIRMED
+URL:https://www.oscars.org/99th-oscars-and-academy-key-dates
+END:VEVENT
+BEGIN:VEVENT
+UID:pensjon-horingsfrist@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20270127
+DTEND;VALUE=DATE:20270128
+SUMMARY:Høringsfrist: strategi for pensjonsinformasjon
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Kontroller innkomne høringssvar\, eventuelle endringer i frist\
+ , og hva departementet gjør videre. Ikke omtale strategi som vedta
+ tte pensjonsregler.\nHøringsstatus var «På høring» ved kontrol
+ l 1. november.
+STATUS:CONFIRMED
+URL:https://www.regjeringen.no/no/dokumenter/horing-utkast-til-en-he
+ lhetlig-strategi-for-informasjon-pa-pensjonsomradet/id3184403/
+END:VEVENT
+BEGIN:VEVENT
+UID:oscars-seremoni@paradisavisa.no
+DTSTAMP:20261101T120000Z
+DTSTART;VALUE=DATE:20270314
+DTEND;VALUE=DATE:20270315
+SUMMARY:99. Oscar-utdeling
+DESCRIPTION:Redaksjonelt kontrollpunkt (ingen automatisk publisering
+ ). Følg resultatet hvis en norsk film blir nominert. Ikke anta del
+ tagelse basert på innsending.\nDato kan endres.
+STATUS:CONFIRMED
+URL:https://www.oscars.org/99th-oscars-and-academy-key-dates
+END:VEVENT
+END:VCALENDAR

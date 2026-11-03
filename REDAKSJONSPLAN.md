@@ -25,6 +25,7 @@ Paradisavisa er en selvstendig nettavis, ikke et partiorgan. Stoffvalg kan ha et
 
 - `utkast/artikler.json` er **den ene oversikten** over de individuelle utkastene. Den inneholder tittel, kategori, filbane, bilde, arbeidsmappens dato, status, faktasjekk og godkjenning.
 - `utkast/index.html` viser denne artikkelkøen med søk, aktive og arkiverte tekster og kontrollstatus. Den er `noindex` og er **ikke** en offentlig avisforside eller en publiseringsknapp.
+- **Nyhetskalender:** `utkast/nyhetskalender.html` viser redaksjonens søkbare kalender. `utkast/nyhetskalender.json` er hendelsesloggen og kilden til datoer, prioritet, PR-lenker, primærkilder og handlinger. `utkast/NYHETSKALENDER.md` er en lesbar logg; `.ics` er en statisk eksport. Før nye tidskritiske opplysninger inn med dato eller `null` hvis dato er usikker, og oppdater loggen når forhold endres. Ingen av filene oppdateres automatisk eller gir publiseringsgodkjenning.
 - Eksisterende arbeidsmapper `utkast/2026-10-28/`, `utkast/2026-10-30/` og `utkast/2026-11-02/` beholdes fordi de inneholder artikler, illustrasjoner og kilder. **Dato i mappen er ikke en utgave- eller publiseringsdato.**
 - Den eldre Ibsen-teksten er merket arkivert, men ikke slettet. Andre artikler står som aktive utkast. Ingen av dem har automatisk publiseringsgodkjenning.
 
