@@ -1,0 +1,88 @@
+name: Produser fem dokumenterte hovedbilder til samfunn og kultur
+
+on:
+  push:
+    branches:
+      - design/pensjon-arbeidsliv-kulturfoto-20261103
+    paths:
+      - .github/workflows/bygg-pensjon-arbeid-kultur-bilder.yml
+
+permissions:
+  contents: write
+
+jobs:
+  lag-bilder:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --quiet Pillow
+      - name: Verifiser Commons-lisens og lag fem selvstendige foto
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,io,json,re,html
+          from pathlib import Path
+          from urllib.parse import quote,urlencode
+          from urllib.request import Request,urlopen
+          from PIL import Image,ImageOps,ImageEnhance
+
+          images=[
+            dict(key='pension',filename='Senior woman working on laptop at home.jpg',size=(6048,4024),min_bytes=1200000,license='CC BY 2.0',target='pensjonsinformasjon-arkivfoto-2026.jpg',focus=(.48,.48),tone=(68,47,35),blend=.08,contrast=1.10,saturation=.99),
+            dict(key='work',filename='Depressed middle-aged businesswoman working late at night struggles with tasks in front of laptop while holding head with hands.jpg',size=(6048,4032),min_bytes=1200000,license='CC BY 2.0',target='arbeidstid-kveldsarbeid-arkivfoto-2026.jpg',focus=(.5,.47),tone=(22,29,48),blend=.085,contrast=1.14,saturation=1.00),
+            dict(key='witch',filename='Witch Club Satan au Motocultor 2026.jpg',size=(5184,3570),min_bytes=2000000,license='CC BY-SA 4.0',target='witch-club-satan-konsert-2026.jpg',focus=(.5,.43),tone=(45,12,25),blend=.05,contrast=1.12,saturation=1.06),
+            dict(key='renata',filename='Renata Flores, Riddu Riđđu 2024 (3).jpg',size=(2500,1667),min_bytes=500000,license='CC BY-SA 2.0',target='renata-flores-riddu-2024.jpg',focus=(.53,.47),tone=(32,21,51),blend=.05,contrast=1.09,saturation=1.08),
+            dict(key='markens',filename='Wheat field in early summer.jpg',size=(4032,1960),min_bytes=500000,license='CC BY-SA 4.0',target='markens-grode-akerlandskap-arkivfoto-2026.jpg',focus=(.5,.48),tone=(52,40,17),blend=.075,contrast=1.12,saturation=1.05),
+          ]
+          def request(url):
+              req=Request(url,headers={'User-Agent':'Paradisavisa/1.0 (https://github.com/Paradispartiet/Paradisavisa)'})
+              with urlopen(req,timeout=110) as response:
+                  return response.read()
+          out=Path('utkast/2026-10-30/bilder')
+          out.mkdir(parents=True,exist_ok=True)
+          log=[]
+          for spec in images:
+              file=spec['filename']
+              query=urlencode({'action':'query','format':'json','prop':'imageinfo','iiprop':'extmetadata','titles':'File:'+file})
+              metadata=json.loads(request('https://commons.wikimedia.org/w/api.php?'+query))
+              page=next(iter(metadata['query']['pages'].values()))
+              meta=page.get('imageinfo',[{}])[0].get('extmetadata',{})
+              license_name=html.unescape(meta.get('LicenseShortName',{}).get('value',''))
+              if license_name.replace(' ','').lower() != spec['license'].replace(' ','').lower():
+                  raise SystemExit(f"Lisensavvik for {file}: fikk {license_name!r}, forventet {spec['license']!r}")
+              original='https://commons.wikimedia.org/wiki/Special:FilePath/'+quote(file.replace(' ','_'),safe='(),-')
+              data=request(original)
+              digest=hashlib.sha1(data).hexdigest()
+              picture=ImageOps.exif_transpose(Image.open(io.BytesIO(data))).convert('RGB')
+              if picture.size not in (spec['size'],spec['size'][::-1]) or len(data)<spec['min_bytes']:
+                  raise SystemExit(f"Kildesjekk feilet for {file}: {picture.size}, {len(data)} bytes")
+              im=ImageOps.fit(picture,(1600,900),method=Image.Resampling.LANCZOS,centering=spec['focus'])
+              im=ImageEnhance.Contrast(im).enhance(spec['contrast'])
+              im=ImageEnhance.Color(im).enhance(spec['saturation'])
+              im=Image.blend(im,Image.new('RGB',im.size,spec['tone']),spec['blend'])
+              im=ImageEnhance.Sharpness(im).enhance(1.17)
+              location=out/spec['target']
+              im.save(location,'JPEG',quality=89,optimize=True,subsampling=0)
+              outbytes=location.read_bytes()
+              if len(outbytes)<100000 or not(outbytes.startswith(bytes((255,216))) and outbytes.endswith(bytes((255,217)))):
+                  raise SystemExit('Ugyldig JPEG: '+str(location))
+              log.append({'key':spec['key'],'file':file,'license':license_name,'sha1':digest,'size':picture.size,'bytes':len(data),'output':str(location),'output_sha256':hashlib.sha256(outbytes).hexdigest(),'output_bytes':len(outbytes)})
+              print('OK_KILDE',json.dumps(log[-1],ensure_ascii=False))
+          (out/'BILDEPRODUKSJON-LOGG-20261103.json').write_text(json.dumps(log,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Commit kun på arbeidsgrenen
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add utkast/2026-10-30/bilder/*.jpg utkast/2026-10-30/bilder/BILDEPRODUKSJON-LOGG-20261103.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Legg til fem lisenskontrollerte samfunns- og kulturfoto"
+          git push origin HEAD:refs/heads/design/pensjon-arbeidsliv-kulturfoto-20261103
