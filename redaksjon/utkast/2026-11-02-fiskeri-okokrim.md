@@ -1,7 +1,7 @@
 # Fangsten på papiret: Derfor etterforsker politiet fisk for hundrevis av millioner
 
 **NORGE / ØKONOMISK KRIMINALITET · REDAKSJONELT UTKAST – IKKE PUBLISERT**  
-**Researchstatus: 2. november 2026.**
+**Researchstatus: Oppdatert 3. november 2026 med kildeattribuert rapport om heftelser fra 2. november.**
 
 **Ingress:** Mer enn 30 personer er pågrepet og 20 selskaper siktet i en omfattende aksjon mot norsk fiskerinæring. Økokrim mistenker at fangst er blitt rapportert feil med vilje, og at aktører kan ha samarbeidet systematisk. Men hvorfor kan en feil på et papir få så store konsekvenser?
 
@@ -14,6 +14,10 @@ Begge dokumentene har betydning for kvotekontroll og ressursforvaltning. Sluttse
 29. oktober opplyste Økokrim at mer enn 30 personer var pågrepet i en landsomfattende etterforskning. 20 selskaper var siktet, og sju personer varetektsfengslet. Aksjonene hadde omfattet rundt 50 steder i flere politidistrikter, med bistand fra blant annet Fiskeridirektoratet og Kystvakten.
 
 Politiet sa det hadde sikret verdier i hundremillionersklassen, og mistenkte organisert, systematisk feilregistrering eller feilrapportering av hvitfiskfangst. Økokrim sier at etterforskningen startet etter tips og opplysninger som kom inn over tid. Aksjonene ble gjort i samarbeid med politi, Fiskeridirektoratet, Kystvakten og Justervesenet. Dette gjør kontrollsystemet rundt landing og måling av fangst til en del av historien, ikke bare politiaksjonens størrelse. Det er viktig å lese disse tallene nøyaktig. Verdier som er sikret gjennom beslag og andre tiltak, er ikke automatisk det samme som et endelig beregnet økonomisk tap, ulovlig fortjeneste eller verdien av feilrapporterte fiskemengder.
+
+## Nye opplysninger om heftelser
+
+Fiskeribladet meldte **2. november** at Økokrim hadde registrert heftelser på **minst 11 fiskebåter, for nær 100 millioner kroner**. Dette er opplysninger avisen tillegger Fiskeribladet. Paradisavisa har ennå ikke selv kontrollert de underliggende registreringene eller fått opplysningene bekreftet direkte fra Økokrim. En heftelse er et rettslig sikringstiltak og dokumenterer ikke i seg selv skyld. Beløpet skal heller ikke legges sammen med andre omtalte beslag eller behandles som et fastslått kriminalitetsutbytte uten dokumentert avstemming.
 
 ## Hvorfor betyr sluttseddelen så mye?
 
@@ -44,6 +48,7 @@ Videre må etterforskningen avklare om og eventuelt hvor kontrollen sviktet. Hvi
 Svarene kan få betydning både for straffesakene, tilliten til kontrollordningene og fiskere og mottak som følger reglene.
 
 ### Kilder
+- Fiskeribladet, 2. november, rapport om registrerte heftelser på fiskebåter (registergrunnlaget ikke kontrollert av redaksjonen): https://www.fiskeribladet.no/fiskeri/okokrim-sikret-pant-i-flere-fiskebater-etter-razzia/2-1-2067486
 - Fiskeridirektoratet, forklaring av landings- og sluttsedler: https://www.fiskeridir.no/yrkesfiske/rapportering-ved-landing/landings-og-sluttsedler
 - Fiskeridirektoratet, landingsforskriften som gjaldt fra 3. februar 2026: https://www.fiskeridir.no/yrkesfiske/j-meldinger/j-28-2026
 - NTB/Aftenposten 28. oktober, Økokrims opplysninger om varetektsfengsling: https://www.aftenposten.no/norge/i/VgAJw6/sju-personer-fengslet-i-sak-om-fiskerikriminalitet
