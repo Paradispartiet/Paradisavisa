@@ -35,7 +35,7 @@ jobs:
           imgs={
             'corridor':('Hospital hallway in Lagos.jpg',(3024,4032)),
             'hospital':('Gorliz - Hospital.jpg',(2048,1536)),
-            'staff':('Nurse taking notes while working on a laptop in a medical office.jpg',(6016,4016)),
+            'staff':('Female doctor working at a desk in a medical office.jpg',(6048,4032)),
             'room':('Modern hospital room with bed and sofa.jpg',(1121,913)),
           }
           src={}
@@ -91,9 +91,9 @@ jobs:
           reform=layout(reform_left,reform_right,edge=1030,blend=105)
           save(reform,'helsereform-hovedfoto-2026.jpg')
 
-          pilot_left=grade(crop(src['staff'],.44,.50,W,H),'warm')
+          pilot_left=grade(crop(src['staff'],.45,.33,W,H),'warm')
           pilot_right=grade(crop(src['room'],.50,.48,W,H),'cold')
-          pilots=layout(pilot_left,pilot_right,edge=850,blend=90)
+          pilots=layout(pilot_left,pilot_right,edge=1050,blend=28)
           save(pilots,'helsepiloter-samarbeid-hovedfoto-2026.jpg')
           PY
       - name: Lagre JPG-bilder bare på arbeidsgrenen
