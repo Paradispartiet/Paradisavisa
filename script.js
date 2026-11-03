@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Nyhetsinnhold lastes uavhengig av notisbåndet. Nettfeil i en
   // enkelt JSON-fil skal aldri hindre andre seksjoner i å vises.
-  if (document.querySelector(".notisbånd")) loadNotiser();
+  if (document.querySelector(".notisbånd")) {
+    initNotisPosisjon();
+    loadNotiser();
+  }
   if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
   if (document.getElementById("nyhetshjul2-grid")) loadNyhetshjul2();
   if (document.getElementById("sportshjul-grid")) loadSportshjul();
@@ -181,9 +184,39 @@ function loadCategoryArchive() {
 }
 
 /* ---------- Notisbånd: rolig, jevn og sømløs bevegelse ---------- */
+/* ---------- Safari: hold det faste notisbåndet i synlig vindu ---------- */
+function initNotisPosisjon() {
+  const band = document.querySelector(".notisbånd");
+  if (!band) return;
+  let pending = false;
+  const oppdater = () => {
+    pending = false;
+    const viewport = window.visualViewport;
+    const forskyvning = viewport
+      ? Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop)
+      : 0;
+    band.style.setProperty("--notis-visual-bottom", Math.round(forskyvning) + "px");
+  };
+  const planlegg = () => {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(oppdater);
+  };
+  oppdater();
+  window.visualViewport?.addEventListener("resize", planlegg);
+  window.visualViewport?.addEventListener("scroll", planlegg);
+  window.addEventListener("scroll", planlegg, { passive: true });
+  window.addEventListener("resize", planlegg);
+  window.addEventListener("pageshow", planlegg);
+}
+
+/* ---------- Notisbånd ---------- */
 function loadNotiser() {
   // Sportsiden bruker sitt eget notisutvalg, alle andre sider notiser.json.
-  const source = document.querySelector(".sport-banner") ? "sport-notiser.json" : "notiser.json";
+  const filename = document.querySelector(".sport-banner") ? "sport-notiser.json" : "notiser.json";
+  // Bruk script.js sin katalog, slik at notiser virker også i /artikler/.
+  const appScript = Array.from(document.scripts).find(el => el.src.split("?")[0].endsWith("/script.js"));
+  const source = new URL(filename, appScript?.src || window.location.href);
   return fetch(source, { cache: "no-store" })
     .then(response => {
       if (!response.ok) throw new Error("Kunne ikke hente notiser");
@@ -208,7 +241,7 @@ function loadNotiser() {
 
       innhold.classList.remove("is-running");
       innhold.replaceChildren();
-      band.querySelector(".notis-pause")?.remove();
+      band.querySelector(".notis-kontroller")?.remove();
       if (!items.length) return;
 
       const sekvens = document.createElement("span");
@@ -264,35 +297,130 @@ function loadNotiser() {
       kopi.querySelectorAll("a").forEach(link => link.tabIndex = -1);
       innhold.appendChild(kopi);
 
+      // Fire leser-valgte hastigheter (standard 1×), husket på denne enheten.
+      const fartvalg = [
+        { verdi: 0.5, navn: "0,5× – rolig" },
+        { verdi: 1, navn: "1× – normal" },
+        { verdi: 1.5, navn: "1,5× – rask" },
+        { verdi: 2, navn: "2× – ekstra rask" }
+      ];
+      let valgtFart = 1;
+      try {
+        const lagret = Number(localStorage.getItem("paradisavisa-notisfart"));
+        if (fartvalg.some(valg => valg.verdi === lagret)) valgtFart = lagret;
+      } catch (_) { /* Privat Safari kan blokkere lagring. */ }
+
       const oppdaterHastighet = () => {
         const bredde = sekvens.getBoundingClientRect().width;
-        if (bredde > 0) {
-          // Mobil: 30 px/s. Større skjermer: 38 px/s.
-          // Hastigheten er konstant gjennom hele løkken.
-          const fart = window.matchMedia("(max-width: 700px)").matches ? 30 : 38;
-          innhold.style.setProperty("--ticker-duration", (bredde / fart).toFixed(2) + "s");
+        if (!bredde) return;
+        const grunnfart = window.matchMedia("(max-width: 700px)").matches ? 30 : 38;
+        const grunnvarighet = bredde / grunnfart;
+        // Når støttet, endre playbackRate uten å hoppe tilbake til starten.
+        const animasjon = innhold.getAnimations?.()[0];
+        if (animasjon) {
+          innhold.style.setProperty("--ticker-duration", grunnvarighet.toFixed(2) + "s");
+          try {
+            animasjon.playbackRate = valgtFart;
+            return;
+          } catch (_) { /* Fallback for eldre Safari. */ }
         }
+        innhold.style.setProperty("--ticker-duration", (grunnvarighet / valgtFart).toFixed(2) + "s");
       };
 
-      const knapp = document.createElement("button");
-      knapp.type = "button";
-      knapp.className = "notis-pause";
-      knapp.textContent = "Pause";
-      knapp.setAttribute("aria-label", "Pause notisbåndet");
-      knapp.setAttribute("aria-pressed", "false");
-      knapp.addEventListener("click", () => {
-        const stoppet = band.classList.toggle("is-paused");
-        knapp.textContent = stoppet ? "Start" : "Pause";
-        knapp.setAttribute("aria-label", stoppet ? "Start notisbåndet" : "Pause notisbåndet");
-        knapp.setAttribute("aria-pressed", String(stoppet));
+      const kontroller = document.createElement("div");
+      kontroller.className = "notis-kontroller";
+
+      const pauseknapp = document.createElement("button");
+      pauseknapp.type = "button";
+      pauseknapp.className = "notis-pause";
+      const pauseikon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 5v14M17 5v14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>';
+      const startikon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>';
+      const visPauseknapp = () => {
+        const pauset = band.classList.contains("is-paused");
+        pauseknapp.innerHTML = pauset ? startikon : pauseikon;
+        pauseknapp.setAttribute("aria-label", pauset ? "Start notisbåndet" : "Pause notisbåndet");
+        pauseknapp.setAttribute("title", pauset ? "Start" : "Pause");
+        pauseknapp.setAttribute("aria-pressed", String(pauset));
+      };
+      pauseknapp.addEventListener("click", () => {
+        band.classList.toggle("is-paused");
+        visPauseknapp();
       });
-      band.appendChild(knapp);
+      visPauseknapp();
+      kontroller.appendChild(pauseknapp);
+
+      const hastighet = document.createElement("div");
+      hastighet.className = "notis-hastighet";
+      const fartknapp = document.createElement("button");
+      fartknapp.type = "button";
+      fartknapp.className = "notis-fartknapp";
+      fartknapp.setAttribute("aria-haspopup", "true");
+      fartknapp.setAttribute("aria-expanded", "false");
+      const meny = document.createElement("div");
+      meny.className = "notis-fartmeny";
+      meny.id = "notis-fartmeny";
+      meny.hidden = true;
+      meny.setAttribute("role", "group");
+      meny.setAttribute("aria-label", "Hastighet på notisbåndet");
+      fartknapp.setAttribute("aria-controls", meny.id);
+      const overskrift = document.createElement("span");
+      overskrift.className = "notis-fart-overskrift";
+      overskrift.textContent = "Velg hastighet";
+      meny.appendChild(overskrift);
+
+      const oppdaterFartknapper = () => {
+        fartknapp.textContent = String(valgtFart).replace(".", ",") + "×";
+        fartknapp.setAttribute("aria-label", "Velg hastighet – nå " + fartknapp.textContent);
+        fartknapp.title = "Hastighet: " + fartknapp.textContent;
+        meny.querySelectorAll("button[data-fart]").forEach(button => {
+          button.setAttribute("aria-pressed", String(Number(button.dataset.fart) === valgtFart));
+        });
+      };
+      for (const valg of fartvalg) {
+        const knapp = document.createElement("button");
+        knapp.type = "button";
+        knapp.dataset.fart = String(valg.verdi);
+        knapp.textContent = valg.navn;
+        knapp.addEventListener("click", () => {
+          valgtFart = valg.verdi;
+          try { localStorage.setItem("paradisavisa-notisfart", String(valgtFart)); }
+          catch (_) { /* Valget virker selv om lagring ikke er tilgjengelig. */ }
+          oppdaterFartknapper();
+          oppdaterHastighet();
+          meny.hidden = true;
+          fartknapp.setAttribute("aria-expanded", "false");
+          fartknapp.focus();
+        });
+        meny.appendChild(knapp);
+      }
+      fartknapp.addEventListener("click", () => {
+        meny.hidden = !meny.hidden;
+        fartknapp.setAttribute("aria-expanded", String(!meny.hidden));
+      });
+      document.addEventListener("click", event => {
+        if (!hastighet.contains(event.target)) {
+          meny.hidden = true;
+          fartknapp.setAttribute("aria-expanded", "false");
+        }
+      });
+      hastighet.addEventListener("keydown", event => {
+        if (event.key === "Escape" && !meny.hidden) {
+          meny.hidden = true;
+          fartknapp.setAttribute("aria-expanded", "false");
+          fartknapp.focus();
+          event.stopPropagation();
+        }
+      });
+      hastighet.append(fartknapp, meny);
+      kontroller.appendChild(hastighet);
+      band.appendChild(kontroller);
+      oppdaterFartknapper();
 
       // Mål tekstbredden etter at typografien er klar. Da unngår vi at
       // animasjonen endrer varighet og hopper idet nettfonten lastes.
       const start = () => {
-        oppdaterHastighet();
         innhold.classList.add("is-running");
+        oppdaterHastighet();
       };
       if (document.fonts?.ready) {
         document.fonts.ready.then(start, start);

@@ -50,7 +50,7 @@ if(!excerpt)stop("Ingen ingress i utkastet");
 const imageName=a.bilde.split("/").slice(-2).join("/");
 if(!draft.includes('src="'+imageName+'"'))stop("Bildebanen i utkastet stemmer ikke");
 const pretty=new Intl.DateTimeFormat("nb-NO",{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(new Date(date+"T12:00:00Z"));
-let html=draft.replace('<meta name="robots" content="noindex, nofollow">',
+let html=draft.replace(/<meta name="robots" content="noindex\s*,\s*nofollow">/,
  '<meta name="robots" content="index, follow">\n<meta property="article:published_time" content="'+date+'">')
  .replaceAll('href="../../index.html"','href="../index.html"')
  .replaceAll('href="../../styles.css"','href="../styles.css"')
@@ -59,9 +59,16 @@ let html=draft.replace('<meta name="robots" content="noindex, nofollow">',
  .replace('src="'+imageName+'"','src="../'+publicImage+'"')
  .replace(/<p class="utkast-etikett">REDAKSJONELT UTKAST[^<]*<\/p>/,"")
  .replace(/<p class="utkast-kategori">([^<]*)<\/p>/,
-  (_,label)=>'<p class="utkast-kategori">'+label.split("·")[0].trim()+' · <time datetime="'+date+'">Publisert '+pretty+'</time></p>');
+  (_,label)=>'<p class="utkast-kategori">'+label.split("·")[0].trim()+' · <time datetime="'+date+'">Publisert '+pretty+'</time></p>')
+ .replace(/<p><strong>Før (?:eventuell )?publisering:<\/strong>[\s\S]*?<\/p>/g,"")
+ .replace(/<p[^>]*>Dette er et upublisert redaksjonelt utkast\.[\s\S]*?<\/p>/g,"")
+ .replace(/\s*\| Paradisavisa – (?:intern forhåndsvisning|redaksjonelt utkast|utkast)/g," | Paradisavisa")
+ .replace(/<p>Ingen originale intervjuer er gjennomført[^<]*<\/p>/g,"");
 html=fjernInterneNotater(html);
-if(html.includes('noindex, nofollow')||html.includes("REDAKSJONELT UTKAST")||
+if(/noindex\s*,\s*nofollow/.test(html)||html.includes("REDAKSJONELT UTKAST")||
+   html.includes("Dette er et upublisert redaksjonelt utkast")||
+   html.includes("Før eventuell publisering:")||
+   html.includes("Før publisering:")||
    !html.includes('href="../styles.css"')||!html.includes('src="../'+publicImage+'"'))
  stop("Publiseringskopien bestod ikke grunnkontrollen");
 const record={title:a.tittel,excerpt:excerpt.replaceAll("&quot;",'"').replaceAll("&amp;","&"),

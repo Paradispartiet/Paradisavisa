@@ -13,14 +13,12 @@
   <meta property="og:site_name" content="Paradisavisa">
 
   <link rel="icon" href="ikon-paradis.png">
-  <link rel="stylesheet" href="styles.css?v=32">
-  <link rel="stylesheet" href="avisdesign.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=37">
+  <link rel="stylesheet" href="avisdesign.css?v=5">
 </head>
 <body class="notiser-side">
 
-  <div class="notisbånd"><div class="notisinnhold"></div></div>
   <div id="header-placeholder"><a href="index.html" class="avis-fallback-link">← Til Paradisavisa</a></div>
-
   <main id="hovedinnhold" class="arkiv-hoved notis-arkiv-hoved">
     <p class="arkiv-kategori">Paradisavisa / Korte nyheter</p>
     <h1>Notisarkiv</h1>
@@ -36,7 +34,9 @@
     </p>
   </footer>
 
-  <script defer src="script.js?v=29"></script>
+  <div class="notisbånd"><div class="notisinnhold"></div></div>
+
+  <script defer src="script.js?v=30"></script>
   <script>
     // Arkivnotiser settes inn som tekst, aldri som ufiltrert HTML.
     fetch("notiser.json", { cache: "no-store" })

@@ -13,39 +13,12 @@
   <meta property="og:site_name" content="Paradisavisa">
 
   <link rel="icon" href="../ikon-paradis.png">
-  <link rel="stylesheet" href="../styles.css?v=13">
+  <link rel="stylesheet" href="../styles.css?v=37">
+  <script defer src="../script.js?v=30"></script>
 
   <style>
     /* --- lokal tillegg: sikre notisbånd + fade + float-bilde --- */
-    /* sticky notisbånd (samme stil som index.css, men sikrer denne siden) */
-    .notisbånd {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      background: #000;
-      border-bottom: 2px solid #f6c800;
-      box-shadow: 0 2px 8px rgba(255,214,0,0.35);
-      color: #eee;
-      font-size: 0.95rem;
-      padding: 0.4rem 0;
-      z-index: 9999;
-    }
-    .notisinnhold {
-      display: inline-block;
-      padding-left: 100%;
-      animation: ticker 75s linear infinite;
-    }
-    .notisinnhold span {
-      display: inline-block;
-      margin-right: 4rem;
-      opacity: 0.95;
-    }
-    .notisinnhold strong { color: #f6c800; font-weight: 700; margin-right: 0.3rem; }
-    .notisinnhold a { color: #f6c800; text-decoration: none; }
-    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+    /* Båndet styres av felles styles.css og script.js. */
 
     /* header konsistent */
     .avis-header {
@@ -55,7 +28,7 @@
       background: linear-gradient(to bottom, #000 0%, #0a0a0a 100%);
       padding: 1rem 1rem 0.6rem;
       text-align: center;
-      margin-top: 48px; /* plass for sticky notisbånd */
+      margin-top: 0; /* nyhetsbåndet er nå fast nederst */
     }
     .avis-logo { font-size: 3rem; font-weight: 900; letter-spacing: 2px; color: #f6c800; margin-bottom: 0.05rem; }
 
@@ -114,15 +87,8 @@
 </head>
 
 <body>
-  <!-- sticky notisbånd (innhold fylles av script.js hvis tilgjengelig, ellers har vi fallback) -->
-  <div class="notisbånd" aria-hidden="false">
-    <div class="notisinnhold" id="notis-ticker">
-      <span><a href="../index.html">Paradisavisa</a> · Kommentarer, analyser og nyheter</span>
-      <span><a href="../kategori/debatt.html">Debatt</a></span>
-      <span><a href="../kategori/kultur.html">Kultur</a></span>
-      <span><a href="../kategori/samfunn.html">Samfunn</a></span>
-    </div>
-  </div>
+  <!-- Felles, kompakt notisbånd med pause og hastighetsvalg. -->
+  <div class="notisbånd"><div class="notisinnhold"></div></div>
 
   <!-- header (identisk med forsiden) -->
   <header class="avis-header" id="top">
@@ -201,28 +167,6 @@
       const page = document.getElementById('page-content');
       requestAnimationFrame(() => page.classList.add('show'));
     });
-
-    // notis-ticker: forsøk å hente notiser fra notiser.json hvis fil finnes
-    (function loadNotiser() {
-      fetch('../notiser.json', {cache: 'no-store'})
-        .then(r => {
-          if (!r.ok) throw new Error('no notiser');
-          return r.json();
-        })
-        .then(items => {
-          const el = document.getElementById('notis-ticker');
-          if (!el) return;
-          el.innerHTML = '';
-          items.forEach(n => {
-            const span = document.createElement('span');
-            span.innerHTML = n.url ? `<a href="${n.url}"><strong>${n.category}:</strong></a> ${n.text}` : `<strong>${n.category}:</strong> ${n.text}`;
-            el.appendChild(span);
-          });
-        })
-        .catch(()=> {
-          // fallback: beholde statisk innhold allerede i HTML
-        });
-    })();
 
     // myk sideovergang ved interne klikk (progressive enhancement)
     document.addEventListener('click', (e) => {

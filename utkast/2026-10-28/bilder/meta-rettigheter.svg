@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 840" role="img" aria-labelledby="t d">
+<title id="t">Når et teknisk nei møter en vid avtale</title><desc id="d">En symbolsk robots.txt-reservasjon og et stort kontraktsark med en uavklart grense mellom dem, uten logoer eller mennesker.</desc>
+<defs><linearGradient id="paper" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#d9e7e3"/><stop offset="1" stop-color="#91aaa9"/></linearGradient><linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#182e3e"/><stop offset="1" stop-color="#071015"/></linearGradient></defs>
+<rect width="1440" height="840" fill="#000"/>
+<g transform="translate(96 158) rotate(-5 260 250)"><rect width="510" height="485" rx="18" fill="url(#screen)" stroke="#5e9b9b" stroke-width="4"/>
+<text x="46" y="87" font-family="ui-monospace,monospace" fill="#aad9cd" font-size="48">robots.txt</text>
+<path d="M47 118h415" stroke="#4d7580" stroke-width="4"/>
+<text x="46" y="222" font-family="ui-monospace,monospace" fill="#dcece8" font-size="36">User-agent: *</text>
+<text x="46" y="296" font-family="ui-monospace,monospace" fill="#edba9c" font-size="36">Disallow: /</text>
+<circle cx="441" cy="403" r="39" fill="#2d4148" stroke="#d48f71" stroke-width="5"/><path d="m419 383 43 42m0-42-43 42" stroke="#f4c3a5" stroke-width="7" stroke-linecap="round"/>
+</g>
+<g transform="translate(795 91) rotate(5 260 300)"><path d="M0 0h449l50 55v547H0Z" fill="url(#paper)"/><path d="M449 0v55h50" fill="#789a9d"/>
+<text x="43" y="107" font-family="Georgia,serif" font-size="54" fill="#1c3341">VILKÅR</text>
+<g stroke="#3e5865" stroke-width="11" stroke-linecap="round"><path d="M47 161h377"/><path d="M47 204h333"/><path d="M47 247h375"/><path d="M47 291h307"/><path d="M47 333h367"/><path d="M47 380h245"/><path d="M47 422h352"/></g>
+<path d="M52 506h361" stroke="#a65f52" stroke-width="15" stroke-linecap="round" opacity=".9"/>
+</g>
+<path d="M659 268q70 122 4 250" stroke="#c4d7d2" fill="none" stroke-width="6" stroke-dasharray="13 17"/>
+<circle cx="662" cy="397" r="29" fill="#0d1e28" stroke="#b4d7ce" stroke-width="5"/>
+<text x="662" y="411" text-anchor="middle" font-size="38" fill="#e9d4ba" font-family="Georgia,serif">?</text>
+<text x="119" y="735" font-size="30" font-family="system-ui,sans-serif" fill="#b4ccc6" letter-spacing="1">TEKNISK RESERVASJON</text>
+<text x="1003" y="735" font-size="30" font-family="system-ui,sans-serif" fill="#d6d5c9" letter-spacing="1">AVTALERETT</text>
+</svg>

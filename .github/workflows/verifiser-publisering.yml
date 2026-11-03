@@ -1,0 +1,28 @@
+name: Bekreft at Paradisavisa er publisert
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: verifiser-publisering-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  offentlig-side:
+    name: Sammenlign GitHub Pages med siste main
+    runs-on: ubuntu-24.04
+    timeout-minutes: 16
+    steps:
+      - name: Hent koden fra siste main
+        uses: actions/checkout@v4
+      - name: Sett opp Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vent på publisering og kontroller offentlig side
+        run: node scripts/verifiser-publisering.cjs

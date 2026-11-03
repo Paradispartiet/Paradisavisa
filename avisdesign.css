@@ -3,8 +3,8 @@
    Uten innrammede overskrifter eller dekorative kortbokser. */
 .avis-forside {
   --avis-bredde: 1180px;
-  --avis-papir: #f2efe7;
-  --avis-dempa: #b8b6ae;
+  --avis-papir: #fff;
+  --avis-dempa: #fff;
   --avis-linje: #403d34;
   background:#080808;
   color:var(--avis-papir);
@@ -24,11 +24,7 @@
 .avis-forside .avis-masthead .avis-identitet h1 {
   text-shadow:none;
 }
-.avis-forside .avis-masthead .avis-identitet::after {
-  margin-top:1.25rem;
-  height:2px;
-  background:var(--yellow);
-}
+.avis-forside .avis-masthead .avis-identitet::after {display:none}
 .avis-forside .avis-masthead .avis-kategorier {
   color:#b9b5a8;
   font-weight:550;
@@ -416,7 +412,7 @@
 
 /* Sportssiden bruker samme struktur som resten av nettavisa, ikke et
    ekstra, fast gult banner under notisbåndet. */
-body.sport-side,body.notiser-side {padding-top:46px}
+body.sport-side,body.notiser-side {padding-top:0}
 .sport-side #sport.arkiv-hoved {
   width:100%;
   max-width:1180px;
@@ -560,3 +556,7 @@ body.sport-side,body.notiser-side {padding-top:46px}
   }
   .sport-side #sportshjul-grid .hjul-card h3 {font-size:1.42rem}
 }
+
+/* Lesbarhetskrav: artikkeloversikter er alltid hvit skrift på sort. */
+.avis-forside{background:#000;color:#fff}
+.avis-forside .avis-motto,.avis-forside .avis-kategorier,.avis-forside .avis-leserinfo p,.avis-forside .seksjonsinfo,.avis-forside .hjul-card h3,.avis-forside .hjul-card p,.avis-forside .forside-dato,.avis-forside .avis-seksjon .seksjonstittel,.avis-forside .avis-seksjonslenke{color:#fff!important}

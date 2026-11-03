@@ -1,8 +1,8 @@
 :root {
 --yellow: #FFD600;
   --bg: #000;
-  --text: #eee;
-  --muted: #bbb;
+  --text: #fff;
+  --muted: #fff;
   --header-bg: #000;
 }
 
@@ -10,7 +10,7 @@
 /* BASE                                                                */
 /* =================================================================== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { color-scheme: light dark; }
+html, body { color-scheme: dark; }
 
 body {
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -21,27 +21,48 @@ body {
 }
 
 /* =================================================================== */
-/* NOTISBÅND                                                           */
+/* NOTISBÅND – én kompakt rad, alltid i synlig bunn av Safari-vinduet   */
 /* =================================================================== */
 .notisbånd {
   position: fixed;
-  top: 0; left: 0;
+  top: auto;
+  bottom: calc(var(--notis-visual-bottom, 0px) + env(safe-area-inset-bottom, 0px));
+  left: 0;
   width: 100%;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  min-height: 32px;
+  overflow: visible; /* Hastighetsmenyen skal kunne åpnes over båndet. */
   white-space: nowrap;
-  background: #000;
-  border-top: 2px solid var(--yellow);
-  border-bottom: 2px solid var(--yellow);
+  background: #080808;
+  border-top: 1px solid #74601d;
+  border-bottom: 0;
   color: #eee;
-  font-size: 1.1rem;
-  padding: 0.4rem 0;
+  font-size: .86rem;
+  line-height: 1.25;
+  padding: 2px 0 2px .5rem;
   z-index: 9999;
   box-sizing: border-box;
+  /* Eget komposisjonslag hindrer iOS Safari i å skjule båndet ved scroll. */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
-/* Tekstfeltet slutter før pauseknappen, så tekst ikke skjules bak knappen. */
+/* Innhold og footer skal ikke bli skjult av den faste bunnlinjen. */
+body.avis-forside,
+body.sport-side,
+body.notiser-side,
+body:has(> .notisbånd) {
+  padding-bottom: calc(3rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Bare selve teksten klippes; hastighetsvalgene vises over båndet. */
 .notis-visning {
-  width: calc(100% - 78px);
+  flex: 1 1 auto;
+  width: auto;
   min-width: 0;
   overflow: hidden;
   position: relative;
@@ -49,8 +70,6 @@ body {
 .notis-visning:focus-within .notisinnhold {
   animation-play-state: paused;
 }
-/* To identiske sekvenser gir en sømløs ticker uten hopp ved omstart.
-   Varigheten måles i JavaScript for jevn hastighet uansett tekstlengde. */
 .notisinnhold {
   display: flex;
   align-items: center;
@@ -72,8 +91,8 @@ body {
   flex: 0 0 auto;
   align-items: center;
   gap: 1.4rem;
+  padding-right: 1.4rem;
   margin-right: 0;
-  padding-right: 1.4rem; /* naturlig avstand mellom siste og første notis */
 }
 .notisinnhold .notis-sekvens > span,
 .notisinnhold .notis-tekst { margin-right: 0; }
@@ -85,32 +104,72 @@ body {
 @media (hover: hover) and (pointer: fine) {
   .notisinnhold:hover { animation-play-state: paused; }
 }
-.notis-pause {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  right: .35rem;
-  transform: translateY(-50%);
-  min-width: 66px;
-  min-height: 34px;
-  padding: .25rem .55rem;
-  border: 1px solid #696969;
-  border-radius: 4px;
-  color: #f2f2f2;
-  background: #111;
-  font: 600 .78rem/1.2 'Inter', system-ui, sans-serif;
-  cursor: pointer;
-  box-shadow: -12px 0 15px #000;
+.notis-kontroller {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: .25rem;
+  padding-right: .4rem;
 }
-.notis-pause:hover, .notis-pause:focus-visible {
+.notis-kontroller button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 29px;
+  height: 26px;
+  padding: 0 .3rem;
+  border: 1px solid #484848;
+  border-radius: 3px;
+  background: #171717;
+  color: #f2f2f2;
+  font: 600 .76rem/1 'Inter', system-ui, sans-serif;
+  cursor: pointer;
+}
+.notis-kontroller button:hover,
+.notis-kontroller button:focus-visible,
+.notis-kontroller button[aria-expanded="true"] {
   color: var(--yellow);
   border-color: var(--yellow);
 }
-.notis-pause:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.notis-kontroller button:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.notis-pause svg { display: block; width: 13px; height: 13px; }
+.notis-hastighet { position: relative; }
+.notis-fartknapp { min-width: 39px !important; }
+.notis-fartmeny {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 9px);
+  z-index: 10000;
+  display: grid;
+  gap: 3px;
+  min-width: 135px;
+  padding: .45rem;
+  background: #101010;
+  border: 1px solid #736127;
+  border-radius: 5px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.8);
+}
+.notis-fartmeny[hidden] { display: none !important; }
+.notis-fart-overskrift {
+  color: #c5c5c5;
+  font: 600 .68rem/1.5 'Inter', system-ui, sans-serif;
+  padding: .2rem .4rem;
+}
+.notis-kontroller .notis-fartmeny button {
+  width: 100%;
+  height: 31px;
+  justify-content: flex-start;
+  padding: 0 .5rem;
+  border-color: transparent;
+  white-space: nowrap;
+}
+.notis-kontroller .notis-fartmeny button[aria-pressed="true"] {
+  color: var(--yellow);
+  border-color: #6f5a18;
+  background: #29220f;
+}
 @media (prefers-reduced-motion: reduce) {
-  /* Ingen automatisk bevegelse. Alle notiser kan leses ved å bla vannrett. */
   .notis-visning {
-    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: thin;
@@ -118,23 +177,16 @@ body {
   }
   .notisinnhold.is-running { animation: none; transform: none; }
   .notis-sekvens[aria-hidden="true"] { display: none; }
-  .notis-pause { display: none; }
+  .notis-kontroller { display: none; }
 }
-
 .notisinnhold strong {
   color: var(--yellow);
-  margin-right: 0.3rem;
+  margin-right: .3rem;
   font-weight: 600;
 }
 .notisinnhold span { margin-right: 2rem; }
-.notisinnhold a {
-  color: var(--yellow);
-  text-decoration: none;
-}
-.notisinnhold a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
+.notisinnhold a { color: var(--yellow); text-decoration: none; }
+.notisinnhold a:hover { color: #fff; text-decoration: underline; }
 
 /* =================================================================== */
 /* TITTELLINJE – gjennomsiktig bakgrunn                                */
@@ -558,8 +610,8 @@ a:hover {
    Beholder opprinnelig svart og gult. Ikke et partibanner.
    =============================================================== */
 body.avis-forside {
-  /* Notisbåndet er fast plassert og ca. 44 px høyt. */
-  padding-top: 46px;
+  /* Avisoverskriften ligger øverst, notisbåndet er fast nederst. */
+  padding-top: 0;
 }
 .hopp-til-innhold {
   position: absolute;
@@ -574,11 +626,11 @@ body.avis-forside {
 }
 .hopp-til-innhold:focus { top: 0; color: #050505; }
 
-/* Sidens hovedtittel er ikke lenger fast over nyhetsinnholdet. */
+/* Avisens hovedtittel skal bli stående når leseren ruller nedover. */
 .avis-forside .tittellinje.avis-topp {
-  position: relative;
-  top: auto;
-  left: auto;
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
   display: block;
   padding: 0;
@@ -586,7 +638,7 @@ body.avis-forside {
   pointer-events: auto;
   background: #070707;
   border: 0;
-  border-bottom: 1px solid rgba(255,214,0,.38);
+  border-bottom: 0;
 }
 .avis-topp-inner {
   position: relative;
@@ -770,11 +822,18 @@ html.avis-meny-klar .avis-topp .avisa-menu:not([hidden]) {
 }
 #hovedinnhold { display: block; }
 #hovedinnhold section[id] { scroll-margin-top: 3.5rem; }
+/* Ankerlenker må ikke havne skjult bak den klebrige, store mastheaden. */
+.avis-forside #hovedinnhold,
+.avis-forside #hovedinnhold section[id] {
+  scroll-margin-top: clamp(11rem, 22vw, 20rem);
+}
 
 
 /* Felles toppmeny på arkiv-, artikkel- og kontaktsider. */
 .avisa-shared-header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 9000;
   z-index: 8000;
   border-top: 2px solid var(--yellow);
   border-bottom: 1px solid #3c3626;
@@ -883,7 +942,7 @@ body.har-felles-header .avis-fallback-link { display: none; }
 }
 
 
-/* Felles meny under notisbåndet på de to spesialsidene. */
+/* Felles toppmeny på de to spesialsidene. */
 body.notiser-side { padding-top: 3rem; }
 body.sport-side { padding-top: 5rem; }
 body.notiser-side .avisa-shared-header,
@@ -1042,13 +1101,13 @@ body.sport-side .avisa-shared-header .avis-topp-inner { padding-top: .95rem; pad
 /* ================================================================
    PARADISAVISA – KLASSISK AVISMASTHEAD
    Avisnavnet er typografi, ikke en innrammet logo eller en boks.
-   Menyknappen ligger diskret øverst til høyre, under notisbåndet.
+   Menyknappen ligger diskret øverst til høyre, notisbåndet nederst.
    ================================================================ */
 .avis-forside .tittellinje.avis-masthead {
   display: block;
-  position: relative;
-  top: auto;
-  left: auto;
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
   padding: 0;
   border: 0;
@@ -1177,13 +1236,7 @@ body.sport-side .avisa-shared-header .avis-topp-inner { padding-top: .95rem; pad
   height: 1px;
   background: rgba(255,214,0,.52);
 }
-.avis-forside .avis-masthead .avis-identitet::after {
-  content: "";
-  display: block;
-  height: 1px;
-  margin: clamp(1.1rem,2vw,1.8rem) auto 0;
-  background: linear-gradient(90deg,transparent,rgba(255,214,0,.55) 15%,rgba(255,214,0,.55) 85%,transparent);
-}
+.avis-forside .avis-masthead .avis-identitet::after { display: none; }
 html.avis-meny-klar .avis-forside .avis-masthead .avisa-menu:not([hidden]) {
   top: 3.3rem;
   right: clamp(.85rem,3vw,3.5rem);
@@ -1241,3 +1294,9 @@ html.avis-meny-klar .avis-forside .avis-masthead .avisa-menu:not([hidden]) {
   .avis-forside .avis-masthead .avis-kategorier { font-size: .54rem; }
   .avis-forside .avis-masthead .avis-identitet h1 { font-size: 9.6vw; }
 }
+
+/* Paradisavisas faste lesemodus: hvit tekst på helsvart bakgrunn. */
+:root{--bg:#000;--text:#fff;--muted:#fff;--header-bg:#000}
+html,body{background:#000;color:#fff;color-scheme:dark}
+body .site-footer,body .site-footer p{background:#000;color:#fff}
+body .ingress,body .meta,body .lead{color:#fff}

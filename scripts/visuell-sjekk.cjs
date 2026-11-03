@@ -10,6 +10,12 @@ const assert=require("node:assert/strict");
 const {chromium}=require("playwright");
 const root=path.resolve(__dirname,"..");
 const output=path.join(root,"qa-screenshots");
+// Bruk samme register som den faktiske køsiden. Et hardkodet antall
+// gjør at korrekt registrering av nye artikler feilaktig stopper QA.
+const artikkelkatalog=JSON.parse(fs.readFileSync(path.join(root,"utkast/artikler.json"),"utf8"));
+const antallAktive=artikkelkatalog.artikler.filter(a=>a.status==="utkast"&&!a.publisert).length;
+const antallArkiverte=artikkelkatalog.artikler.filter(a=>a.status==="arkivert").length;
+const antallGodkjente=artikkelkatalog.artikler.filter(a=>a.godkjent===true&&!a.publisert).length;
 const mime={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",
   ".js":"text/javascript; charset=utf-8",".json":"application/json; charset=utf-8",
   ".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",
@@ -80,8 +86,17 @@ async function run(){
           buttonTop:buttonBounds.top,
           titleTop:rule.top,
           headerTop:header.getBoundingClientRect().top,
+          headerBottom:header.getBoundingClientRect().bottom,
+          headerPosition:getComputedStyle(header).position,
+          tickerTop:ticker.getBoundingClientRect().top,
           tickerBottom:ticker.getBoundingClientRect().bottom,
-          viewport:innerWidth
+          tickerPosition:getComputedStyle(ticker).position,
+          tickerHeight:ticker.getBoundingClientRect().height,
+          headerBorder:parseFloat(getComputedStyle(header).borderBottomWidth),
+          headerRule:getComputedStyle(header.querySelector(".avis-identitet"),"::after").display,
+          viewport:innerWidth,
+          viewportHeight:innerHeight,
+          reservedBottom:parseFloat(getComputedStyle(document.body).paddingBottom)
         };
       });
       check(masthead.fontSize >= (label==="mobil"?30:95),
@@ -97,8 +112,20 @@ async function run(){
         label+": menyknappen ligger ikke til høyre");
       check(masthead.buttonTop < masthead.titleTop,
         label+": menyknappen ligger ikke over avisnavnet");
-      check(masthead.headerTop >= masthead.tickerBottom - 3,
-        label+": avisoverskriften overlapper notisbåndet");
+      check(masthead.headerPosition==="sticky",
+        label+": avisoverskriften er ikke fast under rulling");
+      check(masthead.headerBorder===0 && masthead.headerRule==="none",
+        label+": gul skillelinje under avisoverskriften finnes fortsatt");
+      check(masthead.tickerHeight<=42,
+        label+": notisbåndet er for høyt ("+masthead.tickerHeight+"px)");
+      check(masthead.tickerPosition==="fixed",
+        label+": notisbåndet er ikke fastmontert");
+      check(Math.abs(masthead.tickerBottom-masthead.viewportHeight)<=2,
+        label+": notisbåndet ligger ikke i bunnen av skjermen");
+      check(masthead.reservedBottom >= masthead.tickerBottom-masthead.tickerTop,
+        label+": innholdet har ikke nok bunnplass over notisbåndet");
+      check((await page.locator(".avis-leserinfo").count())===0,
+        label+": den gamle introduksjonslinjen er ikke fjernet");
 
       // Vent på at alle innholdsseksjonene faktisk er fylt. Et tomt felt
       // ved første skjermbilde kan ellers maskere problemer med kortene.
@@ -107,6 +134,23 @@ async function run(){
       for(const id of storyGrids){
         await page.locator(id+" .hjul-card").first().waitFor({timeout:12000});
       }
+      // Kontroller at avisoverskriften forblir synlig når innholdet rulles.
+      await page.evaluate(() => window.scrollTo(0, 600));
+      const scrollPositions=await page.evaluate(() => ({
+        headerTop:document.querySelector(".avis-masthead").getBoundingClientRect().top,
+        tickerBottom:document.querySelector(".notisbånd").getBoundingClientRect().bottom,
+        viewportHeight:innerHeight
+      }));
+      check(Math.abs(scrollPositions.headerTop) <= 2,
+        label+": avisoverskriften forsvinner når man ruller");
+      check(Math.abs(scrollPositions.tickerBottom-scrollPositions.viewportHeight)<=2,
+        label+": notisbåndet flytter seg når man ruller ned");
+      await page.evaluate(() => window.scrollTo(0, 250));
+      const oppover=await page.locator(".notisbånd").evaluate(el => el.getBoundingClientRect().bottom);
+      check(Math.abs(oppover-scrollPositions.viewportHeight)<=2,
+        label+": notisbåndet forsvinner når man ruller opp");
+      await page.evaluate(() => window.scrollTo(0, 0));
+
       // Transparens: vis leseren publiseringsdato, og merk gamle saker som arkiv.
       for(const id of storyGrids){
         const card=page.locator(id+" .hjul-card").first();
@@ -203,14 +247,47 @@ async function run(){
       check(!(await page.locator("#avis-hovedmeny").isVisible()),label+": meny forblir synlig");
       const pause=page.locator(".notis-pause");
       await pause.waitFor({timeout:10000});
+      check(await pause.locator("svg").count()===1,
+        label+": pauseknappen skal være et lite ikon");
       await pause.click();
-      check(await pause.textContent()==="Start",label+": pauseknapp virker ikke");
+      check(await pause.getAttribute("aria-label")==="Start notisbåndet",
+        label+": pauseikonet virker ikke");
       await pause.click();
-      check(await pause.textContent()==="Pause",label+": startknapp virker ikke");
+      check(await pause.getAttribute("aria-label")==="Pause notisbåndet",
+        label+": startikonet virker ikke");
+      const fartknapp=page.locator(".notis-fartknapp");
+      await fartknapp.click();
+      const alternativer=page.locator(".notis-fartmeny button[data-fart]");
+      check(await alternativer.count()===4,
+        label+": notisbåndet har ikke fire fartstrinn");
+      check(await page.locator(".notis-fartmeny").isVisible(),
+        label+": fartmenyen vises ikke");
+      const menyPlass=await page.evaluate(()=>({
+        menyBunn:document.querySelector(".notis-fartmeny").getBoundingClientRect().bottom,
+        båndTopp:document.querySelector(".notisbånd").getBoundingClientRect().top
+      }));
+      check(menyPlass.menyBunn<=menyPlass.båndTopp+3,
+        label+": fartmenyen er skjult bak båndet");
+      await page.locator('.notis-fartmeny button[data-fart="1.5"]').click();
+      check((await fartknapp.textContent())==="1,5×",
+        label+": valgt fart vises ikke på knappen");
+      await fartknapp.click();
+      await page.locator('.notis-fartmeny button[data-fart="1"]').click();
+      check((await fartknapp.textContent())==="1×",
+        label+": normalhastigheten kan ikke velges igjen");
 
       for(const name of files.filter(x=>x!=="index.html")){
         await page.goto(base+"/"+name,{waitUntil:"domcontentloaded"});
         await page.locator(".avisa-shared-header .nav-toggle:not([hidden])").waitFor({timeout:10000});
+        if(name==="sport.html" || name==="notiser.html"){
+          const fixedBand=await page.locator(".notisbånd").evaluate(el => ({
+            position:getComputedStyle(el).position,
+            bottom:el.getBoundingClientRect().bottom,
+            height:innerHeight
+          }));
+          check(fixedBand.position==="fixed" && Math.abs(fixedBand.bottom-fixedBand.height)<=2,
+            label+": notisbåndet er ikke fast nederst på "+name);
+        }
         if(name==="sport.html"){
           check((await page.locator(".sport-banner").count())===0,
             label+": gammel gul sportsbanner finnes fortsatt");
@@ -271,14 +348,14 @@ async function run(){
       // Én løpende artikkelkø. Ingen mandag/onsdag/fredag-utgaver.
       await page.goto(base+"/utkast/index.html",{waitUntil:"domcontentloaded"});
       await page.locator(".katalog .sak").first().waitFor({timeout:12000});
-      check((await page.locator("#antall-utkast").textContent())==="15",
-        label+": forventet 15 aktive artikkelutkast");
-      check((await page.locator("#antall-arkiv").textContent())==="1",
-        label+": arkivert Ibsen-artikkel mangler");
-      check((await page.locator("#antall-godkjent").textContent())==="0",
-        label+": artikler er merket godkjent uten beslutning");
-      check((await page.locator(".katalog .sak").count())===15,
-        label+": aktiv kø skal vise 15 uavhengige artikler");
+      check((await page.locator("#antall-utkast").textContent())===String(antallAktive),
+        label+": køens antall aktive utkast avviker fra artikkelregisteret ("+antallAktive+")");
+      check((await page.locator("#antall-arkiv").textContent())===String(antallArkiverte),
+        label+": køens antall arkiverte artikler avviker fra artikkelregisteret ("+antallArkiverte+")");
+      check((await page.locator("#antall-godkjent").textContent())===String(antallGodkjente),
+        label+": køens antall godkjente artikler avviker fra artikkelregisteret ("+antallGodkjente+")");
+      check((await page.locator(".katalog .sak").count())===antallAktive,
+        label+": aktiv kø skal vise alle "+antallAktive+" uavhengige utkast");
       check((await page.locator(".merking").textContent()).includes("IKKE PUBLISERT"),
         label+": arbeidskø er ikke merket som upublisert");
       check((await page.locator("h1").textContent())==="Artikler til gjennomgang",
@@ -289,8 +366,8 @@ async function run(){
         label+": søk i artikkelkø fungerer ikke");
       await page.locator("#sok").fill("");
       await page.locator("#tilstand").selectOption("arkivert");
-      check((await page.locator(".katalog .sak").count())===1,
-        label+": det arkiverte Ibsen-utkastet vises ikke");
+      check((await page.locator(".katalog .sak").count())===antallArkiverte,
+        label+": arkivfilteret stemmer ikke med "+antallArkiverte+" arkiverte artikler");
       check((await page.locator(".katalog .sak h2").textContent()).includes("Ibsen"),
         label+": feil artikkel vises som arkivert");
       await context.close();

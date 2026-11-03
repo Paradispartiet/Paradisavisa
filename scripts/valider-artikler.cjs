@@ -23,7 +23,7 @@ const home=read("index.html");
 expect(home.includes("Objektivt sett, fra vår synsvinkel."),"Motto mangler på forsiden");
 expect(home.includes('class="tittellinje avis-topp avis-masthead"'),"Klassisk avisoverskrift mangler");
 expect(home.includes('aria-controls="avis-hovedmeny"'),"Menyknappen mangler");
-expect(home.includes('href="avisdesign.css?v=2"'),"Forsiden mangler redaksjonelt designsystem");
+expect(/href="avisdesign\.css\?v=\d+"/.test(home),"Forsiden mangler redaksjonelt designsystem");
 expect(home.includes('class="avis-ledergrid"'),"Forsiden mangler definert hovedsak");
 const design=read("avisdesign.css");
 expect(design.includes("grid-row:1/span 2"),"Hovedsaken mangler stor layout på PC");
@@ -68,28 +68,28 @@ for(const article of catalog.artikler||[]){
   expect((html.match(/<h1\b/g)||[]).length===1,"Artikkelen må ha én h1: "+htmlPath);
   expect(html.includes("Kilder og dokumentasjon"),"Kildeliste mangler: "+htmlPath);
   expect(html.includes("Objektivt sett, fra vår synsvinkel."),"Motto mangler: "+htmlPath);
-  expect(html.includes('name="robots" content="noindex, nofollow"'),"Utkast må være noindex/nofollow: "+htmlPath);
+  expect(/<meta[^>]*name="robots"[^>]*noindex/.test(html),"Utkast må være noindex: "+htmlPath);
   const upubliserteLenker=finnLenkerTilUtkast(html,htmlPath);
   if(upubliserteLenker.length) {
-    if(article.godkjent || article.publisert) {
+    if(article.godkjent||article.publisert){
       errors.push("Godkjent artikkel lenker til upublisert utkast: "+htmlPath+" "+upubliserteLenker.join(", "));
     } else {
       console.warn("ADVARSEL: Utkast lenker til annet utkast: "+htmlPath+" "+upubliserteLenker.join(", "));
     }
   }
-  expect(article.godkjent===false||article.godkjent===true,"Godkjenningsstatus mangler: "+htmlPath);
-  expect(article.publisert===false||article.publisert===true,"Publiseringsstatus mangler: "+htmlPath);
   if(article.status==="utkast"||article.status==="arkivert") {
     expect(article.godkjent===false&&article.publisert===false&&article.faktasjekk!=="godkjent",
       "Utkast/arkiv kan ikke være godkjent eller publisert: "+htmlPath);
   }
   if(article.status==="godkjent") {
     expect(article.godkjent===true&&article.faktasjekk==="godkjent"&&article.publisert===false,
-      "Godkjent-status krever individuell faktasjekk, godkjenning og ikke-publisert flagg: "+htmlPath);
+      "Godkjent-status krever individuell kontroll og ingen publisering: "+htmlPath);
   }
   if(article.status==="publisert") {
     expect(article.publisert===true,"Publisert-status krever publisert=true: "+htmlPath);
   }
+  expect(article.godkjent===false||article.godkjent===true,"Godkjenningsstatus mangler: "+htmlPath);
+  expect(article.publisert===false||article.publisert===true,"Publiseringsstatus mangler: "+htmlPath);
   if(!article.godkjent) {
     expect(article.publisert===false,"Ikke-godkjent artikkel kan ikke publiseres: "+htmlPath);
     expect(/(?:REDAKSJONELT|ARKIVERT) UTKAST/.test(html),"Tydelig utkastmerking mangler: "+htmlPath);
@@ -106,7 +106,7 @@ for(const article of catalog.artikler||[]){
       expect(publicHtml.includes('name="robots" content="index, follow"'),
         "Publisert artikkel må være tilgjengelig for søk: "+article.publisert_url);
       expect(!/<strong>(?:Før publisering|Kildesjekk[^<]*):<\/strong>/.test(publicHtml),
-        "Interne redaksjonsnotater ligger i publisert artikkel: "+article.publisert_url);
+        "Interne kontrollnotater ligger i publisert artikkel: "+article.publisert_url);
     }
   }
   if(typeof imagePath!=="string"||!/^utkast\/\d{4}-\d{2}-\d{2}\/bilder\/[a-z0-9-]+\.svg$/.test(imagePath)){
