@@ -90,7 +90,7 @@ jobs:
               output.parent.mkdir(parents=True,exist_ok=True)
               image.save(output,'JPEG',quality=90,optimize=True,subsampling=0)
               raw_out=output.read_bytes()
-              if len(raw_out)<120000 or not (raw_out.startswith(b'\\xff\\xd8') and raw_out.endswith(b'\\xff\\xd9')):
+              if len(raw_out)<120000 or not (raw_out.startswith(bytes((255, 216))) and raw_out.endswith(bytes((255, 217)))):
                   raise SystemExit('Ugyldig resultatfil: '+str(output))
               print('OUTPUT',str(output),'bytes',len(raw_out),'sha256',hashlib.sha256(raw_out).hexdigest())
           PY
