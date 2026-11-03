@@ -17,7 +17,7 @@ Politiet sa det hadde sikret verdier i hundremillionersklassen, og mistenkte org
 
 ## Nye opplysninger om heftelser
 
-Fiskeribladet meldte **2. november** at Økokrim hadde registrert heftelser på **minst 11 fiskebåter, for nær 100 millioner kroner**. Dette er opplysninger avisen tillegger Fiskeribladet. Paradisavisa har ennå ikke selv kontrollert de underliggende registreringene eller fått opplysningene bekreftet direkte fra Økokrim. En heftelse er et rettslig sikringstiltak og dokumenterer ikke i seg selv skyld. Beløpet skal heller ikke legges sammen med andre omtalte beslag eller behandles som et fastslått kriminalitetsutbytte uten dokumentert avstemming.
+Fiskeribladet meldte **2. november** at Økokrim hadde registrert heftelser på **minst 11 fiskebåter, for nær 100 millioner kroner**. Dette er opplysninger avisen tillegger Fiskeribladet. Paradisavisa har ennå ikke selv kontrollert de underliggende registreringene eller fått opplysningene bekreftet direkte fra Økokrim. Registrert pant kan sikre et krav, men dokumenterer ikke i seg selv straffskyld. Beløpet skal heller ikke legges sammen med andre omtalte beslag eller behandles som et fastslått kriminalitetsutbytte uten dokumentert avstemming.
 
 ## Hvorfor betyr sluttseddelen så mye?
 
