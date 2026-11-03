@@ -1,7 +1,7 @@
 # Innsettingsplan: fire nye KI-assisterte hovedbilder
 
 **Dato:** 3. november 2026  
-**Status:** Bildene er produsert lokalt og kodet inn i fire utkast og redaksjonelle forhåndsvisninger på grenen `design/fire-nye-hovedbilder-20261103`. **De fire faktiske JPG-filene mangler fortsatt i GitHub og må lastes opp før denne endringen kan flettes inn i `main`.**
+**Status:** Bildene er produsert lokalt og kodet inn i fire utkast og redaksjonelle forhåndsvisninger på grenen `design/fire-nye-hovedbilder-20261103`. **De fire faktiske JPG-filene er nå lastet opp til GitHub-grenen og verifisert mot originalfilenes Git SHA-1.** Artikkelutkastene er fortsatt upubliserte; ingen publiseringsgodkjenning følger av bildekontrollen.
 
 ## Bildene som skal legges inn
 
@@ -23,10 +23,21 @@ Bildene er levert i ZIP-pakke fra ChatGPT-samtalen. Det følger også med WebP-a
 - `utkast/artikler.json`: oppdatert `bilde` for de fire sakene
 - **Ingen endring i `publisert`, `godkjent`, `faktasjekk` eller `status`.** Artiklene er fremdeles upubliserte utkast; `noindex, nofollow` er beholdt i begge HTML-variantene
 
-## Før merge / publisering av bildene
+## Bildeintegritet bekreftet 3. november 2026
 
-1. Last opp de fire JPG-filene fra ChatGPT-bildepakken **på PR-grenen, ikke direkte på main**, nøyaktig som filbanene ovenfor.
-2. Kontroller at GitHub faktisk viser alle fire filene, hver med JPEG-signatur og riktige mål.
+Alle fire JPEG-er finnes i GitHub-grenen og har samme Git-blob-SHA som de lokalt produserte originalene (1600 × 900 piksler):
+
+- Spania: `344805` byte · `cd8be1ad1d256accbebf16e39d2e967533855ebc`
+- Israel: `328179` byte · `ecfbff87d1cf5acb009ae323495884f1d330f8fa`
+- Europa: `299530` byte · `82e207aef921d1d0f13ab69711b3ca5208d5d006`
+- Fiskeri: `335440` byte · `0b9ffb7fc3c3d64d19391e0f4c0dc72dce9a3938`
+
+Kontroll av de fire artikkelutkastene og fire interne forhåndsvisningene bekrefter korrekte relative JPG-stier, 1600 × 900-dimensjoner, bildetekster, `noindex` og `IKKE PUBLISERT`. Redaksjonskøens fire oppføringer er fortsatt `status: utkast`, `godkjent: false`, `publisert: false` og `faktasjekk: kreves`. Visuell nettlesersjekk av publisert GitHub Pages er ikke utført som del av denne integritetskontrollen.
+
+## Fullføringskontroll (bildeendring, ikke artikkelpublisering)
+
+1. **Fullført:** Fire JPG-filer lastet opp på PR-grenen med eksakte filbaner som over.
+2. **Fullført:** GitHub viser alle fire filene; kontrollert mot lokalt identiske JPEG-bildebytes, opprinnelig produsert i 1600 × 900.
 3. Kontroller at hver interne forhåndsvisning viser **ett riktig bilde** og at bildet skaleres riktig på mobil; gamle SVG-er beholdes som reserve.
 4. Merk bildene som **KI-generert redaksjonell illustrasjon**. Ikke presenter dem som fotografier fra hendelsene; ingen av de fiktive ansiktene, togene eller fiskerivirksomhetene skal knyttes til identifiserbare aktører.
 5. Gi redaksjonell bilde- og publiseringsgodkjenning per sak. **Bildegodkjenning er ikke godkjenning av den journalistiske artikkelteksten.**
