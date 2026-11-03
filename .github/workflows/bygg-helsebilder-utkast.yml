@@ -35,7 +35,7 @@ jobs:
           imgs={
             'corridor':('Hospital hallway in Lagos.jpg',(3024,4032)),
             'hospital':('Gorliz - Hospital.jpg',(2048,1536)),
-            'staff':('Nurses at Hospital.jpg',(1734,2312)),
+            'staff':('Nurse taking notes while working on a laptop in a medical office.jpg',(6016,4016)),
             'room':('Modern hospital room with bed and sofa.jpg',(1121,913)),
           }
           src={}
@@ -44,7 +44,7 @@ jobs:
               request=Request(url,headers={'User-Agent':'Paradisavisa/1.0 (https://github.com/Paradispartiet/Paradisavisa)'})
               with urlopen(request,timeout=90) as response:
                   data=response.read()
-              im=Image.open(io.BytesIO(data)).convert('RGB')
+              im=ImageOps.exif_transpose(Image.open(io.BytesIO(data))).convert('RGB')
               if im.size not in (dimensions,dimensions[::-1]) or len(data)<75_000:
                   raise SystemExit(f'Uventet fil for {filename}: {im.size}, {len(data)} bytes')
               src[key]=im
@@ -91,7 +91,7 @@ jobs:
           reform=layout(reform_left,reform_right,edge=1030,blend=105)
           save(reform,'helsereform-hovedfoto-2026.jpg')
 
-          pilot_left=grade(crop(src['staff'],.50,.42,W,H),'warm')
+          pilot_left=grade(crop(src['staff'],.44,.50,W,H),'warm')
           pilot_right=grade(crop(src['room'],.50,.48,W,H),'cold')
           pilots=layout(pilot_left,pilot_right,edge=850,blend=90)
           save(pilots,'helsepiloter-samarbeid-hovedfoto-2026.jpg')
