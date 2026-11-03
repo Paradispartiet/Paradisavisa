@@ -1,0 +1,114 @@
+name: Bygg dokumentariske hovedbilder for Meta og Binance
+
+on:
+  push:
+    branches:
+      - design/meta-binance-fotomontasjer-20261103
+    paths:
+      - .github/workflows/bygg-meta-binance-foto.yml
+
+permissions:
+  contents: write
+
+jobs:
+  bilder:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --quiet Pillow
+      - name: Kontroller Commons-kilder og bygg to fotografiske montasjer
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from urllib.request import urlopen, Request
+          from urllib.parse import quote
+          import hashlib, io, math
+          from pathlib import Path
+          from PIL import Image, ImageOps, ImageEnhance, ImageDraw, ImageFilter
+
+          source = {
+            'meta': ('Meta Platforms Headquarters Menlo Park California.jpg', (4512, 3008)),
+            'news': ('New York Times newsroom.jpg', (2816, 2112)),
+            'racks': ('Front of server racks at NERSC.jpg', (4288, 2848)),
+            'tech': ('Technician with laptop working on server rack at NERSC.jpg', (4288, 2848))
+          }
+          pictures={}
+          for key,(name,expected_size) in source.items():
+              url="https://commons.wikimedia.org/wiki/Special:FilePath/"+quote(name.replace(' ','_'))
+              req=Request(url,headers={"User-Agent":"Paradisavisa/1.0 (https://github.com/Paradispartiet/Paradisavisa)"})
+              with urlopen(req,timeout=100) as response:
+                  data=response.read()
+              im=Image.open(io.BytesIO(data)).convert("RGB")
+              if im.size != expected_size or len(data) < 400_000:
+                  raise SystemExit(f"Invalid Commons source {name}: {im.size}, {len(data)} bytes")
+              print(f"Original {key}: {name}; SHA1={hashlib.sha1(data).hexdigest()}; {im.size}")
+              pictures[key]=im
+
+          W,H=1600,900
+          def fit(im,center=(.5,.5)):
+              return ImageOps.fit(im,(W,H),method=Image.Resampling.LANCZOS,centering=center)
+          def grade(im,tint,blend=.26):
+              im=ImageEnhance.Contrast(im).enhance(1.20)
+              im=ImageEnhance.Color(im).enhance(.80)
+              return Image.blend(im,Image.new("RGB",(W,H),tint),blend).convert("RGBA")
+          def compose(bottom,top,side='left',start=430,finish=1090):
+              mask=Image.new('L',(W,H),0)
+              d=ImageDraw.Draw(mask)
+              for x in range(W):
+                  alpha=255 if x<start else 0 if x>finish else int(255*(finish-x)/(finish-start))
+                  if side=='right': alpha=255-alpha
+                  d.line((x,0,x,H),fill=max(0,min(255,alpha)))
+              mask=mask.filter(ImageFilter.GaussianBlur(28))
+              top.putalpha(mask)
+              return Image.alpha_composite(bottom,top)
+          def finish(im,orange=(1120,200),cool=(100,550)):
+              fx=Image.new("RGBA",(W,H),(0,0,0,0))
+              glow=Image.new("RGBA",(W,H),(0,0,0,0))
+              d=ImageDraw.Draw(glow)
+              d.ellipse((orange[0]-280,orange[1]-240,orange[0]+300,orange[1]+250),fill=(217,125,56,64))
+              d.ellipse((cool[0]-300,cool[1]-240,cool[0]+330,cool[1]+260),fill=(30,142,204,58))
+              glow=glow.filter(ImageFilter.GaussianBlur(145))
+              im=Image.alpha_composite(im,glow)
+              vignette=ImageDraw.Draw(fx)
+              for y in range(H):
+                  a=int(70*(y/H)**2.3)
+                  vignette.line((0,y,W,y),fill=(4,10,19,a))
+              im=Image.alpha_composite(im,fx)
+              return im.convert("RGB")
+          def write(im,name):
+              p=Path('Bilder/Artikler')/name
+              p.parent.mkdir(parents=True,exist_ok=True)
+              im.save(p,'JPEG',quality=88,optimize=True,subsampling=0)
+              if p.stat().st_size < 130000:
+                  raise SystemExit(f"Suspicious small image {p.stat().st_size}")
+              print(f"Created {p} ({p.stat().st_size} bytes)")
+
+          # Kontrast mellom autentisk historisk redaksjonsrom og Metas faktiske hovedkvarter.
+          meta=grade(fit(pictures['meta'],(.52,.46)),(10,31,56),.32)
+          news=grade(fit(pictures['news'],(.52,.52)),(75,48,29),.17)
+          composed=compose(meta,news,'left',500,1090)
+          write(finish(composed,orange=(420,640),cool=(1240,280)), 'meta-pressen-plattformen-fotomontasje-2026.jpg')
+
+          # NERSC-foto, ikke Binance: menneskelig sikkerhetsarbeid og teknologisk infrastruktur.
+          racks=grade(fit(pictures['racks'],(.5,.48)),(6,25,48),.30)
+          tech=grade(fit(pictures['tech'],(.52,.48)),(15,36,52),.16)
+          composed=compose(racks,tech,'right',670,1180)
+          write(finish(composed,orange=(1250,620),cool=(360,320)), 'binance-cybersikkerhet-fotomontasje-2026.jpg')
+          PY
+      - name: Lagre ferdige bilder i arbeidsgrenen
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Bilder/Artikler/meta-pressen-plattformen-fotomontasje-2026.jpg Bilder/Artikler/binance-cybersikkerhet-fotomontasje-2026.jpg
+          git diff --cached --quiet && exit 0
+          git commit -m "Legg til fotoillustrasjoner med dokumenterte Commons-kilder for Meta og Binance"
+          git push origin HEAD:refs/heads/design/meta-binance-fotomontasjer-20261103
