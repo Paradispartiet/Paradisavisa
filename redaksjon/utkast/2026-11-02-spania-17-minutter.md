@@ -1,7 +1,7 @@
 # De 17 minuttene før togkatastrofen i Spania
 
 **UTENRIKS · REDAKSJONELT UTKAST – IKKE PUBLISERT**  
-**Researchstatus: 2. november 2026. Tidslinjen bygger på publiserte rekonstruksjoner, ikke egne intervjuer.**
+**Researchstatus: Oppdatert 3. november 2026 (identifiseringsstatus). Tidslinjen bygger på publiserte rekonstruksjoner, ikke egne intervjuer.**
 
 **Ingress:** Et signalsystem falt ut. Flere tog stoppet. Så fikk ett høyhastighetstog tillatelse til å fortsette. Rundt 17 minutter senere, etter den offentlige rekonstruksjonen, hadde det kjørt inn i et annet tog. Minst 69 mennesker mistet livet i Urda i Spania.
 
@@ -23,7 +23,7 @@ I lydmaterialet som er referert i pressen, finnes det ingen tilsvarende ordre om
 
 ## Rundt klokken 08.53 – tidspunktet er omstridt
 
-AVE-toget traff bakenden av Iryo-toget. Transportministeren har lagt **cirka klokken 08.53** til grunn for kollisjonen, og analyser av togets posisjonsdata i elDiario.es tyder på **08.53–08.54**. Kilder nær Iryo oppga derimot **08.48** i den første omtalen. Før endelig teknisk gransking skal ingen av disse tidspunktene presenteres som et ubestridt sekundnøyaktig faktum. De «17 minuttene» beskriver tidsrommet i myndighetenes foreløpige rekonstruksjon fra klokken 08.36. 29. oktober ble dødstallet justert fra tidligere meldte 74 til 69. Ifølge den spanske allmennkringkasteren RTVE og domstolsmyndighetenes opplysninger var **66 av de 69 omkomne identifisert ved inngangen til 2. november**, mens tre ennå ikke var identifisert. Dødstallet er fortsatt foreløpig.
+AVE-toget traff bakenden av Iryo-toget. Transportministeren har lagt **cirka klokken 08.53** til grunn for kollisjonen, og analyser av togets posisjonsdata i elDiario.es tyder på **08.53–08.54**. Kilder nær Iryo oppga derimot **08.48** i den første omtalen. Før endelig teknisk gransking skal ingen av disse tidspunktene presenteres som et ubestridt sekundnøyaktig faktum. De «17 minuttene» beskriver tidsrommet i myndighetenes foreløpige rekonstruksjon fra klokken 08.36. 29. oktober ble dødstallet justert fra tidligere meldte 74 til 69. RTVE meldte ved inngangen til 2. november at **66 av 69 omkomne var identifisert**. Senere samme kveld opplyste nyhetsbyrået EFE, med henvisning til det spanske senteret for samordnede data (CID) og domstolsmyndighetene, at **alle 69 omkomne var identifisert**, og at alle pårørende var varslet. Dette er en oppdatert identifiseringsstatus, ikke en endelig konklusjon om ulykkesårsaken. Dødstallet på 69 var fortsatt oppgitt som foreløpig.
 
 ## Hva vet den uavhengige havarimyndigheten?
 
@@ -46,6 +46,7 @@ Dette kan bli det viktigste spørsmålet i etterforskningen: Var tillatelsen til
 En framtidig granskningsrapport må forklare hvorfor føreren fikk beskjed om å kjøre, hva trafikkledelsen visste om det andre toget, og hvilke sikkerhetsbarrierer som ikke fanget opp den farlige situasjonen.
 
 ### Kilder
+- EFE, 2. november kveld, CID: alle 69 døde identifisert og pårørende varslet: https://efe.com/mundo/2026-11-02/identifican-69-fallecidos-accidente-ferroviario-urda/
 - AITATs foreløpige undersøkelsesmelding etter 24 timer, gjengitt i fulltekst 30. oktober: https://gacetadelturismo.com/actualidad/nota-informativa-de-la-aitat-sobre-la-investigacion-del-accidente-de-urda-informacion-disponible-tras-las-primeras-24-horas-del-suceso/
 - El País, 29. oktober, AITATs foreløpige hastighetsanslag og uavklart årsak: https://elpais.com/espana/2026-10-29/el-primer-informe-tecnico-del-accidente-fija-en-160-a-200-kilometros-por-hora-la-velocidad-del-ave-que-choco-en-urda.html
 - Euronews, tidslinje 29. oktober: https://www.euronews.com/2026/10/29/spain-train-crash-what-happened-in-the-17-minutes-before-the-collision
