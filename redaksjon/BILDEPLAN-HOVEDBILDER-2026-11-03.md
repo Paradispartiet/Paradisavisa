@@ -1,12 +1,12 @@
 # Paradisavisa – bildeplan for fem hovedsaker
 
 **Utarbeidet:** 3. november 2026  
-**Status:** Redaksjonell produksjonsbrief. Ingen bilder er produsert, erstattet eller publisert gjennom dette dokumentet. **Viktig avklaring 3. november:** Brukeren opplyser at et bedre Støre–Stubb-bilde allerede ble laget tidligere, men ikke kom inn i artikkelen. Dette bildet skal gjenfinnes og tas i bruk, ikke gjenskapes uten videre.  
+**Status:** Redaksjonell produksjonsbrief. Støre–Stubb-bildet er nå erstattet i kildekoden og lagt på `main` 3. november 2026; de fire øvrige sakene står fortsatt i bildekø. Dette dokumentet gir produksjonsbrief for nye bilder og endrer ikke publiseringsstatus for upubliserte artikler.  
 **Layoutmal:** [Støre–Stubb: Den diplomatiske muligheten – og risikoen](https://paradispartiet.github.io/Paradisavisa/artikler/2026-11-02-store-stubb-diplomatisk-mulighet.html).
 
 ## Hvorfor dette må endres
 
-Gjennomgang av faktiske bildefiler i repositoriet viser et stilbrudd. Eldre artikler benytter JPG/PNG-baserte hovedmotiver og scener, blant annet `Nyhetshjul/Anne_Hidalgo.JPG`, `Nyhetshjul/paris_gate.JPG`, `Nyhetshjul/Isbjornene.PNG`, `Nyhetshjul/Forside_arets_hage.PNG` og `Bilder/Kultur/Nobelprisen.PNG`. Nyere nyhetsutkast bruker derimot `spania.svg`, `israel.svg`, `protester.svg`, `fiskeri.svg`: omtrent 1,3–1,5 KB store SVG-filer med nær identisk svart/gul bakgrunn, kategoriord og én linjeikonfigur. Det begrenser atmosfære, særpreg og redaksjonell troverdighet. Støre–Stubb-sidens eksisterende `Bilder/store-stubb-diplomati-2026.svg` er mer detaljert, men fortsatt kart- og linjesymbolikk.
+Gjennomgang av faktiske bildefiler i repositoriet viser et stilbrudd. Eldre artikler benytter JPG/PNG-baserte hovedmotiver og scener, blant annet `Nyhetshjul/Anne_Hidalgo.JPG`, `Nyhetshjul/paris_gate.JPG`, `Nyhetshjul/Isbjornene.PNG`, `Nyhetshjul/Forside_arets_hage.PNG` og `Bilder/Kultur/Nobelprisen.PNG`. Nyere nyhetsutkast bruker derimot `spania.svg`, `israel.svg`, `protester.svg`, `fiskeri.svg`: omtrent 1,3–1,5 KB store SVG-filer med nær identisk svart/gul bakgrunn, kategoriord og én linjeikonfigur. Det begrenser atmosfære, særpreg og redaksjonell troverdighet. Støre–Stubb-siden brukte tidligere `Bilder/store-stubb-diplomati-2026.svg`; dette er nå erstattet med den opprinnelig bestilte, mer detaljrike JPG-montasjen.
 
 **Beslutning:** Behold Støre–Stubb-artikkelens layout, spesielt `.story-cover img` med 16:9-format, mørkt bakteppe, nøktern bildetekst og stor serif-tittel. Bytt den visuelle logikken fra ikonplakat til **gjennomarbeidet redaksjonell scenografi**, med en unik billedidé for hver artikkel. Det er ikke et krav at hvert bilde er blått eller mørkt: hver sak skal kunne kjennes igjen på sitt eget lys og sin egen fargeverden.
 
@@ -21,28 +21,13 @@ Gjennomgang av faktiske bildefiler i repositoriet viser et stilbrudd. Eldre arti
 - **Teknisk:** Bruk meningsfull `alt`-tekst på selve motivet, synlig bildetekst og oppdatert `og:image`. Sjekk mobilt 360–430 px, desktop 1440 px, kontrast mot svart side, lastetid og at ingen ansikter/fokuspunkt kuttes. Ingen bytte av bilder i `artikler/` uten godkjent ferdigfil og presseetisk gjennomgang.
 - **Navngivning:** `Bilder/redaksjon/2026-11-03/store-stubb-diplomati.webp`, `spania-togkatastrofe.webp`, `israel-regjeringsdannelse.webp`, `europa-ungdomsprotester.webp`, `fiskeri-papirspor.webp`. Dette er planlagte destinasjoner, **ikke filer som allerede finnes**.
 
-## 01. Støre–Stubb – bruk det allerede produserte bildet
+## 01. Støre–Stubb – hovedbildet er lagt inn
 
-**Originalbildet er nå mottatt i ChatGPT 3. november 2026:** En detaljrik redaksjonell montasje med nordiske flagg, en politisk samtalesituasjon, europakart, EU-symbol og ukrainsk krigsmotiv. Kildeformat: PNG 1670 × 942. En JPG for nettpublisering er klargjort i 1600 × 900 og skal legges i `Bilder/Artikler/store-stubb-geopolitisk-1600x900.jpg`. GitHub-tilkoblingen i denne økten kan redigere UTF-8-filer, men kan ikke overføre den lokale binære bildefilen direkte. Derfor er artikkelkoblingene klargjort i et *utkast til pull request*, men **endringen må ikke merges før den faktiske JPG-filen er lastet opp til grenen og visuelt verifisert**.
+**Status 3. november 2026: implementert på `main` via [PR #41](https://github.com/Paradispartiet/Paradisavisa/pull/41).** Det eksisterende bildet ble levert av brukeren i ChatGPT (PNG, 1670 × 942). En optimalisert JPG på 1600 × 900 piksler er lagt inn som `Bilder/Artikler/store-stubb-geopolitisk-1600x900.jpg`, 474 957 byte, Git blob SHA `bcbf7a287638471044c4754bea647d85233d11ae`.
 
-**Bilde må hentes frem, ikke genereres på nytt.** Et bedre Støre–Stubb-hovedbilde ble ifølge brukeren allerede produsert, men kom ikke inn på artikkelsiden. Bildet er foreløpig ikke funnet i `main`-grenen, de relevante redaksjonsgrenene, samtalens tilgjengelige bildefiler eller tilkoblet Drive. Originalfilen må leveres/identifiseres før integrasjon. Artikkelen viser nå `Bilder/store-stubb-diplomati-2026.svg`, en kartinspirert SVG med lyslinjer, og både `<img src>` og `og:image` peker på denne filen.
+Artikkelen, `og:image`, `twitter:image`, `Nyhetshjul.json` og `kommentarer.json` peker alle til samme JPG. Bildeteksten merker motivet som en KI-generert redaksjonell montasje, **ikke dokumentasjon fra telefonsamtalen**. Artikkelens layout er beholdt, men hero-bildet har fått responsiv `height:auto` for korrekt 16:9 også på mobil. Tidligere SVG ligger urørt for eventuell tilbakerulling.
 
-**Implementering når originalbildet er tilgjengelig:** Kontroller identitet, motiv, kvalitet, rettigheter og korrekt bildeetikett. Last opp den ekte eksisterende bildefilen (fortrinnsvis WebP/JPEG med passende dimensjoner) i `Bilder/redaksjon/2026-11-03/`; oppdater `<img src>`, `width`/`height`, `alt`, `<figcaption>`, `og:image` og `kommentarer.json` samt andre faktiske forside-/feedhenvisninger som bruker SVG-en. Verifiser at lenkene peker til bildet og at det faktisk vises både i artikkelen og på forsiden. Behold det gamle SVG-bildet for tilbakerulling. Ikke erklær oppgaven fullført før bildeopplasting og visning er kontrollert.
-
-**Reservespesifikasjon – bruk bare dersom originalen ikke kan gjenfinnes og brukeren ber om nyproduksjon.**
-
-**Eksisterende publisert bilde:** `Bilder/store-stubb-diplomati-2026.svg`; viser et kartinspirert mørkt rom, lyslinjer og forbindelser.  
-**Ny visuell idé:** «Samtalen som ikke er et gjennombrudd.» Et stort, mørkt nordisk møterom; i forgrunnen en enslig analog telefon og en tom stol, et bord med varsomt reflektert lys; gjennom vinduet skimtes Helsinkis vinterblå skumring eller et abstrakt nordisk kystlandskap. I bakgrunnen et nesten usynlig kartprojisert lys, uten flaggkollasj. Det skal kommunisere avstand og diplomatisk usikkerhet – **ikke** at akkurat dette rommet eller denne telefonen ble brukt.
-
-**Komposisjon:** 3/4-kameravinkel mot bordets ende; telefon i nedre venstre tredel, tom stol i midtre tredel, kaldt vinduslys fra høyre. Stor rolig negativ flate rundt motivet.  
-**Palett:** nattblå `#0D1C2B`, skifer `#34475B`, støvet messing `#B89562`, hvitt lys `#D7E3E9`.  
-**Stil/lys:** Fotorealistisk malerisk uttrykk, høy materialitet i tre, glass og tekstil; subtil filmgrain; dempet volumetrisk lys. **Ingen genererte ansikter av Støre, Stubb, Putin eller Zelenskyj.**
-
-**Genereringsbrief (engelsk):**
-> Premium editorial magazine cover illustration, cinematic painterly realism, empty Nordic diplomatic meeting room at blue hour, an old telephone resting on a polished dark wood conference table, one unoccupied chair, understated reflected brass lamp light, vast cold window overlooking an abstract northern waterfront, distant out-of-focus city lights, restrained geopolitical tension conveyed by emptiness and distance, impeccably detailed materials, sophisticated chiaroscuro, tactile atmosphere, muted navy and slate blue with subtle warm amber, editorial art direction, 16:9 horizontal hero image, central subject safe for crop, no people, no text, no emblems, not a documentary photo, no visual clutter.
-
-**Bildetekst:** «Redaksjonell KI-assistert illustrasjon av diplomati og avstand. Motivet viser ikke rommet der samtalen fant sted.»  
-**Alt:** «Mørkt møterom med telefon på et bord og en tom stol foran et kaldt blått vindu.»
+**Oppfølging:** Kontroller at GitHub Pages-deployen og den offentlige bildeadressen fungerer etter utrulling. Bildet behøver ikke produseres på nytt.
 
 ## 02. Spania – 17 minutter
 
@@ -106,7 +91,7 @@ Gjennomgang av faktiske bildefiler i repositoriet viser et stilbrudd. Eldre arti
 
 ## Produksjonsrekkefølge
 
-1. **Støre–Stubb: hent og monter eksisterende bilde.** Finn frem tidligere generert original, kontroller bildefilen, koble den til artikkel/forside/`og:image`, og test i den publiserte 16:9-malen. Ingen ny generering av denne saken før originalen er avklart.
+1. **Støre–Stubb: ferdig på `main`.** Følg opp den offentlige GitHub Pages-deployen, og bruk motivets detaljgrad som stilreferanse for de øvrige sakene.
 2. **Spania og fiskeri.** Høy nyhetsalvorlighet: få etisk riktig, troverdig illustrasjon før offentlig bruk.
 3. **Israel og Europa.** Sterk variasjon i rom, folkemengde, lys og farger så forsiden ikke blir ensformig.
 4. **Visuell QA i to visninger:** `1440 px` desktop og `390 px` mobil; test hero, eventuell forside-thumbnail, lesbarhet og den synlige KI-etiketten.
