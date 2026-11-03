@@ -1,7 +1,7 @@
 # Paradisavisa – bildeplan for fem hovedsaker
 
 **Utarbeidet:** 3. november 2026  
-**Status:** Redaksjonell produksjonsbrief. Støre–Stubb-bildet er nå erstattet i kildekoden og lagt på `main` 3. november 2026; de fire øvrige sakene står fortsatt i bildekø. Dette dokumentet gir produksjonsbrief for nye bilder og endrer ikke publiseringsstatus for upubliserte artikler.  
+**Status:** Redaksjonell produksjonsbrief. Støre–Stubb-bildet er nå erstattet i kildekoden og lagt på `main` 3. november 2026; fire øvrige KI-genererte JPG-hovedbilder er nå produsert og lastet opp til en egen pull request for de upubliserte utkastene. Artikkelpublisering er fortsatt sperret inntil redaksjonell godkjenning. Dette dokumentet gir produksjonsbrief for nye bilder og endrer ikke publiseringsstatus for upubliserte artikler.  
 **Layoutmal:** [Støre–Stubb: Den diplomatiske muligheten – og risikoen](https://paradispartiet.github.io/Paradisavisa/artikler/2026-11-02-store-stubb-diplomatisk-mulighet.html).
 
 ## Hvorfor dette må endres
