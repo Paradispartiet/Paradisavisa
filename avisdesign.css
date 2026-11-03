@@ -30,6 +30,18 @@
   font-weight:550;
   letter-spacing:.14em;
 }
+/* Kategorinavnene i masthead er ekte seksjonslenker. */
+.avis-forside .avis-masthead .avis-kategorier a {
+  display:inline-flex;
+  align-items:center;
+  min-height:2.25rem;
+  color:inherit;
+  text-decoration:none;
+}
+.avis-forside .avis-masthead .avis-kategorier a:hover,
+.avis-forside .avis-masthead .avis-kategorier a:focus-visible {
+  color:var(--yellow);
+}
 .avis-forside .avis-masthead .nav-toggle {
   border:1px solid transparent;
   font-size:.75rem;
