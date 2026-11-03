@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Nyhetsinnhold lastes uavhengig av notisbåndet. Nettfeil i en
   // enkelt JSON-fil skal aldri hindre andre seksjoner i å vises.
   if (document.querySelector(".notisbånd")) {
-    initNotisPosisjon();
     loadNotiser();
   }
   if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
@@ -184,33 +183,6 @@ function loadCategoryArchive() {
 }
 
 /* ---------- Notisbånd: rolig, jevn og sømløs bevegelse ---------- */
-/* ---------- Safari: hold det faste notisbåndet i synlig vindu ---------- */
-function initNotisPosisjon() {
-  const band = document.querySelector(".notisbånd");
-  if (!band) return;
-  let pending = false;
-  const oppdater = () => {
-    pending = false;
-    const viewport = window.visualViewport;
-    const forskyvning = viewport
-      ? Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop)
-      : 0;
-    band.style.setProperty("--notis-visual-bottom", Math.round(forskyvning) + "px");
-  };
-  const planlegg = () => {
-    if (pending) return;
-    pending = true;
-    requestAnimationFrame(oppdater);
-  };
-  oppdater();
-  window.visualViewport?.addEventListener("resize", planlegg);
-  window.visualViewport?.addEventListener("scroll", planlegg);
-  window.addEventListener("scroll", planlegg, { passive: true });
-  window.addEventListener("resize", planlegg);
-  window.addEventListener("pageshow", planlegg);
-}
-
-/* ---------- Notisbånd ---------- */
 function loadNotiser() {
   // Sportsiden bruker sitt eget notisutvalg, alle andre sider notiser.json.
   const filename = document.querySelector(".sport-banner") ? "sport-notiser.json" : "notiser.json";
