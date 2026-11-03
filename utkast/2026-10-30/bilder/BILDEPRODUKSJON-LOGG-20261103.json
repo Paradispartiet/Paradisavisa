@@ -1,0 +1,82 @@
+[
+  {
+    "key": "pension",
+    "file": "Senior woman working on laptop at home.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Shixart1985",
+    "attribution": "",
+    "sha1": "9844f857aeb2e0e06922fe800f24e76425c02169",
+    "size": [
+      6048,
+      4024
+    ],
+    "bytes": 6954607,
+    "output": "utkast/2026-10-30/bilder/pensjonsinformasjon-arkivfoto-2026.jpg",
+    "output_sha256": "907151d828e9291b2213eecb5ce013c69fc927e241c83cf8fdc4f0a5489c4e32",
+    "output_bytes": 189786
+  },
+  {
+    "key": "work",
+    "file": "Depressed middle-aged businesswoman working late at night struggles with tasks in front of laptop while holding head with hands.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Shixart1985",
+    "attribution": "",
+    "sha1": "b692131513614eed66cec837bbd18c9786adbb4c",
+    "size": [
+      6048,
+      4032
+    ],
+    "bytes": 11672984,
+    "output": "utkast/2026-10-30/bilder/arbeidstid-kveldsarbeid-arkivfoto-2026.jpg",
+    "output_sha256": "d3c8133018f6dbec410b0f46768312eca77c6848ba6078b69cdc554e1f6ea86e",
+    "output_bytes": 161332
+  },
+  {
+    "key": "witch",
+    "file": "Witch Club Satan in Metropool Hengelo.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Mx Lucy",
+    "attribution": "",
+    "sha1": "6f834b94935ce2bd01ebbb698e9963a9842f63a8",
+    "size": [
+      3072,
+      4080
+    ],
+    "bytes": 2287718,
+    "output": "utkast/2026-10-30/bilder/witch-club-satan-konsert-2026.jpg",
+    "output_sha256": "29b12983099d3b41072eb273260ddc489b1a4b5e9c1b5bee118deeb110c53e12",
+    "output_bytes": 322826
+  },
+  {
+    "key": "renata",
+    "file": "Renata Flores, Riddu Riđđu 2024 (3).jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Riddu  Riddu",
+    "attribution": "",
+    "sha1": "4111499fc639233673d951b1bf9abf5c468f5380",
+    "size": [
+      2500,
+      1667
+    ],
+    "bytes": 3122286,
+    "output": "utkast/2026-10-30/bilder/renata-flores-riddu-2024.jpg",
+    "output_sha256": "d12eb00e410c6647aa3466a5d771de5538950a388686cd66482d13391d581802",
+    "output_bytes": 292512
+  },
+  {
+    "key": "markens",
+    "file": "Wheat field in early summer.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Lars Krogh Berg",
+    "attribution": "",
+    "sha1": "bf684d62f846acbc69966b775a73202c5fd58c9b",
+    "size": [
+      4032,
+      1960
+    ],
+    "bytes": 4085536,
+    "output": "utkast/2026-10-30/bilder/markens-grode-akerlandskap-arkivfoto-2026.jpg",
+    "output_sha256": "6cb182bc7747330f1c9e03184a611135936a5e3be6beeb895442d9861169c416",
+    "output_bytes": 847997
+  }
+]
