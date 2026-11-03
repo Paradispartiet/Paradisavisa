@@ -1,7 +1,7 @@
 # En generasjon går i gatene – men kjemper de for det samme?
 
 **EUROPA / SAMFUNN · REDAKSJONELT UTKAST – IKKE PUBLISERT**  
-**Researchstatus: 2. november 2026.**
+**Researchstatus: Oppdatert 3. november 2026 med opplysninger fra 2. november.**
 
 **Ingress:** Hundretusener demonstrerte i Frankrike sist helg. Noen krevde mer kjøpekraft og bedre offentlige tjenester. Andre protesterte mot politiinnsatsen. Før vi kaller det et europeisk ungdomsopprør, må vi forstå hva de ulike bevegelsene faktisk vil.
 
@@ -17,6 +17,10 @@ Myndighetene varslet omfattende politiberedskap etter uroligheter tidligere i ok
 
 Innenriksdepartementets rapport omtalte også en nedgang i deltakelsen fra 410 000 uken før og 550 000 den 17. oktober. Det er dermed misvisende å fremstille 31. oktober som en entydig økning i protestene.
 
+## Skoleaksjonene fortsetter 2. november
+
+Da franske elever kom tilbake etter høstferien mandag 2. november, fortsatte protestene, men i mindre omfang enn før ferien. Ifølge Reuters opplyste franske skolemyndigheter at **41 videregående skoler var blokkert eller berørt av blokkeringsforsøk** ved en opptelling klokken 08.30 GMT, omtrent én prosent av landets videregående skoler. Tallet gjelder skoler ved dette tidspunktet, ikke antall demonstranter eller en samlet telling for hele dagen. Utdanningsminister Édouard Geffray beskrev blokkeringsforsøkene som begrensede og understreket skillet mellom å demonstrere og å hindre adgang til skolen. Elevrepresentanter mente at regjeringens foreslåtte tiltak ikke var tilstrekkelige. Dette dokumenterer videre mobilisering, men ikke at alle protestgruppene har samme ledelse eller krav.
+
 ## En annen protestbevegelse i Tyskland
 
 Samtidig var unge demonstranter ute i gatene i Tyskland. Ifølge tyske Tagesschau 1. november anslo arrangørene at rundt 120 000 mennesker deltok på landsbasis. Politiet anslo omtrent 5 000 demonstranter i Berlin, mot arrangørenes anslag på 10 000. Det ble demonstrert i mer enn 30 tyske byer. Initiativet «Gen Z regelt» krevde blant annet lavere levekostnader, mer ressurser til skoler, rusomsorg og psykisk helsevern, en mer rettferdig byrdefordeling og motstand mot verneplikt og utvidet overvåking. Arrangørene oppfordret til fredelige demonstrasjoner. Tagesschau omtaler at **de fleste samlingene var fredelige**, men at det oppsto vold og uro etter avsluttede demonstrasjoner i enkelte byer. Det er derfor ikke grunnlag for å plassere ansvaret for disse hendelsene hos alle demonstrantene.
@@ -30,6 +34,7 @@ Det avgjørende spørsmålet er **hvilke konkrete beslutninger protestene retter
 Den mest interessante historien er kanskje ikke at ungdom gjør opprør. Den er hva som skal til for at de opplever at demokratiet svarer når de protesterer – og hvordan politiet og myndighetene balanserer sikkerhet med retten til å demonstrere.
 
 ### Kilder
+- Reuters, 2. november, 41 franske skoler berørt av blokkeringer/blokkeringsforsøk ved morgentelling: https://www.reuters.com/world/french-school-protests-resume-smaller-scale-students-return-break-2026-11-02/
 - Frankrikes innenriksdepartement, offisiell opptelling 1. november: https://www.interieur.gouv.fr/actualites/communiques-de-presse/bilan-de-journee-de-mobilisation-du-31-octobre-2026-et-de-soiree-dhalloween
 - AFP, demonstrasjoner 31. oktober: https://www.afp.com/en/thousands-turn-france-protests-amid-tight-security
 - Le Monde, reportasje 1. november: https://www.lemonde.fr/en/france/article/2026/11/01/i-am-protesting-so-that-we-can-protest-festive-and-determined-demonstrators-march-across-france-amid-heavy-police-presence_6768742_7.html
