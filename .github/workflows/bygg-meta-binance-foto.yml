@@ -55,8 +55,9 @@ jobs:
           def fit(im,center=(.5,.5)):
               return ImageOps.fit(im,(W,H),method=Image.Resampling.LANCZOS,centering=center)
           def grade(im,tint,blend=.26):
-              im=ImageEnhance.Contrast(im).enhance(1.20)
-              im=ImageEnhance.Color(im).enhance(.80)
+              im=ImageEnhance.Brightness(im).enhance(1.12)
+              im=ImageEnhance.Contrast(im).enhance(1.25)
+              im=ImageEnhance.Color(im).enhance(1.06)
               return Image.blend(im,Image.new("RGB",(W,H),tint),blend).convert("RGBA")
           def compose(bottom,top,side='left',start=430,finish=1090):
               mask=Image.new('L',(W,H),0)
@@ -78,10 +79,10 @@ jobs:
               im=Image.alpha_composite(im,glow)
               vignette=ImageDraw.Draw(fx)
               for y in range(H):
-                  a=int(70*(y/H)**2.3)
+                  a=int(36*(y/H)**2.3)
                   vignette.line((0,y,W,y),fill=(4,10,19,a))
               im=Image.alpha_composite(im,fx)
-              return im.convert("RGB")
+              return ImageEnhance.Sharpness(im.convert("RGB")).enhance(1.35)
           def write(im,name):
               p=Path('Bilder/Artikler')/name
               p.parent.mkdir(parents=True,exist_ok=True)
@@ -91,16 +92,17 @@ jobs:
               print(f"Created {p} ({p.stat().st_size} bytes)")
 
           # Kontrast mellom autentisk historisk redaksjonsrom og Metas faktiske hovedkvarter.
-          meta=grade(fit(pictures['meta'],(.52,.46)),(10,31,56),.32)
-          news=grade(fit(pictures['news'],(.52,.52)),(75,48,29),.17)
-          composed=compose(meta,news,'left',500,1090)
-          write(finish(composed,orange=(420,640),cool=(1240,280)), 'meta-pressen-plattformen-fotomontasje-2026.jpg')
+          meta_crop=pictures['meta'].crop((3000,1450,4512,2850))
+          meta=grade(fit(meta_crop,(.5,.65)),(7,27,50),.16)
+          news=grade(fit(pictures['news'],(.55,.65)),(85,49,25),.10)
+          composed=compose(meta,news,'left',620,815)
+          write(finish(composed,orange=(360,720),cool=(1200,250)), 'meta-pressen-plattformen-fotomontasje-2026.jpg')
 
-          # NERSC-foto, ikke Binance: menneskelig sikkerhetsarbeid og teknologisk infrastruktur.
-          racks=grade(fit(pictures['racks'],(.5,.48)),(6,25,48),.30)
-          tech=grade(fit(pictures['tech'],(.52,.48)),(15,36,52),.16)
-          composed=compose(racks,tech,'right',670,1180)
-          write(finish(composed,orange=(1250,620),cool=(360,320)), 'binance-cybersikkerhet-fotomontasje-2026.jpg')
+          # Skarpe arkivbilder fra NERSC. Ingen figur eller server skal fremstå som Binance.
+          racks=grade(fit(pictures['racks'],(.48,.48)),(8,35,55),.12)
+          tech=grade(fit(pictures['tech'],(.55,.50)),(10,34,52),.12)
+          composed=compose(tech,racks,'left',570,750)
+          write(finish(composed,orange=(1270,640),cool=(280,270)), 'binance-cybersikkerhet-fotomontasje-2026.jpg')
           PY
       - name: Lagre ferdige bilder i arbeidsgrenen
         shell: bash
