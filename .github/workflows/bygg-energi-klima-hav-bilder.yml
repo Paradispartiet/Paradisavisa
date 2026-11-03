@@ -1,0 +1,108 @@
+name: Produser tre foto-hovedbilder for energi, klima og hav
+
+on:
+  push:
+    branches:
+      - design/energi-klima-hav-hovedbilder-20261103
+    paths:
+      - .github/workflows/bygg-energi-klima-hav-bilder.yml
+
+permissions:
+  contents: write
+
+jobs:
+  bygg:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer bildebibliotek
+        run: python -m pip install --quiet Pillow
+      - name: Hent kontrollerte originalbilder fra Wikimedia Commons
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from urllib.request import Request, urlopen
+          from urllib.parse import quote
+          from io import BytesIO
+          from pathlib import Path
+          from PIL import Image, ImageOps, ImageEnhance, ImageFilter
+          import hashlib
+
+          # Hvert bilde er et autentisk arkivfoto. Verken utslippsnivå,
+          # selskapets kvartalsresultat eller marin vernestatus er synlige i motivene.
+          photos = {
+              'energy': {
+                  'filename': 'Troll A, Nordsjøen (28530306416).jpg',
+                  'dimensions': (4660, 3631),
+                  'min_bytes': 4000000,
+                  'output': '2026-10-28/bilder/equinor-troll-a-hovedfoto-2026.jpg',
+                  'focus': (.52, .49),
+                  'tint': (17, 36, 52), 'mix': .09,
+                  'contrast': 1.16, 'saturation': 1.08, 'brightness': 1.05,
+              },
+              'climate': {
+                  'filename': 'ISS001-E-5947 - View of atmospheric limb.jpg',
+                  'dimensions': (3060, 2092),
+                  'min_bytes': 140000,
+                  'output': '2026-10-28/bilder/klimagasser-atmosfaere-nasa-2026.jpg',
+                  'focus': (.5, .51),
+                  'tint': (8, 22, 49), 'mix': .10,
+                  'contrast': 1.20, 'saturation': 1.06, 'brightness': 1.04,
+              },
+              'ocean': {
+                  'filename': 'View from Ryten Hiking Trail, Lofoten, Norway.jpg',
+                  'dimensions': (8256, 4644),
+                  'min_bytes': 7000000,
+                  'output': '2026-10-30/bilder/norske-havomrader-lofoten-2026.jpg',
+                  'focus': (.5, .5),
+                  'tint': (8, 35, 42), 'mix': .075,
+                  'contrast': 1.15, 'saturation': 1.10, 'brightness': 1.00,
+              },
+          }
+
+          for key, spec in photos.items():
+              filename=spec['filename']
+              uri='https://commons.wikimedia.org/wiki/Special:FilePath/'+quote(filename.replace(' ', '_'),safe="'(),-")
+              request=Request(uri,headers={'User-Agent':'Paradisavisa/1.0 (https://github.com/Paradispartiet/Paradisavisa)'})
+              with urlopen(request,timeout=105) as response:
+                  raw=response.read()
+              raw_hash=hashlib.sha1(raw).hexdigest()
+              image=ImageOps.exif_transpose(Image.open(BytesIO(raw))).convert('RGB')
+              size=spec['dimensions']
+              if image.size not in (size,size[::-1]) or len(raw) < spec['min_bytes']:
+                  raise SystemExit('Originalbilde uventet: '+repr((key,image.size,len(raw))))
+              print('ORIGINAL',key,filename,'size',image.size,'bytes',len(raw),'sha1',raw_hash)
+              target=(1600,900)
+              image=ImageOps.fit(image,target,method=Image.Resampling.LANCZOS,centering=spec['focus'])
+              image=ImageEnhance.Brightness(image).enhance(spec['brightness'])
+              image=ImageEnhance.Contrast(image).enhance(spec['contrast'])
+              image=ImageEnhance.Color(image).enhance(spec['saturation'])
+              image=Image.blend(image,Image.new('RGB',target,spec['tint']),spec['mix'])
+              image=ImageEnhance.Sharpness(image).enhance(1.15)
+              output=Path('utkast')/spec['output']
+              output.parent.mkdir(parents=True,exist_ok=True)
+              image.save(output,'JPEG',quality=90,optimize=True,subsampling=0)
+              raw_out=output.read_bytes()
+              if len(raw_out)<120000 or not (raw_out.startswith(b'\\xff\\xd8') and raw_out.endswith(b'\\xff\\xd9')):
+                  raise SystemExit('Ugyldig resultatfil: '+str(output))
+              print('OUTPUT',str(output),'bytes',len(raw_out),'sha256',hashlib.sha256(raw_out).hexdigest())
+          PY
+      - name: Lagre tre bilder på arbeidsgrenen
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add utkast/2026-10-28/bilder/equinor-troll-a-hovedfoto-2026.jpg
+          git add utkast/2026-10-28/bilder/klimagasser-atmosfaere-nasa-2026.jpg
+          git add utkast/2026-10-30/bilder/norske-havomrader-lofoten-2026.jpg
+          git diff --cached --quiet && exit 0
+          git commit -m "Produser tre lisensierte, fotografiske hovedbilder"
+          git push origin HEAD:refs/heads/design/energi-klima-hav-hovedbilder-20261103
