@@ -45,7 +45,7 @@ jobs:
               with urlopen(request,timeout=90) as response:
                   data=response.read()
               im=Image.open(io.BytesIO(data)).convert('RGB')
-              if im.size!=dimensions or len(data)<75_000:
+              if im.size not in (dimensions,dimensions[::-1]) or len(data)<75_000:
                   raise SystemExit(f'Uventet fil for {filename}: {im.size}, {len(data)} bytes')
               src[key]=im
               print(f'Original {key}: {filename}; bytes={len(data)}; sha1={hashlib.sha1(data).hexdigest()}; size={im.size}')
