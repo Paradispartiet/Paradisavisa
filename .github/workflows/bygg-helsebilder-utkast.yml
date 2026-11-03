@@ -1,0 +1,108 @@
+name: Produser fotoillustrasjoner til helseutkast
+
+on:
+  push:
+    branches: [design/helsebilder-to-utkast-20261103]
+    paths: [.github/workflows/bygg-helsebilder-utkast.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  bygg:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Installer bildeverktøy
+        run: python -m pip install --quiet Pillow
+      - name: Last ned CC0-foto og bygg to illustrasjoner
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from urllib.request import Request,urlopen
+          from urllib.parse import quote
+          from pathlib import Path
+          import io,hashlib
+          from PIL import Image,ImageOps,ImageEnhance,ImageFilter,ImageDraw
+
+          imgs={
+            'corridor':('Hospital hallway in Lagos.jpg',(3024,4032)),
+            'hospital':('Gorliz - Hospital.jpg',(2048,1536)),
+            'staff':('Nurses at Hospital.jpg',(1734,2312)),
+            'room':('Modern hospital room with bed and sofa.jpg',(1121,913)),
+          }
+          src={}
+          for key,(filename,dimensions) in imgs.items():
+              url='https://commons.wikimedia.org/wiki/Special:FilePath/'+quote(filename.replace(' ','_'),safe="'")
+              request=Request(url,headers={'User-Agent':'Paradisavisa/1.0 (https://github.com/Paradispartiet/Paradisavisa)'})
+              with urlopen(request,timeout=90) as response:
+                  data=response.read()
+              im=Image.open(io.BytesIO(data)).convert('RGB')
+              if im.size!=dimensions or len(data)<75_000:
+                  raise SystemExit(f'Uventet fil for {filename}: {im.size}, {len(data)} bytes')
+              src[key]=im
+              print(f'Original {key}: {filename}; bytes={len(data)}; sha1={hashlib.sha1(data).hexdigest()}; size={im.size}')
+
+          W,H=1600,900
+          def crop(im,x,y,w,h):
+              return ImageOps.fit(im,(w,h),method=Image.Resampling.LANCZOS,centering=(x,y))
+          def grade(im,temperature='cold'):
+              im=ImageEnhance.Contrast(im).enhance(1.14)
+              im=ImageEnhance.Color(im).enhance(1.07)
+              im=ImageEnhance.Sharpness(im).enhance(1.20)
+              color=(10,39,50) if temperature=='cold' else (69,35,23)
+              wash=Image.new('RGB',im.size,color)
+              return Image.blend(im,wash,.13)
+          def layout(left,right,edge=910,blend=135):
+              canvas=Image.new('RGB',(W,H))
+              canvas.paste(left,(0,0))
+              shade=right.convert('RGBA')
+              mask=Image.new('L',(W,H),0)
+              draw=ImageDraw.Draw(mask)
+              for x in range(W):
+                  alpha=0 if x<edge-blend else 255 if x>edge+blend else int(255*(x-edge+blend)/(2*blend))
+                  draw.line((x,0,x,H),fill=alpha)
+              shade.putalpha(mask.filter(ImageFilter.GaussianBlur(13)))
+              canvas=Image.alpha_composite(canvas.convert('RGBA'),shade)
+              # Gentle filmic vignette and light, without inserted text or labels.
+              layer=Image.new('RGBA',(W,H),(0,0,0,0))
+              d=ImageDraw.Draw(layer)
+              for y in range(H):
+                  a=int(42*(y/H)**2.2)
+                  d.line((0,y,W,y),fill=(2,10,20,a))
+              canvas=Image.alpha_composite(canvas,layer)
+              return canvas.convert('RGB')
+          def save(im,name):
+              path=Path('utkast/2026-11-02/bilder')/name
+              path.parent.mkdir(parents=True,exist_ok=True)
+              im.save(path,'JPEG',quality=89,optimize=True,subsampling=0)
+              if path.stat().st_size<130000: raise SystemExit('For liten ny JPG: '+str(path))
+              print(f'NYTT BILDE: {path} {path.stat().st_size} bytes')
+
+          reform_left=grade(crop(src['corridor'],.53,.49,W,H),'cold')
+          reform_right=grade(crop(src['hospital'],.5,.53,W,H),'warm')
+          reform=layout(reform_left,reform_right,edge=1030,blend=105)
+          save(reform,'helsereform-hovedfoto-2026.jpg')
+
+          pilot_left=grade(crop(src['staff'],.50,.42,W,H),'warm')
+          pilot_right=grade(crop(src['room'],.50,.48,W,H),'cold')
+          pilots=layout(pilot_left,pilot_right,edge=850,blend=90)
+          save(pilots,'helsepiloter-samarbeid-hovedfoto-2026.jpg')
+          PY
+      - name: Lagre JPG-bilder bare på arbeidsgrenen
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add utkast/2026-11-02/bilder/helsereform-hovedfoto-2026.jpg utkast/2026-11-02/bilder/helsepiloter-samarbeid-hovedfoto-2026.jpg
+          git diff --cached --quiet && exit 0
+          git commit -m "Legg til fotoillustrasjoner til upubliserte helsesaker"
+          git push origin HEAD:refs/heads/design/helsebilder-to-utkast-20261103
