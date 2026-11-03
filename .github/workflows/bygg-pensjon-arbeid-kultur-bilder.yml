@@ -36,8 +36,7 @@ jobs:
           images=[
             dict(key='pension',filename='Senior woman working on laptop at home.jpg',size=(6048,4024),min_bytes=1200000,license='CC BY 2.0',target='pensjonsinformasjon-arkivfoto-2026.jpg',focus=(.48,.48),tone=(68,47,35),blend=.08,contrast=1.10,saturation=.99),
             dict(key='work',filename='Depressed middle-aged businesswoman working late at night struggles with tasks in front of laptop while holding head with hands.jpg',size=(6048,4032),min_bytes=1200000,license='CC BY 2.0',target='arbeidstid-kveldsarbeid-arkivfoto-2026.jpg',focus=(.5,.47),tone=(22,29,48),blend=.085,contrast=1.14,saturation=1.00),
-            dict(key='witch',filename='Witch Club Satan au Motocultor 2026.jpg',size=(5184,3570),min_bytes=2000000,license='CC BY-SA 4.0',target='witch-club-satan-konsert-2026.jpg',focus=(.5,.43),tone=(45,12,25),blend=.05,contrast=1.12,saturation=1.06),
-            dict(key='witch_alt',filename='Witch Club Satan in Metropool Hengelo.jpg',size=(3072,4080),min_bytes=500000,license='CC BY-SA 4.0',target='witch-club-satan-portrait-candidate-2026.jpg',focus=(.5,.48),tone=(12,24,59),blend=.065,contrast=1.16,saturation=1.05),
+            dict(key='witch',filename='Witch Club Satan in Metropool Hengelo.jpg',size=(3072,4080),min_bytes=500000,license='CC BY-SA 4.0',target='witch-club-satan-konsert-2026.jpg',focus=(.5,.48),tone=(12,24,59),blend=.065,contrast=1.16,saturation=1.05),
             dict(key='renata',filename='Renata Flores, Riddu Riđđu 2024 (3).jpg',size=(2500,1667),min_bytes=500000,license='CC BY-SA 2.0',target='renata-flores-riddu-2024.jpg',focus=(.53,.47),tone=(32,21,51),blend=.05,contrast=1.09,saturation=1.08),
             dict(key='markens',filename='Wheat field in early summer.jpg',size=(4032,1960),min_bytes=500000,license='CC BY-SA 4.0',target='markens-grode-akerlandskap-arkivfoto-2026.jpg',focus=(.5,.48),tone=(52,40,17),blend=.075,contrast=1.12,saturation=1.05),
           ]
@@ -55,6 +54,8 @@ jobs:
               page=next(iter(metadata['query']['pages'].values()))
               meta=page.get('imageinfo',[{}])[0].get('extmetadata',{})
               license_name=html.unescape(meta.get('LicenseShortName',{}).get('value',''))
+              artist=re.sub('<[^>]+>',' ',html.unescape(meta.get('Artist',{}).get('value',''))).strip()
+              author_desc=re.sub('<[^>]+>',' ',html.unescape(meta.get('Attribution',{}).get('value',''))).strip()
               if license_name.replace(' ','').lower() != spec['license'].replace(' ','').lower():
                   raise SystemExit(f"Lisensavvik for {file}: fikk {license_name!r}, forventet {spec['license']!r}")
               original='https://commons.wikimedia.org/wiki/Special:FilePath/'+quote(file.replace(' ','_'),safe='(),-')
@@ -73,7 +74,7 @@ jobs:
               outbytes=location.read_bytes()
               if len(outbytes)<100000 or not(outbytes.startswith(bytes((255,216))) and outbytes.endswith(bytes((255,217)))):
                   raise SystemExit('Ugyldig JPEG: '+str(location))
-              log.append({'key':spec['key'],'file':file,'license':license_name,'sha1':digest,'size':picture.size,'bytes':len(data),'output':str(location),'output_sha256':hashlib.sha256(outbytes).hexdigest(),'output_bytes':len(outbytes)})
+              log.append({'key':spec['key'],'file':file,'license':license_name,'artist':artist,'attribution':author_desc,'sha1':digest,'size':picture.size,'bytes':len(data),'output':str(location),'output_sha256':hashlib.sha256(outbytes).hexdigest(),'output_bytes':len(outbytes)})
               print('OK_KILDE',json.dumps(log[-1],ensure_ascii=False))
           (out/'BILDEPRODUKSJON-LOGG-20261103.json').write_text(json.dumps(log,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
