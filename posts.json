@@ -1,5 +1,12 @@
 [
   {
+    "title": "Sofienberg kirke er varm. Folk fryser utenfor.",
+    "url": "artikler/2026-11-03-sofienberg-kirke-varmestue.html",
+    "excerpt": "Kommentar: Kirken har plass til konserter, kor, yoga og ping-pong. Hvor er den gratis varmestuen for dem som bruker parken?",
+    "date": "2026-11-03",
+    "category": "debatt"
+  },
+  {
     "title": "Legeflukt truer helsetjenesten",
     "url": "artikler/2025-09-26-Legeflukt.html",
     "excerpt": "Stadig flere leger forlater offentlig sektor. Paradismodellen tilbyr tryggere rammer.",
@@ -20,11 +27,11 @@
     "date": "2025-10-06",
     "category": "nyheter"
   },
-{
-  "title": "Kulturkirke for hvem?",
-  "url": "artikler/2025-10-16-sofienberg-kirke.html",
-  "excerpt": "23 millioner til fellesskap – men Sofienberg kirke står stengt på dagtid og leies ut til arrangementer.",
-  "date": "2025-10-16",
-  "category": "debatt"
-}
+  {
+    "title": "Kulturkirke for hvem?",
+    "url": "artikler/2025-10-16-sofienberg-kirke.html",
+    "excerpt": "23 millioner til fellesskap – men Sofienberg kirke står stengt på dagtid og leies ut til arrangementer.",
+    "date": "2025-10-16",
+    "category": "debatt"
+  }
 ]
