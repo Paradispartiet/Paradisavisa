@@ -37,7 +37,7 @@ jobs:
 
           sources={
               'security':('U.N. General Assembly 77 (52373180672).jpg',(4032,3024),'484acb10b4c4b05a0d1ade15f95ae44abeb29bfd'),
-              'infrastructure':('UPS Power Management Module, racks with network cabling in NERSC data center.jpg',(4288,2848),None),
+              'infrastructure':('Rear of rack at NERSC data center - closeup.jpg',(2860,4304),None),
               'blackout':('A room during load shedding at night in West Bengal, India.jpg',(3264,2448),'e92fb672b515de41ac2c1036e4e97f15bfd427e1'),
               'radio':('DAB Radio 07.jpg',(3249,2384),None),
           }
@@ -98,7 +98,7 @@ jobs:
           # Cyberfare: personell i et reelt, amerikansk sikkerhetssenter + fysisk datasenter.
           # Bildet påstår ikke å vise NSM, et angrep eller et bestemt norsk anlegg.
           people=grade(fit(originals['security'],(.57,.47)),(9,35,60),.16,contrast=1.19)
-          hardware=grade(fit(originals['infrastructure'],(.30,.51)),(7,28,53),.20,contrast=1.23,brightness=.98)
+          hardware=grade(fit(originals['infrastructure'],(.52,.52)),(6,24,53),.16,contrast=1.24,brightness=.90)
           cyber=finish(blend(people,hardware,edge=880,span=120),(177,56,55),(1365,390),.28)
           store(cyber,'2026-10-28/bilder/cyberrisiko-sikkerhetssenter-2026.jpg')
 
