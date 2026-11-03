@@ -34,9 +34,9 @@ jobs:
           from PIL import Image, ImageOps, ImageEnhance, ImageDraw, ImageFilter
 
           images = [
-            ("https://upload.wikimedia.org/wikipedia/commons/8/83/TrumpPortrait.jpg",
+            ("https://commons.wikimedia.org/wiki/Special:FilePath/TrumpPortrait.jpg",
              "047ad63fa5bf785b565a50c8f8398192afa8a8f6", (2550,3300)),
-            ("https://upload.wikimedia.org/wikipedia/commons/d/d9/Federal_Courthouse_in_Miami.jpg",
+            ("https://commons.wikimedia.org/wiki/Special:FilePath/Federal_Courthouse_in_Miami.jpg",
              "1f37bf021c2fe584390cb48ab2e840bd4e271977", (2576,1932))
           ]
           photos=[]
