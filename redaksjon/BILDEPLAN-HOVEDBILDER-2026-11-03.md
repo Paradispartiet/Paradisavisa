@@ -1,7 +1,7 @@
 # Paradisavisa – bildeplan for fem hovedsaker
 
 **Utarbeidet:** 3. november 2026  
-**Status:** Redaksjonell produksjonsbrief. Ingen bilder er produsert, erstattet eller publisert gjennom dette dokumentet.  
+**Status:** Redaksjonell produksjonsbrief. Ingen bilder er produsert, erstattet eller publisert gjennom dette dokumentet. **Viktig avklaring 3. november:** Brukeren opplyser at et bedre Støre–Stubb-bilde allerede ble laget tidligere, men ikke kom inn i artikkelen. Dette bildet skal gjenfinnes og tas i bruk, ikke gjenskapes uten videre.  
 **Layoutmal:** [Støre–Stubb: Den diplomatiske muligheten – og risikoen](https://paradispartiet.github.io/Paradisavisa/artikler/2026-11-02-store-stubb-diplomatisk-mulighet.html).
 
 ## Hvorfor dette må endres
@@ -21,7 +21,13 @@ Gjennomgang av faktiske bildefiler i repositoriet viser et stilbrudd. Eldre arti
 - **Teknisk:** Bruk meningsfull `alt`-tekst på selve motivet, synlig bildetekst og oppdatert `og:image`. Sjekk mobilt 360–430 px, desktop 1440 px, kontrast mot svart side, lastetid og at ingen ansikter/fokuspunkt kuttes. Ingen bytte av bilder i `artikler/` uten godkjent ferdigfil og presseetisk gjennomgang.
 - **Navngivning:** `Bilder/redaksjon/2026-11-03/store-stubb-diplomati.webp`, `spania-togkatastrofe.webp`, `israel-regjeringsdannelse.webp`, `europa-ungdomsprotester.webp`, `fiskeri-papirspor.webp`. Dette er planlagte destinasjoner, **ikke filer som allerede finnes**.
 
-## 01. Støre–Stubb – Diplomati i kulden
+## 01. Støre–Stubb – bruk det allerede produserte bildet
+
+**Bilde må hentes frem, ikke genereres på nytt.** Et bedre Støre–Stubb-hovedbilde ble ifølge brukeren allerede produsert, men kom ikke inn på artikkelsiden. Bildet er foreløpig ikke funnet i `main`-grenen, de relevante redaksjonsgrenene, samtalens tilgjengelige bildefiler eller tilkoblet Drive. Originalfilen må leveres/identifiseres før integrasjon. Artikkelen viser nå `Bilder/store-stubb-diplomati-2026.svg`, en kartinspirert SVG med lyslinjer, og både `<img src>` og `og:image` peker på denne filen.
+
+**Implementering når originalbildet er tilgjengelig:** Kontroller identitet, motiv, kvalitet, rettigheter og korrekt bildeetikett. Last opp den ekte eksisterende bildefilen (fortrinnsvis WebP/JPEG med passende dimensjoner) i `Bilder/redaksjon/2026-11-03/`; oppdater `<img src>`, `width`/`height`, `alt`, `<figcaption>`, `og:image` og `kommentarer.json` samt andre faktiske forside-/feedhenvisninger som bruker SVG-en. Verifiser at lenkene peker til bildet og at det faktisk vises både i artikkelen og på forsiden. Behold det gamle SVG-bildet for tilbakerulling. Ikke erklær oppgaven fullført før bildeopplasting og visning er kontrollert.
+
+**Reservespesifikasjon – bruk bare dersom originalen ikke kan gjenfinnes og brukeren ber om nyproduksjon.**
 
 **Eksisterende publisert bilde:** `Bilder/store-stubb-diplomati-2026.svg`; viser et kartinspirert mørkt rom, lyslinjer og forbindelser.  
 **Ny visuell idé:** «Samtalen som ikke er et gjennombrudd.» Et stort, mørkt nordisk møterom; i forgrunnen en enslig analog telefon og en tom stol, et bord med varsomt reflektert lys; gjennom vinduet skimtes Helsinkis vinterblå skumring eller et abstrakt nordisk kystlandskap. I bakgrunnen et nesten usynlig kartprojisert lys, uten flaggkollasj. Det skal kommunisere avstand og diplomatisk usikkerhet – **ikke** at akkurat dette rommet eller denne telefonen ble brukt.
@@ -98,7 +104,7 @@ Gjennomgang av faktiske bildefiler i repositoriet viser et stilbrudd. Eldre arti
 
 ## Produksjonsrekkefølge
 
-1. **Støre–Stubb som kalibreringsbilde.** Den publiserte 16:9-siden er layoutmalen; skap ett bilde som visuelt «setter lista», sammenlign i faktisk artikkelramme.
+1. **Støre–Stubb: hent og monter eksisterende bilde.** Finn frem tidligere generert original, kontroller bildefilen, koble den til artikkel/forside/`og:image`, og test i den publiserte 16:9-malen. Ingen ny generering av denne saken før originalen er avklart.
 2. **Spania og fiskeri.** Høy nyhetsalvorlighet: få etisk riktig, troverdig illustrasjon før offentlig bruk.
 3. **Israel og Europa.** Sterk variasjon i rom, folkemengde, lys og farger så forsiden ikke blir ensformig.
 4. **Visuell QA i to visninger:** `1440 px` desktop og `390 px` mobil; test hero, eventuell forside-thumbnail, lesbarhet og den synlige KI-etiketten.
