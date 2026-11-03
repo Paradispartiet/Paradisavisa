@@ -25,6 +25,10 @@ jobs:
           node-version: '22'
       - name: Valider enkeltartikler, bilder og nyhetsstrømmer
         run: node scripts/valider-artikler.cjs
+      - name: Test redaksjonelle lenke- og notatsperrer
+        run: node --test scripts/redaksjonelle-sperrer.test.cjs
+      - name: Test isolert publiseringsløp
+        run: node --test scripts/publiser-artikkel.test.cjs
       - name: Sjekk at ukontrollert utkast ikke kan publiseres
         run: |
           if node scripts/publiser-artikkel.cjs cyberrisiko 2026-10-31; then

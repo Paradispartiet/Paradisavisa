@@ -5,6 +5,7 @@
 const fs=require("node:fs");
 const path=require("node:path");
 const root=path.resolve(__dirname,"..");
+const {finnLenkerTilUtkast}=require("./redaksjonelle-sperrer.cjs");
 const errors=[];
 let inspected=0;
 function read(relative) {
@@ -68,6 +69,25 @@ for(const article of catalog.artikler||[]){
   expect(html.includes("Kilder og dokumentasjon"),"Kildeliste mangler: "+htmlPath);
   expect(html.includes("Objektivt sett, fra vår synsvinkel."),"Motto mangler: "+htmlPath);
   expect(/<meta[^>]*name="robots"[^>]*noindex/.test(html),"Utkast må være noindex: "+htmlPath);
+  const upubliserteLenker=finnLenkerTilUtkast(html,htmlPath);
+  if(upubliserteLenker.length) {
+    if(article.godkjent||article.publisert){
+      errors.push("Godkjent artikkel lenker til upublisert utkast: "+htmlPath+" "+upubliserteLenker.join(", "));
+    } else {
+      console.warn("ADVARSEL: Utkast lenker til annet utkast: "+htmlPath+" "+upubliserteLenker.join(", "));
+    }
+  }
+  if(article.status==="utkast"||article.status==="arkivert") {
+    expect(article.godkjent===false&&article.publisert===false&&article.faktasjekk!=="godkjent",
+      "Utkast/arkiv kan ikke være godkjent eller publisert: "+htmlPath);
+  }
+  if(article.status==="godkjent") {
+    expect(article.godkjent===true&&article.faktasjekk==="godkjent"&&article.publisert===false,
+      "Godkjent-status krever individuell kontroll og ingen publisering: "+htmlPath);
+  }
+  if(article.status==="publisert") {
+    expect(article.publisert===true,"Publisert-status krever publisert=true: "+htmlPath);
+  }
   expect(article.godkjent===false||article.godkjent===true,"Godkjenningsstatus mangler: "+htmlPath);
   expect(article.publisert===false||article.publisert===true,"Publiseringsstatus mangler: "+htmlPath);
   if(!article.godkjent) {
@@ -85,6 +105,8 @@ for(const article of catalog.artikler||[]){
       const publicHtml=read(article.publisert_url);
       expect(publicHtml.includes('name="robots" content="index, follow"'),
         "Publisert artikkel må være tilgjengelig for søk: "+article.publisert_url);
+      expect(!/<strong>(?:Før publisering|Kildesjekk[^<]*):<\/strong>/.test(publicHtml),
+        "Interne kontrollnotater ligger i publisert artikkel: "+article.publisert_url);
     }
   }
   if(typeof imagePath!=="string"||!/^utkast\/\d{4}-\d{2}-\d{2}\/bilder\/[a-z0-9-]+\.svg$/.test(imagePath)){
