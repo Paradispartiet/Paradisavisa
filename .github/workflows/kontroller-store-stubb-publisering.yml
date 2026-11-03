@@ -6,7 +6,7 @@ on:
     paths:
       - ".github/workflows/kontroller-store-stubb-publisering.yml"
       - "artikler/2026-11-02-store-stubb-diplomatisk-mulighet.html"
-      - "Bilder/store-stubb-diplomati-2026.svg"
+      - "Bilder/Artikler/store-stubb-geopolitisk-1600x900.jpg"
       - "Nyhetshjul.json"
       - "kommentarer.json"
 
@@ -34,9 +34,13 @@ jobs:
                 curl --fail -L -sS --max-time 25 "$base/$fil?kontroll=${GITHUB_RUN_ID}-$forsok" -o "/tmp/$fil"
                 grep -Fq 'artikler/2026-11-02-store-stubb-diplomatisk-mulighet.html' "/tmp/$fil"
               done
-              curl --fail -L -sS --max-time 25 "$base/Bilder/store-stubb-diplomati-2026.svg?kontroll=${GITHUB_RUN_ID}-$forsok" -o /tmp/illustrasjon.svg
-              grep -Fq '<svg' /tmp/illustrasjon.svg
-              echo "OK: Artikkel, illustrasjon og oppføringer på forsiden er offentlig tilgjengelige."
+              curl --fail -L -sS --max-time 25 "$base/Bilder/Artikler/store-stubb-geopolitisk-1600x900.jpg?kontroll=${GITHUB_RUN_ID}-$forsok" -o /tmp/illustrasjon.jpg
+              test "$(wc -c </tmp/illustrasjon.jpg)" -gt 30000
+              grep -Fq 'Bilder/Artikler/store-stubb-geopolitisk-1600x900.jpg' /tmp/paradisartikkel.html
+              for fil in Nyhetshjul.json kommentarer.json; do
+                grep -Fq 'Bilder/Artikler/store-stubb-geopolitisk-1600x900.jpg' "/tmp/$fil"
+              done
+              echo "OK: Artikkel, JPEG-hovedbilde og begge forsidehenvisningene er offentlig tilgjengelige."
               exit 0
             fi
             echo "Ikke synlig ennå. Sjekker på nytt."
