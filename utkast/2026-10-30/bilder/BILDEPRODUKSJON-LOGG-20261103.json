@@ -3,6 +3,8 @@
     "key": "pension",
     "file": "Senior woman working on laptop at home.jpg",
     "license": "CC BY 2.0",
+    "artist": "Shixart1985",
+    "attribution": "",
     "sha1": "9844f857aeb2e0e06922fe800f24e76425c02169",
     "size": [
       6048,
@@ -17,6 +19,8 @@
     "key": "work",
     "file": "Depressed middle-aged businesswoman working late at night struggles with tasks in front of laptop while holding head with hands.jpg",
     "license": "CC BY 2.0",
+    "artist": "Shixart1985",
+    "attribution": "",
     "sha1": "b692131513614eed66cec837bbd18c9786adbb4c",
     "size": [
       6048,
@@ -29,29 +33,17 @@
   },
   {
     "key": "witch",
-    "file": "Witch Club Satan au Motocultor 2026.jpg",
-    "license": "CC BY-SA 4.0",
-    "sha1": "a2504877378811691ff4cc49c3a7f87b412ceed2",
-    "size": [
-      5184,
-      3570
-    ],
-    "bytes": 9350782,
-    "output": "utkast/2026-10-30/bilder/witch-club-satan-konsert-2026.jpg",
-    "output_sha256": "027f57e5c7b3b613c129adbed656935a6f28f27fab0d19d3447a88fb3494fba2",
-    "output_bytes": 248916
-  },
-  {
-    "key": "witch_alt",
     "file": "Witch Club Satan in Metropool Hengelo.jpg",
     "license": "CC BY-SA 4.0",
+    "artist": "Mx Lucy",
+    "attribution": "",
     "sha1": "6f834b94935ce2bd01ebbb698e9963a9842f63a8",
     "size": [
       3072,
       4080
     ],
     "bytes": 2287718,
-    "output": "utkast/2026-10-30/bilder/witch-club-satan-portrait-candidate-2026.jpg",
+    "output": "utkast/2026-10-30/bilder/witch-club-satan-konsert-2026.jpg",
     "output_sha256": "29b12983099d3b41072eb273260ddc489b1a4b5e9c1b5bee118deeb110c53e12",
     "output_bytes": 322826
   },
@@ -59,6 +51,8 @@
     "key": "renata",
     "file": "Renata Flores, Riddu Riđđu 2024 (3).jpg",
     "license": "CC BY-SA 2.0",
+    "artist": "Riddu  Riddu",
+    "attribution": "",
     "sha1": "4111499fc639233673d951b1bf9abf5c468f5380",
     "size": [
       2500,
@@ -73,6 +67,8 @@
     "key": "markens",
     "file": "Wheat field in early summer.jpg",
     "license": "CC BY-SA 4.0",
+    "artist": "Lars Krogh Berg",
+    "attribution": "",
     "sha1": "bf684d62f846acbc69966b775a73202c5fd58c9b",
     "size": [
       4032,
