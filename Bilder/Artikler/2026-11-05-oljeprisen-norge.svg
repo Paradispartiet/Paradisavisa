@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Symbolsk illustrasjon av fallende oljepris og konsekvenser for Norge">
+<defs>
+ <linearGradient id="night" x2="1" y2="1"><stop stop-color="#070e2a"/><stop offset=".48" stop-color="#173e77"/><stop offset="1" stop-color="#2c122f"/></linearGradient>
+ <linearGradient id="blue" x2="0" y2="1"><stop stop-color="#3667bc"/><stop offset="1" stop-color="#0b1d55"/></linearGradient>
+ <linearGradient id="red" x2="0" y2="1"><stop stop-color="#e23b49"/><stop offset="1" stop-color="#7d1528"/></linearGradient>
+ <linearGradient id="stone" x2="0" y2="1"><stop stop-color="#dce7fb"/><stop offset="1" stop-color="#778aaa"/></linearGradient>
+ <radialGradient id="spot"><stop stop-color="#fdf1c6" stop-opacity=".8"/><stop offset="1" stop-color="#fdf1c6" stop-opacity="0"/></radialGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="12"/></filter>
+ <filter id="shade"><feDropShadow dx="0" dy="11" stdDeviation="13" flood-color="#000" flood-opacity=".55"/></filter>
+ <pattern id="grain" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M0 20L80 20M0 60L80 60M20 0L20 80M60 0L60 80" stroke="#ffffff" stroke-opacity=".025"/></pattern>
+</defs>
+<rect width="1600" height="900" fill="url(#night)"/>
+<rect width="1600" height="900" fill="url(#grain)"/>
+
+<path d="M0 470Q160 434 315 468T650 485T1020 468T1600 485V900H0Z" fill="#0e426a"/>
+<path d="M0 590Q250 550 480 590T950 605T1600 578" fill="none" stroke="#7cb5d9" stroke-width="12" opacity=".35"/>
+<path d="M30 90L470 90L470 520L30 520Z" fill="#13294b" stroke="#527a9f" stroke-width="8"/>
+<path d="M83 170H420L420 310H83Z" fill="#1d4976"/><path d="M120 205L195 250 265 220 345 285 405 274" stroke="#e84d5c" stroke-width="18" fill="none"/>
+<path d="M386 269L415 275L398 300" fill="none" stroke="#e84d5c" stroke-width="14"/>
+<g fill="#1a2535" stroke="#acc2d9" stroke-width="7">
+ <path d="M520 555L575 250L650 250L710 550Z"/><path d="M570 310H660M557 370H673M544 435H688"/>
+ <path d="M590 240L592 148L630 118L661 240Z"/>
+ <path d="M590 172L720 215" stroke-width="17"/>
+ <path d="M745 550L781 328L810 328L854 553Z"/>
+ <path d="M780 335H875" stroke-width="16"/>
+</g>
+<g filter="url(#shade)">
+ <rect x="920" y="333" width="274" height="313" rx="50" fill="#1a253b" stroke="#b9cadc" stroke-width="10"/>
+ <ellipse cx="1057" cy="337" rx="138" ry="52" fill="#344a67" stroke="#c3d4e0" stroke-width="9"/>
+ <ellipse cx="1057" cy="640" rx="139" ry="45" fill="#0d1726" stroke="#a7bdd2" stroke-width="9"/>
+ <path d="M952 447H1161M952 550H1161" stroke="#7398bc" stroke-width="7"/>
+ <path d="M1030 380L1080 380L1080 510L1132 510" stroke="#f9cf63" stroke-width="14" fill="none"/>
+</g>
+<path d="M700 110L1190 150L1130 250" stroke="#e34b66" stroke-width="31" fill="none" stroke-linecap="round"/>
+<path d="M1094 233L1128 270L1168 227" fill="none" stroke="#e34b66" stroke-width="31"/>
+<g transform="translate(1325 210)" filter="url(#shade)">
+ <rect x="-17" y="82" width="200" height="275" fill="#344e76" stroke="#d8e1ec" stroke-width="8"/>
+ <path d="M-45 90L81 -5L210 90Z" fill="#ba374c" stroke="#faf3e5" stroke-width="7"/>
+ <rect x="53" y="172" width="61" height="104" fill="#152c50" stroke="#b2c9db" stroke-width="6"/>
+</g>
+<g transform="translate(1270 510)">
+ <rect x="0" y="0" width="265" height="146" rx="20" fill="#223f71" stroke="#c1d8ec" stroke-width="6"/>
+ <circle cx="70" cy="70" r="37" fill="#e2eaf6" opacity=".85"/><path d="M44 75H99M65 50L65 100" stroke="#315487" stroke-width="7"/>
+ <path d="M155 102L180 80L201 92L225 60" stroke="#f2ca72" stroke-width="10" fill="none"/>
+</g>
+<path d="M0 766Q200 735 380 770T760 770T1180 780T1600 760V900H0Z" fill="#102c4d"/>
+<path d="M106 772L106 670L146 670L146 772M127 670V610" stroke="#d4e6f4" stroke-width="10"/>
+<path d="M127 610L47 645L207 641Z" fill="#e4edf6" opacity=".9"/>
+<path d="M127 610L185 535" stroke="#d4e6f4" stroke-width="10"/>
+<path d="M127 610L210 667" stroke="#d4e6f4" stroke-width="10"/>
+<g transform="translate(280 760)" filter="url(#shade)"><rect width="175" height="90" rx="12" fill="#183f69" stroke="#dce7ef" stroke-width="5"/><path d="M8 43H167M84 7V82" stroke="#f9f9f4" stroke-width="18"/><path d="M8 43H167M84 7V82" stroke="#b52844" stroke-width="8"/></g>
+</svg>
