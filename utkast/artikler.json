@@ -10,10 +10,12 @@
       "artikkel": "utkast/2026-11-05/ronaldo-landslagsavskjed.html",
       "bilde": "utkast/2026-11-05/bilder/ronaldo-landslagsavskjed.svg",
       "registrert": "2026-11-05",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-05",
+      "publisert_url": "artikler/2026-11-05-ronaldo-landslagsavskjed.html"
     },
     {
       "id": "cyberrisiko",
