@@ -295,8 +295,31 @@ async function run(){
             label+": sportssiden mangler stor hovedoverskrift");
           await page.locator("#sportshjul-grid .hjul-card").first().waitFor({timeout:10000});
           const sportStatus=await page.locator("#sport [data-nyhetsstatus]").textContent();
-          check(sportStatus.includes("Sist publisert")&&sportStatus.includes("Fra arkivet"),
-            label+": sportssaker har ikke fått korrekt datert arkivmerking");
+          const newestDate=await page.locator("#sportshjul-grid .hjul-card time.forside-dato").first().getAttribute("datetime");
+          const currentDay=new Date().toISOString().slice(0,10);
+          const ageDays=(Date.parse(currentDay+"T12:00:00Z")-Date.parse(newestDate+"T12:00:00Z"))/86400000;
+          const isArchive=!Number.isFinite(ageDays)||ageDays<0||ageDays>7;
+          check(sportStatus.includes("Sist publisert") && (isArchive
+              ? sportStatus.includes("Fra arkivet")
+              : !sportStatus.includes("Fra arkivet")),
+            label+": sportssaker har feil ferskhets- eller arkivmerking");
+          if(newestDate==="2026-11-05") {
+            const firstCard=page.locator("#sportshjul-grid .hjul-card").first();
+            const articleHref=await firstCard.getAttribute("href");
+            check(articleHref.includes("artikler/2026-11-05-ronaldo-landslagsavskjed.html"),
+              label+": Ronaldo-saken mangler som fersk sportssak");
+            await page.goto(articleHref,{waitUntil:"domcontentloaded"});
+            check((await page.locator("article h1").textContent()).includes("Ronaldo var en gigant"),
+              label+": Ronaldo-artikkelen har feil hovedtittel");
+            const articleIllustration=page.locator("article .utkast-illustrasjon img").first();
+            const hasIllustration=await articleIllustration.evaluate(async img=>{
+              const response=await fetch(img.src);
+              return response.ok && (response.headers.get("content-type")||"").includes("image/svg+xml");
+            });
+            check(hasIllustration,label+": Ronaldo-artikkelen har manglende illustrasjon");
+            await page.goto(base+"/"+name,{waitUntil:"domcontentloaded"});
+            await page.locator(".avisa-shared-header .nav-toggle:not([hidden])").waitFor({timeout:10000});
+          }
         }
         if(name==="notiser.html"){
           check((await page.locator(".notis-arkiv-hoved h1").textContent())==="Notisarkiv",
