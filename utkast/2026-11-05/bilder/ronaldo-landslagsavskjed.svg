@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Redaksjonell illustrasjon av en fotballspiller i rød trøye nummer sju på stadion">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#061522"/><stop offset=".67" stop-color="#1b2730"/><stop offset="1" stop-color="#102522"/></linearGradient>
+<radialGradient id="light"><stop offset="0" stop-color="#fff6dc" stop-opacity=".7"/><stop offset=".22" stop-color="#d4e8ee" stop-opacity=".24"/><stop offset="1" stop-color="#d4e8ee" stop-opacity="0"/></radialGradient>
+<linearGradient id="shirt" x1="0" y1="0" x2="1" y2=".7"><stop offset="0" stop-color="#9e1c27"/><stop offset=".48" stop-color="#ca2b32"/><stop offset="1" stop-color="#611c24"/></linearGradient>
+<linearGradient id="pitch" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#163d34"/><stop offset="1" stop-color="#051510"/></linearGradient>
+<filter id="blur"><feGaussianBlur stdDeviation="27"/></filter>
+<filter id="grain"><feTurbulence baseFrequency=".46" numOctaves="3" seed="5" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".05"/></feComponentTransfer></filter>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/>
+<g opacity=".85"><ellipse cx="280" cy="190" rx="350" ry="280" fill="url(#light)"/><ellipse cx="1350" cy="180" rx="380" ry="310" fill="url(#light)"/></g>
+<path d="M0 440Q420 400 820 424T1600 437V830H0Z" fill="#0a161c"/>
+<g fill="#cfd6cb" opacity=".24"><path d="M0 466H1600V469H0Z"/><path d="M0 496H1600V499H0Z"/><path d="M0 532H1600V535H0Z"/><path d="M0 573H1600V576H0Z"/></g>
+<g opacity=".35" filter="url(#blur)"><path d="M0 565Q800 485 1600 550V900H0Z" fill="#2c5750"/></g>
+<path d="M0 695Q760 620 1600 700V900H0Z" fill="url(#pitch)"/>
+<path d="M0 771Q780 728 1600 767" fill="none" stroke="#a7c7ac" opacity=".19" stroke-width="5"/>
+<g transform="translate(800 390)">
+<ellipse cx="0" cy="452" rx="220" ry="32" fill="#000" opacity=".5" filter="url(#blur)"/>
+<path d="M-91 285L-83 431L-40 432L-18 282Z" fill="#182329"/>
+<path d="M28 281L39 438L82 432L96 280Z" fill="#161e25"/>
+<path d="M-91 428Q-100 460-124 463L-50 467L-36 438Z" fill="#0a0f16"/>
+<path d="M34 434Q61 455 91 458L119 474L35 475Z" fill="#070d15"/>
+<path d="M-94 240L91 242L100 306L16 319L-100 302Z" fill="#11252b"/>
+<path d="M-110-46Q-68-89-21-86L25-83Q80-76 112-42L117 227Q75 269 6 268Q-69 265-112 225Z" fill="url(#shirt)"/>
+<path d="M-111-33L-173 65L-144 91L-86 13Z" fill="#982830"/>
+<path d="M111-32L172 72L145 96L80 11Z" fill="#961c27"/>
+<path d="M-172 62L-204 154L-177 163L-144 90Z" fill="#ad7666"/>
+<path d="M173 70L214 151L188 161L145 94Z" fill="#ad7666"/>
+<path d="M-204 148L-213 185L-189 195L-176 161Z" fill="#a97767"/>
+<path d="M189 159L202 191L222 178L212 145Z" fill="#a97767"/>
+<path d="M-45-91L-35-140L34-139L45-85Z" fill="#be8975"/>
+<ellipse cx="0" cy="-169" rx="67" ry="91" fill="#c0917d"/>
+<path d="M-63-183Q-73-277 4-271Q78-261 67-182Q40-212 10-208Q-22-204-63-183Z" fill="#191916"/>
+<path d="M-59-217Q-26-246 17-247" fill="none" stroke="#33302a" stroke-width="10" opacity=".6"/>
+<path d="M-112-46Q-45-10 12-13Q65-15 112-43" fill="none" stroke="#db5251" stroke-width="6" opacity=".6"/>
+<path d="M-100 218Q-16 253 103 213" fill="none" stroke="#6c1b20" stroke-width="10" opacity=".5"/>
+<text x="0" y="129" font-family="Arial,Helvetica,sans-serif" font-size="190" font-weight="900" text-anchor="middle" fill="#f3e9d7" opacity=".9">7</text>
+<path d="M103-32L131 30L144 12L114-45Z" fill="#1e6f55" opacity=".78"/>
+</g>
+<rect width="1600" height="900" filter="url(#grain)" opacity=".33"/>
+<rect x="38" y="36" width="1524" height="828" fill="none" stroke="#d1cfb1" opacity=".11" stroke-width="2"/>
+</svg>
