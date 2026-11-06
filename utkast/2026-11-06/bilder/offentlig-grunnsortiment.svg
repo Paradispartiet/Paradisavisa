@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Et solid offentlig grunnsortiment</title>
+<desc id="desc">Symbolmettet illustrasjon av fjernsyn, mobiltelefon, datamaskin, verktøy, dokumenter og kunnskapsnettverk, bundet sammen av en lysende felles struktur på mørk bakgrunn.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0e1420"/><stop offset=".55" stop-color="#080a0e"/><stop offset="1" stop-color="#15110c"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0b2"/><stop offset=".38" stop-color="#ffd45e"/><stop offset="1" stop-color="#b4812a"/></linearGradient>
+<linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#24364d"/><stop offset=".55" stop-color="#132134"/><stop offset="1" stop-color="#11151d"/></linearGradient>
+<filter id="glow"><feGaussianBlur stdDeviation="8"/></filter><pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#b5a579" stroke-opacity=".12" stroke-width="1"/></pattern></defs>
+<rect width="1600" height="900" fill="url(#bg)"/><rect width="1600" height="900" fill="url(#grid)"/>
+<circle cx="800" cy="450" r="340" fill="#cca14c" opacity=".07" filter="url(#glow)"/><g stroke="#d8bd77" stroke-width="3" opacity=".45" fill="none"><path d="M440 265L800 130L1160 265L1300 540L1015 746L580 746L300 540Z"/><path d="M800 130L800 770M300 540L1300 540M440 265L1160 265M580 746L1160 265M1015 746L440 265"/></g>
+<g fill="#f6cc64"><circle cx="800" cy="130" r="10"/><circle cx="440" cy="265" r="9"/><circle cx="1160" cy="265" r="9"/><circle cx="300" cy="540" r="9"/><circle cx="1300" cy="540" r="9"/><circle cx="580" cy="746" r="9"/><circle cx="1015" cy="746" r="9"/></g>
+<!-- TV -->
+<g transform="translate(123 228)"><rect x="0" y="0" width="470" height="285" rx="22" fill="#101319" stroke="url(#gold)" stroke-width="12"/><rect x="23" y="23" width="424" height="239" rx="8" fill="url(#screen)"/><path d="M50 218L166 102L246 171L339 58L421 142" stroke="#f5d482" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".7"/><path d="M235 284v52m-95 0h190" stroke="#f3dca1" stroke-width="13" stroke-linecap="round"/></g>
+<!-- Phone -->
+<g transform="translate(645 62) rotate(8 110 206)"><rect width="217" height="414" rx="38" fill="#10151e" stroke="url(#gold)" stroke-width="12"/><rect x="17" y="28" width="183" height="353" rx="24" fill="url(#screen)"/><circle cx="108" cy="399" r="8" fill="#e2b85c"/><path d="M53 104h110M53 136h110M53 168h75M53 240h110M53 272h92" stroke="#fff2cb" stroke-opacity=".76" stroke-width="9" stroke-linecap="round"/><circle cx="154" cy="319" r="23" stroke="#ecca72" fill="none" stroke-width="7"/></g>
+<!-- laptop -->
+<g transform="translate(835 430)"><rect x="5" y="0" width="575" height="315" rx="21" fill="#121925" stroke="url(#gold)" stroke-width="9"/><rect x="28" y="24" width="528" height="264" rx="5" fill="url(#screen)"/><path d="M61 80h190m-190 32h150m-150 32h216m-216 32h165m-165 32h225" stroke="#d7c188" stroke-width="12" stroke-linecap="round" opacity=".76"/><path d="M319 80h188v161H319z" stroke="#dfb954" stroke-width="4" fill="#122e38"/><path d="M341 217l42-58 35 25 63-80" stroke="#ffe1a3" fill="none" stroke-width="8" stroke-linecap="round"/><path d="M-48 318h674l-55 35H9z" fill="#b7af9f" stroke="#e6c77d" stroke-width="6"/></g>
+<!-- hammer -->
+<g transform="translate(165 618) rotate(-33 165 70)"><rect x="168" y="58" width="34" height="270" rx="12" fill="#bd8340" stroke="#f1d795" stroke-width="6"/><path d="M72 34h238v62H72q-28 0-28-30t28-32Z" fill="#d6d9db" stroke="#ffe5a0" stroke-width="6"/><path d="M310 34l53 24-55 38Z" fill="#a6aeb2"/></g>
+<!-- saw -->
+<g transform="translate(280 704) rotate(-5 260 60)"><path d="M0 18h375l-27 82-25-26-23 30-23-30-23 30-23-30-23 30-23-30-23 30-23-30-23 30-23-30-23 30-23-30-27 22z" fill="#d5d9da" stroke="#e3c172" stroke-width="4"/><rect x="360" y="-5" width="150" height="130" rx="22" fill="#9c673a" stroke="#f0cc7b" stroke-width="8"/><rect x="400" y="25" width="72" height="72" rx="20" fill="#15120e"/></g>
+<!-- document -->
+<g transform="translate(1118 65) rotate(8 150 140)"><path d="M10 0h220l78 80v315H10z" fill="#f8f2dd" stroke="#d8b55c" stroke-width="9"/><path d="M230 0v80h78" fill="#e2cc8f"/><path d="M53 135h203M53 174h203M53 213h165M53 252h203M53 291h140" stroke="#425063" stroke-width="12" stroke-linecap="round"/></g>
+<g fill="#fff1c5" opacity=".7"><circle cx="93" cy="81" r="3"/><circle cx="470" cy="86" r="4"/><circle cx="1460" cy="680" r="5"/><circle cx="925" cy="825" r="3"/><circle cx="92" cy="523" r="4"/><circle cx="1515" cy="140" r="3"/></g>
+</svg>
