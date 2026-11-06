@@ -1,5 +1,5 @@
 # Paradisavisa – promptbibliotek for redaksjonelle bilder
-**Versjon:** 1.0 · **Dato:** 6. november 2026 · Brukes sammen med [Bildehåndboken](BILDEHANDBOK.md).
+**Versjon:** 1.1 · **Dato:** 6. november 2026 · Brukes sammen med [Bildehåndboken](BILDEHANDBOK.md).
 
 ## 1. Universell bildebestilling (fyll ut før hver produksjon)
 - **Sak / lenke:**
@@ -8,8 +8,9 @@
 - **Verifiserte fakta som motivet kan bygge på:**
 - **Redaksjonell tolkning / idé:**
 - **Hva skal leseren se på to sekunder?**
+- **Bildets rolle:** hovedbilde / symbolmettet sekundærbilde
 - **Hovedmotiv:**
-- **Inntil fire meningsbærende sekundærmotiver:**
+- **Meningsbærende støttegrep:** få og tydelige for hovedbilder; flere integrerte, artikkelrelevante lag for sekundærbilder.
 - **Sted, tidspunkt og korrekt geografi:**
 - **Farge, lys og billedstil:**
 - **Viktige referanser, personer og flagg:**
@@ -118,6 +119,29 @@ Bruk én original visuell idé, romlig komposisjon og et tydelig meningslag
 uten å illustrere hele artikkelen bokstavelig. Naturlig eller poetisk lys
 etter temaet, men ingen falske kunstverk, plakater eller KI-generert
 påstått dokumentasjon.
+~~~
+
+### J. Symbolmettet sekundærbilde – analyse av hele saken
+~~~text
+Lag et symbolmettet, gjennomarbeidet redaksjonelt SEKUNDÆRBILDE til artikkelen
+[SAK]. Bildet skal syntetisere artikkelens hovedbudskap [HOVEDPOENG] og
+de vesentlige sidene [MOMENTER FRA FAKTA OG ANALYSE] i én rik scene.
+
+Hovedmotiv: [TYDELIG PERSON / OBJEKT / STED]. Vis følgende meningsbærende
+lag i relasjon til hverandre: [KONTRAST / HISTORIKK / KONSEKVENS / RIVAL /
+SYSTEM / AKTØRER]. Det er lov med flere symboler når hver enkelt har klar
+tilknytning til artikkelen; samle dem med romlig komposisjon og fokushierarki,
+ikke separate ruter, piler eller ikonplakater.
+
+Fotografisk/filmatisk dybde, troverdige mennesker, saklig korrekt geografi
+og rekvisitter, variert lys og naturlig anatomi. Bildet skal være kunstnerisk
+og redaksjonelt lesbart, men ikke utgi seg for å dokumentere en konstruert
+hendelse. Ingen oppdiktede dokumenter, falske handlinger eller virkelige
+møter som ikke er dokumentert. Ingen innbakte overskrifter eller slagord.
+
+16:9-format. Lever separat fra hovedbildet, med egen godkjenning, alt-tekst
+og bildetekst: «KI-assistert redaksjonell illustrasjon. Ikke dokumentarfotografi».
+Bruk nøyaktig godkjent bildefil ved publisering.
 ~~~
 
 ## 4. Konkrete revisjonsbriefer fra Paradisavisa
