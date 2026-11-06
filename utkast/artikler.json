@@ -1,8 +1,22 @@
 {
   "arbeidsflyt": "fortlopende",
   "beskrivelse": "Hver artikkel behandles og publiseres enkeltvis når den er faktakontrollert og godkjent. Datoen registrert angir arbeidsmappen, ikke publiseringsdato eller utgave.",
-  "oppdatert": "2026-11-05",
+  "oppdatert": "2026-11-06",
   "artikler": [
+    {
+      "id": "offentlig-grunnsortiment",
+      "tittel": "Staten bør lage ting som varer",
+      "kategori": "Debatt – Paradispartiet",
+      "artikkel": "utkast/2026-11-06/staten-bor-lage-ting-som-varer.html",
+      "bilde": "utkast/2026-11-06/bilder/offentlig-grunnsortiment.svg",
+      "registrert": "2026-11-06",
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-06",
+      "publisert_url": "artikler/2026-11-06-staten-bor-lage-ting-som-varer.html"
+    },
     {
       "id": "ronaldo-landslagsavskjed",
       "tittel": "Ronaldo var en gigant. Men hvem tok løpene for ham?",
