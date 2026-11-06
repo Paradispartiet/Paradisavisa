@@ -1,5 +1,5 @@
 # Paradisavisa – redaksjonell bildehåndbok
-**Versjon:** 1.1 · **Dato:** 6. november 2026 · **Bruk:** intern redaksjonell standard
+**Versjon:** 1.2 · **Dato:** 6. november 2026 · **Bruk:** intern redaksjonell standard
 
 > **Hovedregel:** Ett gjennomarbeidet motiv med ekte rom, lys og mening er bedre enn ti ikoner. Illustrasjonen skal vise idéen – ikke skrive den. Et bilde som er godkjent i samtalen, skal publiseres som den faktiske godkjente bildefilen; et nytt SVG-utkast er ikke samme bilde.
 
@@ -99,6 +99,35 @@ Dette er to **ulike redaksjonelle oppgaver** og skal planlegges separat når en 
 2. Hva må være synlig umiddelbart? Hva skal bare kunne oppdages ved nærmere blikk?
 3. Hva **må ikke** være med (falske hendelser, irrelevante flagg, tekst, overdrevet drama)?
 4. Hvilket faktisk bilde må godkjennes og lastes opp – og hvem godkjenner?
+
+## Arbeidsmetode: fra journalistisk tekst til underforstått bildespråk
+
+Denne metoden brukes **før selve bildeprompten**, spesielt for analyse, politikk, økonomi, miljø og kommentarstoff. Den hindrer at motivet bare blir en bokstavelig oppramsing av artikkelens stikkord.
+
+1. **Les hele artikkelen.** Noter konkret hendelse, dokumenterte årsaker, mulige konsekvenser og usikkerhet. Ikke hent bare ord fra overskriften.
+2. **Finn fortellingen under fortellingen.** Hva handler saken egentlig om – for eksempel avhengighet, trygghet, makt, sårbarhet, fordeling eller samfunnets motsetninger?
+3. **Skil fakta fra tolkning.** Hvilke mekanismer er fastslått, hvilke er mulige scenarioer, og hvilke er redaksjonelle verdier eller metaforer? Ikke framstill konsekvenser som allerede inntruffet hvis saken bare omtaler en risiko.
+4. **Formuler ett visuelt paradoks eller spørsmål.** Eksempel: «Vi vil ha økonomisk trygghet, men bygger mye av tryggheten på en ressurs vi ønsker å bli mindre avhengige av.» Dette er *briefens kjerne*, ikke tekst som skal skrives i bildet.
+5. **Velg en scene, ikke en symbolkatalog.** Finn et gjenkjennelig sted og et naturlig handlingsøyeblikk der hovedidéen kommer fram. Avgjør hva man ser på to sekunder, hva man oppdager ved nærmere blikk og hva artikkelteksten – ikke bildet – skal forklare.
+6. **Ranger symbolene.** Én hovedscene, høyst ett tydelig signal om endringen og få meningsbærende detaljer i omgivelsene. Integrerte tegn er bedre enn overdimensjonerte mynter, tønner, piler og diagrammer.
+7. **Bruk romlig fortelling.** Forgrunn kan vise et menneskelig møte med nyheten; mellomgrunn kan vise økonomien eller systemet; bakgrunn kan vise samfunnet som er berørt. Disse lagene skal være én sammenhengende, troverdig scene.
+8. **Bestem følelsesregisteret.** Skildre usikkerhet uten å dikte opp konkurser, masseoppsigelser, katastrofer eller panikk. Dramatikk må være begrunnet i saken, ikke bare i bildegeneratorens stil.
+9. **Skriv hva bildet skal unngå.** Fjern eksplisitte etiketter, sjokkpiler, feil flagg, urelaterte symboler, kunstig todeling, poserte reaksjoner og påstander motivet ikke dokumenterer.
+10. **Kvalitetskontroller mot teksten.** Bildet må gi riktig forståelse ved raskt blikk. Sjekk om det antyder en uverifisert årsak eller om det overdriver skade eller sikkerhet. KI-bilder er illustrasjoner, ikke fotografiske bevis.
+
+### Eksempel: Oljeprisen stuper – hva betyr det for Norge?
+
+- **Hendelse:** Brått oljeprisfall påvirket av globale forventninger, med mulige følger for norske inntekter, investeringer, kronekurs og husholdninger.
+- **Underliggende tema:** Norges velstand hviler delvis på oljeindustrien; denne avhengigheten gjør oss sårbare for forhold vi ikke kontrollerer.
+- **Verdier:** Trygghet, arbeid, fellesskap, nasjonal verdiskaping, fordeling og langsiktig omstilling.
+- **Paradoks:** Billigere olje kan hjelpe noen forbrukere og samtidig svekke oljeinntekter; miljøeffekten kommer an på *hvorfor* prisen falt.
+- **Hovedscene:** En realistisk norsk leverandørhavn eller et kystnært industrimiljø. En person registrerer et tydelig, men diskret fall på en skjerm inne på et kontor. Forsyningsskip og oljevirksomhet i havnemiljøet knytter markedet til konkrete arbeidsplasser; lys i boliger på den andre siden av vannet antyder lokalsamfunnet.
+- **Hovedsymbol:** Det korte prisfallet på skjermen – ikke en gigantisk markeds-graf over himmelen.
+- **Underforståtte tegn:** Avstand mellom internasjonalt marked og norsk hverdag; industriens tyngde; hjem og fellesskap. Klimaet ligger som et åpent dilemma i artikkelteksten og behøver ikke illustreres med elbiler og vindturbiner.
+- **Bevisst utelatt:** Oljetønner som forgrunnsikoner, gigantiske kroner, eksplosjoner, tungsindige statistroller, tomme fabrikker og todelt «fossilt dårlig / grønt godt»-plakat.
+- **Etisk presisering:** Ikke framstill anlegget som et faktisk dokumentert konkurssted eller skjermen som en autentisk børsmelding. Opplys i bildeteksten at det er en KI-assistert redaksjonell illustrasjon.
+
+**Beslutningsregel:** Når man er usikker på enda et symbol, fjern det først. Bildet skal invitere til tolkning, mens artikkelen leverer fakta og nyanser.
 
 ## 5. Arbeidsflyt med publiseringssperre
 1. **Brief:** Velg kategori, hovedidé, sentralt motiv, sekundære symboler, feil som må unngås og bildetype.

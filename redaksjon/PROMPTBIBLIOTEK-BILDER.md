@@ -1,5 +1,5 @@
 # Paradisavisa – promptbibliotek for redaksjonelle bilder
-**Versjon:** 1.1 · **Dato:** 6. november 2026 · Brukes sammen med [Bildehåndboken](BILDEHANDBOK.md).
+**Versjon:** 1.2 · **Dato:** 6. november 2026 · Brukes sammen med [Bildehåndboken](BILDEHANDBOK.md).
 
 ## 1. Universell bildebestilling (fyll ut før hver produksjon)
 - **Sak / lenke:**
@@ -142,6 +142,50 @@ møter som ikke er dokumentert. Ingen innbakte overskrifter eller slagord.
 16:9-format. Lever separat fra hovedbildet, med egen godkjenning, alt-tekst
 og bildetekst: «KI-assistert redaksjonell illustrasjon. Ikke dokumentarfotografi».
 Bruk nøyaktig godkjent bildefil ved publisering.
+~~~
+
+## Metodeprompt før bildeproduksjon: finn underteksten
+
+Kopier denne til planleggingsfasen, **før** du bestiller et bilde:
+
+~~~text
+Les hele [ARTIKKELEN] som redaksjonell billedredaktør.
+Ikke lag bilde ennå.
+1. Hva har faktisk skjedd, og hva er bare risiko, scenario eller hypotese?
+2. Hva handler artikkelen om på et dypere nivå?
+3. Hvilke verdier, maktforhold, interessekonflikter og motsetninger ligger under?
+4. Formuler ett visuelt paradoks som ikke skal skrives inn i bildet.
+5. Foreslå én troverdig scene med forgrunn, mellomgrunn og bakgrunn.
+6. Velg maksimalt ett direkte signal på hendelsen og to–tre indirekte tegn.
+7. Lag en prioriteringsliste over hva som IKKE skal med.
+8. Skriv til slutt en samlet redaksjonell bildeprompt i 16:9.
+Skillet mellom dokumentasjon og symbolsk fortolkning må være helt tydelig.
+~~~
+
+### Ferdig eksempel – oljeprisfall og Norges sårbarhet
+
+~~~text
+Lag en høykvalitets, realistisk redaksjonell 16:9-illustrasjon for Paradisavisa
+om hvilke konsekvenser et brått oljeprisfall kan få for Norge.
+
+I ett sammenhengende norsk kyst-/industrimiljø ser vi fra et beskjedent
+havnekontor ut mot et forsyningsskip, kranutstyr, en aktiv leverandørhavn
+og havet der oljevirksomhet skimtes i avstanden. En ansatt står naturlig
+ved vinduet. En skjerm på kontoret viser én tydelig, men diskret nedadgående
+markedskurve uten tall, overskrifter eller lesbar tekst. Langs kysten ligger
+et lokalsamfunn med varme lys i husene. Koble den globale prisendringen
+til arbeid, verdiskaping, økonomisk trygghet og sårbarhet.
+
+Bruk nordisk naturlig lys, troverdig anatomi, realistiske materialer,
+samlet perspektiv og dempet uro. Bildet skal vekke ettertanke, ikke vise
+at en konkret norsk bedrift har gått konkurs eller at jobber allerede
+er tapt. Klimaets dobbelthet forklares i artikkelen, ikke gjennom
+påklistrede elbiler eller vindmøller.
+
+Ingen enorme oljetønner, gullmynter, nasjonalflagg, gigantiske røde
+prisgrafer, forklarende tekstbokser, dramatiserte familier, katastrofer,
+oppsagte arbeidere eller oppdiktet dokumentarfotografi. Ingen tekst.
+Gjennomarbeidet fotografisk redaksjonell fortolkning, ikke infografikk.
 ~~~
 
 ## 4. Konkrete revisjonsbriefer fra Paradisavisa
