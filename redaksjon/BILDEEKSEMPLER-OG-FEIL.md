@@ -1,7 +1,7 @@
 # Paradisavisa – bildeeksempler, feil og læringspunkter
 **Versjon:** 1.0 · **Dato:** 6. november 2026
 
-Dette er en læringsliste og godkjenningsveiledning, ikke en påstand om at alle omtalte originalbilder allerede er lastet opp.
+Dette er en læringsliste og godkjenningsveiledning. Trump- og Grønland-bildene er nå overført i JPEG-form til GitHub; oljemotivet avventer fortsatt visuell godkjenning.
 
 ## 1. Støre–Stubb: eksisterende publisert kvalitetsreferanse
 - **Artikkel:** [Støre–Stubb – Den diplomatiske muligheten og risikoen](../artikler/2026-11-02-store-stubb-diplomatisk-mulighet.html)
@@ -10,17 +10,18 @@ Dette er en læringsliste og godkjenningsveiledning, ikke en påstand om at alle
 - **Viktig:** Bildet er tydelig merket KI-generert redaksjonell montasje, ikke et dokumentarfotografi.
 
 ## 2. Trump og det amerikanske topartisystemet
-- **Godkjent retning i redaksjonell dialog:** Trump som synlig hovedfigur og oppmerksomhetens illusjonist; mediene, penger og begge partier som støttefortelling. Ludo erstatter sjakk. Blå dresser og politisk relevante symboler, men lite krig og gull.
-- **Ikke godkjent som erstatning:** Den forenklede SVG-illustrasjonen er ikke identisk med den detaljerte KI-illustrasjonen som ble utviklet.
-- **Feil å unngå:** MAGA og andre slagord skrevet som forklarende bildetekst; uklar India/Iran-flaggreferanse; svært mange symboler; dyrking av krigsbilder; Demokratene redusert til én vag blå figur.
-- **Forslag til riktig arbeidsgang:** Bruk den faktiske godkjente rasterfilen, optimaliser den og bytt artikkel + forside + delingsbilde i samme commit. Hvis filen ikke er tilgjengelig, merk oppgaven som ikke fullført.
-- **Eksisterende SVG:** [2026-11-05-usa-ludo-politisk-satire.svg](../Bilder/Artikler/2026-11-05-usa-ludo-politisk-satire.svg) – ikke bruk som kvalitetsreferanse for ønsket fotomontasje.
+- **Status 6. november:** Det faktisk godkjente, detaljerte hovedbildet er overført til GitHub som **[2026-11-05-usa-ludo-politisk-satire.jpg](../Bilder/Artikler/2026-11-05-usa-ludo-politisk-satire.jpg)** (1600 × 900, 566 155 byte). Bildet er en JPEG-versjon av den godkjente bildegenereringen i samtalen; det er ikke den forenklede SVG-en.
+- **Godkjent motiv:** Trump som synlig hovedfigur og oppmerksomhetens illusjonist; mediene, penger og begge partier som støttefortelling. Ludo, ikke sjakk.
+- **Publisering:** Artikkelens `img`, `og:image`, `twitter:image` og `Nyhetshjul.json` viser nå JPEG-motivet. Original-SVG er bevart som arkiv.
+- **Feil å unngå:** Uklare nasjonsflagg, tilfeldig krigsdekor, for mye gull og skjematisk ikonplakat. Fotomontasjen er **satire**, ikke dokumentasjon på faktisk handling.
+- **Teknisk integritet:** Git blob SHA-1 `df217d18d67963da2fdf9c6f07bdb02f09f12de2`, SHA-256-prefiks `dc99169b45e906f3`.
 
 ## 3. Grønland i Oslo: konkret lokalhendelse
-- **Godkjent retning i dialog:** Ingen gispende tilskuere som hovedmotiv. Vis troverdig rørbrudd, moderat damp, avsperring og reparasjonsmannskap.
-- **Feil å unngå:** Kraftige eksplosjoner og panikk når kildene ikke dokumenterer det; mennesker oppstilt for kamera; estetikk hentet fra katastrofefilm.
-- **Etikk:** KI-illustrasjonen må ikke fremstå som dokumentasjon fra den nøyaktige hendelsen.
-- **Eksisterende SVG:** [2026-11-05-gronland-fjernvarme.svg](../Bilder/Artikler/2026-11-05-gronland-fjernvarme.svg) – separat fra den detaljerte bildegenereringen i samtalen.
+- **Status 6. november:** Den detaljerte, nøkterne illustrasjonen er overført til GitHub som **[2026-11-05-gronland-fjernvarme.jpg](../Bilder/Artikler/2026-11-05-gronland-fjernvarme.jpg)** (1600 × 900, 582 774 byte). Dette er ikke den forenklede SVG-en.
+- **Godkjent motiv:** Reparasjonsteam, avsperring, fjernvarmerør og moderat damp; ingen gispende tilskuere som hovedmotiv.
+- **Publisering:** Artikkelens `img`, `og:image`, `twitter:image` og `Nyhetshjul.json` viser nå JPEG-motivet. Original-SVG er bevart som arkiv.
+- **Etikk:** Kunstig konstruert scene; ikke dokumentarfoto fra Grønland eller bevis for nøyaktig sted og mannskaper.
+- **Teknisk integritet:** Git blob SHA-1 `673ac7cd78686fb0249fcec79f1da8fbd51ae28d`, SHA-256-prefiks `1e3d8aea71a99770`.
 
 ## 4. Oljepris og norsk økonomi
 - **Status:** Bildeuttrykket har vært til revisjon. Ikke tolk publisering av en SVG som visuell sluttgodkjenning.
