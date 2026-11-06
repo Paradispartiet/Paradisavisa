@@ -1,5 +1,5 @@
 # Paradisavisa – redaksjonell bildehåndbok
-**Versjon:** 1.0 · **Dato:** 6. november 2026 · **Bruk:** intern redaksjonell standard
+**Versjon:** 1.1 · **Dato:** 6. november 2026 · **Bruk:** intern redaksjonell standard
 
 > **Hovedregel:** Ett gjennomarbeidet motiv med ekte rom, lys og mening er bedre enn ti ikoner. Illustrasjonen skal vise idéen – ikke skrive den. Et bilde som er godkjent i samtalen, skal publiseres som den faktiske godkjente bildefilen; et nytt SVG-utkast er ikke samme bilde.
 
@@ -70,6 +70,20 @@
 - **Stil:** Poetisk og idérikt uten å bli abstrakt for abstraksjonens skyld.
 - **Må vise:** Gjenstand, sted, kunstuttrykk eller tankemetafor; variasjon i lys og farger.
 - **Unngå:** Unngå oppdiktede kulturverk, kopier av beskyttet kunst eller KI-tekst på plakater.
+
+## 2A. Hovedbilde og symbolmettet sekundærbilde – generell regel
+Dette er to **ulike redaksjonelle oppgaver** og skal planlegges separat når en sak har både hovedbilde og sekundærbilde.
+
+- **Hovedbilde:** Et umiddelbart lesbart og saklig hovedmotiv. Det skal først og fremst vise hvem, hva eller hvor, med få presise støttegrep. Dette er det foretrukne motivet til forsidekort og deling.
+- **Sekundærbilde:** En **symbolmettet, flerlaget redaksjonell analyseillustrasjon** som samler **artikkelens hovedbudskap og de forskjellige vesentlige elementene i saken** i én helhetlig komposisjon. Bildet skal gi en rikere lesning enn hovedbildet: konfliktlinjer, årsaker, konsekvenser, kontraster, historikk og ettermæle kan få hver sine meningsbærende visuelle tegn.
+- **Komposisjon:** Også det symbolske sekundærbildet må ha et tydelig hovedmotiv, fokushierarki og dybde i forgrunn, mellomgrunn og bakgrunn. Bruk flere relevante elementer når saken krever det; ikke et vilkårlig maksimum på fire. Hvert element må tilføre journalistisk mening og kunne forklares med artikkelen.
+- **Stil:** Gjerne detaljrik, filmatisk og naturtro redaksjonell fotomontasje eller kunstnerisk illustrasjon – **ikke** flat kollasj, ikonplakat eller infografikk. Symbolene skal inngå i et troverdig visuelt rom, og motivet skal fungere også uten innbakte ord.
+- **Etikk:** Skill dokumenterte fakta fra fortolkning. Oppdiktede møtescener, påståtte handlinger, dommer, skandaler, ukorrekte flagg og misvisende personframstillinger er ikke tillatt. Konstruerte scener merkes «KI-assistert redaksjonell illustrasjon. Ikke dokumentarfotografi».
+- **Arbeidsrekkefølge:** Skriv og kontroller artikkelen først. Lag/velg hovedbildet. Utform deretter sekundærbildet som en egen, artikkelspesifikk symbolsk syntese. Vis begge bilder i full størrelse; få separat godkjenning og publiser **akkurat de godkjente bildefilene**, ikke nytegnede SVG-erstatninger.
+- **Integrasjon:** Begge filer får egen alt-tekst, relevant bildetekst og reell filbane. Hovedbildet brukes normalt til `og:image`, `twitter:image` og forsidekort; sekundærbildet plasseres i selve artikkelens naturlige leseflyt. Valg om å bytte disse rollene krever uttrykkelig redaksjonell beslutning.
+- **Kontroll:** Sjekk at begge bilder finnes i repositoriet, at alle lenker er korrekte, at fullformat og mobilutsnitt fungerer og at GitHub Pages viser eksakt godkjent fil.
+
+**Eksempel, sportsanalyse:** Et hovedbilde kan vise en spiller ved landslagsavskjed. Et sekundærbilde kan i én rik montasje vise spillerens storhet, rivalisering, atletisme, forhold til kollektivt press, medieoppmerksomhet, lønnssystem og avskjed – uten falske dokumentarfotografier eller påstander om konkrete hendelser.
 
 ## 3. Visuelle kvalitetskrav
 - Standard motiv: **16:9**. Produksjonsmaster helst **minst 2400 × 1350 px**. Lever optimalisert **WebP 1920 × 1080 px** og eventuelt JPEG som reserve. Et 1600 × 900-bilde kan brukes dersom kvaliteten holder.
