@@ -18,7 +18,7 @@ const antallArkiverte=artikkelkatalog.artikler.filter(a=>a.status==="arkivert").
 const antallGodkjente=artikkelkatalog.artikler.filter(a=>a.godkjent===true&&!a.publisert).length;
 const mime={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",
   ".js":"text/javascript; charset=utf-8",".json":"application/json; charset=utf-8",
-  ".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",
+  ".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".webp":"image/webp",
   ".svg":"image/svg+xml",".ico":"image/x-icon"};
 const errors=[];
 const files=["index.html","nyheter.html","kultur.html","notiser.html","sport.html",
@@ -311,12 +311,30 @@ async function run(){
             await page.goto(articleHref,{waitUntil:"domcontentloaded"});
             check((await page.locator("article h1").textContent()).includes("Ronaldo var en gigant"),
               label+": Ronaldo-artikkelen har feil hovedtittel");
-            const articleIllustration=page.locator("article .utkast-illustrasjon img").first();
-            const hasIllustration=await articleIllustration.evaluate(async img=>{
+            const expectedHero="2026-11-07-ronaldo-hovedbilde-portrett.webp";
+            const expectedAnalysis="2026-11-06-ronaldo-symbolmettet-analyse.webp";
+            const pictures=page.locator("article .utkast-illustrasjon img");
+            check((await pictures.count())===2,label+": Ronaldo-artikkelen må ha hoved- og sekundærbilde");
+            const firstSrc=await pictures.first().getAttribute("src");
+            const secondSrc=await pictures.nth(1).getAttribute("src");
+            const sportImage=await firstCard.locator("img").getAttribute("src");
+            check(firstSrc.includes(expectedHero)&&sportImage.includes(expectedHero),
+              label+": Sportskort og artikkel må bruke samme WebP-hovedbilde");
+            check(secondSrc.includes(expectedAnalysis),
+              label+": Det godkjente symbolmettede sekundærbildet mangler");
+            const imageChecks=await pictures.evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{
               const response=await fetch(img.src);
-              return response.ok && (response.headers.get("content-type")||"").includes("image/svg+xml");
-            });
-            check(hasIllustration,label+": Ronaldo-artikkelen har manglende illustrasjon");
+              return response.ok && (response.headers.get("content-type")||"").includes("image/webp")
+                && (await response.blob()).size>20000;
+            })));
+            check(imageChecks.length===2&&imageChecks.every(Boolean),
+              label+": Ronaldo-bildene må være reelle, lastbare WebP-filer");
+            const social=await page.evaluate(()=>({
+              og:document.querySelector('meta[property="og:image"]')?.content||"",
+              twitter:document.querySelector('meta[name="twitter:image"]')?.content||""
+            }));
+            check(social.og.includes(expectedHero)&&social.twitter.includes(expectedHero),
+              label+": Ronaldo-artikkelen har feil delingsbilde");
             await page.goto(base+"/"+name,{waitUntil:"domcontentloaded"});
             await page.locator(".avisa-shared-header .nav-toggle:not([hidden])").waitFor({timeout:10000});
           }
