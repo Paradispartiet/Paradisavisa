@@ -5,7 +5,11 @@ const origin = "https://paradispartiet.github.io/Paradisavisa/";
 const sha = process.env.GITHUB_SHA || "manual";
 const eventPath = process.env.GITHUB_EVENT_PATH;
 const required = ["index.html", "styles.css", "avisdesign.css",
-  "script.js", "service-worker.js", "notiser.json", "Nyhetshjul.json"];
+  "script.js", "service-worker.js", "notiser.json", "Nyhetshjul.json",
+  "Sportshjul.json",
+  "artikler/2026-11-05-ronaldo-landslagsavskjed.html",
+  "Bilder/Artikler/2026-11-07-ronaldo-hovedbilde-portrett.webp",
+  "Bilder/Artikler/2026-11-06-ronaldo-symbolmettet-analyse.webp"];
 const changed = [];
 
 if (eventPath && fs.existsSync(eventPath)) {
@@ -20,7 +24,7 @@ if (eventPath && fs.existsSync(eventPath)) {
 }
 
 const candidates = [...new Set([...required, ...changed])].filter(file => {
-  if (!/\.(?:html|css|js|json|xml|txt|svg|webmanifest)$/i.test(file)) return false;
+  if (!/\.(?:html|css|js|json|xml|txt|svg|png|jpe?g|webp|webmanifest)$/i.test(file)) return false;
   if (file.split("/").some(part => part.startsWith("."))) return false;
   if (file.startsWith("scripts/") || file.startsWith("node_modules/")) return false;
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return false;
