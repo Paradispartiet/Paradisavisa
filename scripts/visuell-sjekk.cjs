@@ -306,6 +306,7 @@ async function run(){
           if(newestDate==="2026-11-05") {
             const firstCard=page.locator("#sportshjul-grid .hjul-card").first();
             const articleHref=await firstCard.getAttribute("href");
+            const sportImage=await firstCard.locator("img").getAttribute("src");
             check(articleHref.includes("artikler/2026-11-05-ronaldo-landslagsavskjed.html"),
               label+": Ronaldo-saken mangler som fersk sportssak");
             await page.goto(articleHref,{waitUntil:"domcontentloaded"});
@@ -317,7 +318,6 @@ async function run(){
             check((await pictures.count())===2,label+": Ronaldo-artikkelen må ha hoved- og sekundærbilde");
             const firstSrc=await pictures.first().getAttribute("src");
             const secondSrc=await pictures.nth(1).getAttribute("src");
-            const sportImage=await firstCard.locator("img").getAttribute("src");
             check(firstSrc.includes(expectedHero)&&sportImage.includes(expectedHero),
               label+": Sportskort og artikkel må bruke samme WebP-hovedbilde");
             check(secondSrc.includes(expectedAnalysis),
