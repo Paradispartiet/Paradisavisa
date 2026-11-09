@@ -60,6 +60,22 @@ body:has(> .notisbånd) {
   padding-bottom: calc(3rem + env(safe-area-inset-bottom, 0px));
 }
 
+/* Firefox Android 150+ kan feilrapportere safe-area-inset-bottom når
+   adresselinjen ligger øverst (Mozilla bug 2057232). Da får notisbåndet
+   en stor svart flate under teksten. Fast bunnposisjon tar allerede
+   hensyn til den synlige viewporten i Firefox. Safari beholder inset. */
+@supports (-moz-appearance: none) {
+  .notisbånd {
+    padding-bottom: 2px;
+  }
+  body.avis-forside,
+  body.sport-side,
+  body.notiser-side,
+  body:has(> .notisbånd) {
+    padding-bottom: 3rem;
+  }
+}
+
 /* Bare selve teksten klippes; hastighetsvalgene vises over båndet. */
 .notis-visning {
   flex: 1 1 auto;
