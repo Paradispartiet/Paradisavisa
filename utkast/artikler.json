@@ -1,8 +1,22 @@
 {
   "arbeidsflyt": "fortlopende",
   "beskrivelse": "Hver artikkel behandles og publiseres enkeltvis når den er faktakontrollert og godkjent. Datoen registrert angir arbeidsmappen, ikke publiseringsdato eller utgave.",
-  "oppdatert": "2026-11-06",
+  "oppdatert": "2026-11-09",
   "artikler": [
+    {
+      "id": "tribunekollaps-tromso",
+      "tittel": "Tribunen ga etter i Tromsø – var kontrollert bare dager før",
+      "kategori": "Sport – nyheter",
+      "artikkel": "utkast/2026-11-09/tribunekollaps-tromso.html",
+      "bilde": "utkast/2026-11-09/bilder/2026-11-09-tromso-tribunedrama.svg",
+      "registrert": "2026-11-09",
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-09",
+      "publisert_url": "artikler/2026-11-09-tribunekollaps-tromso.html"
+    },
     {
       "id": "offentlig-grunnsortiment",
       "tittel": "Staten bør lage ting som varer",
