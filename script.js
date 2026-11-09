@@ -245,10 +245,12 @@ function loadNotiser() {
       innhold.classList.remove("is-running");
       innhold.replaceChildren();
       band.querySelector(".notis-kontroller")?.remove();
-      const sekvens = document.createElement("span");
-      sekvens.className = "notis-sekvens";
-
-      aktuelle.forEach(n => {
+      // Et kort, resirkulerende spor i stedet for å animere hele
+      // nyhetslisten to ganger. Store transform-lag hakker under scrolling
+      // på mobil, særlig når nettleserens adresselinje endrer størrelse.
+      const lagNotiselement = n => {
+        const element = document.createElement("span");
+        element.className = "notis-element";
         const item = document.createElement("span");
         item.className = "notis-tekst";
         const category = document.createElement("strong");
@@ -266,39 +268,50 @@ function loadNotiser() {
               wrapper = link;
             }
           } catch (_) {
-            // Notisen vises fortsatt som ren tekst ved ugyldig URL.
+            // Ved ugyldig URL vises notisen fortsatt som tekst.
           }
         }
-
         const skille = document.createElement("span");
         skille.className = "notis-skille";
         skille.textContent = "•";
-        sekvens.append(wrapper, skille);
-      });
-
-      innhold.appendChild(sekvens);
-
-      // Gjenta korte notislister så sekvensen minst dekker synlig bredde.
-      // Ekstra gjentakelser leses ikke opp av skjermlesere.
-      const original = Array.from(sekvens.children).map(node => node.cloneNode(true));
-      for (let n = 0; n < 24 && sekvens.getBoundingClientRect().width < visning.clientWidth + 40; n++) {
-        original.forEach(node => {
-          const copy = node.cloneNode(true);
-          copy.setAttribute("aria-hidden", "true");
-          copy.querySelectorAll("a").forEach(link => link.tabIndex = -1);
-          if (copy.matches("a")) copy.tabIndex = -1;
-          sekvens.appendChild(copy);
+        element.append(wrapper, skille);
+        return element;
+      };
+      let nesteNotisIndeks = 0;
+      const leggTilNesteNotis = () => {
+        const element = lagNotiselement(aktuelle[nesteNotisIndeks % aktuelle.length]);
+        nesteNotisIndeks++;
+        innhold.appendChild(element);
+      };
+      const oppdaterTilgjengelighet = () => {
+        // Dupliserte/offscreen tekster skal ikke leses gjentatte ganger,
+        // men notisen som ruller ut skal fortsatt kunne åpnes.
+        Array.from(innhold.children).forEach((element, index) => {
+          const lenke = element.querySelector("a");
+          if (index === 0) {
+            element.removeAttribute("aria-hidden");
+            if (lenke) lenke.removeAttribute("tabindex");
+          } else {
+            element.setAttribute("aria-hidden", "true");
+            if (lenke) lenke.tabIndex = -1;
+          }
         });
-      }
+      };
+      const fyllNotisspor = () => {
+        if (!innhold.firstElementChild) leggTilNesteNotis();
+        const forsteBredde = innhold.firstElementChild.getBoundingClientRect().width;
+        // Også når første notis har rullet helt ut, må den neste fylle
+        // hele visningsbredden slik at båndet aldri får tomme mellomrom.
+        const minsteBredde = forsteBredde + visning.clientWidth + 40;
+        let lagtTil = 0;
+        while (innhold.scrollWidth < minsteBredde && lagtTil++ < 24) {
+          leggTilNesteNotis();
+        }
+        oppdaterTilgjengelighet();
+      };
 
-      // To like sekvenser og bevegelse på nøyaktig én sekvensbredde:
-      // ingen blank pause eller hopp når animasjonen starter på nytt.
-      const kopi = sekvens.cloneNode(true);
-      kopi.setAttribute("aria-hidden", "true");
-      kopi.querySelectorAll("a").forEach(link => link.tabIndex = -1);
-      innhold.appendChild(kopi);
-
-      // Raskere bånd: 2×, 4× og 6×. Lagre valget lokalt.
+      // Behold 2×, 4× og 6×, men la nettleserens compositor drive
+      // bevegelsen. Ingen scroll-listener, per-frame JS eller store kopier.
       const fartvalg = [2, 4, 6];
       let valgtFart = 2;
       try {
@@ -306,21 +319,51 @@ function loadNotiser() {
         if (fartvalg.includes(lagret)) valgtFart = lagret;
       } catch (_) { /* Lokallagring kan være blokkert. */ }
 
+      let tickerAnimasjon = null;
+      const grunnfart = () => window.matchMedia("(max-width: 700px)").matches ? 30 : 38;
+      const kanSpille = () => !band.classList.contains("is-paused") &&
+        !visning.contains(document.activeElement) &&
+        !(window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+          visning.matches(":hover"));
       const oppdaterHastighet = () => {
-        const bredde = sekvens.getBoundingClientRect().width;
-        if (!bredde) return;
-        const grunnfart = window.matchMedia("(max-width: 700px)").matches ? 30 : 38;
-        const grunnvarighet = bredde / grunnfart;
-        const animasjon = innhold.getAnimations?.()[0];
-        if (animasjon) {
-          innhold.style.setProperty("--ticker-duration", grunnvarighet.toFixed(2) + "s");
-          try {
-            animasjon.playbackRate = valgtFart;
-            return;
-          } catch (_) { /* Safari-fallback: endre varighet direkte. */ }
-        }
-        innhold.style.setProperty("--ticker-duration", (grunnvarighet / valgtFart).toFixed(2) + "s");
+        const forsteBredde = innhold.firstElementChild?.getBoundingClientRect().width || 0;
+        if (!forsteBredde) return;
+        const varighet = forsteBredde / grunnfart();
+        innhold.style.setProperty("--ticker-duration", (varighet / valgtFart).toFixed(2) + "s");
+        if (tickerAnimasjon) tickerAnimasjon.playbackRate = valgtFart;
       };
+      const startNesteNotis = () => {
+        fyllNotisspor();
+        const forste = innhold.firstElementChild;
+        const bredde = forste?.getBoundingClientRect().width || 0;
+        if (bredde <= 0 || typeof innhold.animate !== "function") return;
+        const animasjon = innhold.animate([
+          { transform: "translate3d(0,0,0)" },
+          { transform: "translate3d(-" + bredde + "px,0,0)" }
+        ], { duration: bredde / grunnfart() * 1000, easing: "linear", fill: "forwards" });
+        tickerAnimasjon = animasjon;
+        oppdaterHastighet();
+        if (!kanSpille()) animasjon.pause();
+        animasjon.onfinish = () => {
+          if (tickerAnimasjon !== animasjon) return;
+          tickerAnimasjon = null;
+          // Fjern første notis og nullstill forflytningen i samme frame:
+          // neste notis beholder nøyaktig posisjonen sin.
+          animasjon.cancel();
+          forste.remove();
+          startNesteNotis();
+        };
+      };
+      visning.addEventListener("focusin", () => tickerAnimasjon?.pause());
+      visning.addEventListener("focusout", () => {
+        if (kanSpille()) tickerAnimasjon?.play();
+      });
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        visning.addEventListener("mouseenter", () => tickerAnimasjon?.pause());
+        visning.addEventListener("mouseleave", () => {
+          if (kanSpille()) tickerAnimasjon?.play();
+        });
+      }
 
       // Én knapp åpner alle tre kontrollene. Panelet dekker aldri løpende tekst.
       const kontroller = document.createElement("div");
@@ -361,6 +404,8 @@ function loadNotiser() {
       };
       pauseknapp.addEventListener("click", () => {
         band.classList.toggle("is-paused");
+        if (kanSpille()) tickerAnimasjon?.play();
+        else tickerAnimasjon?.pause();
         visPauseknapp();
       });
       visPauseknapp();
@@ -544,7 +589,7 @@ function loadNotiser() {
       // animasjonen endrer varighet og hopper idet nettfonten lastes.
       const start = () => {
         innhold.classList.add("is-running");
-        oppdaterHastighet();
+        startNesteNotis();
       };
       if (document.fonts?.ready) {
         document.fonts.ready.then(start, start);
