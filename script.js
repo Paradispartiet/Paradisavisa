@@ -529,6 +529,75 @@ function displayFreshness(items, gridId) {
     : "Fra arkivet · Sist publisert " + latest;
 }
 
+/* Fire forsideplasser per kategori: den siste kan sveipes sidelengs. */
+function renderFourFrontPageCards(grid, cards) {
+  grid.replaceChildren(...cards.slice(0, 3));
+  if (cards.length <= 4) {
+    if (cards[3]) grid.appendChild(cards[3]);
+    return;
+  }
+
+  const section = grid.closest("section");
+  const heading = section?.querySelector("h2")?.textContent || "kategorien";
+  const host = document.createElement("div");
+  host.className = "avis-sisteplass";
+  const rail = document.createElement("div");
+  rail.className = "avis-sisteplass-spor";
+  rail.setAttribute("role", "region");
+  rail.setAttribute("aria-roledescription", "karusell");
+  rail.setAttribute("aria-label", "Flere artikler i " + heading);
+  rail.tabIndex = 0;
+  const remaining = cards.slice(3);
+  rail.replaceChildren(...remaining);
+
+  const controls = document.createElement("div");
+  controls.className = "avis-sisteplass-styring";
+  const label = document.createElement("span");
+  label.className = "avis-sisteplass-tekst";
+  label.textContent = "Sveip sidelengs for flere saker";
+  const counter = document.createElement("span");
+  counter.className = "avis-sisteplass-teller";
+  counter.setAttribute("aria-live", "polite");
+  const previous = document.createElement("button");
+  previous.type = "button";
+  previous.className = "avis-sisteplass-knapp";
+  previous.setAttribute("aria-label", "Forrige artikkel i " + heading);
+  previous.textContent = "←";
+  const next = document.createElement("button");
+  next.type = "button";
+  next.className = "avis-sisteplass-knapp";
+  next.setAttribute("aria-label", "Neste artikkel i " + heading);
+  next.textContent = "→";
+  controls.append(label, counter, previous, next);
+  host.append(rail, controls);
+  grid.appendChild(host);
+
+  let current = 0;
+  const update = () => {
+    current = Math.min(remaining.length - 1,
+      Math.max(0, Math.round(rail.scrollLeft / Math.max(1, rail.clientWidth))));
+    counter.textContent = (current + 4) + " / " + cards.length;
+    previous.disabled = current === 0;
+    next.disabled = current === remaining.length - 1;
+  };
+  const goTo = index => {
+    const target = Math.max(0, Math.min(remaining.length - 1, index));
+    const reducedMotion = window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    rail.scrollTo({ left: target * rail.clientWidth,
+      behavior: reducedMotion ? "instant" : "smooth" });
+  };
+  previous.addEventListener("click", () => goTo(current - 1));
+  next.addEventListener("click", () => goTo(current + 1));
+  rail.addEventListener("scroll", update, { passive: true });
+  rail.addEventListener("keydown", event => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    goTo(current + (event.key === "ArrowRight" ? 1 : -1));
+  });
+  update();
+}
+
 function loadArticleFeed(filename, gridId) {
   const grid = document.getElementById(gridId);
   if (!grid) return;
@@ -542,12 +611,13 @@ function loadArticleFeed(filename, gridId) {
       const items=raw
         .filter(item=>item && item.url && item.title)
         .sort((a,b)=>String(b.date||"").localeCompare(String(a.date||"")));
-      grid.replaceChildren();
-      items.forEach(item=>{
-        const card=buildArticleCard(item);
-        if (card) grid.appendChild(card);
-      });
-      if (!grid.children.length) {
+      const cards = items.map(buildArticleCard).filter(Boolean);
+      if (document.body.classList.contains("avis-forside")) {
+        renderFourFrontPageCards(grid, cards);
+      } else {
+        grid.replaceChildren(...cards);
+      }
+      if (!cards.length) {
         const notice=document.createElement("p");
         notice.className="seksjonsinfo";
         notice.textContent="Ingen publiserte saker i denne kategorien ennå.";
@@ -600,6 +670,9 @@ function loadDebatt() {
             </div>
           </a>`;
       });
+      if (document.body.classList.contains("avis-forside")) {
+        renderFourFrontPageCards(container, [...container.querySelectorAll(":scope > a")]);
+      }
     })
     .catch(err => console.error("Debatt feilet:", err));
 }
