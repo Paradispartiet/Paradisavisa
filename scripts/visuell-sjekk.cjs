@@ -62,7 +62,7 @@ async function run(){
       // Deterministisk Web Speech-mock: tester at brukerklikk starter/stoppper radioen,
       // uten ekte lyd fra CI-maskinen eller nettleserens talestemmer.
       await page.addInitScript(() => {
-        const calls={spoken:[],cancels:0,utterances:[]};
+        const calls={spoken:[],cancels:0,pauses:0,resumes:0,utterances:[],voices:[],listeners:{}};
         window.__notisRadioTest=calls;
         window.SpeechSynthesisUtterance=class {
           constructor(text){this.text=text;}
@@ -70,10 +70,19 @@ async function run(){
         Object.defineProperty(window,"speechSynthesis",{configurable:true,value:{
           speak(utterance){
             calls.utterances.push(utterance);
-            calls.spoken.push({text:utterance.text,lang:utterance.lang});
+            calls.spoken.push({
+              text:utterance.text,lang:utterance.lang,rate:utterance.rate,
+              voice:utterance.voice?.name || null
+            });
           },
           cancel(){calls.cancels++},
-          getVoices(){return [{lang:"nb-NO",name:"Teststemme"}]}
+          pause(){calls.pauses++},
+          resume(){calls.resumes++},
+          getVoices(){return calls.voices},
+          addEventListener(name,listener){calls.listeners[name]=listener},
+          removeEventListener(name,listener){
+            if(calls.listeners[name]===listener) delete calls.listeners[name];
+          }
         }});
       });
       page.on("pageerror",err=>errors.push(label+": JavaScript-feil: "+err.message));
@@ -393,21 +402,68 @@ async function run(){
         check(fartLagring.fart==="6" && Boolean(fartLagring.varighet),
           label+": høy hastighet blir ikke lagret/anvendt");
 
+        // Listen er bevisst tom ved oppstart, som på enkelte mobile enheter.
+        const stemme=page.locator(".notis-stemme-select");
+        check(await stemme.locator("option").count()===1,
+          label+": norsk stemmeliste skal kunne starte tom");
+        check((await page.locator(".notis-stemme-info").textContent()).includes("Ingen norsk stemme"),
+          label+": fallback-informasjon mangler");
+        await page.evaluate(()=>{
+          const s=window.__notisRadioTest;
+          s.voices=[
+            {name:"English test",lang:"en-US",voiceURI:"en-test"},
+            {name:"Norsk test 1",lang:"nb-NO",voiceURI:"nb-1",default:true},
+            {name:"Norsk test 2",lang:"nb-NO",voiceURI:"nb-2"}
+          ];
+          s.listeners.voiceschanged?.();
+        });
+        check(await stemme.locator("option").count()===3,
+          label+": stemmevelgeren oppdateres ikke etter voiceschanged");
+        await stemme.selectOption({label:"Norsk test 2 (nb-NO)"});
+        check((await page.evaluate(()=>localStorage.getItem("paradisavisa-radiostemme"))).includes("nb-2"),
+          label+": radiostemmen blir ikke lagret");
+        const tempo=page.locator(".notis-tempo-select");
+        await tempo.selectOption("1.1");
+        check(await page.evaluate(()=>localStorage.getItem("paradisavisa-radiotempo"))==="1.1",
+          label+": radiotempo blir ikke lagret");
+
         const radio=page.locator(".notis-radio");
+        const radiopause=page.locator(".notis-radio-pause");
         check((await radio.getAttribute("aria-pressed"))==="false",
           label+": radioen skal være stoppet som standard");
+        check(await radiopause.isDisabled(),
+          label+": radioens pauseknapp skal være deaktivert før start");
         await radio.click();
         check((await radio.getAttribute("aria-pressed"))==="true",
           label+": nyhetsradioen startet ikke");
         const lest=await page.evaluate(()=>window.__notisRadioTest.spoken);
-        check(lest.length===1 && lest[0].lang==="nb-NO" && lest[0].text.length>30,
-          label+": radioen leser ikke første notis på norsk");
+        check(lest.length===1 && lest[0].lang==="nb-NO" &&
+          lest[0].voice==="Norsk test 2" && lest[0].rate===1.1 && lest[0].text.length>30,
+          label+": nyhetsradioen bruker ikke valgt norsk stemme og taletempo");
+        await radiopause.click();
+        check((await radiopause.getAttribute("aria-pressed"))==="true" &&
+          (await page.evaluate(()=>window.__notisRadioTest.pauses))===1,
+          label+": radiopausen virker ikke");
+        await radiopause.click();
+        check((await radiopause.getAttribute("aria-pressed"))==="false" &&
+          (await page.evaluate(()=>window.__notisRadioTest.resumes))===1,
+          label+": radioen kan ikke fortsette");
         await page.evaluate(()=>window.__notisRadioTest.utterances[0].onend?.());
         check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))>=2,
           label+": nyhetsradioen går ikke videre til neste notis");
+        await radiopause.click();
+        const resumeForStopp=await page.evaluate(()=>window.__notisRadioTest.resumes);
+        await radio.click();
+        check((await page.evaluate(()=>window.__notisRadioTest.resumes))===resumeForStopp+1,
+          label+": stopp mens radioen er pauset skal nullstille talesyntesen");
+        await radio.click();
+        check((await radio.getAttribute("aria-pressed"))==="true",
+          label+": radioen starter ikke på nytt etter pause og stopp");
         await radio.click();
         check((await radio.getAttribute("aria-pressed"))==="false",
           label+": stoppknappen virker ikke");
+        check(await radiopause.isDisabled(),
+          label+": pauseknappen deaktiveres ikke når radioen stoppes");
         check((await page.evaluate(()=>window.__notisRadioTest.cancels))>=1,
           label+": talesyntesen blir ikke stoppet");
 
