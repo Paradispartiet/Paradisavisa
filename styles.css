@@ -67,6 +67,11 @@ body:has(> .notisbånd) {
 @supports (-moz-appearance: none) {
   .notisbånd {
     padding-bottom: 2px;
+    /* Ikke tving hele det faste båndet til eget transform-lag ved scroll. */
+    -webkit-transform: none;
+    transform: none;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
   }
   body.avis-forside,
   body.sport-side,
@@ -96,14 +101,10 @@ body:has(> .notisbånd) {
   transform: translate3d(0, 0, 0);
 }
 .notisinnhold.is-running {
-  animation: ticker-smooth var(--ticker-duration, 220s) linear infinite;
+  /* Bare et kort tekstspor får komposisjonslag. Ingen gigantisk kopi. */
   will-change: transform;
 }
-@keyframes ticker-smooth {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(-50%, 0, 0); }
-}
-.notisinnhold .notis-sekvens {
+.notisinnhold .notis-element {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
@@ -111,8 +112,9 @@ body:has(> .notisbånd) {
   padding-right: 1.4rem;
   margin-right: 0;
 }
-.notisinnhold .notis-sekvens > span,
-.notisinnhold .notis-tekst { margin-right: 0; }
+.notisinnhold .notis-element span {
+  margin-right: 0;
+}
 .notisinnhold .notis-skille {
   color: #858585;
   font-size: .85em;

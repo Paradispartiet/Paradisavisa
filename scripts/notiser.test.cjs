@@ -65,5 +65,22 @@ test("Firefox skal ikke reservere falsk bunnsikkerhetssone under notisbåndet", 
   assert.match(firefox, /body:has\(> \.notisbånd\)/);
   assert.match(firefox, /padding-bottom:\s*3rem\s*;/);
   const index = fs.readFileSync(path.join(root, "index.html"), "utf8");
-  assert.match(index, /styles\.css\?v=39/);
+  assert.match(index, /styles\.css\?v=40/);
+});
+
+test("Notisbåndet animerer bare et kort spor uten å lage en gigantisk liste", () => {
+  const css = fs.readFileSync(path.join(root, "styles.css"), "utf8");
+  const ticker = script.slice(script.indexOf("const lagNotiselement = n =>"),
+    script.indexOf("// Én knapp åpner alle tre kontrollene."));
+  assert.ok(ticker.length > 200, "Mangler det resirkulerende notissporet");
+  assert.match(ticker, /innhold\.animate\(/);
+  assert.match(ticker, /animasjon\.onfinish =/);
+  assert.match(ticker, /forste\.remove\(\)/);
+  assert.match(ticker, /innhold\.scrollWidth < minsteBredde/);
+  assert.match(ticker, /tickerAnimasjon\.playbackRate = valgtFart/);
+  assert.doesNotMatch(ticker, /cloneNode|requestAnimationFrame|addEventListener\("scroll"/);
+  assert.doesNotMatch(css, /animation: ticker-smooth/);
+  assert.match(css, /\.notisinnhold \.notis-element/);
+  assert.match(css, /@supports \(-moz-appearance: none\)/);
+  assert.match(css, /-webkit-transform: none/);
 });
