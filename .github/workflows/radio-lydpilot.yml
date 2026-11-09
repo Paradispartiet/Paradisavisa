@@ -28,6 +28,13 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Installer lydverktøy for MP3-konvertering
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffmpeg -version | head -1
+          ffprobe -version | head -1
+
       - name: Kontroller piloten før lydgenerering
         run: python -m unittest discover -s scripts/radio -p "test_*.py" -v
 
