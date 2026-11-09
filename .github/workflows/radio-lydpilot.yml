@@ -37,6 +37,7 @@ jobs:
           python - <<'PY'
           import hashlib
           import json
+          import re
           from pathlib import Path
           from huggingface_hub import HfApi, hf_hub_download
 
@@ -57,7 +58,7 @@ jobs:
               ))
               hashes[name] = hashlib.sha256(downloaded.read_bytes()).hexdigest()
           card = Path("pilot-modell") / base / "MODEL_CARD"
-          if "License: CC0" not in card.read_text(encoding="utf-8"):
+          if not re.search(r"License:\s*CC0\b", card.read_text(encoding="utf-8"), re.I):
               raise RuntimeError("Treningsdatasetts lisensavklaring er endret")
           report = {
               "piperVersion": "1.8.0",
