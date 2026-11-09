@@ -52,7 +52,7 @@ async function run(){
   const browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
   try {
     for(const [label,size] of [["mobil",{width:390,height:844}],["pc",{width:1366,height:900}]]){
-      const context=await browser.newContext({viewport:size,deviceScaleFactor:1});
+      const context=await browser.newContext({viewport:size,deviceScaleFactor:1,serviceWorkers:"block"});
       context.setDefaultTimeout(12000);
       context.setDefaultNavigationTimeout(15000);
       console.log("Starter nettlesersjekk: "+label+" ("+size.width+"px)");
@@ -334,6 +334,8 @@ async function run(){
         await pause.click();
         check(await pause.getAttribute("aria-label")==="Start notisbåndet",
           label+": pauseknappen stopper ikke nyhetsbåndet");
+        check(await page.locator(".notis-valgpanel").isVisible(),
+          label+": kontrollpanelet lukkes uventet etter pause");
         await pause.click();
         check(await pause.getAttribute("aria-label")==="Pause notisbåndet",
           label+": startknappen virker ikke");
