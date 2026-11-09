@@ -162,8 +162,38 @@ async function run(){
       for(const id of storyGrids){
         await page.locator(id+" .hjul-card").first().waitFor({timeout:12000});
       }
+      // Mobil og PC: notisbåndet skal bruke et lite komposisjonslag som
+      // fortsetter å animere mens leseren scroller, uten å starte på nytt.
+      let tickerTidFoer = null;
+      if (harAktuelleNotiser) {
+        await page.locator(".notis-element").first().waitFor({timeout:12000});
+        const tilstand = await page.evaluate(() => {
+          const spor=document.querySelector(".notisinnhold");
+          const animasjon=spor.getAnimations()[0];
+          return {
+            antall:spor.children.length,
+            animasjoner:spor.getAnimations().length,
+            tid:animasjon?.currentTime,
+            status:animasjon?.playState
+          };
+        });
+        check(tilstand.antall>=2 && tilstand.antall<=24,
+          label+": notisbåndet bygger for mange notiselementer ("+tilstand.antall+")");
+        check(tilstand.animasjoner===1 && tilstand.status==="running",
+          label+": notisbåndet bruker ikke én aktiv compositor-animasjon");
+        tickerTidFoer=tilstand.tid;
+      }
       // Kontroller at avisoverskriften forblir synlig når innholdet rulles.
       await page.evaluate(() => window.scrollTo(0, 600));
+      if (harAktuelleNotiser && tickerTidFoer != null) {
+        await page.waitForTimeout(200);
+        const tilstand = await page.evaluate(() => {
+          const animasjon=document.querySelector(".notisinnhold").getAnimations()[0];
+          return {tid:animasjon?.currentTime,status:animasjon?.playState};
+        });
+        check(tilstand.status==="running" && tilstand.tid > tickerTidFoer,
+          label+": notisbåndets animasjon stopper eller starter på nytt ved scrolling");
+      }
       const scrollPositions=await page.evaluate(() => ({
         headerTop:document.querySelector(".avis-masthead").getBoundingClientRect().top,
         tickerBottom:document.querySelector(".notisbånd").getBoundingClientRect().bottom,
