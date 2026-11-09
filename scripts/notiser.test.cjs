@@ -56,3 +56,14 @@ test("Notisbåndet bruker bare 2×/4×/6× og samler radio/pause/fart i én meny
   assert.match(script, /radioknapp\.addEventListener\("click"/);
   assert.match(script, /window\.addEventListener\("pagehide"/);
 });
+
+test("Firefox skal ikke reservere falsk bunnsikkerhetssone under notisbåndet", () => {
+  const css = fs.readFileSync(path.join(root, "styles.css"), "utf8");
+  const firefox = css.match(/@supports \(-moz-appearance: none\) \{([\s\S]*?)\n\}/)?.[1];
+  assert.ok(firefox, "Mangler Firefox-spesifikk safe-area-rettelse");
+  assert.match(firefox, /\.notisbånd\s*\{\s*padding-bottom:\s*2px\s*;/);
+  assert.match(firefox, /body:has\(> \.notisbånd\)/);
+  assert.match(firefox, /padding-bottom:\s*3rem\s*;/);
+  const index = fs.readFileSync(path.join(root, "index.html"), "utf8");
+  assert.match(index, /styles\.css\?v=39/);
+});
