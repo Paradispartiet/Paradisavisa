@@ -84,3 +84,17 @@ test("Notisbåndet animerer bare et kort spor uten å lage en gigantisk liste", 
   assert.match(css, /@supports \(-moz-appearance: none\)/);
   assert.match(css, /-webkit-transform: none/);
 });
+
+
+test("Radioikonet åpner samme kontroller, og menylinken går til en eksisterende radioside", () => {
+  assert.match(script, /valgknapp\.innerHTML = '<svg[^']*<rect x="3" y="9" width="18" height="12"/);
+  for (const path of ["index.html", "header.html"]) {
+    const html = fs.readFileSync(path.join(root, path), "utf8");
+    assert.match(html, /href="paradisradio\.html">Paradisradioen<\/a>/);
+  }
+  const radio = fs.readFileSync(path.join(root, "paradisradio.html"), "utf8");
+  assert.match(radio, /<h1>Paradisradioen<\/h1>/);
+  assert.match(radio, /class="notisbånd"/);
+  assert.match(radio, /id="paradisradio-kontroller"/);
+  assert.match(radio, /notis-valgknapp/);
+});
