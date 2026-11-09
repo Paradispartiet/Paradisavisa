@@ -256,6 +256,20 @@ body:has(> .notisbånd) {
   font: 400 .67rem/1.4 'Inter', system-ui, sans-serif;
   white-space: normal;
 }
+.notis-radio-side-lenke {
+  display: block;
+  padding: .5rem .65rem;
+  color: #ffd600;
+  font: 600 .78rem/1.4 'Inter', system-ui, sans-serif;
+  border-top: 1px solid #3b3b3b;
+  text-align: center;
+  white-space: normal;
+}
+.notis-radio-side-lenke:hover,
+.notis-radio-side-lenke:focus-visible {
+  color: #fff;
+  outline-offset: 2px;
+}
 .notis-radiostatus {
   display: block;
   color: #ccc;
