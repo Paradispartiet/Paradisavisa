@@ -3,47 +3,75 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Paradisradioen – Paradisavisas nyhetsradio under utvikling, med opplesning av aktuelle notiser.">
-  <meta property="og:title" content="Paradisradioen | Paradisavisa">
-  <meta property="og:description" content="Lytt til aktuelle notiser mens Paradisradioen utvikles.">
+  <meta name="description" content="Paradisavisas Alltid Nyheter-radio – lytt til dagens kildekontrollerte notiser.">
+  <meta property="og:title" content="Alltid Nyheter | Paradisavisa">
+  <meta property="og:description" content="En fortløpende, oppdatert spilleliste med aktuelle nyheter fra Paradisavisa.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#000000">
-  <title>Paradisradioen | Paradisavisa</title>
+  <title>Alltid Nyheter | Paradisavisa</title>
   <link rel="icon" type="image/webp" href="assets/logo-paradisavisa.webp">
   <link rel="stylesheet" href="styles.css?v=41">
   <link rel="stylesheet" href="avisdesign.css?v=5">
-  <script defer src="script.js?v=35"></script>
+  <link rel="stylesheet" href="radio.css?v=1">
+  <script defer src="script.js?v=36"></script>
+  <script defer src="radio-player.js?v=1"></script>
 </head>
-<body class="notiser-side">
+<body class="notiser-side radio-side">
+  <a class="hopp-til-innhold" href="#hovedinnhold">Hopp til radiospilleren</a>
   <div id="header-placeholder"><a href="index.html" class="avis-fallback-link">← Til Paradisavisa</a></div>
-  <main id="hovedinnhold" class="arkiv-hoved notis-arkiv-hoved">
+  <main id="hovedinnhold" class="arkiv-hoved radio-hoved">
     <p class="arkiv-kategori">Paradisavisa / Lyd</p>
     <h1>Paradisradioen</h1>
-    <p class="arkiv-ingress">Paradisavisas Alltid Nyheter-radio er under utvikling.</p>
-    <p>Du kan allerede lytte til opplesning av aktuelle notiser. Åpne radioikonet nederst til høyre og velg «Les opp notisene». Opplesningen bruker stemmen i nettleseren din, og er foreløpig ikke en egen direktesending.</p>
-    <p><button type="button" id="paradisradio-kontroller" class="btn">Åpne radiokontrollene</button></p>
-    <p id="paradisradio-status" role="status" aria-live="polite"></p>
-    <p>Du kan også <a href="notiser.html">lese de aktuelle notisene</a>.</p>
+    <p class="radio-tagline">ALLTID NYHETER</p>
+    <p class="arkiv-ingress">Hør aktuelle nyheter fra Paradisavisa, lest opp fortløpende med en norsk systemstemme der nettleseren har det.</p>
+
+    <section id="paradisradio-player" class="radio-spiller" aria-labelledby="radio-spiller-tittel">
+      <div class="radio-spillerhode">
+        <span class="radio-ikon" aria-hidden="true">◉</span>
+        <div>
+          <h2 id="radio-spiller-tittel">Nyhetssending</h2>
+          <p>Fortløpende nyhetsopplesning · Starter kun når du trykker Spill</p>
+        </div>
+      </div>
+
+      <div class="radio-naa" aria-label="Nåværende notis">
+        <p data-radio="category" class="radio-naa-kategori">PARADISAVISA</p>
+        <h3 data-radio="headline">Henter dagens notiser …</h3>
+        <div class="radio-naa-meta">
+          <span data-radio="date"></span>
+          <a data-radio="source" href="notiser.html" target="_blank" rel="noopener noreferrer" hidden>Les kilden</a>
+        </div>
+      </div>
+
+      <div class="radio-transport" role="group" aria-label="Avspillingskontroller">
+        <button type="button" data-radio="previous" aria-label="Forrige nyhet" disabled> <span aria-hidden="true">◀◀</span><span>Forrige</span></button>
+        <button type="button" data-radio="play" class="radio-primar" disabled>▶ Spill</button>
+        <button type="button" data-radio="pause" disabled>Ⅱ Pause</button>
+        <button type="button" data-radio="next" aria-label="Neste nyhet" disabled><span>Neste</span><span aria-hidden="true">▶▶</span></button>
+        <button type="button" data-radio="stop" disabled>■ Stopp</button>
+      </div>
+
+      <p data-radio="status" class="radio-status" role="status" aria-live="polite">Henter aktuelle nyheter …</p>
+      <button type="button" id="paradisradio-kontroller" class="radio-innstillinger-knapp">Velg stemme og taletempo <span aria-hidden="true">⚙</span></button>
+
+      <div class="radio-spilleliste">
+        <div class="radio-spilleliste-hode">
+          <h2>Neste nyheter</h2>
+          <span data-radio="count">Henter …</span>
+        </div>
+        <ol data-radio="playlist" aria-label="Aktuelle nyheter i spillelisten"></ol>
+      </div>
+    </section>
+
+    <p class="radio-merknad">Dette er en oppdatert spilleliste, ikke en direktesending. Opplesningen bruker nettleserens talesyntese og kan stoppe når du bytter side eller låser mobilen. Åpne gjerne radioen i en egen fane mens du leser avisa.</p>
+    <p class="radio-annen-visning">Vil du heller lese? <a href="notiser.html">Se de aktuelle notisene</a>.</p>
   </main>
+
   <footer class="site-footer">
     <p>© 2025–2026 Paradisavisa</p>
     <p><a href="index.html">Tilbake til forsiden</a></p>
   </footer>
+
   <div class="notisbånd"><div class="notisinnhold"></div></div>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("paradisradio-kontroller").addEventListener("click", () => {
-        const knapp = document.querySelector(".notis-valgknapp");
-        const status = document.getElementById("paradisradio-status");
-        if (!knapp) {
-          status.textContent = "Radiokontrollene er ikke klare ennå. Prøv igjen når notisene er lastet.";
-          return;
-        }
-        status.textContent = "";
-        if (knapp.getAttribute("aria-expanded") !== "true") knapp.click();
-        document.querySelector(".notis-radio")?.focus();
-      });
-    });
-  </script>
 </body>
 </html>
