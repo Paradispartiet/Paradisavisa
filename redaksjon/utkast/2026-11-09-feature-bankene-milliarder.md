@@ -1,7 +1,7 @@
 # Bankene tjener milliarder – hvem betaler?
 
 **FEATURE / ØKONOMI · REDAKSJONELT TEKSTUTKAST – IKKE PUBLISERT**  
-**Research:** 9. november 2026 · **Status:** Første fulltekst. Tekst før bilde; artikkelen er ikke faktasjekket og godkjent for publisering.
+**Research:** 9. november 2026 · **Status:** Fulltekstutkast med originalt hoved- og sekundærbilde integrert i noindex-forhåndsvisning. Direkte kildeoppfølging, bildegodkjenning og publiseringsbeslutning gjenstår.
 
 **Ingress:** Norske banker hadde tjent 69,4 milliarder kroner etter skatt ved utgangen av september. Samtidig er rentenettoen lavere enn i fjor. Hvor kommer milliardene fra, hva koster banktjenestene oss, og hvorfor er bankenes overskudd både en kilde til irritasjon og et vern mot kriser?
 
@@ -65,4 +65,4 @@ Da kan spørsmålet i overskriften få et svar som er mer nyttig enn både jubel
 2. Sammenlign likeverdige oppdaterte boliglåns- og innskuddstilbud (uten å forveksle tilbud til nye og eksisterende kunder).
 3. Kryssjekk hvilke banktyper SSBs tall inkluderer, og kontroller at ni-månedersbeløp ikke feilaktig omtales som et kvartalstall.
 4. Merk skille mellom observasjon, økonomisk forklaring og redaksjonelle spørsmål. Sjekk tallene ved publisering.
-5. Lag deretter et naturtro hovedbilde og et symbolsk, mettet sekundærbilde, tydelig merket «Illustrasjon». Først etter dette: ferdig artikkelkort i Feature-strømmen.
+5. Hovedbilde og symbolmettet sekundærbilde er nå levert som originale WebP-filer og korrekt merket i den redaksjonelle forhåndsvisningen. Kontrollér begge i full størrelse, innhent redaksjonell bildegodkjenning og ferdigstill deretter artikkelkortet i Feature-strømmen.
