@@ -39,4 +39,6 @@ test("Aktiv notisstrøm er fersk, eldre allmenn- og sportsnotiser arkivert", () 
   assert.equal(sport.length, 5);
   assert.ok(sport.every(note => !fersk(note)));
   assert.ok(script.includes('const filename = "notiser.json"'));
+  // Array.filter sender også index; nyhetsfunksjonen må få Date som standardverdi.
+  assert.ok(script.includes("items.filter(item => isNotisAktuell(item))"));
 });
