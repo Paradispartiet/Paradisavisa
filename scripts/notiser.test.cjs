@@ -42,3 +42,17 @@ test("Aktiv notisstrøm er fersk, eldre allmenn- og sportsnotiser arkivert", () 
   // Array.filter sender også index; nyhetsfunksjonen må få Date som standardverdi.
   assert.ok(script.includes("items.filter(item => isNotisAktuell(item))"));
 });
+
+test("Notisbåndet bruker bare 2×/4×/6× og samler radio/pause/fart i én meny", () => {
+  assert.match(script, /const fartvalg = \[2, 4, 6\]/);
+  assert.match(script, /let valgtFart = 2/);
+  assert.match(script, /notis-valgknapp/);
+  assert.match(script, /notis-valgpanel/);
+  assert.match(script, /notis-pause/);
+  assert.match(script, /notis-fartknapp/);
+  assert.match(script, /notis-radio/);
+  assert.match(script, /SpeechSynthesisUtterance/);
+  assert.match(script, /ytring\.lang = "nb-NO"/);
+  assert.match(script, /radioknapp\.addEventListener\("click"/);
+  assert.match(script, /window\.addEventListener\("pagehide"/);
+});
