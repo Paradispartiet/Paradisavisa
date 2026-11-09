@@ -1,0 +1,183 @@
+/* Paradisradioen: egen radioside, fortsatt avisens sorte/gule profil. */
+.radio-side .radio-hoved {
+  max-width: 880px;
+  margin-inline: auto;
+  padding-bottom: 5rem;
+}
+.radio-side .radio-tagline {
+  margin: .2rem 0 1rem;
+  color: #ffd600;
+  letter-spacing: .15em;
+  font: 800 .86rem/1.4 'Inter', system-ui, sans-serif;
+}
+.radio-spiller {
+  margin-top: 2rem;
+  padding: clamp(1rem, 3vw, 2rem);
+  background: #0d0d0d;
+  border: 1px solid #555;
+  border-radius: 10px;
+  color: #f4f4f4;
+}
+.radio-spillerhode {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.radio-ikon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  background: #ffd600;
+  color: #000;
+  font-size: 2rem;
+}
+.radio-spillerhode h2,
+.radio-spilleliste-hode h2 {
+  margin: 0;
+  font: 800 clamp(1.1rem, 2.5vw, 1.5rem)/1.2 'Inter', system-ui, sans-serif;
+}
+.radio-spillerhode p {
+  margin: .45rem 0 0;
+  color: #aaa;
+  font: 400 .77rem/1.5 'Inter', system-ui, sans-serif;
+}
+.radio-naa {
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background: #171717;
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+}
+.radio-naa-kategori {
+  margin: 0 0 .7rem;
+  font: 700 .71rem/1.4 'Inter', system-ui, sans-serif;
+  color: #ffd600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.radio-naa h3 {
+  margin: 0;
+  max-width: 52ch;
+  font: 500 clamp(1.1rem, 3vw, 1.5rem)/1.5 'Inter', system-ui, sans-serif;
+  overflow-wrap: anywhere;
+}
+.radio-naa-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem 1.5rem;
+  margin-top: 1rem;
+  color: #aaa;
+  font: 400 .76rem/1.4 'Inter', system-ui, sans-serif;
+}
+.radio-naa-meta a,
+.radio-annen-visning a { color: #ffd600; }
+.radio-transport {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin: 1.3rem 0;
+}
+.radio-transport button,
+.radio-innstillinger-knapp {
+  border: 1px solid #666;
+  border-radius: 6px;
+  padding: .75rem .8rem;
+  min-height: 44px;
+  color: #f5f5f5;
+  background: #202020;
+  font: 600 .84rem/1.3 'Inter', system-ui, sans-serif;
+  cursor: pointer;
+}
+.radio-transport button {
+  display: flex;
+  gap: .4rem;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 115px;
+}
+.radio-transport button.radio-primar {
+  background: #ffd600;
+  color: #0b0b0b;
+  border-color: #ffd600;
+  font-weight: 800;
+}
+.radio-transport button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+.radio-transport button:focus-visible,
+.radio-innstillinger-knapp:focus-visible {
+  outline: 2px solid #ffd600;
+  outline-offset: 3px;
+}
+.radio-innstillinger-knapp {
+  width: 100%;
+  text-align: center;
+  background: transparent;
+}
+.radio-status {
+  margin: 0 0 1rem;
+  padding: .65rem .8rem;
+  border-left: 3px solid #ffd600;
+  color: #ddd;
+  background: #1a1a1a;
+  font: 400 .85rem/1.5 'Inter', system-ui, sans-serif;
+  white-space: normal;
+}
+.radio-spilleliste { margin-top: 2.5rem; }
+.radio-spilleliste-hode {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  border-bottom: 1px solid #555;
+  padding-bottom: .75rem;
+}
+.radio-spilleliste-hode span {
+  color: #aaa;
+  font: 400 .74rem/1.3 'Inter', system-ui, sans-serif;
+}
+.radio-spilleliste ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.radio-listeelement {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .3rem 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #333;
+  font: 400 .87rem/1.5 'Inter', system-ui, sans-serif;
+}
+.radio-listeelement strong {
+  grid-column: 1 / -1;
+  font-size: .75rem;
+  color: #ffd600;
+}
+.radio-listeelement span { overflow-wrap: anywhere; }
+.radio-listeelement time {
+  color: #aaa;
+  font-size: .72rem;
+}
+.radio-listeelement[aria-current="true"] {
+  background: #242018;
+  box-shadow: 10px 0 #242018, -10px 0 #242018;
+}
+.radio-merknad {
+  max-width: 72ch;
+  margin: 1.8rem 0;
+  color: #bbb;
+  font: 400 .83rem/1.65 'Inter', system-ui, sans-serif;
+}
+.radio-annen-visning { margin: 1rem 0 2rem; }
+@media (max-width: 620px) {
+  .radio-transport button { flex: 1 1 38%; }
+  .radio-transport button.radio-primar { flex: 2 1 45%; }
+  .radio-listeelement { grid-template-columns: minmax(0,1fr); }
+  .radio-listeelement time { grid-column: 1; }
+}

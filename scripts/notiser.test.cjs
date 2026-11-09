@@ -65,7 +65,7 @@ test("Firefox skal ikke reservere falsk bunnsikkerhetssone under notisbåndet", 
   assert.match(firefox, /body:has\(> \.notisbånd\)/);
   assert.match(firefox, /padding-bottom:\s*3rem\s*;/);
   const index = fs.readFileSync(path.join(root, "index.html"), "utf8");
-  assert.match(index, /styles\.css\?v=41/);
+  assert.match(index, /styles\.css\?v=42/);
 });
 
 test("Notisbåndet animerer bare et kort spor uten å lage en gigantisk liste", () => {
@@ -118,5 +118,17 @@ test("Radioikonet åpner samme kontroller, og menylinken går til en eksisterend
   assert.match(radio, /<h1>Paradisradioen<\/h1>/);
   assert.match(radio, /class="notisbånd"/);
   assert.match(radio, /id="paradisradio-kontroller"/);
-  assert.match(radio, /notis-valgknapp/);
+  assert.match(radio, /id="paradisradio-player"/);
+  assert.match(radio, /data-radio="play"/);
+  assert.match(radio, /data-radio="pause"/);
+  assert.match(radio, /data-radio="next"/);
+  assert.match(radio, /data-radio="previous"/);
+  assert.match(radio, /radio-player\.js\?v=1/);
+  const side = fs.readFileSync(path.join(root, "radio-player.js"), "utf8");
+  assert.match(side, /window\.ParadisRadioPlayer/);
+  assert.doesNotMatch(side, /new\s+(?:window\.)?SpeechSynthesisUtterance/);
+  assert.match(script, /window\.ParadisRadioPlayer = \{/);
+  assert.match(script, /radioSideLenke\.href/);
+  assert.match(script, /radioSistOppdatert/);
+  assert.match(script, /5 \* 60 \* 1000/);
 });
