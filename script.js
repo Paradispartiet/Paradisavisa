@@ -205,6 +205,19 @@ function isNotisAktuell(notis, now = new Date()) {
   return true;
 }
 
+/* ---------- Godkjent radiotekst med konservativ uttaletilpasning ---------- */
+function lagRadioOpplesning(notis) {
+  // Taleavvik kan settes eksplisitt av redaksjonen, ikke genereres fritt av AI.
+  const tekst = typeof notis?.speechText === "string" && notis.speechText.trim()
+    ? notis.speechText : notis?.text;
+  const innhold = String(tekst || "").trim()
+    .replace(/(\d+(?:[.,]\d+)?)\s*%/g, "$1 prosent")
+    .replace(/(\d+(?:[.,]\d+)?)\s*kr\b/gi, "$1 kroner")
+    .replace(/\b(mrd|mill)\./gi, ord => ord.toLowerCase().startsWith("mrd")
+      ? "milliarder" : "millioner");
+  return String(notis?.category || "Nyheter").trim() + ". " + innhold;
+}
+
 /* ---------- Notisbånd: rolig, jevn og sømløs bevegelse ---------- */
 function loadNotiser() {
   // Alle sider bruker samme kildekontrollerte og daterte notisstrøm.
@@ -460,6 +473,94 @@ function loadNotiser() {
       // Tale startes bare med et brukergest, og stoppes når siden forlates.
       const tale = window.speechSynthesis;
       const harTale = Boolean(tale && typeof window.SpeechSynthesisUtterance === "function");
+      // Egne taleinnstillinger. Ingen påvirkning på båndets 2×/4×/6×.
+      const radioInnstillinger = document.createElement("div");
+      radioInnstillinger.className = "notis-radio-innstillinger";
+
+      const stemmeLabel = document.createElement("label");
+      stemmeLabel.htmlFor = "notis-radiostemme";
+      stemmeLabel.textContent = "Norsk opplesningsstemme";
+      const stemmeSelect = document.createElement("select");
+      stemmeSelect.id = "notis-radiostemme";
+      stemmeSelect.className = "notis-stemme-select";
+      stemmeSelect.disabled = !harTale;
+      const stemmeInfo = document.createElement("span");
+      stemmeInfo.className = "notis-stemme-info";
+      let valgtStemme = "";
+      try { valgtStemme = localStorage.getItem("paradisavisa-radiostemme") || ""; }
+      catch (_) { /* Lokal lagring er valgfri. */ }
+      let norskeStemmer = [];
+      const stemmeNokkel = stemme => [stemme.voiceURI || "", stemme.lang || "", stemme.name || ""].join("|");
+      const oppdaterStemmer = () => {
+        let alleStemmer = [];
+        try { alleStemmer = tale?.getVoices?.() || []; } catch (_) { /* Enkelte nettlesere støtter ikke stemmelisten. */ }
+        norskeStemmer = Array.from(alleStemmer).filter(stemme =>
+          /^(?:nb|nn|no)(?:-|_)/i.test(String(stemme.lang || "")));
+        stemmeSelect.replaceChildren();
+        const automatisk = document.createElement("option");
+        automatisk.value = "";
+        automatisk.textContent = "Automatisk norsk stemme";
+        stemmeSelect.appendChild(automatisk);
+        for (const stemme of norskeStemmer) {
+          const valg = document.createElement("option");
+          valg.value = stemmeNokkel(stemme);
+          valg.textContent = stemme.name + " (" + stemme.lang + ")";
+          stemmeSelect.appendChild(valg);
+        }
+        stemmeSelect.value = norskeStemmer.some(stemme => stemmeNokkel(stemme) === valgtStemme)
+          ? valgtStemme : "";
+        stemmeInfo.textContent = !harTale ? "Opplesning er ikke tilgjengelig i nettleseren." :
+          norskeStemmer.length ? "Stemmen brukes fra neste notis." :
+          "Ingen norsk stemme funnet. Nettleserens standardstemme brukes.";
+      };
+      stemmeSelect.addEventListener("change", () => {
+        valgtStemme = stemmeSelect.value;
+        try { localStorage.setItem("paradisavisa-radiostemme", valgtStemme); }
+        catch (_) { /* Valget virker denne økten. */ }
+      });
+      if (harTale && typeof tale.addEventListener === "function") {
+        tale.addEventListener("voiceschanged", oppdaterStemmer);
+      } else if (harTale && "onvoiceschanged" in tale) {
+        // Fallback for nettlesere som eksponerer bare hendelsesegenskapen.
+        const forrige = tale.onvoiceschanged;
+        tale.onvoiceschanged = event => {
+          if (typeof forrige === "function") forrige.call(tale, event);
+          oppdaterStemmer();
+        };
+      }
+      oppdaterStemmer();
+
+      const tempoLabel = document.createElement("label");
+      tempoLabel.htmlFor = "notis-radiotempo";
+      tempoLabel.textContent = "Taletempo";
+      const tempoSelect = document.createElement("select");
+      tempoSelect.id = "notis-radiotempo";
+      tempoSelect.className = "notis-tempo-select";
+      const taletempo = [
+        { verdi: 0.9, tekst: "0,9× – rolig" },
+        { verdi: 1, tekst: "1,0× – normalt" },
+        { verdi: 1.1, tekst: "1,1× – raskere" }
+      ];
+      let valgtTaletempo = 1;
+      try {
+        const lagret = Number(localStorage.getItem("paradisavisa-radiotempo"));
+        if (taletempo.some(n => n.verdi === lagret)) valgtTaletempo = lagret;
+      } catch (_) { /* Uten lagring: normalt taletempo. */ }
+      taletempo.forEach(valg => {
+        const option = document.createElement("option");
+        option.value = String(valg.verdi);
+        option.textContent = valg.tekst;
+        tempoSelect.appendChild(option);
+      });
+      tempoSelect.value = String(valgtTaletempo);
+      tempoSelect.disabled = !harTale;
+      tempoSelect.addEventListener("change", () => {
+        valgtTaletempo = Number(tempoSelect.value);
+        try { localStorage.setItem("paradisavisa-radiotempo", String(valgtTaletempo)); }
+        catch (_) { /* Valget virker denne økten. */ }
+      });
+      radioInnstillinger.append(stemmeLabel, stemmeSelect, stemmeInfo, tempoLabel, tempoSelect);
+
       const radioknapp = document.createElement("button");
       radioknapp.type = "button";
       radioknapp.className = "notis-radio";
@@ -472,17 +573,29 @@ function loadNotiser() {
         "Trykk Les opp for å starte nyhetsradioen." :
         "Opplesning støttes ikke i denne nettleseren.";
       let radioAktiv = false;
+      let radioPauset = false;
+      let radioVenter = false;
       let radioVersjon = 0;
       let radioIndeks = 0;
       let radiosaker = aktuelle.slice();
 
+      const radioPauseknapp = document.createElement("button");
+      radioPauseknapp.type = "button";
+      radioPauseknapp.className = "notis-radio-pause";
       const visRadio = () => {
         radioknapp.textContent = radioAktiv ? "■  Stopp opplesning" : "▶  Les opp notisene";
         radioknapp.setAttribute("aria-label", radioAktiv ? "Stopp nyhetsradio" : "Start nyhetsradio");
         radioknapp.setAttribute("aria-pressed", String(radioAktiv));
+        radioPauseknapp.textContent = radioPauset ? "▶  Fortsett radio" : "Ⅱ  Pause radio";
+        radioPauseknapp.setAttribute("aria-label", radioPauset ? "Fortsett nyhetsradio" : "Pause nyhetsradio");
+        radioPauseknapp.setAttribute("aria-pressed", String(radioPauset));
+        radioPauseknapp.disabled = !radioAktiv || !harTale ||
+          typeof tale.pause !== "function" || typeof tale.resume !== "function";
       };
       const stoppRadio = (melding = "Nyhetsradioen er stoppet.") => {
         radioAktiv = false;
+        radioPauset = false;
+        radioVenter = false;
         radioVersjon++;
         try { tale?.cancel(); } catch (_) { /* Tale kan være utilgjengelig. */ }
         radiostatus.textContent = melding;
@@ -491,6 +604,11 @@ function loadNotiser() {
       };
       const lesNeste = versjon => {
         if (!radioAktiv || versjon !== radioVersjon) return;
+        if (radioPauset) {
+          radioVenter = true;
+          return;
+        }
+        radioVenter = false;
         if (radioIndeks >= radiosaker.length) {
           // Sjekk om nye notiser er kommet inn mellom radiosendingene.
           fetch(source, { cache: "no-store" }).then(response => {
@@ -519,19 +637,24 @@ function loadNotiser() {
           lesNeste(versjon);
           return;
         }
-        const ytring = new window.SpeechSynthesisUtterance(
-          String(notis.category || "Nyheter") + ". " + notis.text
-        );
+        const ytring = new window.SpeechSynthesisUtterance(lagRadioOpplesning(notis));
         ytring.lang = "nb-NO";
-        ytring.rate = 1;
-        const stemmer = tale.getVoices?.() || [];
-        const norsk = stemmer.find(stemme => /^nb[-_]NO$/i.test(stemme.lang)) ||
-          stemmer.find(stemme => /^nn[-_]NO$/i.test(stemme.lang)) ||
-          stemmer.find(stemme => /^no[-_]/i.test(stemme.lang));
-        if (norsk) ytring.voice = norsk;
+        ytring.rate = valgtTaletempo;
+        const norsk = norskeStemmer.find(stemme => stemmeNokkel(stemme) === valgtStemme) ||
+          norskeStemmer.find(stemme => /^nb[-_]NO$/i.test(stemme.lang) && stemme.default) ||
+          norskeStemmer.find(stemme => /^nb[-_]NO$/i.test(stemme.lang)) ||
+          norskeStemmer[0];
+        if (norsk) {
+          ytring.voice = norsk;
+          ytring.lang = norsk.lang;
+        }
         radiostatus.textContent = "Leser: " + String(notis.category || "Nyheter");
         ytring.onend = () => { if (radioAktiv && versjon === radioVersjon) lesNeste(versjon); };
-        ytring.onerror = () => { if (radioAktiv && versjon === radioVersjon) stoppRadio("Opplesningen kunne ikke fortsette."); };
+        ytring.onerror = event => {
+          if (!radioAktiv || versjon !== radioVersjon) return;
+          if (event?.error === "canceled" || event?.error === "interrupted") return;
+          stoppRadio("Opplesningen kunne ikke fortsette.");
+        };
         try { tale.speak(ytring); }
         catch (_) { stoppRadio("Opplesning kunne ikke startes i nettleseren."); }
       };
@@ -547,6 +670,8 @@ function loadNotiser() {
           return;
         }
         radioAktiv = true;
+        radioPauset = false;
+        radioVenter = false;
         const versjon = ++radioVersjon;
         radioIndeks = 0;
         try { tale.cancel(); } catch (_) { /* Ingen aktiv ytring. */ }
@@ -554,8 +679,27 @@ function loadNotiser() {
         visRadio();
         lesNeste(versjon);
       });
+      radioPauseknapp.addEventListener("click", () => {
+        if (!radioAktiv || !harTale) return;
+        if (radioPauset) {
+          try {
+            tale.resume();
+            radioPauset = false;
+            radiostatus.textContent = "Nyhetsradioen fortsetter.";
+            visRadio();
+            if (radioVenter) lesNeste(radioVersjon);
+          } catch (_) { stoppRadio("Kunne ikke fortsette opplesningen."); }
+        } else {
+          try {
+            tale.pause();
+            radioPauset = true;
+            radiostatus.textContent = "Nyhetsradioen er satt på pause.";
+            visRadio();
+          } catch (_) { stoppRadio("Kunne ikke pause opplesningen."); }
+        }
+      });
       visRadio();
-      panel.append(radioknapp, radiostatus);
+      panel.append(radioknapp, radioPauseknapp, radioInnstillinger, radiostatus);
 
       const lukkPanel = () => {
         panel.hidden = true;
@@ -581,6 +725,9 @@ function loadNotiser() {
       });
       window.addEventListener("pagehide", () => {
         if (radioAktiv) stoppRadio();
+        if (typeof tale?.removeEventListener === "function") {
+          tale.removeEventListener("voiceschanged", oppdaterStemmer);
+        }
       });
       kontroller.append(valgknapp, panel);
       band.appendChild(kontroller);
