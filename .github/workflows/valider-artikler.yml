@@ -29,6 +29,8 @@ jobs:
         run: node --test scripts/forside-scroll.test.cjs
       - name: Test ferskhet og arkivering av notiser
         run: node --test scripts/notiser.test.cjs
+      - name: Test intern norsk lydpilot uten nettverk eller stemmemodell
+        run: python3 -m unittest discover -s scripts/radio -p "test_*.py" -v
       - name: Test redaksjonelle lenke- og notatsperrer
         run: node --test scripts/redaksjonelle-sperrer.test.cjs
       - name: Test isolert publiseringsløp
