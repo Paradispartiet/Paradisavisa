@@ -31,7 +31,9 @@ Banker som tjener penger, kan bygge egenkapital og dekke tap uten at kredittgivn
 
 Det er et reelt argument for lønnsomhet – ikke et svar på enhver innvending mot prisene. Tvert imot gir solide banker grunn til å stille mer presise spørsmål: Hvor mye må holdes tilbake som kapital? Hvor mye utbetales til eiere? Hvor hard er konkurransen om å tilby husholdningene gode betingelser?
 
-Næringen har også en egen fortelling om konkurransen. Finans Norge viser blant annet til en undersøkelse fra januar 2026 der om lag halvparten av respondentene har flyttet innskudd eller kontrollert om innskuddsrenten var konkurransedyktig. Undersøkelsen er utført på oppdrag fra bransjeorganisasjonen, og kan ikke alene avgjøre hvor velfungerende konkurransen er.
+Næringen har også en egen fortelling om konkurransen. I en gjennomgang publisert **5. november** skriver Finans Norge at de seks største norske bankenes netto renteinntekter økte **3 prosent fra andre til tredje kvartal 2026**, samtidig som bankene rapporterer press på marginene fra konkurransen. De seks bankenes samlede egenkapitalavkastning var **13,4 prosent i tredje kvartal**. Dette er en **annen populasjon og et annet tidsintervall** enn SSBs akkumulerte resultattall for hele banksektoren; tallene kan derfor ikke sammenlignes direkte. Bransjeorganisasjonens forklaring bør testes mot uavhengige data, ikke tas som endelig bevis for at konkurransen fungerer godt.
+
+Forbrukerrådet ser en annen side av samme marked. I **Bytteundersøkelsen 2026**, omtalt 11. mai, oppga omtrent én av tre at de hadde flyttet eller reforhandlet boliglånet året før. Blant dem som ikke gjorde det, sa nær en tredjedel at de **aldri** hadde reforhandlet eller byttet. Forbrukerrådet peker på at lojale kunder kan ende med dårligere vilkår. Undersøkelsen beskriver rapportert kundeadferd; den beviser ikke hva bankenes samlede overskudd skyldes.
 
 ## Hvem er bankens kunde – og hvem er banken til for?
 
@@ -50,11 +52,13 @@ Da kan spørsmålet i overskriften få et svar som er mer nyttig enn både jubel
 - **Forbrukerrådet/Finansportalen:** Årlig spareeksempel ved 0,5 prosentpoeng renteendring og sammenligningstjeneste. https://www.forbrukerradet.no/finansportalen/bank/
 - **Norges Bank:** «Finansiell stabilitet 2026–1. halvår», om lønnsomhet, kapital og risiko. https://www.norges-bank.no/aktuelt/publikasjoner/Finansiell-stabilitet---rapport/2026-1-finansiell-stabilitet/nettrapport-2026-1-finansiell-stabilitet/
 - **Finanstilsynet:** «Finansielt utsyn – juni 2026», bankenes lønnsomhet og risiko. https://www.finanstilsynet.no/publikasjoner-og-analyser/finansielt-utsyn/finansielt-utsyn---juni-2026/html/2026/
-- **Finans Norge (bransjekilde):** Konkurransen i det norske bankmarkedet, inkludert oppdragsundersøkelse fra januar 2026. https://www.finansnorge.no/tema/statistikk-og-analyse/bank/konkurransen-i-det-norske-bankmarkedet/
+- **Finans Norge (bransjekilde):** Analyse av seks største bankenes tredje kvartal, publisert 5. november 2026. Kildegrunnlag: kvartalsrapporter fra disse bankene, ikke hele SSB-populasjonen. https://www.finansnorge.no/artikler/2026/11/sterkt-tredje-kvartal/
+- **Forbrukerrådet (forbrukerperspektiv), 11. mai 2026:** Bytteundersøkelsen 2026 om boliglån, prut og bankbytte. https://www.forbrukerradet.no/rapporter/bytteundersokelsen-2026/ 
+- **Forbrukerrådet, 11. mai 2026:** Oppsummering med kundetall og forbrukerperspektiv. https://www.forbrukerradet.no/?p=54728
 
 ## Gjenstår før publisering
 
-1. Skaff primærsvar fra minst to banker og eventuelt Finans Norge om rentemarginer, utbytte og kapitalbehov. Ingen uttalelse er innhentet for denne teksten.
+1. Innhent direkte, nye svar fra minst to banker og eventuelt Finans Norge om rentemarginer, utbytte og kapitalbehov. Det finnes nå dokumentert offentlig bransjeperspektiv fra Finans Norge (5. november), men ingen svar på spørsmål fra Paradisavisa.
 2. Sammenlign likeverdige oppdaterte boliglåns- og innskuddstilbud (uten å forveksle tilbud til nye og eksisterende kunder).
 3. Kryssjekk hvilke banktyper SSBs tall inkluderer, og kontroller at ni-månedersbeløp ikke feilaktig omtales som et kvartalstall.
 4. Merk skille mellom observasjon, økonomisk forklaring og redaksjonelle spørsmål. Sjekk tallene ved publisering.
