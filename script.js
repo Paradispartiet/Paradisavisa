@@ -792,7 +792,13 @@ function loadNotiser() {
         previous() { hoppRadio(-1); }
       };
       visRadio();
-      panel.append(radioknapp, radioPauseknapp, radioInnstillinger, radiostatus);
+      const radioSideLenke = document.createElement("a");
+      radioSideLenke.className = "notis-radio-side-lenke";
+      radioSideLenke.textContent = "Åpne hele radiosiden";
+      radioSideLenke.href = new URL("paradisradio.html", appScript?.src || location.href).href;
+      radioSideLenke.target = "_blank";
+      radioSideLenke.rel = "noopener noreferrer";
+      panel.append(radioknapp, radioPauseknapp, radioInnstillinger, radiostatus, radioSideLenke);
 
       const lukkPanel = () => {
         panel.hidden = true;
