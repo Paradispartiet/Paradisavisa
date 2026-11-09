@@ -110,8 +110,8 @@ test("Norsk stemmevalg, asynkron stemmeliste og radiotempo ligger i én meny", (
 
 test("Radioikonet åpner samme kontroller, og menylinken går til en eksisterende radioside", () => {
   assert.match(script, /valgknapp\.innerHTML = '<svg[^']*<rect x="3" y="9" width="18" height="12"/);
-  for (const path of ["index.html", "header.html"]) {
-    const html = fs.readFileSync(path.join(root, path), "utf8");
+  for (const filePath of ["index.html", "header.html"]) {
+    const html = fs.readFileSync(path.join(root, filePath), "utf8");
     assert.match(html, /href="paradisradio\.html">Paradisradioen<\/a>/);
   }
   const radio = fs.readFileSync(path.join(root, "paradisradio.html"), "utf8");
