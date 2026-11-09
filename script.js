@@ -593,11 +593,16 @@ function loadNotiser() {
           typeof tale.pause !== "function" || typeof tale.resume !== "function";
       };
       const stoppRadio = (melding = "Nyhetsradioen er stoppet.") => {
+        const varPauset = radioPauset;
         radioAktiv = false;
         radioPauset = false;
         radioVenter = false;
         radioVersjon++;
-        try { tale?.cancel(); } catch (_) { /* Tale kan være utilgjengelig. */ }
+        // Web Speech kan forbli pauset selv etter cancel(); nullstill før neste start.
+        try {
+          if (varPauset) tale?.resume?.();
+          tale?.cancel();
+        } catch (_) { /* Tale kan være utilgjengelig. */ }
         radiostatus.textContent = melding;
         band.classList.remove("is-radio");
         visRadio();
