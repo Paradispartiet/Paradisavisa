@@ -221,7 +221,7 @@ function loadNotiser() {
       const band = document.querySelector(".notisbånd");
       const innhold = band?.querySelector(".notisinnhold");
       if (!band || !innhold || !Array.isArray(items)) return;
-      const aktuelle = items.filter(isNotisAktuell);
+      const aktuelle = items.filter(item => isNotisAktuell(item));
       band.hidden = !aktuelle.length;
       if (!aktuelle.length) {
         band.style.display = "none";
