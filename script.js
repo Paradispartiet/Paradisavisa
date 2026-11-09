@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector(".notisbånd")) {
     loadNotiser();
   }
+  if (document.getElementById("notisgrid")) loadNotisarkiv();
   if (document.getElementById("nyhetshjul-grid")) loadNyhetshjul();
   if (document.getElementById("nyhetshjul2-grid")) loadNyhetshjul2();
   if (document.getElementById("sportshjul-grid")) loadSportshjul();
@@ -182,10 +183,32 @@ function loadCategoryArchive() {
   });
 }
 
+/* ---------- Notisferskhet: ikke vis gamle eller udaterte nyheter ---------- */
+function isNotisAktuell(notis, now = new Date()) {
+  if (!notis || typeof notis.text !== "string" || !notis.text.trim()) return false;
+  const parseDato = value => {
+    if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+    const [aar, maaned, dag] = value.split("-").map(Number);
+    const dato = new Date(aar, maaned - 1, dag);
+    return dato.getFullYear() === aar && dato.getMonth() === maaned - 1 &&
+      dato.getDate() === dag ? dato : null;
+  };
+  const dato = parseDato(notis.date);
+  if (!dato) return false;
+  const dagnummer = value => Date.UTC(value.getFullYear(), value.getMonth(), value.getDate()) / 86400000;
+  const alder = dagnummer(now) - dagnummer(dato);
+  if (alder < 0 || alder >= 7) return false;
+  if (notis.expires != null) {
+    const utloep = parseDato(notis.expires);
+    if (!utloep || dagnummer(now) > dagnummer(utloep)) return false;
+  }
+  return true;
+}
+
 /* ---------- Notisbånd: rolig, jevn og sømløs bevegelse ---------- */
 function loadNotiser() {
-  // Sportsiden bruker sitt eget notisutvalg, alle andre sider notiser.json.
-  const filename = document.querySelector(".sport-banner") ? "sport-notiser.json" : "notiser.json";
+  // Alle sider bruker samme kildekontrollerte og daterte notisstrøm.
+  const filename = "notiser.json";
   // Bruk script.js sin katalog, slik at notiser virker også i /artikler/.
   const appScript = Array.from(document.scripts).find(el => el.src.split("?")[0].endsWith("/script.js"));
   const source = new URL(filename, appScript?.src || window.location.href);
@@ -198,6 +221,14 @@ function loadNotiser() {
       const band = document.querySelector(".notisbånd");
       const innhold = band?.querySelector(".notisinnhold");
       if (!band || !innhold || !Array.isArray(items)) return;
+      const aktuelle = items.filter(isNotisAktuell);
+      band.hidden = !aktuelle.length;
+      if (!aktuelle.length) {
+        band.style.display = "none";
+        innhold.replaceChildren();
+        return;
+      }
+      band.style.removeProperty("display");
 
       band.setAttribute("aria-label", "Notisbånd");
       band.setAttribute("aria-live", "off");
@@ -214,12 +245,10 @@ function loadNotiser() {
       innhold.classList.remove("is-running");
       innhold.replaceChildren();
       band.querySelector(".notis-kontroller")?.remove();
-      if (!items.length) return;
-
       const sekvens = document.createElement("span");
       sekvens.className = "notis-sekvens";
 
-      items.forEach(n => {
+      aktuelle.forEach(n => {
         const item = document.createElement("span");
         item.className = "notis-tekst";
         const category = document.createElement("strong");
@@ -587,4 +616,57 @@ function toggleBox(id) {
   const box = document.getElementById(id);
   if (!box) return;
   box.style.display = (box.style.display === "block") ? "none" : "block";
+}
+
+/* ---------- Notisarkiv: gamle notiser vises bare etter aktivt valg ---------- */
+function loadNotisarkiv() {
+  const grid = document.getElementById("notisgrid");
+  const details = document.getElementById("eldre-notiser");
+  const gamleGrid = document.getElementById("eldre-notisgrid");
+  if (!grid || !details || !gamleGrid) return;
+  const hent = filename => fetch(filename, { cache: "no-store" }).then(response => {
+    if (!response.ok) throw new Error("Kunne ikke hente notiser: " + filename);
+    return response.json();
+  });
+  const tegn = (container, entries) => {
+    container.replaceChildren();
+    entries.forEach((item, i) => {
+      const card = document.createElement("article");
+      card.className = "notis-rute " + ["liten", "mellom", "stor"][i % 3];
+      const header = document.createElement("div");
+      header.className = "notis-header";
+      const category = document.createElement("span");
+      category.className = "notis-kategori";
+      category.textContent = String(item.category || "Notis");
+      const date = document.createElement("time");
+      date.className = "notis-dato";
+      date.dateTime = String(item.date || "");
+      date.textContent = String(item.date || "Udatert");
+      const description = document.createElement("p");
+      description.textContent = String(item.text || "");
+      header.append(category, date);
+      card.append(header, description);
+      container.appendChild(card);
+    });
+  };
+  Promise.all([hent("notiser.json"), hent("arkiv/notiser-2025-10.json")])
+    .then(([aktive, arkiverte]) => {
+      if (!Array.isArray(aktive) || !Array.isArray(arkiverte)) throw new Error("Ugyldig notisliste");
+      const sorter = entries => entries.sort((a, b) =>
+        String(b.date || "").localeCompare(String(a.date || "")));
+      const na = new Date();
+      const ferske = sorter(aktive.filter(item => isNotisAktuell(item, na)));
+      const historiske = sorter([...arkiverte, ...aktive.filter(item => !isNotisAktuell(item, na))]);
+      tegn(grid, ferske);
+      if (!ferske.length) grid.textContent = "Ingen aktuelle notiser akkurat nå.";
+      tegn(gamleGrid, historiske);
+      details.hidden = !historiske.length;
+      const summary = details.querySelector("summary");
+      if (summary) summary.textContent = "Eldre notiser (" + historiske.length + ") – åpne arkivet";
+    })
+    .catch(error => {
+      console.error(error);
+      grid.textContent = "Notisene kunne ikke lastes. Prøv igjen senere.";
+      details.hidden = true;
+    });
 }
