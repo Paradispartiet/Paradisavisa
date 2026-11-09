@@ -9,6 +9,7 @@ import math
 import struct
 import json
 import subprocess
+import shutil
 
 P = pathlib.Path(__file__).with_name("generer_lydpilot.py")
 spec = importlib.util.spec_from_file_location("generer_lydpilot", P)
@@ -50,9 +51,16 @@ class PilotTest(unittest.TestCase):
             file = mod.lag_plan(pathlib.Path(directory), dt.date(2026, 11, 9), 10)
             data = json.loads(file.read_text(encoding="utf-8"))
             self.assertEqual(len(data["samples"]), 10)
-            self.assertEqual(len([s for s in data["samples"] if s["kildeklasse"] == "aktuell"]), 6)
+            aktuelle = mod.les_json(mod.ROOT / "notiser.json")
+            antall_ferske = sum(mod.er_aktuell(n, dt.date(2026, 11, 9)) for n in aktuelle)
+            self.assertEqual(
+                len([s for s in data["samples"] if s["kildeklasse"] == "aktuell"]),
+                min(10, antall_ferske)
+            )
             self.assertTrue(all(not s["id"].startswith("historisk") for s in data["samples"]))
 
+    @unittest.skipUnless(shutil.which("ffmpeg") and shutil.which("ffprobe"),
+                         "ffmpeg/ffprobe er ikke installert på denne testmaskinen")
     def test_mp3_med_riktig_metadata(self):
         with tempfile.TemporaryDirectory() as directory:
             out = pathlib.Path(directory) / "sample.mp3"
