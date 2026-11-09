@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Paradisradioen – Paradisavisas nyhetsradio under utvikling, med opplesning av aktuelle notiser.">
+  <meta property="og:title" content="Paradisradioen | Paradisavisa">
+  <meta property="og:description" content="Lytt til aktuelle notiser mens Paradisradioen utvikles.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#000000">
+  <title>Paradisradioen | Paradisavisa</title>
+  <link rel="icon" type="image/webp" href="assets/logo-paradisavisa.webp">
+  <link rel="stylesheet" href="styles.css?v=41">
+  <link rel="stylesheet" href="avisdesign.css?v=5">
+  <script defer src="script.js?v=35"></script>
+</head>
+<body class="notiser-side">
+  <div id="header-placeholder"><a href="index.html" class="avis-fallback-link">← Til Paradisavisa</a></div>
+  <main id="hovedinnhold" class="arkiv-hoved notis-arkiv-hoved">
+    <p class="arkiv-kategori">Paradisavisa / Lyd</p>
+    <h1>Paradisradioen</h1>
+    <p class="arkiv-ingress">Paradisavisas Alltid Nyheter-radio er under utvikling.</p>
+    <p>Du kan allerede lytte til opplesning av aktuelle notiser. Åpne radioikonet nederst til høyre og velg «Les opp notisene». Opplesningen bruker stemmen i nettleseren din, og er foreløpig ikke en egen direktesending.</p>
+    <p><button type="button" id="paradisradio-kontroller" class="btn">Åpne radiokontrollene</button></p>
+    <p id="paradisradio-status" role="status" aria-live="polite"></p>
+    <p>Du kan også <a href="notiser.html">lese de aktuelle notisene</a>.</p>
+  </main>
+  <footer class="site-footer">
+    <p>© 2025–2026 Paradisavisa</p>
+    <p><a href="index.html">Tilbake til forsiden</a></p>
+  </footer>
+  <div class="notisbånd"><div class="notisinnhold"></div></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("paradisradio-kontroller").addEventListener("click", () => {
+        const knapp = document.querySelector(".notis-valgknapp");
+        const status = document.getElementById("paradisradio-status");
+        if (!knapp) {
+          status.textContent = "Radiokontrollene er ikke klare ennå. Prøv igjen når notisene er lastet.";
+          return;
+        }
+        status.textContent = "";
+        if (knapp.getAttribute("aria-expanded") !== "true") knapp.click();
+        document.querySelector(".notis-radio")?.focus();
+      });
+    });
+  </script>
+</body>
+</html>
