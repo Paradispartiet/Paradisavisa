@@ -340,7 +340,7 @@ async function run(){
           }
         }
         if(name==="notiser.html"){
-          check((await page.locator(".notis-arkiv-hoved h1").textContent())==="Notisarkiv",
+          check((await page.locator(".notis-arkiv-hoved h1").textContent())==="Notiser",
             label+": notisarkivet mangler egen hovedoverskrift");
           await page.locator("#notisgrid .notis-rute").first().waitFor({timeout:10000});
           const layout=await page.evaluate(()=>{
