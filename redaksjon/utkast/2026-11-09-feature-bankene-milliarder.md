@@ -21,6 +21,8 @@ SSB oppgir kredittap på rundt **5,6 milliarder kroner** så langt i 2026, bare 
 
 For husholdninger handler ikke debatten først og fremst om en samlet milliardsum. Den handler om rentedifferansen mellom det banken tilbyr dem, og vilkårene de faktisk kunne ha fått.
 
+SSB publiserte 29. oktober nye renter for september 2026. I månedsutvalget av banker og kredittforetak var gjennomsnittlig rente på **utestående boliglån 5,31 prosent**, på **nye boliglån 5,30 prosent**, mens **husholdningenes innskuddsrente var 3,16 prosent**. Tallene beskriver gjennomsnitt for ulike produkter og kundegrupper. Differansen mellom boliglåns- og innskuddsrente er **ikke** identisk med bankenes overskudd eller faktiske rentemargin etter finansiering, drift, tap og kapitalbehov.
+
 Forbrukerrådets Finansportal viser for eksempel at en **renteforbedring på et halvt prosentpoeng sparer en låntaker 5 000 kroner årlig per million kroner i boliglån**, før eventuelle skatteeffekter. Da er det lett å forstå hvorfor noen ser milliardresultatene som et argument for å forhandle hardere.
 
 Men et gjennomsnittstall om bankenes overskudd sier ikke hvilken rente en enkelt kunde bør få. Det krever sammenligning av lånebeløp, sikkerhet, belåningsgrad, løpetid, finansieringskostnader og tilgjengelige konkurrerende tilbud. Forbrukerrådet råder kundene til å sammenligne banker regelmessig. At en pris kan forhandles ned, betyr heller ikke at alle kunder automatisk får samme tilbud.
@@ -49,6 +51,7 @@ Da kan spørsmålet i overskriften få et svar som er mer nyttig enn både jubel
 
 - **SSB, publisert 6. november 2026:** «Lavere rentenetto for bankene». Bekrefter akkumulerte resultater, rentenetto og kredittap til og med tredje kvartal. https://www.ssb.no/bank-og-finansmarked/finansinstitusjoner-og-andre-finansielle-foretak/statistikk/banker-og-kredittforetak/artikler/bankresultat
 - **SSB, oppdatert 6. november 2026:** «Banker og kredittforetak», tabell 6. https://www.ssb.no/bank-og-finansmarked/finansinstitusjoner-og-andre-finansielle-foretak/statistikk/banker-og-kredittforetak
+- **SSB, oppdatert 29. oktober 2026:** «Renter i banker og kredittforetak», tabell 1. Skiller mellom nye og utestående boliglån og innskuddsrente. https://www.ssb.no/bank-og-finansmarked/finansinstitusjoner-og-andre-finansielle-foretak/statistikk/renter-i-banker-og-kredittforetak
 - **Forbrukerrådet/Finansportalen:** Årlig spareeksempel ved 0,5 prosentpoeng renteendring og sammenligningstjeneste. https://www.forbrukerradet.no/finansportalen/bank/
 - **Norges Bank:** «Finansiell stabilitet 2026–1. halvår», om lønnsomhet, kapital og risiko. https://www.norges-bank.no/aktuelt/publikasjoner/Finansiell-stabilitet---rapport/2026-1-finansiell-stabilitet/nettrapport-2026-1-finansiell-stabilitet/
 - **Finanstilsynet:** «Finansielt utsyn – juni 2026», bankenes lønnsomhet og risiko. https://www.finanstilsynet.no/publikasjoner-og-analyser/finansielt-utsyn/finansielt-utsyn---juni-2026/html/2026/
