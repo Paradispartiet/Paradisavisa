@@ -1,6 +1,6 @@
 # Bildeproduksjon – Feature 06 og 07
 **Dato:** 9. november 2026 · **Standard:** BILDEHANDBOK v1.2  
-**Status:** Begge originale hovedbilder (1600 × 900 WebP) er lagt i GitHub og koblet til hver sin noindex-forhåndsvisning i PR #84. Begge sekundærbilder mangler. Ingen Feature-artikkel er publisert.
+**Status:** Begge originale hovedbilder (1600 × 900 WebP) er lagt i GitHub og koblet til hver sin noindex-forhåndsvisning i PR #84. Bankens sekundærillustrasjon er nå også integrert. Teknologisakens sekundærillustrasjon mangler. Ingen Feature-artikkel er publisert.
 
 ## 06 Bankene – hovedbilde (generert kandidat)
 - Motivet viser en voksen kvinne ved kjøkkenbordet i et vanlig hjem, med bærbar PC, papirer og moderne kontorbygning synlig gjennom vinduet. Naturlig lys og tydelig menneskelig skala.
@@ -16,10 +16,12 @@
 - Alt: «KI-assistert illustrasjon av tekniker som kobler nettverksutstyr i en datasal.»
 - Bildetekst: «KI-assistert redaksjonell illustrasjon av digital infrastruktur. Ikke dokumentarfotografi.»
 
-## 06 Bankene – sekundærbilde (venter)
+## 06 Bankene – sekundærbilde (generert kandidat og integrert)
 - Undertekst: Samfunnets økonomiske trygghet krever både fungerende banker og rimelige vilkår for kundene.
 - Symbolmettet, naturtro 16:9-fotomontasje med sammenhengende troverdig scene: bank, hjemmeøkonomi, sparing og investering i lokal næringsvirksomhet i ett arkitektonisk byrom.
 - Alle visuelle tegn må være saklig forankret. Unngå gigantiske kroner, falske kontoutskrifter, piler, grafiske ruter og oppdiktet finanskrise.
+- **Faktisk bilde:** `Bilder/Artikler/feature06-bankene-sekundaerillustrasjon-2026.webp`, 1600 × 900, 230 582 byte, Git-blob `917857aa79924592d3c28f65022cc2c7034a9d54`. Opprinnelig generert raster, ikke SVG-erstatning.
+- **Alt-tekst/bildetekst:** Viser en familie ved kjøkkenbordet med bankbygning, sparing og hvelv som symbolsk, konstruert bakgrunn. Teksten i HTML presiserer at dette ikke er et dokumentarfotografi.
 
 ## 07 Nordisk digital suverenitet – hovedbilde (brief for videre kvalitetskontroll)
 - Naturlig nordisk drift-/teknologimiljø, ett tydelig hovedmotiv med IT-arbeid og serverinfrastruktur.
@@ -32,7 +34,7 @@
 - Må ikke forveksles med en faktisk datasvikt, et cyberangrep eller eksisterende nordisk offentlig system. Ingen generert overskrift eller tekst på bildet.
 
 ## Forkastede bildeforsøk
-To bilder generert 9. november ble avisside-mockuper med tekst og artikkelkort i stedet for selvstendige motiver. De er **forkastet**, ikke brukbare som hoved-/sekundærbilder og skal ikke inn i bildearkivet.
+Flere bilder generert 9. november ble avisside-mockuper med tekst og artikkelkort i stedet for selvstendige motiver. De er **forkastet**, ikke brukbare som hoved-/sekundærbilder og skal ikke inn i bildearkivet.
 
 ## Publiseringskontroll
 - Tekst og kilder kontrolleres før bilder.
@@ -48,7 +50,8 @@ Begge originale WebP-filer er kontrollert, og Git-blob-SHA-1 fra opplastingen st
 | --- | --- | ---: | --- |
 | bankene-hovedbilde-2026.webp | 1600 × 900 | 135 440 byte | `0807ff2502c91436b8a7fc8d17649da3d8f88318a93c311a7c3367b94a173f6d` |
 | nordisk-digital-suverenitet-hovedbilde-2026.webp | 1600 × 900 | 178 806 byte | `52a4f806765d7de8128b7824b65ec2e4b37caef791e18aaf57e9f0ba3a538cbb` |
+| feature06-bankene-sekundaerillustrasjon-2026.webp | 1600 × 900 | 230 582 byte | `73bfbeef75a53a67617608b118f03e706ddb3b158daab8c8bb0ea33bb960382a` |
 
-GitHub-banene: `Bilder/Artikler/feature06-bankene-hovedbilde-2026.webp` og `Bilder/Artikler/feature07-nordisk-digital-suverenitet-hovedbilde-2026.webp`. HTML-forhåndsvisningene viser disse samme filene.
+GitHub-banene: `Bilder/Artikler/feature06-bankene-hovedbilde-2026.webp`, `Bilder/Artikler/feature06-bankene-sekundaerillustrasjon-2026.webp` og `Bilder/Artikler/feature07-nordisk-digital-suverenitet-hovedbilde-2026.webp`. HTML-forhåndsvisningene viser de tilsvarende originale bildefilene.
 
 Et bildes digitale kontrollsum beviser filidentitet, **ikke** at bildet er redaksjonelt godkjent. Det skal ikke brukes et SVG- eller nettsidemockup-bilde som erstatning.
