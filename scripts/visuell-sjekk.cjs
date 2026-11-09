@@ -29,7 +29,7 @@ const mime={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",
   ".svg":"image/svg+xml",".ico":"image/x-icon"};
 const errors=[];
 const files=["index.html","nyheter.html","kultur.html","notiser.html","sport.html",
-  "kontakt.html","skriv-innlegg.html"];
+  "kontakt.html","skriv-innlegg.html","paradisradio.html"];
 const server=http.createServer((req,res)=>{
   const requested=decodeURIComponent(new URL(req.url,"http://localhost").pathname);
   const destination=path.resolve(root,"."+requested);
@@ -546,6 +546,58 @@ async function run(){
             await page.locator(".avisa-shared-header .nav-toggle:not([hidden])").waitFor({timeout:10000});
           }
         }
+        if(name==="paradisradio.html") {
+          check((await page.locator("h1").textContent())==="Paradisradioen",
+            label+": radiosiden mangler overskrift");
+          check(await page.locator("#paradisradio-player").count()===1,
+            label+": radioplayer mangler");
+          if(harAktuelleNotiser) {
+            await page.locator("#paradisradio-player[data-ready='true']").waitFor({timeout:12000});
+            check(await page.locator("[data-radio='playlist'] li").count()>0,
+              label+": radiosiden mangler oppdatert spilleliste");
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===0,
+              label+": radioen starter automatisk ved sidelasting");
+            const spill=page.locator("[data-radio='play']");
+            await spill.click();
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===1,
+              label+": Spill skal starte én og bare én opplesning");
+            check(await page.locator("[data-radio='stop']").isEnabled(),
+              label+": stoppknappen er utilgjengelig under opplesning");
+            const naa=await page.locator("[data-radio='headline']").textContent();
+            check(naa && naa.length>20,label+": nåværende nyhet mangler");
+
+            await page.locator("[data-radio='next']").click();
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===2,
+              label+": neste nyhet starter ikke");
+            await page.locator("[data-radio='previous']").click();
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===3,
+              label+": forrige nyhet starter ikke");
+
+            await page.locator("[data-radio='pause']").click();
+            check((await page.locator("[data-radio='play']").textContent()).includes("Fortsett"),
+              label+": pause/fortsett deler ikke radiotilstand");
+            await page.locator("[data-radio='play']").click();
+            check((await page.locator("[data-radio='play']").textContent()).includes("Spiller"),
+              label+": radiosiden gjenopptar ikke tale");
+
+            // Den lille menyen viser samme radiotilstand, ikke en konkurrerende motor.
+            const meny=page.locator(".notis-valgknapp");
+            await meny.click();
+            check((await page.locator(".notis-radio").getAttribute("aria-pressed"))==="true",
+              label+": radiomenyen og radiosiden har ulik tilstand");
+            const lenke=await page.locator(".notis-radio-side-lenke").getAttribute("href");
+            check(lenke.includes("paradisradio.html"),label+": full radioside mangler i notismenyen");
+            await page.locator("[data-radio='stop']").click();
+            check((await page.locator(".notis-radio").getAttribute("aria-pressed"))==="false",
+              label+": stopp på radiosiden oppdaterer ikke radiomenyen");
+            check((await page.evaluate(()=>window.__notisRadioTest.cancels))>=1,
+              label+": stopp sendes ikke til talesyntesen");
+          } else {
+            await page.locator("[data-radio='status']").waitFor();
+            check(await page.locator("[data-radio='play']").isDisabled(),
+              label+": ingen ferske notiser må ikke kunne spilles");
+          }
+        }
         if(name==="notiser.html"){
           check((await page.locator(".notis-arkiv-hoved h1").textContent())==="Notiser",
             label+": notisarkivet mangler egen hovedoverskrift");
@@ -597,7 +649,7 @@ async function run(){
         const overflow=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:window.innerWidth}));
         check(overflow.width<=overflow.viewport+4,
           label+": horisontal overløp på "+name+" ("+overflow.width+">"+overflow.viewport+")");
-        if(["kultur.html","notiser.html","sport.html"].includes(name)){
+        if(["kultur.html","notiser.html","sport.html","paradisradio.html"].includes(name)){
           await page.screenshot({path:path.join(output,name.replace(".html","")+"-"+label+".png"),fullPage:true});
         }
       }
