@@ -298,49 +298,65 @@ function loadNotiser() {
       kopi.querySelectorAll("a").forEach(link => link.tabIndex = -1);
       innhold.appendChild(kopi);
 
-      // Fire leser-valgte hastigheter (standard 1×), husket på denne enheten.
-      const fartvalg = [
-        { verdi: 0.5, navn: "0,5× – rolig" },
-        { verdi: 1, navn: "1× – normal" },
-        { verdi: 1.5, navn: "1,5× – rask" },
-        { verdi: 2, navn: "2× – ekstra rask" }
-      ];
-      let valgtFart = 1;
+      // Raskere bånd: 2×, 4× og 6×. Lagre valget lokalt.
+      const fartvalg = [2, 4, 6];
+      let valgtFart = 2;
       try {
         const lagret = Number(localStorage.getItem("paradisavisa-notisfart"));
-        if (fartvalg.some(valg => valg.verdi === lagret)) valgtFart = lagret;
-      } catch (_) { /* Privat Safari kan blokkere lagring. */ }
+        if (fartvalg.includes(lagret)) valgtFart = lagret;
+      } catch (_) { /* Lokallagring kan være blokkert. */ }
 
       const oppdaterHastighet = () => {
         const bredde = sekvens.getBoundingClientRect().width;
         if (!bredde) return;
         const grunnfart = window.matchMedia("(max-width: 700px)").matches ? 30 : 38;
         const grunnvarighet = bredde / grunnfart;
-        // Når støttet, endre playbackRate uten å hoppe tilbake til starten.
         const animasjon = innhold.getAnimations?.()[0];
         if (animasjon) {
           innhold.style.setProperty("--ticker-duration", grunnvarighet.toFixed(2) + "s");
           try {
             animasjon.playbackRate = valgtFart;
             return;
-          } catch (_) { /* Fallback for eldre Safari. */ }
+          } catch (_) { /* Safari-fallback: endre varighet direkte. */ }
         }
         innhold.style.setProperty("--ticker-duration", (grunnvarighet / valgtFart).toFixed(2) + "s");
       };
 
+      // Én knapp åpner alle tre kontrollene. Panelet dekker aldri løpende tekst.
       const kontroller = document.createElement("div");
       kontroller.className = "notis-kontroller";
+      const valgknapp = document.createElement("button");
+      valgknapp.type = "button";
+      valgknapp.className = "notis-valgknapp";
+      valgknapp.setAttribute("aria-label", "Åpne nyhetsradio og notiskontroller");
+      valgknapp.setAttribute("aria-haspopup", "true");
+      valgknapp.setAttribute("aria-expanded", "false");
+      valgknapp.title = "Nyhetsradio og kontroller";
+      valgknapp.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="9" cy="6" r="2.6" fill="#080808" stroke="currentColor" stroke-width="2"/><circle cx="15" cy="12" r="2.6" fill="#080808" stroke="currentColor" stroke-width="2"/><circle cx="8" cy="18" r="2.6" fill="#080808" stroke="currentColor" stroke-width="2"/></svg>';
+
+      const panel = document.createElement("div");
+      panel.className = "notis-valgpanel";
+      panel.id = "notis-valgpanel";
+      panel.hidden = true;
+      panel.setAttribute("role", "group");
+      panel.setAttribute("aria-label", "Notisbånd og Paradisavisas nyhetsradio");
+      valgknapp.setAttribute("aria-controls", panel.id);
+
+      const overskrift = document.createElement("strong");
+      overskrift.className = "notis-paneloverskrift";
+      overskrift.textContent = "PARADISAVISA · NYHETSRADIO";
+      panel.appendChild(overskrift);
 
       const pauseknapp = document.createElement("button");
       pauseknapp.type = "button";
       pauseknapp.className = "notis-pause";
-      const pauseikon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 5v14M17 5v14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>';
-      const startikon = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>';
+      const pauseikon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14M17 5v14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>';
+      const startikon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>';
       const visPauseknapp = () => {
         const pauset = band.classList.contains("is-paused");
-        pauseknapp.innerHTML = pauset ? startikon : pauseikon;
+        pauseknapp.innerHTML = (pauset ? startikon : pauseikon) +
+          '<span>' + (pauset ? "Start nyhetsbåndet" : "Pause nyhetsbåndet") + '</span>';
         pauseknapp.setAttribute("aria-label", pauset ? "Start notisbåndet" : "Pause notisbåndet");
-        pauseknapp.setAttribute("title", pauset ? "Start" : "Pause");
         pauseknapp.setAttribute("aria-pressed", String(pauset));
       };
       pauseknapp.addEventListener("click", () => {
@@ -348,74 +364,181 @@ function loadNotiser() {
         visPauseknapp();
       });
       visPauseknapp();
-      kontroller.appendChild(pauseknapp);
+      panel.appendChild(pauseknapp);
 
       const hastighet = document.createElement("div");
       hastighet.className = "notis-hastighet";
       const fartknapp = document.createElement("button");
       fartknapp.type = "button";
       fartknapp.className = "notis-fartknapp";
-      fartknapp.setAttribute("aria-haspopup", "true");
       fartknapp.setAttribute("aria-expanded", "false");
-      const meny = document.createElement("div");
-      meny.className = "notis-fartmeny";
-      meny.id = "notis-fartmeny";
-      meny.hidden = true;
-      meny.setAttribute("role", "group");
-      meny.setAttribute("aria-label", "Hastighet på notisbåndet");
-      fartknapp.setAttribute("aria-controls", meny.id);
-      const overskrift = document.createElement("span");
-      overskrift.className = "notis-fart-overskrift";
-      overskrift.textContent = "Velg hastighet";
-      meny.appendChild(overskrift);
-
+      fartknapp.setAttribute("aria-controls", "notis-fartmeny");
+      const fartmeny = document.createElement("div");
+      fartmeny.className = "notis-fartmeny";
+      fartmeny.id = "notis-fartmeny";
+      fartmeny.hidden = true;
+      fartmeny.setAttribute("role", "group");
+      fartmeny.setAttribute("aria-label", "Velg hastighet for notisbåndet");
       const oppdaterFartknapper = () => {
-        fartknapp.textContent = String(valgtFart).replace(".", ",") + "×";
-        fartknapp.setAttribute("aria-label", "Velg hastighet – nå " + fartknapp.textContent);
-        fartknapp.title = "Hastighet: " + fartknapp.textContent;
-        meny.querySelectorAll("button[data-fart]").forEach(button => {
-          button.setAttribute("aria-pressed", String(Number(button.dataset.fart) === valgtFart));
+        fartknapp.textContent = "Hastighet · " + valgtFart + "×";
+        fartknapp.setAttribute("aria-label", "Velg hastighet – nå " + valgtFart + "×");
+        fartmeny.querySelectorAll("button[data-fart]").forEach(knapp => {
+          knapp.setAttribute("aria-pressed", String(Number(knapp.dataset.fart) === valgtFart));
         });
       };
-      for (const valg of fartvalg) {
+      for (const fart of fartvalg) {
         const knapp = document.createElement("button");
         knapp.type = "button";
-        knapp.dataset.fart = String(valg.verdi);
-        knapp.textContent = valg.navn;
+        knapp.dataset.fart = String(fart);
+        knapp.textContent = fart + "×";
         knapp.addEventListener("click", () => {
-          valgtFart = valg.verdi;
-          try { localStorage.setItem("paradisavisa-notisfart", String(valgtFart)); }
-          catch (_) { /* Valget virker selv om lagring ikke er tilgjengelig. */ }
+          valgtFart = fart;
+          try { localStorage.setItem("paradisavisa-notisfart", String(fart)); }
+          catch (_) { /* Valget fungerer likevel. */ }
           oppdaterFartknapper();
           oppdaterHastighet();
-          meny.hidden = true;
+          fartmeny.hidden = true;
           fartknapp.setAttribute("aria-expanded", "false");
           fartknapp.focus();
         });
-        meny.appendChild(knapp);
+        fartmeny.appendChild(knapp);
       }
       fartknapp.addEventListener("click", () => {
-        meny.hidden = !meny.hidden;
-        fartknapp.setAttribute("aria-expanded", String(!meny.hidden));
+        fartmeny.hidden = !fartmeny.hidden;
+        fartknapp.setAttribute("aria-expanded", String(!fartmeny.hidden));
+      });
+      hastighet.append(fartknapp, fartmeny);
+      panel.appendChild(hastighet);
+      oppdaterFartknapper();
+
+      // Bruk nettleserens talesyntese; ingen ekstern radiotjeneste eller avgift.
+      // Tale startes bare med et brukergest, og stoppes når siden forlates.
+      const tale = window.speechSynthesis;
+      const harTale = Boolean(tale && typeof window.SpeechSynthesisUtterance === "function");
+      const radioknapp = document.createElement("button");
+      radioknapp.type = "button";
+      radioknapp.className = "notis-radio";
+      radioknapp.disabled = !harTale;
+      const radiostatus = document.createElement("span");
+      radiostatus.className = "notis-radiostatus";
+      radiostatus.setAttribute("role", "status");
+      radiostatus.setAttribute("aria-live", "polite");
+      radiostatus.textContent = harTale ?
+        "Trykk Les opp for å starte nyhetsradioen." :
+        "Opplesning støttes ikke i denne nettleseren.";
+      let radioAktiv = false;
+      let radioVersjon = 0;
+      let radioIndeks = 0;
+      let radiosaker = aktuelle.slice();
+
+      const visRadio = () => {
+        radioknapp.textContent = radioAktiv ? "■  Stopp opplesning" : "▶  Les opp notisene";
+        radioknapp.setAttribute("aria-label", radioAktiv ? "Stopp nyhetsradio" : "Start nyhetsradio");
+        radioknapp.setAttribute("aria-pressed", String(radioAktiv));
+      };
+      const stoppRadio = (melding = "Nyhetsradioen er stoppet.") => {
+        radioAktiv = false;
+        radioVersjon++;
+        try { tale?.cancel(); } catch (_) { /* Tale kan være utilgjengelig. */ }
+        radiostatus.textContent = melding;
+        band.classList.remove("is-radio");
+        visRadio();
+      };
+      const lesNeste = versjon => {
+        if (!radioAktiv || versjon !== radioVersjon) return;
+        if (radioIndeks >= radiosaker.length) {
+          // Sjekk om nye notiser er kommet inn mellom radiosendingene.
+          fetch(source, { cache: "no-store" }).then(response => {
+            if (!response.ok) throw new Error("Notisoppdatering feilet");
+            return response.json();
+          }).then(data => {
+            if (!radioAktiv || versjon !== radioVersjon) return;
+            if (Array.isArray(data)) radiosaker = data.filter(item => isNotisAktuell(item));
+            radioIndeks = 0;
+            if (!radiosaker.length) {
+              stoppRadio("Ingen ferske notiser å lese opp.");
+              return;
+            }
+            lesNeste(versjon);
+          }).catch(() => {
+            if (!radioAktiv || versjon !== radioVersjon) return;
+            radiosaker = radiosaker.filter(item => isNotisAktuell(item));
+            radioIndeks = 0;
+            if (radiosaker.length) lesNeste(versjon);
+            else stoppRadio("Ingen ferske notiser å lese opp.");
+          });
+          return;
+        }
+        const notis = radiosaker[radioIndeks++];
+        if (!isNotisAktuell(notis)) {
+          lesNeste(versjon);
+          return;
+        }
+        const ytring = new window.SpeechSynthesisUtterance(
+          String(notis.category || "Nyheter") + ". " + notis.text
+        );
+        ytring.lang = "nb-NO";
+        ytring.rate = 1;
+        const stemmer = tale.getVoices?.() || [];
+        const norsk = stemmer.find(stemme => /^nb[-_]NO$/i.test(stemme.lang)) ||
+          stemmer.find(stemme => /^nn[-_]NO$/i.test(stemme.lang)) ||
+          stemmer.find(stemme => /^no[-_]/i.test(stemme.lang));
+        if (norsk) ytring.voice = norsk;
+        radiostatus.textContent = "Leser: " + String(notis.category || "Nyheter");
+        ytring.onend = () => { if (radioAktiv && versjon === radioVersjon) lesNeste(versjon); };
+        ytring.onerror = () => { if (radioAktiv && versjon === radioVersjon) stoppRadio("Opplesningen kunne ikke fortsette."); };
+        try { tale.speak(ytring); }
+        catch (_) { stoppRadio("Opplesning kunne ikke startes i nettleseren."); }
+      };
+      radioknapp.addEventListener("click", () => {
+        if (!harTale) return;
+        if (radioAktiv) {
+          stoppRadio();
+          return;
+        }
+        radiosaker = radiosaker.filter(item => isNotisAktuell(item));
+        if (!radiosaker.length) {
+          radiostatus.textContent = "Ingen ferske notiser å lese opp.";
+          return;
+        }
+        radioAktiv = true;
+        const versjon = ++radioVersjon;
+        radioIndeks = 0;
+        try { tale.cancel(); } catch (_) { /* Ingen aktiv ytring. */ }
+        band.classList.add("is-radio");
+        visRadio();
+        lesNeste(versjon);
+      });
+      visRadio();
+      panel.append(radioknapp, radiostatus);
+
+      const lukkPanel = () => {
+        panel.hidden = true;
+        fartmeny.hidden = true;
+        valgknapp.setAttribute("aria-expanded", "false");
+        fartknapp.setAttribute("aria-expanded", "false");
+      };
+      valgknapp.addEventListener("click", () => {
+        if (panel.hidden) {
+          panel.hidden = false;
+          valgknapp.setAttribute("aria-expanded", "true");
+        } else lukkPanel();
       });
       document.addEventListener("click", event => {
-        if (!hastighet.contains(event.target)) {
-          meny.hidden = true;
-          fartknapp.setAttribute("aria-expanded", "false");
-        }
+        if (!kontroller.contains(event.target)) lukkPanel();
       });
-      hastighet.addEventListener("keydown", event => {
-        if (event.key === "Escape" && !meny.hidden) {
-          meny.hidden = true;
-          fartknapp.setAttribute("aria-expanded", "false");
-          fartknapp.focus();
+      kontroller.addEventListener("keydown", event => {
+        if (event.key === "Escape" && !panel.hidden) {
+          lukkPanel();
+          valgknapp.focus();
           event.stopPropagation();
         }
       });
-      hastighet.append(fartknapp, meny);
-      kontroller.appendChild(hastighet);
+      window.addEventListener("pagehide", () => {
+        if (radioAktiv) stoppRadio();
+      });
+      kontroller.append(valgknapp, panel);
       band.appendChild(kontroller);
-      oppdaterFartknapper();
 
       // Mål tekstbredden etter at typografien er klar. Da unngår vi at
       // animasjonen endrer varighet og hopper idet nettfonten lastes.
