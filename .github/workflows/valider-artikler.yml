@@ -25,6 +25,8 @@ jobs:
           node-version: '22'
       - name: Valider enkeltartikler, bilder og nyhetsstrømmer
         run: node scripts/valider-artikler.cjs
+      - name: Test fire forsidekort og sideveis blaing
+        run: node --test scripts/forside-scroll.test.cjs
       - name: Test ferskhet og arkivering av notiser
         run: node --test scripts/notiser.test.cjs
       - name: Test redaksjonelle lenke- og notatsperrer
