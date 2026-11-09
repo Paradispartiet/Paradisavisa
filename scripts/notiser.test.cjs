@@ -84,3 +84,25 @@ test("Notisbåndet animerer bare et kort spor uten å lage en gigantisk liste", 
   assert.match(css, /@supports \(-moz-appearance: none\)/);
   assert.match(css, /-webkit-transform: none/);
 });
+
+test("Radiotekst tilpasses uttale uten å endre godkjent notis", () => {
+  const lageTekst=vm.runInContext("lagRadioOpplesning",sandbox);
+  const notis={category:"Økonomi",text:"Norge bidrar med 2,5 mrd. kr og 30 %."};
+  assert.equal(lageTekst(notis),"Økonomi. Norge bidrar med 2,5 milliarder kr og 30 prosent.");
+  assert.equal(notis.text,"Norge bidrar med 2,5 mrd. kr og 30 %.");
+  assert.equal(lageTekst({category:"Sport",text:"Ordinær tekst",speechText:"Tilpasset uttale"}),
+    "Sport. Tilpasset uttale");
+  assert.equal(lageTekst({text:"120 kr"}),"Nyheter. 120 kroner");
+});
+
+test("Norsk stemmevalg, asynkron stemmeliste og radiotempo ligger i én meny", () => {
+  assert.match(script,/voiceschanged/);
+  assert.match(script,/getVoices/);
+  assert.match(script,/paradisavisa-radiostemme/);
+  assert.match(script,/paradisavisa-radiotempo/);
+  assert.match(script,/notis-stemme-select/);
+  assert.match(script,/notis-tempo-select/);
+  assert.match(script,/notis-radio-pause/);
+  assert.match(script,/lagRadioOpplesning\(notis\)/);
+  assert.match(script,/ytring\.rate = valgtTaletempo/);
+});
