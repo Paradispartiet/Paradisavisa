@@ -375,7 +375,7 @@ function loadNotiser() {
       valgknapp.setAttribute("aria-haspopup", "true");
       valgknapp.setAttribute("aria-expanded", "false");
       valgknapp.title = "Nyhetsradio og kontroller";
-      valgknapp.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="9" cy="6" r="2.6" fill="#080808" stroke="currentColor" stroke-width="2"/><circle cx="15" cy="12" r="2.6" fill="#080808" stroke="currentColor" stroke-width="2"/><circle cx="8" cy="18" r="2.6" fill="#080808" stroke="currentColor" stroke-width="2"/></svg>';
+      valgknapp.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9.5L17 4.5"/><rect x="3" y="9" width="18" height="12" rx="2.3"/><circle cx="9" cy="15" r="3"/><path d="M15.5 14h3M15.5 17h3"/></svg>';
 
       const panel = document.createElement("div");
       panel.className = "notis-valgpanel";
