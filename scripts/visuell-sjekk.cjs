@@ -451,6 +451,14 @@ async function run(){
         await page.evaluate(()=>window.__notisRadioTest.utterances[0].onend?.());
         check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))>=2,
           label+": nyhetsradioen går ikke videre til neste notis");
+        await radiopause.click();
+        const resumeForStopp=await page.evaluate(()=>window.__notisRadioTest.resumes);
+        await radio.click();
+        check((await page.evaluate(()=>window.__notisRadioTest.resumes))===resumeForStopp+1,
+          label+": stopp mens radioen er pauset skal nullstille talesyntesen");
+        await radio.click();
+        check((await radio.getAttribute("aria-pressed"))==="true",
+          label+": radioen starter ikke på nytt etter pause og stopp");
         await radio.click();
         check((await radio.getAttribute("aria-pressed"))==="false",
           label+": stoppknappen virker ikke");
