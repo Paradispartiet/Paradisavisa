@@ -170,11 +170,24 @@ async function run(){
         const ids=["nyhetshjul-grid","nyhetshjul2-grid","sportshjul-grid",
           "kulturhjul-grid","kommentarhjul-grid"];
         const grids=ids.map(id=>{
-          const cards=[...document.getElementById(id).querySelectorAll(".hjul-card")];
-          return {id,rects:cards.map(card=>{
-            const r=card.getBoundingClientRect();
-            return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width};
-          })};
+          const container=document.getElementById(id);
+          // Test bare de fire synlige plassene. Senere slides ligger
+          // med hensikt utenfor klippevinduet til det fjerde kortet.
+          const cards=[...container.children].map(child=>
+            child.matches(".hjul-card")
+              ? child
+              : child.querySelector(".avis-sisteplass-spor > .hjul-card")
+          ).filter(Boolean);
+          const rail=container.querySelector(".avis-sisteplass-spor");
+          return {
+            id,
+            slotCount:cards.length,
+            hasSideScroll:!!rail && rail.scrollWidth>rail.clientWidth+2,
+            rects:cards.map(card=>{
+              const r=card.getBoundingClientRect();
+              return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width};
+            })
+          };
         });
         const images=[...document.querySelectorAll("#hovedinnhold .hjul-card img")];
         // decode() på lazy bilder utenfor synsfeltet kan vente uendelig.
@@ -191,6 +204,12 @@ async function run(){
       check(!layout.broken.length,label+": manglende bilder: "+layout.broken.join(", "));
       check(!layout.pending.length,label+": bilder ble ikke lastet innen 10 sekunder: "+layout.pending.join(", "));
       for(const grid of layout.grids){
+        check(grid.slotCount<=4,
+          label+": mer enn fire synlige artikkelplasser i "+grid.id);
+        if(["nyhetshjul-grid","kommentarhjul-grid"].includes(grid.id)){
+          check(grid.hasSideScroll,
+            label+": det fjerde kortet mangler sideveis blaing i "+grid.id);
+        }
         for(const r of grid.rects){
           check(r.left>=-2 && r.right<=layout.width+2,
             label+": avkuttet kort i "+grid.id+" ("+r.left+"–"+r.right+")");
@@ -201,6 +220,19 @@ async function run(){
           check(grid.rects[0].width>=layout.width*.80,
             "mobil: kortene er for smale i "+grid.id);
         }
+      }
+      // Bruk piltasten i siste forsidekort og kontroller faktisk bevegelse.
+      const carousel=page.locator("#nyhetshjul-grid .avis-sisteplass");
+      check((await carousel.count())===1,
+        label+": nyhetskarusellen mangler i siste plass");
+      if(await carousel.count()){
+        const rail=carousel.locator(".avis-sisteplass-spor");
+        const before=await rail.evaluate(el=>el.scrollLeft);
+        await carousel.locator(".avis-sisteplass-knapp").last().click();
+        await page.waitForTimeout(350);
+        const after=await rail.evaluate(el=>el.scrollLeft);
+        check(after>before+5,
+          label+": neste-pilen blar ikke sidelengs i siste kort");
       }
       // Redaksjonell visuell kontroll: profesjonelt hierarki, ingen
       // «knappebokser» rundt seksjonstitlene, og en stor førstesak på PC.
