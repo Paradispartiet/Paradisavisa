@@ -8,6 +8,7 @@ const path=require("node:path");
 const http=require("node:http");
 const assert=require("node:assert/strict");
 const {chromium}=require("playwright");
+const vm=require("node:vm");
 const root=path.resolve(__dirname,"..");
 const output=path.join(root,"qa-screenshots");
 // Bruk samme register som den faktiske køsiden. Et hardkodet antall
@@ -16,6 +17,12 @@ const artikkelkatalog=JSON.parse(fs.readFileSync(path.join(root,"utkast/artikler
 const antallAktive=artikkelkatalog.artikler.filter(a=>a.status==="utkast"&&!a.publisert).length;
 const antallArkiverte=artikkelkatalog.artikler.filter(a=>a.status==="arkivert").length;
 const antallGodkjente=artikkelkatalog.artikler.filter(a=>a.godkjent===true&&!a.publisert).length;
+// Avsluttede notiser kan gjøre hele båndet usynlig. Ikke lås QA til en dato.
+const notisKontekst={document:{addEventListener(){}},Date};
+vm.createContext(notisKontekst);
+vm.runInContext(fs.readFileSync(path.join(root,"script.js"),"utf8"),notisKontekst);
+const isNotisAktuell=vm.runInContext("isNotisAktuell",notisKontekst);
+const harAktuelleNotiser=JSON.parse(fs.readFileSync(path.join(root,"notiser.json"),"utf8")).some(n=>isNotisAktuell(n));
 const mime={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",
   ".js":"text/javascript; charset=utf-8",".json":"application/json; charset=utf-8",
   ".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".webp":"image/webp",
@@ -45,13 +52,30 @@ async function run(){
   const browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
   try {
     for(const [label,size] of [["mobil",{width:390,height:844}],["pc",{width:1366,height:900}]]){
-      const context=await browser.newContext({viewport:size,deviceScaleFactor:1});
+      const context=await browser.newContext({viewport:size,deviceScaleFactor:1,serviceWorkers:"block"});
       context.setDefaultTimeout(12000);
       context.setDefaultNavigationTimeout(15000);
       console.log("Starter nettlesersjekk: "+label+" ("+size.width+"px)");
       await context.route("https://fonts.googleapis.com/**",route=>route.abort());
       await context.route("https://fonts.gstatic.com/**",route=>route.abort());
       const page=await context.newPage();
+      // Deterministisk Web Speech-mock: tester at brukerklikk starter/stoppper radioen,
+      // uten ekte lyd fra CI-maskinen eller nettleserens talestemmer.
+      await page.addInitScript(() => {
+        const calls={spoken:[],cancels:0,utterances:[]};
+        window.__notisRadioTest=calls;
+        window.SpeechSynthesisUtterance=class {
+          constructor(text){this.text=text;}
+        };
+        Object.defineProperty(window,"speechSynthesis",{configurable:true,value:{
+          speak(utterance){
+            calls.utterances.push(utterance);
+            calls.spoken.push({text:utterance.text,lang:utterance.lang});
+          },
+          cancel(){calls.cancels++},
+          getVoices(){return [{lang:"nb-NO",name:"Teststemme"}]}
+        }});
+      });
       page.on("pageerror",err=>errors.push(label+": JavaScript-feil: "+err.message));
       await page.goto(base+"/index.html",{waitUntil:"domcontentloaded"});
       await page.locator(".nav-toggle:not([hidden])").waitFor({timeout:12000});
@@ -116,6 +140,7 @@ async function run(){
         label+": avisoverskriften er ikke fast under rulling");
       check(masthead.headerBorder===0 && masthead.headerRule==="none",
         label+": gul skillelinje under avisoverskriften finnes fortsatt");
+      if (harAktuelleNotiser) {
       check(masthead.tickerHeight<=42,
         label+": notisbåndet er for høyt ("+masthead.tickerHeight+"px)");
       check(masthead.tickerPosition==="fixed",
@@ -124,6 +149,9 @@ async function run(){
         label+": notisbåndet ligger ikke i bunnen av skjermen");
       check(masthead.reservedBottom >= masthead.tickerBottom-masthead.tickerTop,
         label+": innholdet har ikke nok bunnplass over notisbåndet");
+      } else {
+        check(masthead.tickerHeight===0,label+": utløpt notisbånd skal være skjult");
+      }
       check((await page.locator(".avis-leserinfo").count())===0,
         label+": den gamle introduksjonslinjen er ikke fjernet");
 
@@ -143,12 +171,16 @@ async function run(){
       }));
       check(Math.abs(scrollPositions.headerTop) <= 2,
         label+": avisoverskriften forsvinner når man ruller");
+      if(harAktuelleNotiser) {
       check(Math.abs(scrollPositions.tickerBottom-scrollPositions.viewportHeight)<=2,
         label+": notisbåndet flytter seg når man ruller ned");
+      }
       await page.evaluate(() => window.scrollTo(0, 250));
       const oppover=await page.locator(".notisbånd").evaluate(el => el.getBoundingClientRect().bottom);
+      if(harAktuelleNotiser) {
       check(Math.abs(oppover-scrollPositions.viewportHeight)<=2,
         label+": notisbåndet forsvinner når man ruller opp");
+      }
       await page.evaluate(() => window.scrollTo(0, 0));
 
       // Transparens: vis leseren publiseringsdato, og merk gamle saker som arkiv.
@@ -277,36 +309,91 @@ async function run(){
       await page.keyboard.press("Escape");
       check(await toggle.getAttribute("aria-expanded")==="false",label+": Escape lukker ikke");
       check(!(await page.locator("#avis-hovedmeny").isVisible()),label+": meny forblir synlig");
-      const pause=page.locator(".notis-pause");
-      await pause.waitFor({timeout:10000});
-      check(await pause.locator("svg").count()===1,
-        label+": pauseknappen skal være et lite ikon");
-      await pause.click();
-      check(await pause.getAttribute("aria-label")==="Start notisbåndet",
-        label+": pauseikonet virker ikke");
-      await pause.click();
-      check(await pause.getAttribute("aria-label")==="Pause notisbåndet",
-        label+": startikonet virker ikke");
-      const fartknapp=page.locator(".notis-fartknapp");
-      await fartknapp.click();
-      const alternativer=page.locator(".notis-fartmeny button[data-fart]");
-      check(await alternativer.count()===4,
-        label+": notisbåndet har ikke fire fartstrinn");
-      check(await page.locator(".notis-fartmeny").isVisible(),
-        label+": fartmenyen vises ikke");
-      const menyPlass=await page.evaluate(()=>({
-        menyBunn:document.querySelector(".notis-fartmeny").getBoundingClientRect().bottom,
-        båndTopp:document.querySelector(".notisbånd").getBoundingClientRect().top
-      }));
-      check(menyPlass.menyBunn<=menyPlass.båndTopp+3,
-        label+": fartmenyen er skjult bak båndet");
-      await page.locator('.notis-fartmeny button[data-fart="1.5"]').click();
-      check((await fartknapp.textContent())==="1,5×",
-        label+": valgt fart vises ikke på knappen");
-      await fartknapp.click();
-      await page.locator('.notis-fartmeny button[data-fart="1"]').click();
-      check((await fartknapp.textContent())==="1×",
-        label+": normalhastigheten kan ikke velges igjen");
+      if (harAktuelleNotiser) {
+        const valg=page.locator(".notis-valgknapp");
+        await valg.waitFor({timeout:10000});
+        check(!(await page.locator(".notis-valgpanel").isVisible()),
+          label+": kontrollpanelet skal være lukket som standard");
+        check((await page.locator(".notis-kontroller > button").count())===1,
+          label+": notisbåndet skal bare vise én hovedknapp");
+        check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===0,
+          label+": nyhetsradioen skal aldri starte av seg selv");
+        await valg.click();
+        check(await page.locator(".notis-valgpanel").isVisible(),
+          label+": kontrollpanelet åpnes ikke");
+        const panelPlass=await page.evaluate(()=>({
+          panelBunn:document.querySelector(".notis-valgpanel").getBoundingClientRect().bottom,
+          baandTopp:document.querySelector(".notisbånd").getBoundingClientRect().top
+        }));
+        check(panelPlass.panelBunn<=panelPlass.baandTopp+3,
+          label+": kontrollpanelet dekker notisbåndet");
+
+        const pause=page.locator(".notis-pause");
+        check(await pause.locator("svg").count()===1,
+          label+": pauseknappen skal vise et lite ikon");
+        await pause.click();
+        check(await pause.getAttribute("aria-label")==="Start notisbåndet",
+          label+": pauseknappen stopper ikke nyhetsbåndet");
+        check(await page.locator(".notis-valgpanel").isVisible(),
+          label+": kontrollpanelet lukkes uventet etter pause");
+        await pause.click();
+        check(await pause.getAttribute("aria-label")==="Pause notisbåndet",
+          label+": startknappen virker ikke");
+
+        const fartknapp=page.locator(".notis-fartknapp");
+        check((await fartknapp.textContent()).includes("2×"),
+          label+": standardhastigheten skal være 2×");
+        await fartknapp.click();
+        const alternativer=page.locator(".notis-fartmeny button[data-fart]");
+        check(await alternativer.count()===3,
+          label+": hastighet skal bare ha 2×, 4× og 6×");
+        check(JSON.stringify(await alternativer.allTextContents())===JSON.stringify(["2×","4×","6×"]),
+          label+": feil hastighetsvalg");
+        await page.locator('.notis-fartmeny button[data-fart="4"]').click();
+        check((await fartknapp.textContent()).includes("4×"),
+          label+": 4× blir ikke valgt");
+        await fartknapp.click();
+        await page.locator('.notis-fartmeny button[data-fart="6"]').click();
+        check((await fartknapp.textContent()).includes("6×"),
+          label+": 6× blir ikke valgt");
+        const fartLagring=await page.evaluate(()=>({
+          fart:localStorage.getItem("paradisavisa-notisfart"),
+          varighet:document.querySelector(".notisinnhold").style.getPropertyValue("--ticker-duration")
+        }));
+        check(fartLagring.fart==="6" && Boolean(fartLagring.varighet),
+          label+": høy hastighet blir ikke lagret/anvendt");
+
+        const radio=page.locator(".notis-radio");
+        check((await radio.getAttribute("aria-pressed"))==="false",
+          label+": radioen skal være stoppet som standard");
+        await radio.click();
+        check((await radio.getAttribute("aria-pressed"))==="true",
+          label+": nyhetsradioen startet ikke");
+        const lest=await page.evaluate(()=>window.__notisRadioTest.spoken);
+        check(lest.length===1 && lest[0].lang==="nb-NO" && lest[0].text.length>30,
+          label+": radioen leser ikke første notis på norsk");
+        await page.evaluate(()=>window.__notisRadioTest.utterances[0].onend?.());
+        check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))>=2,
+          label+": nyhetsradioen går ikke videre til neste notis");
+        await radio.click();
+        check((await radio.getAttribute("aria-pressed"))==="false",
+          label+": stoppknappen virker ikke");
+        check((await page.evaluate(()=>window.__notisRadioTest.cancels))>=1,
+          label+": talesyntesen blir ikke stoppet");
+
+        await page.keyboard.press("Escape");
+        check(!(await page.locator(".notis-valgpanel").isVisible()),
+          label+": Escape lukker ikke kontrollpanelet");
+        await valg.click();
+        check(await page.locator(".notis-valgpanel").isVisible(),
+          label+": kontrollpanelet åpnes ikke igjen");
+        await valg.click();
+        check(!(await page.locator(".notis-valgpanel").isVisible()),
+          label+": kontrollpanelet lukkes ikke ved nytt trykk");
+      } else {
+        check(await page.locator(".notisbånd").isHidden(),
+          label+": nyhetsbåndet skal skjules når alle notisene er utløpt");
+      }
 
       for(const name of files.filter(x=>x!=="index.html")){
         await page.goto(base+"/"+name,{waitUntil:"domcontentloaded"});
@@ -317,8 +404,10 @@ async function run(){
             bottom:el.getBoundingClientRect().bottom,
             height:innerHeight
           }));
-          check(fixedBand.position==="fixed" && Math.abs(fixedBand.bottom-fixedBand.height)<=2,
+          check(!harAktuelleNotiser || (fixedBand.position==="fixed" && Math.abs(fixedBand.bottom-fixedBand.height)<=2),
             label+": notisbåndet er ikke fast nederst på "+name);
+          if(!harAktuelleNotiser) check(await page.locator(".notisbånd").isHidden(),
+            label+": tomt notisbånd vises på "+name);
         }
         if(name==="sport.html"){
           check((await page.locator(".sport-banner").count())===0,
@@ -374,19 +463,27 @@ async function run(){
         if(name==="notiser.html"){
           check((await page.locator(".notis-arkiv-hoved h1").textContent())==="Notiser",
             label+": notisarkivet mangler egen hovedoverskrift");
-          await page.locator("#notisgrid .notis-rute").first().waitFor({timeout:10000});
+          if(harAktuelleNotiser) {
+            await page.locator("#notisgrid .notis-rute").first().waitFor({timeout:10000});
+          } else {
+            await page.waitForFunction(()=>document.getElementById("notisgrid")?.textContent.includes("Ingen aktuelle notiser"));
+          }
+          await page.locator("#eldre-notiser:not([hidden]) summary").waitFor({timeout:10000});
+          check(!(await page.locator("#eldre-notiser").evaluate(el=>el.open)),
+            label+": historiske notiser skal være lukket");
           const layout=await page.evaluate(()=>{
             const grid=document.getElementById("notisgrid");
             const cards=[...grid.querySelectorAll(".notis-rute")];
-            const r=cards[0].getBoundingClientRect();
+            const r=cards[0]?.getBoundingClientRect();
             return {columns:getComputedStyle(grid).gridTemplateColumns.split(" ").length,
-              firstWidth:r.width,viewport:innerWidth,count:cards.length};
+              firstWidth:r?.width||0,viewport:innerWidth,count:cards.length};
           });
-          check(layout.count>0,label+": tomt notisarkiv");
-          if(label==="mobil"){
+          check(harAktuelleNotiser ? layout.count>0 : layout.count===0,
+            label+": feil antall ferske notiser");
+          if(harAktuelleNotiser && label==="mobil"){
             check(layout.columns===1,label+": notiser skal stå i én kolonne på mobil");
             check(layout.firstWidth>layout.viewport*.8,label+": notisene blir for smale på mobil");
-          }else{
+          }else if(harAktuelleNotiser){
             check(layout.columns>=2,label+": notisarkivet skal bruke flere kolonner på PC");
             check(layout.firstWidth>250,label+": notisene er for smale på PC");
           }
