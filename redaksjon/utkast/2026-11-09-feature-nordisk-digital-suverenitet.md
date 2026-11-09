@@ -47,6 +47,10 @@ Avhengigheten er sammensatt. Én leverandør kan kontrollere modellen, en annen 
 
 Nordisk-baltisk samarbeid kan gi bedre krav til innkjøp, sikkerhet og åpne grensesnitt. Men en erklæring gir ennå ikke svar på hvem som skal bygge, drive og betale for alternativene.
 
+Det finnes allerede mer konkrete forslag. I **juni 2026** la **Tekna, NITO og Forbrukerrådet** fram anbefalinger om digital suverenitet i offentlig sektor. De ba blant annet om at offentlige anskaffelser legger større vekt på **åpen kildekode, åpne standarder, interoperabilitet og muligheten til å flytte data**. Det er organisasjonenes politiske forslag, ikke vedtatt norsk innkjøpspolitikk. Forbrukerrådets rapport *Breaking Free* fra februar argumenterte også for at offentlig innkjøpsmakt kan brukes til å støtte reelle alternativer til de største teknologiplattformene.
+
+Samtidig er ikke alternativene kostnadsfrie. En offentlig styrt løsning må ha et ansvarlig fagmiljø, oppdateringer, drift, sikkerhetsrevisjon, beredskap og tydelig ansvarsfordeling. Paradisavisa bør derfor prøve de politiske ambisjonene mot en konkret innkjøpssak – med sammenlignbare pris-, drifts- og sikkerhetsdata – før vi konkluderer om hva som er best.
+
 ## Et sikkerhetsspørsmål – ikke bare et markedsspørsmål
 
 Nordisk råd vedtok i oktober en strategi for samfunnssikkerhet som anbefaler å kartlegge kritisk digital infrastruktur og utvikle felles krav til anskaffelser og leverandørstyring. Rådet peker også på behovet for samarbeid om mobilnett, satellitter og beskyttelse mot digitale påvirkningsoperasjoner.
@@ -69,10 +73,12 @@ Det er der en stor idé om digital selvstendighet begynner å ligne en tjeneste 
 - **Nordisk ministerråd, 6. november 2026:** Referat/pressemelding om enighet, avhengighet, prosjekter og New Nordics AI. https://www.norden.org/en/news/nordic-and-baltic-ministers-sign-joint-statement-increased-digital-sovereignty
 - **Digitaliserings- og forvaltningsdepartementet, 6. november 2026:** Norsk prioritering ved formannskapet i 2027. https://www.regjeringen.no/no/aktuelt/nordisk-baltisk-samarbeid-om-digital-suverenitet-norge-vil-prioritere-trygg-ki/id3191990/
 - **Nordisk råd, strategi vedtatt 28. oktober 2026:** «Digital resilience and information security», konkrete råd om kritisk infrastruktur, innkjøp og robusthet. https://pub.norden.org/politiknord2026-717/5-digital-resilience-and-information-security.html
+- **Forbrukerrådet, 23. juni 2026:** Tekna, NITO og Forbrukerrådet la fram anbefalinger om åpne standarder, åpen kildekode og portabilitet for offentlig sektor. https://www.forbrukerradet.no/?p=54996
+- **Forbrukerrådet, 27. februar 2026:** *Breaking Free – Pathways to a fair technological future*. Forbrukerorganisasjonens analyse og anbefalinger, ikke en myndighetsbeslutning. https://www.forbrukerradet.no/rapporter/breaking-free-pathways-to-a-fair-technological-future/
 
 ## Gjenstår før publisering
 
-1. Innhent konkrete svar fra departementet/Nordisk ministerråd om budsjett, prioriterte prosjekter, frister og hvem som drifter eventuelle nye fellesløsninger.
+1. Innhent konkrete svar fra departementet/Nordisk ministerråd om budsjett, prioriterte prosjekter, frister og hvem som drifter eventuelle nye fellesløsninger. Regjeringens og organisasjonenes offentlig tilgjengelige uttalelser er nå undersøkt, men det er ikke innhentet nytt svar direkte til Paradisavisa.
 2. Skaff vurderinger fra offentlige IT-miljøer, åpne programvareprosjekter, aktuelle leverandører og sikkerhetsforskere. Ingen av dem er intervjuet i denne teksten.
 3. Avklar med kilder forskjellen mellom kontroll over data, kontroll over leverandør, lokal drift og full teknologisk uavhengighet.
 4. Vurder kritiske motargumenter: kostnad, kvalitet, kompetanse, små markeder, leverandørmangfold og forhold til internasjonale samarbeidspartnere.
