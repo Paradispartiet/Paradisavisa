@@ -239,6 +239,7 @@ function loadNotiser() {
       if (!aktuelle.length) {
         band.style.display = "none";
         innhold.replaceChildren();
+        window.dispatchEvent(new Event("paradisradio:empty"));
         return;
       }
       band.style.removeProperty("display");
@@ -577,7 +578,38 @@ function loadNotiser() {
       let radioVenter = false;
       let radioVersjon = 0;
       let radioIndeks = 0;
+      let radioGjeldendeIndeks = -1;
+      let radioSistOppdatert = Date.now();
       let radiosaker = aktuelle.slice();
+      const spillerLyttere = new Set();
+      const spillerTilstand = () => ({
+        aktiv: radioAktiv,
+        pauset: radioPauset,
+        gjeldendeIndeks: radioGjeldendeIndeks,
+        gjeldende: radioGjeldendeIndeks >= 0 ? radiosaker[radioGjeldendeIndeks] : null,
+        notiser: radiosaker.filter(item => isNotisAktuell(item)),
+        status: radiostatus.textContent,
+        taleTilgjengelig: harTale
+      });
+      const varsleSpiller = () => {
+        const tilstand = spillerTilstand();
+        spillerLyttere.forEach(lytter => {
+          try { lytter(tilstand); } catch (error) { console.error("Radiospiller:", error); }
+        });
+      };
+      // Hvis radioen startes i en annen fane, stopp lokal opplesning.
+      // Én nyhetskanal om gangen på samme origin der BroadcastChannel støttes.
+      let radioKanal = null;
+      const radioFane = Math.random().toString(36).slice(2);
+      try {
+        if (typeof BroadcastChannel === "function") {
+          radioKanal = new BroadcastChannel("paradisavisa-nyhetsradio");
+          radioKanal.addEventListener("message", event => {
+            if (event.data?.type === "start" && event.data?.fane !== radioFane &&
+                radioAktiv) stoppRadio("Nyhetsradioen spiller i en annen fane.");
+          });
+        }
+      } catch (_) { /* Ingen fanesynkronisering i eldre nettlesere. */ }
 
       const radioPauseknapp = document.createElement("button");
       radioPauseknapp.type = "button";
@@ -591,12 +623,14 @@ function loadNotiser() {
         radioPauseknapp.setAttribute("aria-pressed", String(radioPauset));
         radioPauseknapp.disabled = !radioAktiv || !harTale ||
           typeof tale.pause !== "function" || typeof tale.resume !== "function";
+        varsleSpiller();
       };
       const stoppRadio = (melding = "Nyhetsradioen er stoppet.") => {
         const varPauset = radioPauset;
         radioAktiv = false;
         radioPauset = false;
         radioVenter = false;
+        radioGjeldendeIndeks = -1;
         radioVersjon++;
         // Web Speech kan forbli pauset selv etter cancel(); nullstill før neste start.
         try {
@@ -615,7 +649,18 @@ function loadNotiser() {
         }
         radioVenter = false;
         if (radioIndeks >= radiosaker.length) {
-          // Sjekk om nye notiser er kommet inn mellom radiosendingene.
+          // Ikke gjenta utløpte nyheter; oppdater eksternt høyst hvert femte minutt.
+          radiosaker = radiosaker.filter(item => isNotisAktuell(item));
+          if (!radiosaker.length) {
+            stoppRadio("Ingen ferske notiser å lese opp.");
+            return;
+          }
+          if (Date.now() - radioSistOppdatert < 5 * 60 * 1000) {
+            radioIndeks = 0;
+            lesNeste(versjon);
+            return;
+          }
+          radioSistOppdatert = Date.now();
           fetch(source, { cache: "no-store" }).then(response => {
             if (!response.ok) throw new Error("Notisoppdatering feilet");
             return response.json();
@@ -637,7 +682,8 @@ function loadNotiser() {
           });
           return;
         }
-        const notis = radiosaker[radioIndeks++];
+        const notis = radiosaker[radioIndeks];
+        radioGjeldendeIndeks = radioIndeks++;
         if (!isNotisAktuell(notis)) {
           lesNeste(versjon);
           return;
@@ -654,6 +700,7 @@ function loadNotiser() {
           ytring.lang = norsk.lang;
         }
         radiostatus.textContent = "Leser: " + String(notis.category || "Nyheter");
+        varsleSpiller();
         ytring.onend = () => { if (radioAktiv && versjon === radioVersjon) lesNeste(versjon); };
         ytring.onerror = event => {
           if (!radioAktiv || versjon !== radioVersjon) return;
@@ -679,12 +726,15 @@ function loadNotiser() {
         radioVenter = false;
         const versjon = ++radioVersjon;
         radioIndeks = 0;
+        radioGjeldendeIndeks = -1;
+        radioSistOppdatert = Date.now();
         try { tale.cancel(); } catch (_) { /* Ingen aktiv ytring. */ }
+        try { radioKanal?.postMessage({ type: "start", fane: radioFane }); } catch (_) {}
         band.classList.add("is-radio");
         visRadio();
         lesNeste(versjon);
       });
-      radioPauseknapp.addEventListener("click", () => {
+      const byttRadioPause = () => {
         if (!radioAktiv || !harTale) return;
         if (radioPauset) {
           try {
@@ -702,7 +752,45 @@ function loadNotiser() {
             visRadio();
           } catch (_) { stoppRadio("Kunne ikke pause opplesningen."); }
         }
-      });
+      };
+      radioPauseknapp.addEventListener("click", byttRadioPause);
+      const hoppRadio = steg => {
+        if (!radioAktiv || !radiosaker.length) return;
+        const fra = radioGjeldendeIndeks >= 0 ? radioGjeldendeIndeks : 0;
+        radioIndeks = (fra + steg + radiosaker.length) % radiosaker.length;
+        const varPauset = radioPauset;
+        radioPauset = false;
+        const versjon = ++radioVersjon;
+        try {
+          if (varPauset) tale.resume?.();
+          tale.cancel();
+        } catch (_) { /* Fortsett om nettleseren har begrenset lydstøtte. */ }
+        lesNeste(versjon);
+        visRadio();
+      };
+      window.ParadisRadioPlayer = {
+        getState: spillerTilstand,
+        subscribe(lytter) {
+          spillerLyttere.add(lytter);
+          lytter(spillerTilstand());
+          return () => spillerLyttere.delete(lytter);
+        },
+        play() {
+          if (!radioAktiv) radioknapp.click();
+          else if (radioPauset) byttRadioPause();
+        },
+        pause() {
+          if (radioAktiv && !radioPauset) byttRadioPause();
+        },
+        resume() {
+          if (radioAktiv && radioPauset) byttRadioPause();
+        },
+        stop() {
+          if (radioAktiv) stoppRadio();
+        },
+        next() { hoppRadio(1); },
+        previous() { hoppRadio(-1); }
+      };
       visRadio();
       panel.append(radioknapp, radioPauseknapp, radioInnstillinger, radiostatus);
 
@@ -730,12 +818,15 @@ function loadNotiser() {
       });
       window.addEventListener("pagehide", () => {
         if (radioAktiv) stoppRadio();
+        try { radioKanal?.close(); } catch (_) {}
         if (typeof tale?.removeEventListener === "function") {
           tale.removeEventListener("voiceschanged", oppdaterStemmer);
         }
       });
       kontroller.append(valgknapp, panel);
       band.appendChild(kontroller);
+      // Radiosiden og det lille kontrollpanelet bruker samme spiller i denne fanen.
+      window.dispatchEvent(new Event("paradisradio:ready"));
 
       // Mål tekstbredden etter at typografien er klar. Da unngår vi at
       // animasjonen endrer varighet og hopper idet nettfonten lastes.
