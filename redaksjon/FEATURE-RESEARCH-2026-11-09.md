@@ -40,6 +40,22 @@ Feature er stedet for reportasjer, forklarende bakgrunn, fordypning og større s
 - **Neste journalistiske steg:** Hent brasilianske INPE-data og Amazonasfondets prosjektregnskap, kontroller tidsseriene og innhent perspektiver fra berørte lokalsamfunn og uavhengige skogforskere.
 - **Primærkilde:** https://www.regjeringen.no/no/aktuelt/norge-gir-brasil-600-millioner-kroner-for-historisk-lav-avskoging-i-amazonas/id3192085/
 
+## 6. Bankene tjener milliarder – hvem betaler?
+- **Valgt til produksjon:** 9. november 2026.
+- **Fulltekst:** [Bankene tjener milliarder – hvem betaler?](utkast/2026-11-09-feature-bankene-milliarder.md)
+- **Nytt kildegrunnlag:** SSB publiserte 6. november at bankenes **akkumulerte** resultat etter skatt etter ni måneder var 69,4 mrd. kroner (6 mrd. mer enn året før), mens netto renteinntekter falt 3,1 mrd. til 100,3 mrd.
+- **Journalistisk konflikt:** Kundens pris og sparevilkår mot bankenes kapitalbehov, konkurranse og evne til å tåle tap; ikke anta at hele overskuddet er boliglånsrenter.
+- **Status:** Tekstutkast ferdig, kildelenker dokumentert. Bankenes tilsvar, sammenliknbar prisgjennomgang, kildekontroll ved publisering og begge illustrasjoner gjenstår.
+- **Primærkilde:** https://www.ssb.no/bank-og-finansmarked/finansinstitusjoner-og-andre-finansielle-foretak/statistikk/banker-og-kredittforetak/artikler/bankresultat
+
+## 7. Kan Norden frigjøre seg fra teknologigigantene?
+- **Valgt til produksjon:** 9. november 2026.
+- **Fulltekst:** [Kan Norden frigjøre seg fra teknologigigantene?](utkast/2026-11-09-feature-nordisk-digital-suverenitet.md)
+- **Nytt kildegrunnlag:** Norden og Baltikum vedtok 6. november en felles intensjonserklæring om å styrke digital suverenitet og redusere kritisk leverandøravhengighet.
+- **Journalistisk konflikt:** Reell kontroll over data, standarder og leverandører versus kostnad, sikkerhet og teknologisk kvalitet. Erklæringen er ikke vedtak om en offentlig alternativplattform.
+- **Status:** Tekstutkast ferdig, primærkilder dokumentert. Svar om finansiering/prosjekter, uavhengige fagvurderinger, kildekontroll ved publisering og begge illustrasjoner gjenstår.
+- **Primærkilde:** https://www.norden.org/sv/declaration/common-nordic-and-baltic-approach-digital-sovereignty
+
 ## Publiseringsprinsipper
 1. De opprinnelige feature-/arkivsakene fra oktober 2025 beholdes med originaldato; ingen dato settes frem.
 2. Allerede publiserte novemberartikler kan kurateres i Feature uten å ompubliseres.
