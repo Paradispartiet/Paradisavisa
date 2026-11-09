@@ -524,9 +524,9 @@ function loadNotiser() {
           valgknapp.setAttribute("aria-expanded", "true");
         } else lukkPanel();
       });
-      document.addEventListener("click", event => {
-        if (!kontroller.contains(event.target)) lukkPanel();
-      });
+      // Panelet lukkes med samme hovedknapp eller Escape.
+      // Ikke lukk automatisk ved dokumentklikk: mobil/Safari kan registrere
+      // et trykk på kontrollene som et utenfor-klikk.
       kontroller.addEventListener("keydown", event => {
         if (event.key === "Escape" && !panel.hidden) {
           lukkPanel();
