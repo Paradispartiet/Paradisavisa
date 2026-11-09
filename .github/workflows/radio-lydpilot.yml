@@ -1,0 +1,114 @@
+name: Intern norsk lydpilot for Paradisradioen
+
+on:
+  pull_request:
+    paths:
+      - "scripts/radio/**"
+      - "radio/voice-license.md"
+      - ".github/workflows/radio-lydpilot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: radio-lydpilot-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lydpilot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Hent bare publisert redaksjonelt innhold
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer lydverktøy for MP3-konvertering
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffmpeg -version | head -1
+          ffprobe -version | head -1
+
+      - name: Kontroller piloten før lydgenerering
+        run: python -m unittest discover -s scripts/radio -p "test_*.py" -v
+
+      - name: Hent Piper 1.8.0 og dokumentert norsk modell
+        run: |
+          python -m pip install --disable-pip-version-check "piper-tts==1.8.0" "huggingface_hub==0.36.0"
+          python - <<'PY'
+          import hashlib
+          import json
+          import re
+          from pathlib import Path
+          from huggingface_hub import HfApi, hf_hub_download
+
+          repo = "rhasspy/piper-voices"
+          revision = HfApi().model_info(repo).sha
+          if not revision or len(revision) != 40:
+              raise RuntimeError("Klarte ikke låse modelrevisjon til et 40-tegns commit-SHA")
+          base = "no/no_NO/talesyntese/medium"
+          files = [
+              f"{base}/no_NO-talesyntese-medium.onnx",
+              f"{base}/no_NO-talesyntese-medium.onnx.json",
+              f"{base}/MODEL_CARD",
+          ]
+          hashes = {}
+          for name in files:
+              downloaded = Path(hf_hub_download(
+                  repo_id=repo, filename=name, revision=revision, local_dir="pilot-modell"
+              ))
+              hashes[name] = hashlib.sha256(downloaded.read_bytes()).hexdigest()
+          card = Path("pilot-modell") / base / "MODEL_CARD"
+          if not re.search(r"License:\s*CC0\b", card.read_text(encoding="utf-8"), re.I):
+              raise RuntimeError("Treningsdatasetts lisensavklaring er endret")
+          report = {
+              "piperVersion": "1.8.0",
+              "engineLicense": "GPL-3.0-or-later",
+              "sourceRepository": repo,
+              "revision": revision,
+              "fileSha256": hashes,
+              "modelRightsStatus": "UNDER_VURDERING",
+              "modelCard": f"https://huggingface.co/{repo}/blob/{revision}/{base}/MODEL_CARD",
+          }
+          Path("pilot-lyd").mkdir(exist_ok=True)
+          Path("pilot-lyd/modellinfo.json").write_text(
+              json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+          print("Modell hentet med verifiserbare SHA-256 og kildecommit:", revision)
+          PY
+
+      - name: Lag ti prøveopplesninger til intern lytting
+        run: |
+          python scripts/radio/generer_lydpilot.py prepare --output pilot-lyd --count 10
+          python scripts/radio/generer_lydpilot.py render --output pilot-lyd \
+            --model pilot-modell/no/no_NO/talesyntese/medium/no_NO-talesyntese-medium.onnx \
+            --config pilot-modell/no/no_NO/talesyntese/medium/no_NO-talesyntese-medium.onnx.json \
+            --model-info pilot-lyd/modellinfo.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("pilot-lyd/rapport.json").read_text(encoding="utf-8"))
+          assert report["antall"] == 10
+          assert all(s["codec"] == "mp3" and s["durationSeconds"] > 2
+                     for s in report["samples"])
+          print("10 private MP3-prøver har fått gyldig lydkontroll")
+          PY
+
+      - name: Lagre kun prøvelyd og sporbar kontrollrapport
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paradisradio-norsk-lydpilot
+          path: |
+            pilot-lyd/pilot-utvalg.json
+            pilot-lyd/modellinfo.json
+            pilot-lyd/rapport.json
+            pilot-lyd/lydproever/*.mp3
+          if-no-files-found: warn
+          retention-days: 7
