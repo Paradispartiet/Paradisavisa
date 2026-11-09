@@ -22,7 +22,7 @@
   <main id="hovedinnhold" class="arkiv-hoved notis-arkiv-hoved">
     <p class="arkiv-kategori">Paradisavisa / Korte nyheter</p>
     <h1>Notisarkiv</h1>
-    <p class="arkiv-ingress">Korte nyheter fra tidligere publiseringer. Hver notis beholder sin dato; eldre opplysninger er ikke nødvendigvis oppdaterte.</p>
+    <p class="arkiv-ingress">Her finner du dagens notiser og tidligere notiser fra notisbåndet. Hver notis beholder sin dato; arkiverte opplysninger er ikke nødvendigvis oppdaterte.</p>
     <div id="notisgrid" class="notisgrid" aria-label="Tidligere publiserte notiser"></div>
   </main>
 
@@ -39,12 +39,14 @@
   <script defer src="script.js?v=30"></script>
   <script>
     // Arkivnotiser settes inn som tekst, aldri som ufiltrert HTML.
-    fetch("notiser.json", { cache: "no-store" })
-      .then(response => {
-        if (!response.ok) throw new Error("Kunne ikke hente notisarkivet");
+    Promise.all(["notiser.json", "arkiv/notiser-2025-10.json"].map(filename =>
+      fetch(filename, { cache: "no-store" }).then(response => {
+        if (!response.ok) throw new Error("Kunne ikke hente notisarkivet: " + filename);
         return response.json();
       })
-      .then(data => {
+    ))
+      .then(groups => {
+        const data = groups.flat();
         const grid = document.getElementById("notisgrid");
         if (!grid || !Array.isArray(data)) return;
         grid.replaceChildren();
