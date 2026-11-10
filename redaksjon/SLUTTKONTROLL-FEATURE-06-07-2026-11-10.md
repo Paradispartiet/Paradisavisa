@@ -1,7 +1,7 @@
 # Feature 06–07 – sluttkontroll før publisering
 
 **Kontrolltidspunkt:** 10. november 2026  
-**Beslutning:** **IKKE GODKJENT FOR OFFENTLIG PUBLISERING ENNÅ.** Tekst, fire originale illustrasjoner, bilde- og kildehenvisninger er klargjort. Direkte tilsvar og den endelige redaksjonelle kontrollen gjenstår.
+**Beslutning:** **IKKE GODKJENT FOR OFFENTLIG PUBLISERING ENNÅ.** Tekst, fire originale illustrasjoner, bilde- og kildehenvisninger er klargjort. Svar fra Finans Norge, Forbrukerrådet (bakgrunn), DNB og departementet er mottatt og behandlet med kildeforbehold. Utestående metodeavklaring, annen kildeoppfølging og redaksjonell sluttkontroll gjenstår. Se [kildesvarloggen](KILDESVAR-FEATURE-06-07-2026-11-10.md).
 
 ## Kildematrise
 
@@ -39,13 +39,13 @@ Fem forespørsler ble **sendt fra tilkoblet Gmail 10. november 2026**, og Gmail 
 - DNBs pressevakt, Finans Norge og Forbrukerrådets økonomikontakt (sak 06)
 - Digitaliserings- og forvaltningsdepartementet og Forbrukerrådets digitale rettigheter-kontakt (sak 07)
 
-Alle mottakeradressene ble verifisert mot offisielle pressekontaktsider. **Alle fem meldingene ble sendt 10. november 2026, og ingen svar var registrert ved den umiddelbare kontrollen.** Ingen eksplisitt svarfrist ble oppgitt i meldingen. Sendte meldinger og eventuelle svar skal verifiseres i Gmail. Av personvern- og sikkerhetshensyn lagres verken meldings-ID-er eller private kontolenker i offentlig repo.
+Alle mottakeradressene ble verifisert mot offisielle pressekontaktsider. **Alle fem meldingene ble sendt 10. november 2026. Ved senere kontroll samme dag var fire innholdssvar og ett automatisk mottakssvar registrert; dette er dokumentert med ulike grader av sitatrett og relevans.** Ingen eksplisitt svarfrist ble oppgitt i meldingen. Sendte meldinger og eventuelle svar skal verifiseres i Gmail. Av personvern- og sikkerhetshensyn lagres verken meldings-ID-er eller private kontolenker i offentlig repo.
 
 ## Før redaktør kan godkjenne publisering
 
 1. **Fullført 10. november:** Fem kildeforespørsler sendt fra tilkoblet Gmail, utsending bekreftet. Vurder behovet for oppfølging hvis det ikke kommer svar etter noen virkedager.
-2. Dokumenter mottatte svar eller at kildene ikke svarte innen en reell, oppgitt frist. Skill tydelig mellom et ikke-svar og en avvist kommentar.
-3. Sett inn eventuelle vesentlige rettelser eller motargumenter i korrekt artikkel, med direkte henvisning til talsperson og dato.
+2. **Delvis fullført 10. november:** Fire relevante svar er dokumentert; ett er uttrykkelig bakgrunnsinformasjon, ett etterspør identiteten til avsenderen, ett er et bransjesvar, og departementet har ingen ytterligere kommentar. Følg opp metodeåret i rapporten og kontakt om digital suverenitet før endelig beslutning.
+3. **Delvis fullført:** Bankutkastet er utvidet med Finans Norges forklaring, balansert med offentlig Forbrukerrådsstatistikk og Norges Banks beslutning i mai. Teknologiutkastet omtaler departementets manglende tilleggskommentar. Kontroller fortsatt eventuelle nye svar og redaksjonell sitatbruk.
 4. Kontroller begge bildene per artikkel i full størrelse, mobil og forsidekort. Godkjenn eller bytt **den faktiske filen**, ikke en SVG-erstatning.
 5. Redaktøren tar **separat beslutning for sak 06 og sak 07**. Bare godkjente artikler får artikkelkort i `Nyhetshjul2.json` og faktisk publiseringsdato. Behold opprinnelig researchdato i den interne dokumentasjonen.
 
