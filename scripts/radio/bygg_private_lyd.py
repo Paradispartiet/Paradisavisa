@@ -13,6 +13,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import os
 import pathlib
 import re
 import shutil
@@ -21,7 +22,7 @@ import sys
 
 from generer_lydpilot import (
     RADIO_LENGTH_SCALE, RADIO_NOISE_SCALE, RADIO_NOISE_W_SCALE,
-    lydinfo, skriv_chunker_til_wave,
+    skriv_chunker_til_wave,
 )
 from planlegg_lyd import (
     MODEL_REVISION, SYNTHESIS_PROFILE, bygg_forslag,
@@ -38,6 +39,30 @@ def load_json(path: pathlib.Path) -> dict | list:
 
 def file_sha256(path: pathlib.Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def mp3_info(path: pathlib.Path) -> dict:
+    """Les MP3-header/varighet uten apt/ffprobe. SHA kontrolleres separat."""
+    from mutagen.mp3 import MP3
+
+    try:
+        track = MP3(str(path))
+        info = track.info
+        secs = float(info.length)
+        bytes_total = path.stat().st_size
+        if not (2 < secs < 240 and 5000 < bytes_total < 2_000_000):
+            raise ValueError("Lydfilen har umulig lengde eller størrelse")
+        if int(info.sample_rate) != 22050 or not 60000 <= int(info.bitrate) <= 70000:
+            raise ValueError("Uventet MP3-samplerate eller bitrate")
+        return {
+            "durationSeconds": round(secs, 2),
+            "bytes": bytes_total,
+            "codec": "mp3",
+            "sampleRate": int(info.sample_rate),
+            "sha256": file_sha256(path),
+        }
+    except (OSError, AttributeError, TypeError, ValueError) as exc:
+        raise ValueError("MP3-filen kunne ikke godkjennes") from exc
 
 
 def check_lock(lock: dict) -> None:
@@ -109,7 +134,7 @@ def cached_audio(cache: pathlib.Path, item: dict, lock: dict) -> dict | None:
                 or meta.get("voiceRevision") != lock["revision"]
                 or meta.get("profile") != lock["synthesisProfile"]):
             return None
-        info = lydinfo(file)
+        info = mp3_info(file)
         if info["sha256"] != meta.get("audioSha256"):
             return None
         return info
@@ -162,13 +187,18 @@ def synthesize_missing(missing: list[dict], cache: pathlib.Path,
         try:
             chunks = voice.synthesize(row["speechText"], syn_config=config)
             count = skriv_chunker_til_wave(wav, chunks)
+            ffmpeg = os.environ.get("RADIO_FFMPEG_EXECUTABLE", "ffmpeg")
             subprocess.run([
-                "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
+                ffmpeg, "-hide_banner", "-loglevel", "error", "-y",
                 "-i", str(wav), "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",
                 "-ac", "1", "-ar", "22050", "-c:a", "libmp3lame",
                 "-b:a", "64k", str(temp_mp3),
             ], check=True)
-            info = lydinfo(temp_mp3)
+            # Både header og reell dekoding må være gyldig.
+            subprocess.run([ffmpeg, "-v", "error", "-i", str(temp_mp3),
+                            "-f", "null", "-"], check=True,
+                           stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+            info = mp3_info(temp_mp3)
             if count < 1 or info["durationSeconds"] <= 2:
                 raise ValueError("For kort, tom eller ufullstendig lyd")
             # Skriv metadata etter teknisk bestått lydkontroll, atomisk filbytte.
