@@ -1,27 +1,20 @@
-# Redaksjonell kvalitetskontroll – Hegseth-artikkel 10. november 2026
+# Oppdatering etter Hegseth-avstemningen – 11. november 2026
 
-**Status:** Godkjent som kildebelagt forklaringsartikkel fra før den varslede prosedyreavstemningen. **Ikke et resultatoppslag.**
+Opprinnelig publisering 10. november 2026. Oppdatert 11. november 2026.
 
-## Tidsavgrensing og kildegrunnlag
+## Resultat og kildeavgrensning
 
-- Siste kontroll: **10. november 2026 kl. 22.58 norsk tid**.
-- Klokken 23.30 norsk tid er **tidligste varslede tidspunkt for avstemninger**, ikke en garanti for akkurat denne saken.
-- Massie har lagt fram åtte riksrettsanklager. Hegseth avviser dem. Trump og Vance har gitt ham støtte. En anklage er ikke en avgjørelse.
-- Saken forklarer konstitusjonell prosedyre, viser kilder, og påstår ikke at riksrett eller avsettelse er vedtatt.
-- Ingen permanente House-stemmetall er registrert i artikkelen, siden dette ikke fantes ved siste faktakontroll.
-- Etter prosedyreavstemningen må nyhetssaken **oppdateres**, med permanent House-votering og presisering av hva representantene faktisk besluttet.
+- Representantenes hus stemte **211 mot 204** for å sende Massies riksrettsforslag til **justiskomiteen**.
+- Det offisielle saksnummeret er **H. Res. 1655**, avstemningsnummer **Roll Call 317**.
+- Den offentlige møteoversikten viste «pending» ved vår kontroll; stemmetallene er dokumentert av **CBS News og The Guardian**, ikke direkte fra ferdig publisert House-roll-call.
+- Det ble ikke stemt over selve riksrettsanklagene. Hegseth ble ikke stilt for riksrett eller avsatt. Dette er heller ingen frifinnelse for anklagene.
+- Hegseths tilsvar og Massies åtte anklager er fortsatt uttrykkelig tilskrevet sine avsendere.
 
-Kilder: [Massies kunngjøring](https://massie.house.gov/news/documentsingle.aspx?DocumentID=395863) · [Republikanernes dagsorden](https://repcloakroom.house.gov/) · [House Clerk, stemmeliste](https://clerk.house.gov/Votes) · [AP, 10. november](https://apnews.com/article/87a78193502f716e6fb8eee5aef06ac0) · [Reuters, 10. november](https://www.reuters.com/world/pentagon-chief-hegseth-calls-moves-impeach-him-farce-that-will-fail-2026-11-10/).
+Kilder: [Clerk of the House, møteprotokoll](https://clerk.house.gov/FloorSummary/ViewFloorActions) · [CBS News, 10. november 2026](https://www.cbsnews.com/news/massie-hegseth-impeachment/) · [The Guardian, 10. november 2026](https://www.theguardian.com/us-news/live/2026/nov/10/donald-trump-pete-hegseth-thomas-massie-republicans-iran-war-impeachment-midterms-latest-news-updates) · [Massies opprinnelige forslag](https://massie.house.gov/news/documentsingle.aspx?DocumentID=395863)
 
-## Teknisk bildekontroll
+## Kontroll av publiseringen
 
-- Eksakt WebP-fil: `Bilder/Artikler/2026-11-10-massie-hegseth.webp`, 1600 × 900.
-- SHA-256: `7ea0a8736f9b2d8dabf777a91d37003fb2d38f3cf4d5afbd4e04b11408fd093e`.
-- Symbolsk KI-assistert, håndmalt portrettmontasje. Ikke fotografi av en reell høring, et møte eller et faktisk rettslig utfall.
-- Artikkelen har bildetekst, alt, `og:image`, `twitter:image`, kanonisk lenke, datolinje og kildeankre.
-
-## Publiseringsavgjørelse
-
-Brukerens «Fullfør» 10. november 2026 tolkes som klarsignal til å publisere **den tidfestede før-votering-forklaringen**. Sluttkontrollene kjøres på PR-en før merge. At et resultat ennå ikke kan verifiseres er **ikke en sperre for korrekt tidsfestet bakgrunnsjournalistikk**, men et krav om oppfølging så snart stemmetall publiseres.
-
-**Ved oppfølging:** Bevar publiseringsdatoen som opprinnelig dato, marker en ny `article:modified_time`, oppdater tekst og forsidekort og link til Clerk of the House.
+- Opprinnelig publiseringsdato **10. november** beholdes; `article:modified_time` settes til **11. november**.
+- Artikkeltittel, ingress, statusnotis, prosedyreresultat, forsidekort og metadata oppdateres sammen.
+- Originalt WebP-bilde med KI-merking beholdes.
+- CI-test sikrer korrekt stemmetall, sak, roll-call-nummer og ingen uriktig påstand om avsettelse.

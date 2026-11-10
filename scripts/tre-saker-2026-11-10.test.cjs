@@ -87,9 +87,14 @@ for (const subject of subjects) {
   });
 }
 
-test("Hegseth og datasenterforslaget merkes som uavgjort", () => {
+test("Hegseth-resultatet og datasenterforslagets status er presise", () => {
   const h = readText(subjects[1].article);
-  assert.match(h, /anklagene er ikke avgjort|anklagene er ikke avgjorte|anklagene er ikke bevist/i);
+  assert.match(h, /211(?:–|-)204|211 mot 204/i);
+  assert.match(h, /H\. Res\. 1655/);
+  assert.match(h, /Roll Call 317/);
+  assert.match(h, /justiskomiteen/i);
+  assert.match(h, /Hegseth ble ikke stilt for riksrett/i);
+  assert.match(h, /article:modified_time" content="2026-11-11"/);
   assert.doesNotMatch(h, /Hegseth er (avsatt|dømt|felt)/i);
   const d = readText(subjects[0].article);
   assert.match(d, /forslaget er ikke vedtatt|ikke vedtatte regler/i);
