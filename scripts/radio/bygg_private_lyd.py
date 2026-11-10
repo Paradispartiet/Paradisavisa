@@ -25,7 +25,7 @@ from generer_lydpilot import (
 )
 from planlegg_lyd import (
     MODEL_REVISION, SYNTHESIS_PROFILE, bygg_forslag,
-    kontroller_kilde, streng_dato,
+    kontroller_kilde, streng_dato, oslo_dato,
 )
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
@@ -243,6 +243,9 @@ def main() -> None:
     source = load_json(args.source)
     policy = load_json(args.policy)
     lock = load_json(args.lock)
+    # En lagret artifakt fra i går må ikke brukes til å lage dagens sending.
+    if candidate.get("asOfOsloDate") != oslo_dato().isoformat():
+        raise SystemExit("Kandidatlisten har feil norsk dato; bygg fersk lydplan først")
     selected, _ = kontrollert_plan(candidate, source, policy, lock)
     cached, missing = classify(selected, args.cache, lock)
 
