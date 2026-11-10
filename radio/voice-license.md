@@ -11,6 +11,25 @@
 - [MODEL_CARD](https://huggingface.co/rhasspy/piper-voices/blob/main/no/no_NO/talesyntese/medium/MODEL_CARD) oppgir **CC0 for treningsdatasettet** (Språkbanken), og at modellen er finjustert fra engelsk lessac-medium.
 - Repositoriet rhasspy/piper-voices har overordnet MIT-merke, men modellkortet har ikke en tydelig, separat lisens for **akkurat de norske modellvektene**. Datasetlisens, motorlisens og lisens for modellvekter er forskjellige forhold.
 
+## Kvalitetsrunde 2 – tilbakemelding og tiltak (2026-11-10)
+
+Den første teknisk gyldige Piper-prøven ble beskrevet som «litt hakkete men ok».
+Det er en **foreløpig brukerobservasjon, ikke godkjenning av lydkvaliteten**.
+Volum-/signalkontroll for den første sportprøven viste ca. -16,4 LUFS og -1,8 dBTP,
+men utelukker ikke unaturlig rytme og prosodiske avbrudd.
+
+Denne runden tester **én konservativ forbedringsprofil** uten å endre tekstfakta:
+- Piper Python API, lengdeskala 1,08 (litt langsommere enn originalen)
+- noise_scale 0,55 og noise_w_scale 0,65 (lavere variasjon)
+- 0,22 sekunders setningspauser direkte i PCM uten klipping eller resampling mellom setninger
+- MP3 64 kbps mono ved 22 050 Hz fra original WAV; loudnorm -16 LUFS / -1,5 dBTP
+- helt fast modellrevisjon `e7229f7d33a10e145e109b886d661984201ac3c4`,
+  samt SHA-256-avvikskontroll av modell, konfigurasjon og MODEL_CARD
+
+**Sammenlign med første prøve** og evaluer særlig flyt, navn/årstall og om
+setningspausene høres naturlige ut. Maskinell godkjenning er ikke en lyttegodkjenning.
+Ingen gammel eller ny lyd kan publiseres før rettighetene og prøvelyttingen er godkjent.
+
 ## Beslutningsport
 
 - [x] Kilden og modellkortet er identifisert.
