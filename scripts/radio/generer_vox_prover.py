@@ -19,6 +19,7 @@ from bygg_private_lyd import mp3_info
 
 MODEL_REPO = "rasmusjs/nb_NO-vox-medium"
 MODEL_NAME = "nb_NO-vox-medium"
+LOCK_PATH = ROOT / "radio/vox-model-lock.json"
 PROFILES = {
     "normal": {"lengthScale": 1.0, "noiseScale": 0.55,
                "noiseWScale": 0.65, "sentencePauseSeconds": 0.0},
@@ -27,9 +28,34 @@ PROFILES = {
 }
 
 
-def check_model(root: pathlib.Path, commit_sha: str) -> tuple[pathlib.Path, dict]:
-    if not re.fullmatch(r"[0-9a-f]{40}", commit_sha):
-        raise ValueError("Modellen er ikke låst til en eksakt kildecommit")
+def verified_lock(lock: dict) -> dict:
+    """Fail closed: bare nøyaktig modell/revisjon og PENDING rettigheter."""
+    names = {MODEL_NAME + ".onnx", MODEL_NAME + ".onnx.json", "README.md"}
+    if (not isinstance(lock, dict) or lock.get("schemaVersion") != 1
+            or lock.get("model") != MODEL_NAME
+            or lock.get("repository") != MODEL_REPO
+            or lock.get("engineVersion") != "1.8.0"
+            or lock.get("rightsStatus") != "PENDING"
+            or lock.get("editorialStatus") != "FIRST_LISTEN_POSITIVE_NOT_FINAL"
+            or lock.get("publicAudioEnabled") is not False
+            or not isinstance(lock.get("revision"), str)
+            or not re.fullmatch(r"[a-f0-9]{40}", lock["revision"])
+            or not isinstance(lock.get("files"), dict)
+            or set(lock["files"]) != names
+            or not all(isinstance(v, str) and re.fullmatch(r"[a-f0-9]{64}", v)
+                       for v in lock["files"].values())):
+        raise ValueError("Stemmelåsen er ufullstendig eller tillater ikke privat prøveproduksjon")
+    return lock
+
+
+def load_lock(path: pathlib.Path = LOCK_PATH) -> dict:
+    return verified_lock(json.loads(path.read_text(encoding="utf-8")))
+
+
+def check_model(root: pathlib.Path, commit_sha: str, lock: dict | None = None) -> tuple[pathlib.Path, dict]:
+    lock = verified_lock(lock if lock is not None else load_lock())
+    if commit_sha != lock["revision"]:
+        raise ValueError("Modellrevisjonen avviker fra godkjent privat stemmelås")
     model = root / (MODEL_NAME + ".onnx")
     config = root / (MODEL_NAME + ".onnx.json")
     readme = root / "README.md"
@@ -42,12 +68,17 @@ def check_model(root: pathlib.Path, commit_sha: str) -> tuple[pathlib.Path, dict
     card = readme.read_text(encoding="utf-8")
     if "CC0" not in card or "VoxCPM2" not in card or "talesyntese" not in card.lower():
         raise ValueError("Modellkortet mangler erklært lisens eller modellhistorikk")
+    actual_hashes = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+                     for p in (model, config, readme)}
+    for name, expected in lock["files"].items():
+        if actual_hashes[name] != expected:
+            raise ValueError("Vox-filen avviker fra prøvelyttet versjon: " + name)
     provenance = {
         "model": MODEL_NAME,
         "repo": MODEL_REPO,
         "revision": commit_sha,
-        "fileSha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
-                       for p in (model, config, readme)},
+        "fileSha256": actual_hashes,
+        "modelLock": "radio/vox-model-lock.json",
         "claimedWeightLicense": "CC0-1.0 (utgiverens modellkort)",
         "baseRightsStatus": "UNRESOLVED_TALESYNTESE_LINEAGE",
         "editorialQualityStatus": "UNREVIEWED",
