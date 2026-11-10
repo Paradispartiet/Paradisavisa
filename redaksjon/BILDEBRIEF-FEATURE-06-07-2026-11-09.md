@@ -29,7 +29,7 @@
 - Alt: «Illustrasjon av teknisk personell ved serverrack i en nordisk datasal.»
 - Bildetekst: «KI-assistert redaksjonell illustrasjon av digital infrastruktur. Viser ikke et konkret nordisk-baltisk prosjekt.»
 
-## 07 Nordisk digital suverenitet – sekundærbilde (venter)
+## 07 Nordisk digital suverenitet – sekundærbilde (ny bildekandidat 10. november, ennå ikke i GitHub)
 - Symbolmettet, sammenhengende redaksjonell fotomontasje som viser innbyggernes offentlige tjenester, dokumenter, kommunikasjon, servere og digitale forbindelser – med visuelle tegn på både avhengighet og mulig kontroll.
 - Må ikke forveksles med en faktisk datasvikt, et cyberangrep eller eksisterende nordisk offentlig system. Ingen generert overskrift eller tekst på bildet.
 
@@ -55,3 +55,16 @@ Begge originale WebP-filer er kontrollert, og Git-blob-SHA-1 fra opplastingen st
 GitHub-banene: `Bilder/Artikler/feature06-bankene-hovedbilde-2026.webp`, `Bilder/Artikler/feature06-bankene-sekundaerillustrasjon-2026.webp` og `Bilder/Artikler/feature07-nordisk-digital-suverenitet-hovedbilde-2026.webp`. HTML-forhåndsvisningene viser de tilsvarende originale bildefilene.
 
 Et bildes digitale kontrollsum beviser filidentitet, **ikke** at bildet er redaksjonelt godkjent. Det skal ikke brukes et SVG- eller nettsidemockup-bilde som erstatning.
+
+
+## Nytt sekundærbilde til Feature 07 – identitet og kontroll
+
+- **Dato:** 10. november 2026.
+- **Faktisk rasterbilde:** `feature07-nordisk-digital-suverenitet-sekundaerillustrasjon-2026.webp`, 1600 × 900, 252 212 byte.
+- **SHA-256:** `7f7a0a7a6cfd04df3ae59549a1a301738e447ab82af623347410f505d0f2467b`
+- **Git-blob SHA-1:** `603e2707d1905ef9a3c9bcbe9701fa028e1f6212`
+- **Etikk:** Konstruert, KI-assistert fotorealistisk analyseillustrasjon av tekniker, sjøfiberkabel, datasenterlandskap og offentlige tjenester. Ingen virkelig institusjon eller kabel er avbildet og ingen utbygging framstilles som et vedtatt prosjekt.
+- **Foreslått filbane når selve filen er overført:** `Bilder/Artikler/feature07-nordisk-digital-suverenitet-sekundaerillustrasjon-2026.webp` og samme fil i `utkast/2026-11-09/bilder/`.
+- **Alt-tekst:** «KI-assistert, symbolsk illustrasjon av tekniker ved serverrack, en undersjøisk datakabel og nordiske offentlige tjenester i vinterlandskap.»
+- **Bildetekst:** «KI-assistert redaksjonell analyseillustrasjon av digital infrastruktur og samfunnets avhengighet av den. Motivet er konstruert og viser ikke et faktisk nordisk prosjekt.»
+- **Sperre:** Dette bildet er klargjort i arbeidsmiljøet, men er **ikke lagt i GitHub**; artikkel- og forhåndsvisningsfilene skal ikke få en bildekobling før en verifisert WebP-fil er overført. Bruk nøyaktig denne filen, ikke en avissidemockup eller SVG.
