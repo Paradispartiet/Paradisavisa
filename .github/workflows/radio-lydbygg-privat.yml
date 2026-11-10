@@ -55,18 +55,19 @@ jobs:
           print("Ingen offentlige lydfiler frigitt:", plan["count"], "aktuelle notiser")
           PY
 
-      - name: Installer verktøy for å kontrollere MP3
+      - name: Installer MP3-inspektør og ferdig FFmpeg-binær uten apt
         run: |
-          # Ubuntu-runner har som regel oppdatert pakkeliste fra før.
-          # En ubegrenset apt-get update kan ellers blokkere hele lydjobben.
-          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
-            sudo timeout 120s apt-get install -qq -y ffmpeg || {
-              sudo timeout 75s apt-get update -qq -o Acquire::Retries=0 -o Acquire::http::Timeout=25
-              sudo timeout 120s apt-get install -qq -y ffmpeg
-            }
-          fi
-          ffmpeg -version | head -1
-          ffprobe -version | head -1
+          python -m pip install --disable-pip-version-check "imageio-ffmpeg==0.6.0" "mutagen==1.47.0"
+          python - <<'PY'
+          import imageio_ffmpeg
+          import os
+          from pathlib import Path
+          exe = Path(imageio_ffmpeg.get_ffmpeg_exe())
+          assert exe.is_file()
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as env:
+              env.write("RADIO_FFMPEG_EXECUTABLE=" + str(exe) + "\n")
+          print("FFmpeg fra låst Python-wheel:", exe.name)
+          PY
 
       - name: Gjenbruk tidligere PRIVAT lyd fra samme kilde/profil
         id: radioCache
