@@ -31,6 +31,8 @@ jobs:
         run: node --test scripts/notiser.test.cjs
       - name: Test privat MP3-spiller, Media Session og utløpte nyheter
         run: node --test scripts/radio/mp3_preview_player.test.cjs
+      - name: Test at HTTPS-mediesjekk bare bruker original lyd
+        run: node --test scripts/radio/https_media_probe.test.cjs
       - name: Test intern norsk lydpilot uten nettverk eller stemmemodell
         run: python3 -m unittest discover -s scripts/radio -p "test_*.py" -v
       - name: Test redaksjonelle lenke- og notatsperrer
