@@ -43,7 +43,7 @@ Alle mottakeradressene ble verifisert mot offisielle pressekontaktsider. **Alle 
 
 ## Konkret offentlig fagdokumentasjon til Feature 07
 
-*Skiftende skydekke*, presentert av Digitaliseringsdirektoratet og Skates arbeidsgruppe i august–september 2026, gir et praktisk motstykke til ministererklæringen: en virksomhet må kunne ha beredskap for tap av skytjenester og planlegge for dataeksport, portabilitet, kontrakter og mulige alternativer. Omtalen er nå innarbeidet i teknologisaken sammen med to Digdir-kilder. **Rapportens anbefalinger er ikke et regjeringsvedtak eller en ny felles plattform.** https://www.digdir.no/digitalisering-og-samordning/skiftende-skydekke/8337 / https://www.digdir.no/digitalisering-og-samordning/ny-rapport-dette-bor-en-god-exit-strategi-fra-skytjenester-inneholde/8428
+*Skiftende skydekke*, presentert av Digitaliseringsdirektoratet og Skates arbeidsgruppe høsten 2026, gir et praktisk motstykke til ministererklæringen: en virksomhet må kunne ha beredskap for tap av skytjenester og planlegge for dataeksport, portabilitet, kontrakter og mulige alternativer. Omtalen er nå innarbeidet i teknologisaken sammen med to Digdir-kilder. **Rapportens anbefalinger er ikke et regjeringsvedtak eller en ny felles plattform.** https://www.digdir.no/digitalisering-og-samordning/skiftende-skydekke/8337 / https://www.digdir.no/digitalisering-og-samordning/ny-rapport-dette-bor-en-god-exit-strategi-fra-skytjenester-inneholde/8428
 
 ## Før redaktør kan godkjenne publisering
 
