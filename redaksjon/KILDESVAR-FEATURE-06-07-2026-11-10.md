@@ -41,7 +41,7 @@ Et eget oppfølgingsutkast til Forbrukerrådet er opprettet i Gmail, **ikke send
 
 ## Selvstendig norsk fagkilde til Feature 07 – 10. november
 
-Digdirs rapport *Skiftende skydekke* (Skate-arbeidsgruppen, 18. august 2026) og Digdirs oppsummering 30. september er brukt til å gjøre teknologisaken mer praktisk. Kildene beskriver risiko ved leverandørbinding, behovet for en testbar exit-strategi, portabilitet, åpne standarder og beredskap ved bortfall av skytjenester. Rapporten omtaler elleve punkter for exit-strategier, men dette er **anbefalinger fra en arbeidsgruppe**, ikke vedtatte krav eller etablering av en ny nordisk skytjeneste.
+Digdirs rapport *Skiftende skydekke* (Skate-arbeidsgruppen, høsten 2026) og Digdirs oppsummering 30. september er brukt til å gjøre teknologisaken mer praktisk. Kildene beskriver risiko ved leverandørbinding, behovet for en testbar exit-strategi, portabilitet, åpne standarder og beredskap ved bortfall av skytjenester. Rapporten omtaler elleve punkter for exit-strategier, men dette er **anbefalinger fra en arbeidsgruppe**, ikke vedtatte krav eller etablering av en ny nordisk skytjeneste.
 
 - Rapport: https://www.digdir.no/digitalisering-og-samordning/skiftende-skydekke/8337
 - Digdirs oppsummering: https://www.digdir.no/digitalisering-og-samordning/ny-rapport-dette-bor-en-god-exit-strategi-fra-skytjenester-inneholde/8428
