@@ -89,7 +89,7 @@ class PrivateBuildTest(unittest.TestCase):
             def simulated_probe(path):
                 return {"durationSeconds": 9.0, "bytes": path.stat().st_size,
                         "codec": "mp3", "sha256": mod.file_sha256(path)}
-            with mock.patch.object(mod, "lydinfo", side_effect=simulated_probe):
+            with mock.patch.object(mod, "mp3_info", side_effect=simulated_probe):
                 selected, _ = mod.kontrollert_plan(self.candidate, self.source, POLICY, LOCK)
                 hits, missing = mod.classify(selected, cache, LOCK)
                 self.assertEqual((len(hits), len(missing)), (1, 0))
