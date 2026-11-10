@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import hashlib
+import itertools
 import json
 import pathlib
 import re
@@ -121,10 +122,14 @@ RADIO_SENTENCE_PAUSE_SECONDS = 0.22
 
 def skriv_chunker_til_wave(wav: pathlib.Path, chunks, pause_seconds: float = RADIO_SENTENCE_PAUSE_SECONDS) -> int:
     """Sammenstill setninger i original samplerate og legg inn en kort, eksakt pause."""
+    iterator = iter(chunks)
+    first = next(iterator, None)
+    if first is None:
+        raise ValueError("Piper leverte ingen lyd")
     count = 0
     lydformat = None
     with wave.open(str(wav), "wb") as file:
-        for chunk in chunks:
+        for chunk in itertools.chain((first,), iterator):
             fmt = (int(chunk.sample_rate), int(chunk.sample_width), int(chunk.sample_channels))
             if lydformat is None:
                 lydformat = fmt
