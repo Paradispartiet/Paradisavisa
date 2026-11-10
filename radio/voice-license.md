@@ -30,6 +30,26 @@ Denne runden tester **én konservativ forbedringsprofil** uten å endre tekstfak
 setningspausene høres naturlige ut. Maskinell godkjenning er ikke en lyttegodkjenning.
 Ingen gammel eller ny lyd kan publiseres før rettighetene og prøvelyttingen er godkjent.
 
+## Oppdatert rettighetsfunn – 10. november 2026
+
+Den oppdaterte offisielle [Piper-veiledningen om stemmelisenser](https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/LICENSING.md)
+presiserer at Piper-prosjektet **ikke gir noen lisens til stemmemodellene**. Lisenslinjen i et
+MODEL_CARD gjelder modellens **eget datasett**, ikke en eventuell basestemme. Den norske
+talesyntese-modellen er basert på engelsk **lessac-medium**. Piper skriver at Lessac Blizzard
+2013-datasettet begrenser bruk av syntetisk tale til utforskning/forskning og utelukker
+kommersiell bruk. Dermed er tidligere CC0-merking **ikke tilstrekkelig** for den aktuelle
+modellen. Den er fortsatt uaktuell som godkjent offentlig radiostemme uten særskilt rettighetsgrunnlag.
+
+Pipers nye [oversikt over kommersielt brukbare stemmekjeder](https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/COMMERCIAL_USE.md)
+lister **no_NO-nvcc-medium** blant norsk-språklige stemmer med CC0-kjede.
+Dette er en lovende **alternativ kandidat**, ikke ennå redaksjonelt eller teknisk godkjent.
+Den har ti talere. Vi må prøve ut identifiserbar stemme/uttale og verifisere nøyaktig
+MODEL_CARD, modellrevisjon og filhasher for den kopien vi faktisk bruker.
+
+**Konklusjon:** PR D2 kan fortsette som upublisert byggtest; offentlig MP3 og
+modellswitch krever separat kvalitetstest og egen publiseringsbeslutning. Ikke endre
+release-gate.json som snarvei.
+
 ## Beslutningsport
 
 - [x] Kilden og modellkortet er identifisert.

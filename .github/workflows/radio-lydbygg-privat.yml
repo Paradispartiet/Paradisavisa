@@ -1,0 +1,160 @@
+name: Paradisradioen – privat inkrementelt MP3-bygg
+
+on:
+  pull_request:
+    paths:
+      - "scripts/radio/**"
+      - "radio/model-lock.json"
+      - "radio/release-gate.json"
+      - ".github/workflows/radio-lydbygg-privat.yml"
+  push:
+    branches: [main]
+    paths:
+      - "notiser.json"
+      - "scripts/radio/bygg_private_lyd.py"
+      - "radio/model-lock.json"
+      - ".github/workflows/radio-lydbygg-privat.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: paradisradio-private-mp3-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  privat-lyd:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Hent avisens godkjente kildefiler
+        uses: actions/checkout@v4
+
+      - name: Sett opp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Test filtrering, rettigheter og publiseringssperre
+        run: python -m unittest discover -s scripts/radio -p "test_*.py" -v
+
+      - name: Lag en privat kildekontrollert lydplan
+        run: |
+          python scripts/radio/planlegg_lyd.py --out radio-kandidat/manifest.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          policy = json.loads(Path("radio/release-gate.json").read_text(encoding="utf-8"))
+          assert policy["publicAudioEnabled"] is False
+          assert policy["modelRightsStatus"] == "PENDING"
+          assert policy["editorialAudioStatus"] == "PENDING"
+          plan = json.loads(Path("radio-kandidat/manifest.json").read_text(encoding="utf-8"))
+          assert plan["publicPlayable"] is False
+          assert all("audioUrl" not in row for row in plan["items"])
+          print("Ingen offentlige lydfiler frigitt:", plan["count"], "aktuelle notiser")
+          PY
+
+      - name: Installer MP3-inspektør og ferdig FFmpeg-binær uten apt
+        run: |
+          python -m pip install --disable-pip-version-check "imageio-ffmpeg==0.6.0" "mutagen==1.47.0"
+          python - <<'PY'
+          import imageio_ffmpeg
+          import os
+          from pathlib import Path
+          exe = Path(imageio_ffmpeg.get_ffmpeg_exe())
+          assert exe.is_file()
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as env:
+              env.write("RADIO_FFMPEG_EXECUTABLE=" + str(exe) + "\n")
+          print("FFmpeg fra låst Python-wheel:", exe.name)
+          PY
+
+      - name: Gjenbruk tidligere PRIVAT lyd fra samme kilde/profil
+        id: radioCache
+        uses: actions/cache/restore@v4
+        with:
+          path: radio-cache
+          key: paradisradio-private-${{ runner.os }}-v2-${{ hashFiles('notiser.json', 'radio/model-lock.json') }}
+          restore-keys: |
+            paradisradio-private-${{ runner.os }}-v2-
+
+      - name: Finn nye eller endrede notiser
+        id: inspect
+        run: |
+          python scripts/radio/bygg_private_lyd.py inspect --candidate radio-kandidat/manifest.json > radio-inspect.json
+          cat radio-inspect.json
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          result = json.loads(Path("radio-inspect.json").read_text(encoding="utf-8"))
+          assert result["publicPlayable"] is False
+          missing = result["missing"]
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as file:
+              file.write(f"missing={missing}\n")
+          PY
+
+      - name: Installer låst Piper-motor når det faktisk mangler lyd
+        if: steps.inspect.outputs.missing != '0'
+        run: python -m pip install --disable-pip-version-check "piper-tts==1.8.0" "huggingface_hub==0.36.0"
+
+      - name: Hent og verifiser nøyaktig norsk modell
+        if: steps.inspect.outputs.missing != '0'
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import re
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          lock = json.loads(Path("radio/model-lock.json").read_text(encoding="utf-8"))
+          assert lock["rightsStatus"] == "PENDING"
+          for filename, wanted in lock["files"].items():
+              path = Path(hf_hub_download(repo_id=lock["sourceRepository"],
+                       filename=filename, revision=lock["revision"], local_dir="pilot-modell"))
+              actual = hashlib.sha256(path.read_bytes()).hexdigest()
+              if actual != wanted:
+                  raise RuntimeError("Stemmemodellen avviker fra godkjent teknisk hash: " + filename)
+          card = Path("pilot-modell/no/no_NO/talesyntese/medium/MODEL_CARD")
+          if not re.search(r"License:\s*CC0\b", card.read_text(encoding="utf-8"), re.I):
+              raise RuntimeError("Endret lisensinformasjon i modellkortet")
+          print("Låst modellrevisjon og alle tre filhasher kontrollert")
+          PY
+
+      - name: Generer bare manglende private MP3-filer og kontroller leveransen
+        run: |
+          python scripts/radio/bygg_private_lyd.py render \
+            --candidate radio-kandidat/manifest.json \
+            --output radio-private-output \
+            --cache radio-cache \
+            --model-root pilot-modell
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path("radio-private-output/manifest.json").read_text(encoding="utf-8"))
+          assert m["privateCandidateOnly"] is True
+          assert m["publicPlayable"] is False
+          assert m["status"] == "UNPUBLISHED_INTERNAL_AUDIO_ONLY"
+          assert "audioUrl" not in str(m)
+          assert m["count"] == m["reused"] + m["rendered"]
+          assert len(list(Path("radio-private-output/lyd").glob("*.mp3"))) == m["count"]
+          print("Kun upubliserte MP3-kandidater:", m["count"],
+                "gjenbrukt:", m["reused"], "nye:", m["rendered"])
+          PY
+
+      - name: Mellomlagre lyd kun fra dette private bygget
+        if: steps.radioCache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: radio-cache
+          key: paradisradio-private-${{ runner.os }}-v2-${{ hashFiles('notiser.json', 'radio/model-lock.json') }}
+
+      - name: Arkiver kun privat kandidat – aldri GitHub Pages
+        uses: actions/upload-artifact@v4
+        with:
+          name: paradisradio-upublisert-lyd-d2
+          path: |
+            radio-private-output/manifest.json
+            radio-private-output/lyd/*.mp3
+          if-no-files-found: error
+          retention-days: 7
