@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "scripts/radio/generer_vox_prover.py"
+      - "radio/vox-model-lock.json"
       - "scripts/radio/test_vox_pilot.py"
       - "scripts/radio/lag_lyttepanel.py"
       - "scripts/radio/test_lag_lyttepanel.py"
@@ -53,23 +54,31 @@ jobs:
       - name: Lås og hent norsk Vox-modell til intern prøvelytting
         run: |
           python - <<'PY'
+          import hashlib
           import json
           import os
+          import sys
           from pathlib import Path
-          from huggingface_hub import HfApi, hf_hub_download
-          repo = "rasmusjs/nb_NO-vox-medium"
-          sha = HfApi().model_info(repo_id=repo).sha
-          assert sha and len(sha) == 40, "Mangler eksakt modellrevisjon"
-          names = ["nb_NO-vox-medium.onnx", "nb_NO-vox-medium.onnx.json", "README.md"]
-          for name in names:
+          from huggingface_hub import hf_hub_download
+          sys.path.insert(0, "scripts/radio")
+          from generer_vox_prover import load_lock
+          lock = load_lock()
+          gate = json.loads(Path("radio/release-gate.json").read_text(encoding="utf-8"))
+          if (gate.get("publicAudioEnabled") is not False
+                  or gate.get("modelRightsStatus") != "PENDING"
+                  or gate.get("editorialAudioStatus") != "PENDING"):
+              raise RuntimeError("Privat Vox-jobb krever sperret offentlig lydport")
+          for name, wanted in lock["files"].items():
               path = Path(hf_hub_download(
-                  repo_id=repo, filename=name, revision=sha, local_dir="vox-modell"
+                  repo_id=lock["repository"], filename=name,
+                  revision=lock["revision"], local_dir="vox-modell"
               ))
-              assert path.is_file() and path.stat().st_size
-              print(name, path.stat().st_size, "bytes")
+              if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != wanted:
+                  raise RuntimeError("Nedlastet Vox-stemme avviker fra prøvelyttet fil: " + name)
+              print(name, path.stat().st_size, "bytes – SHA-256 OK")
           with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as out:
-              out.write("VOX_MODEL_REVISION=" + sha + "\n")
-          print("Modellrevisjon:", sha)
+              out.write("VOX_MODEL_REVISION=" + lock["revision"] + "\n")
+          print("Låst modellrevisjon:", lock["revision"])
           PY
 
       - name: Generer fire private nyhetsopplesninger med to flytprofiler
