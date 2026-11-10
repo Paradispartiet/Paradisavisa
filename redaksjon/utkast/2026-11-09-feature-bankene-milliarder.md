@@ -49,9 +49,9 @@ Det samme bankmarkedet har flere parter: låntakeren som ønsker lavere rente, s
 
 Det finnes likevel et konkret spørsmål å undersøke: **Hvorfor må en trofast kunde ofte selv be om en bedre rente for å få del i konkurransen?** Og hvor stor del av overskuddet er knyttet til tjenester kundene vanskelig kan velge bort?
 
-Neste skritt for Paradisavisa bør være å sammenligne faktiske, oppdaterte boliglåns- og innskuddspriser, bankenes års- og kvartalsrapporter, utbyttepolitikk og kostnadsstruktur. Vi bør også be flere banker forklare forholdet mellom kapitalbehov, marginer og priser, og la låntakere og sparekunder beskrive dokumenterbare tilbud de har fått.
+Det samlede overskuddet alene sier ikke hvor effektiv konkurransen er. For å vurdere det må vi også se på sammenlignbare boliglåns- og innskuddsvilkår, bankenes kostnader, utlånstap, kapitalbehov og hvor enkelt kundene faktisk kan bytte leverandør. Tallene i denne saken belyser ulike deler av bildet, men gir ikke ett enkelt mål på om hver enkelt kunde betaler en rimelig rente.
 
-Da kan spørsmålet i overskriften få et svar som er mer nyttig enn både jubel over overskuddet og automatisk fordømmelse av det.
+Bankenes milliardresultat er derfor både et tegn på inntjening og et rimelig utgangspunkt for kritiske spørsmål. Det avgjørende er ikke bare hvor mye bankene tjener, men om kundene har reelle valgmuligheter og om lønnsomheten bidrar til et finanssystem som tåler tap.
 
 ## Kilder og dokumentasjon
 

@@ -1,0 +1,51 @@
+name: Engangskontroll av fastlaast GitHub Pages-utrulling
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/pages-unblock-once-20261110.yml"
+
+permissions:
+  contents: read
+  pages: write
+
+concurrency:
+  group: pages-verify-stale-lock-20261110
+  cancel-in-progress: false
+
+jobs:
+  check-pages-deployment:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - name: Kontroller bare konkret gammel deploy fra feilloggen
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BLOCKING_SHA: 60684ae57b1a35f50d982cb87b365b59dd9ab4a3
+        run: |
+          set -euo pipefail
+          endpoint="repos/${GITHUB_REPOSITORY}/pages/deployments/${BLOCKING_SHA}"
+          status=$(gh api "$endpoint" --jq '.status')
+          echo "Pages-status for tidligere deploy ${BLOCKING_SHA}: ${status}"
+          case "$status" in
+            deployment_in_progress|syncing_files|finished_file_sync|updating_pages|purging_cdn|queued|pending)
+              echo "Eldre deploy er fremdeles aktiv. Forsoker trygg avbrytelse av kun denne ID-en."
+              gh api --method POST "$endpoint/cancel" >/dev/null
+              echo "Avbrytelseskall akseptert. Ingen andre deployer endret."
+              ;;
+            succeed|success|deployment_cancelled|cancelled|failed|error|inactive)
+              echo "Tidligere deploy er allerede avsluttet, ingen avbrytelse foretatt."
+              ;;
+            *)
+              echo "Ukjent status – avstaar fra enhver endring: ${status}"
+              exit 1
+              ;;
+          esac
+      - name: Les Pages-status pa nytt uten endring
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BLOCKING_SHA: 60684ae57b1a35f50d982cb87b365b59dd9ab4a3
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/pages/deployments/${BLOCKING_SHA}" --jq '.status' || true

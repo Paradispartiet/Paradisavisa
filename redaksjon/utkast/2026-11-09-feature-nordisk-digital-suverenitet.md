@@ -57,7 +57,9 @@ Nordisk-baltisk samarbeid kan gi bedre krav til innkjøp, sikkerhet og åpne gre
 
 Det finnes allerede mer konkrete forslag. I **juni 2026** la **Tekna, NITO og Forbrukerrådet** fram anbefalinger om digital suverenitet i offentlig sektor. De ba blant annet om at offentlige anskaffelser legger større vekt på **åpen kildekode, åpne standarder, interoperabilitet og muligheten til å flytte data**. Det er organisasjonenes politiske forslag, ikke vedtatt norsk innkjøpspolitikk. Forbrukerrådets rapport *Breaking Free* fra februar argumenterte også for at offentlig innkjøpsmakt kan brukes til å støtte reelle alternativer til de største teknologiplattformene.
 
-Samtidig er ikke alternativene kostnadsfrie. En offentlig styrt løsning må ha et ansvarlig fagmiljø, oppdateringer, drift, sikkerhetsrevisjon, beredskap og tydelig ansvarsfordeling. Paradisavisa bør derfor prøve de politiske ambisjonene mot en konkret innkjøpssak – med sammenlignbare pris-, drifts- og sikkerhetsdata – før vi konkluderer om hva som er best.
+Det finnes også et nyere norsk forslag til felles praksis. **28. oktober 2026** la Digitaliseringsdirektoratet fram et **utkast til nasjonal veileder for åpen kildekode i offentlig sektor**. Forslaget sier at programvare utviklet for offentlige midler som hovedregel bør deles under åpen lisens når det er forsvarlig, og at offentlige virksomheter bør kunne gjenbruke og bidra til åpne prosjekter. Digdir ber om innspill **innen 8. desember 2026**. Dette er **ikke** en vedtatt lovregel eller et ferdig system. Digdir peker samtidig på behov for sikkerhet, personvern, vedlikehold og finansiering av åpne komponenter.
+
+Samtidig er ikke alternativene kostnadsfrie. En offentlig styrt løsning må ha et ansvarlig fagmiljø, oppdateringer, drift, sikkerhetsrevisjon, beredskap og tydelig ansvarsfordeling. Ambisjonene må derfor vurderes mot faktiske offentlige innkjøp, med sammenlignbare data om pris, drift, sikkerhet og muligheten til å bytte leverandør. En løsning blir ikke automatisk bedre fordi den er nordisk eller offentlig eid.
 
 ## Et sikkerhetsspørsmål – ikke bare et markedsspørsmål
 
@@ -73,7 +75,7 @@ Den nordisk-baltiske erklæringen har som ambisjon å gjøre regionen mer digita
 
 På spørsmål fra Paradisavisa om hvilke fellesprosjekter som faktisk er besluttet, hvilke budsjetter og frister som gjelder, og hvordan offentlige alternativer kan innføres, svarte Digitaliserings- og forvaltningsdepartementet 10. november at departementet ikke hadde noen kommentar. Det er ikke en avvisning av ministererklæringen, men innebærer at departementet ikke har gitt avisen nye konkrete svar på gjennomføringen.
 
-For Paradisavisa er den mest interessante oppfølgingen konkret: **Hvilket digitalt verktøy kunne nordiske land samarbeide om å levere bedre allerede nå?** Og hvordan skulle vi kunne se om det ble tryggere, rimeligere, mer tilgjengelig og mindre avhengig enn dagens løsninger?
+Det avgjørende spørsmålet er konkret: **Hvilket digitalt verktøy kunne nordiske land samarbeide om å levere bedre allerede nå?** Og hvordan kan resultatet måles etter sikkerhet, kostnader, tilgjengelighet og muligheten til å velge en annen leverandør?
 
 Det er der en stor idé om digital selvstendighet begynner å ligne en tjeneste samfunnet kan bruke.
 
@@ -90,6 +92,9 @@ Det er der en stor idé om digital selvstendighet begynner å ligne en tjeneste 
 
 - **Digitaliseringsdirektoratet, temaside datert 18. august 2026:** Bakgrunn for Skates rapport *Skiftende skydekke*, offentliggjort 30. september – analyse og anbefalinger om reell endringsevne i bruk av skytjenester, leverandørbinding, portabilitet og beredskap. https://www.digdir.no/digitalisering-og-samordning/skiftende-skydekke/8337
 - **Digitaliseringsdirektoratet, 30. september 2026:** Presentasjon av den offentliggjorte rapporten med elleve punkter for gode exit-strategier. Dette er anbefalinger, ikke nye lovkrav. https://www.digdir.no/digitalisering-og-samordning/ny-rapport-dette-bor-en-god-exit-strategi-fra-skytjenester-inneholde/8428
+
+- **Digdir, 28. oktober 2026:** Utkast til veileder om åpen kildekode i offentlig sektor, åpent for innspill til 8. desember. https://www.digdir.no/digitalisering-og-samordning/gi-oss-innspill-hvordan-skal-offentlig-sektor-forholde-seg-til-apen-kildekode/8494
+- **Digdir, 28. oktober 2026:** Forslag om å dele offentlig finansiert programvare åpent når det er forsvarlig. En veiledningsanbefaling, ikke en lovplikt. https://www.digdir.no/digitalisering-og-samordning/apen-kildekode-som-hovedregel/8495
 
 ## Gjenstår før publisering
 

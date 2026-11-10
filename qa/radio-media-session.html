@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#080808">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; media-src blob:; base-uri 'none'; form-action 'none'; connect-src 'none'">
+<title>Paradisradioen – HTTPS-test av mobilens mediekontroller</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#070707;color:#f6f6f6;font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+main{max-width:820px;margin:0 auto;padding:26px 16px 100px}
+h1{font-size:clamp(1.6rem,5vw,2.5rem);line-height:1.14;margin:.35rem 0 1rem}
+h2{font-size:1.18rem;margin:0 0 12px}
+.kicker{color:#ffd600;letter-spacing:.14em;font-size:.82rem;font-weight:800}
+.notice{border-left:4px solid #ffd600;padding:14px 16px;background:#1c1c1c}
+.box{background:#111;border:1px solid #555;border-radius:12px;padding:18px;margin-top:18px}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+.controls button{background:#242424;color:#fff;min-height:48px;border:1px solid #777;border-radius:8px;padding:10px 14px;font:700 .9rem system-ui;cursor:pointer}
+.controls button.primary{color:#070707;background:#ffd600;border-color:#ffd600}
+.controls button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.controls button:disabled{opacity:.4;cursor:not-allowed}
+audio{display:block;width:100%;min-height:48px;margin:14px 0}
+#status{min-height:2.8rem;color:#ffd600;font-weight:700}
+small,.muted{color:#bbb}li{margin-bottom:7px}
+label{font-size:.84rem;color:#d3d3d3}
+textarea{display:block;width:100%;min-height:180px;background:#050505;border:1px solid #777;border-radius:7px;color:#eee;padding:12px;font:12px/1.5 ui-monospace,monospace}
+strong{color:#ffd600}
+</style>
+</head>
+<body>
+<main>
+<p class="kicker">PARADISAVISA · TEKNISK TEST</p>
+<h1>Låseskjerm og mediekontroller</h1>
+<p class="notice">Dette er en <strong>teknisk HTTPS-test med to originale testlyder</strong>,
+ikke nyhetsradio og ikke Vox-stemmen. Ingen artikler, AI-modeller, stemmeprøver eller MP3-filer blir publisert her.</p>
+<section class="box" aria-labelledby="spiller">
+<h2 id="spiller">Én testspiller</h2>
+<p id="now">Genererer to testlyder lokalt …</p>
+<audio id="audio" controls preload="auto" playsinline aria-label="Lokal testlyd"></audio>
+<div class="controls">
+<button id="prev" type="button" disabled>Forrige</button>
+<button id="play" type="button" class="primary" disabled>Spill / fortsett</button>
+<button id="pause" type="button" disabled>Pause</button>
+<button id="next" type="button" disabled>Neste</button>
+<button id="stop" type="button" disabled>Stopp</button>
+</div>
+<p id="status" role="status" aria-live="polite">Ingen automatisk lyd.</p>
+</section>
+<section class="box">
+<h2>Test på iPad</h2>
+<ol>
+<li>Trykk <strong>Spill</strong> og kontroller at testlyden høres.</li>
+<li>Prøv <strong>Pause</strong>, <strong>Spill</strong>, <strong>Neste</strong> og <strong>Forrige</strong>.</li>
+<li>Start lyden på nytt, lås skjermen og sjekk om den fortsetter, og om avspillingskontrollene vises.</li>
+<li>Prøv hodetelefon- eller Bluetooth-knapper og bytt til en annen app.</li>
+<li>Åpne denne siden igjen og les hendelsesloggen nedenfor.</li>
+</ol>
+<p class="muted">Testsporene varer ca. 45 sekunder hver. En lokalt åpnet HTML-fil kan gi andre resultater enn HTTPS. Lyd bak låseskjermen avhenger også av iOS og enheten.</p>
+</section>
+<section class="box">
+<h2>Nettleserstatus</h2>
+<p id="device">Kontrollerer …</p>
+</section>
+<section class="box">
+<h2>Hendelseslogg</h2>
+<p class="muted">Loggen lagres bare på denne siden og sendes ikke til noen server. Du kan kopiere den før du lukker siden.</p>
+<textarea id="log" readonly aria-label="Lokal logg over avspillingen"></textarea>
+<div class="controls"><button id="copy" type="button">Kopier logg</button></div>
+</section>
+<p class="muted">Tilbake til <a href="../paradisradio.html" style="color:#ffd600">Paradisradioen</a>. Offentlig nyhetsopplesning er uendret.</p>
+</main>
+<script>
+"use strict";
+(()=>{
+  const $=id=>document.getElementById(id);
+  const audio=$("audio"),status=$("status"),now=$("now"),log=$("log");
+  const session=navigator.mediaSession||null;
+  const tracks=[],durations=[45,45];
+  let index=0,initialized=false,stopping=false,playRequest=0;
+  const stamp=()=>new Date().toLocaleTimeString("nb-NO");
+  const record=message=>{
+    log.value+=(log.value?"\n":"")+stamp()+" "+message;
+    log.scrollTop=log.scrollHeight;
+  };
+  const report=message=>{status.textContent=message;record(message)};
+  // WAVE-PCM produsert direkte fra original matematisk syntese.
+  // Ingen modell, royalty-musikk, tale, nettverk eller innlastede lydfiler.
+  function makeWav(seconds,variant){
+    const rate=12000,frames=rate*seconds,pcm=new ArrayBuffer(44+frames*2);
+    const view=new DataView(pcm);
+    const word=(at,str)=>{for(let n=0;n<str.length;n++)view.setUint8(at+n,str.charCodeAt(n))};
+    word(0,"RIFF");view.setUint32(4,36+frames*2,true);word(8,"WAVE");
+    word(12,"fmt ");view.setUint32(16,16,true);view.setUint16(20,1,true);
+    view.setUint16(22,1,true);view.setUint32(24,rate,true);
+    view.setUint32(28,rate*2,true);view.setUint16(32,2,true);view.setUint16(34,16,true);
+    word(36,"data");view.setUint32(40,frames*2,true);
+    for(let i=0;i<frames;i++){
+      const t=i/rate,step=t%3.0;
+      const active=step>0.18&&step<2.65;
+      const attack=Math.min(1,Math.max(0,(step-.18)*9));
+      const release=Math.min(1,Math.max(0,(2.65-step)*8));
+      const mod=.85+.15*Math.sin(2*Math.PI*.16*t);
+      const freq=variant===0?392:523.25;
+      const harmonic=Math.sin(2*Math.PI*freq*t)*.76+
+        Math.sin(2*Math.PI*(freq*1.5)*t)*.20;
+      const amp=active?(.085*attack*release*mod*harmonic):0;
+      view.setInt16(44+2*i,Math.max(-32768,Math.min(32767,Math.round(amp*32767))),true);
+    }
+    return new Blob([pcm],{type:"audio/wav"});
+  }
+  const title=()=>index===0?"Testspor 1 · lysere lyd":"Testspor 2 · dypere lyd";
+  const sync=()=>{
+    if(!session)return;
+    try{session.playbackState=stopping||audio.ended?"none":
+      audio.paused?"paused":"playing"}catch(_){}
+  };
+  const metadata=()=>{
+    if(!session||typeof MediaMetadata!=="function")return;
+    try{session.metadata=new MediaMetadata({
+      title:title(),artist:"Paradisavisa",
+      album:"Original teknisk lydtest – ikke nyhetsradio"
+    })}catch(_){}
+  };
+  function select(i,playNow){
+    if(!initialized)return;
+    playRequest+=1;
+    index=(i+tracks.length)%tracks.length;
+    audio.pause();
+    audio.src=tracks[index];
+    audio.load();
+    now.textContent=title()+" · 45 sekunder";
+    metadata();
+    if(playNow)play();
+    else sync();
+  }
+  function play(){
+    if(!initialized){report("Lyd er ikke ferdig laget.");return}
+    stopping=false;
+    const request=++playRequest;
+    try{
+      // Må kalles direkte på brukerhandlingen for å tillate iOS-avspilling.
+      const result=audio.play();
+      sync();
+      report("Spiller "+title());
+      Promise.resolve(result).catch(error=>{
+        if(request===playRequest){
+          sync();report("Avspilling avvist: "+(error?.name||"ukjent feil"))
+        }
+      });
+    }catch(error){sync();report("Lydstart feilet: "+(error?.name||"ukjent feil"))}
+  }
+  function pause(){
+    if(!initialized)return;
+    playRequest+=1;
+    audio.pause();sync();report("Pauset.");
+  }
+  function stop(){
+    if(!initialized)return;
+    stopping=true;playRequest+=1;
+    audio.pause();audio.currentTime=0;sync();
+    report("Stoppet. Trykk Spill for å prøve på nytt.");
+  }
+  const next=()=>{select(index+1,true);record("Neste-spor kontroll")};
+  const prev=()=>{select(index-1,true);record("Forrige-spor kontroll")};
+  for(const [name,fn] of Object.entries({play,pause,stop,next,prev})){
+    $(name).addEventListener("click",fn);
+  }
+  audio.addEventListener("ended",()=>{
+    if(stopping)return;
+    record("Lyd ferdig, forsøker automatisk neste");
+    next();
+  });
+  audio.addEventListener("error",()=>{
+    sync();report("Lydfeil: "+(audio.error?.code||"ukjent"));
+  });
+  audio.addEventListener("play",sync);
+  audio.addEventListener("pause",sync);
+  document.addEventListener("visibilitychange",()=>{
+    record("Side "+(document.hidden?"skjult (mulig bakgrunn/låsing)":"synlig"));
+  });
+  $("copy").addEventListener("click",()=>{
+    log.focus();log.select();
+    try{
+      const ok=document.execCommand("copy");
+      report(ok?"Logg kopiert.":"Kopiering ikke støttet; loggen er markert.");
+    }catch(_){report("Loggen er markert for manuell kopiering.")}
+  });
+  try{
+    for(let i=0;i<durations.length;i++){
+      tracks.push(URL.createObjectURL(makeWav(durations[i],i)));
+    }
+    initialized=true;
+    for(const id of ["prev","play","pause","next","stop"])$(id).disabled=false;
+    select(0,false);
+    report("Klar. Ingen lyd startet automatisk.");
+  }catch(error){
+    report("Kunne ikke generere lokal testlyd: "+(error?.message||"ukjent"));
+  }
+  if(session&&typeof session.setActionHandler==="function"){
+    for(const [name,handler] of Object.entries({
+      play,pause,stop,nexttrack:next,previoustrack:prev
+    })){
+      try{session.setActionHandler(name,()=>{
+        record("Medietast: "+name);handler()
+      })}
+      catch(_){record("Medietast ikke tilgjengelig: "+name)}
+    }
+  }
+  $("device").textContent="HTTPS: "+(location.protocol==="https:"?"ja":"nei")+
+    " · Sikker kontekst: "+(isSecureContext?"ja":"nei")+
+    " · Media Session API: "+(session?"tilgjengelig":"ikke tilgjengelig");
+  record("Ingen nedlastet tale eller Vox-lyd brukes.");
+  window.addEventListener("pagehide",()=>{
+    for(const url of tracks)URL.revokeObjectURL(url);
+  },{once:true});
+})();
+</script>
+</body>
+</html>
