@@ -1,6 +1,6 @@
 # Feature 06–07 – klare kildeforespørsler
 
-**Status 9. november 2026:** Utkast til henvendelser. **IKKE SENDT.** Ingen svar er mottatt eller skal siteres som om de foreligger. Dette er ment for direkte kildeoppfølging før endelig redaksjonell publiseringsbeslutning.
+**Status 10. november 2026:** Fem kildeforespørsler er nå lagret som **e-postutkast** i tilkoblet Gmail-konto. **IKKE SENDT.** Ingen kildesvar er mottatt eller kan siteres som innhentet. Avsenderkonto og signatur må kontrolleres før utsending. Henvendelsene brukes til direkte kildeoppfølging før redaksjonell sluttkontroll.
 
 ## Feature 06: «Bankene tjener milliarder – hvem betaler?»
 
@@ -104,7 +104,7 @@ Redaksjonen, Paradisavisa
 
 Ved faktisk utsending: registrer dato, kontaktperson, frist og kopi av sendt tekst. Ved faktisk mottak: registrer kilde, svar dato/klokkeslett, dokumenterte påstander, kontrollkilder og eventuell rettelse i artikkelen. **Ikke fyll inn status «sendt» eller «svart» før dette faktisk har skjedd.**
 
-Nåværende status: fem verifiserte pressekontakter, fem ferdige henvendelser, null utsendelser og null svar. Utkastene skal ikke siteres som innhentede uttalelser.
+Nåværende status (10. november 2026): fem verifiserte pressekontakter, fem **lagrede Gmail-utkast**, **null utsendelser og null svar**. Ingen privat Gmail-ID eller direkte kontolenke lagres i det offentlige repositoriet. Svar fra henvendelser kan ikke omtales som innhentet før e-posten faktisk er sendt og svaret mottatt.
 
 ## Faktagrunnlag
 - SSB 6. november: https://www.ssb.no/bank-og-finansmarked/finansinstitusjoner-og-andre-finansielle-foretak/statistikk/banker-og-kredittforetak/artikler/bankresultat
