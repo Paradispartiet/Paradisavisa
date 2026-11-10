@@ -15,6 +15,10 @@
 
 Departementets automatiske mottaksbekreftelse er **ikke** et faglig kildesvar og telles ikke som ett av de fire innholdssvarene.
 
+## Uavhengig kontroll av bankenes responstid
+
+Forbrukerrådets offentlige rapport fra 20. mai 2026 bruker historiske Finansportal-data. Den gjelder **boliglånstilbud til nye kunder**, ikke rentebetingelser for eksisterende lån. Rapporten dokumenterer median på **12,8 dager** fra styringsrenteheving til tilbudsendring for standardlån i 2021–2023, og **fire dager** ved rentenedgang i 2025. Periodene (14 vs. 2 styringsrenteendringer), definisjonene og kundegruppene er forskjellige. Tallene er innarbeidet i bankartikkelen som **forsiktig kildekontekst**, ikke som bevis for årsaken til bankoverskudd eller rentevarsel til eksisterende kunder. Kilde: https://www.forbrukerradet.no/rapporter/fra-styringsrente-til-utlansrente-hvor-raskt-endrer-bankene-utlansrenta/
+
 ## Fakta kontrollert uavhengig av privat korrespondanse
 
 - **Norges Bank besluttet 6. mai 2026 å heve styringsrenten fra 4,00 til 4,25 prosent.** Det bekrefter den generelle tidslinjen som Finans Norge viser til, men ikke automatisk bransjens alle vurderinger. Kilde: https://www.norges-bank.no/aktuelt/nyheter/Pressemeldinger/2026/2026-05-07/
