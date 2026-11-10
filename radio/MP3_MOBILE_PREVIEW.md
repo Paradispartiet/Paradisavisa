@@ -54,3 +54,35 @@ checkpointen arver disse restriksjonene. Inntil da: PENDING.
 - [MDN setActionHandler](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setActionHandler)
 
 Nettleserstøtte er ikke garanti for bakgrunnslyd: funksjonen må testes i virkeligheten.
+
+
+## Mobiltest – 10. november 2026
+
+Det nye skriptet scripts/radio/lag_mobil_lyttepanel.py bygger en **privat
+offline HTML-side** med de fire upubliserte Vox-lydprøvene innebygd.
+Den bruker én HTMLAudioElement med store Spill/Pause/Stopp/Neste/Forrige-
+kontroller. Den forsøker også Media Session-handlingene for låseskjerm,
+hodetelefoner og medietaster der dette er tilgjengelig.
+
+- Ingen avspilling før brukertrykk; ingen offentlige MP3-lenker.
+- Lokal testlogg viser knapper, mediehandlinger, skjermsynlighet og feil.
+- Siden opplyser om Media Session og sikker kontekst finnes på enheten.
+- Eksisterende lydrapport, SHA-256, rettighetsflagg og trygge filbaner
+  må valideres før HTML med lyd kan genereres.
+- Dette er historiske **stemmeprøver**, ikke dagsferske radiosaker.
+
+### Slik kontrolleres den på faktisk iPad
+
+1. Last ned Actions-artifakten med ipad-mobiltest.html og åpne HTML-filen
+   i Safari der dette er mulig. Filer-appen kan åpne en begrenset forhåndsvisning.
+2. Trykk Spill, Pause, Spill, Neste og Forrige. Kontroller at kun én lyd går.
+3. Lås skjermen under avspilling, og prøv låseskjerm- og hodetelefonknapper.
+4. Åpne igjen, sjekk om Media Session og sikker kontekst var tilgjengelige,
+   og kopier eller les loggen.
+5. Hvis dette ikke virker som lokal fil, kan det skyldes filviseren; en
+   faktisk HTTPS-test krever separat, rettighetsgodkjent staging.
+
+Den positive første lytteprøven for Vox beholdes som kandidat. Modellkortet
+oppgir CC0 for vektene, og basemodellen NbAiLab/nb-tts-norwegian-piper-trimmed
+er merket Apache 2.0, men fullstendige rettigheter til modellstammen
+er fortsatt ikke tilstrekkelig dokumentert. Offentlig MP3 forblir sperret.
