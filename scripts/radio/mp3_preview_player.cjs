@@ -131,9 +131,12 @@ function createPrivatePreview({manifest,releaseGate,audio,baseUrl,
     if(active&&paused){
       if(!current(selected(),day())){stop("Nyheten er utløpt.");return Promise.resolve(false)}
       paused=false;syncSession();setStatus("Privat MP3-lyd fortsetter.");
-      return Promise.resolve().then(()=>audio.play()).then(()=>true,()=>{
-        onFailure();return false;
-      });
+      try {
+        // Kall play() synkront fra bruker-/medietast-hendelsen på iOS.
+        return Promise.resolve(audio.play()).then(()=>true,()=>{
+          onFailure();return false;
+        });
+      } catch (_) { onFailure();return Promise.resolve(false); }
     }
     if(active)return Promise.resolve(true);
     const choices=available();
