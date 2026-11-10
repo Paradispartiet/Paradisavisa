@@ -1,6 +1,12 @@
 name: Paradisradioen – privat NB MOSS-Nano-lydprøve
 
 on:
+  pull_request:
+    types: [synchronize]
+    paths:
+      - "scripts/radio/lag_moss_prover.py"
+      - "scripts/radio/test_moss_pilot.py"
+      - ".github/workflows/radio-moss-nano-privat.yml"
   workflow_dispatch:
     inputs:
       sample_date:
@@ -17,6 +23,7 @@ concurrency:
 
 jobs:
   private-moss-voice:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'radio/nb-moss-nano-private-pilot'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
@@ -66,7 +73,7 @@ jobs:
           OMP_NUM_THREADS: "4"
         run: |
           python scripts/radio/lag_moss_prover.py \
-            --date "${{ inputs.sample_date }}" --count 2 --output moss-prove
+            --date "${{ inputs.sample_date || '2026-11-10' }}" --count 2 --output moss-prove
           python - <<'PY'
           import json
           from pathlib import Path
