@@ -97,3 +97,12 @@ Ved avvik behold dagens radio; velg eventuelt en annen dokumentert stemme. **Det
 - [Stemmefiler](https://huggingface.co/rhasspy/piper-voices/tree/main/no/no_NO/talesyntese/medium)
 - [Norsk modellkort og CC0-datasett](https://huggingface.co/rhasspy/piper-voices/blob/main/no/no_NO/talesyntese/medium/MODEL_CARD)
 - [Piper-tts 1.8.0 på PyPI](https://pypi.org/project/piper-tts/1.8.0/)
+
+## Vox-kandidat – gjennomgått 10. november 2026
+
+Den positivt prøvelyttede Vox-modellen har en dokumentert *oppgitt* treningsvei
+via Talesyntese checkpoint 3459 til Lessac. Dette er ikke endelig juridisk
+avgjørelse, men offentlig MP3 er satt på hold til spesifikk klarering.
+Detaljert kildebevis, uklarheter og krav ligger i
+[VOX_RETTIGHETSSTATUS.md](VOX_RETTIGHETSSTATUS.md) og
+[vox-rights-audit.json](vox-rights-audit.json).

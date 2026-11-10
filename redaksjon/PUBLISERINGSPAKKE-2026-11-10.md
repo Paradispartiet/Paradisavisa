@@ -1,30 +1,31 @@
-# Publiseringspakke – tre saker fra 10. november 2026
+# Hegseth – eneste gjenstående sak i PR #107
 
-**Status: UTKAST I EGEN GREN. Ikke slå sammen denne PR-en uten redaksjonell sluttkontroll.**  
-Opprettet: 10. november 2026. Denne grenen inneholder foreslåtte offentlige artikkelsider, kopier av de faktiske WebP-bildene og en oppdatert `Nyhetshjul.json`. Ingen av endringene er på `main` før PR-en merges.
+**Status: UTKAST – ikke slå sammen.**  
+Oppdatert 10. november 2026, etter publisering av to andre artikler via PR #118.
 
-## Artikler til gjennomgang
+Datasenterartikkelen og Nationaltheatret-saken ble publisert via [PR #118](https://github.com/Paradispartiet/Paradisavisa/pull/118). **Denne PR-en gjelder nå bare den amerikanske Hegseth-saken.** Ingen endringer i de to publiserte artiklene er foreslått.
 
-1. [Hvem skal få Norges strøm?](../artikler/2026-11-10-hvem-skal-fa-norges-strom.html) — [bilde](../Bilder/Artikler/2026-11-10-datasentre-kraftnett.webp)
-2. [Republikaner utfordrer Trumps forsvarsminister](../artikler/2026-11-10-massie-hegseth-riksrettsforslag.html) — [bilde](../Bilder/Artikler/2026-11-10-massie-hegseth.webp)
-3. [Nationaltheatret får biscener på Tøyen](../artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html) — [bilde](../Bilder/Artikler/2026-11-10-nationaltheatret-toyen.webp)
+## Filer i denne PR-en
 
-## Betydningsfulle skiller
+- `artikler/2026-11-10-massie-hegseth-riksrettsforslag.html` – foreslått artikkel.
+- `Bilder/Artikler/2026-11-10-massie-hegseth.webp` – KI-assistert redaksjonell illustrasjon.
+- `Nyhetshjul.json` – ett nytt forsidekort når resultatet er verifisert.
+- `scripts/tre-saker-2026-11-10.test.cjs` og `valider-artikler.yml` – teknisk kontroll som også verifiserer de to allerede publiserte artiklene.
 
-- **Viktig nyanse:** Lovteksten i Dokument 8:34 LS foreslår unntak fra tilknytnings- og investeringsplikten for **alle nye uttakskunder over 1 MW**, mens det tilhørende anmodningsforslaget er rettet særskilt mot datasentre. Ingen av delene er vedtatt. [Originalforslag](https://www.stortinget.no/no/Saker-og-publikasjoner/Publikasjoner/Representantforslag/2026-2027/dok8-202627-034ls/)
-- **Datasentre:** Statnetts tekniske midlertidige stans, regjeringens planlagte konsesjonsordning og Stortingets representantforslag er tre ulike prosesser. Høringen 24. november klokken 13.15 er bekreftet. Statnett stanser ikke all tilknytning. [Statnett](https://www.statnett.no/om-statnett/nyheter-og-pressemeldinger/nyhetsarkiv-2026/midlertidige-tiltak-for-fortsatt-forsvarlig-systemdrift/) · [Stortingets høring](https://www.stortinget.no/no/Hva-skjer-pa-Stortinget/Horing/horing/?h=10006019)
-- **Hegseth:** Per 10. november før kveldens ventede votering er riksrettsforslaget **ikke avgjort**. Artikkelens prosedyreavsnitt og eventuelt også tittel/ingress **MÅ oppdateres etter voteringen**. En prosedyreavstemning er ikke det samme som dom eller avsettelse. [House schedule](https://www.majorityleader.gov/schedule/default.aspx)
-- **Tøyen:** Gamle Munch er valgt for bruk under rehabiliteringen og som permanente biscener. Hovedscenen ved Studenterlunden rehabiliteres. Rapportert kjøpesum 111 millioner kroner er ikke totalbudsjett, og lokale kulturaktørers framtidige plass er uavklart. [Regjeringen](https://www.regjeringen.no/no/aktuelt/regjeringa-vil-bruke-gamle-munch-pa-toyen-som-teaterhus-med-biscener-for-nationaltheatret/id3192180/) · [Subjekt](https://subjekt.no/2026/11/10/nationaltheatret-gamle-munch-toyen/)
+## Publiseringssperrer
 
-## Må gjøres før PR-merge
+- [ ] **Offisielt resultat fra Representantenes hus er dokumentert**, med rett prosedyre, stemmetall, dato og kilde til permanent House-roll-call.
+- [ ] Tittel, ingress, brødtekst, nyhetskort og eventuelle anslag justeres etter hva som faktisk skjedde.
+- [ ] Beskyldninger og tilsvar er balansert, og en prosedyreavstemning framstilles ikke som dom eller avsettelse.
+- [ ] Bildet vurderes endelig for personlikhet og et symbolsk, ikke-dokumentarisk uttrykk. Brukerens generelle «Kjør på» var klarsignal for de to andre sakene; Hegseth-bildet gis ikke automatisk status som publisert.
+- [ ] Oppdater faktisk publiseringsdato i `<time>`, `article:published_time` og `Nyhetshjul.json`.
+- [ ] Kjør QA/visuell sjekk på nytt etter faktauppdateringen og merge først etter redaksjonell kontroll.
 
-- [ ] Redaktør har sett og godkjent **alle tre eksakte WebP-bildene** i full størrelse og mobil-/forsideutsnitt.
-- [ ] Kontroller at illustrasjonene ikke framstilles som ekte foto eller autentiske situasjoner; les bildetekstene.
-- [ ] Oppdater Hegseth-saken mot **offisielt voteringstall** etter at avstemningen er gjennomført. Hvis nyhetsbildet endres, oppdater også overskrift, ingress, forsidekort og datofelt.
-- [ ] Kontroller om publiseringsdato skal være 10. eller 11. november, og juster `article:published_time`, synlig datolinje og `Nyhetshjul.json`.
-- [ ] Kontroller kildehenvisningene; ingen intervjuer er gjennomført direkte av Paradisavisa.
-- [ ] Verifiser at alle bilde-SHAene er identiske med vurderingsfilene; ingen SVG eller regenerering.
-- [ ] Forhåndsvisning i PR; test mobil, desktop, `og:image`, `twitter:image` og lenkene fra forsiden.
-- [ ] **Først etter alt dette:** merge PR til `main`; sjekk GitHub Pages-deploy og nyhetshjulet.
+## Offisielle utgangspunkter
 
-**Viktig:** Sidene og forsidekortene er lagt i denne grenen kun for redaksjonell review. Denne utgaven av `Nyhetshjul.json` blir aktiv **først hvis** grenen merges. Den levende forsiden er uendret.
+- [Massies fremleggelse](https://massie.house.gov/news/documentsingle.aspx?DocumentID=395863)
+- [Representantenes hus, dagsorden](https://www.majorityleader.gov/schedule/default.aspx)
+- [Clerk of the House – avstemninger](https://clerk.house.gov/Votes)
+- [Reuters om riksrettsprosedyren](https://www.reuters.com/legal/government/how-would-impeaching-pentagon-chief-hegseth-work-2026-11-10/)
+
+**Ikke bruk gamle uttrykk som «avstemning ventes» etter at det offisielle resultatet foreligger.**
