@@ -1,7 +1,7 @@
 # Kan Norden frigjøre seg fra teknologigigantene?
 
 **FEATURE / TEKNOLOGI OG SAMFUNN · REDAKSJONELT TEKSTUTKAST – IKKE PUBLISERT**  
-**Research:** 9. november 2026 · **Status:** Første fulltekst. Tekst før bilde; artikkelen er ikke faktasjekket og godkjent for publisering.
+**Research:** 9.–10. november 2026 · **Status:** Fulltekst med originalt hoved- og sekundærbilde integrert i upubliserte noindex-sider. Direkte kildeoppfølging, bildegodkjenning og publiseringsbeslutning gjenstår.
 
 **Ingress:** Norden og Baltikum er blant verdens mest digitaliserte samfunn. Nettopp derfor er vi blitt avhengige av noen få leverandører av systemene vi bruker for å arbeide, kommunisere og lagre informasjon. Nå har digitaliseringsministrene samlet seg om å styrke regionens digitale selvstendighet. Men betyr det nye offentlige alternativer – eller bare bedre kontroll med de gamle?
 
@@ -82,4 +82,4 @@ Det er der en stor idé om digital selvstendighet begynner å ligne en tjeneste 
 2. Skaff vurderinger fra offentlige IT-miljøer, åpne programvareprosjekter, aktuelle leverandører og sikkerhetsforskere. Ingen av dem er intervjuet i denne teksten.
 3. Avklar med kilder forskjellen mellom kontroll over data, kontroll over leverandør, lokal drift og full teknologisk uavhengighet.
 4. Vurder kritiske motargumenter: kostnad, kvalitet, kompetanse, små markeder, leverandørmangfold og forhold til internasjonale samarbeidspartnere.
-5. Lag deretter et naturtro hovedbilde og et symbolsk, mettet sekundærbilde, tydelig merket «Illustrasjon». Først etter dette: ferdig artikkelkort i Feature-strømmen.
+5. Hoved- og sekundærbildet er nå integrert og merket som konstruksjoner. Kontroller bildekvalitet, innhent redaksjonell godkjenning, og lag deretter artikkelkort i Feature-strømmen med faktisk publiseringsdato.
