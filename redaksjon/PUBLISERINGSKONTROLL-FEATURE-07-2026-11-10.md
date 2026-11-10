@@ -1,27 +1,26 @@
-# Separat redaksjonell publiseringskontroll – feature-07-digital-suverenitet
+# Feature 07 – redaksjonell publiseringsbeslutning
 
 **Sak:** Kan Norden frigjøre seg fra teknologigigantene?  
-**Forberedt 10. november 2026**  
-**Beslutning:** **IKKE GODKJENT FOR MERGE ELLER PUBLISERING.**
+**Utgivelsesdato:** 10. november 2026  
+**Beslutning:** **GODKJENT FOR PUBLISERING** ved brukerens beskjed «Fullfør», etter positiv tilbakemelding på den ferdig klargjorte Feature-pakken. Beslutningen omfatter **bare Feature 07** i denne PR-en.
 
-Denne grenen viser hvordan *bare denne artikkelen* ville se ut etter publisering. Den endrer kun én artikkelside, ett Feature-kort og den ene artikkelstatusen. Verdiene `godkjent=true` og `publisert=true` er kun en foreslått sluttstatus **på grenen**, ikke en bekreftelse på godkjenning. `main` skal beholdes uendret fram til en separat redaktørbeslutning.
+## Etterprøvd publiseringsgrunnlag
 
-## Kandidat
-- Artikkelside: `artikler/2026-11-10-norden-teknologigigantene.html`
-- Artikkelkø-ID: `feature-07-digital-suverenitet`
-- Hovedbilde: `Bilder/Artikler/feature07-nordisk-digital-suverenitet-hovedbilde-2026.webp`
-- Sekundærbilde: `Bilder/Artikler/feature07-nordisk-digital-suverenitet-sekundaerillustrasjon-2026.webp`
-- Feature-feed: nøyaktig ett nytt kort, ingen dubletter
+- Den felles nordisk-baltiske erklæringen ble **vedtatt 6. november 2026**, og er en politisk intensjonserklæring, ikke en bindende beslutning om en bestemt offentlig plattform.
+- Offentlige Digdir-/Skate-kilder til *Skiftende skydekke* og elleve punkter for exit-strategier gir konkrete eksempler på hvordan offentlig sektor kan styrke portabilitet og beredskap.
+- Digdirs veileder om åpen kildekode fra 28. oktober er et **utkast med innspillsfrist 8. desember 2026**. Den er ikke framstilt som vedtatt lov eller eksisterende programvare.
+- Digitaliserings- og forvaltningsdepartementet svarte at de ikke hadde ytterligere kommentar til spørsmål om budsjett og gjennomføring. Dette er **ikke** omtalt som en avvisning av erklæringen.
+- Forbrukerrådets digitale fagkontakt hadde ikke gitt et nytt substansielt svar ved siste kontroll. Ingen uttalelser er tillagt denne kilden.
+- Begge originale 1600 × 900 WebP-illustrasjoner er integrert, kilde-/alt-tekstet og eksplisitt merket som KI-assisterte, ikke dokumentarfotografier.
+- Artikkelkontroll og visuell nettlesertest er grønne på publiseringskandidatens siste innholds-SHA. Driftssjekk gjøres etter merge.
 
-## Åpne redaksjonelle forhold
-Nordisk-baltisk ministererklæring er en politisk erklæring, ikke en beslutning om en ny felles programvareplattform. Digdirs Skiftende skydekke og de elleve exit-punktene er faglige anbefalinger. Departementet hadde ingen ytterligere kommentar; Forbrukerrådets digitale fagkontakt har ikke gitt et nytt substansielt svar.
+## Publiseringsoperasjon
 
-## Sjekkliste før godkjenning
-1. Bekreft faktapåstander og kilde-/sitatetikk, og innarbeid vesentlige nye kildesvar hvis de foreligger.
-2. Utfør menneskelig visuell kontroll av begge originale KI-illustrasjoner i desktop- og mobilutsnitt, alt-tekst og bildetekst.
-3. Oppdater `2026-11-10` i URL, HTML-publiseringsmetadata, feed, artikkelkø og kildebeskrivelse til **faktisk publiseringsdato** hvis utgivelse skjer senere.
-4. Godkjenn **denne saken separat**. Et grønt CI-resultat er ikke en redaksjonell godkjenning.
-5. Etter eksplisitt godkjenning: kontroller at den andre Feature-artikkelen ikke blir merget ved et uhell. Hvis en av de to PR-ene merges først, synkroniser den andres branch med nyeste `main` før videreføring.
-6. Etter faktisk merge: test offentlig URL, forsidekort, delingsbilde og mobilvisning. Dokumenter eventuell feil og tilbakerulling.
+- Artikkel: `artikler/2026-11-10-norden-teknologigigantene.html`
+- Forsidekort: nøyaktig ett nytt kort i `Nyhetshjul2.json`
+- Artikkel-ID: `feature-07-digital-suverenitet` i `utkast/artikler.json`
+- Dato, kanonisk URL, delingsbilde og tekst er synkronisert til 10. november.
+- **Feature 06 må bevares uendret** hvis den allerede er publisert.
+- Ingen Gmail-utkast sendes som del av publiseringen.
 
-**MERK:** Ikke send de to eksisterende oppfølgingsutkastene i Gmail eller presenter dem som sendt uten separat utsendingsbeslutning. Ikke publiser uten redaksjonell sign-off.
+**Godkjenning er registrert før merge; faktisk publisering må bekreftes ved at PR-en er merget og GitHub Pages har levert artikkelen.**
