@@ -73,6 +73,7 @@ jobs:
         env:
           TOKENIZERS_PARALLELISM: "false"
           OMP_NUM_THREADS: "4"
+          HF_TOKEN: ${{ secrets.RADIO_HF_READ_TOKEN }}
         run: |
           python scripts/radio/lag_moss_prover.py \
             --date "${{ inputs.sample_date || '2026-11-10' }}" --count 2 --output moss-prove
