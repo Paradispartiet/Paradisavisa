@@ -1,6 +1,40 @@
 # Norsk stemmesammenligning – NVCC (10. november 2026)
 
-**Status:** Privat A/B-lydpilot. **IKKE redaksjonelt godkjent for publisering.**
+**Status: LYTTETEST AVVIST – KNN OG MNN. IKKE GODKJENT FOR PUBLISERING.**
+
+## Redaksjonell lyttetilbakemelding – 10. november 2026
+
+De to NVCC-stemmevariantene i denne konkrete A/B-testen (**KNN/0 og MNN/4**) ble vurdert som
+**«dårlig, snøvlete og nordnorsk dialekt»**. De er dermed **avvist som stemmer for Paradisavisas
+Alltid Nyheter-radio**. Tilbakemeldingen er en subjektiv vurdering av disse lydprøvene,
+ikke en måling av alle NVCC-modellens ti mulige stemmer.
+
+**Konsekvenser:**
+- Ingen av prøvevariantene KNN eller MNN skal få status som godkjent radiostemme.
+- Ikke bytt ut gjeldende Web Speech-avspilling eller endre offentlig release-gate.
+- Ikke regenerer disse to testene bare for å skru på produksjon; en ny modell
+  eller klart forbedret uttaleprofil krever **ny, dokumentert lyttetest**.
+- Kravet er **tydelig, lett forståelig bokmål med nøytral østnorsk nyhetsuttale**,
+  jevn flyt uten snøvling, riktig trykk og korrekt uttale av navn, datoer og tall.
+  Det er ikke et kvalitetskrav om at nordnorske dialekter generelt er uegnede;
+  denne redaksjonelle stemmen skal følge den valgte avisprofilen.
+
+### Kandidater å undersøke – IKKE valgt eller kvalitetstestet
+
+1. [versae/nb-nst-tts](https://huggingface.co/versae/nb-nst-tts) – norsk
+   bokmålsmodell (SpeechT5) oppført med **Apache 2.0**. Kandidat for
+   lisens-/ytelses- og lytteundersøkelse; krever rundt 578 MB modellvekter,
+   og et modellkort uten lydkvalitetsgaranti. Test lokal produksjon før eventuell integrasjon.
+2. [heiertech/Prat-9B](https://huggingface.co/heiertech/Prat-9B) – oppgitt
+   **østnorsk/Oslo**, MIT-merket og fortsatt i *preview*. 9 milliarder
+   parametere kan være uegnet for gratis CPU-drift på GitHub Actions.
+   Grunnmodellens og datasettets rettigheter må undersøkes før bruk.
+3. Eksisterende **norske enhetsstemmer** i Web Speech – allerede tilgjengelig
+   som gratis fallback. Kvaliteten avhenger av brukerens enhet og installerte stemmer.
+
+En ny stemme må bestå A/B-prøvelytting og dokumentert rettighetskontroll
+før overgang til PR D-utgivelse. **Ferdig MP3-teknologi er ikke godkjenning av en stemme.**
+
 
 ## Hvorfor prøve NVCC?
 
@@ -48,7 +82,7 @@ formatfilter og eksisterende, eksplisitt redaksjonell speechText.
 - [ ] Seks gyldige dekodbare MP3-prøver, med kontrollert varighet og bitrate
 - [ ] Ingen automatisk lyd ved åpning, ingen utgåtte notiser som ferske nyheter
 - [ ] Ingen lydfil, modell eller privat rapport publisert på Pages
-- [ ] Lyttestemmer vurdert for flyt, navn, årstall, beløp og forståelig norsk
+- [x] KNN og MNN lyttetestet: **AVVIST** for nyhetsradio på grunn av utydelig, snøvlete uttale og uønsket dialektprofil
 - [ ] Separat rettighetsvurdering av akkurat den distribuerte modellen
 - [ ] Eventuelt ny produksjons-PR med modellbytte, kontroller, rollback og offentlig mobiltest
 

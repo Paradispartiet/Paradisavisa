@@ -4,5 +4,6 @@
   "modelRightsStatus": "PENDING",
   "editorialAudioStatus": "PENDING",
   "approvedBy": null,
-  "notes": "Ingen Piper-lyd publiseres før egen modellrettighetskontroll, prøvelytting og redaksjonell godkjenning. Dette er ikke en operativ på-knapp."
+  "notes": "Piper NVCC KNN og MNN er AVVIST ved lytting 2026-11-10: snøvlete, utydelig og ikke ønsket nøytral østnorsk radiostil. Talesyntese/Lessac har uavklart kommersiell stemmerett. Ingen Piper-lyd publiseres før egen modellrettighetskontroll, ny stemmeprøve, redaksjonell godkjenning og separat kontrollert publiserings-PR.",
+  "nvccTrialStatus": "REJECTED_KNN_MNN"
 }
