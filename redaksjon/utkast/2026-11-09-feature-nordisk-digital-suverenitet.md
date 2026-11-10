@@ -39,6 +39,14 @@ Men hvert valg skaper nye spørsmål. Hvem sørger for universell utforming? Hve
 
 En felles bestilling fra flere land kan gi større marked og forutsigbarhet. Den kan også bli tungrodd og kostbar hvis den ikke starter med presise krav og prøver løsninger i liten skala. Det er nettopp disse avveiningene politikerne må svare på før «digital suverenitet» kan bli noe innbyggerne merker.
 
+## Fra ministererklæring til en norsk exit-plan
+
+Dette er ikke bare en teoretisk diskusjon. En arbeidsgruppe for det offentlige digitaliseringssamarbeidet Skate la i august 2026 fram rapporten *Skiftende skydekke* om hvordan offentlige virksomheter kan unngå å bli låst til én skyleverandør. Da Digitaliseringsdirektoratet presenterte oppfølgingen i september, løftet det fram **elleve punkter for en god exit-strategi**. Arbeidsgruppen anbefaler å kartlegge tekniske avhengigheter, ha beredskapsplan for tap av tjenester og bruke åpne standarder og åpen kildekode der det kan redusere leverandørbinding.
+
+For en kommune kan prøven være svært konkret: Kan dokumentene tas ut i et lesbart format? Kan tilgangsstyring og nødvendige tjenester videreføres hos en annen leverandør? Vet kommunen hva et skifte vil koste, og hvilke kritiske tjenester som må fungere ved et avbrudd? Arbeidsgruppen understreker at muligheten til å bytte må vurderes **praktisk, teknisk, økonomisk og juridisk**. Å kunne eksportere filer er ikke nødvendigvis det samme som å kunne fortsette driften.
+
+*Skiftende skydekke* er en **faglig anbefaling**, ikke et pålegg om å avslutte eksisterende avtaler eller et vedtak om en ny statlig skytjeneste. Hybrid- og multisky-løsninger kan øke handlingsrommet, men innebærer også kostnader og behov for kompetanse, koordinering og sikkerhetsarbeid. Det er et bedre utgangspunkt for å måle digital selvstendighet enn å telle hvor mange ganger politikere bruker selve ordet.
+
 ## Kunstig intelligens gjør spørsmålet skarpere
 
 I sin norske pressemelding opplyser regjeringen at **Norge skal prioritere trygg KI, digital sikkerhet og suverenitet når landet overtar formannskapet i Nordisk ministerråds digitaliseringssamarbeid i 2027**. Digitaliseringsminister Torgeir Micaelsen peker på at et fåtall selskaper utvikler de mest avanserte KI-modellene.
@@ -79,6 +87,9 @@ Det er der en stor idé om digital selvstendighet begynner å ligne en tjeneste 
 - **Forbrukerrådet, 27. februar 2026:** *Breaking Free – Pathways to a fair technological future*. Forbrukerorganisasjonens analyse og anbefalinger, ikke en myndighetsbeslutning. https://www.forbrukerradet.no/rapporter/breaking-free-pathways-to-a-fair-technological-future/
 
 - **Digitaliserings- og forvaltningsdepartementet, skriftlig svar til Paradisavisa 10. november 2026:** Ingen ytterligere kommentar til konkrete spørsmål om prosjekter, budsjett og gjennomføring. Utsagnet er lagret som kildekorrespondanse i redaksjonens e-post, ikke som offentlig nettlenke.
+
+- **Digitaliseringsdirektoratet / Skate-arbeidsgruppe, 18. august 2026:** *Skiftende skydekke* – analyse og anbefalinger om reell endringsevne i bruk av skytjenester, leverandørbinding, portabilitet og beredskap. https://www.digdir.no/digitalisering-og-samordning/skiftende-skydekke/8337
+- **Digitaliseringsdirektoratet, 30. september 2026:** Oppfølging av rapporten med elleve punkter for gode exit-strategier. Dette er anbefalinger, ikke nye lovkrav. https://www.digdir.no/digitalisering-og-samordning/ny-rapport-dette-bor-en-god-exit-strategi-fra-skytjenester-inneholde/8428
 
 ## Gjenstår før publisering
 
