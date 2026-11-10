@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-PATH = pathlib.Path(__file__).with_name("test_nvcc_voice.py")
+PATH = pathlib.Path(__file__).with_name("generer_nvcc_prover.py")
 spec = importlib.util.spec_from_file_location("test_nvcc_voice", PATH)
 nvcc = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(nvcc)
