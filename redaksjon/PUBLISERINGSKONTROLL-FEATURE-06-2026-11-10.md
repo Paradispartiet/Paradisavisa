@@ -1,27 +1,27 @@
-# Separat redaksjonell publiseringskontroll – feature-06-bankene
+# Feature 06 – redaksjonell publiseringsbeslutning
 
 **Sak:** Bankene tjener milliarder – hvem betaler?  
-**Forberedt 10. november 2026**  
-**Beslutning:** **IKKE GODKJENT FOR MERGE ELLER PUBLISERING.**
+**Utgivelsesdato:** 10. november 2026  
+**Beslutning:** **GODKJENT FOR PUBLISERING** ved brukerens beskjed «Fullfør», etter positiv tilbakemelding på den ferdig klargjorte Feature-pakken. Beslutningen omfatter **bare Feature 06** i denne PR-en.
 
-Denne grenen viser hvordan *bare denne artikkelen* ville se ut etter publisering. Den endrer kun én artikkelside, ett Feature-kort og den ene artikkelstatusen. Verdiene `godkjent=true` og `publisert=true` er kun en foreslått sluttstatus **på grenen**, ikke en bekreftelse på godkjenning. `main` skal beholdes uendret fram til en separat redaktørbeslutning.
+## Etterprøvd publiseringsgrunnlag
 
-## Kandidat
-- Artikkelside: `artikler/2026-11-10-bankene-tjener-milliarder.html`
-- Artikkelkø-ID: `feature-06-bankene`
-- Hovedbilde: `Bilder/Artikler/feature06-bankene-hovedbilde-2026.webp`
-- Sekundærbilde: `Bilder/Artikler/feature06-bankene-sekundaerillustrasjon-2026.webp`
-- Feature-feed: nøyaktig ett nytt kort, ingen dubletter
+- SSBs bankstatistikk 6. november: 69,4 mrd. kroner resultat etter skatt **akkumulert i årets første ni måneder**, og rentenetto 100,3 mrd. kroner, ikke ett enkelt kvartal.
+- Norges Banks rentevedtak og SSBs offentlig publiserte utlåns-/innskuddsrenter er kildebelagt.
+- Finans Norges egen skriftlige forklaring er eksplisitt presentert som et **bransjeperspektiv**, ikke en nøytral fasit.
+- Forbrukerrådets rapport *Bytteundersøkelsen 2026* har en fortsatt uavklart datokonflikt: metoden oppgir feltarbeid 20. januar–7. februar **2025**, samtidig som undersøkelsen omtaler bytteaktivitet gjennom 2025. **Ingen omstridte prosentsatser fra denne undersøkelsen brukes i publiseringskandidaten.** Forbrukerrådets private e-post ble uttrykkelig gitt på bakgrunn og er ikke sitert.
+- Forbrukerrådets separate analyse av renteendringer gjelder tilbud til **nye** kunder, og er ikke forvekslet med endringer for eksisterende låntakere.
+- DNB ba om informasjon om avsenderen; et separat oppfølgingsutkast i Gmail er fortsatt **usendt**. Det påstås ikke at DNB har gitt en ny substansiell kommentar.
+- Hovedillustrasjonen og den symbolske sekundærillustrasjonen er originale 1600 × 900 WebP-filer, innarbeidet med beskrivende tekst og eksplisitt KI-illustrasjonsmerking. Begge finnes i repo.
+- Artikkelkontroll og visuell nettlesertest var grønne på publiseringskandidatens siste innholds-SHA. Endelig driftssjekk gjøres **etter** merge.
 
-## Åpne redaksjonelle forhold
-Forbrukerrådets e-post er bakgrunn, ikke et sitat. Den offisielle rapporten *Bytteundersøkelsen 2026* oppgir feltarbeid 20. januar–7. februar **2025** samtidig som den omtaler bytteaktivitet gjennom kalenderåret 2025. Denne datokonflikten kan ikke løses ved antakelse: de tilhørende prosentsatsene er derfor fjernet fra **publiseringskandidaten**, men original rapport er fortsatt oppført i kildene. Den direkte metodeavklaringen er ikke mottatt, og oppfølgingsutkastet til Forbrukerrådet er ennå ikke sendt. DNB har bedt om informasjon om avisa; svarutkastet er heller ikke sendt. SSBs offentlige bankstatistikk og Finans Norges bransjesvar er innarbeidet.
+## Publiseringsoperasjon
 
-## Sjekkliste før godkjenning
-1. Bekreft faktapåstander og kilde-/sitatetikk, og innarbeid vesentlige nye kildesvar hvis de foreligger.
-2. Utfør menneskelig visuell kontroll av begge originale KI-illustrasjoner i desktop- og mobilutsnitt, alt-tekst og bildetekst.
-3. Oppdater `2026-11-10` i URL, HTML-publiseringsmetadata, feed, artikkelkø og kildebeskrivelse til **faktisk publiseringsdato** hvis utgivelse skjer senere.
-4. Godkjenn **denne saken separat**. Et grønt CI-resultat er ikke en redaksjonell godkjenning.
-5. Etter eksplisitt godkjenning: kontroller at den andre Feature-artikkelen ikke blir merget ved et uhell. Hvis en av de to PR-ene merges først, synkroniser den andres branch med nyeste `main` før videreføring.
-6. Etter faktisk merge: test offentlig URL, forsidekort, delingsbilde og mobilvisning. Dokumenter eventuell feil og tilbakerulling.
+- Artikkel: `artikler/2026-11-10-bankene-tjener-milliarder.html`
+- Forsidekort: ett nytt kort i `Nyhetshjul2.json`
+- Artikkel-ID: `feature-06-bankene`; samtidig oppdatering av `utkast/artikler.json`
+- Dato, kanonisk URL, delingsbilde og tekst er synkronisert til 10. november.
+- **Feature 07 skal fortsatt stå som utkast** etter denne PR-en.
+- Ingen Gmail-utkast sendes som del av publiseringen.
 
-**MERK:** Ikke send de to eksisterende oppfølgingsutkastene i Gmail eller presenter dem som sendt uten separat utsendingsbeslutning. Ikke publiser uten redaksjonell sign-off.
+**Godkjenning er registrert før merge; faktisk publisering må bekreftes ved at PR-en er merget og at GitHub Pages har levert artikkelen.**
