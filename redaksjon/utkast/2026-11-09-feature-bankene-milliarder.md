@@ -1,7 +1,7 @@
 # Bankene tjener milliarder – hvem betaler?
 
 **FEATURE / ØKONOMI · REDAKSJONELT TEKSTUTKAST – IKKE PUBLISERT**  
-**Research:** 9. november 2026 · **Status:** Fulltekstutkast med originalt hoved- og sekundærbilde integrert i noindex-forhåndsvisning. Direkte kildeoppfølging, bildegodkjenning og publiseringsbeslutning gjenstår.
+**Research:** 9. november 2026 · **Status:** Fulltekstutkast med originalt hoved- og sekundærbilde integrert i noindex-forhåndsvisning. Kildesvar fra Finans Norge er innarbeidet; øvrig kildeoppfølging, bildegodkjenning og publiseringsbeslutning gjenstår.
 
 **Ingress:** Norske banker hadde tjent 69,4 milliarder kroner etter skatt ved utgangen av september. Samtidig er rentenettoen lavere enn i fjor. Hvor kommer milliardene fra, hva koster banktjenestene oss, og hvorfor er bankenes overskudd både en kilde til irritasjon og et vern mot kriser?
 
@@ -37,7 +37,9 @@ Det er et reelt argument for lønnsomhet – ikke et svar på enhver innvending 
 
 Næringen har også en egen fortelling om konkurransen. I en gjennomgang publisert **5. november** skriver Finans Norge at de seks største norske bankenes netto renteinntekter økte **3 prosent fra andre til tredje kvartal 2026**, samtidig som bankene rapporterer press på marginene fra konkurransen. De seks bankenes samlede egenkapitalavkastning var **13,4 prosent i tredje kvartal**. Dette er en **annen populasjon og et annet tidsintervall** enn SSBs akkumulerte resultattall for hele banksektoren; tallene kan derfor ikke sammenlignes direkte. Bransjeorganisasjonens forklaring bør testes mot uavhengige data, ikke tas som endelig bevis for at konkurransen fungerer godt.
 
-Forbrukerrådet ser en annen side av samme marked. I **Bytteundersøkelsen 2026**, omtalt 11. mai, oppga omtrent én av tre at de hadde flyttet eller reforhandlet boliglånet året før. Blant dem som ikke gjorde det, sa nær en tredjedel at de **aldri** hadde reforhandlet eller byttet. Forbrukerrådet peker på at lojale kunder kan ende med dårligere vilkår. Undersøkelsen beskriver rapportert kundeadferd; den beviser ikke hva bankenes samlede overskudd skyldes.
+Finans Norge utdypet også forklaringen i et skriftlig svar til Paradisavisa 10. november. Organisasjonen peker på at markedsfinansieringen normalt reagerer raskt ved en renteheving, mens renteøkninger på eksisterende boliglån slår inn senere på grunn av varslingsfristen. Norges Bank satte styringsrenten opp fra 4 til 4,25 prosent i mai 2026. Ifølge Finans Norge er denne tidsforskyvningen en del av forklaringen på variasjonene mellom andre og tredje kvartal. Dette er bransjens vurdering, ikke dokumentasjon på at alle boliglånskunder har fått de beste betingelsene.
+
+Forbrukerrådets offentlig publiserte **Bytteundersøkelsen 2026** viser at **32 prosent av boliglånskundene i undersøkelsen oppga å ha flyttet eller reforhandlet boliglånet i 2025**, mot 27 prosent året før. Blant dem som ikke flyttet eller reforhandlet i 2025, svarte 27 prosent at de aldri hadde gjort det. Tallene viser aktivitet og passivitet i markedet samtidig, men ikke hvorfor bankene samlet tjener akkurat det de gjør. Undersøkelsen er utført som en vektet nettundersøkelse; metodens oppgitte feltarbeidsår avklares med rapportutgiveren før en mer detaljert metodepresentasjon.
 
 ## Hvem er bankens kunde – og hvem er banken til for?
 
@@ -56,6 +58,7 @@ Da kan spørsmålet i overskriften få et svar som er mer nyttig enn både jubel
 - **SSB, oppdatert 29. oktober 2026:** «Renter i banker og kredittforetak», tabell 1. Skiller mellom nye og utestående boliglån og innskuddsrente. https://www.ssb.no/bank-og-finansmarked/finansinstitusjoner-og-andre-finansielle-foretak/statistikk/renter-i-banker-og-kredittforetak
 - **Forbrukerrådet/Finansportalen:** Årlig spareeksempel ved 0,5 prosentpoeng renteendring og sammenligningstjeneste. https://www.forbrukerradet.no/finansportalen/bank/
 - **Norges Bank, rentebeslutning publisert 5. november 2026:** Styringsrenten holdes på 4,50 prosent fra 6. november. https://www.norges-bank.no/tema/pengepolitikk/Rentemoter/2026/november-2026/
+- **Norges Bank, 7. mai 2026:** Styringsrenten hevet fra 4,00 til 4,25 prosent. https://www.norges-bank.no/aktuelt/nyheter/Pressemeldinger/2026/2026-05-07/
 - **Norges Bank:** «Finansiell stabilitet 2026–1. halvår», om lønnsomhet, kapital og risiko. https://www.norges-bank.no/aktuelt/publikasjoner/Finansiell-stabilitet---rapport/2026-1-finansiell-stabilitet/nettrapport-2026-1-finansiell-stabilitet/
 - **Finanstilsynet:** «Finansielt utsyn – juni 2026», bankenes lønnsomhet og risiko. https://www.finanstilsynet.no/publikasjoner-og-analyser/finansielt-utsyn/finansielt-utsyn---juni-2026/html/2026/
 - **Finans Norge (bransjekilde):** Analyse av seks største bankenes tredje kvartal, publisert 5. november 2026. Kildegrunnlag: kvartalsrapporter fra disse bankene, ikke hele SSB-populasjonen. https://www.finansnorge.no/artikler/2026/11/sterkt-tredje-kvartal/
@@ -64,7 +67,7 @@ Da kan spørsmålet i overskriften få et svar som er mer nyttig enn både jubel
 
 ## Gjenstår før publisering
 
-1. Innhent direkte, nye svar fra minst to banker og eventuelt Finans Norge om rentemarginer, utbytte og kapitalbehov. Det finnes nå dokumentert offentlig bransjeperspektiv fra Finans Norge (5. november), men ingen svar på spørsmål fra Paradisavisa.
+1. **Finans Norge har svart skriftlig 10. november.** DNB har bedt om mer informasjon om publikasjonen og vist til egne offentlige kvartalsrapporter, men har ikke gitt en egen vurdering av rentenivået. Et oppfølgingsutkast til DNB er klargjort i Gmail, ikke sendt. Vurder om eventuelt nytt svar bør innarbeides.
 2. Sammenlign likeverdige oppdaterte boliglåns- og innskuddstilbud (uten å forveksle tilbud til nye og eksisterende kunder).
 3. Kryssjekk hvilke banktyper SSBs tall inkluderer, og kontroller at ni-månedersbeløp ikke feilaktig omtales som et kvartalstall.
 4. Merk skille mellom observasjon, økonomisk forklaring og redaksjonelle spørsmål. Sjekk tallene ved publisering.

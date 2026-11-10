@@ -1,7 +1,7 @@
 # Kan Norden frigjøre seg fra teknologigigantene?
 
 **FEATURE / TEKNOLOGI OG SAMFUNN · REDAKSJONELT TEKSTUTKAST – IKKE PUBLISERT**  
-**Research:** 9.–10. november 2026 · **Status:** Fulltekst med originalt hoved- og sekundærbilde integrert i upubliserte noindex-sider. Direkte kildeoppfølging, bildegodkjenning og publiseringsbeslutning gjenstår.
+**Research:** 9.–10. november 2026 · **Status:** Fulltekst med originalt hoved- og sekundærbilde integrert i upubliserte noindex-sider. Departementets svar er innarbeidet; øvrig kildeoppfølging, bildegodkjenning og publiseringsbeslutning gjenstår.
 
 **Ingress:** Norden og Baltikum er blant verdens mest digitaliserte samfunn. Nettopp derfor er vi blitt avhengige av noen få leverandører av systemene vi bruker for å arbeide, kommunisere og lagre informasjon. Nå har digitaliseringsministrene samlet seg om å styrke regionens digitale selvstendighet. Men betyr det nye offentlige alternativer – eller bare bedre kontroll med de gamle?
 
@@ -63,6 +63,8 @@ Sikkerhet handler om mer enn å beskytte data mot innbrudd. Systemer må også k
 
 Den nordisk-baltiske erklæringen har som ambisjon å gjøre regionen mer digitalt integrert innen 2030. Hvor mye som kan oppnås, avhenger av hva regjeringene vil bevilge, hvilke standarder de velger, og om anskaffelsene faktisk legger til rette for alternativer.
 
+På spørsmål fra Paradisavisa om hvilke fellesprosjekter som faktisk er besluttet, hvilke budsjetter og frister som gjelder, og hvordan offentlige alternativer kan innføres, svarte Digitaliserings- og forvaltningsdepartementet 10. november at departementet ikke hadde noen kommentar. Det er ikke en avvisning av ministererklæringen, men innebærer at departementet ikke har gitt avisen nye konkrete svar på gjennomføringen.
+
 For Paradisavisa er den mest interessante oppfølgingen konkret: **Hvilket digitalt verktøy kunne nordiske land samarbeide om å levere bedre allerede nå?** Og hvordan skulle vi kunne se om det ble tryggere, rimeligere, mer tilgjengelig og mindre avhengig enn dagens løsninger?
 
 Det er der en stor idé om digital selvstendighet begynner å ligne en tjeneste samfunnet kan bruke.
@@ -76,9 +78,11 @@ Det er der en stor idé om digital selvstendighet begynner å ligne en tjeneste 
 - **Forbrukerrådet, 23. juni 2026:** Tekna, NITO og Forbrukerrådet la fram anbefalinger om åpne standarder, åpen kildekode og portabilitet for offentlig sektor. https://www.forbrukerradet.no/?p=54996
 - **Forbrukerrådet, 27. februar 2026:** *Breaking Free – Pathways to a fair technological future*. Forbrukerorganisasjonens analyse og anbefalinger, ikke en myndighetsbeslutning. https://www.forbrukerradet.no/rapporter/breaking-free-pathways-to-a-fair-technological-future/
 
+- **Digitaliserings- og forvaltningsdepartementet, skriftlig svar til Paradisavisa 10. november 2026:** Ingen ytterligere kommentar til konkrete spørsmål om prosjekter, budsjett og gjennomføring. Utsagnet er lagret som kildekorrespondanse i redaksjonens e-post, ikke som offentlig nettlenke.
+
 ## Gjenstår før publisering
 
-1. Innhent konkrete svar fra departementet/Nordisk ministerråd om budsjett, prioriterte prosjekter, frister og hvem som drifter eventuelle nye fellesløsninger. Regjeringens og organisasjonenes offentlig tilgjengelige uttalelser er nå undersøkt, men det er ikke innhentet nytt svar direkte til Paradisavisa.
+1. **Departementet svarte 10. november at det ikke har noen kommentar til de konkrete spørsmålene.** Ingen nye budsjetter, milepæler eller prosjektbeslutninger kan derfor legges til ut fra dette svaret. Undersøk videre hos Nordisk ministerråd og andre relevante fagmiljøer.
 2. Skaff vurderinger fra offentlige IT-miljøer, åpne programvareprosjekter, aktuelle leverandører og sikkerhetsforskere. Ingen av dem er intervjuet i denne teksten.
 3. Avklar med kilder forskjellen mellom kontroll over data, kontroll over leverandør, lokal drift og full teknologisk uavhengighet.
 4. Vurder kritiske motargumenter: kostnad, kvalitet, kompetanse, små markeder, leverandørmangfold og forhold til internasjonale samarbeidspartnere.

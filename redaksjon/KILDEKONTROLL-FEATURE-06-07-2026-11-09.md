@@ -1,7 +1,7 @@
 # Feature 06 og 07 – kildekontroll og journalistisk arbeidsordre
 
 **Dato:** 9. november 2026  
-**Status:** Offentlig kildesjekk utført; ingen direkte intervjuer/tilsvar bestilt eller mottatt. Ikke klar for publisering.
+**Status 10. november:** Offentlig faktakontroll er utført, og flere direkte skriftlige kildesvar er mottatt. Finans Norge har gitt et faglig bransjesvar; Forbrukerrådets svar om bankbytte er uttrykkelig merket som bakgrunn; DNB ønsker avsenderavklaring; departementet har ikke ytterligere kommentar om teknologisaken. Se [kildesvarloggen](KILDESVAR-FEATURE-06-07-2026-11-10.md). Ingen av artiklene er godkjent for publisering.
 
 ## 06 – Bankene tjener milliarder – hvem betaler?
 
@@ -64,4 +64,4 @@
 
 ## Redaksjonell sperre
 
-Dette dokumentet dokumenterer **offentlig kildekontroll**, ikke egen kildeinnhenting eller tilsvarsforespørsler. Ingen påståtte intervjuer, svar eller kontakt med kilder må oppgis. Begge tekstene er fortsatt utkast; bilder, endelig faktakontroll, godkjenning og faktisk offentlig sidekontroll gjenstår.
+Dette dokumentet startet som offentlig kildekontroll. Direkte kildesvar kom 10. november og er loggført separat i [kildesvarloggen](KILDESVAR-FEATURE-06-07-2026-11-10.md). Bakgrunnsinformasjon fra Forbrukerrådet må ikke framstilles som klarert sitat. Alle fire originale bilder er integrert, men redaksjonell kvalitets- og faktagodkjenning gjenstår. Begge artiklene forblir utkast og er ikke lagt i den offentlige Feature-strømmen.
