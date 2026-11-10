@@ -1,6 +1,28 @@
 # Paradisradioen — ny bokmålsstemme, intern Vox-test (10.11.2026)
 
-**Status:** KANDIDAT, IKKE GODKJENT. Offentlig radio bruker uendret Web Speech.
+**Status:** POSITIV FØRSTE LYTTETILBAKEMELDING – fortsatt IKKE godkjent for offentlig MP3. Offentlig radio bruker uendret Web Speech.
+
+## Lyttervurdering – 10. november 2026
+
+Etter avspilling av de fire Vox-prøvene i lyttepanelet har lytteren meldt
+**«Høres bra ut»**. Dette er en positiv kvalitetsvurdering av
+`nb_NO-vox-medium`, i kontrast til NVCC KNN/MNN som ble avvist.
+Det er ikke angitt hvilken av de to profilene – **Normal** eller
+**Nyhetsflyt** – som foretrekkes. Vi velger derfor ikke profil på
+bakgrunn av en antagelse.
+
+**Vurderingsstatus:** Stemmen beholdes som førstevalg for videre utvikling.
+Den positive tilbakemeldingen er ikke en full redaksjonell godkjenning av alle
+navn, tall, uttaler og lyttemiljøer; dette krever egen sluttkontroll.
+Den offentlige lydporten `radio/release-gate.json` skal fortsatt være
+`publicAudioEnabled: false`, `modelRightsStatus: PENDING` og
+`editorialAudioStatus: PENDING`.
+
+**Prioritert arbeid:** Sammenlign Normal/Nyhetsflyt på navn og beløp,
+avklar modellvektenes arv fra Talesyntese/Lessac og treningsdataene,
+og test sikker mobil-/låseskjermavspilling i en separat PR med rollback.
+Ikke bytt offentlig stemme på grunnlag av denne tilbakemeldingen alene.
+
 **Siste redaksjonelle avgjørelse:** NVCC KNN og MNN avvist som snøvlete og uønsket dialekt.
 
 ## Hvorfor denne modellen?
@@ -51,7 +73,7 @@ Ingen WAV eller modellfil publiseres i Git.
 
 ### Kriterier før vi går videre
 
-- [ ] Modellen kjører teknisk og produserer fire MP3-prøver uten avbrudd.
+- [x] Modellen kjører teknisk og produserer fire MP3-prøver uten avbrudd.
 - [ ] Brukerprøvelytting: nøytral, forståelig norsk bokmålsuttale.
 - [ ] Ingen snøvling, unaturlig dialektprofil, hakkete overgang eller
       feil i navn, årstall, prosent og kronebeløp.
