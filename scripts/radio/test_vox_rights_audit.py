@@ -49,7 +49,7 @@ def validate(audit: dict, lock: dict, gate: dict) -> None:
         raise ValueError("Rettighetsrapporten kan ikke erklære offentlig godkjenning")
 
     for key, value in expected.items():
-        if gate.get(key) is not value if isinstance(value, bool) else gate.get(key) != value:
+        if gate.get(key) != value:
             raise ValueError("Publiseringsporten ble endret uten rettighetsklarering")
 
     if (lock.get("rightsStatus") != "PENDING"
