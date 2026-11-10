@@ -28,3 +28,19 @@ Ingen påstand om at Apache-2.0-etiketten alene gir tillatelse til alle avledede
 Første Actions-prøve: [run 42917874850](https://github.com/Paradispartiet/Paradisavisa/actions/runs/42917874850). Kodekontroll, modellmotor-checkout og CPU-installasjon passerte, men `huggingface_hub.model_info("NbAiLab/nb-tts-norwegian-moss-nano-trimmed")` svarte **HTTP 401 RepositoryNotFound/Unauthorized**. Ingen MP3 eller rapport ble generert; ingen lydartifakt ble lastet opp. Modellen kan ha endret tilgangsstatus eller kreve autentisering; søkeindeksert modellkort er ikke tilstrekkelig bevis på faktisk offentlig nedlasting. Ikke omgå en eventuell modelltilgangsbegrensning; bruk tilgang innvilget av utgiveren eller velg dokumentert tilgjengelig alternativ.
 
 **Sikkerhetsrettelse etter kjøringen:** Vanlige Actions-artifakter fra et offentlig repo regnes ikke som private. Jobben er derfor endret til kun manuell igangsetting, krever passord i GitHub Actions-secret og laster opp bare kryptert lydpakke, aldri rå MP3. Denne nye varianten er **ikke kjørt** og har fortsatt ingen godkjent lyttetest. PR #119 forblir utkast.
+
+## Faktisk modelltilgang – GitHub Actions 10./11. november 2026
+
+Kjørt direkte på offentlig GitHub-runner uten token og **uten å laste ned modellvekter**. [Access-run 42925370177](https://github.com/Paradispartiet/Paradisavisa/actions/runs/42925370177):
+
+| Modell | API/vekt-HEAD | Konsekvens |
+|---|---|---|
+| `NbAiLab/nb-tts-norwegian-moss-nano-trimmed` | 401 | Kan ikke produsere privat lyd |
+| `NbAiLab/nb-tts-norwegian-moss-local-trimmed` | 401 | Ikke tilgjengelig som reserve uten tillatt tilgang |
+| `NbAiLab/nb-tts-norwegian-voices` | 401 | Ikke tilgjengelig som reserve uten tillatt tilgang |
+| `OpenMOSS-Team/MOSS-Audio-Tokenizer-Nano` | 200 ved metadata + HEAD | Tokenizer tilgjengelig; norsk syntesemodell mangler |
+| `versae/nb-nst-tts` | 200 ved metadata + HEAD | Teknisk nedlastbar **annen modellfamilie**; ingen lyd produsert |
+
+`versae/nb-nst-tts` oppgir Apache-2.0 og bokmål, men README inneholder bare lisensmetadata. `config.json` oppgir `microsoft/speecht5_tts` som base og `speaker_embedding_dim=512`: bruk krever separat valgt speaker embedding og vocoder. Treningssett, faktisk stemmeopphav og retter til den genererte stemmen er ikke dokumentert nok til offentlig radio. Modellen er **ikke** blitt automatisk valgt som fallback – den er kun identifisert som en teknisk tilgjengelig kandidat.
+
+Den lille `model-access`-jobben kontrollerer først API-metadata og en vekt-HEAD uten å laste ned store filer. Den aktiverer **aldri** MP3 eller endrer release-gate. Privat MOSS-jobb er kun manuell og skal stoppes før tung installasjon når norsk checkpoint ikke kan hentes.
