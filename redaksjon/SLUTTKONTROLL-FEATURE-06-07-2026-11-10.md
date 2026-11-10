@@ -41,6 +41,10 @@ Fem forespørsler ble **sendt fra tilkoblet Gmail 10. november 2026**, og Gmail 
 
 Alle mottakeradressene ble verifisert mot offisielle pressekontaktsider. **Alle fem meldingene ble sendt 10. november 2026. Ved senere kontroll samme dag var fire innholdssvar og ett automatisk mottakssvar registrert; dette er dokumentert med ulike grader av sitatrett og relevans.** Ingen eksplisitt svarfrist ble oppgitt i meldingen. Sendte meldinger og eventuelle svar skal verifiseres i Gmail. Av personvern- og sikkerhetshensyn lagres verken meldings-ID-er eller private kontolenker i offentlig repo.
 
+## Konkret offentlig fagdokumentasjon til Feature 07
+
+*Skiftende skydekke*, presentert av Digitaliseringsdirektoratet og Skates arbeidsgruppe i august–september 2026, gir et praktisk motstykke til ministererklæringen: en virksomhet må kunne ha beredskap for tap av skytjenester og planlegge for dataeksport, portabilitet, kontrakter og mulige alternativer. Omtalen er nå innarbeidet i teknologisaken sammen med to Digdir-kilder. **Rapportens anbefalinger er ikke et regjeringsvedtak eller en ny felles plattform.** https://www.digdir.no/digitalisering-og-samordning/skiftende-skydekke/8337 / https://www.digdir.no/digitalisering-og-samordning/ny-rapport-dette-bor-en-god-exit-strategi-fra-skytjenester-inneholde/8428
+
 ## Før redaktør kan godkjenne publisering
 
 1. **Fullført 10. november:** Fem kildeforespørsler sendt fra tilkoblet Gmail, utsending bekreftet. Vurder behovet for oppfølging hvis det ikke kommer svar etter noen virkedager.
