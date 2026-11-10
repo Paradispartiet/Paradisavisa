@@ -1,6 +1,12 @@
 name: Paradisradioen – privat NB MOSS-Nano-lydprøve
 
 on:
+  pull_request:
+    paths:
+      - "scripts/radio/probe_moss_access.py"
+      - "scripts/radio/test_probe_moss_access.py"
+      - "scripts/radio/test_moss_pilot.py"
+      - ".github/workflows/radio-moss-nano-privat.yml"
   workflow_dispatch:
     inputs:
       sample_date:
@@ -16,7 +22,36 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  model-access:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Hent kildekoden uten legitimasjon
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Sett opp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Test modeller, metadata og sperrer uten nedlasting
+        run: |
+          python -m unittest discover -s scripts/radio -p "test_probe_moss_access.py" -v
+          python -m unittest discover -s scripts/radio -p "test_moss_pilot.py" -v
+
+      - name: Kontroller offentlig modell- og vektfiltilgang før installasjon
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            python scripts/radio/probe_moss_access.py --require-primary
+          else
+            python scripts/radio/probe_moss_access.py
+          fi
+
   private-moss-voice:
+    needs: model-access
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
