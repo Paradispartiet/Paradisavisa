@@ -39,7 +39,9 @@ class MossPilotSafetyTest(unittest.TestCase):
         self.assertIn("paradisradio-moss-prive.tar.gz.enc", flow)
         self.assertIn("retention-days: 7", flow)
         self.assertNotIn("moss-prove/lydproever/*.mp3", flow)
-        self.assertNotIn("pull_request:", flow)
+        self.assertIn("pull_request:", flow)
+        self.assertIn("if: github.event_name == 'workflow_dispatch'", flow)
+        self.assertIn("needs: model-access", flow)
         self.assertIn("publicAudioEnabled", flow)
 
     def test_subprocess_uses_literal_arguments_and_private_continuation(self):
