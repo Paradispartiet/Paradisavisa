@@ -29,6 +29,14 @@ Her ligger den politiske konflikten. Det er lett å si at kraft skal gå til «s
 
 Det betyr ikke at et datasenter automatisk fortrenger en annen virksomhet. Det betyr at kapasitet, teknisk egnethet, lokalisering og tidsrekkefølge blir spørsmål med store konsekvenser.
 
+## Fagbevegelsen støtter bremsen – næringen advarer
+
+Arbeidstaker- og næringsorganisasjoner tolker grepene ulikt. Fellesforbundet, ved leder Christian Justnes, mener tiltakene svarer på forbundets krav om tydeligere prioritering av norsk kraft til samfunnsnyttige formål. Forbundet ønsker at kraftsystemet i større grad skal støtte norsk industri og arbeidsplasser. Dette er Fellesforbundets offentlige standpunkt, ikke en uavhengig konsekvensanalyse. [4]
+
+Norsk Datasenterindustri, som oppgir å representere nær 180 bedrifter, advarer derimot om usikkerhet for investorer, leverandører og ansatte. Daglig leder Reynir Johannesson mener regjeringen først burde gjøre noe med den lange nettkøen og gi tydeligere regler på kort sikt. Organisasjonen viser til store investeringer i bransjen, men omfanget er ikke uavhengig kontrollert her. [5]
+
+Begge perspektivene handler om arbeidsplasser. Den redaksjonelle utfordringen er å skille mellom **hvor mye kapasitet et prosjekt etterspør**, **hva nettet teknisk tåler**, og **hvilken samfunnsnytte prosjektet faktisk vil gi**. De tre størrelsene er ikke det samme.
+
 ## Hvor mye kapasitet stanser vedtaket faktisk?
 
 Det politiske ordskiftet handler nå også om hva stansen **ikke** omfatter. 9. november stilte stortingsrepresentant Bjørnar Moxnes (R) et skriftlig spørsmål til energiministeren om hvor mye nettkapasitet som fremdeles kan tilknyttes under de midlertidige tiltakene. Han ber også om en oversikt over datasentre med allerede godkjente funksjonskrav og søknader som fortsatt kan behandles. **Svaret var ikke publisert da dette utkastet ble oppdatert 10. november.** [3]
@@ -48,6 +56,9 @@ Før en konsesjonsordning kan vurderes, bør den måles etter åpne kriterier: n
 [2] Digitaliserings- og forvaltningsdepartementet / Energidepartementet, **«Regjeringen vil ha en kontrollert vekst av samfunnsnyttige datasentre i Norge»**, 9. november 2026. https://www.regjeringen.no/no/aktuelt/regjeringen-vil-ha-en-kontrollert-vekst-av-samfunnsnyttige-datasentre-i-norge/id3192054/
 
 [3] Stortinget, **Dokument nr. 15:568 (2026–2027)**, spørsmål fra Bjørnar Moxnes til energiministeren, innlevert 9. november 2026. https://www.stortinget.no/no/Saker-og-publikasjoner/Sporsmal/Skriftlige-sporsmal-og-svar/Skriftlig-sporsmal/?qnid=130177
+
+[4] Fellesforbundet, **«Datasenter: Regjeringen tar kontroll»**, pressemelding 9. november 2026. https://kommunikasjon.ntb.no/pressemelding/19134904/datasenter-regjeringen-tar-kontroll?publisherId=17846982
+[5] Norsk Datasenterindustri, **«Ber om forutsigbarhet og tiltak som virker nå»**, pressemelding 9. november 2026. https://www.datasenterindustrien.no/ber-om-forutsigbarhet-og-tiltak-som-virker-na
 
 ## Redaksjonelt og visuelt arbeid før publisering
 - Hent svar fra bransje, kraftkrevende industri, nettselskaper og gjerne lokale myndigheter om konkrete prioriteringskonflikter. Ingen nye intervjuer er gjennomført.

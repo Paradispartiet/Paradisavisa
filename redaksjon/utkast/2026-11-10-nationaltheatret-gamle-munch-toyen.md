@@ -23,6 +23,8 @@ Mens arbeidet i sentrum pågår, skal teaterdriften flyttes til Gamle Munch. Ett
 
 Dermed endres byens teatergeografi. Tøyen får ikke bare besøk av en stor kulturinstitusjon i en byggeperiode; området kan få en varig sceneaktivitet med publikum, kunstnere og ansatte.
 
+Oslos byrådsleder Eirik Lae Solberg (H) hilser beslutningen velkommen, og mener den bidrar til at Gamle Munch blir brukt og ivaretatt. Dette er byrådslederens vurdering; hvordan dagens lokale aktører blir ivaretatt, er et eget spørsmål. [7]
+
 Men en ny adresse garanterer ikke alene et lokalt kulturløft. Det vil avhenge av åpne publikumsarealer, tilgjengelighet, program, samarbeid med lokale miljøer, transport og hvordan teateret bruker huset.
 
 ## Flere alternativer har vært diskutert

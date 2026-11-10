@@ -23,6 +23,8 @@ Tirsdag kalte Hegseth riksrettsforsøket politisk sabotasje og en farse, ifølge
 
 Saken handler dermed ikke bare om hva som ble gjort militært, men om hvilke juridiske og politiske grenser som gjelder for en forsvarsminister som handler på presidentens ordre. Regjeringens syn på nødvendighet og sikkerhet er ikke i seg selv et svar på alle lovspørsmålene, men anklagene må vurderes mot den faktiske rettslige og operative dokumentasjonen.
 
+Visepresident JD Vance har også offentlig forsvart Hegseth. Støtten viser at forslaget møter betydelig motstand fra presidentens nærmeste allierte, men avgjør ikke de rettslige spørsmålene i anklagene. [7]
+
 ## Et forslag er ikke en dom
 
 Representantenes hus har ført opp et **prosedyrespørsmål knyttet til riksrettsforslaget** på dagsordenen tirsdag 10. november. Den offisielle dagsplanen sier at avstemninger ventes **fra klokken 17.30 østamerikansk tid** (23.30 norsk tid), men angir ikke tidspunktet for akkurat denne voteringen. Avstemningen kan stanse, utsette eller sende forslaget videre, og er ikke nødvendigvis en avstemning om selve riksrettsartiklene. [5] Hvis forslaget går videre, kan det bli debatt og avstemning om riksrettsartiklene. Reuters meldte tirsdag ettermiddag at en **prosedyreavstemning var planlagt senere samme dag**, men utfallet var **ikke avklart på tidspunktet for dette utkastet**. [2][3]
@@ -46,6 +48,8 @@ Svaret blir ikke avgjort av sterke uttalelser alene. Det krever at anklagene beh
 [5] WLKY, **«House schedules procedural vote on Massie's effort to impeach Hegseth»**, oppdatert 10. november 2026 klokken 10.04 EST. https://www.wlky.com/article/thomas-massie-pete-hegseth-house-vote-impeach-kentucky/74386864
 
 [6] Flertallslederens kontor i Representantenes hus, **«Daily Schedule»**, 10. november 2026, offentlig saksliste og tidsramme. https://www.majorityleader.gov/schedule/default.aspx
+
+[7] AP News, **«The Latest: Hegseth slams his potential impeachment as a political spectacle»**, 10. november 2026. https://apnews.com/article/272515c4fca92435224406593a892e69
 
 ## Redaksjonelt arbeid før publisering
 - Oppdater prosedyre- og avstemningsstatus på publiseringstidspunktet. Særlig kritisk etter 11. november.
