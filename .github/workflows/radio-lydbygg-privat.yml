@@ -57,10 +57,19 @@ jobs:
 
       - name: Installer verktøy for å kontrollere MP3
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -qq -y ffmpeg
+          # Ubuntu-runner har som regel oppdatert pakkeliste fra før.
+          # En ubegrenset apt-get update kan ellers blokkere hele lydjobben.
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo timeout 120s apt-get install -qq -y ffmpeg || {
+              sudo timeout 75s apt-get update -qq -o Acquire::Retries=0 -o Acquire::http::Timeout=25
+              sudo timeout 120s apt-get install -qq -y ffmpeg
+            }
+          fi
+          ffmpeg -version | head -1
+          ffprobe -version | head -1
 
       - name: Gjenbruk tidligere PRIVAT lyd fra samme kilde/profil
+        id: radioCache
         uses: actions/cache/restore@v4
         with:
           path: radio-cache
@@ -133,6 +142,7 @@ jobs:
           PY
 
       - name: Mellomlagre lyd kun fra dette private bygget
+        if: steps.radioCache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
           path: radio-cache
