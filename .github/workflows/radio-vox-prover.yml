@@ -7,6 +7,8 @@ on:
       - "scripts/radio/test_vox_pilot.py"
       - "scripts/radio/lag_lyttepanel.py"
       - "scripts/radio/test_lag_lyttepanel.py"
+      - "scripts/radio/lag_mobil_lyttepanel.py"
+      - "scripts/radio/test_lag_mobil_lyttepanel.py"
       - ".github/workflows/radio-vox-prover.yml"
   workflow_dispatch:
 
@@ -98,6 +100,14 @@ jobs:
           grep -q "data:audio/mpeg;base64," vox-prove/lyttepanel.html
           echo "Offline HTML med fire innbakte lydprøver er klar"
 
+      - name: Lag mobiltestpanel med Media Session og lokal testlogg
+        run: |
+          python scripts/radio/lag_mobil_lyttepanel.py --report vox-prove/rapport.json --output vox-prove/ipad-mobiltest.html
+          test -s vox-prove/ipad-mobiltest.html
+          grep -q "data:audio/mpeg;base64," vox-prove/ipad-mobiltest.html
+          grep -q "setActionHandler" vox-prove/ipad-mobiltest.html
+          echo "Én MP3-spiller, offline test og mediekontroller er klar"
+
       - name: Lever intern lydpakke i syv dager, ikke GitHub Pages
         if: always()
         uses: actions/upload-artifact@v4
@@ -106,6 +116,7 @@ jobs:
           path: |
             vox-prove/rapport.json
             vox-prove/lyttepanel.html
+            vox-prove/ipad-mobiltest.html
             vox-prove/lydproever/*.mp3
           if-no-files-found: warn
           retention-days: 7
