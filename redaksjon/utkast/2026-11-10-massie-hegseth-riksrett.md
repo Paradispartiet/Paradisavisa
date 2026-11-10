@@ -25,7 +25,7 @@ Saken handler dermed ikke bare om hva som ble gjort militært, men om hvilke jur
 
 ## Et forslag er ikke en dom
 
-Representantenes hus ventes først å ta stilling til et prosedyrespørsmål som kan avvise eller stoppe behandlingen av resolusjonen. Hvis forslaget går videre, kan det bli debatt og avstemning om riksrettsartiklene. Reuters meldte tirsdag ettermiddag at en **prosedyreavstemning var planlagt senere samme dag**, men utfallet var **ikke avklart på tidspunktet for dette utkastet**. [2][3]
+Representantenes hus har satt opp en **prosedyreavstemning tirsdag klokken 17.30 østamerikansk tid** (23.30 norsk tid), ifølge det publiserte programmet. Avstemningen kan stanse, utsette eller sende forslaget videre, og er ikke nødvendigvis en avstemning om selve riksrettsartiklene. [5] Hvis forslaget går videre, kan det bli debatt og avstemning om riksrettsartiklene. Reuters meldte tirsdag ettermiddag at en **prosedyreavstemning var planlagt senere samme dag**, men utfallet var **ikke avklart på tidspunktet for dette utkastet**. [2][3]
 
 En eventuell beslutning i Representantenes hus om å stille en minister for riksrett innebærer heller ikke automatisk at vedkommende fjernes. I det amerikanske systemet er det Senatet som har rollen i den videre riksrettsbehandlingen. Slik sett er det avgjørende å skille mellom **anklage, avstemning, riksrettsbehandling og eventuell avsettelse**.
 
@@ -42,6 +42,8 @@ Svaret blir ikke avgjort av sterke uttalelser alene. Det krever at anklagene beh
 [2] Roll Call, **«Massie moves to force Hegseth impeachment vote»**, 9. november 2026. https://rollcall.com/2026/11/09/massie-moves-to-force-hegseth-impeachment-vote/  
 [3] Reuters, **«Pentagon chief Hegseth calls moves to impeach him a farce and sabotage»**, 10. november 2026. https://www.reuters.com/world/pentagon-chief-hegseth-calls-moves-impeach-him-farce-that-will-fail-2026-11-10/  
 [4] PolitiFact, **«War Powers Resolution, boat strikes: What’s the focus and likelihood of Hegseth impeachment?»**, 9. november 2026. https://politifact.com/article/2026/nov/09/hegseth-impeachment-house-massie-jeffries/
+
+[5] WLKY, **«House schedules procedural vote on Massie's effort to impeach Hegseth»**, oppdatert 10. november 2026 klokken 10.04 EST. https://www.wlky.com/article/thomas-massie-pete-hegseth-house-vote-impeach-kentucky/74386864
 
 ## Redaksjonelt arbeid før publisering
 - Oppdater prosedyre- og avstemningsstatus på publiseringstidspunktet. Særlig kritisk etter 11. november.

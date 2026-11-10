@@ -15,7 +15,7 @@ Nationaltheatrets historiske bygning har i mange år vært preget av vedlikehold
 
 Det har likevel vært uenighet om hva som skulle bygges, hvor biscenene skulle ligge, hvordan kostnadene skulle holdes under kontroll og hvor raskt en løsning kunne gjennomføres.
 
-Dagens kunngjøring svarer på et av de viktigste spørsmålene: **Det gamle Munchmuseet blir teatrets midlertidige hovedbase**.
+Dagens kunngjøring svarer på et av de viktigste spørsmålene: **Det gamle Munchmuseet blir teatrets midlertidige hovedbase**. Ifølge regjeringen vurderte Statsbygg 14 tomtetilbud før valget falt på Tøyen, og neste prosjektmilepæl er oppstart av forprosjekt i **2027**. Det er ikke det samme som en fastsatt dato for ferdig rehabilitering. [7]
 
 ## Hva blir permanent på Tøyen?
 
@@ -46,6 +46,7 @@ Beslutningen setter likevel en tydelig retning: **Nationaltheatret skal ikke for
 [4] Stortinget, **Innst. 24 S (2026–2027)** om alternativet «Ny framtid for Nationaltheatret». https://www.stortinget.no/no/saker-og-publikasjoner/publikasjoner/innstillinger/stortinget/2026-2027/inns-202627-024s/?all=true  
 [5] Stortinget, **«Uke 46 på Stortinget»**, omtaler planlagt behandling torsdag 12. november. https://stortinget.no/no/Hva-skjer-pa-Stortinget/Nyhetsarkiv/Hva-skjer-nyheter/2026-2027/uke-46-pa-stortinget/  
 [6] VG, **«Skuespillerne på kant med sin tidligere sjef»**, 19. oktober 2026, om støtte til Gamle Munch. https://www.vg.no/rampelys/i/1ow7pq/nationaltheatret-vil-bruke-gamle-munch-museet-gaar-i-rette-med-tidligere-teatersjef-ellen-horn
+[7] Kultur- og likestillingsdepartementet, **«Regjeringa vil bruke Gamle Munch på Tøyen som teaterhus med biscener for Nationaltheatret»**, 10. november 2026. https://www.regjeringen.no/no/aktuelt/regjeringa-vil-bruke-gamle-munch-pa-toyen-som-teaterhus-med-biscener-for-nationaltheatret/id3192180/
 
 ## Redaksjonelt arbeid før publisering
 - Skaff eller verifiser dokumentasjon om framdrift, finansiering, eierforhold, funksjonalitet og avtaler knyttet til Gamle Munch.
