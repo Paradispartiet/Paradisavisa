@@ -29,6 +29,12 @@ Her ligger den politiske konflikten. Det er lett å si at kraft skal gå til «s
 
 Det betyr ikke at et datasenter automatisk fortrenger en annen virksomhet. Det betyr at kapasitet, teknisk egnethet, lokalisering og tidsrekkefølge blir spørsmål med store konsekvenser.
 
+## Hvor mye kapasitet stanser vedtaket faktisk?
+
+Det politiske ordskiftet handler nå også om hva stansen **ikke** omfatter. 9. november stilte stortingsrepresentant Bjørnar Moxnes (R) et skriftlig spørsmål til energiministeren om hvor mye nettkapasitet som fremdeles kan tilknyttes under de midlertidige tiltakene. Han ber også om en oversikt over datasentre med allerede godkjente funksjonskrav og søknader som fortsatt kan behandles. **Svaret var ikke publisert da dette utkastet ble oppdatert 10. november.** [3]
+
+Spørsmålet er viktig fordi en midlertidig stans i *nye* reservasjoner ikke sier hvor stor kraftetterspørsel som allerede ligger inne i prosjekter med rettigheter eller søknader som omfattes av unntak. Debatten om samfunnsnytte må derfor også handle om etterprøvbare tall og hvilke vedtak som faktisk gir mer handlingsrom. [1][3]
+
 ## Et spørsmål om kontroll, ikke bare megawatt
 
 Datasentre kan gjøre Norge mer digitalt selvstendig, særlig dersom vi får kontroll over viktige tjenester og databehandling. Men et anlegg som står i Norge, er ikke nødvendigvis norskstyrt: eierskap, programvare, leverandøravtaler og regelverk kan fortsatt ligge utenfor landet.
@@ -41,8 +47,11 @@ Før en konsesjonsordning kan vurderes, bør den måles etter åpne kriterier: n
 [1] Statnett, **«Midlertidige tiltak for fortsatt forsvarlig systemdrift»**, publisert 9. november 2026. https://www.statnett.no/om-statnett/nyheter-og-pressemeldinger/nyhetsarkiv-2026/midlertidige-tiltak-for-fortsatt-forsvarlig-systemdrift/  
 [2] Digitaliserings- og forvaltningsdepartementet / Energidepartementet, **«Regjeringen vil ha en kontrollert vekst av samfunnsnyttige datasentre i Norge»**, 9. november 2026. https://www.regjeringen.no/no/aktuelt/regjeringen-vil-ha-en-kontrollert-vekst-av-samfunnsnyttige-datasentre-i-norge/id3192054/
 
+[3] Stortinget, **Dokument nr. 15:568 (2026–2027)**, spørsmål fra Bjørnar Moxnes til energiministeren, innlevert 9. november 2026. https://www.stortinget.no/no/Saker-og-publikasjoner/Sporsmal/Skriftlige-sporsmal-og-svar/Skriftlig-sporsmal/?qnid=130177
+
 ## Redaksjonelt og visuelt arbeid før publisering
 - Hent svar fra bransje, kraftkrevende industri, nettselskaper og gjerne lokale myndigheter om konkrete prioriteringskonflikter. Ingen nye intervjuer er gjennomført.
 - Bekreft status for eventuelt forslag om konsesjon på publiseringsdagen; det er en plan om ordning, ikke innført lov.
+- Følg opp svaret på skriftlig spørsmål 15:568 når det foreligger; det er sentralt for å vurdere faktisk omfang av stansen.
 - **Bildebrief:** Et norsk anleggs- eller kontrollmiljø der nettkapasitetens knapphet fremstår gjennom realistisk infrastruktur og mennesker, ikke en kollasj av kabler, servere og enorme lyn. Ett integrert hovedmotiv. Ingen fabrikker eller datasentre må framstilles som faktisk berørt uten dokumentasjon.
 - **Status:** Utkast. Ikke legge i Nyhetshjul.json før tekst, kildekritikk og bilde er godkjent.

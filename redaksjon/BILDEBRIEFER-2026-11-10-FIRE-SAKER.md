@@ -1,6 +1,6 @@
 # Bildebrief – Paradisavisas fire dagsaktuelle saker 10. november 2026
 
-**Status:** Redaksjonelle planer. Bildene er ikke laget eller godkjent. Bruk [bildehåndbokens metode](BILDEHANDBOK.md) for undertekst, menneskefokus og visuelle paradokser. 16:9, malt stofflig avisillustrasjon, ikke fotografisk rekonstruksjon, overtydelig vektorgrafikk eller tekstplakater.
+**Status:** Tre selvstendige 16:9-illustrasjoner er generert som lokale vurderingsutkast, men ingen er redaksjonelt godkjent eller lastet opp til avisens GitHub-repositorium. Se [bildestatus](BILDESTATUS-2026-11-10.md). Bruk [bildehåndbokens metode](BILDEHANDBOK.md) for undertekst, menneskefokus og visuelle paradokser. 16:9, malt stofflig avisillustrasjon, ikke fotografisk rekonstruksjon, overtydelig vektorgrafikk eller tekstplakater.
 
 ## 1. Datasentre – Hvem skal få Norges strøm?
 
