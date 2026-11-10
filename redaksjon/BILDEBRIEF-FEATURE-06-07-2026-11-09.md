@@ -1,6 +1,6 @@
 # Bildeproduksjon – Feature 06 og 07
 **Dato:** 9. november 2026 · **Standard:** BILDEHANDBOK v1.2  
-**Status:** Begge originale hovedbilder (1600 × 900 WebP) er lagt i GitHub og koblet til hver sin noindex-forhåndsvisning i PR #84. Bankens sekundærillustrasjon er nå også integrert. Teknologisakens sekundærillustrasjon mangler. Ingen Feature-artikkel er publisert.
+**Status per 10. november 2026:** Begge hovedbilder og begge sekundærbilder er integrert i GitHub og på separate noindex-forhåndsvisninger. Alle fire er ekte 1600 × 900 WebP-bilder. Redaksjonell bildegodkjenning og kildeoppfølging gjenstår; ingen Feature-artikkel er publisert.
 
 ## 06 Bankene – hovedbilde (generert kandidat)
 - Motivet viser en voksen kvinne ved kjøkkenbordet i et vanlig hjem, med bærbar PC, papirer og moderne kontorbygning synlig gjennom vinduet. Naturlig lys og tydelig menneskelig skala.
@@ -29,7 +29,7 @@
 - Alt: «Illustrasjon av teknisk personell ved serverrack i en nordisk datasal.»
 - Bildetekst: «KI-assistert redaksjonell illustrasjon av digital infrastruktur. Viser ikke et konkret nordisk-baltisk prosjekt.»
 
-## 07 Nordisk digital suverenitet – sekundærbilde (ny bildekandidat 10. november, ennå ikke i GitHub)
+## 07 Nordisk digital suverenitet – sekundærbilde (integrert 10. november, avventer godkjenning)
 - Symbolmettet, sammenhengende redaksjonell fotomontasje som viser innbyggernes offentlige tjenester, dokumenter, kommunikasjon, servere og digitale forbindelser – med visuelle tegn på både avhengighet og mulig kontroll.
 - Må ikke forveksles med en faktisk datasvikt, et cyberangrep eller eksisterende nordisk offentlig system. Ingen generert overskrift eller tekst på bildet.
 
@@ -67,4 +67,4 @@ Et bildes digitale kontrollsum beviser filidentitet, **ikke** at bildet er redak
 - **Foreslått filbane når selve filen er overført:** `Bilder/Artikler/feature07-nordisk-digital-suverenitet-sekundaerillustrasjon-2026.webp` og samme fil i `utkast/2026-11-09/bilder/`.
 - **Alt-tekst:** «KI-assistert, symbolsk illustrasjon av tekniker ved serverrack, en undersjøisk datakabel og nordiske offentlige tjenester i vinterlandskap.»
 - **Bildetekst:** «KI-assistert redaksjonell analyseillustrasjon av digital infrastruktur og samfunnets avhengighet av den. Motivet er konstruert og viser ikke et faktisk nordisk prosjekt.»
-- **Sperre:** Dette bildet er klargjort i arbeidsmiljøet, men er **ikke lagt i GitHub**; artikkel- og forhåndsvisningsfilene skal ikke få en bildekobling før en verifisert WebP-fil er overført. Bruk nøyaktig denne filen, ikke en avissidemockup eller SVG.
+- **Overføringsstatus:** Originalen er lagt inn som binær Git-blob med SHA `603e2707d1905ef9a3c9bcbe9701fa028e1f6212` og identisk WebP i bildearkiv og artikkelkø, og lenket fra begge noindex-sider. Bruk nøyaktig denne filen ved eventuell publisering, ikke en avissidemockup eller SVG. **Publiseringssperre:** Redaksjonell kilde- og bildegodkjenning gjenstår.
