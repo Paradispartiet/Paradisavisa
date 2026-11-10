@@ -35,6 +35,12 @@ Det er derfor misvisende å framstille diskusjonen som om alle aktører har vær
 
 For publikum kan en midlertidig flytting gi nye opplevelser, men også praktiske endringer. For ansatte og kunstnere blir det viktig hvordan de nye lokalene kan brukes til prøver, verksteder, drift og forestillinger. For byen kan et nytt kultursted på Tøyen styrke publikumsstrømmer også utenfor sentrum.
 
+### Tøyens egne kulturmiljøer må også høres
+
+Etter at Munchmuseet flyttet ut, ble Gamle Munch brukt til kultur- og nærmiljøaktiviteter. Rødt-politikeren Siavash Mobasheri kritiserte i mars 2026 planene om at Nationaltheatret kunne overta bygget, fordi lokale kulturmiljøer og ideelle organisasjoner kunne miste et viktig samlingssted. **Dette var en uttalelse fra mars, ikke en reaksjon på regjeringens beslutning 10. november.** [8]
+
+Regjeringen legger vekt på at bygget skal ha publikumsrettet kulturaktivitet, men har foreløpig ikke klargjort hvordan lokale aktører skal få tilgang. Det bør undersøkes med teateret, kommunen og kulturmiljøene på Tøyen. [7][9]
+
 Det sentrale åpne spørsmålet er fremdeles **tid og kostnad**: Når kan teateret flytte inn, hvor lenge blir hovedscenen stengt, hva vil ombyggingen koste, og hvilke deler av planene krever ytterligere avtaler eller bevilgninger? Disse punktene må undersøkes i prosjektunderlag og gjennom direkte spørsmål til staten, Oslo kommune og teateret før en komplett økonomisak kan publiseres.
 
 Beslutningen setter likevel en tydelig retning: **Nationaltheatret skal ikke forlate sentrum for godt, men Oslo kan få to varige teatersteder i stedet for ett.**
@@ -47,6 +53,9 @@ Beslutningen setter likevel en tydelig retning: **Nationaltheatret skal ikke for
 [5] Stortinget, **«Uke 46 på Stortinget»**, omtaler planlagt behandling torsdag 12. november. https://stortinget.no/no/Hva-skjer-pa-Stortinget/Nyhetsarkiv/Hva-skjer-nyheter/2026-2027/uke-46-pa-stortinget/  
 [6] VG, **«Skuespillerne på kant med sin tidligere sjef»**, 19. oktober 2026, om støtte til Gamle Munch. https://www.vg.no/rampelys/i/1ow7pq/nationaltheatret-vil-bruke-gamle-munch-museet-gaar-i-rette-med-tidligere-teatersjef-ellen-horn
 [7] Kultur- og likestillingsdepartementet, **«Regjeringa vil bruke Gamle Munch på Tøyen som teaterhus med biscener for Nationaltheatret»**, 10. november 2026. https://www.regjeringen.no/no/aktuelt/regjeringa-vil-bruke-gamle-munch-pa-toyen-som-teaterhus-med-biscener-for-nationaltheatret/id3192180/
+
+[8] Kunstavisen/NTB, 17.–18. mars 2026, om motstand mot overtakelsen av Gamle Munch. https://kunstavisen.no/nyheter/nationalteateret-tar-over-det-gamle-munchmuseet-pa-toyen
+[9] VårtOslo, 5. desember 2025, debattinnlegg om Gamle Munch som nærmiljøhus. https://www.vartoslo.no/bydel-gamle-oslo-bydel-grunerlokka-gamle-munch/gamle-munch-har-blitt-hjertet-pa-toyen-na-star-byradet-klare-til-a-stoppe-pulsen/1059940
 
 ## Redaksjonelt arbeid før publisering
 - Skaff eller verifiser dokumentasjon om framdrift, finansiering, eierforhold, funksjonalitet og avtaler knyttet til Gamle Munch.
