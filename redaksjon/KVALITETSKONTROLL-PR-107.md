@@ -43,6 +43,8 @@ Kilder: https://www.reuters.com/world/pentagon-chief-hegseth-calls-moves-impeach
 **Nationaltheatret:** Regjeringens kunngjøring 10. november bekrefter Gamle Munch som midlertidig hovedscene og framtidige biscener. Hovedbygningen skal rehabiliteres. Forprosjekt varslet i 2027. Oppgitt kjøpesum på 111 millioner kommer fra Subjekt med Aftenposten som underliggende kilde og er **ikke** verifisert direkte mot kjøpsavtale.  
 Kilder: https://www.regjeringen.no/no/aktuelt/regjeringa-vil-bruke-gamle-munch-pa-toyen-som-teaterhus-med-biscener-for-nationaltheatret/id3192180/ · https://subjekt.no/2026/11/10/nationaltheatret-gamle-munch-toyen/
 
+**Oppdatert ingress og forsidekort:** Datasentersaken omtaler nå direkte at Dokument 8:34 LS omfatter tilknytnings-/investeringsplikten for **nye uttakskunder over 1 MW**, også utenfor datasenterbransjen, og presiserer at forslaget **ikke er vedtatt**. Dette er en rettslig foreslått endring, ikke Statnetts gjeldende stopp. [Originalforslag](https://www.stortinget.no/no/Saker-og-publikasjoner/Publikasjoner/Representantforslag/2026-2027/dok8-202627-034ls/)
+
 ## Praktisk publiseringsport
 
 - [ ] Godkjenn de tre bildene redaksjonelt – de er fortsatt **vurderingsutkast**.
