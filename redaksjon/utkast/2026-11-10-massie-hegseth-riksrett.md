@@ -1,5 +1,7 @@
 # En republikaner utfordrer Trumps forsvarsminister: Åtte anklager og én maktkamp
 
+**ARKIVNOTAT 11. november 2026:** Dette er manusutkastet før avstemningen. [Den publiserte artikkelen](../../artikler/2026-11-10-massie-hegseth-riksrettsforslag.html) er nå oppdatert med resultatet: **211–204 for å henvise H. Res. 1655 til justiskomiteen**, ikke et vedtak om riksrett. Teksten nedenfor er arkivert for redaksjonell sporbarhet. [Kildekontroll](../KVALITETSKONTROLL-PR-107.md).
+
 **UTENRIKS / USA / RETTSSTAT · NYHETSANALYSE – REDAKSJONELT UTKAST, IKKE PUBLISERT**  
 **Researchdato:** 10. november 2026, ettermiddag norsk tid. **Status:** Utkast. Riksrettsprosedyren kan endre seg raskt. Kontroller stemmegivning på nytt før publisering.
 

@@ -1,3 +1,7 @@
+## Sluttstatus 11. november 2026
+
+Alle tre illustrasjoner er publisert med KI-merking, alt-tekst og bildetekster etter brukerens klarsignal. Datasenter- og Nationaltheatret-sakene ble publisert via PR #118, Hegseth-saken via PR #107. Hegseth-artikkelen ble oppdatert etter komitéhenvisningen 10. november, **211–204**. Den historiske vurderingsstatusen under er beholdt som dokumentasjon, ikke gjeldende publiseringsstatus.
+
 # Paradisavisa – bildestatus for de tre nyhetsutkastene 10. november 2026
 
 **Dato:** 10. november 2026. **Status:** Tre selvstendige illustrasjoner er lagret som **ekte WebP-binærfiler i GitHub** og koblet til de tre `noindex`-forhåndsvisningene. **Ingen er godkjent som endelig avisbilde eller satt på forsiden.**
