@@ -10,6 +10,8 @@ import struct
 import json
 import subprocess
 import shutil
+import wave
+from types import SimpleNamespace
 
 P = pathlib.Path(__file__).with_name("generer_lydpilot.py")
 spec = importlib.util.spec_from_file_location("generer_lydpilot", P)
@@ -58,6 +60,32 @@ class PilotTest(unittest.TestCase):
                 min(10, antall_ferske)
             )
             self.assertTrue(all(not s["id"].startswith("historisk") for s in data["samples"]))
+
+    def test_setningspauser_uten_resampling(self):
+        rate = 22050
+        blokk = bytes(2205 * 2)  # 100 ms 16-bit mono
+        chunk = SimpleNamespace(
+            sample_rate=rate, sample_width=2, sample_channels=1,
+            audio_int16_bytes=blokk,
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = pathlib.Path(directory) / "setninger.wav"
+            antall = mod.skriv_chunker_til_wave(path, [chunk, chunk])
+            self.assertEqual(antall, 2)
+            with wave.open(str(path), "rb") as file:
+                self.assertEqual(file.getframerate(), rate)
+                self.assertEqual(file.getsampwidth(), 2)
+                self.assertEqual(file.getnchannels(), 1)
+                self.assertEqual(file.getnframes(), 2 * 2205 + round(rate * 0.22))
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaises(ValueError):
+                mod.skriv_chunker_til_wave(pathlib.Path(directory) / "tom.wav", [])
+
+    def test_pilotprofil_er_fastsatt(self):
+        self.assertAlmostEqual(mod.RADIO_LENGTH_SCALE, 1.08)
+        self.assertAlmostEqual(mod.RADIO_NOISE_SCALE, 0.55)
+        self.assertAlmostEqual(mod.RADIO_NOISE_W_SCALE, 0.65)
+        self.assertAlmostEqual(mod.RADIO_SENTENCE_PAUSE_SECONDS, 0.22)
 
     @unittest.skipUnless(shutil.which("ffmpeg") and shutil.which("ffprobe"),
                          "ffmpeg/ffprobe er ikke installert på denne testmaskinen")

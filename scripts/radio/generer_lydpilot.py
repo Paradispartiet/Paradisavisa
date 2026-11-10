@@ -4,11 +4,13 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import hashlib
+import itertools
 import json
 import pathlib
 import re
 import subprocess
 import sys
+import wave
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 
@@ -109,6 +111,61 @@ def lydinfo(sti: pathlib.Path) -> dict:
             "sha256": hashlib.sha256(sti.read_bytes()).hexdigest()}
 
 
+
+# Variasjonen og pausene er prøvemessige kvalitetsinnstillinger, ikke
+# et løfte om at den norske modellen alltid vil høres naturlig ut.
+RADIO_LENGTH_SCALE = 1.08
+RADIO_NOISE_SCALE = 0.55
+RADIO_NOISE_W_SCALE = 0.65
+RADIO_SENTENCE_PAUSE_SECONDS = 0.22
+
+
+def skriv_chunker_til_wave(wav: pathlib.Path, chunks, pause_seconds: float = RADIO_SENTENCE_PAUSE_SECONDS) -> int:
+    """Sammenstill setninger i original samplerate og legg inn en kort, eksakt pause."""
+    iterator = iter(chunks)
+    first = next(iterator, None)
+    if first is None:
+        raise ValueError("Piper leverte ingen lyd")
+    count = 0
+    lydformat = None
+    with wave.open(str(wav), "wb") as file:
+        for chunk in itertools.chain((first,), iterator):
+            fmt = (int(chunk.sample_rate), int(chunk.sample_width), int(chunk.sample_channels))
+            if lydformat is None:
+                lydformat = fmt
+                file.setframerate(fmt[0])
+                file.setsampwidth(fmt[1])
+                file.setnchannels(fmt[2])
+            elif fmt != lydformat:
+                raise ValueError("Piper byttet lydformat mellom setningene")
+            samples = bytes(chunk.audio_int16_bytes)
+            if not samples or len(samples) % (fmt[1] * fmt[2]):
+                raise ValueError("Ufullstendig PCM-blokk fra Piper")
+            if count:
+                file.writeframes(bytes(round(fmt[0] * pause_seconds) * fmt[1] * fmt[2]))
+            file.writeframes(samples)
+            count += 1
+    if not count:
+        wav.unlink(missing_ok=True)
+        raise ValueError("Piper leverte ingen lyd")
+    return count
+
+
+def piper_til_wave(modell: pathlib.Path, uttaletekst: str, wav: pathlib.Path) -> int:
+    """Piper Python API gir kontroll over setningsgrenser og talevariasjon."""
+    from piper import PiperVoice, SynthesisConfig
+
+    voice = PiperVoice.load(str(modell))
+    syn = SynthesisConfig(
+        length_scale=RADIO_LENGTH_SCALE,
+        noise_scale=RADIO_NOISE_SCALE,
+        noise_w_scale=RADIO_NOISE_W_SCALE,
+        normalize_audio=False,
+    )
+    return skriv_chunker_til_wave(wav, voice.synthesize(uttaletekst, syn_config=syn))
+
+
+
 def syntetiser(dest: pathlib.Path, model: pathlib.Path, config: pathlib.Path,
                 modellinfo: pathlib.Path) -> pathlib.Path:
     if not model.is_file() or not config.is_file() or not modellinfo.is_file():
@@ -122,18 +179,29 @@ def syntetiser(dest: pathlib.Path, model: pathlib.Path, config: pathlib.Path,
         base = proeve["id"]
         wav = dest / (base + ".wav")
         mp3 = mp3_dir / (base + ".mp3")
-        kjør(sys.executable, "-m", "piper", "--model", str(model),
-             "--config", str(config), "-f", str(wav), "--", proeve["uttaletekst"])
+        antall_setninger = piper_til_wave(model, proeve["uttaletekst"], wav)
         kjør("ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(wav),
-             "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ac", "1", "-ar", "24000",
+             "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ac", "1", "-ar", "22050",
              "-c:a", "libmp3lame", "-b:a", "64k", str(mp3))
         wav.unlink(missing_ok=True)
         rapport.append({"id": base, "kildeklasse": proeve["kildeklasse"],
-                       "uttale_sha256": proeve["uttale_sha256"], **lydinfo(mp3)})
+                       "uttale_sha256": proeve["uttale_sha256"],
+                       "setninger": antall_setninger, **lydinfo(mp3)})
     rapportfil = dest / "rapport.json"
     rapportfil.write_text(json.dumps({
         "status": "KUN_INTERN_PILOT_IKKE_GODKJENT_FOR_PUBLISERING",
-        "voice": meta, "samples": rapport, "antall": len(rapport),
+        "voice": meta,
+        "lydkvalitetsprofil": {
+            "lengthScale": RADIO_LENGTH_SCALE,
+            "noiseScale": RADIO_NOISE_SCALE,
+            "noiseWScale": RADIO_NOISE_W_SCALE,
+            "sentencePauseSeconds": RADIO_SENTENCE_PAUSE_SECONDS,
+            "outputSampleRate": 22050,
+            "mp3BitrateKbps": 64,
+            "loudnormTargetLUFS": -16,
+            "loudnormTruePeakDbtp": -1.5,
+        },
+        "samples": rapport, "antall": len(rapport),
         "neste": "Lisensgodkjenning og manuell prøvelytting kreves før PR D",
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return rapportfil

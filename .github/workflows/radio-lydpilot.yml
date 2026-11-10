@@ -46,12 +46,19 @@ jobs:
           import json
           import re
           from pathlib import Path
-          from huggingface_hub import HfApi, hf_hub_download
+          from huggingface_hub import hf_hub_download
 
           repo = "rhasspy/piper-voices"
-          revision = HfApi().model_info(repo).sha
-          if not revision or len(revision) != 40:
-              raise RuntimeError("Klarte ikke låse modelrevisjon til et 40-tegns commit-SHA")
+          # Bruk eksakt modellrevisjon fra første godkjente tekniske pilot.
+          revision = "e7229f7d33a10e145e109b886d661984201ac3c4"
+          expected_hashes = {
+              "no/no_NO/talesyntese/medium/no_NO-talesyntese-medium.onnx":
+                  "b763aebe02e72c4628c4074c4b8b448f05ffe523b975bfcd58e2c5d531270c13",
+              "no/no_NO/talesyntese/medium/no_NO-talesyntese-medium.onnx.json":
+                  "b0eb0491fc8bf9843d2beac8acf8773b6cf59274316406b36ff579ae8a1909d5",
+              "no/no_NO/talesyntese/medium/MODEL_CARD":
+                  "0a03b201db00e1bdc384e2dee4f8710075ef8d32ca3c64ed16782b04d2605f6c",
+          }
           base = "no/no_NO/talesyntese/medium"
           files = [
               f"{base}/no_NO-talesyntese-medium.onnx",
@@ -64,6 +71,8 @@ jobs:
                   repo_id=repo, filename=name, revision=revision, local_dir="pilot-modell"
               ))
               hashes[name] = hashlib.sha256(downloaded.read_bytes()).hexdigest()
+              if hashes[name] != expected_hashes[name]:
+                  raise RuntimeError(f"Modellfil endret uten godkjenning: {name}")
           card = Path("pilot-modell") / base / "MODEL_CARD"
           if not re.search(r"License:\s*CC0\b", card.read_text(encoding="utf-8"), re.I):
               raise RuntimeError("Treningsdatasetts lisensavklaring er endret")
@@ -95,6 +104,8 @@ jobs:
           from pathlib import Path
           report = json.loads(Path("pilot-lyd/rapport.json").read_text(encoding="utf-8"))
           assert report["antall"] == 10
+          assert report["lydkvalitetsprofil"]["sentencePauseSeconds"] == 0.22
+          assert report["voice"]["revision"] == "e7229f7d33a10e145e109b886d661984201ac3c4"
           assert all(s["codec"] == "mp3" and s["durationSeconds"] > 2
                      for s in report["samples"])
           print("10 private MP3-prøver har fått gyldig lydkontroll")
