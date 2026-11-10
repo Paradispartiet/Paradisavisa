@@ -1,12 +1,6 @@
 name: Paradisradioen – privat NB MOSS-Nano-lydprøve
 
 on:
-  pull_request:
-    types: [synchronize]
-    paths:
-      - "scripts/radio/lag_moss_prover.py"
-      - "scripts/radio/test_moss_pilot.py"
-      - ".github/workflows/radio-moss-nano-privat.yml"
   workflow_dispatch:
     inputs:
       sample_date:
@@ -23,7 +17,6 @@ concurrency:
 
 jobs:
   private-moss-voice:
-    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'radio/nb-moss-nano-private-pilot'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
@@ -47,6 +40,15 @@ jobs:
           assert gate["publicAudioEnabled"] is False
           assert gate["modelRightsStatus"] == gate["editorialAudioStatus"] == "PENDING"
           PY
+
+      - name: Krev hemmelig passord til kryptert privat lydpakke
+        env:
+          RADIO_MOSS_AUDIO_PASSPHRASE: ${{ secrets.RADIO_MOSS_AUDIO_PASSPHRASE }}
+        run: |
+          if [ "${#RADIO_MOSS_AUDIO_PASSPHRASE}" -lt 24 ]; then
+            echo "::error::Mangler sterkt RADIO_MOSS_AUDIO_PASSPHRASE (minst 24 tegn). Offentlige Actions-artifakter kan leses utenfor redaksjonen."
+            exit 1
+          fi
 
       - name: Hent OpenMOSS-kode og dokumenter nøyaktig commit
         run: |
@@ -87,13 +89,23 @@ jobs:
           print("Private MP3-prøver validert – ingen ny offentlig radio")
           PY
 
-      - name: Lever kun MP3-er og revisjonsbevis (7 dager)
-        if: always()
+      - name: Pakk og krypter privat lyd; fjern råfiler før opplasting
+        env:
+          RADIO_MOSS_AUDIO_PASSPHRASE: ${{ secrets.RADIO_MOSS_AUDIO_PASSPHRASE }}
+        run: |
+          tar -C moss-prove -czf /tmp/paradisradio-moss-prive.tar.gz rapport.json lydproever
+          openssl enc -aes-256-cbc -salt -pbkdf2 -iter 300000 \
+            -in /tmp/paradisradio-moss-prive.tar.gz \
+            -out moss-prove/paradisradio-moss-prive.tar.gz.enc \
+            -pass env:RADIO_MOSS_AUDIO_PASSPHRASE
+          rm -f /tmp/paradisradio-moss-prive.tar.gz
+          rm -rf moss-prove/lydproever moss-prove/rapport.json
+          test -s moss-prove/paradisradio-moss-prive.tar.gz.enc
+
+      - name: Lever bare kryptert Actions-artifakt (7 dager)
         uses: actions/upload-artifact@v4
         with:
-          name: paradisradio-moss-nano-private
-          path: |
-            moss-prove/rapport.json
-            moss-prove/lydproever/*.mp3
-          if-no-files-found: warn
+          name: paradisradio-moss-nano-encrypted
+          path: moss-prove/paradisradio-moss-prive.tar.gz.enc
+          if-no-files-found: error
           retention-days: 7
