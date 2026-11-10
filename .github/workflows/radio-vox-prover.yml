@@ -5,6 +5,8 @@ on:
     paths:
       - "scripts/radio/generer_vox_prover.py"
       - "scripts/radio/test_vox_pilot.py"
+      - "scripts/radio/lag_lyttepanel.py"
+      - "scripts/radio/test_lag_lyttepanel.py"
       - ".github/workflows/radio-vox-prover.yml"
   workflow_dispatch:
 
@@ -89,6 +91,13 @@ jobs:
           print("Fire kontrollerte MP3-prøver, kun som upublisert Actions-artifakt")
           PY
 
+      - name: Lag samlet lyttepanel som virker uten separate MP3-lenker
+        run: |
+          python scripts/radio/lag_lyttepanel.py --report vox-prove/rapport.json --output vox-prove/lyttepanel.html
+          test -s vox-prove/lyttepanel.html
+          grep -q "data:audio/mpeg;base64," vox-prove/lyttepanel.html
+          echo "Offline HTML med fire innbakte lydprøver er klar"
+
       - name: Lever intern lydpakke i syv dager, ikke GitHub Pages
         if: always()
         uses: actions/upload-artifact@v4
@@ -96,6 +105,7 @@ jobs:
           name: paradisradio-vox-bokmaal-prover
           path: |
             vox-prove/rapport.json
+            vox-prove/lyttepanel.html
             vox-prove/lydproever/*.mp3
           if-no-files-found: warn
           retention-days: 7
