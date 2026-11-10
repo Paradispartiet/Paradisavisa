@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-10",
+  "voice": {
+    "model": "nb_NO-vox-medium",
+    "repository": "rasmusjs/nb_NO-vox-medium",
+    "revision": "a36ead8f7c914289997e5681a6bbf1386887efab",
+    "releaseCandidate": "INTERNAL_ONLY"
+  },
+  "status": "HOLD_PENDING_RIGHTS_CLEARANCE",
+  "legalConclusion": "NOT_DETERMINED",
+  "publicAudioAuthorized": false,
+  "facts": [
+    {
+      "id": "vox_card",
+      "claim": "Utgiver beskriver Vox som finjustert fra norsk talesyntese checkpoint epoch=3459-step=2052250.ckpt og oppgir CC0 for sine nyere vekter.",
+      "source": "https://huggingface.co/rasmusjs/nb_NO-vox-medium",
+      "evidenceType": "MODEL_AUTHOR_STATEMENT"
+    },
+    {
+      "id": "checkpoint",
+      "claim": "Piper checkpoint-katalogen har norsk talesyntese på eksakt checkpoint epoch=3459-step=2052250.ckpt.",
+      "source": "https://huggingface.co/datasets/rhasspy/piper-checkpoints/commit/5cce5725aebb1b0d3ee2d4ae2080669dee2f82c1",
+      "evidenceType": "UPSTREAM_CHECKPOINT_SOURCE"
+    },
+    {
+      "id": "talesyntese_card",
+      "claim": "Opprinnelig norsk Talesyntese-kort oppgir fine-tuning fra US English lessac-medium; datasett CC0 gjelder bare norsk datasett.",
+      "source": "https://huggingface.co/rhasspy/piper-voices/blob/main/no/no_NO/talesyntese/medium/MODEL_CARD",
+      "evidenceType": "UPSTREAM_MODEL_CARD"
+    },
+    {
+      "id": "lessac_license",
+      "claim": "Blizzard 2013 Lessac-materiale er lisensiert for forskningsbruk og utelukker kommersiell bruk av materialet.",
+      "source": "https://www.cstr.ed.ac.uk/projects/blizzard/2013/lessac_blizzard2013/license.html",
+      "evidenceType": "ORIGINAL_DATA_LICENSE"
+    },
+    {
+      "id": "piper_policy",
+      "claim": "Piper skiller datalisens fra finjusteringskjede; modellopphav og rettighetsspørsmål om avledede modeller er ikke automatisk avklart.",
+      "source": "https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/LICENSING.md",
+      "evidenceType": "UPSTREAM_PROJECT_GUIDANCE"
+    }
+  ],
+  "knownGaps": [
+    "Uavhengig filbevis som kobler den låste ONNX-revisjonen til det dokumenterte gamle checkpointet (modellkortets opplysning er ikke kryptografisk verifisering).",
+    "Dokumentert tillatelse eller juridisk vurdering for offentlig/kommersiell syntetisert lyd med Lessac-arvet modell.",
+    "Sluttgodkjent Normal eller Nyhetsflyt på navn, tall og flere nyhetssaker.",
+    "Bekreftet fysisk iPad-/låseskjermtest av radiospiller over HTTPS."
+  ],
+  "possiblePaths": [
+    "Få konkret skriftlig klarering fra relevant(e) rettighetshaver(e) for den identifiserte modellkjeden og distribusjon av generert lyd.",
+    "Bruke en like god bokmålsstemme med uavhengig dokumentert treningskjede uten Lessac, og gjennomføre ny redaksjonell lytting.",
+    "Beholde offentlig Web Speech inntil en av disse veiene er avklart."
+  ],
+  "approvalCannotBeInferredFrom": [
+    "CC0 for den nyeste Vox-modellen",
+    "Apache-2.0-merke på separat modellside",
+    "Brukerens positive første lyttetest",
+    "Grønn CI eller gyldige MP3-filer"
+  ],
+  "publicGateExpected": {
+    "publicAudioEnabled": false,
+    "modelRightsStatus": "PENDING",
+    "editorialAudioStatus": "PENDING"
+  }
+}
