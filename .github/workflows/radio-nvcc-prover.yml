@@ -6,7 +6,6 @@ on:
       - "scripts/radio/generer_nvcc_prover.py"
       - "scripts/radio/test_nvcc_voice_unit.py"
       - ".github/workflows/radio-nvcc-prover.yml"
-      - "radio/nvcc-evaluering.md"
   workflow_dispatch:
 
 permissions:
