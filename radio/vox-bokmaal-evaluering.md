@@ -34,7 +34,8 @@ Modellkortet oppgir ca. 12,5 % ordfeilrate på 100 holdte norske Wikipedia-setni
 men dette er **utgiverens evalueringsresultat, ikke vår test av stemmekvaliteten**.
 
 Dette er mest realistisk å kjøre gratis på GitHub Actions av de undersøkte
-modellene. Stemmen er ikke lyttet til av redaksjonen ennå.
+modellene. De fire prøveklippene har fått positiv første lyttetilbakemelding
+(«Høres bra ut»), men er ikke sluttgodkjent av redaksjonen.
 
 ## Rettigheter – to nivåer må skilles
 
@@ -114,3 +115,25 @@ i **privat GitHub Actions-artifakt**, ikke inn i GitHub Pages-koden.
 
 Dette **løser ikke stemmekvalitet eller lisensavklaring**: menneskelig
 prøvelytting og rettighetskontroll gjenstår før noen modell velges.
+
+## Modell låst til prøvelyttet versjon – 10. november 2026
+
+To uavhengige private Actions-lydrapporter (#96 og #106) oppgir identisk
+modellrevisjon og SHA-256 for alle tre filene. Før denne rettelsen hentet
+GitHub Actions alltid siste HEAD fra Hugging Face, som kunne endre stemmen
+uten redaksjonell prøvelytting. Den private lydjobben henter nå bare
+**eksakt revisjon og filer fra radio/vox-model-lock.json**.
+
+- Kilderevisjon: `a36ead8f7c914289997e5681a6bbf1386887efab`
+- ONNX SHA-256: `84efefd38150d87b1d81185a50874d0279d19dd8d1260b7db40091e9b11c5c1f`
+- JSON SHA-256: `1b6ca6624bf09b80733f6115c1f15e87154231fbc76d3d18de71ce0f523a49ca`
+- README SHA-256: `8f6b820583b7457540665de26488d554bca0f0d4c0d1343f558c3e7581c10341`
+
+Alle tre hasher kontrolleres i Actions umiddelbart etter nedlasting og
+igjen i genereringskoden. Enhver uventet endring feiler lukket, og
+stemmemodellen må da vurderes og låses på nytt i en egen PR.
+
+**Rettighetsporten forblir PENDING.** Vox-utgiverens CC0-erklæring for de
+nye vektene er ikke en separat klarering av den eldre base-/Lessac-kjeden.
+Det er fortsatt ikke besluttet om *Normal* eller *Nyhetsflyt* er best.
+Ingen offentlig MP3-publisering aktiveres med modellåsen.
