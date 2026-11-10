@@ -191,8 +191,12 @@ def synthesize_missing(missing: list[dict], cache: pathlib.Path,
 def publish_private(selected: list[dict], cache: pathlib.Path,
                     output: pathlib.Path, lock: dict, reused: int) -> dict:
     """Kun til Actions-artifakt. Navnet betyr IKKE offentlig publisering."""
-    if output.resolve() == ROOT.resolve() or str(output.resolve()).startswith(str((ROOT / "radio").resolve()) + "/"):
-        raise ValueError("Privat lyd må ikke legges i offentlig radio/-mappen")
+    # I repository checkout er bare den dedikerte og upubliserte
+    # radio-private-output-mappen lov; andre utdata må ligge helt utenfor repoet.
+    output_resolved = output.resolve()
+    root_resolved = ROOT.resolve()
+    if output_resolved.is_relative_to(root_resolved) and output_resolved != (ROOT / "radio-private-output").resolve():
+        raise ValueError("Privat lyd må ikke legges i offentlige nettsidekataloger")
     (output / "lyd").mkdir(parents=True, exist_ok=True)
     items = []
     for row in selected:
