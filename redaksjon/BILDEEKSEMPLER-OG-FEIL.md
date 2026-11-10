@@ -24,7 +24,9 @@ Dette er en læringsliste og godkjenningsveiledning. Trump- og Grønland-bildene
 - **Teknisk integritet:** Git blob SHA-1 `673ac7cd78686fb0249fcec79f1da8fbd51ae28d`, SHA-256-prefiks `1e3d8aea71a99770`.
 
 ## 4. Oljepris og norsk økonomi
-- **Status:** Bildeuttrykket har vært til revisjon. Ikke tolk publisering av en SVG som visuell sluttgodkjenning.
+- **Status 10. november 2026:** Brukeren har valgt et detaljert, tegnet motiv med tre personer ved en norsk kysthavn. Den eksakte brukerleverte PNG-en er tilpasset til WebP (1600 × 900) og publisert som `Bilder/Artikler/2026-11-05-oljeprisen-norge-godkjent.webp`. Filen er **ikke** en ny SVG-tegning. Git blob-SHA: `785823ffcf7ed2ad4e05a24886de10bffc435e9f`.
+- **Bildetype:** KI-assistert redaksjonell illustrasjon. Motivets personer og miljø er fiktive, ikke dokumentarfotografi fra en bestemt hendelse.
+- **Redaksjonelt valg:** Menneskene bærer fortellingen om Norges sårbarhet ved et oljeprisfall; symboler og markedskurver er utelatt. De eldre SVG- og fotomontasjeforslagene er ikke i bruk som artikkelens hovedbilde.
 - **Hovedpoeng:** Fallende oljepris kan være resultat av fallende oljeetterspørsel (potensielt god klimaeffekt), men også av økt tilbud eller lavere risikopremie (som kan stimulere fossilbruk). Bildet må ikke automatisk likestille prisfall med grønne utslippskutt.
 - **Feil å unngå:** Diagram/plakat med en rekke piler, oljeplattform, krone, elbil, bensinpumpe og hus som konkurrerende like store ikoner.
 - **God retning:** Norsk oljeplattform som ett hovedmotiv; menneskelig og miljømessig dilemma formidlet gjennom scenografi, lys og noen få presise elementer.
