@@ -23,3 +23,8 @@
 Kilder: [Massie](https://massie.house.gov/news/documentsingle.aspx?DocumentID=395863) · [Majority Leader](https://www.majorityleader.gov/schedule/default.aspx) · [House Clerk](https://clerk.house.gov/Votes) · [Reuters](https://www.reuters.com/legal/government/how-would-impeaching-pentagon-chief-hegseth-work-2026-11-10/).
 
 **PR-en forblir som utkast.**
+
+
+## Redaksjonelt vedtak 10. november 2026, før voteringen
+
+Brukeren ga deretter klarsignal «Fullfør». Saken gis status som **forklaringsartikkel publisert før prosedyreavstemningen** – ikke en resultatnyhet. Overskrift, ingress, forsidekort og notis i artikkelen gjør kildekontrolltidspunktet **10. november kl. 22.58 norsk tid** tydelig. Ingen voteringstall er oppdiktet. Artikkelen skal oppdateres når en offisiell roll-call blir publisert. Bildet er klart merket KI-assistert symbolsk montasje.
