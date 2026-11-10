@@ -33,7 +33,7 @@ En eventuell beslutning i Representantenes hus om å stille en minister for riks
 
 En avstemning i Representantenes hus kan stille Hegseth formelt for riksrett med vanlig flertall. Det betyr fortsatt **ikke** at han er avsatt. Hvis Representantenes hus vedtar artiklene, går saken til Senatet, der fjerning fra embetet krever støtte fra minst **to tredeler av senatorene som er til stede**. [8]
 
-Forslaget kan også bli stoppet ved en prosedyreavstemning før Representantenes hus tar stilling til anklagepunktene. Resultatet var ikke offentlig bekreftet ved redaksjonens kontroll **10. november klokken 19.30 norsk tid**. [6][8]
+Forslaget kan også bli stoppet ved en prosedyreavstemning før Representantenes hus tar stilling til anklagepunktene. Ved redaksjonens siste kildesjekk **tirsdag kveld 10. november, før de varslede avstemningene**, var det ikke publisert noe bekreftet resultat. Dette er et tidsfestet utkast; status må oppdateres så snart voteringen er gjennomført. [9] [6][8]
 
 
 ## Hvorfor kommer utfordringen fra Trumps eget parti?
@@ -58,6 +58,8 @@ Svaret blir ikke avgjort av sterke uttalelser alene. Det krever at anklagene beh
 
 [8] Reuters, **«How would impeaching Pentagon chief Hegseth work?»**, 10. november 2026. https://www.reuters.com/legal/government/how-would-impeaching-pentagon-chief-hegseth-work-2026-11-10/
 
+
+[9] Republican Cloakroom, **offisiell dagsorden for Representantenes hus, 10. november 2026**, med prosedyrespørsmål om Hegseth. https://repcloakroom.house.gov/
 
 ## Redaksjonelt arbeid før publisering
 - Oppdater prosedyre- og avstemningsstatus på publiseringstidspunktet. Særlig kritisk etter 11. november.

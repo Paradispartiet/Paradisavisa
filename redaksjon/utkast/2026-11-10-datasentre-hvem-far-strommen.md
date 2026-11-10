@@ -47,7 +47,9 @@ Spørsmålet er viktig fordi en midlertidig stans i *nye* reservasjoner ikke sie
 
 Statnetts tekniske stopp er ikke det samme som et politisk vedtak om å stanse all ny datasenterutbygging. Et representantforslag fra Sp, SV, Rødt, MDG og KrF vil gå lenger og midlertidig stoppe økt strømforbruk til datasentre. Forslaget er sendt til ordinær komitébehandling, ikke vedtatt. [6][7]
 
-Tirsdag 10. november besluttet energi- og miljøkomiteen å holde høring **24. november**, med debatt planlagt **11. desember**, ifølge NTB. Det betyr at Stortinget fortsatt skal diskutere hvor omfattende en stans bør være. [6]
+Tirsdag 10. november besluttet energi- og miljøkomiteen å holde høring **24. november klokken 13.15** i Stortingets komitéhus, med debatt planlagt **11. desember**, ifølge NTB. Det betyr at Stortinget fortsatt skal diskutere hvor omfattende en stans bør være. [6]
+
+Høringen omfatter tre representantforslag, Dokument 8:6 S, 8:9 S og 8:34 LS. Fristen for å søke om å delta er **16. november klokken 14.00**, ifølge Stortingets egen oversikt. [8]
 
 Regjeringens konsesjonsordning er også foreløpig på planstadiet. Hovedprinsippene er varslet til **høsten 2027**. Det skillet er avgjørende for hvem som kan bygge nå og hvem som må vente. [2]
 
@@ -71,6 +73,8 @@ Før en konsesjonsordning kan vurderes, bør den måles etter åpne kriterier: n
 [6] NTB/Dagsavisen, **«Stortinget holder høring om stoppforslag om nye datasentre»**, 10. november 2026. https://www.dagsavisen.no/nyheter/stortinget-holder-horing-om-stoppforslag-om-nye-datasentre/10627244
 [7] Stortinget, **Dokument 8:34 LS (2026–2027)**, representantforslag om midlertidig stans av økt strømforbruk til datasentre. https://stortinget.no/no/Saker-og-publikasjoner/Saker/Sak/?p=200495
 
+
+[8] Stortinget, **høring 24. november 2026 kl. 13.15**, om tre representantforslag om datasentre og strømforbruk. https://www.stortinget.no/no/Hva-skjer-pa-Stortinget/Horing/horing/?h=10006019
 
 ## Redaksjonelt og visuelt arbeid før publisering
 - Hent svar fra bransje, kraftkrevende industri, nettselskaper og gjerne lokale myndigheter om konkrete prioriteringskonflikter. Ingen nye intervjuer er gjennomført.

@@ -15,6 +15,8 @@ Nationaltheatrets historiske bygning har i mange år vært preget av vedlikehold
 
 Det har likevel vært uenighet om hva som skulle bygges, hvor biscenene skulle ligge, hvordan kostnadene skulle holdes under kontroll og hvor raskt en løsning kunne gjennomføres.
 
+Regjeringen har også presisert at **hovedscenen ikke skal flyttes permanent**; bygget i sentrum skal rehabiliteres. [11]
+
 Dagens kunngjøring svarer på et av de viktigste spørsmålene: **Det gamle Munchmuseet blir teatrets midlertidige hovedbase**. Ifølge regjeringen vurderte Statsbygg 14 tomtetilbud før valget falt på Tøyen, og neste prosjektmilepæl er oppstart av forprosjekt i **2027**. Det er ikke det samme som en fastsatt dato for ferdig rehabilitering. [7]
 
 ## Hva blir permanent på Tøyen?
@@ -67,6 +69,8 @@ Beslutningen setter likevel en tydelig retning: **Nationaltheatret skal ikke for
 
 [10] Subjekt, **«Staten betaler 111 millioner for Gamle Munch. Nationaltheatret flytter til Tøyen»**, 10. november 2026, med Aftenposten oppgitt som kilde. https://subjekt.no/2026/11/10/nationaltheatret-gamle-munch-toyen/
 
+
+[11] Kultur- og likestillingsminister Lubna Jaffery, **«Et Nationaltheater for fremtiden»**, tale 10. november 2026, presiserer at Nationaltheatrets hovedbygning bevares. https://www.regjeringen.no/no/aktuelt/et-nationaltheater-for-fremtiden/id3192189/
 
 ## Redaksjonelt arbeid før publisering
 - Skaff avtaledokumentasjon som bekrefter den rapporterte kjøpesummen på 111 millioner kroner, samt kostnadsramme og framdrift for ombygging og rehabilitering.
