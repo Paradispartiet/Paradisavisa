@@ -43,13 +43,15 @@ Låst modell: radio/model-lock.json
 - Ved godkjente endringer i notiser.json på main, og på endringer i byggekoden eller manuell kjøring, kan GitHub Actions lage faktiske MP3-filer **som kortvarig upublisert Actions-artifakt**.
 - Kandidatlisten fra PR D1 sammenlignes på nytt med dagens notiser.json før syntese. Dato beregnes i Oslo. Gamle/fremtidige/utgåtte notiser genereres ikke.
 - Hver kandidat får stabil notis-ID og innholdshash fra uttaletekst, låst modellrevisjon og den dokumenterte synteseprofilen.
-- Tidligere private lydfiler gjenbrukes bare når både innholdshash, modell/profil, filens egen SHA-256 og FFprobe-kontroll stemmer. Ved tekstendring lages ny MP3.
+- Tidligere private lydfiler gjenbrukes bare når både innholdshash, modell/profil, filens egen SHA-256, MP3-headerkontroll med mutagen og vellykket FFmpeg-dekoding stemmer. Ved tekstendring lages ny MP3.
 - Stemmemodellen lastes bare når nytt eller endret innhold krever syntese. Tilgangen låses til eksakt modellrevisjon og alle tre SHA-256.
 - Den forbedrede Piper-profilen fra PR #87 brukes videre: lengdeskala 1,08; støyprofil 0,55/0,65; 220 ms mellom setningene. Dette er fortsatt en kvalitetskandidat.
 - Hele utdataområdet radio-private-output inneholder bare lyd for **fortsatt aktuelle saker**, et tydelig privat manifest og **ingen offentlige audioUrl-felt**.
 - Python-skriptet tillater ikke å legge resultatet i offentlig radio/-mappen eller andre nettsidekataloger. GitHub-jobben har bare lesetilgang til repoet og har ingen Pages-publiseringssteg.
 - Eventuell Actions-cache er kun et byggemellomlager, ikke en historisk nyhetskatalog eller godkjent utgivelsesbevis. Produksjonspublisering må ikke stole på en PR-cache uten ny verifisering.
 - Både syntesejobben og artifakten kan nås fra repoets Actions-historikk; **ikke behandle dem som konfidensielle persondata**. Kun allerede publiserte notiser behandles.
+
+Den automatiske D2-jobben bruker versjonslåste Python-hjul for FFmpeg og MP3-kontroll. Den kjører ikke apt-get og trenger ingen betalt TTS-tjeneste.
 
 ### Krav før offentlig lyd
 
