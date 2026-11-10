@@ -32,6 +32,16 @@ class MossPilotSafetyTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 mod.assert_revision(bad)
 
+    def test_workflow_never_uploads_raw_audio(self):
+        flow = (ROOT / ".github/workflows/radio-moss-nano-privat.yml").read_text(encoding="utf-8")
+        self.assertIn("RADIO_MOSS_AUDIO_PASSPHRASE", flow)
+        self.assertIn("openssl enc -aes-256-cbc", flow)
+        self.assertIn("paradisradio-moss-prive.tar.gz.enc", flow)
+        self.assertIn("retention-days: 7", flow)
+        self.assertNotIn("moss-prove/lydproever/*.mp3", flow)
+        self.assertNotIn("pull_request:", flow)
+        self.assertIn("publicAudioEnabled", flow)
+
     def test_subprocess_uses_literal_arguments_and_private_continuation(self):
         arguments = mod.command(
             pathlib.Path("/tmp/nb_model"), pathlib.Path("/tmp/tokenizer"),
