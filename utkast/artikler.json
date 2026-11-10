@@ -10,10 +10,12 @@
       "artikkel": "utkast/2026-11-09/feature-06-bankene.html",
       "bilde": "utkast/2026-11-09/bilder/feature06-bankene-hovedbilde-2026.webp",
       "registrert": "2026-11-09",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-10",
+      "publisert_url": "artikler/2026-11-10-bankene-tjener-milliarder.html"
     },
     {
       "id": "feature-07-digital-suverenitet",
@@ -22,10 +24,12 @@
       "artikkel": "utkast/2026-11-09/feature-07-digital-suverenitet.html",
       "bilde": "utkast/2026-11-09/bilder/feature07-nordisk-digital-suverenitet-hovedbilde-2026.webp",
       "registrert": "2026-11-09",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-10",
+      "publisert_url": "artikler/2026-11-10-norden-teknologigigantene.html"
     },
     {
       "id": "tribunekollaps-tromso",
