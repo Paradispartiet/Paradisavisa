@@ -57,7 +57,7 @@ Nordisk-baltisk samarbeid kan gi bedre krav til innkjøp, sikkerhet og åpne gre
 
 Det finnes allerede mer konkrete forslag. I **juni 2026** la **Tekna, NITO og Forbrukerrådet** fram anbefalinger om digital suverenitet i offentlig sektor. De ba blant annet om at offentlige anskaffelser legger større vekt på **åpen kildekode, åpne standarder, interoperabilitet og muligheten til å flytte data**. Det er organisasjonenes politiske forslag, ikke vedtatt norsk innkjøpspolitikk. Forbrukerrådets rapport *Breaking Free* fra februar argumenterte også for at offentlig innkjøpsmakt kan brukes til å støtte reelle alternativer til de største teknologiplattformene.
 
-Samtidig er ikke alternativene kostnadsfrie. En offentlig styrt løsning må ha et ansvarlig fagmiljø, oppdateringer, drift, sikkerhetsrevisjon, beredskap og tydelig ansvarsfordeling. Paradisavisa bør derfor prøve de politiske ambisjonene mot en konkret innkjøpssak – med sammenlignbare pris-, drifts- og sikkerhetsdata – før vi konkluderer om hva som er best.
+Samtidig er ikke alternativene kostnadsfrie. En offentlig styrt løsning må ha et ansvarlig fagmiljø, oppdateringer, drift, sikkerhetsrevisjon, beredskap og tydelig ansvarsfordeling. Ambisjonene må derfor vurderes mot faktiske offentlige innkjøp, med sammenlignbare data om pris, drift, sikkerhet og muligheten til å bytte leverandør. En løsning blir ikke automatisk bedre fordi den er nordisk eller offentlig eid.
 
 ## Et sikkerhetsspørsmål – ikke bare et markedsspørsmål
 
@@ -73,7 +73,7 @@ Den nordisk-baltiske erklæringen har som ambisjon å gjøre regionen mer digita
 
 På spørsmål fra Paradisavisa om hvilke fellesprosjekter som faktisk er besluttet, hvilke budsjetter og frister som gjelder, og hvordan offentlige alternativer kan innføres, svarte Digitaliserings- og forvaltningsdepartementet 10. november at departementet ikke hadde noen kommentar. Det er ikke en avvisning av ministererklæringen, men innebærer at departementet ikke har gitt avisen nye konkrete svar på gjennomføringen.
 
-For Paradisavisa er den mest interessante oppfølgingen konkret: **Hvilket digitalt verktøy kunne nordiske land samarbeide om å levere bedre allerede nå?** Og hvordan skulle vi kunne se om det ble tryggere, rimeligere, mer tilgjengelig og mindre avhengig enn dagens løsninger?
+Det avgjørende spørsmålet er konkret: **Hvilket digitalt verktøy kunne nordiske land samarbeide om å levere bedre allerede nå?** Og hvordan kan resultatet måles etter sikkerhet, kostnader, tilgjengelighet og muligheten til å velge en annen leverandør?
 
 Det er der en stor idé om digital selvstendighet begynner å ligne en tjeneste samfunnet kan bruke.
 
