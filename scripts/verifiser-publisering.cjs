@@ -5,6 +5,7 @@ const origin = "https://paradispartiet.github.io/Paradisavisa/";
 const sha = process.env.GITHUB_SHA || "manual";
 const eventPath = process.env.GITHUB_EVENT_PATH;
 const required = ["index.html", "styles.css", "avisdesign.css",
+  "qa/radio-media-session.html",
   "script.js", "service-worker.js", "notiser.json", "Nyhetshjul.json",
   "Sportshjul.json",
   "artikler/2026-11-05-ronaldo-landslagsavskjed.html",
