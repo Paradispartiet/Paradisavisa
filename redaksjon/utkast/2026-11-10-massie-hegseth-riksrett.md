@@ -31,6 +31,11 @@ Representantenes hus har ført opp et **prosedyrespørsmål knyttet til riksrett
 
 En eventuell beslutning i Representantenes hus om å stille en minister for riksrett innebærer heller ikke automatisk at vedkommende fjernes. I det amerikanske systemet er det Senatet som har rollen i den videre riksrettsbehandlingen. Slik sett er det avgjørende å skille mellom **anklage, avstemning, riksrettsbehandling og eventuell avsettelse**.
 
+En avstemning i Representantenes hus kan stille Hegseth formelt for riksrett med vanlig flertall. Det betyr fortsatt **ikke** at han er avsatt. Hvis Representantenes hus vedtar artiklene, går saken til Senatet, der fjerning fra embetet krever støtte fra minst **to tredeler av senatorene som er til stede**. [8]
+
+Forslaget kan også bli stoppet ved en prosedyreavstemning før Representantenes hus tar stilling til anklagepunktene. Resultatet var ikke offentlig bekreftet ved redaksjonens kontroll **10. november klokken 19.30 norsk tid**. [6][8]
+
+
 ## Hvorfor kommer utfordringen fra Trumps eget parti?
 
 Massie har tidligere tatt avstand fra Trump-administrasjonens håndtering av flere spørsmål. Etter Demokratenes framgang i mellomvalget møter Republikanerne press også fra politikere som ønsker en annen kurs i krigsspørsmål. Samtidig kan Hegseth vise til bred støtte fra presidenten og andre i administrasjonen. [2][3]
@@ -50,6 +55,9 @@ Svaret blir ikke avgjort av sterke uttalelser alene. Det krever at anklagene beh
 [6] Flertallslederens kontor i Representantenes hus, **«Daily Schedule»**, 10. november 2026, offentlig saksliste og tidsramme. https://www.majorityleader.gov/schedule/default.aspx
 
 [7] AP News, **«The Latest: Hegseth slams his potential impeachment as a political spectacle»**, 10. november 2026. https://apnews.com/article/272515c4fca92435224406593a892e69
+
+[8] Reuters, **«How would impeaching Pentagon chief Hegseth work?»**, 10. november 2026. https://www.reuters.com/legal/government/how-would-impeaching-pentagon-chief-hegseth-work-2026-11-10/
+
 
 ## Redaksjonelt arbeid før publisering
 - Oppdater prosedyre- og avstemningsstatus på publiseringstidspunktet. Særlig kritisk etter 11. november.

@@ -33,6 +33,12 @@ I tidligere faser er blant annet nye biscener ved Tullinløkka blitt vurdert. Gr
 
 Det er derfor misvisende å framstille diskusjonen som om alle aktører har vært enige om én opplagt løsning. Samtidig har skuespillere ved Nationaltheatret selv offentlig argumentert for å ta Gamle Munch i bruk og legge til rette for permanente biscener der. [6]
 
+## Kjøpesummen er ikke rehabiliteringsbudsjettet
+
+Kulturavisen Subjekt skriver at **staten skal betale 111 millioner kroner** for Gamle Munch, med Aftenposten oppgitt som kilde. Dette er et rapportert kjøpesumsbeløp, ikke et totalbudsjett for teaterets ombygging eller restaureringen av Nationaltheatrets gamle hovedbygning. Paradisavisa har ikke selv fått bekreftet kjøpesummen direkte i avtaledokumentene. [10]
+
+Regjeringen har fastsatt **forprosjektstart i 2027**, men heller ikke dagens pressemelding oppgir en ferdigstillelsesdato eller samlet sluttkostnad. Det er derfor nødvendig å skille mellom eiendomskjøp, tilpasning av Gamle Munch og rehabilitering i sentrum. [7]
+
 ## Hvem får et bedre teater – og når?
 
 For publikum kan en midlertidig flytting gi nye opplevelser, men også praktiske endringer. For ansatte og kunstnere blir det viktig hvordan de nye lokalene kan brukes til prøver, verksteder, drift og forestillinger. For byen kan et nytt kultursted på Tøyen styrke publikumsstrømmer også utenfor sentrum.
@@ -59,8 +65,11 @@ Beslutningen setter likevel en tydelig retning: **Nationaltheatret skal ikke for
 [8] Kunstavisen/NTB, 17.–18. mars 2026, om motstand mot overtakelsen av Gamle Munch. https://kunstavisen.no/nyheter/nationalteateret-tar-over-det-gamle-munchmuseet-pa-toyen
 [9] VårtOslo, 5. desember 2025, debattinnlegg om Gamle Munch som nærmiljøhus. https://www.vartoslo.no/bydel-gamle-oslo-bydel-grunerlokka-gamle-munch/gamle-munch-har-blitt-hjertet-pa-toyen-na-star-byradet-klare-til-a-stoppe-pulsen/1059940
 
+[10] Subjekt, **«Staten betaler 111 millioner for Gamle Munch. Nationaltheatret flytter til Tøyen»**, 10. november 2026, med Aftenposten oppgitt som kilde. https://subjekt.no/2026/11/10/nationaltheatret-gamle-munch-toyen/
+
+
 ## Redaksjonelt arbeid før publisering
-- Skaff eller verifiser dokumentasjon om framdrift, finansiering, eierforhold, funksjonalitet og avtaler knyttet til Gamle Munch.
+- Skaff avtaledokumentasjon som bekrefter den rapporterte kjøpesummen på 111 millioner kroner, samt kostnadsramme og framdrift for ombygging og rehabilitering.
 - Kontrollér om Stortingets behandling 12. november endrer politisk situasjon ved eventuell senere publisering.
 - **Bildebrief:** Vis **menneskene som bruker teateret**, for eksempel teaterarbeidere og skuespillere i overgangen mellom rommene, med Gamle Munch som stedstro omgivelser. Alternativt lisensiert foto av de to faktiske byggene. Ikke oppdiktede pressekonferansefoto eller store tekstetiketter.
 - Merk eventuelle KI-bilder som redaksjonelle illustrasjoner.

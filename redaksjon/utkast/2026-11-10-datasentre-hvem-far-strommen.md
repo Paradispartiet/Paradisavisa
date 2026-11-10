@@ -43,6 +43,14 @@ Det politiske ordskiftet handler nå også om hva stansen **ikke** omfatter. 9. 
 
 Spørsmålet er viktig fordi en midlertidig stans i *nye* reservasjoner ikke sier hvor stor kraftetterspørsel som allerede ligger inne i prosjekter med rettigheter eller søknader som omfattes av unntak. Debatten om samfunnsnytte må derfor også handle om etterprøvbare tall og hvilke vedtak som faktisk gir mer handlingsrom. [1][3]
 
+## Stortinget tar en bredere pause til høring
+
+Statnetts tekniske stopp er ikke det samme som et politisk vedtak om å stanse all ny datasenterutbygging. Et representantforslag fra Sp, SV, Rødt, MDG og KrF vil gå lenger og midlertidig stoppe økt strømforbruk til datasentre. Forslaget er sendt til ordinær komitébehandling, ikke vedtatt. [6][7]
+
+Tirsdag 10. november besluttet energi- og miljøkomiteen å holde høring **24. november**, med debatt planlagt **11. desember**, ifølge NTB. Det betyr at Stortinget fortsatt skal diskutere hvor omfattende en stans bør være. [6]
+
+Regjeringens konsesjonsordning er også foreløpig på planstadiet. Hovedprinsippene er varslet til **høsten 2027**. Det skillet er avgjørende for hvem som kan bygge nå og hvem som må vente. [2]
+
 ## Et spørsmål om kontroll, ikke bare megawatt
 
 Datasentre kan gjøre Norge mer digitalt selvstendig, særlig dersom vi får kontroll over viktige tjenester og databehandling. Men et anlegg som står i Norge, er ikke nødvendigvis norskstyrt: eierskap, programvare, leverandøravtaler og regelverk kan fortsatt ligge utenfor landet.
@@ -60,9 +68,13 @@ Før en konsesjonsordning kan vurderes, bør den måles etter åpne kriterier: n
 [4] Fellesforbundet, **«Datasenter: Regjeringen tar kontroll»**, pressemelding 9. november 2026. https://kommunikasjon.ntb.no/pressemelding/19134904/datasenter-regjeringen-tar-kontroll?publisherId=17846982
 [5] Norsk Datasenterindustri, **«Ber om forutsigbarhet og tiltak som virker nå»**, pressemelding 9. november 2026. https://www.datasenterindustrien.no/ber-om-forutsigbarhet-og-tiltak-som-virker-na
 
+[6] NTB/Dagsavisen, **«Stortinget holder høring om stoppforslag om nye datasentre»**, 10. november 2026. https://www.dagsavisen.no/nyheter/stortinget-holder-horing-om-stoppforslag-om-nye-datasentre/10627244
+[7] Stortinget, **Dokument 8:34 LS (2026–2027)**, representantforslag om midlertidig stans av økt strømforbruk til datasentre. https://stortinget.no/no/Saker-og-publikasjoner/Saker/Sak/?p=200495
+
+
 ## Redaksjonelt og visuelt arbeid før publisering
 - Hent svar fra bransje, kraftkrevende industri, nettselskaper og gjerne lokale myndigheter om konkrete prioriteringskonflikter. Ingen nye intervjuer er gjennomført.
 - Bekreft status for eventuelt forslag om konsesjon på publiseringsdagen; det er en plan om ordning, ikke innført lov.
-- Følg opp svaret på skriftlig spørsmål 15:568 når det foreligger; det er sentralt for å vurdere faktisk omfang av stansen.
+- Følg opp svaret på skriftlig spørsmål 15:568 når det foreligger. Følg også høringen 24. november og debatten 11. desember.
 - **Bildebrief:** Et norsk anleggs- eller kontrollmiljø der nettkapasitetens knapphet fremstår gjennom realistisk infrastruktur og mennesker, ikke en kollasj av kabler, servere og enorme lyn. Ett integrert hovedmotiv. Ingen fabrikker eller datasentre må framstilles som faktisk berørt uten dokumentasjon.
 - **Status:** Utkast. Ikke legge i Nyhetshjul.json før tekst, kildekritikk og bilde er godkjent.
