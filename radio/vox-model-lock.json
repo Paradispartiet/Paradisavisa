@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "model": "nb_NO-vox-medium",
+  "repository": "rasmusjs/nb_NO-vox-medium",
+  "revision": "a36ead8f7c914289997e5681a6bbf1386887efab",
+  "engineVersion": "1.8.0",
+  "source": "PR #96 og #106 sine kontrollerte private lydrapporter, 2026-11-10",
+  "rightsStatus": "PENDING",
+  "editorialStatus": "FIRST_LISTEN_POSITIVE_NOT_FINAL",
+  "publicAudioEnabled": false,
+  "files": {
+    "nb_NO-vox-medium.onnx": "84efefd38150d87b1d81185a50874d0279d19dd8d1260b7db40091e9b11c5c1f",
+    "nb_NO-vox-medium.onnx.json": "1b6ca6624bf09b80733f6115c1f15e87154231fbc76d3d18de71ce0f523a49ca",
+    "README.md": "8f6b820583b7457540665de26488d554bca0f0d4c0d1343f558c3e7581c10341"
+  }
+}
