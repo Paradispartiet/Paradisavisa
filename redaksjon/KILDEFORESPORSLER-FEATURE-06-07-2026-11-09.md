@@ -1,6 +1,6 @@
 # Feature 06–07 – klare kildeforespørsler
 
-**Status 10. november 2026:** Fem kildeforespørsler er nå lagret som **e-postutkast** i tilkoblet Gmail-konto. **IKKE SENDT.** Ingen kildesvar er mottatt eller kan siteres som innhentet. Avsenderkonto og signatur må kontrolleres før utsending. Henvendelsene brukes til direkte kildeoppfølging før redaksjonell sluttkontroll.
+**Oppdatert status 10. november 2026:** Alle de fem kildeforespørslene ble **sendt fra tilkoblet Gmail-konto** til mottakerne nedenfor. Gmail bekreftet `SENT` for hver melding. Ingen svar er registrert ved denne statuskontrollen. Interne signaturkontrollnotater ble fjernet før sending. Kopier av de faktiske utsendte tekstene ligger i Gmail; tekstene nedenfor er de opprinnelige redaksjonelle arbeidsutkastene.
 
 ## Feature 06: «Bankene tjener milliarder – hvem betaler?»
 
@@ -104,7 +104,7 @@ Redaksjonen, Paradisavisa
 
 Ved faktisk utsending: registrer dato, kontaktperson, frist og kopi av sendt tekst. Ved faktisk mottak: registrer kilde, svar dato/klokkeslett, dokumenterte påstander, kontrollkilder og eventuell rettelse i artikkelen. **Ikke fyll inn status «sendt» eller «svart» før dette faktisk har skjedd.**
 
-Nåværende status (10. november 2026): fem verifiserte pressekontakter, fem **lagrede Gmail-utkast**, **null utsendelser og null svar**. Ingen privat Gmail-ID eller direkte kontolenke lagres i det offentlige repositoriet. Svar fra henvendelser kan ikke omtales som innhentet før e-posten faktisk er sendt og svaret mottatt.
+Nåværende status (10. november 2026): **fem utsendelser bekreftet av Gmail**, null mottatte svar ved kontrolltidspunktet. Én henvendelse til hver av DNB, Finans Norge, Forbrukerrådet (økonomi), Digitaliserings- og forvaltningsdepartementet og Forbrukerrådet (digitale rettigheter). Det ble **ikke satt noen eksplisitt svarfrist i de sendte meldingene**. Ved senere svar eller oppfølging: loggfør faktisk dato, kildens uttalelse og eventuelle dokumentlenker. Ingen private Gmail-meldings-ID-er eller direkte kontolenker lagres i dette offentlige repositoriet.
 
 ## Faktagrunnlag
 - SSB 6. november: https://www.ssb.no/bank-og-finansmarked/finansinstitusjoner-og-andre-finansielle-foretak/statistikk/banker-og-kredittforetak/artikler/bankresultat
