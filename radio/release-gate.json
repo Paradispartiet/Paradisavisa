@@ -4,6 +4,6 @@
   "modelRightsStatus": "PENDING",
   "editorialAudioStatus": "PENDING",
   "approvedBy": null,
-  "notes": "Piper NVCC KNN og MNN er AVVIST ved lytting 2026-11-10: snøvlete, utydelig og ikke ønsket nøytral østnorsk radiostil. Talesyntese/Lessac har uavklart kommersiell stemmerett. Ingen Piper-lyd publiseres før egen modellrettighetskontroll, ny stemmeprøve, redaksjonell godkjenning og separat kontrollert publiserings-PR.",
+  "notes": "Vox nb_NO-vox-medium har POSITIV første lyttetest, men oppgitt modellkjede går via Talesyntese epoch=3459 (finjustert fra Lessac/Blizzard 2013). Mangler dokumentert klarering for offentlig/potensielt kommersiell syntetisk tale; se radio/VOX_RETTIGHETSSTATUS.md og vox-rights-audit.json. NVCC KNN/MNN er tidligere forkastet. Ingen offentlig MP3 før egen rettighetsvurdering, uttalekontroll, fysisk iPad-test og separat publiserings-PR.",
   "nvccTrialStatus": "REJECTED_KNN_MNN"
 }
