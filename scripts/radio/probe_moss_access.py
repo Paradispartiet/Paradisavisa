@@ -21,7 +21,9 @@ ALTERNATIVES = (
     "NbAiLab/nb-tts-norwegian-voices",
 )
 TOKENIZER = "OpenMOSS-Team/MOSS-Audio-Tokenizer-Nano"
-REPOSITORIES = (PRIMARY,) + ALTERNATIVES + (TOKENIZER,)
+# Separat SpeechT5-familie: kun til vurdering av faktisk nedlasting, ikke fallback.
+OTHER_MODELS = ("versae/nb-nst-tts",)
+REPOSITORIES = (PRIMARY,) + ALTERNATIVES + (TOKENIZER,) + OTHER_MODELS
 WEIGHT_ENDINGS = (".safetensors", ".bin", ".pt", ".pth", ".onnx")
 HEADERS = {"User-Agent": "Paradisradioen-public-model-access-check/1.0"}
 SHA = re.compile(r"^[a-f0-9]{40}$")
