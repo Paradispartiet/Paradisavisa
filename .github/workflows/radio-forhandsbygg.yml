@@ -1,0 +1,68 @@
+name: Paradisradioen – automatisk privat lydplan
+
+on:
+  pull_request:
+    paths:
+      - "notiser.json"
+      - "scripts/radio/**"
+      - "radio/release-gate.json"
+      - ".github/workflows/radio-forhandsbygg.yml"
+  push:
+    branches: [main]
+    paths:
+      - "notiser.json"
+      - "scripts/radio/**"
+      - "radio/release-gate.json"
+      - ".github/workflows/radio-forhandsbygg.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: paradisradio-forhandsbygg-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bygg-privat-lydplan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - name: Hent godkjente redaksjonelle notiser
+        uses: actions/checkout@v4
+      - name: Sett opp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Test kildekontroll, holdbarhet og publiseringssperre
+        run: python -m unittest discover -s scripts/radio -p "test_*.py" -v
+      - name: Lag privat lydplan for aktuelle notiser
+        run: |
+          python scripts/radio/planlegg_lyd.py --out radio-kandidat/manifest.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          candidate = json.loads(Path("radio-kandidat/manifest.json").read_text(encoding="utf-8"))
+          policy = json.loads(Path("radio/release-gate.json").read_text(encoding="utf-8"))
+          assert candidate["schemaVersion"] == 1
+          assert candidate["privateCandidateOnly"] is True
+          assert candidate["publicPlayable"] is False
+          assert policy["publicAudioEnabled"] is False, "Offentlig lyd krever egen revidert PR"
+          assert all("audioUrl" not in row for row in candidate["items"])
+          print("Privat lydplan er validert; ingen offentlig avspilling eller publisering")
+          PY
+      - name: Bekreft at lydpublisering fortsatt er blokkert
+        run: |
+          if python scripts/radio/planlegg_lyd.py --publish; then
+            echo "FEIL: Ukontrollert offentlig lydpublisering ble tillatt"
+            exit 1
+          fi
+          echo "Offentlig publisering er sperret som forventet"
+      - name: Lagre kortvarig privat byggebeskrivelse
+        uses: actions/upload-artifact@v4
+        with:
+          name: paradisradio-privat-lydplan
+          path: radio-kandidat/manifest.json
+          if-no-files-found: error
+          retention-days: 7

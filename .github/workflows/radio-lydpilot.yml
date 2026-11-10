@@ -3,7 +3,8 @@ name: Intern norsk lydpilot for Paradisradioen
 on:
   pull_request:
     paths:
-      - "scripts/radio/**"
+      - "scripts/radio/generer_lydpilot.py"
+      - "scripts/radio/test_lydpilot.py"
       - "radio/voice-license.md"
       - ".github/workflows/radio-lydpilot.yml"
   workflow_dispatch:
