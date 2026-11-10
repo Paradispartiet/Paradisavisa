@@ -3,7 +3,7 @@
 **NORGE / TEKNOLOGI / ENERGI · NYHETSANALYSE – REDAKSJONELT UTKAST, IKKE PUBLISERT**  
 **Researchdato:** 10. november 2026. **Status:** Kildebelagt utkast; redaksjonell sluttkontroll, eventuelt tilsvar og godkjent hovedbilde gjenstår.
 
-**Ingress:** Statnett stopper midlertidig nye reservasjoner av nettkapasitet til datasentre. Regjeringen vil innføre en konsesjonsordning som skiller mellom anlegg med stor samfunnsnytte og andre formål. Beslutningene viser hvor vanskelig det er blitt å velge mellom behovene til kunstig intelligens, industri og norsk kraftforsyning.
+**Ingress:** Statnett stopper midlertidig nye reservasjoner av nettkapasitet til datasentre. Regjeringen planlegger en konsesjonsordning. Samtidig vil et stortingsforslag endre tilknytningsplikten for nye strømkunder med et effektbehov over én megawatt – også utenfor datasenternæringen. Forslaget er ikke vedtatt. Hvem skal prioriteres når nettet ikke har plass til alle?
 
 Det norske kraftnettet er blitt en knapp ressurs, ikke bare fordi samfunnet vil bruke mer elektrisitet, men fordi mange vil sikre seg plass i nettet før de bygger. Datasentre er blitt en av de store aktørene i denne køen. De er nødvendige for digitale tjenester, og de kan bidra til arbeidsplasser og teknologisk kompetanse. Men de bruker også store mengder strøm – og effektuttaket kan stille særskilte krav til et kraftsystem som må fungere hele døgnet.
 
