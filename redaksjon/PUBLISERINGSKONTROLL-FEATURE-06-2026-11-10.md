@@ -14,7 +14,7 @@ Denne grenen viser hvordan *bare denne artikkelen* ville se ut etter publisering
 - Feature-feed: nøyaktig ett nytt kort, ingen dubletter
 
 ## Åpne redaksjonelle forhold
-Forbrukerrådets e-post er bakgrunn, ikke et sitat. Datometodeavvik i Bytteundersøkelsen 2026 er ennå ikke avklart direkte. DNB har bedt om informasjon om avisa; svarutkastet er ikke sendt. Offentlig statistikk og Finans Norges bransjesvar er innarbeidet.
+Forbrukerrådets e-post er bakgrunn, ikke et sitat. Den offisielle rapporten *Bytteundersøkelsen 2026* oppgir feltarbeid 20. januar–7. februar **2025** samtidig som den omtaler bytteaktivitet gjennom kalenderåret 2025. Denne datokonflikten kan ikke løses ved antakelse: de tilhørende prosentsatsene er derfor fjernet fra **publiseringskandidaten**, men original rapport er fortsatt oppført i kildene. Den direkte metodeavklaringen er ikke mottatt, og oppfølgingsutkastet til Forbrukerrådet er ennå ikke sendt. DNB har bedt om informasjon om avisa; svarutkastet er heller ikke sendt. SSBs offentlige bankstatistikk og Finans Norges bransjesvar er innarbeidet.
 
 ## Sjekkliste før godkjenning
 1. Bekreft faktapåstander og kilde-/sitatetikk, og innarbeid vesentlige nye kildesvar hvis de foreligger.
