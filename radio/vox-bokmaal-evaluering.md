@@ -76,3 +76,19 @@ Ingen WAV eller modellfil publiseres i Git.
 **Sikkerhet:** Koden i scripts/radio/generer_vox_prover.py endrer
 ingen produksjonssider, radioens spiller eller release-gate.json.
 Lyd blir kun private test-artifakter med sju dagers retensjon.
+
+## Offline lyttepanel for iPad – 10. november
+
+For å unngå feil ved åpning av individuelle MP3-lenker produseres nå i tillegg
+**`lyttepanel.html`** med alle de fire lydprøvene innebygd (Base64/data-URI).
+HTML-filen kan åpnes separat lokalt i en nettleser, uten GitHub-innlogging,
+servertilgang eller nye lydnedlastinger. Den inneholder tekst for hver prøve,
+Normal/Nyhetsflyt-kontroller og pause av øvrige klipp når et nytt startes.
+
+Lyttepanel-scriptet `scripts/radio/lag_lyttepanel.py` godtar bare
+upublisert, ikke-godkjent pilotrapport, verifiserer lydfilenes SHA-256,
+forbyr katalogtraversering og har filstørrelsesgrense. MP3-data skrives bare
+i **privat GitHub Actions-artifakt**, ikke inn i GitHub Pages-koden.
+
+Dette **løser ikke stemmekvalitet eller lisensavklaring**: menneskelig
+prøvelytting og rettighetskontroll gjenstår før noen modell velges.
