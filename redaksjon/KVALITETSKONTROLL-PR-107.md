@@ -32,6 +32,8 @@ Disse WebP-filene er kopier av vurderingsbildene; Git-blob-SHAene er identiske m
 
 ## Redaksjonell faktakontroll
 
+**Primærkilde-sjekk 10. november:** Dokument 8:34 LS inneholder et lovforslag om unntak fra tilknytnings- og investeringsplikten for alle **nye uttakskunder over 1 MW**, samtidig som et separat anmodningsforslag er rettet mot datasentre. Artikkelen må skille disse fra hverandre. Et slikt unntak er ikke et generelt forbud mot strømforbruk. [Originaldokument](https://www.stortinget.no/no/Saker-og-publikasjoner/Publikasjoner/Representantforslag/2026-2027/dok8-202627-034ls/)
+
 **Datasentre:** Offisielt representantforslag om midlertidig stans er fortsatt under komitébehandling, ikke vedtatt. Høringen 24. november kl. 13.15 og søknadsfristen 16. november kl. 14.00 er bekreftet av Stortinget. De tekniske tiltakene fra Statnett og regjeringens konsesjonsplan må ikke omtales som samme vedtak.  
 Kilder: https://www.stortinget.no/no/Saker-og-publikasjoner/Publikasjoner/Representantforslag/2026-2027/dok8-202627-034ls/ · https://www.stortinget.no/no/Hva-skjer-pa-Stortinget/Horing/horing/?h=10006019
 
