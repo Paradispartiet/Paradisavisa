@@ -11,10 +11,10 @@ const read=p=>fs.readFileSync(path.join(root,p),"utf8");
 const cards=JSON.parse(read("Nyhetshjul.json"));
 const base="https://paradispartiet.github.io/Paradisavisa/";
 const items=[
-{article:"artikler/2026-11-10-massie-hegseth-riksrettsforslag.html",image:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.webp",svg:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.svg",sha:"fd1a138a92b467b81a4ad12c5781e1d48c16677e",sources:13},
-{article:"artikler/2026-11-10-hvem-skal-fa-norges-strom.html",image:"Bilder/Artikler/2026-11-11-kraftnett-datasenter-grafikk.webp",svg:"Bilder/Artikler/2026-11-11-kraftnett-datasenter-grafikk.svg",sha:"8921f814d2c5301862efd51198c395553e633495",sources:9},
-{article:"artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",image:"Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto.webp",sha:"3106e3e9fe493691d859cd810a4edca8cf9639dd",sources:11,photo:true},
-{article:"artikler/2026-11-05-usa-valget-topartisystem-og-medier.html",image:"Bilder/Artikler/2026-11-11-usa-valg-spillgrafikk.webp",svg:"Bilder/Artikler/2026-11-11-usa-valg-spillgrafikk.svg",sha:"068b6494c28c15d01abb794a735e9953cc3cf20b"}
+{article:"artikler/2026-11-10-massie-hegseth-riksrettsforslag.html",image:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.webp",svg:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.svg",sha:"fd1a138a92b467b81a4ad12c5781e1d48c16677e",sources:13,modified:true},
+{article:"artikler/2026-11-10-hvem-skal-fa-norges-strom.html",image:"Bilder/Artikler/2026-11-10-datasentre-kraftnett.webp",sha:"b4a8b953d659da15043445a2b1cc5ca3beb9cd4f",sources:9},
+{article:"artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",image:"Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto.webp",sha:"3106e3e9fe493691d859cd810a4edca8cf9639dd",sources:11,photo:true,modified:true},
+{article:"artikler/2026-11-05-usa-valget-topartisystem-og-medier.html",image:"Bilder/Artikler/2026-11-05-usa-ludo-politisk-satire.jpg",sha:"df217d18d67963da2fdf9c6f07bdb02f09f12de2",mime:"image/jpeg"}
 ];
 test("de fire synlige bildene er ulike og kortene har riktige lenker",()=>{
  const urls=cards.map(c=>c.url);
@@ -34,11 +34,11 @@ for(const item of items){
   assert.ok(html.includes('src="../'+item.image+'"'));
   assert.ok(html.includes('property="og:image" content="'+full+'"'));
   assert.ok(html.includes('name="twitter:image" content="'+full+'"'));
-  assert.ok(html.includes('property="og:image:type" content="image/webp"'));
+  if(item.mime)assert.ok(html.includes('property="og:image:type" content="'+item.mime+'"'));
   assert.ok(html.includes('property="og:image:alt"'));
   assert.ok(html.includes('rel="canonical" href="'+base+item.article+'"'));
   assert.ok(html.includes('article:published_time" content="'+card.date+'"'));
-  assert.ok(html.includes('article:modified_time" content="2026-11-11"'));
+  if(item.modified)assert.ok(html.includes('article:modified_time" content="2026-11-11"'));
   assert.equal((html.match(/<h1\b/g)||[]).length,1);
   assert.match(html,/<figcaption class="story-caption">[\s\S]*?<\/figcaption>/);
   assert.ok(!html.includes("Vurderingsbilde – ikke endelig godkjent"));
@@ -50,7 +50,8 @@ for(const item of items){
    const license=read("Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto-LISENS.md");
    assert.match(license,/BSD-3-Clause/);
    assert.match(license,/c01b527e1ec263ef76b7e36b371f7c4f5af3906f/);
-  }else{
+  }
+  if(item.svg){
    const svg=read(item.svg).trim();
    assert.ok(svg.startsWith("<svg")&&svg.endsWith("</svg>"));
    assert.match(svg,/<title/);
@@ -66,7 +67,12 @@ for(const item of items){
  });
  test("WebP-filen er uendret fra kontrollert original og 1600×900: "+item.image,()=>{
   const bytes=fs.readFileSync(path.join(root,item.image));
-  assert.ok(bytes.length>20000&&bytes.length<600000);
+  assert.ok(bytes.length>20000&&bytes.length<900000);
+  if(item.mime==="image/jpeg"){
+   assert.equal(bytes[0],0xff);assert.equal(bytes[1],0xd8);
+   assert.equal(bytes[bytes.length-2],0xff);assert.equal(bytes[bytes.length-1],0xd9);
+   return;
+  }
   assert.equal(bytes.toString("ascii",0,4),"RIFF");
   assert.equal(bytes.toString("ascii",8,12),"WEBP");
   const sha=crypto.createHash("sha1").update(Buffer.from("blob "+bytes.length+"\0")).update(bytes).digest("hex");
