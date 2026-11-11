@@ -190,7 +190,52 @@ async function run(){
       assert.match(await kraftPoll.locator("[data-av-poll-result]").innerText(),/Åpne regler og lik behandling/);
       assert.deepEqual(errors,[],name+": feil i datasenteranalysen");
       await page.screenshot({path:path.join(root,"qa-screenshots","datasentre-levende-"+name+".png"),fullPage:true});
+
+      // Fifth pilot: sport analysis of Ronaldo with original illustration pair.
+      await page.goto(base+"/artikler/2026-11-05-ronaldo-landslagsavskjed.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Ronaldo var en gigant/);
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      assert.ok(await page.locator(".av-kilde-note a").count()>=7);
+      const ronaldoWidth=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(ronaldoWidth.width<=ronaldoWidth.viewport+2,name+": Ronaldo-analysen har sidelengs scroll "+JSON.stringify(ronaldoWidth));
+      assert.equal(await page.locator("article figure img").count(),3);
+      const pictures=page.locator("article figure img");
+      for(let i=0;i<await pictures.count();i++){
+        await pictures.nth(i).scrollIntoViewIfNeeded();
+        await page.waitForFunction(index=>{
+          const im=document.querySelectorAll("article figure img")[index];
+          return Boolean(im&&im.complete&&im.naturalWidth>0);
+        },i,{timeout:15000});
+      }
+      const zoomLink=page.getByRole("link",{name:"Forstørr taktikkdiagrammet om presspillet"});
+      const zoomAppearance=await zoomLink.evaluate(el=>{
+        const r=el.getBoundingClientRect(),s=getComputedStyle(el);
+        return {width:r.width,height:r.height,size:parseFloat(s.fontSize),background:s.backgroundColor};
+      });
+      assert.ok(zoomAppearance.width<=160&&zoomAppearance.height>=43&&zoomAppearance.size<=15,name+": zoomlenken må være kompakt "+JSON.stringify(zoomAppearance));
+      assert.ok(zoomAppearance.background==="rgba(0, 0, 0, 0)",name+": zoomlenken skal ikke ha heldekkende gul bakgrunn");
+      await zoomLink.click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/ronaldo-presspill-forklaringsdiagram\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),false);
+      assert.equal(await page.locator(".av-tidslinje li").count(),5);
+      await page.locator(".av-tidslinje li:nth-child(5) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(5) details").getAttribute("open"),"");
+      await page.locator('button[data-av-step="vinne"]').click();
+      assert.equal(await page.locator('[data-av-panel="vinne"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="starte"]').isVisible(),false);
+      const ronaldoPoll=page.locator('[data-av-poll="ronaldo-ettermale-2026"]');
+      assert.equal(await ronaldoPoll.locator("form").isVisible(),true);
+      await ronaldoPoll.locator('input[value="helhet"]').check();
+      await ronaldoPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await ronaldoPoll.locator("[data-av-poll-result]").innerText(),/Hele karrieren/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await ronaldoPoll.locator("[data-av-poll-result]").innerText(),/Hele karrieren/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i Ronaldo-analysen");
+      await page.screenshot({path:path.join(root,"qa-screenshots","ronaldo-levende-"+name+".png"),fullPage:true});
       await context.close();
+      console.log("OK: Ronaldo-sportanalyse på "+name+" med originalbilder, pressdiagram, tidslinje og poll");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
       console.log("OK: KI-debatt på "+name+" med kilder, grafikk, forklarer og lokal poll");
       console.log("OK: bankfeature på "+name+" med graf, kilder, tidslinje, forklarer og poll");
@@ -218,6 +263,12 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="effekt"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="samfunn"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr køgrafen"}).getAttribute("href"),/datasentre-kraftko-graf\.svg/);
+    await page.goto(base+"/artikler/2026-11-05-ronaldo-landslagsavskjed.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="ronaldo-ettermale-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="ronaldo-ettermale-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="starte"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="vinne"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr taktikkdiagrammet om presspillet"}).getAttribute("href"),/ronaldo-presspill-forklaringsdiagram\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
