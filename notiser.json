@@ -1,5 +1,49 @@
 [
   {
+    "id": "notis-eu-budsjettavtale-20261111",
+    "category": "Verden",
+    "text": "EU-landene og Europaparlamentets forhandlere er enige om et forslag til EU-budsjett for 2027. Avtalen omfatter 199,7 milliarder euro i nye budsjettforpliktelser og 211,5 milliarder euro i utbetalinger. Begge institusjonene må fortsatt godkjenne resultatet formelt, opplyser EUs ministerråd.",
+    "date": "2026-11-11",
+    "url": "https://www.consilium.europa.eu/it/press/press-releases/2026/11/11/eu-budget-for-2027-council-and-parliament-reach-agreement/"
+  },
+  {
+    "id": "notis-mediepolitikk-unge-20261110",
+    "category": "Medier",
+    "text": "Regjeringen foreslår å øke støtten til utvikling og innovasjon i nyhetsmediene med ti millioner kroner, til 35 millioner. Målet er blant annet at flere unge skal bruke redaktørstyrte medier. Kulturminister Lubna Jaffery varsler også en ny gjennomgang av mediestøtten. Forslagene er ikke endelig vedtatt.",
+    "date": "2026-11-10",
+    "url": "https://www.regjeringen.no/no/aktuelt/redegjorelse-om-ytringsfrihet-og-mediepolitikk2/id3192245/"
+  },
+  {
+    "id": "notis-ki-utdanning-horing-20261110",
+    "category": "Utdanning",
+    "text": "Kunnskapsdepartementet har sendt utredningen om kunstig intelligens i høyere utdanning på høring. Ekspertutvalget anbefaler blant annet å fase ut korte hjemmeeksamener, styrke KI-kompetansen hos undervisere og bygge nasjonal datainfrastruktur. Dette er forslag, ikke innførte regler. Høringsfristen er 10. februar 2027.",
+    "date": "2026-11-10",
+    "expires": "2026-11-14",
+    "url": "https://www.regjeringen.no/no/dokumenter/horing-nou-202614-kunstig-intelligens-i-hoyere-utdanning-i-kunnskapens-tjeneste/id3191224/"
+  },
+  {
+    "id": "notis-nordisk-afrikansk-utenriksministre-20261110",
+    "category": "Utenriks",
+    "text": "Over 20 utenriksministre fra Afrika og Norden er invitert til Oslo 19. og 20. november. Møtet skal handle om folkerett, handel, investeringer, geopolitikk og kunstig intelligens. Regjeringen opplyser at Gamle Logen og Oslo rådhus blir møtesteder. Samlingen har ennå ikke funnet sted.",
+    "date": "2026-11-10",
+    "expires": "2026-11-16",
+    "url": "https://www.regjeringen.no/no/aktuelt/nordisk-afrikansk-utanriksministermote-i-oslo-19.20.-november/id3192188/"
+  },
+  {
+    "id": "notis-ssb-fengsel-lavt-niva-20261110",
+    "category": "Samfunn",
+    "text": "I 2025 satt i gjennomsnitt litt over 3 100 personer i norske fengsler. Justert for folketallet er nivået det laveste siden 1989, ifølge Statistisk sentralbyrå. Nedgangen henger særlig sammen med færre ubetingede fengselsdommer og økt bruk av elektronisk kontroll, ofte kalt fotlenke.",
+    "date": "2026-11-10",
+    "url": "https://www.ssb.no/sosiale-forhold-og-kriminalitet/kriminalitet-og-rettsvesen/statistikk/fengslinger/artikler/faerre-soner-en-ubetinget-dom-i-fengsel"
+  },
+  {
+    "id": "notis-ssb-ikt-bedrifter-20261110",
+    "category": "Næringsliv",
+    "text": "Det ble registrert 17 837 nye foretak i Norge i tredje kvartal, nesten ti prosent flere enn året før, ifølge Statistisk sentralbyrå. Innen informasjon og kommunikasjon ble det opprettet 1 888 foretak, en økning på 65 prosent. Nesten halvparten av alle nye foretak var aksjeselskaper.",
+    "date": "2026-11-10",
+    "url": "https://www.ssb.no/virksomheter-foretak-og-regnskap/virksomheter-og-foretak/statistikk/foretak/artikler/IKT-naeringa-naar-stadig-nye-hoegdar"
+  },
+  {
     "id": "notis-falske-rettskjennelser-india-20261111",
     "category": "Verden",
     "text": "Indiske myndigheter beordret blokkering av 129 pengespillnettsider på grunnlag av to rettskjennelser som Reuters har avdekket var forfalsket. En domstol har anmeldt saken, og politiet etterforsker dokumentforfalskning. Det er ikke fastslått hvem som laget dokumentene, eller om kunstig intelligens ble brukt.",
