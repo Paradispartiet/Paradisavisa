@@ -579,6 +579,10 @@ function loadNotiser() {
       let radioVersjon = 0;
       let radioIndeks = 0;
       let radioGjeldendeIndeks = -1;
+      let radioKreverOmstart = false;
+      let radioOvergangTimeout = null;
+      let radioVarSkjult = false;
+      const mellomNyheterMs = 650;
       let radioSistOppdatert = Date.now();
       let radiosaker = aktuelle.slice();
       const spillerLyttere = new Set();
@@ -631,6 +635,9 @@ function loadNotiser() {
         varsleSpiller();
       };
       const stoppRadio = (melding = "Nyhetsradioen er stoppet.") => {
+        if (radioOvergangTimeout !== null) clearTimeout(radioOvergangTimeout);
+        radioOvergangTimeout = null;
+        radioKreverOmstart = false;
         const varPauset = radioPauset;
         radioAktiv = false;
         radioPauset = false;
@@ -693,6 +700,7 @@ function loadNotiser() {
           lesNeste(versjon);
           return;
         }
+        radioKreverOmstart = false;
         const ytring = new window.SpeechSynthesisUtterance(lagRadioOpplesning(notis));
         ytring.lang = "nb-NO";
         ytring.rate = 1;
@@ -706,10 +714,32 @@ function loadNotiser() {
         }
         radiostatus.textContent = "Leser: " + String(notis.category || "Nyheter");
         varsleSpiller();
-        ytring.onend = () => { if (radioAktiv && versjon === radioVersjon) lesNeste(versjon); };
+        // Et lite opphold mellom notisene skaper nyhetsrytme, uten ekstra syntetisk tale.
+        ytring.onend = () => {
+          if (!radioAktiv || versjon !== radioVersjon || radioKreverOmstart) return;
+          if (radioPauset) {
+            radioVenter = true;
+            return;
+          }
+          radiostatus.textContent = "Kort pause før neste nyhet.";
+          varsleSpiller();
+          radioOvergangTimeout = setTimeout(() => {
+            radioOvergangTimeout = null;
+            if (radioAktiv && versjon === radioVersjon) lesNeste(versjon);
+          }, mellomNyheterMs);
+        };
         ytring.onerror = event => {
           if (!radioAktiv || versjon !== radioVersjon) return;
-          if (event?.error === "canceled" || event?.error === "interrupted") return;
+          // Programmatisk neste/forrige/stopp øker radioVersjon og treffer ikke her.
+          // Safari kan ellers sende interrupted/canceled mens brukerens radio ser aktiv ut.
+          if (event?.error === "canceled" || event?.error === "interrupted") {
+            radioKreverOmstart = true;
+            radioPauset = true;
+            radioVenter = false;
+            radiostatus.textContent = "Opplesningen ble avbrutt. Trykk Fortsett for å starte denne nyheten på nytt.";
+            visRadio();
+            return;
+          }
           stoppRadio("Opplesningen kunne ikke fortsette.");
         };
         try { tale.speak(ytring); }
@@ -722,6 +752,9 @@ function loadNotiser() {
         if (indeks < 0 || indeks >= ferske.length) return;
         const fra = radiosaker.indexOf(ferske[indeks]);
         if (fra < 0) return;
+        if (radioOvergangTimeout !== null) clearTimeout(radioOvergangTimeout);
+        radioOvergangTimeout = null;
+        radioKreverOmstart = false;
         const varPauset = radioPauset;
         const varAktiv = radioAktiv;
         radioAktiv = true;
@@ -750,6 +783,15 @@ function loadNotiser() {
       const byttRadioPause = () => {
         if (!radioAktiv || !harTale) return;
         if (radioPauset) {
+          // Etter et uventet iPad-/Safari-avbrudd må talen startes på nytt av et
+          // reelt brukerklikk. Vi starter samme nyhet, ikke neste i køen.
+          if (radioKreverOmstart) {
+            const ferske = radiosaker.filter(item => isNotisAktuell(item));
+            const indeks = ferske.indexOf(radiosaker[radioGjeldendeIndeks]);
+            if (indeks >= 0) spillFraKo(indeks);
+            else stoppRadio("Nyheten er ikke lenger aktuell.");
+            return;
+          }
           try {
             tale.resume();
             radioPauset = false;
@@ -759,6 +801,11 @@ function loadNotiser() {
           } catch (_) { stoppRadio("Kunne ikke fortsette opplesningen."); }
         } else {
           try {
+            if (radioOvergangTimeout !== null) {
+              clearTimeout(radioOvergangTimeout);
+              radioOvergangTimeout = null;
+              radioVenter = true;
+            }
             tale.pause();
             radioPauset = true;
             radiostatus.textContent = "Nyhetsradioen er satt på pause.";
@@ -769,6 +816,9 @@ function loadNotiser() {
       radioPauseknapp.addEventListener("click", byttRadioPause);
       const hoppRadio = steg => {
         if (!radioAktiv || !radiosaker.length) return;
+        if (radioOvergangTimeout !== null) clearTimeout(radioOvergangTimeout);
+        radioOvergangTimeout = null;
+        radioKreverOmstart = false;
         const fra = radioGjeldendeIndeks >= 0 ? radioGjeldendeIndeks : 0;
         radioIndeks = (fra + steg + radiosaker.length) % radiosaker.length;
         const varPauset = radioPauset;
@@ -845,7 +895,27 @@ function loadNotiser() {
           event.stopPropagation();
         }
       });
+      // Safari på iPad kan avbryte lokal Web Speech ved skjermlås eller fanebytte.
+      // Ingen automatisk omstart uten brukertrykk når fanen blir synlig igjen.
+      const vedSynlighetsendring = () => {
+        if (document.visibilityState === "hidden") {
+          radioVarSkjult = true;
+          return;
+        }
+        if (!radioVarSkjult) return;
+        radioVarSkjult = false;
+        if (radioAktiv && !radioPauset && radioOvergangTimeout === null &&
+            typeof tale?.speaking === "boolean" && !tale.speaking) {
+          radioKreverOmstart = true;
+          radioPauset = true;
+          radioVenter = false;
+          radiostatus.textContent = "Talen kan ha stoppet da iPad ble låst eller fanen ble byttet. Trykk Fortsett for å prøve nyheten på nytt.";
+          visRadio();
+        }
+      };
+      document.addEventListener("visibilitychange", vedSynlighetsendring);
       window.addEventListener("pagehide", () => {
+        document.removeEventListener("visibilitychange", vedSynlighetsendring);
         if (radioAktiv) stoppRadio();
         try { radioKanal?.close(); } catch (_) {}
         if (typeof tale?.removeEventListener === "function") {
