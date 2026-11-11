@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="t d">
+<title id="t">Boligkrise og generalstreik i Spania – redaksjonell illustrasjon</title><desc id="d">Demonstranter i Madrid foran bygårder. Røde flagg, en stor nøkkel og et skilt med teksten Vivienda es un derecho symboliserer kampen om boliger folk har råd til.</desc>
+<defs>
+<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#3b2633"/><stop offset=".54" stop-color="#c26e57"/><stop offset="1" stop-color="#ecbb79"/></linearGradient>
+<linearGradient id="street" x2="0" y2="1"><stop stop-color="#352d36"/><stop offset="1" stop-color="#12151e"/></linearGradient>
+<linearGradient id="red" x2="1" y2=".3"><stop stop-color="#e74d40"/><stop offset="1" stop-color="#9c1e30"/></linearGradient>
+<filter id="glow"><feGaussianBlur stdDeviation="24"/></filter><filter id="shade"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity=".3"/></filter>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/>
+<circle cx="1180" cy="295" r="230" fill="#ffe0a0" opacity=".33" filter="url(#glow)"/>
+<g fill="#392d35" opacity=".76">
+<path d="M0 212h190v-62h25v62h120v351H0Z"/><path d="M285 124h235v-31h31v31h84v465H285Z"/><path d="M1030 165h170v-29h24v29h196v430h-390Z"/><path d="M1400 98h200v540h-200Z"/>
+</g>
+<g fill="#f3cfaa" opacity=".34">
+<path d="M33 283h46v84H33zm75 0h46v84h-46zm-75 129h46v84H33zm75 0h46v84h-46zM336 185h46v76h-46zm85 0h46v76h-46zm-85 120h46v76h-46zm85 0h46v76h-46zm85 0h46v76h-46z"/>
+<path d="M1078 230h50v80h-50zm95 0h50v80h-50zm95 0h50v80h-50zm-190 130h50v80h-50zm95 0h50v80h-50zm95 0h50v80h-50zm178-196h48v78h-48zm78 0h48v78h-48zm-78 132h48v78h-48zm78 0h48v78h-48z"/>
+</g>
+<path d="M0 530c285-40 487-44 752-16 263-37 554-21 848 13v373H0Z" fill="url(#street)"/>
+<g stroke="#171820" stroke-width="11">
+<path d="M176 700 207 290M530 674 596 190M1210 720l120-475"/>
+</g>
+<g fill="url(#red)" filter="url(#shade)">
+<path d="M207 298q145-77 287 2-143 11-271 151Z"/><path d="M598 198q138-100 300-30-154 49-273 165Z"/><path d="M1330 251q-143-93-288-44 146 67 267 179Z"/>
+</g>
+<g fill="#f1d2ae" opacity=".9">
+<circle cx="110" cy="660" r="48"/><circle cx="310" cy="634" r="56"/><circle cx="550" cy="672" r="46"/><circle cx="850" cy="649" r="53"/><circle cx="1110" cy="661" r="46"/><circle cx="1460" cy="642" r="57"/>
+</g>
+<g fill="#151a24">
+<path d="M0 736q83-99 165 0v164H0Zm180-18q125-130 250 0v182H180Zm286 18q87-96 174 0v164H466Zm306-18q115-118 230 0v182H772Zm240 16q112-106 224 0v166h-224Zm260-24q88-94 176 0v190h-176Z"/>
+</g>
+<path d="M420 900V600q10-177 181-191 189 5 204 213v278Z" fill="#171c28"/>
+<path d="M420 900V636q87-75 192-29l27 293Z" fill="#6d303c"/>
+<path d="M460 500q22-136 133-136 97 13 128 128-28 124-129 140-111-16-132-132Z" fill="#bd8471"/>
+<path d="M446 488q-29-171 155-172 135-14 153 156-64-40-89-118-92 79-219 134Z" fill="#26212a"/>
+<path d="M555 624q26 17 57 0" fill="none" stroke="#6d303c" stroke-width="9"/>
+<path d="M460 691 330 630 283 651 431 785Z" fill="#171c28"/>
+<path d="M280 672q-24-34 15-53l41 20-21 44Z" fill="#bd8471"/>
+<g filter="url(#shade)" transform="rotate(-7 877 597)">
+<rect x="800" y="346" width="575" height="390" rx="8" fill="#dabf94" stroke="#9b735f" stroke-width="13"/>
+<path d="M827 379h521v329H827Z" fill="#e5cfaa" opacity=".45"/>
+<text x="1087" y="449" font-family="Arial,sans-serif" font-size="57" font-weight="900" fill="#251f27" text-anchor="middle">VIVIENDA</text>
+<text x="1087" y="522" font-family="Arial,sans-serif" font-size="47" font-weight="800" fill="#251f27" text-anchor="middle">ES UN</text>
+<text x="1087" y="603" font-family="Arial,sans-serif" font-size="68" font-weight="900" fill="#ad283b" text-anchor="middle">DERECHO</text>
+<path d="M876 650h420" stroke="#ad283b" stroke-width="10"/>
+</g>
+<path d="M0 845c240-25 388-14 580 9 281-31 514-5 660-5 170 10 260 0 360-5v56H0Z" fill="#080c14" opacity=".58"/>
+</svg>
