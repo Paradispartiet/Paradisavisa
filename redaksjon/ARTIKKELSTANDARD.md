@@ -22,7 +22,8 @@ Eldre filer som article.html, Maler/mal-nyhet.html, Maler/mal-sport.html, Maler/
 4. **Hovedillustrasjon:** Relevant, ferdig godkjent bilde med alt-tekst, forklarende bildetekst og rettigheter/KI-merking. Hovedbildet skal ikke sluke lesesiden.
 5. **Brødtekst:** Lesbar énspaltet fortelling med relevante lenker og korte kildehenvisninger under faktabærende avsnitt.
 6. **Mellombilder:** Normalt ett eller to for en lengre artikkel, noen ganger flere når de gjør konkret journalistisk arbeid. Bilder er ikke fyll. Ved lange artikler kan bildene gi naturlige pustepauser.
-7. **Levende fordypning etter behov:** Bruk en klikkbar faktaboks, lokal avstemning, forstørrbar graf med datatabell, utvidbar tidslinje eller interaktiv forklaringsgrafikk bare når den faktisk hjelper leseren. Se [komponenthåndboken](LEVENDE-ARTIKLER.md).\n8. **Kilder og videre lesning:** Full oversikt med direkte URL, tittel, utgiver og helst dato. Oversikten supplerer – erstatter ikke – kildene i teksten.
+7. **Levende fordypning etter behov:** Bruk en klikkbar faktaboks, lokal avstemning, forstørrbar graf med datatabell, utvidbar tidslinje eller interaktiv forklaringsgrafikk bare når den faktisk hjelper leseren. Se [komponenthåndboken](LEVENDE-ARTIKLER.md).
+8. **Kilder og videre lesning:** Full oversikt med direkte URL, tittel, utgiver og helst dato. Oversikten supplerer – erstatter ikke – kildene i teksten.
 9. **Merknad ved behov:** Hva er ukjent? Hvor kommer tallene fra? Hva er redaksjonens egen tolkning?
 
 ## 3. Slik fletter vi kilder inn i teksten
