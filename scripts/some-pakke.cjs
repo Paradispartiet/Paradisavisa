@@ -61,6 +61,8 @@ function getPublished(articles, fileReader) {
   for (const a of articles) {
     const url = checkedRelative(a.url, "artikler/", /\.html$/i);
     const image = checkedRelative(a.image, "", /\.(?:webp|jpe?g|png|svg)$/i);
+    if (!/^(?:Bilder|Nyhetshjul|assets)\//.test(image) || image.startsWith("/"))
+      throw new Error("Bilde må ligge i godkjent offentlig bildemappe: " + image);
     if (!a.title || !a.excerpt || !a.date ||
         !/^\d{4}-\d{2}-\d{2}$/.test(a.date)) throw new Error("Ufullstendig artikkel: " + url);
     const html = fileReader(url, "utf8");
@@ -91,6 +93,10 @@ function diffFeeds(previousByFeed, currentByFeed, reader) {
       const excerpt = clean(verified.excerpt);
       if (title.length < 5 || excerpt.length < 10) throw new Error("For svak overskrift/ingress: " + verified.url);
       const permalink = new URL(verified.url, BASE).href;
+      const captionText = reader(verified.url, "utf8");
+      const captionMatch = captionText.match(/<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/i);
+      const pictureCredit = captionMatch ? clean(captionMatch[1]) : "";
+      const imagePosition = verified.position || "center";
       const tag = crypto.createHash("sha256").update(verified.url).digest("hex").slice(0, 12);
       const slug = path.basename(verified.url, ".html").replace(/[^a-zA-Z0-9-]/g, "-");
       const id = slug + "-" + tag;
@@ -103,12 +109,13 @@ function diffFeeds(previousByFeed, currentByFeed, reader) {
       if (xText.length > 280) throw new Error("X-innlegg er for langt: " + verified.url);
       result.push({
         id, article:verified.url, title, excerpt, date:verified.date,
-        image:verified.image, category, permalink,
+        image:verified.image, position:imagePosition, category, permalink, pictureCredit,
         instagram: {
           card: "Bilder/SoMe/" + id + ".png",
           cardTitle: shorten(title, 105),
           cardIngress: shorten(excerpt, 145),
-          caption: title + "\n\n" + excerpt + "\n\nLes hele saken i Paradisavisa – lenke i bio.",
+          caption: title + "\n\n" + excerpt + "\n\nLes hele saken i Paradisavisa – lenke i bio." +
+            (pictureCredit ? "\n\nBilde: " + shorten(pictureCredit, 380) : ""),
           footer:"PARADISAVISA"
         },
         x:{text:xText, url:permalink}
