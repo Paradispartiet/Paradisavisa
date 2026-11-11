@@ -3,7 +3,7 @@ name: Lag Instagram-tekstkort fra godkjente artikkelbilder
 on:
   push:
     branches:
-      - instagram-seks-tekstkort-2026-11-11
+      - 'instagram-*'
     paths:
       - scripts/generer-instagramkort.py
       - .github/workflows/instagram-tekstkort.yml
