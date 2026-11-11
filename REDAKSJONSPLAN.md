@@ -2,6 +2,8 @@
 
 **Motto: «Objektivt sett, fra vår synsvinkel.»**
 
+**Artikkelutforming:** [ARTIKKELSTANDARD.md](redaksjon/ARTIKKELSTANDARD.md) er én kanonisk standard for kildelenker i avsnittene, kildenoter under faktabærende avsnitt, bildeplassering, bildetekster og typografi. Bruk [fellesmalen](Maler/mal-artikkel.html) og [stilarket](artikkel.css) for nye artikler. [Bildehåndboken](redaksjon/BILDEHANDBOK.md) bestemmer motivvalg, etikk og bildeproduksjon. Eldre malfiler er historiske og skal ikke danne grunnlag for nye artikler.
+
 ## Slik skal avisa fungere
 
 **Vi publiserer hver artikkel fortløpende når den er ferdig, dokumentert og godkjent.** Det finnes ingen mandags-, onsdags- eller fredagsutgaver, ingen faste slippetider og ingen plikt til å vente på andre artikler.
@@ -17,9 +19,9 @@ For kortnyheter bruker vi samme redaksjonelle prinsipp: hver notis blir kontroll
 ## Løpende arbeidsflyt – én sak om gangen
 
 1. **Finn en reell nyhet.** Følg utviklingen i relevante primærkilder og flere redaktørstyrte medier. Prioriter etter vesentlighet, relevans og dokumentasjon.
-2. **Lag ett utkast.** Skriv presis overskrift, dekkende ingress og forklarende hovedtekst i Paradisavisas stil. Oppgi kildegrunnlaget og skill mellom hva som er bekreftet, omstridt og uavklart.
+2. **Lag ett utkast.** Skriv presis overskrift, dekkende ingress og sammenhengende hovedtekst etter den kanoniske artikkelstandarden. Legg dokumentasjonslenker inn ved relevante påstander, med korte klikkbare kildenoter under faktabærende avsnitt. Skill mellom hva som er bekreftet, omstridt og uavklart.
 3. **Kontroller kilder.** Les originalrapporter, vedtak, regnskap og pressemeldinger. Suppler med uavhengige kilder og relevante motforestillinger; gi omtalte parter mulighet til å svare på alvorlig kritikk.
-4. **Lag bilde.** Bruk eget eller lovlig lisensiert bilde. Originale/AI-genererte illustrasjoner merkes som **Illustrasjon**, ikke dokumentarfotografi. Ikke oppfinn intervjuer eller beskrivelser fra en hendelse vi ikke har observert.
+4. **Lag bilder.** Etter godkjent tekst: velg et hovedbilde og ved behov relevante sekundærbilder, plassert i leseflyten. Følg bildehåndboken. Bruk egne eller lovlig lisensierte foto; originale/KI-genererte illustrasjoner merkes som **Illustrasjon**, ikke dokumentarfotografi. Ikke oppfinn intervjuer eller hendelser vi ikke har observert.
 5. **Sjekk ferskhet.** Før publisering må datoer, sakens status, tall og eventuelle nye hendelser kontrolleres på nytt. Særlig konsertomtaler, domstolsavgjørelser og planlagte rapporter kan bli utdatert raskt.
 6. **Godkjenn enkeltvis.** Kontroller kvalitet, kildehenvisninger, bildebruk, balanse, tittel og korrektur for akkurat den saken. Ingen annen artikkel må være ferdig først.
 7. **Publiser én sak.** Etter uttrykkelig redaksjonell beslutning flyttes den godkjente artikkelen fra `utkast/` til `artikler/`. Bruk reelle lenker til bilder og CSS. Oppgi faktisk publiseringsdato i relevant JSON-strøm (`Nyhetshjul.json`, `Kulturhjul.json` osv.). Ikke publiser et helt mappesett samlet.
