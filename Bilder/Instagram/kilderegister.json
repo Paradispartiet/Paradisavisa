@@ -1,0 +1,78 @@
+{
+  "format": "Instagram 4:5 med tekst",
+  "reference": "redaksjon/INSTAGRAM-KORT.md",
+  "items": [
+    {
+      "id": "store-stubb-diplomati",
+      "image": "Bilder/Artikler/store-stubb-geopolitisk-1600x900.jpg",
+      "output": "Bilder/Instagram/store-stubb-diplomati.png",
+      "instagram_original": "https://www.instagram.com/p/DfVm2OhikEA/",
+      "title": "Diplomati – eller en ny risiko?",
+      "excerpt": "Støre og Stubb har snakket med Putin. Gir kontakten rom for forhandlinger – eller større risiko for splittelse i Europa?",
+      "credit": "KI-assistert redaksjonell illustrasjon. Ikke dokumentarfotografi.",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1508010
+    },
+    {
+      "id": "binance-kryptotyveri",
+      "image": "Bilder/Artikler/binance-cybersikkerhet-fotomontasje-2026.jpg",
+      "output": "Bilder/Instagram/binance-kryptotyveri.png",
+      "instagram_original": "https://www.instagram.com/p/DfVmvIRCAcc/",
+      "title": "6,3 milliarder dollar borte",
+      "excerpt": "Et omfattende kryptotyveri setter Binance i søkelyset. Hvordan kunne det skje – og hvem skal dekke tapet?",
+      "credit": "Redaksjonell fotomontasje, ikke fra hendelsen.",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 967724
+    },
+    {
+      "id": "serbia-studentbevegelse",
+      "image": "Bilder/Artikler/serbia-studentprotest-novi-sad-2025-arkivfoto.jpg",
+      "output": "Bilder/Instagram/serbia-studentbevegelse.png",
+      "instagram_original": "https://www.instagram.com/p/DfVmncljfSB/",
+      "title": "Fra protest til valgseier",
+      "excerpt": "Tragedien i Novi Sad utløste studentprotester. Nå utfordrer bevegelsen makthaverne gjennom valg.",
+      "credit": "Arkivfoto fra studentprotest i 2025 – ikke fra valget. Lisens i kildefil.",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1041729
+    },
+    {
+      "id": "trump-wsj-rettssak",
+      "image": "Bilder/Artikler/trump-wsj-dom-fotomontasje-2026.jpg",
+      "output": "Bilder/Instagram/trump-wsj-rettssak.png",
+      "instagram_original": "https://www.instagram.com/p/DfVmgK0iMaj/",
+      "title": "Trumps milliardsøksmål avvist",
+      "excerpt": "En føderal dommer har avvist Trumps søksmål. Retten har ikke avgjort om det omstridte brevet er ekte.",
+      "credit": "Redaksjonell fotomontasje, ikke fra rettsbehandlingen.",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1066448
+    },
+    {
+      "id": "meta-journalistikk",
+      "image": "Bilder/Artikler/meta-plattformmakt-redaksjon-kiillustrasjon-2026.jpg",
+      "output": "Bilder/Instagram/meta-journalistikk.png",
+      "instagram_original": "https://www.instagram.com/p/DfVmY56CtBZ/",
+      "title": "Hvem bestemmer over journalistikken?",
+      "excerpt": "Norske mediehus har fått midlertidig stanset omstridte Meta-vilkår. Striden om pressefrihet og rettigheter fortsetter.",
+      "credit": "KI-assistert redaksjonell illustrasjon. Ikke dokumentarfotografi.",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 773653
+    },
+    {
+      "id": "sofienberg-kirke",
+      "image": "Bilder/Artikler/sofienberg-pingpong-hd.webp",
+      "output": "Bilder/Instagram/sofienberg-kirke.png",
+      "instagram_original": "https://www.instagram.com/p/DfVmSNzCKbO/",
+      "title": "Sofienberg kirke er varm. Folk fryser utenfor.",
+      "excerpt": "Konserter, kor og aktiviteter fyller kirken. Men hvem får et gratis, varmt sted å være?",
+      "credit": "KI-assistert redaksjonell illustrasjon. Ikke dokumentarfotografi.",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1430629
+    }
+  ]
+}
