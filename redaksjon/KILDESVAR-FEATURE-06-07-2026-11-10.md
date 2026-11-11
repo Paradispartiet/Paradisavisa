@@ -1,7 +1,7 @@
 # Feature 06 og 07 – innkomne kildesvar og kildeetikk
 
-**Oppdatert:** 10. november 2026  
-**Status:** Fire substansielle henvendelsessvar fra fem kilder, pluss ett automatisk mottakssvar. Dette er redaksjonell **statusregistrering**, ikke fullstendige kopier av privat e-post. Begge artikler er fortsatt utkast.
+**Oppdatert:** 11. november 2026  
+**Status:** Nye skriftlige kildesvar er gjennomgått. Begge artiklene er publisert 10. november og får kildeoppdatering 11. november. Dette er redaksjonell **statusregistrering**, ikke fullstendige kopier av privat e-post.
 
 ## Svarlogg
 
@@ -11,9 +11,9 @@
 | 06 | Forbrukerrådet (økonomi) | **Bakgrunnssvar med rapport mottatt** 10.11 | Kilden har uttrykkelig merket svaret **bakgrunnsinformasjon i første omgang**. Ikke bruk e-postens tekst som direkte offentlig sitat eller gi inntrykk av klarering. Bruk i stedet den offentlig tilgjengelige Bytteundersøkelsen 2026 som kilde til tall |
 | 06 | DNB | **Svar mottatt, videre avklaring ønsket** 10.11 | Pressevakten spør hvem som står bak Paradisavisa, viser til publiserte kvartalsrapporter og gir ikke en særskilt ny analyse. Et saklig, transparent svarutkast ligger i Gmail, **ikke sendt** |
 | 07 | Digitaliserings- og forvaltningsdepartementet | **Svar mottatt: ingen ytterligere kommentar** 10.11 | Departementet gir ikke nye opplysninger om prosjekter, budsjetter og frister. Ikke omskriv dette til avvisning av ministererklæringen. Opplysningen om manglende kommentar er tatt inn i utkastet med korrekt begrensning |
-| 07 | Forbrukerrådet (digitale rettigheter) | **Ingen faglig tilbakemelding registrert** per 10.11 | Ingen nye påstander eller sitater kan knyttes til henvendelsen før svar foreligger |
+| 07 | Forbrukerrådet (digitale rettigheter) | **Faglig svar mottatt** 11.11 | Brukt i publisert artikkel med korrekt avgrensning: kritisk infrastruktur, åpne standarder, offentlig innkjøpsmakt og risiko ved egenutvikling. Ingen støtte til en bestemt offentlig programvaremodell tilskrives kilden |
 
-Departementets automatiske mottaksbekreftelse er **ikke** et faglig kildesvar og telles ikke som ett av de fire innholdssvarene.
+Departementets automatiske mottaksbekreftelse er **ikke** et faglig kildesvar. Forbrukerrådets nye svar fra 11. november inngår i svarloggen.
 
 ## Uavhengig kontroll av bankenes responstid
 
@@ -35,9 +35,9 @@ Et eget oppfølgingsutkast til Forbrukerrådet er opprettet i Gmail, **ikke send
 ## Status for artikkelrevisjon
 
 - **Feature 06:** Finans Norges forklaring er innarbeidet som partsforklaring. Offentlig Forbrukerrådsrapport er brukt til forbrukertall, ikke bakgrunnskorrespondansen. Offentlig rentebeslutning fra mai er kildebelagt. DNBs eventuelle tilleggssvar avventes.
-- **Feature 07:** Departementets avgrensede svar er nøkternt omtalt. Ingen nye statlige prosjekter eller budsjetter er konstruert. Faglige innspill fra andre kilder avventes.
+- **Feature 07:** Departementets avgrensede svar er nøkternt omtalt. Forbrukerrådets skriftlige svar 11. november er nå innarbeidet og dokumentert. Ingen nye statlige prosjekter eller budsjetter er konstruert.
 - **Bilder:** Fire originale KI-assisterte illustrasjoner er integrert med beskrivende alt-tekst og bildetekst, men redaksjonell bildegodkjenning gjenstår.
-- **Publisering:** Både `feature-06-bankene` og `feature-07-digital-suverenitet` skal fortsatt ha `godkjent=false` og `publisert=false`. Ingen publiseringsdato eller nytt kort i offentlig Feature-strøm.
+- **Publisering:** Begge sakene ble publisert 10. november i `artikler/` og Feature-strømmen. Kildeoppdateringen 11. november endrer brødtekst, kilder og modifikasjonsdato, ikke opprinnelig publiseringsdato eller kort.
 
 ## Selvstendig norsk fagkilde til Feature 07 – 10. november
 
@@ -51,6 +51,12 @@ Digdirs rapport *Skiftende skydekke* (Skate-arbeidsgruppen, høsten 2026) og Dig
 ## Nødvendig før neste beslutning
 
 1. Kontroller avsenders offentlige presentasjon i DNB-oppfølgingsutkastet og send eventuelt fra riktig redaksjonskonto.
-2. Avklar Forbrukerrådets metodeår og om sitatbruk er tillatt; ellers bruk kun offentlig publiserte data.
-3. Avvent/følg opp faglig svar om digital suverenitet. Vurder uavhengig digital fagkilde i tillegg.
-4. Foreta separat siste faktasjekk og redaktørgodkjenning av hver artikkel. **Ingen automatisk publisering**.
+2. Avklar fortsatt rapportens motstridende feltarbeidsår hvis mer detaljerte prosentsatser ønskes. Bankartikkelen bruker bare Forbrukerrådets offentlige avrundede omtale, ikke det private bakgrunnssvaret.
+3. Vurder en ytterligere uavhengig digital fagkilde ved senere revisjon; Forbrukerrådets svar foreligger nå og er gjengitt nøkternt.
+4. Ved nye revisjoner: fortsatt kildekontroll og eksplisitt skille mellom dokumenterte fakta, partsinnspill og redaksjonelle vurderinger.
+
+## Kildeoppdatering 11. november 2026
+
+- **Feature 07:** Forbrukerrådet svarte skriftlig på redaksjonens henvendelse. Organisasjonen er særlig opptatt av kritisk digital infrastruktur, offentlig innkjøpsmakt og åpne standarder; advarer samtidig mot manglende skala, svak kvalitetskontroll og underfinansiert sikkerhetsvedlikehold ved offentlig egenutvikling. Ikke tolket som støtte til at staten skal bygge konkrete produkter. Offentlig supplement: https://www.tekna.no/aktuelt/slik-kan-vi-losrive-oss-fra-big-tech/
+- **Feature 06:** Svaret fra 10. november er uttrykkelig bakgrunn. Publisert tekst bruker kun Forbrukerrådets offentlige omtale med «én av tre», «nær en tredjedel» og det særskilt avgrensede funnet om totalkundeprogrammer. https://www.forbrukerradet.no/siste-nytt/mange-kan-fortsatt-spare-mye-penger-pa-boliglanet/
+- **Metodeforbehold:** Den uavklarte datokonflikten i Bytteundersøkelsens metodeavsnitt består. Den private korrespondansen er ikke sitert og tallene brukes ikke som kausal dokumentasjon på bankoverskudd.
