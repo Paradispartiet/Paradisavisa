@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="t d">
+<title id="t">Bankenes resultat etter skatt steg mens netto renteinntekter sank, første ni måneder 2025 og 2026</title>
+<desc id="d">Resultat etter skatt steg fra 63,4 til 69,4 milliarder kroner. Netto renteinntekter sank fra 103,4 til 100,3 milliarder kroner. Begge er akkumulerte tall til tredje kvartal. Tallene for 2025 er beregnet fra SSBs publiserte differanser. Stolpene har felles nullpunkt og skala.</desc>
+<rect width="1200" height="700" rx="12" fill="#11110f"/>
+<text x="60" y="73" fill="#ffffff" font-size="42" font-weight="700" font-family="Arial,sans-serif">Bankene: mer overskudd, lavere rentenetto</text>
+<text x="60" y="110" fill="#d4ccbd" font-size="24" font-family="Arial,sans-serif">Norske banker samlet · januar–september · milliarder kroner</text>
+<g stroke="#504c42" stroke-width="1.5"><path d="M260 180V582M415 180V582M570 180V582M725 180V582M880 180V582"/></g>
+<text x="60" y="180" fill="#ffdf86" font-size="27" font-weight="700" font-family="Arial,sans-serif">Resultat etter skatt</text>
+<text x="60" y="413" fill="#ffdf86" font-size="27" font-weight="700" font-family="Arial,sans-serif">Netto renteinntekter</text>
+<text x="100" y="248" fill="#f5f0e6" font-size="26" font-family="Arial,sans-serif">2025</text><rect x="260" y="215" width="393.08" height="46" rx="5" fill="#827e76"/><text x="666.08" y="248" fill="#f5f0e6" font-weight="700" font-size="26" font-family="Arial,sans-serif">63,4</text>
+<text x="100" y="314" fill="#f5f0e6" font-size="26" font-family="Arial,sans-serif">2026</text><rect x="260" y="281" width="430.28" height="46" rx="5" fill="#ffd95f"/><text x="703.28" y="314" fill="#f5f0e6" font-weight="700" font-size="26" font-family="Arial,sans-serif">69,4</text>
+<text x="100" y="486" fill="#f5f0e6" font-size="26" font-family="Arial,sans-serif">2025</text><rect x="260" y="453" width="641.08" height="46" rx="5" fill="#827e76"/><text x="914.08" y="486" fill="#f5f0e6" font-weight="700" font-size="26" font-family="Arial,sans-serif">103,4</text>
+<text x="100" y="552" fill="#f5f0e6" font-size="26" font-family="Arial,sans-serif">2026</text><rect x="260" y="519" width="621.86" height="46" rx="5" fill="#ffd95f"/><text x="894.86" y="552" fill="#f5f0e6" font-weight="700" font-size="26" font-family="Arial,sans-serif">100,3</text>
+<g font-family="Arial,sans-serif" font-size="22" fill="#c8c0b3" text-anchor="middle"><text x="260" y="612">0</text><text x="415" y="612">25</text><text x="570" y="612">50</text><text x="725" y="612">75</text><text x="880" y="612">100</text></g>
+<text x="60" y="660" fill="#c8c0b3" font-family="Arial,sans-serif" font-size="18">Kilde: SSB, 6.11.2026. 2025-tall beregnet fra oppgitte endringer. Nullbasert skala.</text>
+</svg>
