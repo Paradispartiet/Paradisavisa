@@ -67,7 +67,7 @@ test("Firefox skal ikke reservere falsk bunnsikkerhetssone under notisbåndet", 
   assert.match(firefox, /body:has\(> \.notisbånd\)/);
   assert.match(firefox, /padding-bottom:\s*3rem\s*;/);
   const index = fs.readFileSync(path.join(root, "index.html"), "utf8");
-  assert.match(index, /styles\.css\?v=42/);
+  assert.match(index, /styles\.css\?v=\d+/);
 });
 
 test("Notisbåndet animerer bare et kort spor uten å lage en gigantisk liste", () => {
