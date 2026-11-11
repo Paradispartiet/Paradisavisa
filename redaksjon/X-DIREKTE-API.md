@@ -24,8 +24,8 @@ X oppgir per 11.11.2026 **USD 0,20 for å opprette innlegg med URL**. Pris kan e
 
    Ikke del hemmelighetene i chat eller legg dem i kode. GitHub stiller sitt eget GITHUB_TOKEN til rådighet for å oppdatere den interne engangsloggen.
 
-4. Kontroller hvilken X-konto tokenene tilhører, les tillatelser og se API-kostnadene.
-5. Lag en **Repository variable** under samme GitHub Actions-innstillingsside: navn **X_AUTOPUBLISH_ENABLED**, verdi **true**. Mangler variabelen, eller er den ikke nøyaktig true, sendes ikke et eneste X-innlegg.
+4. Lag en **Repository variable** med navnet **X_EXPECTED_USERNAME** og verdien av X-kontoens eksakte brukernavn **uten @**. Før hvert forsøk sjekker integrasjonen kontoen mot GET /2/users/me (et betalt API-oppslag). Feil konto eller manglende brukernavn blokkerer all sending.
+5. Kontroller tillatelser, forventet konto, API-pris og forbruksgrense. Lag deretter en **Repository variable** under samme GitHub Actions-innstillingsside: navn **X_AUTOPUBLISH_ENABLED**, verdi **true**. Mangler variabelen, eller er den ikke nøyaktig true, sendes ikke et eneste X-innlegg.
 6. Vent til **neste nye publiserte artikkel** for første ekte publisering. Aktivering sender ikke gamle artikler på nytt.
 
 ## Hvilke filer styrer dette?
