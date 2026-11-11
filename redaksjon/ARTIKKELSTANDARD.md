@@ -2,7 +2,7 @@
 
 **Status:** Gjeldende redaksjonell utformingsstandard fra 11. november 2026.
 
-**Én kilde til sannhet:** Denne veilederen fastsetter **artikkelens oppbygning, kildeplassering og lesbarhet**. Den operative HTML-malen er [Maler/mal-artikkel.html](../Maler/mal-artikkel.html), med [artikkel.css](../artikkel.css). Bildets motiv, etikk, produksjon og godkjenning følger [BILDEHANDBOK.md](BILDEHANDBOK.md). [REDAKSJONSPLAN.md](../REDAKSJONSPLAN.md) styrer faktakontroll, redaksjonell godkjenning og publisering. Ingen av disse dokumentene erstatter de andre.
+**Én kilde til sannhet:** Denne veilederen fastsetter **artikkelens oppbygning, kildeplassering og lesbarhet**. Den operative HTML-malen er [Maler/mal-artikkel.html](../Maler/mal-artikkel.html), med [artikkel.css](../artikkel.css). [LEVENDE-ARTIKLER.md](LEVENDE-ARTIKLER.md) er den utfyllende komponenthåndboken for polls/avstemninger, faktabokser, forstørrbare grafer, interaktive tidslinjer og forklaringsgrafikk; [artikkel-demo.html](artikkel-demo.html) demonstrerer komponentene. Bildets motiv, etikk, produksjon og godkjenning følger [BILDEHANDBOK.md](BILDEHANDBOK.md). [REDAKSJONSPLAN.md](../REDAKSJONSPLAN.md) styrer faktakontroll, redaksjonell godkjenning og publisering. Ingen av disse dokumentene erstatter de andre.
 
 Eldre filer som article.html, Maler/mal-nyhet.html, Maler/mal-sport.html, Maler/mal-kultur.html og posts/innlegg-mal.html er **historiske eksempler**, ikke nye konkurrerende produksjonsmaler. Allerede publiserte artikler endres ikke automatisk når malen oppdateres. Kategoriene nyhet, feature, kultur, sport, kommentar, analyse og debatt bruker samme tekniske grunnstruktur, men sjanger og fortellerstil er forskjellige.
 
@@ -22,8 +22,8 @@ Eldre filer som article.html, Maler/mal-nyhet.html, Maler/mal-sport.html, Maler/
 4. **Hovedillustrasjon:** Relevant, ferdig godkjent bilde med alt-tekst, forklarende bildetekst og rettigheter/KI-merking. Hovedbildet skal ikke sluke lesesiden.
 5. **Brødtekst:** Lesbar énspaltet fortelling med relevante lenker og korte kildehenvisninger under faktabærende avsnitt.
 6. **Mellombilder:** Normalt ett eller to for en lengre artikkel, noen ganger flere når de gjør konkret journalistisk arbeid. Bilder er ikke fyll. Ved lange artikler kan bildene gi naturlige pustepauser.
-7. **Kilder og videre lesning:** Full oversikt med direkte URL, tittel, utgiver og helst dato. Oversikten supplerer – erstatter ikke – kildene i teksten.
-8. **Merknad ved behov:** Hva er ukjent? Hvor kommer tallene fra? Hva er redaksjonens egen tolkning?
+7. **Levende fordypning etter behov:** Bruk en klikkbar faktaboks, lokal avstemning, forstørrbar graf med datatabell, utvidbar tidslinje eller interaktiv forklaringsgrafikk bare når den faktisk hjelper leseren. Se [komponenthåndboken](LEVENDE-ARTIKLER.md).\n8. **Kilder og videre lesning:** Full oversikt med direkte URL, tittel, utgiver og helst dato. Oversikten supplerer – erstatter ikke – kildene i teksten.
+9. **Merknad ved behov:** Hva er ukjent? Hvor kommer tallene fra? Hva er redaksjonens egen tolkning?
 
 ## 3. Slik fletter vi kilder inn i teksten
 
@@ -88,7 +88,7 @@ En meningsytring eller overgang uten etterprøvbare nye påstander trenger ikke 
 - [ ] Teksten er gjennomlest og kildekontrollert; direkte lenker åpnes og samsvarer med det de skal støtte.
 - [ ] Sentrale dokumenter/tall har lenker **i riktig avsnitt** og eventuelt korte kildenoter under.
 - [ ] Kildeoversikten er fullstendig og speiler faktisk brukte kilder.
-- [ ] Hovedbilde og eventuelle mellombilder er relevante, godkjente og rettighetsavklart; alt/figcaption/merking finnes.
+- [ ] Hovedbilde og eventuelle mellombilder er relevante, godkjente og rettighetsavklart; alt/figcaption/merking finnes.\n- [ ] Eventuelle levende moduler er relevante, data-/kildekontrollerte og fungerer på iPad, PC og med tastatur. Grafer har lesbar tabell; avstemninger later ikke som de har samlet tall fra andre.
 - [ ] Bildene vises riktig uten forstyrrende beskjæring på iPad og mobil.
 - [ ] Én H1, god ingress, riktig sjanger/byline/dato og ikke overdreven bruk av mellomtitler.
 - [ ] Metadata (canonical, og:title, og:image, twitter:image, publiseringsdato) peker på artikkel og **samme hovedbilde**.
