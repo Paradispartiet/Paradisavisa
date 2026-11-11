@@ -1,0 +1,56 @@
+name: Paradisradioen – norsk stemmetilgang og publiseringssperre
+
+on:
+  pull_request:
+    paths:
+      - "scripts/radio/probe_moss_access.py"
+      - "scripts/radio/test_probe_moss_access.py"
+      - "radio/MOSS_NANO_PRIVAT_VURDERING.md"
+      - "radio/release-gate.json"
+      - ".github/workflows/radio-moss-tilgang.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/radio/probe_moss_access.py"
+      - "scripts/radio/test_probe_moss_access.py"
+      - "radio/release-gate.json"
+      - ".github/workflows/radio-moss-tilgang.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: paradisradio-moss-access-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  model-access:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Hent kildekode uten lagrede legitimasjonsopplysninger
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Sett opp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Test kontroll av tilgang og stengt offentlig lydport
+        run: |
+          python -m unittest discover -s scripts/radio -p "test_probe_moss_access.py" -v
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          gate = json.loads(Path("radio/release-gate.json").read_text(encoding="utf-8"))
+          assert gate["publicAudioEnabled"] is False
+          assert gate["modelRightsStatus"] == "PENDING"
+          assert gate["editorialAudioStatus"] == "PENDING"
+          print("Offentlig MP3 er fortsatt sperret")
+          PY
+
+      - name: Kontroller offentlig modellmetadata og vekt-HEAD uten lydgenerering
+        run: python scripts/radio/probe_moss_access.py
