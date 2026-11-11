@@ -125,6 +125,7 @@ jobs:
       - name: Publiser på X med engangslås og maksimalt ti lenkeinnlegg per måned
         env:
           X_AUTOPUBLISH_ENABLED: ${{ vars.X_AUTOPUBLISH_ENABLED }}
+          X_EXPECTED_USERNAME: ${{ vars.X_EXPECTED_USERNAME }}
           X_API_KEY: ${{ secrets.X_API_KEY }}
           X_API_SECRET: ${{ secrets.X_API_SECRET }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
