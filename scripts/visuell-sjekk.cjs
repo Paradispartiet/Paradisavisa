@@ -192,8 +192,16 @@ async function run(){
           label+": notisbåndet bruker ikke én aktiv compositor-animasjon");
         tickerTidFoer=tilstand.tid;
       }
+      // Slagordet vises på toppen, men skal forsvinne når masthead blir kompakt.
+      check(await page.locator(".avis-masthead .avis-motto").evaluate(
+        el => getComputedStyle(el).display !== "none"),
+        label+": slagordet er skjult allerede på toppen");
       // Kontroller at avisoverskriften forblir synlig når innholdet rulles.
       await page.evaluate(() => window.scrollTo(0, 600));
+      await page.waitForFunction(() => document.querySelector(".avis-masthead").classList.contains("avis-rullet"));
+      check(await page.locator(".avis-masthead .avis-motto").evaluate(
+        el => getComputedStyle(el).display === "none"),
+        label+": slagordet tar fremdeles plass etter scrolling");
       if (harAktuelleNotiser && tickerTidFoer != null) {
         await page.waitForTimeout(200);
         const tilstand = await page.evaluate(() => {
@@ -221,6 +229,10 @@ async function run(){
         label+": notisbåndet forsvinner når man ruller opp");
       }
       await page.evaluate(() => window.scrollTo(0, 0));
+      await page.waitForFunction(() => !document.querySelector(".avis-masthead").classList.contains("avis-rullet"));
+      check(await page.locator(".avis-masthead .avis-motto").evaluate(
+        el => getComputedStyle(el).display !== "none"),
+        label+": slagordet kommer ikke tilbake på toppen");
 
       // Transparens: vis leseren publiseringsdato, og merk gamle saker som arkiv.
       for(const id of storyGrids){
