@@ -1,0 +1,5 @@
+{
+  "schema": 1,
+  "description": "Ett engangskrav per artikkel før X-opplasting. Tvil om API-respons krever manuell avklaring, aldri automatisk retry.",
+  "entries": {}
+}
