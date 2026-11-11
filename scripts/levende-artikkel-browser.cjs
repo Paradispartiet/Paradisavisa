@@ -19,6 +19,32 @@ const server=http.createServer((request,response)=>{
     response.end(buffer);
   });
 });
+/* Guard against the previous oversized yellow "Forstørr"-buttons on iPad.
+   CSS and content are both checked: 44px touch target but compact visual width. */
+async function assertCompactZoomLinks(page,label,minCount=1){
+  const links=await page.locator("article.av-artikkel a.av-zoom-knapp").evaluateAll(elements=>elements.map(el=>{
+    const css=getComputedStyle(el);
+    const rect=el.getBoundingClientRect();
+    return {
+      text:el.textContent.trim(),
+      aria:el.getAttribute("aria-label")||"",
+      width:rect.width,height:rect.height,
+      fontSize:parseFloat(css.fontSize),
+      background:css.backgroundColor
+    };
+  }));
+  assert.ok(links.length>=minCount,label+": missing zoom link(s)");
+  for(const link of links){
+    assert.equal(link.text,"Forstørr",label+": visible zoom text must remain brief");
+    assert.match(link.aria,/^Forstørr /,label+": accessible name should explain what opens");
+    assert.ok(link.width<=160,label+": zoom link too wide "+JSON.stringify(link));
+    assert.ok(link.height>=43,label+": zoom link has insufficient touch target "+JSON.stringify(link));
+    assert.ok(link.fontSize<=15,label+": zoom link text is too large "+JSON.stringify(link));
+    assert.ok(link.background==="rgba(0, 0, 0, 0)"||link.background==="transparent",
+      label+": zoom link must not have a filled yellow background "+JSON.stringify(link));
+  }
+}
+
 async function run(){
   fs.mkdirSync(path.join(root,"qa-screenshots"),{recursive:true});
   await new Promise(resolve=>server.listen(0,"127.0.0.1",resolve));
@@ -37,6 +63,7 @@ async function run(){
       page.on("pageerror",error=>errors.push(error.message));
       await page.goto(base+"/redaksjon/artikkel-demo.html",{waitUntil:"load"});
       assert.match(await page.title(),/Levende artikkel/);
+      await assertCompactZoomLinks(page,name+": demonstrasjon");
       const dimensions=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(dimensions.width<=dimensions.viewport+2,name+": horizontal overflow "+JSON.stringify(dimensions));
       assert.equal(await page.locator("h1").count(),1);
@@ -73,6 +100,7 @@ async function run(){
       // Første virkelige pilot: behold original Feature 06, test nye moduler.
       await page.goto(base+"/artikler/2026-11-10-bankene-tjener-milliarder.html",{waitUntil:"load"});
       assert.match(await page.title(),/Bankene tjener milliarder/);
+      await assertCompactZoomLinks(page,name+": bankfeature");
       const dimensionsBank=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(dimensionsBank.width<=dimensionsBank.viewport+2,name+": bankartikkel har sidelengs scroll "+JSON.stringify(dimensionsBank));
       assert.equal(await page.locator("article.av-artikkel h1").count(),1);
@@ -116,6 +144,7 @@ async function run(){
       // Andre virkelige pilot: KI-debatt med dokumenterte lenker og forklaringsgrafikk.
       await page.goto(base+"/artikler/2026-11-11-maskinene-laerer-aa-skrive.html",{waitUntil:"load"});
       assert.match(await page.title(),/Når maskinene lærer å skrive/);
+      await assertCompactZoomLinks(page,name+": KI-debatt");
       const dimensionsDebatt=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(dimensionsDebatt.width<=dimensionsDebatt.viewport+2,name+": KI-debatt har sidelengs scroll "+JSON.stringify(dimensionsDebatt));
       assert.equal(await page.locator("article.av-artikkel h1").count(),1);
@@ -155,6 +184,7 @@ async function run(){
       // Tredje pilot: den publiserte datasenteranalysen og dens nye redaksjonelle moduler.
       await page.goto(base+"/artikler/2026-11-10-hvem-skal-fa-norges-strom.html",{waitUntil:"load"});
       assert.match(await page.title(),/Datasentre: Hvem skal få Norges strøm/);
+      await assertCompactZoomLinks(page,name+": datasenter",2);
       const datasentreWidth=await page.evaluate(()=>({documentWidth:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(datasentreWidth.documentWidth<=datasentreWidth.viewport+2,name+": horisontal overflow datasenterartikkel "+JSON.stringify(datasentreWidth));
       assert.equal(await page.locator("main.story-shell h1").count(),1);
@@ -194,6 +224,7 @@ async function run(){
       // Fjerde pilot: kulturartikkel om Nationaltheatret og Gamle Munch.
       await page.goto(base+"/artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",{waitUntil:"load"});
       assert.match(await page.title(),/Nationaltheatret til Tøyen/);
+      await assertCompactZoomLinks(page,name+": Nationaltheatret");
       assert.equal(await page.locator("main.story-shell h1").count(),1);
       const theatreDims=await page.evaluate(()=>({documentWidth:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(theatreDims.documentWidth<=theatreDims.viewport+2,name+": Nationaltheatret har sidelengs scroll "+JSON.stringify(theatreDims));
