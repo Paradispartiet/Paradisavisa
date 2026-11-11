@@ -28,6 +28,12 @@ X oppgir per 11.11.2026 **USD 0,20 for å opprette innlegg med URL**. Pris kan e
 5. Kontroller tillatelser, forventet konto, API-pris og forbruksgrense. Lag deretter en **Repository variable** under samme GitHub Actions-innstillingsside: navn **X_AUTOPUBLISH_ENABLED**, verdi **true**. Mangler variabelen, eller er den ikke nøyaktig true, sendes ikke et eneste X-innlegg.
 6. Vent til **neste nye publiserte artikkel** for første ekte publisering. Aktivering sender ikke gamle artikler på nytt.
 
+## Kontroller tilkoblingen uten kostnader
+
+Etter at hemmelighetene og kontonavnet er lagt inn, åpner du [GitHub Actions – Kontroller X-oppsett uten API-kall](https://github.com/Paradispartiet/Paradisavisa/actions/workflows/x-oppsett-kontroll.yml), velger **Run workflow** på main og åpner jobbens **Summary**.
+
+Denne testen kontrollerer bare om de fire X-hemmelighetene og variabelen X_EXPECTED_USERNAME finnes. Den viser aldri hemmelige verdier, sender ingen forespørsler til X og publiserer ikke noe. Grønt resultat bekrefter bare at **oppsettet finnes**, ikke at nøklene er gyldige eller at X har godkjent fakturering. For å aktivere automatisk publisering kreves også en separat, eksplisitt endring av X_AUTOPUBLISH_ENABLED til true.
+
 ## Hvilke filer styrer dette?
 
 - scripts/x-autopubliser.cjs – OAuth1-signering, manifest-sjekk, X API, månedstak.
