@@ -152,7 +152,46 @@ async function run(){
       assert.match(await debatePoll.locator("[data-av-poll-result]").innerText(),/Åpenhet om bruk av KI/);
       assert.deepEqual(errors,[],name+": feil i KI-debatt");
       await page.screenshot({path:path.join(root,"qa-screenshots","ki-debatt-levende-"+name+".png"),fullPage:true});
+      // Tredje pilot: den publiserte datasenteranalysen og dens nye redaksjonelle moduler.
+      await page.goto(base+"/artikler/2026-11-10-hvem-skal-fa-norges-strom.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Datasentre: Hvem skal få Norges strøm/);
+      const datasentreWidth=await page.evaluate(()=>({documentWidth:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(datasentreWidth.documentWidth<=datasentreWidth.viewport+2,name+": horisontal overflow datasenterartikkel "+JSON.stringify(datasentreWidth));
+      assert.equal(await page.locator("main.story-shell h1").count(),1);
+      assert.ok(await page.locator(".av-kilde-note a").count()>=9);
+      assert.equal(await page.locator("main figure img").count(),3);
+      for(const img of await page.locator("main figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{el.addEventListener("load",resolve,{once:true});el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});});});
+        assert.ok(await img.evaluate(el=>el.naturalWidth>0),name+": image failed to load");
+      }
+      const mwBox=page.locator("details.av-infoboks");
+      await mwBox.locator("summary").click();
+      assert.equal(await mwBox.getAttribute("open"),"");
+      await page.getByRole("link",{name:"Forstørr køgrafen"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/datasentre-kraftko-graf\.svg/);
+      await page.keyboard.press("Escape");
+      await page.getByRole("link",{name:"Forstørr beslutningskartet"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),true);
+      await page.keyboard.press("Escape");
+      await page.locator('button[data-av-step="samfunn"]').click();
+      assert.equal(await page.locator('[data-av-panel="samfunn"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="effekt"]').isVisible(),false);
+      assert.equal(await page.locator(".av-tidslinje li").count(),4);
+      await page.locator(".av-tidslinje li:nth-child(4) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(4) details").getAttribute("open"),"");
+      const kraftPoll=page.locator('[data-av-poll="norge-kraftprioritering-2026"]');
+      assert.equal(await kraftPoll.locator("form").isVisible(),true);
+      await kraftPoll.locator('input[value="likebehandling"]').check();
+      await kraftPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await kraftPoll.locator("[data-av-poll-result]").innerText(),/Åpne regler og lik behandling/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await kraftPoll.locator("[data-av-poll-result]").innerText(),/Åpne regler og lik behandling/);
+      assert.deepEqual(errors,[],name+": feil i datasenteranalysen");
+      await page.screenshot({path:path.join(root,"qa-screenshots","datasentre-levende-"+name+".png"),fullPage:true});
       await context.close();
+      console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
       console.log("OK: KI-debatt på "+name+" med kilder, grafikk, forklarer og lokal poll");
       console.log("OK: bankfeature på "+name+" med graf, kilder, tidslinje, forklarer og poll");
       console.log("OK: levende artikkel på "+name+" ("+viewport.width+" px)");
@@ -173,6 +212,12 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="ide"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="kontroll"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr forklaringsgrafikken"}).getAttribute("href"),/skriveprosess-forklaringsgrafikk\.svg/);
+    await page.goto(base+"/artikler/2026-11-10-hvem-skal-fa-norges-strom.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="norge-kraftprioritering-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="norge-kraftprioritering-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="effekt"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="samfunn"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr køgrafen"}).getAttribute("href"),/datasentre-kraftko-graf\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
