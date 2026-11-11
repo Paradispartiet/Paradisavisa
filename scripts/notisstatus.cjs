@@ -68,8 +68,10 @@ function analyseNotiser(notiser, dato = lokalDato()) {
     }
     if (problemer.length) feil.push("Notis " + nr + ": " + problemer.join(", ") + ".");
     const alder = publisert === null ? null : iDag - publisert;
+    // Samme holdbarhet som notisbånd og radiospiller:
+    // Tre kalenderdager som standard, redaksjonell expires maks sju.
     const sisteDag = publisert === null ? null :
-      Math.min(publisert + 6, utlop === null ? Infinity : utlop);
+      Math.min(publisert + (utlop === null ? 2 : 6), utlop === null ? Infinity : utlop);
     const dagerIgjen = sisteDag === null ? null : sisteDag - iDag;
     const status = problemer.length ? "ugyldig" :
       alder < 0 ? "framtidig" :
