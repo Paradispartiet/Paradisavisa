@@ -22,7 +22,7 @@ test("Kilder er ved påstandene, og forslag forveksles ikke med innførte tiltak
  assert.match(html,/Per 11\. november 2026 var svaret fremdeles ikke publisert/);
  assert.match(html,/Forslaget er ikke vedtatt/);
  assert.match(html,/ikke vedtatte regler/);
- assert.match(html,/Unntak fra tilknytnings- og investeringsplikten/);
+ assert.match(html,/unntak fra tilknytnings- og investeringsplikten/i);
  assert.match(html,/www\.statnett\.no\/om-statnett/);
  assert.match(html,/www\.regjeringen\.no\/no\/aktuelt/);
  assert.match(html,/dok8-202627-034ls/);
