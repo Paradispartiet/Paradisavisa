@@ -11,10 +11,10 @@ const read=p=>fs.readFileSync(path.join(root,p),"utf8");
 const cards=JSON.parse(read("Nyhetshjul.json"));
 const base="https://paradispartiet.github.io/Paradisavisa/";
 const items=[
-{article:"artikler/2026-11-10-massie-hegseth-riksrettsforslag.html",image:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.webp",svg:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.svg",sha:"84a055ca5d548be2a2733830ad7e7485649b4f5e",sources:13},
-{article:"artikler/2026-11-10-hvem-skal-fa-norges-strom.html",image:"Bilder/Artikler/2026-11-11-kraftnett-datasenter-grafikk.webp",svg:"Bilder/Artikler/2026-11-11-kraftnett-datasenter-grafikk.svg",sha:"dc7e4500cbb5ab53dd3b1c460ef2857514a93bef",sources:9},
+{article:"artikler/2026-11-10-massie-hegseth-riksrettsforslag.html",image:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.webp",svg:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.svg",sha:"fd1a138a92b467b81a4ad12c5781e1d48c16677e",sources:13},
+{article:"artikler/2026-11-10-hvem-skal-fa-norges-strom.html",image:"Bilder/Artikler/2026-11-11-kraftnett-datasenter-grafikk.webp",svg:"Bilder/Artikler/2026-11-11-kraftnett-datasenter-grafikk.svg",sha:"8921f814d2c5301862efd51198c395553e633495",sources:9},
 {article:"artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",image:"Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto.webp",sha:"3106e3e9fe493691d859cd810a4edca8cf9639dd",sources:11,photo:true},
-{article:"artikler/2026-11-05-usa-valget-topartisystem-og-medier.html",image:"Bilder/Artikler/2026-11-11-usa-valg-spillgrafikk.webp",svg:"Bilder/Artikler/2026-11-11-usa-valg-spillgrafikk.svg",sha:"7b8ae1ce0fc73225e7f55c22319bae20f418bacf"}
+{article:"artikler/2026-11-05-usa-valget-topartisystem-og-medier.html",image:"Bilder/Artikler/2026-11-11-usa-valg-spillgrafikk.webp",svg:"Bilder/Artikler/2026-11-11-usa-valg-spillgrafikk.svg",sha:"068b6494c28c15d01abb794a735e9953cc3cf20b"}
 ];
 test("de fire synlige bildene er ulike og kortene har riktige lenker",()=>{
  const urls=cards.map(c=>c.url);
