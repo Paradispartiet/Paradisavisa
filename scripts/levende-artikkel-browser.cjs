@@ -69,7 +69,51 @@ async function run(){
       assert.equal(await page.locator('[data-av-panel="3"]').isVisible(),true);
       assert.deepEqual(errors,[],name+": no runtime errors");
       await page.screenshot({path:path.join(root,"qa-screenshots","levende-artikkel-"+name+".png"),fullPage:true});
+
+      // Første virkelige pilot: behold original Feature 06, test nye moduler.
+      await page.goto(base+"/artikler/2026-11-10-bankene-tjener-milliarder.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Bankene tjener milliarder/);
+      const dimensionsBank=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(dimensionsBank.width<=dimensionsBank.viewport+2,name+": bankartikkel har sidelengs scroll "+JSON.stringify(dimensionsBank));
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      assert.ok(await page.locator(".av-kilde-note a").count()>=9);
+      assert.equal(await page.locator(".hero-illustrasjon img").count(),1);
+      assert.equal(await page.locator(".analyse-illustrasjon img").count(),1);
+      // Under-bilder har loading="lazy": rull til hvert bilde før lastestatus testes.
+      const imgs=page.locator("article img");
+      for(let i=0;i<await imgs.count();i++){
+        await imgs.nth(i).scrollIntoViewIfNeeded();
+        await page.waitForFunction(index=>{
+          const img=document.querySelectorAll("article img")[index];
+          return Boolean(img&&img.complete&&img.naturalWidth>0);
+        },i,{timeout:15000});
+      }
+      const imageStatus=await page.locator("article img").evaluateAll(images=>images.map(i=>({src:i.getAttribute("src"),loaded:i.complete&&i.naturalWidth>0})));
+      assert.ok(imageStatus.every(i=>i.loaded),name+": illustrasjon eller datagraf mangler: "+JSON.stringify(imageStatus));
+      const bankDetails=page.locator("details.av-infoboks");
+      await bankDetails.locator("summary").click();
+      assert.equal(await bankDetails.getAttribute("open"),"");
+      assert.equal(await page.locator(".av-tidslinje li").count(),3);
+      await page.locator(".av-tidslinje li:nth-child(2) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(2) details").getAttribute("open"),"");
+      await page.locator('button[data-av-step="resultat"]').click();
+      assert.equal(await page.locator('[data-av-panel="resultat"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="finansiering"]').isVisible(),false);
+      await page.getByRole("link",{name:"Forstørr grafen"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/bankene-resultat-rentenetto-graf\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),false);
+      const bankPoll=page.locator('[data-av-poll="bankdebatt-2026-prioritering"]');
+      assert.equal(await bankPoll.locator("form").isVisible(),true);
+      await bankPoll.locator('input[value="konkurranse"]').check();
+      await bankPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await bankPoll.locator("[data-av-poll-result]").innerText(),/Mer åpenhet/);
+      assert.equal(await bankPoll.locator("form").isVisible(),false);
+      assert.deepEqual(errors,[],name+": feil på virkelig bankfeature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","bankfeature-levende-"+name+".png"),fullPage:true});
       await context.close();
+      console.log("OK: bankfeature på "+name+" med graf, kilder, tidslinje, forklarer og poll");
       console.log("OK: levende artikkel på "+name+" ("+viewport.width+" px)");
     }
     const context=await browser.newContext({viewport:{width:820,height:1180},javaScriptEnabled:false,serviceWorkers:"block"});

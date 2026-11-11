@@ -1,0 +1,52 @@
+"use strict";
+const test=require("node:test"),assert=require("node:assert/strict"),fs=require("node:fs"),path=require("node:path");
+const root=path.resolve(__dirname,"..");
+const read=name=>fs.readFileSync(path.join(root,name),"utf8");
+const html=read("artikler/2026-11-10-bankene-tjener-milliarder.html");
+const graph=read("Bilder/Artikler/2026-11-11-bankene-resultat-rentenetto-graf.svg");
+test("Bankartikkelen beholder identitet, publiseringsdato og originalbilder",()=>{
+ assert.match(html,/<h1>Bankene tjener milliarder – hvem betaler\?<\/h1>/);
+ assert.match(html,/article:published_time" content="2026-11-10"/);
+ assert.match(html,/article:modified_time" content="2026-11-11"/);
+ assert.match(html,/feature06-bankene-hovedbilde-2026\.webp/);
+ assert.match(html,/feature06-bankene-sekundaerillustrasjon-2026\.webp/);
+ assert.match(html,/class="av-artikkel"/);
+ assert.match(html,/href="\.\.\/artikkel\.css"/);
+ assert.match(html,/artikkel-interaktiv\.js/);
+ assert.match(html,/class="av-prosa"/);
+ assert.equal((html.match(/<h1\b/g)||[]).length,1);
+ assert.match(html,/class="av-kilder-samlet"/);
+});
+test("Bankartikkelen har kilder gjennom teksten og minst to bilder",()=>{
+ assert.ok((html.match(/class="av-kilde-note"/g)||[]).length>=9);
+ assert.ok((html.match(/<figure\b/g)||[]).length>=3);
+ assert.match(html,/SSB – bankresultat og netto renteinntekter/);
+ assert.match(html,/Forbrukerrådet – Fra styringsrente til utlånsrente/);
+ assert.match(html,/Norges Bank – rentebeslutning/);
+ assert.match(html,/Bankenes samlede resultater for januar–september 2025 og 2026/);
+});
+test("Nye komponenter er komplette og uten oppdiktede resultater",()=>{
+ assert.match(html,/class="av-graf"/);
+ assert.match(html,/data-av-zoom/);
+ assert.match(html,/class="av-datatabell"/);
+ assert.match(html,/class="av-infoboks"/);
+ assert.match(html,/class="av-tidslinje"/);
+ assert.match(html,/data-av-explainer/);
+ assert.match(html,/data-av-poll="bankdebatt-2026-prioritering"/);
+ assert.match(html,/data-av-poll-js-required/);
+ assert.match(html,/form hidden/);
+ assert.match(html,/ingen felles stemmetall samles inn/);
+ assert.match(html,/class="av-zoom-dialog"/);
+ assert.match(html,/Styringsrenten heves fra 4,25 til 4,50 %/);
+ assert.match(html,/Styringsrenten holdes på 4,50 %/);
+ assert.doesNotMatch(html,/\b(?:stemte|prosent stemte|antall stemmer)\b/i);
+});
+test("Grafens 2025-verdier er beregnet fra SSBs publiserte differanser",()=>{
+ assert.equal(+(69.4-6).toFixed(1),63.4);
+ assert.equal(+(100.3+3.1).toFixed(1),103.4);
+ assert.match(graph,/63,4/);assert.match(graph,/69,4/);assert.match(graph,/103,4/);assert.match(graph,/100,3/);
+ assert.match(graph,/Nullbasert skala/);
+ assert.match(graph,/SSB, 6\.11\.2026/);
+ assert.match(html,/63,4<\/td><td>69,4/);
+ assert.match(html,/103,4<\/td><td>100,3/);
+});
