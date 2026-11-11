@@ -25,13 +25,17 @@ VOICE_REPOSITORY = "rhasspy/piper-voices"
 VOICE_REVISION = "e7229f7d33a10e145e109b886d661984201ac3c4"
 VOICE_BASE = "no/no_NO/nvcc/medium"
 VOICE_NAME = "no_NO-nvcc-medium"
-SPEAKERS = {"KNN": 0, "MNN": 4}  # Entydige Piper-ID-er, ikke påstått kjønn.
+SPEAKERS = {"KNN": 0, "MNN": 4}  # Historiske KNN/MNN-prøver (avvist av redaksjonen).
+NEW_SPEAKERS = {"KON": 3, "MON": 6}  # Ennå ikke lyttetestet. Ingen automatisk godkjenning.
 PILOT_PROFILE = {"lengthScale": 1.04, "noiseScale": 0.60,
                  "noiseWScale": 0.68, "sentencePauseSeconds": 0.17}
 
 
-def verify_nvcc(model_dir: pathlib.Path) -> tuple[pathlib.Path, dict]:
-    """Kontroller nøyaktig nedlastet kilde, datakort og stemme-ID-er."""
+def verify_nvcc(model_dir: pathlib.Path, speakers: dict | None = None) -> tuple[pathlib.Path, dict]:
+    """Kontroller nøyaktig nedlastet kilde, datakort og valgte stemme-ID-er."""
+    active_speakers = SPEAKERS if speakers is None else speakers
+    if active_speakers not in (SPEAKERS, NEW_SPEAKERS):
+        raise ValueError("Kun fast definerte norske stemme-ID-er er tillatt")
     prefix = model_dir / VOICE_BASE
     model = prefix / f"{VOICE_NAME}.onnx"
     config_path = prefix / f"{VOICE_NAME}.onnx.json"
@@ -48,7 +52,7 @@ def verify_nvcc(model_dir: pathlib.Path) -> tuple[pathlib.Path, dict]:
     if cfg.get("num_speakers") != 10 or cfg.get("audio", {}).get("sample_rate") != 22050:
         raise ValueError("Uventet antall talere eller samplerate")
     mapping = cfg.get("speaker_id_map") or {}
-    if any(mapping.get(name) != value for name, value in SPEAKERS.items()):
+    if any(mapping.get(name) != value for name, value in active_speakers.items()):
         raise ValueError("Stemme-ID-ene samsvarer ikke med modellens konfigurasjon")
     provenance = {
         "model": VOICE_NAME,
@@ -61,7 +65,8 @@ def verify_nvcc(model_dir: pathlib.Path) -> tuple[pathlib.Path, dict]:
         "datasetLicense": "CC0 (MODEL_CARD, ikke egen modellvektlisens)",
         "training": "Trained from scratch (distribuert MODEL_CARD)",
         "modelRightsStatus": "UNDER_REDAKSJONELL_VURDERING",
-        "speakers": SPEAKERS,
+        "speakers": active_speakers,
+        "checkpointProvenance": "Distribuert modellkort sier from scratch; eldre Piper-checkpoint sier fine-tuned from LibriTTS-R. Krever særskilt rettighetsvurdering.",
     }
     return model, provenance
 
@@ -78,10 +83,11 @@ def select_samples(today: dt.date, count: int = 3) -> list[dict]:
 
 
 def render(model_dir: pathlib.Path, dest: pathlib.Path, today: dt.date,
-           count: int = 3) -> dict:
+           count: int = 3, speakers: dict | None = None) -> dict:
     from piper import PiperVoice, SynthesisConfig
 
-    model, provenance = verify_nvcc(model_dir)
+    active_speakers = SPEAKERS if speakers is None else speakers
+    model, provenance = verify_nvcc(model_dir, active_speakers)
     chosen = select_samples(today, count)
     dest.mkdir(parents=True, exist_ok=True)
     audio_dir = dest / "lydproever"
@@ -91,7 +97,7 @@ def render(model_dir: pathlib.Path, dest: pathlib.Path, today: dt.date,
     voice = PiperVoice.load(str(model))
     entries = []
     for sample in chosen:
-        for label, speaker_id in SPEAKERS.items():
+        for label, speaker_id in active_speakers.items():
             wav = dest / f"{sample['id']}-{label}.wav"
             mp3 = audio_dir / f"{sample['id']}-{label}.mp3"
             syn_cfg = SynthesisConfig(
@@ -138,6 +144,7 @@ def render(model_dir: pathlib.Path, dest: pathlib.Path, today: dt.date,
         "qualityApproved": False,
         "today": today.isoformat(),
         "profile": PILOT_PROFILE,
+        "speakerSet": list(active_speakers),
         "provenance": provenance,
         "sampleCount": len(chosen),
         "audioCount": len(entries),
@@ -159,8 +166,10 @@ def main() -> None:
     p.add_argument("--today", type=dt.date.fromisoformat,
                    default=dt.datetime.now(ZoneInfo("Europe/Oslo")).date())
     p.add_argument("--count", type=int, default=3)
+    p.add_argument("--speaker-set", choices=["original", "kon-mon"], default="original")
     args = p.parse_args()
-    report = render(args.model_root, args.output, args.today, args.count)
+    selected = SPEAKERS if args.speaker_set == "original" else NEW_SPEAKERS
+    report = render(args.model_root, args.output, args.today, args.count, selected)
     print(json.dumps({
         "model": VOICE_NAME,
         "numSamples": report["sampleCount"],
