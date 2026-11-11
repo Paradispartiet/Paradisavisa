@@ -1,6 +1,6 @@
 # Paradisavisa – én SoMe-rutine for nye artikler
 
-**Status 11. november 2026:** Automatisk registrering, klargjøring, bildeproduksjon og offentlig verifikasjon er implementert i GitHub. **Automatisk utsending til Instagram/X er ennå ikke aktivert**, fordi den krever egen Metricool API-tilgang og tilkobling av X-kontoen.
+**Status 11. november 2026:** Automatisk registrering, klargjøring, bildeproduksjon og offentlig verifikasjon er implementert i GitHub. **Direkte X-API-publisering er ferdig i koden, men deaktivert inntil X-kontoen er autorisert og de nødvendige GitHub-innstillingene er satt.** Instagram-kort lages, men sendes ikke automatisk. Se [oppsett for X](X-DIREKTE-API.md).
 
 ## Redaksjonell hovedregel
 
@@ -22,7 +22,7 @@
 6. X-versjonen skrives separat med artikkelens direkte URL. Doble oppføringer i flere nyhetshjul gir bare én pakke.
 7. En komplett pakke med manifest.json og PNG-kort blir tilgjengelig som GitHub Actions-artefakt i 30 dager.
 
-**Direkte utsending:** Når en sikker Metricool-integrasjon finnes, kan pakken overføres til SoMe etter offentlig verifikasjon. Dette krever gyldig API-token, kanaltilkobling og et varig register over sendte saker; en CI-retry må aldri kunne skape to innlegg. Inntil dette er verifisert, lager rutinen pakker – den **publiserer ikke** på Instagram/X automatisk.
+**Direkte utsending:** X-jobben bruker [X API direkte](X-DIREKTE-API.md), uten Metricool. Etter offentlig verifikasjon av ny artikkel sender den én kort X-tekst med artikkellenke, men bare dersom kontoeieren har autorisert kontoen, satt GitHub-hemmelighetene og eksplisitt aktivert X_AUTOPUBLISH_ENABLED. En varig engangslogg hindrer automatisk dobbeltpublisering. Instagram-rutinen lager fortsatt bildepakker uten å sende dem direkte.
 
 ## Implementerte filer
 
@@ -34,7 +34,7 @@
 
 ## Tilkoblingsstatus
 
-Metricool-merkevaren paradispartiet (blogId 7885193) har Instagram @paradispartiet, men ikke X, ifølge sist kontrollerte kontoinnstillinger 11. november. ChatGPT-tilkoblingen til Metricool er **ikke** en tilgjengelig GitHub Actions API-nøkkel. Metricools egen HTTP API krever Advanced-/Custom-plan og token som oppbevares som GitHub Secret – aldri i repoet. [Offisiell Metricool API-veiledning](https://help.metricool.com/basic-guide-for-api-integration-r97af).
+Metricool-merkevaren paradispartiet har Instagram @paradispartiet, men **X krever ingen Metricool-tilkobling**: X-kontoen autentiseres direkte til avisens GitHub Actions-rutine via OAuth 1.0a User Context. Se [X-veiledningen](X-DIREKTE-API.md) for fire GitHub Secrets og eksplisitt aktivering.
 
 X-profilbilde, toppbilde, biografi, lenke og festet innlegg endres gjennom egen profiloppdatering, uavhengig av artiklenes SoMe-rutine.
 
