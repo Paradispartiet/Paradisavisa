@@ -9,19 +9,21 @@ const crypto=require("node:crypto");
 const root=path.resolve(__dirname,"..");
 const read=p=>fs.readFileSync(path.join(root,p),"utf8");
 const cards=JSON.parse(read("Nyhetshjul.json"));
+const cultureCards=JSON.parse(read("Kulturhjul.json"));
+const cardsFor=item=>item.feed==="kultur"?cultureCards:cards;
 const base="https://paradispartiet.github.io/Paradisavisa/";
 const items=[
 {article:"artikler/2026-11-10-massie-hegseth-riksrettsforslag.html",image:"Bilder/Artikler/2026-11-11-hegseth-massie-maktkonflikt.webp",sha:"51bad4a93b0eb71942a2c25fc356be1e5e25b172",sources:6,width:1280,height:720,modified:true},
 {article:"artikler/2026-11-10-hvem-skal-fa-norges-strom.html",image:"Bilder/Artikler/2026-11-10-datasentre-kraftnett.webp",sha:"b4a8b953d659da15043445a2b1cc5ca3beb9cd4f",sources:9},
-{article:"artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",image:"Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto.webp",sha:"3106e3e9fe493691d859cd810a4edca8cf9639dd",sources:11,photo:true,modified:true},
+{article:"artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",image:"Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto.webp",sha:"3106e3e9fe493691d859cd810a4edca8cf9639dd",sources:11,photo:true,modified:true,feed:"kultur"},
 {article:"artikler/2026-11-05-usa-valget-topartisystem-og-medier.html",image:"Bilder/Artikler/2026-11-05-usa-ludo-politisk-satire.jpg",sha:"df217d18d67963da2fdf9c6f07bdb02f09f12de2",mime:"image/jpeg"}
 ];
-test("de fire synlige bildene er ulike og kortene har riktige lenker",()=>{
- const urls=cards.map(c=>c.url);
+test("fire redaksjonsbilder er ulike og tilknyttede nyhets- og kulturkort har riktige lenker",()=>{
+ const urls=[...cards,...cultureCards].map(c=>c.url);
  assert.equal(new Set(urls).size,urls.length);
  assert.equal(new Set(items.map(i=>i.image)).size,4);
  for(const item of items){
-  const found=cards.filter(c=>c.url===item.article);
+  const found=cardsFor(item).filter(c=>c.url===item.article);
   assert.equal(found.length,1);
   assert.equal(found[0].image,item.image);
  }
@@ -29,7 +31,7 @@ test("de fire synlige bildene er ulike og kortene har riktige lenker",()=>{
 for(const item of items){
  test("artikkel og bildemetadata: "+item.article,()=>{
   const html=read(item.article);
-  const card=cards.find(c=>c.url===item.article);
+  const card=cardsFor(item).find(c=>c.url===item.article);
   const full=base+item.image;
   assert.ok(html.includes('src="../'+item.image+'"'));
   assert.ok(html.includes('property="og:image" content="'+full+'"'));
