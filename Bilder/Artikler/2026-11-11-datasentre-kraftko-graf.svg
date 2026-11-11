@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" role="img" aria-labelledby="chartTitle chartDescription">
+<title id="chartTitle">Datasentre i strømnettet: tilknyttet, reservert, i kø og forespørsler</title>
+<desc id="chartDescription">Statnetts tall per 9. november 2026, i megawatt: 800 tilknyttet, 4200 reservert, 9100 i kapasitetskø og 18000 i ytterligere forespørsler. Fire separate horisontale stolper på samme nullbaserte skala. Kategoriene er ulike stadier, og forespørsler er ikke bygde datasentre. Tallene skal ikke tolkes som faktisk framtidig forbruk.</desc>
+<rect width="1280" height="760" fill="#10120f"/>
+<text x="62" y="83" fill="#fff8e8" font-family="Georgia,serif" font-size="45" font-weight="700">Hvor stor er datasenterkøen?</text>
+<text x="62" y="123" fill="#d3cbbd" font-family="Arial,sans-serif" font-size="23">Oppgitte effektbehov i MW • Status 9. november 2026</text>
+<g stroke="#494943" stroke-width="2"><path d="M350 173V620M545 173V620M740 173V620M935 173V620M1130 173V620"/></g>
+<g fill="#c7c1b6" font-size="22" font-family="Arial,sans-serif" text-anchor="middle"><text x="350" y="656">0</text><text x="545" y="656">5 000</text><text x="740" y="656">10 000</text><text x="935" y="656">15 000</text><text x="1130" y="656">20 000</text></g>
+<text x="62" y="239" fill="#f1eee8" font-family="Arial,sans-serif" font-size="26" font-weight="650">Tilknyttet</text>
+<rect x="350" y="205" width="31.2" height="56" rx="5" fill="#83b4b2"/>
+<text x="396.2" y="241" fill="#fff5e9" font-family="Arial,sans-serif" font-size="28" font-weight="700">800</text>
+<text x="62" y="344" fill="#f1eee8" font-family="Arial,sans-serif" font-size="26" font-weight="650">Reservert</text>
+<rect x="350" y="310" width="163.8" height="56" rx="5" fill="#d6af69"/>
+<text x="528.8" y="346" fill="#fff5e9" font-family="Arial,sans-serif" font-size="28" font-weight="700">4 200</text>
+<text x="62" y="449" fill="#f1eee8" font-family="Arial,sans-serif" font-size="26" font-weight="650">I kapasitetskø</text>
+<rect x="350" y="415" width="354.9" height="56" rx="5" fill="#e59d70"/>
+<text x="719.9" y="451" fill="#fff5e9" font-family="Arial,sans-serif" font-size="28" font-weight="700">9 100</text>
+<text x="62" y="554" fill="#f1eee8" font-family="Arial,sans-serif" font-size="26" font-weight="650">Forespørsler</text>
+<rect x="350" y="520" width="702.0" height="56" rx="5" fill="#dc7883"/>
+<text x="1067" y="556" fill="#fff5e9" font-family="Arial,sans-serif" font-size="28" font-weight="700">18 000</text>
+<text x="62" y="704" fill="#c9c0b3" font-family="Arial,sans-serif" font-size="19">Kilde: Statnett 9.11.2026. Kategoriene må ikke forveksles med driftssatt kapasitet.</text>
+<text x="62" y="734" fill="#c9c0b3" font-family="Arial,sans-serif" font-size="19">MW er øyeblikkelig effekt, ikke årlig energiforbruk i MWh eller TWh.</text>
+</svg>

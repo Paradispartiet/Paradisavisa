@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" role="img" aria-labelledby="ft fd">
+<title id="ft">Tre ulike prosesser rundt datasentre og kraft</title>
+<desc id="fd">Statnett innførte et midlertidig teknisk tiltak 9. november 2026. Regjeringen varslet arbeid med en mulig konsesjonsordning samme dag. På Stortinget var det lagt fram et representantforslag om et bredere unntak fra tilknytningsplikten. Tiltak, plan og forslag har ulik juridisk status; illustrasjonen viser ikke et vedtatt prioriteringssystem.</desc>
+<rect width="1280" height="800" fill="#111311"/>
+<text x="64" y="83" fill="#fcf3e3" font-family="Georgia,serif" font-size="48" font-weight="700">Tre spor – tre ulike beslutninger</text>
+<text x="64" y="121" fill="#d5ccbe" font-family="Arial,sans-serif" font-size="24">Det som gjelder nå, er ikke det samme som det som foreslås.</text>
+<g font-family="Arial,sans-serif">
+<rect x="64" y="170" width="1150" height="158" rx="14" fill="#1c2b2c" stroke="#7eaeb0" stroke-width="3"/>
+<rect x="64" y="348" width="1150" height="158" rx="14" fill="#292419" stroke="#d2ad60" stroke-width="3"/>
+<rect x="64" y="526" width="1150" height="158" rx="14" fill="#2c1f24" stroke="#d98791" stroke-width="3"/>
+<g font-size="23" font-weight="700"><text x="94" y="211" fill="#9bd1d1">STATNETT • IVERKSATT TILTAK</text><text x="94" y="389" fill="#efd182">REGJERINGEN • VARSLET PLAN</text><text x="94" y="567" fill="#f0a7ab">STORTINGET • IKKE VEDTATT FORSLAG</text></g>
+<g font-family="Georgia,serif" font-size="34" fill="#fff6e7"><text x="94" y="266">Midlertidig stans i nye reservasjoner</text><text x="94" y="444">Utrede konsesjon for datasentre</text><text x="94" y="622">Forslag om bredere unntak over 1 MW</text></g>
+<g fill="#c9c9c4" font-size="22"><text x="94" y="299">Teknisk sikkerhet og nettdrift • med avgrensninger</text><text x="94" y="477">Kriterier og lovgrunnlag er ikke ferdig besluttet</text><text x="94" y="655">Gjelder foreslått tilknytningsplikt, ikke generelt strømforbud</text></g>
+<g><rect x="980" y="193" width="199" height="47" rx="23" fill="#a3d2d0"/><text x="1079" y="223" fill="#102125" font-size="20" font-weight="750" text-anchor="middle">Gjeldende tiltak</text>
+<rect x="980" y="371" width="199" height="47" rx="23" fill="#e4c374"/><text x="1079" y="401" fill="#30250d" font-size="20" font-weight="750" text-anchor="middle">Under arbeid</text>
+<rect x="980" y="549" width="199" height="47" rx="23" fill="#ecafb5"/><text x="1079" y="579" fill="#351924" font-size="20" font-weight="750" text-anchor="middle">Til behandling</text></g>
+</g>
+<text x="64" y="754" fill="#c1b8a8" font-family="Arial,sans-serif" font-size="20">Kilder: Statnett, regjeringen.no og Stortinget, 3.–11. november 2026.</text>
+</svg>
