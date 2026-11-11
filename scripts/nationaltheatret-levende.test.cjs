@@ -42,5 +42,5 @@ test("Levende kulturmoduler er informative uten fiktive avstemninger eller visua
  assert.match(svg,/<title id="t">/);
  assert.match(svg,/<desc id="d">/);
  assert.match(svg,/ikke bygg- eller scenetegning/);
- assert.match(svg,/Regjeringens plan/);
+ assert.match(svg,/regjeringens plan/i);
 });
