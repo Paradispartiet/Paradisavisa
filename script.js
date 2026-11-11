@@ -224,6 +224,44 @@ function isNotisAktuell(notis, now = new Date()) {
   return true;
 }
 
+/* ---------- Oppdatering av radioens redaksjonelle nyhetskø ---------- */
+// Stabile ID-er brukes når de finnes. Eldre notiser uten ID identifiseres
+// med kilde, dato, kategori og originaltekst; endringer i tekst er nye versjoner.
+function radioNotisNokkel(notis) {
+  if (notis && typeof notis.id === "string" && notis.id.trim())
+    return "id:" + notis.id.trim();
+  return "eldre:" + JSON.stringify([
+    notis?.date || "", notis?.url || "", notis?.category || "", notis?.text || ""
+  ]);
+}
+
+// Hentede notiser er autoritative: slettede og utløpte saker utgår.
+// Nye saker kommer først ved rundeskifte; kjente beholdes i radiokøens
+// forrige rekkefølge slik at en redaksjonell omstokking ikke nullstiller flyten.
+function prioriterNyeRadioNotiser(gamle, hentede, now = new Date()) {
+  const tidligere = Array.isArray(gamle) ? gamle : [];
+  const innkomne = Array.isArray(hentede) ? hentede : [];
+  const gamleNokler = new Set(tidligere.map(radioNotisNokkel));
+  const oppdatert = new Map();
+  for (const notis of innkomne) {
+    if (!isNotisAktuell(notis, now)) continue;
+    const nokkel = radioNotisNokkel(notis);
+    if (!oppdatert.has(nokkel)) oppdatert.set(nokkel, notis);
+  }
+  const prioritet = [];
+  for (const [nokkel, notis] of oppdatert) {
+    if (!gamleNokler.has(nokkel)) prioritet.push(notis);
+  }
+  for (const gammel of tidligere) {
+    const nokkel = radioNotisNokkel(gammel);
+    if (oppdatert.has(nokkel)) {
+      prioritet.push(oppdatert.get(nokkel));
+      oppdatert.delete(nokkel);
+    }
+  }
+  return prioritet;
+}
+
 /* ---------- Godkjent radiotekst med konservativ uttaletilpasning ---------- */
 function lagRadioOpplesning(notis) {
   // Taleavvik kan settes eksplisitt av redaksjonen, ikke genereres fritt av AI.
@@ -678,7 +716,8 @@ function loadNotiser() {
             return response.json();
           }).then(data => {
             if (!radioAktiv || versjon !== radioVersjon) return;
-            if (Array.isArray(data)) radiosaker = data.filter(item => isNotisAktuell(item));
+            if (!Array.isArray(data)) throw new Error("Ugyldig notisliste");
+            radiosaker = prioriterNyeRadioNotiser(radiosaker, data);
             radioIndeks = 0;
             if (!radiosaker.length) {
               stoppRadio("Ingen ferske notiser å lese opp.");
@@ -815,21 +854,18 @@ function loadNotiser() {
       };
       radioPauseknapp.addEventListener("click", byttRadioPause);
       const hoppRadio = steg => {
-        if (!radioAktiv || !radiosaker.length) return;
-        if (radioOvergangTimeout !== null) clearTimeout(radioOvergangTimeout);
-        radioOvergangTimeout = null;
-        radioKreverOmstart = false;
-        const fra = radioGjeldendeIndeks >= 0 ? radioGjeldendeIndeks : 0;
-        radioIndeks = (fra + steg + radiosaker.length) % radiosaker.length;
-        const varPauset = radioPauset;
-        radioPauset = false;
-        const versjon = ++radioVersjon;
-        try {
-          if (varPauset) tale.resume?.();
-          tale.cancel();
-        } catch (_) { /* Fortsett om nettleseren har begrenset lydstøtte. */ }
-        lesNeste(versjon);
-        visRadio();
+        if (!radioAktiv) return;
+        const ferske = radiosaker.filter(item => isNotisAktuell(item));
+        if (!ferske.length) {
+          stoppRadio("Ingen ferske notiser å lese opp.");
+          return;
+        }
+        // Navigasjon følger den samme filtrerte listen som vises på radiosiden.
+        // En utløpt nyhet kan dermed ikke velges ved Neste eller Forrige.
+        const fra = ferske.indexOf(radiosaker[radioGjeldendeIndeks]);
+        const mål = ((fra < 0 ? (steg > 0 ? -1 : 0) : fra) +
+          steg + ferske.length) % ferske.length;
+        spillFraKo(mål);
       };
       window.ParadisRadioPlayer = {
         getState: spillerTilstand,
