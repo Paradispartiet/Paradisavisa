@@ -4,9 +4,9 @@ Bildene på forsiden skal variere i **sjanger, motiv, utsnitt og kildetype**. Kr
 
 ## Nå brukt
 - **Hegseth:** faktagrafikk (211–204), produsert som redigerbar SVG uten KI-portretter; kildedata fra nyhetsrapportering og House-saksnummer.
-- **Datasentre:** teknisk strekillustrasjon av kraftnett og datasenter, uten mennesker. Symbolsk – viser ikke faktisk anlegg.
+- **Datasentre:** opprinnelig KI-assistert, håndmalt illustrasjon med to driftsingeniører og kraftnett, gjeninnført etter brukerens ønske 11. november. Konstruert motiv, ikke fotografi fra et faktisk anlegg.
 - **Nationaltheatret:** autentisk arkivfoto (2005) av Gamle Munch med fotograf, årstall, kilde og BSD-gjenbrukslisens. Ikke framstilt som et foto fra 2026.
-- **USA-valg:** minimalistisk spillgrafikk i stedet for overlesset KI-fotomontasje av politikere.
+- **USA-valg:** opprinnelig KI-assistert politisk satire/fotomontasje med Trump som illusjonist og ludo-metafor, gjeninnført etter brukerens ønske 11. november.
 
 ## Redaksjonelle prinsipper
 1. Prioriter reelle kildebelagte hendelses- og stedbilder med klar gjenbrukstillatelse.
@@ -22,4 +22,6 @@ Bildene på forsiden skal variere i **sjanger, motiv, utsnitt og kildetype**. Kr
 
 ## Teknisk leveranse
 
-Alle fire valgte motiver brukes nå som lokale **WebP-filer (1600 × 900)** i både forsidekort og artikkelsider. Tre original-SVG-filer er beholdt som redigerbare grafikkilder. Dette sikrer korrekte bilder ved deling i sosiale medier, uten å bruke de gamle AI-portrettene.
+Hegseth og Nationaltheatret beholder de nye WebP-filene fra 11. november. Datasentre bruker igjen den tidligere lokale WebP-filen og USA-valget den tidligere godkjente JPEG-montasjen (begge 1600 × 900), også i delingsmetadata. Vektorgrafikkene fra 11. november beholdes kun som arkiv.
+
+**Feature 06 og 07:** Brukeren har etter særskilt bildevisning godkjent to nye hovedmotiv 11. november (digital suverenitet og husholdningsøkonomi). De nye rasterfilene må overføres identisk til GitHub før bildekoblingene kan endres. Eksisterende sekundærbilder skal beholdes.
