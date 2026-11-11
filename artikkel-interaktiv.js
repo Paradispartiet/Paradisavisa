@@ -30,6 +30,9 @@
       form.hidden = true;
       result.hidden = false;
     };
+    const needsJs = poll.querySelector("[data-av-poll-js-required]");
+    if (needsJs) needsJs.hidden = true;
+    form.hidden = false;
     const saved = getSaved();
     if (saved) show(saved);
     form.addEventListener("submit", event => {
