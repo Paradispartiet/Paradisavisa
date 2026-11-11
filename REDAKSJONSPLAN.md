@@ -10,6 +10,8 @@
 
 Nyhetshjulene på forsiden oppdateres når en enkelt sak publiseres. De viser faktiske publiseringsdatoer, og tidligere artikler beholdes som arkivstoff. Ikke gi eldre tekst ny dato bare fordi siden bygges om.
 
+**SoMe er en del av publiseringsløpet:** Ved nye artikler lager [den felles SoMe-rutinen](redaksjon/SOME-PUBLISERING.md) automatisk eget Instagram-tekstkort og en X-tekst med artikkellenke etter offentlig publiseringskontroll. **Klargjøring er aktiv; kontopublisering er ikke aktivert** før Metricool API-tilgang og kontotilkoblinger er verifisert. Rettelser av eldre artikler skal ikke sendes om igjen.
+
 Paradisavisa er en selvstendig nettavis, ikke et partiorgan. Stoffvalg kan ha et gjenkjennelig redaksjonelt blikk, men nyheter skal bygge på etterprøvbare fakta – ikke på Paradispartiets standpunkter. Kommentarer, analyser og debattinnlegg merkes tydelig.
 
 ## Daglige notiser og Paradisradioen

@@ -30,7 +30,7 @@ Dette er et **delingskort**, ikke et nytt artikkelbilde. Den redaksjonelle [bild
 
 **Avvis publisering** dersom bildefilen kun viser et motiv uten overskrift/ingress, eller hvis overskrift/ingress er uleselig, faktamessig misvisende eller avkuttet. Kortgeneratoren sperrer eksport av tomme felt og tekst som ikke får plass.
 
-Ved automatisert publisering må publiseringsløpet sende det **sammensatte tekstkortet**, ikke artikkelens Open Graph-bilde eller hovedbilde alene. Det er ikke dokumentert noe Instagram-automatiseringsløp i dette repositoriet per 11. november; denne malen publiserer ikke selv.
+Ved automatisert publisering må publiseringsløpet sende det **sammensatte tekstkortet**, ikke artikkelens Open Graph-bilde eller hovedbilde alene. Den [felles SoMe-rutinen](SOME-PUBLISERING.md) lager nå Instagram-tekstkort automatisk for **nye, offentlig verifiserte artikler**. Selve kontopubliseringen er foreløpig ikke aktivert; denne malen publiserer heller ikke på Instagram alene.
 
 ## Seks siste innlegg på kontoen
 

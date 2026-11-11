@@ -1,0 +1,95 @@
+name: SoMe-pakke ved publisering av ny artikkel
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/some-*.cjs'
+      - 'scripts/some-*.py'
+      - '.github/workflows/some-artikler.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'Nyhetshjul.json'
+      - 'Nyhetshjul2.json'
+      - 'Sportshjul.json'
+      - 'Kulturhjul.json'
+      - 'kommentarer.json'
+      - 'debatt.json'
+      - 'posts.json'
+      - 'scripts/some-*.cjs'
+      - 'scripts/some-*.py'
+      - '.github/workflows/some-artikler.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: some-artikkel-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  tester:
+    name: Test nye SoMe-artikler og duplikatvern
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Kontroller SoMe-pakkens logikk
+        run: node --test scripts/some-pakke.test.cjs
+      - name: Installer bildebibliotek for visuell korttest
+        run: python3 -m pip install 'Pillow>=10,<13' 'CairoSVG>=2,<3'
+      - name: Test faktiske kortbilder og tekstsperre
+        run: python3 -m unittest discover -s scripts -p 'test_some_kort.py' -v
+
+  klargjor:
+    name: Oppdag, verifiser og bygg SoMe-pakken
+    if: github.event_name == 'push'
+    needs: tester
+    runs-on: ubuntu-24.04
+    timeout-minutes: 13
+    steps:
+      - name: Hent hele historikken for sikker førstegangssammenligning
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Finn bare nye artikler i de offisielle strømfilene
+        id: scan
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/some-pakke"
+          node scripts/some-pakke.cjs --before "$BEFORE_SHA" --out "$RUNNER_TEMP/some-pakke/manifest.json"
+          COUNT=$(node -p "require(process.argv[1]).newArticles.length" "$RUNNER_TEMP/some-pakke/manifest.json")
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Nye artikler: $COUNT" >> "$GITHUB_STEP_SUMMARY"
+      - name: Vent til alle nye artikler og hovedbilder er bekreftet på nett
+        if: steps.scan.outputs.count != '0'
+        run: node scripts/some-live.cjs "$RUNNER_TEMP/some-pakke/manifest.json"
+      - name: Installer lokalt bildebibliotek
+        if: steps.scan.outputs.count != '0'
+        run: python3 -m pip install 'Pillow>=10,<13' 'CairoSVG>=2,<3'
+      - name: Lag komplette Instagram-kort med bilde, tekst og avisnavn
+        if: steps.scan.outputs.count != '0'
+        run: python3 scripts/some-kort.py "$RUNNER_TEMP/some-pakke/manifest.json" --out "$RUNNER_TEMP/some-pakke/kort"
+      - name: Last opp godkjent forberedelsespakke
+        if: steps.scan.outputs.count != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: some-pakke-${{ github.sha }}
+          path: ${{ runner.temp }}/some-pakke/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Vis arbeidsstatus
+        if: steps.scan.outputs.count != '0'
+        run: |
+          echo "SoMe-bilder og tekster er automatisk laget etter offentlig verifisering." >> "$GITHUB_STEP_SUMMARY"
+          echo "IKKE SENDT: Automatisk konto-publisering venter på Metricool API-tilgang og koblet X-konto." >> "$GITHUB_STEP_SUMMARY"
+          echo "Ingen eldre artikler eller konto-innlegg ble endret." >> "$GITHUB_STEP_SUMMARY"
