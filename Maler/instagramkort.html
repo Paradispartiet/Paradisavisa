@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instagram-kort | Paradisavisa</title>
+  <style>
+    :root { color-scheme:dark; font-family:system-ui,-apple-system,Arial,sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#0b0d10; color:#f7f7f7; }
+    main { max-width:1180px; margin:auto; padding:24px; }
+    h1 { font-size:clamp(1.4rem,3vw,2rem); margin:0 0 8px; }
+    p { color:#b8bdc6; line-height:1.5; }
+    .layout { display:grid; grid-template-columns:minmax(240px,390px) minmax(280px,1fr); gap:24px; align-items:start; }
+    label { display:block; margin:14px 0 6px; font-weight:700; }
+    input,textarea,button { width:100%; font:inherit; border-radius:8px; }
+    input,textarea { background:#191d23; color:#fff; border:1px solid #59606b; padding:10px; }
+    textarea { min-height:90px; resize:vertical; }
+    input[type="range"] { padding:0; }
+    button { margin-top:16px; padding:14px; background:#d7ab56; color:#111; border:0; font-weight:700; cursor:pointer; }
+    button:disabled { opacity:.45; cursor:not-allowed; }
+    canvas { display:block; width:min(100%,480px); height:auto; background:#111; border:1px solid #333; }
+    .note { font-size:.9rem; }
+    .warn { color:#ffb29d; }
+    @media(max-width:780px) { .layout { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Paradisavisa – Instagram-kort med tekst</h1>
+  <p>Fast format: originalt artikkelbilde øverst, svart tekstfelt med overskrift og ingress under. Eksporter et ferdig PNG-kort, ikke et rent bilde.</p>
+  <div class="layout">
+    <section aria-label="Rediger kort">
+      <label for="bilde">Godkjent artikkelbilde</label>
+      <input id="bilde" type="file" accept="image/png,image/jpeg,image/webp" aria-describedby="bildenote">
+      <p id="bildenote" class="note">Bildet beholdes som det er, men beskjæres i kortformatet. Bruk bare bilder med dokumenterte rettigheter.</p>
+      <label for="tittel">Overskrift</label>
+      <textarea id="tittel" maxlength="180" placeholder="Skriv en kort og presis overskrift"></textarea>
+      <label for="ingress">Kort ingress</label>
+      <textarea id="ingress" maxlength="350" placeholder="To–tre korte setninger som forklarer saken"></textarea>
+      <label for="horisontal">Utsnitt – horisontalt</label>
+      <input id="horisontal" type="range" min="0" max="100" value="50">
+      <label for="vertikal">Utsnitt – vertikalt</label>
+      <input id="vertikal" type="range" min="0" max="100" value="50">
+      <button id="lastned" type="button" disabled>Last ned Instagram-kort (PNG)</button>
+      <p id="status" role="status" class="note">Velg bilde og skriv overskrift og ingress.</p>
+    </section>
+    <section aria-label="Forhåndsvisning">
+      <canvas id="kort" width="1080" height="1350" aria-label="Forhåndsvisning i Instagram-format, 1080 ganger 1350 piksler"></canvas>
+      <p class="note">Kontroller lesbarhet også i liten profilrute. Tekst skal være en del av selve PNG-kortet, ikke bare Instagram-bildeteksten.</p>
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  'use strict';
+  const canvas = document.getElementById('kort');
+  const ctx = canvas.getContext('2d');
+  const bilde = document.getElementById('bilde');
+  const tittel = document.getElementById('tittel');
+  const ingress = document.getElementById('ingress');
+  const horisontal = document.getElementById('horisontal');
+  const vertikal = document.getElementById('vertikal');
+  const lastned = document.getElementById('lastned');
+  const status = document.getElementById('status');
+  const W = 1080, H = 1350, IMAGE_H = 760, PAD = 64, TEXT_W = W - PAD * 2;
+  let sourceImage = null, sourceUrl = null, overflow = false;
+
+  function wrap(text, font, maxWidth) {
+    ctx.font = font;
+    const words = text.trim().replace(/\s+/g, ' ').split(' ').filter(Boolean);
+    const lines = [];
+    let line = '';
+    for (const word of words) {
+      if (ctx.measureText(word).width > maxWidth) {
+        return null; // no silent truncation of single long words
+      }
+      const next = line ? line + ' ' + word : word;
+      if (ctx.measureText(next).width > maxWidth && line) {
+        lines.push(line);
+        line = word;
+      } else line = next;
+    }
+    if (line) lines.push(line);
+    return lines;
+  }
+  function render() {
+    overflow = false;
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#252c35';
+    ctx.fillRect(0, 0, W, IMAGE_H);
+    if (sourceImage) {
+      const scale = Math.max(W / sourceImage.width, IMAGE_H / sourceImage.height);
+      const w = sourceImage.width * scale, h = sourceImage.height * scale;
+      const x = (W - w) * Number(horisontal.value) / 100;
+      const y = (IMAGE_H - h) * Number(vertikal.value) / 100;
+      ctx.drawImage(sourceImage, x, y, w, h);
+    } else {
+      ctx.fillStyle = '#b3becb';
+      ctx.textAlign = 'center';
+      ctx.font = '42px Arial, sans-serif';
+      ctx.fillText('Velg et godkjent artikkelbilde', W / 2, IMAGE_H / 2);
+      ctx.textAlign = 'left';
+    }
+    ctx.fillStyle = '#08090b';
+    ctx.fillRect(0, IMAGE_H, W, H - IMAGE_H);
+    const headline = tittel.value.trim();
+    const teaser = ingress.value.trim();
+    let titleLines = null, titleSize = 66;
+    for (; titleSize >= 48; titleSize -= 2) {
+      titleLines = wrap(headline, 'bold ' + titleSize + 'px Arial, sans-serif', TEXT_W);
+      if (titleLines && titleLines.length <= 3) break;
+    }
+    if (!titleLines || titleLines.length > 3) overflow = true;
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.font = 'bold ' + titleSize + 'px Arial, sans-serif';
+    const titleY = 811;
+    const titleStep = titleSize * 1.14;
+    (titleLines || []).slice(0, 3).forEach(function (line, i) {
+      ctx.fillText(line, PAD, titleY + i * titleStep);
+    });
+    const descY = Math.max(1026, titleY + Math.min(3, (titleLines || []).length) * titleStep + 24);
+    let descLines = null, descSize = 36;
+    for (; descSize >= 30; descSize -= 2) {
+      descLines = wrap(teaser, descSize + 'px Arial, sans-serif', TEXT_W);
+      if (descLines && descLines.length <= 4 && descY + descLines.length * descSize * 1.28 <= 1240) break;
+    }
+    if (!descLines || descLines.length > 4 || descY + descLines.length * descSize * 1.28 > 1240) overflow = true;
+    ctx.fillStyle = '#c6c6c6';
+    ctx.font = descSize + 'px Arial, sans-serif';
+    (descLines || []).slice(0,4).forEach(function (line, i) {
+      ctx.fillText(line, PAD, descY + i * descSize * 1.28);
+    });
+    ctx.fillStyle = '#d7ab56';
+    ctx.font = '28px Arial, sans-serif';
+    ctx.fillText('PARADISAVISA  •  paradispartiet.github.io/Paradisavisa/', PAD, 1300);
+    const valid = Boolean(sourceImage && headline && teaser && !overflow);
+    lastned.disabled = !valid;
+    status.textContent = overflow
+      ? 'Teksten er for lang for kortet. Forkort overskrift eller ingress, ingen tekst skal kuttes.'
+      : valid ? 'Kortet er klart til eksport. Kontroller utsnitt og tekst.'
+      : 'Velg bilde og skriv overskrift og ingress.';
+    status.classList.toggle('warn', overflow);
+  }
+  bilde.addEventListener('change', function () {
+    if (sourceUrl) URL.revokeObjectURL(sourceUrl);
+    sourceUrl = null;
+    sourceImage = null;
+    const file = bilde.files && bilde.files[0];
+    if (!file) { render(); return; }
+    if (!/^image\/(png|jpeg|webp)$/.test(file.type)) {
+      status.textContent = 'Ugyldig bildefil. Bruk PNG, JPEG eller WebP.';
+      return;
+    }
+    sourceUrl = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = function () { sourceImage = img; render(); };
+    img.onerror = function () { sourceImage = null; render(); status.textContent = 'Bildet kunne ikke leses.'; };
+    img.src = sourceUrl;
+  });
+  [tittel, ingress, horisontal, vertikal].forEach(function (el) {
+    el.addEventListener('input', render);
+  });
+  lastned.addEventListener('click', function () {
+    if (lastned.disabled) return;
+    canvas.toBlob(function (blob) {
+      if (!blob) { status.textContent = 'Kunne ikke eksportere PNG.'; return; }
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = 'paradisavisa-instagramkort.png';
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    }, 'image/png');
+  });
+  render();
+})();
+</script>
+</body>
+</html>
