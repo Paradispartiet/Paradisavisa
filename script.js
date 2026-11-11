@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   initAvisaMenu();
   initSharedHeader();
+  initMastheadScroll();
 
   // Nyhetsinnhold lastes uavhengig av notisbåndet. Nettfeil i en
   // enkelt JSON-fil skal aldri hindre andre seksjoner i å vises.
@@ -17,6 +18,24 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector("[data-artikkelkategori]")) loadCategoryArchive();
   document.body.classList.add("loaded");
 });
+
+/* ---------- Skjul slagordet, ikke avisnavnet, etter scrolling ---------- */
+function initMastheadScroll() {
+  const header = document.querySelector(".avis-forside .avis-masthead");
+  if (!header) return;
+
+  // Endre DOM bare når synligheten faktisk skifter, slik at notisbåndet
+  // ikke påvirkes av arbeid ved hver scroll-hendelse.
+  let hidden = null;
+  const sync = () => {
+    const next = window.scrollY > 64;
+    if (hidden === next) return;
+    hidden = next;
+    header.classList.toggle("avis-rullet", hidden);
+  };
+  window.addEventListener("scroll", sync, { passive: true });
+  sync();
+}
 
 /* ---------- Felles toppmeny på artikkel- og debattsider ---------- */
 function initSharedHeader() {
