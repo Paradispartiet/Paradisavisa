@@ -190,7 +190,41 @@ async function run(){
       assert.match(await kraftPoll.locator("[data-av-poll-result]").innerText(),/Åpne regler og lik behandling/);
       assert.deepEqual(errors,[],name+": feil i datasenteranalysen");
       await page.screenshot({path:path.join(root,"qa-screenshots","datasentre-levende-"+name+".png"),fullPage:true});
+
+      // Fjerde pilot: kulturartikkel om Nationaltheatret og Gamle Munch.
+      await page.goto(base+"/artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Nationaltheatret til Tøyen/);
+      assert.equal(await page.locator("main.story-shell h1").count(),1);
+      const theatreDims=await page.evaluate(()=>({documentWidth:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(theatreDims.documentWidth<=theatreDims.viewport+2,name+": Nationaltheatret har sidelengs scroll "+JSON.stringify(theatreDims));
+      assert.ok(await page.locator(".av-kilde-note a").count()>=7);
+      assert.equal(await page.locator("main figure img").count(),2);
+      for(const img of await page.locator("main figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await page.waitForFunction(src=>{
+          const img=[...document.querySelectorAll("main figure img")].find(i=>i.getAttribute("src")===src);
+          return !!img&&img.complete&&img.naturalWidth>0;
+        },await img.getAttribute("src"),{timeout:15000});
+      }
+      await page.getByRole("link",{name:"Forstørr diagrammet over de to teaterstedene"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/nationaltheatret-to-scener-forklaring\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),false);
+      const teaterBox=page.locator("details.av-infoboks");
+      await teaterBox.locator("summary").click();
+      assert.equal(await teaterBox.getAttribute("open"),"");
+      await page.locator('button[data-av-step="etter"]').click();
+      assert.equal(await page.locator('[data-av-panel="etter"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="under"]').isVisible(),false);
+      assert.equal(await page.locator(".av-tidslinje li").count(),4);
+      await page.locator(".av-tidslinje li:nth-child(4) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(4) details").getAttribute("open"),"");
+      assert.equal(await page.locator("[data-av-poll]").count(),0);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i kulturartikkelen");
+      await page.screenshot({path:path.join(root,"qa-screenshots","nationaltheatret-levende-"+name+".png"),fullPage:true});
       await context.close();
+      console.log("OK: kulturartikkel på "+name+" med originalfoto, tidslinje, faktaboks og faseforklaring");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
       console.log("OK: KI-debatt på "+name+" med kilder, grafikk, forklarer og lokal poll");
       console.log("OK: bankfeature på "+name+" med graf, kilder, tidslinje, forklarer og poll");
@@ -218,6 +252,12 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="effekt"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="samfunn"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr køgrafen"}).getAttribute("href"),/datasentre-kraftko-graf\.svg/);
+    await page.goto(base+"/artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-panel="under"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="etter"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr diagrammet over de to teaterstedene"}).getAttribute("href"),/nationaltheatret-to-scener-forklaring\.svg/);
+    await page.locator("details.av-infoboks summary").click();
+    assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
