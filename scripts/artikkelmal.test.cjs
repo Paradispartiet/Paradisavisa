@@ -91,3 +91,31 @@ test("Interaktive moduler er isolerte, skriptet er gyldig, uten falske meningsm�
  assert.match(template,/id="av-zoom-dialog"/);
  assert.match(read("redaksjon/LEVENDE-ARTIKLER.md"),/GitHub Pages/);
 });
+
+
+test("Forstørringslenker er små, ensartede og tilgjengelig navngitt",()=>{
+ const css=read("artikkel.css");
+ const zoomRule=css.match(/\.av-artikkel \.av-zoom-knapp\{([\s\S]*?)\}/)?.[1]||"";
+ assert.match(zoomRule,/background:transparent/);
+ assert.match(zoomRule,/border:0/);
+ assert.match(zoomRule,/min-height:44px/);
+ assert.match(zoomRule,/font:600 \.82rem/);
+ assert.match(css,/\.av-artikkel \.av-zoom-knapp::before/);
+ const articles=[
+   ["artikler/2026-11-10-hvem-skal-fa-norges-strom.html",2],
+   ["artikler/2026-11-10-bankene-tjener-milliarder.html",1],
+   ["artikler/2026-11-11-maskinene-laerer-aa-skrive.html",1],
+   ["redaksjon/artikkel-demo.html",1]
+ ];
+ for(const [filename,count] of articles){
+   const html=read(filename);
+   const links=[...html.matchAll(/<a\b[^>]*class="av-zoom-knapp"[^>]*>/g)];
+   // In actual articles the class attribute can appear after href.
+   const all=[...html.matchAll(/<a\b[^>]*data-av-zoom[^>]*>Forstørr<\/a>/g)];
+   assert.equal(all.length,count,filename+" skal vise kun kort lenketekst");
+   for(const match of all){
+     assert.match(match[0],/aria-label="Forstørr [^"]+"/);
+     assert.match(match[0],/href="[^"]+\.svg"/);
+   }
+ }
+});
