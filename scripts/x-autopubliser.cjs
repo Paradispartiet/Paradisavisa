@@ -22,7 +22,7 @@ function pct(value) {
 }
 
 function oauthHeader(url, credentials, nonce = crypto.randomBytes(16).toString("hex"),
-                     epoch = Math.floor(Date.now() / 1000)) {
+                     epoch = Math.floor(Date.now() / 1000), method = "POST") {
   for (const k of ["apiKey","apiSecret","accessToken","accessTokenSecret"]) {
     if (!credentials[k] || typeof credentials[k] !== "string")
       throw new Error("Mangler autentiseringsfelt: " + k);
@@ -38,7 +38,7 @@ function oauthHeader(url, credentials, nonce = crypto.randomBytes(16).toString("
   const sorted = Object.entries(oauth).map(([k,v])=>[pct(k),pct(v)])
     .sort((a,b)=>a[0].localeCompare(b[0]) || a[1].localeCompare(b[1]));
   const parameters = sorted.map(([k,v])=>k+"="+v).join("&");
-  const signatureBase = "POST&" + pct(url) + "&" + pct(parameters);
+  const signatureBase = String(method).toUpperCase() + "&" + pct(url) + "&" + pct(parameters);
   const secret = pct(credentials.apiSecret) + "&" + pct(credentials.accessTokenSecret);
   const signature = crypto.createHmac("sha1", secret).update(signatureBase).digest("base64");
   oauth.oauth_signature = signature;
@@ -181,6 +181,32 @@ function githubStore(env, fetcher = fetch) {
   };
 }
 
+async function assertCorrectXAccount(env, fetcher = fetch) {
+  const expected = String(env.X_EXPECTED_USERNAME || "").replace(/^@/,"");
+  if (!/^[A-Za-z0-9_]{1,15}$/.test(expected))
+    throw new Error("Sett X_EXPECTED_USERNAME til riktig X-brukernavn før publisering");
+  const credentials = {
+    apiKey:env.X_API_KEY,
+    apiSecret:env.X_API_SECRET,
+    accessToken:env.X_ACCESS_TOKEN,
+    accessTokenSecret:env.X_ACCESS_TOKEN_SECRET
+  };
+  const endpoint = "https://api.x.com/2/users/me";
+  const response = await fetcher(endpoint,{
+    method:"GET",
+    headers:{Authorization:oauthHeader(endpoint,credentials,undefined,undefined,"GET"),
+      "User-Agent":"Paradisavisa-X-publisher"},
+    signal:AbortSignal.timeout(15000)
+  });
+  if (response.status !== 200)
+    throw new Error("Kunne ikke bekrefte X-kontoen (HTTP "+response.status+"). Ingen innlegg sendt.");
+  const result = await response.json();
+  const actual = String(result.data?.username || "");
+  if (actual.toLowerCase() !== expected.toLowerCase())
+    throw new Error("X-brukeren stemmer ikke med X_EXPECTED_USERNAME. Ingen innlegg sendt.");
+  return actual;
+}
+
 async function sendXPost(text, env, fetcher = fetch) {
   const credentials = {
     apiKey:env.X_API_KEY,
@@ -220,6 +246,10 @@ async function main() {
     if (!env[name]) throw new Error("Mangler konfigurert GitHub Secret: "+name);
   }
   const manifest=JSON.parse(fs.readFileSync(process.argv[i+1],"utf8"));
+  const newArticles=validateManifest(manifest,env.GITHUB_SHA);
+  if (!newArticles.length) {console.log("Ingen nye artikler, ingen X-kall.");return;}
+  const actual=await assertCorrectXAccount(env);
+  console.log("X-konto bekreftet for @"+actual+".");
   const result=await runBatch({
     manifest,commit:env.GITHUB_SHA,store:githubStore(env),
     sendPost:text=>sendXPost(text,env),log:console.log
@@ -231,4 +261,4 @@ if (require.main===module) main().catch(e=>{
   console.error("X-publisering stoppet: "+e.message);
   process.exitCode=1;
 });
-module.exports={pct,oauthHeader,validateManifest,validateLedger,isMonthlyClaim,runBatch,githubStore,sendXPost};
+module.exports={pct,oauthHeader,validateManifest,validateLedger,isMonthlyClaim,runBatch,githubStore,sendXPost,assertCorrectXAccount};
