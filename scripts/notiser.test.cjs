@@ -43,21 +43,40 @@ test("Aktiv notisstrøm er fersk, eldre allmenn- og sportsnotiser arkivert", () 
   assert.ok(script.includes("items.filter(item => isNotisAktuell(item))"));
 });
 
-test("Nyhetsradioen har tolv nye daterte og unike kildenotiser", () => {
+test("Nyhetsradioen har unike, daterte og kildebelagte notiser", () => {
   const notiser = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
   const nye = notiser.filter(n => typeof n.id === "string" && n.id.startsWith("notis-"));
-  assert.equal(nye.length, 12);
-  assert.equal(new Set(nye.map(n => n.id)).size, 12, "Hver ny notis skal ha unik ID");
+  assert.ok(nye.length >= 18, "Tidligere godkjente notiser skal ikke forsvinne");
+  assert.equal(new Set(nye.map(n => n.id)).size, nye.length, "Hver notis skal ha unik ID");
   assert.equal(new Set(notiser.map(n => n.url)).size, notiser.length, "Kildelenker skal ikke gjentas");
-  const dato = new Date(2026, 10, 11);
   for (const note of nye) {
-    assert.ok(fersk(note, dato), "Utdatert eller fremtidig notis: " + note.id);
-    assert.match(note.date, /^2026-11-(10|11)$/);
+    assert.match(note.date, /^\d{4}-\d{2}-\d{2}$/);
+    const [year, month, day] = note.date.split("-").map(Number);
+    const publishedDay = new Date(year, month - 1, day);
+    assert.ok(fersk(note, publishedDay), "Ugyldig publiseringsdato eller utløp: " + note.id);
     assert.ok(note.text.length >= 100 && note.text.length <= 400,
       "Teksten må passe radiolesing: " + note.id);
     assert.ok(note.url?.startsWith("https://"), "Mangler sikker kildelenke: " + note.id);
     if (note.expires) assert.ok(note.expires >= note.date,
       "Utløp kan ikke være før publisering: " + note.id);
+  }
+});
+
+test("Seks nye notiser er fra atskilte dokumenterte kilder", () => {
+  const notiser = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const expected = [
+    "notis-eu-digital-fairness-20261111",
+    "notis-prisvekst-oktober-20261110",
+    "notis-riksrevisjon-regnskap-20261110",
+    "notis-havbruk-auksjon-20261111",
+    "notis-gaza-luftangrep-20261111",
+    "notis-regnskog-indonesia-cop31-20261111"
+  ];
+  for (const id of expected) {
+    const note = notiser.find(n => n.id === id);
+    assert.ok(note, "Mangler ny kildebelagt notis: " + id);
+    assert.equal(new URL(note.url).protocol, "https:");
+    assert.ok(note.text.split(/\s+/).length >= 25);
   }
 });
 

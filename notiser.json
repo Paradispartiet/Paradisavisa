@@ -1,5 +1,48 @@
 [
   {
+    "id": "notis-eu-digital-fairness-20261111",
+    "category": "Forbruker",
+    "text": "EU-kommisjonen foreslår strengere regler mot manipulerende netthandel. Forslaget vil ramme abonnementsfeller, skjulte kostnader og design som presser folk til kjøp, og kreve tydeligere merking av reklame fra influensere. Reglene er ennå ikke vedtatt og må behandles av EU-parlamentet og medlemslandene.",
+    "date": "2026-11-11",
+    "url": "https://commission.europa.eu/news-and-media/news/making-your-online-experience-fairer-2026-11-11_en"
+  },
+  {
+    "id": "notis-prisvekst-oktober-20261110",
+    "category": "Økonomi",
+    "text": "Prisene i Norge var 3,6 prosent høyere i oktober enn ett år tidligere, viser Statistisk sentralbyrå. Det er opp fra 3,4 prosent i september. Strømprisene bidro til økningen, mens tolvmånedersveksten i prisene uten energivarer og avgiftsendringer, KPI-JAE, falt til 2,7 prosent.",
+    "date": "2026-11-10",
+    "url": "https://www.ssb.no/priser-og-prisindekser/konsumpriser/statistikk/konsumprisindeksen/artikler/stromprisene-trakk-opp-prisveksten-i-oktober"
+  },
+  {
+    "id": "notis-riksrevisjon-regnskap-20261110",
+    "category": "Politikk",
+    "text": "Riksrevisjonen kan ikke konkludere om Forsvarsbyggs årsregnskap for 2025 på grunn av alvorlige svakheter i IT-kontrollene. Heller ikke Navs regnskap kan bekreftes, mens Forsvarets regnskap har fått forbehold. Det betyr at revisorene mangler tilstrekkelig grunnlag for å fastslå at regnskapene er riktige, ikke at feil er bevist.",
+    "date": "2026-11-10",
+    "url": "https://www.riksrevisjonen.no/rapporter-mappe/no-2026-2027/arlig-rapport-til-stortinget-om-regnskapsrevisjon-2025/"
+  },
+  {
+    "id": "notis-havbruk-auksjon-20261111",
+    "category": "Næringsliv",
+    "text": "Staten solgte 1 560 tonn ny produksjonskapasitet til oppdrett av laks og ørret på auksjon 11. november. Totalt var 7 755 tonn tilbudt, og 6 195 tonn ble ikke solgt. Salget ga 421 millioner kroner; 55 prosent av inntektene går til kommuner og fylkeskommuner gjennom Havbruksfondet.",
+    "date": "2026-11-11",
+    "url": "https://www.regjeringen.no/no/aktuelt/resultat-fra-auksjon-av-nye-loyve-til-oppdrett-av-laks/id3192412/"
+  },
+  {
+    "id": "notis-gaza-luftangrep-20261111",
+    "category": "Verden",
+    "text": "Tre palestinere ble drept i israelske luftangrep på Gazastripen onsdag, ifølge lokale helsemyndigheter. To var brødre i et telt for fordrevne i Gaza by. Israels militære opplyser at målene for angrepene var militante. Angrepene skjer mens den USA-støttede våpenhvilen fortsatt er skjør, melder Reuters.",
+    "date": "2026-11-11",
+    "expires": "2026-11-13",
+    "url": "https://www.reuters.com/world/middle-east/israeli-strikes-kill-three-people-including-two-brothers-gaza-medics-say-2026-11-11/"
+  },
+  {
+    "id": "notis-regnskog-indonesia-cop31-20261111",
+    "category": "Klima",
+    "text": "Norge vil bidra med én milliard kroner til Indonesias miljøfond etter landets resultater med redusert avskoging. Pengene skal blant annet brukes mot miljøkriminalitet og skogbranner. Onsdag samlet statsminister Jonas Gahr Støre og Brasils president Lula da Silva flere land til et møte om regnskogvern under klimatoppmøtet COP31.",
+    "date": "2026-11-11",
+    "url": "https://www.regjeringen.no/no/aktuelt/statsministeren-og-brasils-president-samler-verdens-land-til-felles-innsats-for-regnskogen/id3192419/"
+  },
+  {
     "id": "notis-ukraina-abu-dhabi-20261111",
     "category": "Verden",
     "text": "Ukraina og Russland melder om noe framgang etter to dager med amerikanskledede samtaler i Abu Dhabi. Partene er enige i prinsippet om en større framtidig utveksling av krigsfanger, men står fortsatt langt fra hverandre om territorium og en fredsavtale, melder Reuters.",
