@@ -87,6 +87,37 @@ test("Notisbåndet animerer bare et kort spor uten å lage en gigantisk liste", 
   assert.match(css, /-webkit-transform: none/);
 });
 
+test("Nye radiomeldinger kommer først, uten å omstokke gamle eller gjenta duplikater", () => {
+  const prioriter = vm.runInContext("prioriterNyeRadioNotiser", sandbox);
+  const now = new Date(2026, 10, 11);
+  const lag = (id, text = id, date = "2026-11-10") =>
+    ({ id, date, text, category: "Nyheter", url: "https://example.org/" + id });
+  const gammel = [lag("a"), lag("b"), lag("c")];
+  const innkomne = [lag("b"), lag("ny"), lag("a"), lag("ny"), lag("gammel", "Gammel", "2026-11-01")];
+  const resultat = prioriter(gammel, innkomne, now);
+  assert.equal(resultat.map(n => n.id).join(","), "ny,a,b");
+  assert.equal(resultat.length, 3);
+  assert.ok(resultat.every(n => fersk(n, now)));
+});
+
+test("Redigert kjent ID oppdateres uten å bli en ny sak", () => {
+  const prioriter = vm.runInContext("prioriterNyeRadioNotiser", sandbox);
+  const now = new Date(2026, 10, 11);
+  const a = { id: "a", text: "Første versjon", date: "2026-11-10" };
+  const endret = { ...a, text: "Korrigert, redaksjonelt godkjent versjon" };
+  const b = { id: "b", text: "Annen notis", date: "2026-11-10" };
+  const r = prioriter([a, b], [b, endret], now);
+  assert.equal(r.map(n => n.id).join(","), "a,b");
+  assert.equal(r[0].text, endret.text);
+});
+
+test("Navigasjon i radioen bruker bare aktive notiser", () => {
+  assert.match(script, /const ferske = radiosaker\.filter\(item => isNotisAktuell\(item\)\);/);
+  assert.match(script, /const fra = ferske\.indexOf\(radiosaker\[radioGjeldendeIndeks\]\);/);
+  assert.match(script, /spillFraKo\(mål\);/);
+  assert.match(script, /radiosaker = prioriterNyeRadioNotiser\(radiosaker, data\);/);
+});
+
 test("Radiotekst tilpasses uttale uten å endre godkjent notis", () => {
   const lageTekst=vm.runInContext("lagRadioOpplesning",sandbox);
   const notis={category:"Økonomi",text:"Norge bidrar med 2,5 mrd. kr og 30 %."};
