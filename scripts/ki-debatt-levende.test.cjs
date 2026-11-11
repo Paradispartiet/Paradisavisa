@@ -13,7 +13,7 @@ test("KI-debatt beholder godkjent karikatur, identitet, byline og publiseringsda
  assert.match(html,/article:modified_time" content="2026-11-11"/);
  assert.match(html,/ellefsen-ai-skriving-hires\.webp/);
  assert.match(html,/class="av-artikkel"/);
- assert.match(html,/href="\.\.\/artikkel\.css"/);
+ assert.match(html,/href="\.\.\/artikkel\.css\?v=20261111b"/);
  assert.match(html,/artikkel-interaktiv\.js/);
  assert.match(html,/class="prose av-prosa"/);
 });
