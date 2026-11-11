@@ -43,6 +43,24 @@ test("Aktiv notisstrøm er fersk, eldre allmenn- og sportsnotiser arkivert", () 
   assert.ok(script.includes("items.filter(item => isNotisAktuell(item))"));
 });
 
+test("Nyhetsradioen har tolv nye daterte og unike kildenotiser", () => {
+  const notiser = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const nye = notiser.filter(n => typeof n.id === "string" && n.id.startsWith("notis-"));
+  assert.equal(nye.length, 12);
+  assert.equal(new Set(nye.map(n => n.id)).size, 12, "Hver ny notis skal ha unik ID");
+  assert.equal(new Set(notiser.map(n => n.url)).size, notiser.length, "Kildelenker skal ikke gjentas");
+  const dato = new Date(2026, 10, 11);
+  for (const note of nye) {
+    assert.ok(fersk(note, dato), "Utdatert eller fremtidig notis: " + note.id);
+    assert.match(note.date, /^2026-11-(10|11)$/);
+    assert.ok(note.text.length >= 100 && note.text.length <= 400,
+      "Teksten må passe radiolesing: " + note.id);
+    assert.ok(note.url?.startsWith("https://"), "Mangler sikker kildelenke: " + note.id);
+    if (note.expires) assert.ok(note.expires >= note.date,
+      "Utløp kan ikke være før publisering: " + note.id);
+  }
+});
+
 test("Notisbåndet bruker bare 2×/4×/5× og samler radio/pause/fart i én meny", () => {
   assert.match(script, /const fartvalg = \[2, 4, 5\]/);
   assert.match(script, /lagret === 6/);
