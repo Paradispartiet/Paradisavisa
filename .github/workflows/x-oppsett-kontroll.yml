@@ -1,0 +1,49 @@
+name: Kontroller X-oppsett uten API-kall
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kontroller:
+    name: Sjekk X-nokler og forventet konto uten publisering
+    runs-on: ubuntu-24.04
+    env:
+      X_API_KEY: ${{ secrets.X_API_KEY }}
+      X_API_SECRET: ${{ secrets.X_API_SECRET }}
+      X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+      X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+      X_EXPECTED_USERNAME: ${{ vars.X_EXPECTED_USERNAME }}
+      X_AUTOPUBLISH_ENABLED: ${{ vars.X_AUTOPUBLISH_ENABLED }}
+    steps:
+      - name: Kontroller om oppsettet er komplett
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const names = ['X_API_KEY','X_API_SECRET','X_ACCESS_TOKEN','X_ACCESS_TOKEN_SECRET'];
+          const missing = names.filter(k => !process.env[k]);
+          const username = (process.env.X_EXPECTED_USERNAME || '').replace(/^@/, '');
+          const validUsername = /^[A-Za-z0-9_]{1,15}$/.test(username);
+          const enabled = process.env.X_AUTOPUBLISH_ENABLED === 'true';
+          const summary = [
+            '## X-tilkobling – sikker sjekk',
+            '',
+            '| Kontroll | Status |',
+            '|---|---|',
+            ...names.map(k => '| '+k+' | '+(process.env[k] ? 'Registrert' : '**Mangler**')+' |'),
+            '| X_EXPECTED_USERNAME | '+(validUsername ? 'Registrert' : '**Mangler eller ugyldig**')+' |',
+            '| Automatisk publisering | '+(enabled ? 'PÅ' : 'AV')+' |',
+            '',
+            '**Ingen X API-kall er utført. Ingen innlegg er publisert. Ingen betalingskrav fra denne sjekken.**'
+          ].join('\n');
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary+'\n');
+          console.log('Kontrollert tilstedeværelse av fire X-hemmeligheter og kontonavn uten å skrive ut verdier.');
+          console.log('Automatisk publisering:', enabled ? 'PÅ' : 'AV');
+          if (missing.length || !validUsername) {
+            console.error('X-oppsettet er ikke komplett. Åpne oppsummeringen for manglende felt.');
+            process.exitCode = 1;
+          }
+          NODE
