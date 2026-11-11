@@ -139,7 +139,7 @@ async function run(){
       assert.equal(await page.locator('[data-av-panel="ide"]').isVisible(),false);
       await page.getByRole("link",{name:"Forstørr forklaringsgrafikken"}).click();
       assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),true);
-      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/skriveprosess-forklaringsgrafikk\\.svg/);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/skriveprosess-forklaringsgrafikk\.svg/);
       await page.keyboard.press("Escape");
       assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),false);
       const debatePoll=page.locator('[data-av-poll="ki-skriving-aapenhet-2026"]');
@@ -172,7 +172,7 @@ async function run(){
     assert.equal(await page.locator('[data-av-poll="ki-skriving-aapenhet-2026"] [data-av-poll-js-required]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="ide"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="kontroll"]').isVisible(),true);
-    assert.match(await page.getByRole("link",{name:"Forstørr forklaringsgrafikken"}).getAttribute("href"),/skriveprosess-forklaringsgrafikk\\.svg/);
+    assert.match(await page.getByRole("link",{name:"Forstørr forklaringsgrafikken"}).getAttribute("href"),/skriveprosess-forklaringsgrafikk\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
