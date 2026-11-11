@@ -324,13 +324,18 @@ function loadNotiser() {
         oppdaterTilgjengelighet();
       };
 
-      // Behold 2×, 4× og 6×, men la nettleserens compositor drive
+      // Behold 2×, 4× og 5×, men la nettleserens compositor drive
       // bevegelsen. Ingen scroll-listener, per-frame JS eller store kopier.
-      const fartvalg = [2, 4, 6];
+      const fartvalg = [2, 4, 5];
       let valgtFart = 2;
       try {
         const lagret = Number(localStorage.getItem("paradisavisa-notisfart"));
         if (fartvalg.includes(lagret)) valgtFart = lagret;
+        else if (lagret === 6) {
+          // Tidligere 6× blir 5× ved oppgradering, også på iPad.
+          valgtFart = 5;
+          localStorage.setItem("paradisavisa-notisfart", "5");
+        }
       } catch (_) { /* Lokallagring kan være blokkert. */ }
 
       let tickerAnimasjon = null;
@@ -474,7 +479,7 @@ function loadNotiser() {
       // Tale startes bare med et brukergest, og stoppes når siden forlates.
       const tale = window.speechSynthesis;
       const harTale = Boolean(tale && typeof window.SpeechSynthesisUtterance === "function");
-      // Egne taleinnstillinger. Ingen påvirkning på båndets 2×/4×/6×.
+      // Valg av systemstemme. Kun én hastighetskontroll: notisbåndets 2×/4×/5×.
       const radioInnstillinger = document.createElement("div");
       radioInnstillinger.className = "notis-radio-innstillinger";
 
@@ -531,36 +536,8 @@ function loadNotiser() {
       }
       oppdaterStemmer();
 
-      const tempoLabel = document.createElement("label");
-      tempoLabel.htmlFor = "notis-radiotempo";
-      tempoLabel.textContent = "Taletempo";
-      const tempoSelect = document.createElement("select");
-      tempoSelect.id = "notis-radiotempo";
-      tempoSelect.className = "notis-tempo-select";
-      const taletempo = [
-        { verdi: 0.9, tekst: "0,9× – rolig" },
-        { verdi: 1, tekst: "1,0× – normalt" },
-        { verdi: 1.1, tekst: "1,1× – raskere" }
-      ];
-      let valgtTaletempo = 1;
-      try {
-        const lagret = Number(localStorage.getItem("paradisavisa-radiotempo"));
-        if (taletempo.some(n => n.verdi === lagret)) valgtTaletempo = lagret;
-      } catch (_) { /* Uten lagring: normalt taletempo. */ }
-      taletempo.forEach(valg => {
-        const option = document.createElement("option");
-        option.value = String(valg.verdi);
-        option.textContent = valg.tekst;
-        tempoSelect.appendChild(option);
-      });
-      tempoSelect.value = String(valgtTaletempo);
-      tempoSelect.disabled = !harTale;
-      tempoSelect.addEventListener("change", () => {
-        valgtTaletempo = Number(tempoSelect.value);
-        try { localStorage.setItem("paradisavisa-radiotempo", String(valgtTaletempo)); }
-        catch (_) { /* Valget virker denne økten. */ }
-      });
-      radioInnstillinger.append(stemmeLabel, stemmeSelect, stemmeInfo, tempoLabel, tempoSelect);
+      // Tale spilles i normal hastighet (1×). Båndets hastighet påvirker ikke opplesningen.
+      radioInnstillinger.append(stemmeLabel, stemmeSelect, stemmeInfo);
 
       const radioknapp = document.createElement("button");
       radioknapp.type = "button";
@@ -690,7 +667,7 @@ function loadNotiser() {
         }
         const ytring = new window.SpeechSynthesisUtterance(lagRadioOpplesning(notis));
         ytring.lang = "nb-NO";
-        ytring.rate = valgtTaletempo;
+        ytring.rate = 1;
         const norsk = norskeStemmer.find(stemme => stemmeNokkel(stemme) === valgtStemme) ||
           norskeStemmer.find(stemme => /^nb[-_]NO$/i.test(stemme.lang) && stemme.default) ||
           norskeStemmer.find(stemme => /^nb[-_]NO$/i.test(stemme.lang)) ||

@@ -7,7 +7,7 @@
 ## 1. Mål og avgrensning
 
 - Gi lytteren en norsk nyhetsradio som fortløpende leser **kun redaksjonelt godkjente, fortsatt aktuelle** notiser fra `notiser.json`.
-- Behold dagens **én-knappsmeny** for (1) pause/start av tekstbåndet, (2) båndhastighet **2× / 4× / 6×** og (3) start/stopp av radio. Ikke forveksle båndhastighet med taletempo.
+- Behold dagens **én-knappsmeny** for (1) pause/start av tekstbåndet, (2) båndhastighet **2× / 4× / 5×** og (3) start/stopp av radio. Bare båndet har hastighetsvelger; radioens lokale systemstemme leser i normalt taletempo (1×).
 - Gjør nyhetsradioen bedre med fast norsk stemme, uttaleregler, lydfiler, egen radioside og mobilt mediepanel når støttet.
 - Behold nettleserens Web Speech-opplesning som reserve når en lydfil mangler eller ikke kan spilles.
 - Ikke påstå at en statisk nettside gir ekte direktesending eller garantert bakgrunnsavspilling. I v1 er dette en **kontinuerlig, oppdatert spilleliste** over ferske nyheter.

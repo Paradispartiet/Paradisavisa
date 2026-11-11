@@ -43,8 +43,10 @@ test("Aktiv notisstrøm er fersk, eldre allmenn- og sportsnotiser arkivert", () 
   assert.ok(script.includes("items.filter(item => isNotisAktuell(item))"));
 });
 
-test("Notisbåndet bruker bare 2×/4×/6× og samler radio/pause/fart i én meny", () => {
-  assert.match(script, /const fartvalg = \[2, 4, 6\]/);
+test("Notisbåndet bruker bare 2×/4×/5× og samler radio/pause/fart i én meny", () => {
+  assert.match(script, /const fartvalg = \[2, 4, 5\]/);
+  assert.match(script, /lagret === 6/);
+  assert.match(script, /localStorage\.setItem\("paradisavisa-notisfart", "5"\)/);
   assert.match(script, /let valgtFart = 2/);
   assert.match(script, /notis-valgknapp/);
   assert.match(script, /notis-valgpanel/);
@@ -95,16 +97,16 @@ test("Radiotekst tilpasses uttale uten å endre godkjent notis", () => {
   assert.equal(lageTekst({text:"120 kr"}),"Nyheter. 120 kroner");
 });
 
-test("Norsk stemmevalg, asynkron stemmeliste og radiotempo ligger i én meny", () => {
+test("Norsk stemmevalg bevares, mens ekstra radiotempo fjernes", () => {
   assert.match(script,/voiceschanged/);
   assert.match(script,/getVoices/);
   assert.match(script,/paradisavisa-radiostemme/);
-  assert.match(script,/paradisavisa-radiotempo/);
+  assert.doesNotMatch(script,/paradisavisa-radiotempo/);
   assert.match(script,/notis-stemme-select/);
-  assert.match(script,/notis-tempo-select/);
+  assert.doesNotMatch(script,/notis-tempo-select/);
   assert.match(script,/notis-radio-pause/);
   assert.match(script,/lagRadioOpplesning\(notis\)/);
-  assert.match(script,/ytring\.rate = valgtTaletempo/);
+  assert.match(script,/ytring\.rate = 1;/);
 });
 
 

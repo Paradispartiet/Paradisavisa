@@ -385,21 +385,21 @@ async function run(){
         await fartknapp.click();
         const alternativer=page.locator(".notis-fartmeny button[data-fart]");
         check(await alternativer.count()===3,
-          label+": hastighet skal bare ha 2×, 4× og 6×");
-        check(JSON.stringify(await alternativer.allTextContents())===JSON.stringify(["2×","4×","6×"]),
+          label+": hastighet skal bare ha 2×, 4× og 5×");
+        check(JSON.stringify(await alternativer.allTextContents())===JSON.stringify(["2×","4×","5×"]),
           label+": feil hastighetsvalg");
         await page.locator('.notis-fartmeny button[data-fart="4"]').click();
         check((await fartknapp.textContent()).includes("4×"),
           label+": 4× blir ikke valgt");
         await fartknapp.click();
-        await page.locator('.notis-fartmeny button[data-fart="6"]').click();
-        check((await fartknapp.textContent()).includes("6×"),
+        await page.locator('.notis-fartmeny button[data-fart="5"]').click();
+        check((await fartknapp.textContent()).includes("5×"),
           label+": 6× blir ikke valgt");
         const fartLagring=await page.evaluate(()=>({
           fart:localStorage.getItem("paradisavisa-notisfart"),
           varighet:document.querySelector(".notisinnhold").style.getPropertyValue("--ticker-duration")
         }));
-        check(fartLagring.fart==="6" && Boolean(fartLagring.varighet),
+        check(fartLagring.fart==="5" && Boolean(fartLagring.varighet),
           label+": høy hastighet blir ikke lagret/anvendt");
 
         // Listen er bevisst tom ved oppstart, som på enkelte mobile enheter.
@@ -422,10 +422,10 @@ async function run(){
         await stemme.selectOption({label:"Norsk test 2 (nb-NO)"});
         check((await page.evaluate(()=>localStorage.getItem("paradisavisa-radiostemme"))).includes("nb-2"),
           label+": radiostemmen blir ikke lagret");
-        const tempo=page.locator(".notis-tempo-select");
-        await tempo.selectOption("1.1");
-        check(await page.evaluate(()=>localStorage.getItem("paradisavisa-radiotempo"))==="1.1",
-          label+": radiotempo blir ikke lagret");
+        check(await page.locator(".notis-hastighet").count()===1,
+          label+": bare én hastighetsfunksjon skal finnes");
+        check(await page.locator(".notis-tempo-select").count()===0,
+          label+": ekstra taletempo-velger skal være fjernet");
 
         const radio=page.locator(".notis-radio");
         const radiopause=page.locator(".notis-radio-pause");
@@ -438,8 +438,8 @@ async function run(){
           label+": nyhetsradioen startet ikke");
         const lest=await page.evaluate(()=>window.__notisRadioTest.spoken);
         check(lest.length===1 && lest[0].lang==="nb-NO" &&
-          lest[0].voice==="Norsk test 2" && lest[0].rate===1.1 && lest[0].text.length>30,
-          label+": nyhetsradioen bruker ikke valgt norsk stemme og taletempo");
+          lest[0].voice==="Norsk test 2" && lest[0].rate===1 && lest[0].text.length>30,
+          label+": nyhetsradioen bruker ikke valgt norsk stemme med normalt taletempo");
         await radiopause.click();
         check((await radiopause.getAttribute("aria-pressed"))==="true" &&
           (await page.evaluate(()=>window.__notisRadioTest.pauses))===1,
