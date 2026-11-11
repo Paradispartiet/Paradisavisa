@@ -79,6 +79,15 @@ async function run(){
       assert.ok(await page.locator(".av-kilde-note a").count()>=9);
       assert.equal(await page.locator(".hero-illustrasjon img").count(),1);
       assert.equal(await page.locator(".analyse-illustrasjon img").count(),1);
+      // Under-bilder har loading="lazy": rull til hvert bilde før lastestatus testes.
+      const imgs=page.locator("article img");
+      for(let i=0;i<await imgs.count();i++){
+        await imgs.nth(i).scrollIntoViewIfNeeded();
+        await page.waitForFunction(index=>{
+          const img=document.querySelectorAll("article img")[index];
+          return Boolean(img&&img.complete&&img.naturalWidth>0);
+        },i,{timeout:15000});
+      }
       const imageStatus=await page.locator("article img").evaluateAll(images=>images.map(i=>({src:i.getAttribute("src"),loaded:i.complete&&i.naturalWidth>0})));
       assert.ok(imageStatus.every(i=>i.loaded),name+": illustrasjon eller datagraf mangler: "+JSON.stringify(imageStatus));
       const bankDetails=page.locator("details.av-infoboks");
