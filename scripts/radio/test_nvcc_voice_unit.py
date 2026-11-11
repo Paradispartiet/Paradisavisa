@@ -21,7 +21,8 @@ class NVCCVoiceTest(unittest.TestCase):
         (base / (nvcc.VOICE_NAME + ".onnx")).write_bytes(b"dummy onnx in unit test")
         config = {
             "num_speakers": 10,
-            "speaker_id_map": {"KNN": 0, "MNN": 4 if speaker_ok else 9},
+            "speaker_id_map": {"KNN": 0, "MNN": 4 if speaker_ok else 9,
+                               "KON": 3 if speaker_ok else 8, "MON": 6},
             "audio": {"sample_rate": 22050},
         }
         (base / (nvcc.VOICE_NAME + ".onnx.json")).write_text(json.dumps(config))
@@ -35,6 +36,11 @@ class NVCCVoiceTest(unittest.TestCase):
             self.assertTrue(model.is_file())
             self.assertEqual(provenance["speakers"], {"KNN": 0, "MNN": 4})
             self.assertEqual(len(provenance["sha256"]), 3)
+            _, newer = nvcc.verify_nvcc(root, nvcc.NEW_SPEAKERS)
+            self.assertEqual(newer["speakers"], {"KON": 3, "MON": 6})
+            self.assertIn("LibriTTS-R", newer["checkpointProvenance"])
+            with self.assertRaises(ValueError):
+                nvcc.verify_nvcc(root, {"KNN": 0, "MON": 6})
             self.assertEqual(provenance["modelRightsStatus"], "UNDER_REDAKSJONELL_VURDERING")
 
             self._fake_model(root, card="License: CC0\nFine-tuned from lessac.\n")
@@ -54,6 +60,7 @@ class NVCCVoiceTest(unittest.TestCase):
         self.assertTrue(all(s["uttaletekst"].startswith(s["kategori"] + ". ") for s in samples))
         self.assertTrue(all(s["kildeklasse"] in {"aktuell", "arkiv_kun_uttaletest"} for s in samples))
         self.assertEqual(set(nvcc.SPEAKERS.values()), {0, 4})
+        self.assertEqual(nvcc.NEW_SPEAKERS, {"KON": 3, "MON": 6})
         for count in [0, 6, 99]:
             with self.assertRaises(ValueError):
                 nvcc.select_samples(today, count)
