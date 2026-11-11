@@ -20,11 +20,15 @@ test("Nationaltheatret: godkjent arkivfoto, kreditering og opprinnelig publiseri
 
 test("Kildehenvisninger er knyttet til faktabærende avsnitt og holder status atskilt",()=>{
  assert.ok((h.match(/class="av-kilde-note"/g)||[]).length>=7);
- assert.ok((h.match(/id="k\d+"/g)||[]).length>=11);
+ assert.ok((h.match(/id="k\d+"/g)||[]).length>=12);
  assert.match(h,/Statsbygg 14 tomtetilbud|Statsbygg vurderte 14 tomtetilbud/);
  assert.match(h,/forprosjekt i 2027/);
  assert.match(h,/ikke en dato for teateråpning|ikke en fastsatt åpningsdato/);
- assert.match(h,/ikke verifisert beløpet i kjøpekontrakten|ikke selv fått bekreftet kjøpesummen direkte/);
+ assert.match(h,/Oslo kommune oppgir en salgspris på 111 millioner kroner/);
+ assert.match(h,/bystyret skal vedta salget endelig/);
+ assert.match(h,/aktuelt\.oslo\.kommune\.no\/oslo-kommune-selger-gamle-munch/);
+ assert.match(h,/arbeider med å finne erstatningslokaler/);
+ assert.match(h,/Det er ikke det samme som at nye lokaler er sikret/);
  assert.match(h,/en uttalelse fra mars, ikke en reaksjon på regjeringens beslutning/);
  assert.match(h,/id="av-zoom-dialog"/);
 });
