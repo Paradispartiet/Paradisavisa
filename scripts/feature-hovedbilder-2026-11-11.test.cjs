@@ -19,7 +19,7 @@ for(const item of items){
   assert.ok(bytes.length>20000&&bytes.length<600000);
   assert.equal(bytes.toString("ascii",0,4),"RIFF");
   assert.equal(bytes.toString("ascii",8,12),"WEBP");
-  const sha=crypto.createHash("sha1").update(Buffer.from("blob "+bytes.length+"\\0")).update(bytes).digest("hex");
+  const sha=crypto.createHash("sha1").update(Buffer.from("blob "+bytes.length+"\0")).update(bytes).digest("hex");
   assert.equal(sha,item.gitSha,"Riktig godkjent rasterfil må lastes opp uten endringer");
   const kind=bytes.toString("ascii",12,16);
   if(kind==="VP8 "){
