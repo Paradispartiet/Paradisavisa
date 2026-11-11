@@ -44,8 +44,8 @@ test("Levende moduler fungerer som redaksjonell fordypning – ikke offentlig me
  assert.match(html,/id="av-zoom-dialog"/);
  assert.match(html,/data-av-zoom/);
  assert.match(html,/Forstørr forklaringsgrafikken/);
- assert.match(html,/class="av-kilder-samlet"/);
- assert.match(html,/class="av-mellombilde/);
+ assert.match(html,/class="sources av-kilder-samlet"/);
+ assert.match(html,/class="av-figur av-mellombilde/);
 });
 test("Sekundærillustrasjonen forklarer prosess, er original og merket",()=>{
  assert.match(svg,/<svg[^>]+viewBox="0 0 1600 860"/);
