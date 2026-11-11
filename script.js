@@ -497,6 +497,8 @@ function loadNotiser() {
       catch (_) { /* Lokal lagring er valgfri. */ }
       let norskeStemmer = [];
       const stemmeNokkel = stemme => [stemme.voiceURI || "", stemme.lang || "", stemme.name || ""].join("|");
+      // Stemmelisten kommer ofte asynkront på iPad. Varsle radiosiden når den endres.
+      let varsleStemmevalg = () => {};
       const oppdaterStemmer = () => {
         let alleStemmer = [];
         try { alleStemmer = tale?.getVoices?.() || []; } catch (_) { /* Enkelte nettlesere støtter ikke stemmelisten. */ }
@@ -518,11 +520,13 @@ function loadNotiser() {
         stemmeInfo.textContent = !harTale ? "Opplesning er ikke tilgjengelig i nettleseren." :
           norskeStemmer.length ? "Stemmen brukes fra neste notis." :
           "Ingen norsk stemme funnet. Nettleserens standardstemme brukes.";
+        varsleStemmevalg();
       };
       stemmeSelect.addEventListener("change", () => {
         valgtStemme = stemmeSelect.value;
         try { localStorage.setItem("paradisavisa-radiostemme", valgtStemme); }
         catch (_) { /* Valget virker denne økten. */ }
+        varsleStemmevalg();
       });
       if (harTale && typeof tale.addEventListener === "function") {
         tale.addEventListener("voiceschanged", oppdaterStemmer);
@@ -565,6 +569,10 @@ function loadNotiser() {
         gjeldendeIndeks: radioGjeldendeIndeks,
         gjeldende: radioGjeldendeIndeks >= 0 ? radiosaker[radioGjeldendeIndeks] : null,
         notiser: radiosaker.filter(item => isNotisAktuell(item)),
+        koIndeks: radioAktiv ? radiosaker.filter(item => isNotisAktuell(item)).indexOf(radiosaker[radioGjeldendeIndeks]) : -1,
+        stemmer: norskeStemmer.map(stemme => ({ value: stemmeNokkel(stemme), label: stemme.name + " (" + stemme.lang + ")" })),
+        valgtStemme: valgtStemme,
+        stemmeInfo: stemmeInfo.textContent,
         status: radiostatus.textContent,
         taleTilgjengelig: harTale
       });
@@ -574,6 +582,7 @@ function loadNotiser() {
           try { lytter(tilstand); } catch (error) { console.error("Radiospiller:", error); }
         });
       };
+      varsleStemmevalg = varsleSpiller;
       // Hvis radioen startes i en annen fane, stopp lokal opplesning.
       // Én nyhetskanal om gangen på samme origin der BroadcastChannel støttes.
       let radioKanal = null;
@@ -687,29 +696,37 @@ function loadNotiser() {
         try { tale.speak(ytring); }
         catch (_) { stoppRadio("Opplesning kunne ikke startes i nettleseren."); }
       };
-      radioknapp.addEventListener("click", () => {
-        if (!harTale) return;
-        if (radioAktiv) {
-          stoppRadio();
-          return;
-        }
-        radiosaker = radiosaker.filter(item => isNotisAktuell(item));
-        if (!radiosaker.length) {
-          radiostatus.textContent = "Ingen ferske notiser å lese opp.";
-          return;
-        }
+      // Køvalg og Spill bruker samme motor. Ingen separat lydinstans på radiosiden.
+      const spillFraKo = indeks => {
+        if (!harTale || !Number.isInteger(indeks)) return;
+        const ferske = radiosaker.filter(item => isNotisAktuell(item));
+        if (indeks < 0 || indeks >= ferske.length) return;
+        const fra = radiosaker.indexOf(ferske[indeks]);
+        if (fra < 0) return;
+        const varPauset = radioPauset;
+        const varAktiv = radioAktiv;
         radioAktiv = true;
         radioPauset = false;
         radioVenter = false;
-        const versjon = ++radioVersjon;
-        radioIndeks = 0;
+        radioIndeks = fra;
         radioGjeldendeIndeks = -1;
-        radioSistOppdatert = Date.now();
-        try { tale.cancel(); } catch (_) { /* Ingen aktiv ytring. */ }
-        try { radioKanal?.postMessage({ type: "start", fane: radioFane }); } catch (_) {}
-        band.classList.add("is-radio");
+        if (!varAktiv) radioSistOppdatert = Date.now();
+        const versjon = ++radioVersjon;
+        try {
+          if (varPauset) tale.resume?.();
+          tale.cancel();
+        } catch (_) { /* Tale kan være utilgjengelig under fanebytte. */ }
+        if (!varAktiv) {
+          try { radioKanal?.postMessage({ type: "start", fane: radioFane }); } catch (_) {}
+          band.classList.add("is-radio");
+        }
         visRadio();
         lesNeste(versjon);
+      };
+      radioknapp.addEventListener("click", () => {
+        if (!harTale) return;
+        if (radioAktiv) stoppRadio();
+        else spillFraKo(0);
       });
       const byttRadioPause = () => {
         if (!radioAktiv || !harTale) return;
@@ -764,6 +781,16 @@ function loadNotiser() {
         },
         stop() {
           if (radioAktiv) stoppRadio();
+        },
+        playIndex(indeks) { spillFraKo(indeks); },
+        setVoice(verdi) {
+          if (typeof verdi !== "string" ||
+              (verdi && !norskeStemmer.some(stemme => stemmeNokkel(stemme) === verdi))) return;
+          valgtStemme = verdi;
+          stemmeSelect.value = verdi;
+          try { localStorage.setItem("paradisavisa-radiostemme", verdi); }
+          catch (_) { /* Valget fungerer i denne fanen. */ }
+          varsleSpiller();
         },
         next() { hoppRadio(1); },
         previous() { hoppRadio(-1); }
