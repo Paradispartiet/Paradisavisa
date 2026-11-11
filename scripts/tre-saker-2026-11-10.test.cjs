@@ -11,7 +11,7 @@ const read=p=>fs.readFileSync(path.join(root,p),"utf8");
 const cards=JSON.parse(read("Nyhetshjul.json"));
 const base="https://paradispartiet.github.io/Paradisavisa/";
 const items=[
-{article:"artikler/2026-11-10-massie-hegseth-riksrettsforslag.html",image:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.webp",svg:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.svg",sha:"fd1a138a92b467b81a4ad12c5781e1d48c16677e",sources:13,modified:true},
+{article:"artikler/2026-11-10-massie-hegseth-riksrettsforslag.html",image:"Bilder/Artikler/2026-11-11-hegseth-massie-maktkonflikt.webp",sha:"51bad4a93b0eb71942a2c25fc356be1e5e25b172",sources:6,width:1280,height:720,modified:true},
 {article:"artikler/2026-11-10-hvem-skal-fa-norges-strom.html",image:"Bilder/Artikler/2026-11-10-datasentre-kraftnett.webp",sha:"b4a8b953d659da15043445a2b1cc5ca3beb9cd4f",sources:9},
 {article:"artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",image:"Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto.webp",sha:"3106e3e9fe493691d859cd810a4edca8cf9639dd",sources:11,photo:true,modified:true},
 {article:"artikler/2026-11-05-usa-valget-topartisystem-og-medier.html",image:"Bilder/Artikler/2026-11-05-usa-ludo-politisk-satire.jpg",sha:"df217d18d67963da2fdf9c6f07bdb02f09f12de2",mime:"image/jpeg"}
@@ -65,7 +65,7 @@ for(const item of items){
    for(const n of citations)assert.ok(anchors.has(n));
   }
  });
- test("WebP-filen er uendret fra kontrollert original og 1600×900: "+item.image,()=>{
+ test("Bildefil, dimensjoner og kontrollert Git-blob: "+item.image,()=>{
   const bytes=fs.readFileSync(path.join(root,item.image));
   assert.ok(bytes.length>20000&&bytes.length<900000);
   if(item.mime==="image/jpeg"){
@@ -79,11 +79,11 @@ for(const item of items){
   assert.equal(sha,item.sha,"image changed after editorial review");
   const chunk=bytes.toString("ascii",12,16);
   if(chunk==="VP8 "){
-   assert.equal(bytes.readUInt16LE(26)&0x3fff,1600);
-   assert.equal(bytes.readUInt16LE(28)&0x3fff,900);
+   assert.equal(bytes.readUInt16LE(26)&0x3fff,item.width||1600);
+   assert.equal(bytes.readUInt16LE(28)&0x3fff,item.height||900);
   }else if(chunk==="VP8X"){
-   assert.equal(bytes.readUIntLE(24,3)+1,1600);
-   assert.equal(bytes.readUIntLE(27,3)+1,900);
+   assert.equal(bytes.readUIntLE(24,3)+1,item.width||1600);
+   assert.equal(bytes.readUIntLE(27,3)+1,item.height||900);
   }else assert.fail("unexpected WebP chunk "+chunk);
  });
 }
@@ -92,7 +92,13 @@ test("kildebelagte resultater og lovforslag beholdes uforandret",()=>{
  assert.match(hegs,/211(?:–|-)204|211 mot 204/i);
  assert.match(hegs,/H\. Res\. 1655/);
  assert.match(hegs,/Roll Call 317/);
- assert.match(hegs,/Hegseth ble ikke stilt for riksrett/i);
+ assert.match(hegs,/slapp Hegseth en direkte avstemning om anklagene/i);
+ assert.match(hegs,/ikke at han er frikjent/i);
+ assert.equal((hegs.match(/211 mot 204/g)||[]).length,1,"stemmetallet skal bare opptre én gang i artikkelen");
+ const hegsCard=cards.find(c=>c.url===items[0].article);
+ assert.doesNotMatch(hegsCard.title+" "+hegsCard.excerpt,/211(?:–|-)204|211 mot 204/i);
+ assert.doesNotMatch(hegs.match(/<h1 class="story-title">[\s\S]*?<\/h1>/)?.[0]||"",/211/i);
+ assert.doesNotMatch(hegs.match(/<p class="story-ingress">[\s\S]*?<\/p>/)?.[0]||"",/211/i);
  assert.match(data,/forslaget er ikke vedtatt|ikke vedtatte regler/i);
  assert.match(data,/over 1 MW|over én megawatt/i);
 });
