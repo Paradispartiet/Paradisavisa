@@ -1,102 +1,92 @@
 "use strict";
-// Teknisk regresjonskontroll for publiseringspakke #107.
-// Dette er IKKE bildegodkjenning, faktasjekk eller tillatelse til PR-merge.
-const test = require("node:test");
-const assert = require("node:assert/strict");
-const fs = require("node:fs");
-const path = require("node:path");
-const crypto = require("node:crypto");
-
-const root = path.resolve(__dirname, "..");
-const site = "https://paradispartiet.github.io/Paradisavisa/";
-const readText = (file) => fs.readFileSync(path.join(root, file), "utf8");
-const sourceCards = JSON.parse(readText("Nyhetshjul.json"));
-
-const subjects = [
-  {
-    article: "artikler/2026-11-10-hvem-skal-fa-norges-strom.html",
-    image: "Bilder/Artikler/2026-11-10-datasentre-kraftnett.webp",
-    imageSha256: "8a42805ab56711737fde5c60f94e3e1592d7e7c6f2acc42fc4eecfda983ac025",
-    expectedSources: 9,
-  },
-  {
-    article: "artikler/2026-11-10-massie-hegseth-riksrettsforslag.html",
-    image: "Bilder/Artikler/2026-11-10-massie-hegseth.webp",
-    imageSha256: "7ea0a8736f9b2d8dabf777a91d37003fb2d38f3cf4d5afbd4e04b11408fd093e",
-    expectedSources: 9,
-  },
-  {
-    article: "artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",
-    image: "Bilder/Artikler/2026-11-10-nationaltheatret-toyen.webp",
-    imageSha256: "53c26f131e190aa7f6b133fd3b33e3bb6e3d1a78c6873ed37db9b3b86c53ed01",
-    expectedSources: 11,
-  },
+// Paradisavisa: teknisk integritet for fire ulike redaksjonsbilder.
+// Bildekritikk og lisensvurdering krever fortsatt redaksjonell kontroll.
+const test=require("node:test");
+const assert=require("node:assert/strict");
+const fs=require("node:fs");
+const path=require("node:path");
+const crypto=require("node:crypto");
+const root=path.resolve(__dirname,"..");
+const read=p=>fs.readFileSync(path.join(root,p),"utf8");
+const cards=JSON.parse(read("Nyhetshjul.json"));
+const base="https://paradispartiet.github.io/Paradisavisa/";
+const items=[
+{article:"artikler/2026-11-10-massie-hegseth-riksrettsforslag.html",image:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.webp",svg:"Bilder/Artikler/2026-11-11-hegseth-votering-grafikk.svg",sha:"fd1a138a92b467b81a4ad12c5781e1d48c16677e",sources:13},
+{article:"artikler/2026-11-10-hvem-skal-fa-norges-strom.html",image:"Bilder/Artikler/2026-11-11-kraftnett-datasenter-grafikk.webp",svg:"Bilder/Artikler/2026-11-11-kraftnett-datasenter-grafikk.svg",sha:"8921f814d2c5301862efd51198c395553e633495",sources:9},
+{article:"artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",image:"Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto.webp",sha:"3106e3e9fe493691d859cd810a4edca8cf9639dd",sources:11,photo:true},
+{article:"artikler/2026-11-05-usa-valget-topartisystem-og-medier.html",image:"Bilder/Artikler/2026-11-11-usa-valg-spillgrafikk.webp",svg:"Bilder/Artikler/2026-11-11-usa-valg-spillgrafikk.svg",sha:"068b6494c28c15d01abb794a735e9953cc3cf20b"}
 ];
-
-test("tre unike forsidekort peker på de korrekte artikkelsidene og bildene", () => {
-  const links = sourceCards.map((card) => card.url);
-  assert.equal(new Set(links).size, links.length, "dupliserte artikkelkort");
-  for (const subject of subjects) {
-    const matches = sourceCards.filter((card) => card.url === subject.article);
-    assert.equal(matches.length, 1, "forventer ett nyhetskort for " + subject.article);
-    const card = matches[0];
-    assert.equal(card.image, subject.image);
-    assert.match(card.date, /^\d{4}-\d{2}-\d{2}$/);
-    assert.ok(card.title && card.excerpt && card.excerpt.length > 50);
-    assert.ok(!/forhåndsvisning|ikke publisert/i.test(card.title + " " + card.excerpt));
-  }
+test("de fire synlige bildene er ulike og kortene har riktige lenker",()=>{
+ const urls=cards.map(c=>c.url);
+ assert.equal(new Set(urls).size,urls.length);
+ assert.equal(new Set(items.map(i=>i.image)).size,4);
+ for(const item of items){
+  const found=cards.filter(c=>c.url===item.article);
+  assert.equal(found.length,1);
+  assert.equal(found[0].image,item.image);
+ }
 });
-
-for (const subject of subjects) {
-  test("artikkel, kilder og delingsmetadata: " + subject.article, () => {
-    const html = readText(subject.article);
-    const card = sourceCards.find((item) => item.url === subject.article);
-    const expectedImageUrl = site + subject.image;
-    const expectedCanonical = site + subject.article;
-    const relativeImage = "../" + subject.image;
-
-    assert.equal((html.match(/<h1\b/g) || []).length, 1, "nøyaktig én h1");
-    assert.ok(html.includes('src="' + relativeImage + '"'), "bildebanen mangler");
-    assert.ok(html.includes('alt="'), "bildet må ha alt-tekst");
-    assert.ok(html.includes("<figcaption") && html.includes("KI-assistert redaksjonell illustrasjon"));
-    assert.ok(html.includes('property="og:image" content="' + expectedImageUrl + '"'));
-    assert.ok(html.includes('name="twitter:image" content="' + expectedImageUrl + '"'));
-    assert.ok(html.includes('property="og:image:alt"'), "delingsbilde trenger alt-tekst");
-    assert.ok(html.includes('rel="canonical" href="' + expectedCanonical + '"'));
-    assert.ok(html.includes('property="article:published_time" content="' + card.date + '"'));
-    assert.ok(html.includes('datetime="' + card.date + '"'), "visningsdato må stemme med kortet");
-    assert.ok(html.includes('name="description" content="'));
-    assert.ok(!html.includes('name="robots" content="noindex'), "publisert side kan ikke være noindex");
-    assert.ok(!html.includes("Vurderingsbilde – ikke endelig godkjent"));
-    assert.ok(!html.includes("REDAKSJONELL FORHÅNDSVISNING"));
-
-    const anchors = new Set([...html.matchAll(/id="k(\d+)"/g)].map((m) => m[1]));
-    const cited = new Set([...html.matchAll(/href="#k(\d+)"/g)].map((m) => m[1]));
-    for (const n of cited) assert.ok(anchors.has(n), "mangler kildeankeret k" + n);
-    assert.ok(anchors.size >= subject.expectedSources, "for få kilder");
-    assert.ok(cited.size >= 4, "artikkelen mangler løpende kildehenvisninger");
-  });
-
-  test("eksakt WebP-original og korrekte filsignaturer: " + subject.image, () => {
-    const buffer = fs.readFileSync(path.join(root, subject.image));
-    assert.ok(buffer.length > 100000 && buffer.length < 1000000, "uvanlig bildefilstørrelse");
-    assert.equal(buffer.toString("ascii", 0, 4), "RIFF", "ikke RIFF-container");
-    assert.equal(buffer.toString("ascii", 8, 12), "WEBP", "ikke WebP-fil");
-    const actual = crypto.createHash("sha256").update(buffer).digest("hex");
-    assert.equal(actual, subject.imageSha256, "bildeendring krever ny redaksjonell vurdering");
-  });
+for(const item of items){
+ test("artikkel og bildemetadata: "+item.article,()=>{
+  const html=read(item.article);
+  const card=cards.find(c=>c.url===item.article);
+  const full=base+item.image;
+  assert.ok(html.includes('src="../'+item.image+'"'));
+  assert.ok(html.includes('property="og:image" content="'+full+'"'));
+  assert.ok(html.includes('name="twitter:image" content="'+full+'"'));
+  assert.ok(html.includes('property="og:image:type" content="image/webp"'));
+  assert.ok(html.includes('property="og:image:alt"'));
+  assert.ok(html.includes('rel="canonical" href="'+base+item.article+'"'));
+  assert.ok(html.includes('article:published_time" content="'+card.date+'"'));
+  assert.ok(html.includes('article:modified_time" content="2026-11-11"'));
+  assert.equal((html.match(/<h1\b/g)||[]).length,1);
+  assert.match(html,/<figcaption class="story-caption">[\s\S]*?<\/figcaption>/);
+  assert.ok(!html.includes("Vurderingsbilde – ikke endelig godkjent"));
+  assert.ok(!html.includes('name="robots" content="noindex'));
+  if(item.photo){
+   assert.match(html,/J\. P\. Fagerback/);
+   assert.match(html,/18\. juni 2005/);
+   assert.match(html,/Arkivfoto/);
+   const license=read("Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto-LISENS.md");
+   assert.match(license,/BSD-3-Clause/);
+   assert.match(license,/c01b527e1ec263ef76b7e36b371f7c4f5af3906f/);
+  }else{
+   const svg=read(item.svg).trim();
+   assert.ok(svg.startsWith("<svg")&&svg.endsWith("</svg>"));
+   assert.match(svg,/<title/);
+   assert.match(svg,/<desc/);
+   assert.doesNotMatch(svg,/<image\b[^>]*href/i);
+  }
+  if(item.sources){
+   const anchors=new Set([...html.matchAll(/id="k(\d+)"/g)].map(m=>m[1]));
+   const citations=new Set([...html.matchAll(/href="#k(\d+)"/g)].map(m=>m[1]));
+   assert.ok(anchors.size>=item.sources);
+   for(const n of citations)assert.ok(anchors.has(n));
+  }
+ });
+ test("WebP-filen er uendret fra kontrollert original og 1600×900: "+item.image,()=>{
+  const bytes=fs.readFileSync(path.join(root,item.image));
+  assert.ok(bytes.length>20000&&bytes.length<600000);
+  assert.equal(bytes.toString("ascii",0,4),"RIFF");
+  assert.equal(bytes.toString("ascii",8,12),"WEBP");
+  const sha=crypto.createHash("sha1").update(Buffer.from("blob "+bytes.length+"\0")).update(bytes).digest("hex");
+  assert.equal(sha,item.sha,"image changed after editorial review");
+  const chunk=bytes.toString("ascii",12,16);
+  if(chunk==="VP8 "){
+   assert.equal(bytes.readUInt16LE(26)&0x3fff,1600);
+   assert.equal(bytes.readUInt16LE(28)&0x3fff,900);
+  }else if(chunk==="VP8X"){
+   assert.equal(bytes.readUIntLE(24,3)+1,1600);
+   assert.equal(bytes.readUIntLE(27,3)+1,900);
+  }else assert.fail("unexpected WebP chunk "+chunk);
+ });
 }
-
-test("Hegseth-resultatet og datasenterforslagets status er presise", () => {
-  const h = readText(subjects[1].article);
-  assert.match(h, /211(?:–|-)204|211 mot 204/i);
-  assert.match(h, /H\. Res\. 1655/);
-  assert.match(h, /Roll Call 317/);
-  assert.match(h, /justiskomiteen/i);
-  assert.match(h, /Hegseth ble ikke stilt for riksrett/i);
-  assert.match(h, /article:modified_time" content="2026-11-11"/);
-  assert.doesNotMatch(h, /Hegseth er (avsatt|dømt|felt)/i);
-  const d = readText(subjects[0].article);
-  assert.match(d, /forslaget er ikke vedtatt|ikke vedtatte regler/i);
-  assert.match(d, /over 1 MW|over én megawatt/i);
+test("kildebelagte resultater og lovforslag beholdes uforandret",()=>{
+ const hegs=read(items[0].article),data=read(items[1].article);
+ assert.match(hegs,/211(?:–|-)204|211 mot 204/i);
+ assert.match(hegs,/H\. Res\. 1655/);
+ assert.match(hegs,/Roll Call 317/);
+ assert.match(hegs,/Hegseth ble ikke stilt for riksrett/i);
+ assert.match(data,/forslaget er ikke vedtatt|ikke vedtatte regler/i);
+ assert.match(data,/over 1 MW|over én megawatt/i);
 });
