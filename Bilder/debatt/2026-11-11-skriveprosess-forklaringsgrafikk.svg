@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" role="img" aria-labelledby="title description">
+<title id="title">Skriving med KI – fra idé til kontrollert tekst</title>
+<desc id="description">Redaksjonell forklaringsgrafikk i tre deler: et menneske utvikler en idé, en språkmodell brukes til forslag og struktur, og mennesket vurderer og kontrollerer kildene før publisering. Bildet er en normativ prosessillustrasjon, ikke et dokumentert forskningsresultat.</desc>
+<defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0d1721"/><stop offset=".47" stop-color="#171923"/><stop offset="1" stop-color="#251b1b"/></linearGradient>
+<radialGradient id="glow"><stop stop-color="#fed585" stop-opacity=".15"/><stop offset="1" stop-color="#fed585" stop-opacity="0"/></radialGradient>
+<linearGradient id="paper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff3d5"/><stop offset="1" stop-color="#d6cbb4"/></linearGradient>
+<linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#285160"/><stop offset=".55" stop-color="#152d3d"/><stop offset="1" stop-color="#0a1d2b"/></linearGradient>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="16"/></filter>
+</defs>
+<rect width="1600" height="860" fill="url(#bg)"/>
+<circle cx="790" cy="500" r="490" fill="url(#glow)"/>
+<g opacity=".2" stroke="#9baab4" stroke-width="1.3"><path d="M80 240H1520M80 740H1520"/><path d="M555 225V736M1045 225V736"/></g>
+<text x="80" y="101" fill="#fff3dc" font-family="Georgia,serif" font-weight="700" font-size="55">Fra idé til ferdig tekst</text>
+<text x="80" y="153" fill="#cbbfae" font-family="Arial,sans-serif" font-size="25">Tre ulike oppgaver – ett menneskelig ansvar for resultatet</text>
+
+<!-- Idé / notatbok -->
+<g transform="translate(78 243)">
+<ellipse cx="245" cy="390" rx="211" ry="39" fill="#020409" opacity=".35" filter="url(#shadow)"/>
+<path d="M28 125Q137 65 247 121L247 370Q125 321 28 368Z" fill="url(#paper)" stroke="#a79071" stroke-width="6"/>
+<path d="M247 121Q352 68 449 129L449 371Q333 320 247 370Z" fill="#f9eac9" stroke="#a79071" stroke-width="6"/>
+<path d="M247 120V369" stroke="#a58a65" stroke-width="5"/>
+<g stroke="#998b79" opacity=".72" stroke-width="5" stroke-linecap="round">
+<path d="M65 175Q138 150 209 182M65 220Q131 205 207 221M65 264Q132 257 207 269M65 308Q130 300 207 310"/>
+<path d="M284 171Q351 150 418 177M284 217Q346 198 416 222M284 265Q357 247 418 266"/>
+</g>
+<path d="M150 99L207 159" stroke="#f9d470" stroke-width="12" stroke-linecap="round"/>
+<circle cx="140" cy="92" r="23" fill="#efc06d"/>
+<g fill="#fff2d3" font-family="Arial,sans-serif"><text x="15" y="45" font-size="26" font-weight="700">01</text><text x="15" y="492" font-size="31" font-weight="700">Idé og erfaring</text><text x="15" y="531" font-size="23" fill="#c7c3bc">Forfatteren bestemmer</text><text x="15" y="562" font-size="23" fill="#c7c3bc">hva teksten skal si</text></g>
+</g>
+
+<!-- Forslagsmaskinen -->
+<g transform="translate(580 243)">
+<ellipse cx="234" cy="396" rx="205" ry="35" fill="#020409" opacity=".4" filter="url(#shadow)"/>
+<rect x="46" y="86" width="388" height="264" rx="21" fill="#b4b7ba" stroke="#384455" stroke-width="8"/>
+<rect x="62" y="103" width="355" height="228" rx="12" fill="url(#screen)"/>
+<g fill="none" stroke="#7ac8d2" stroke-width="4" stroke-linecap="round">
+<path d="M106 155H200M106 183H335M106 212H288M106 244H365M106 273H245"/>
+</g>
+<g fill="#eed99d"><circle cx="336" cy="151" r="14"/><circle cx="374" cy="188" r="10"/><circle cx="339" cy="299" r="10"/></g>
+<path d="M20 370H460L427 403H53Z" fill="#8e939a" stroke="#47525b" stroke-width="5"/>
+<path d="M177 371H305L319 391H162Z" fill="#636f7d"/>
+<g fill="#fff2d3" font-family="Arial,sans-serif"><text x="19" y="44" font-size="26" font-weight="700">02</text><text x="18" y="492" font-size="31" font-weight="700">Forslag og struktur</text><text x="18" y="531" font-size="23" fill="#c7c3bc">Modellen kan gi utkast,</text><text x="18" y="562" font-size="23" fill="#c7c3bc">ikke ferdige bevis</text></g>
+</g>
+
+<!-- Kildekontroll -->
+<g transform="translate(1077 243)">
+<ellipse cx="217" cy="396" rx="214" ry="36" fill="#020409" opacity=".4" filter="url(#shadow)"/>
+<g transform="rotate(-5 205 240)">
+<rect x="61" y="94" width="310" height="298" rx="11" fill="url(#paper)" stroke="#a28d6f" stroke-width="6"/>
+<g stroke="#9f9686" stroke-width="5" stroke-linecap="round"><path d="M102 158H320M102 198H294M102 240H328M102 281H278M102 325H316"/></g>
+</g>
+<circle cx="289" cy="235" r="78" fill="none" stroke="#edbf69" stroke-width="17"/>
+<path d="M340 289L418 376" stroke="#edbf69" stroke-width="20" stroke-linecap="round"/>
+<path d="M247 237L276 266L330 202" fill="none" stroke="#3d8f7a" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="#fff2d3" font-family="Arial,sans-serif"><text x="15" y="44" font-size="26" font-weight="700">03</text><text x="15" y="492" font-size="31" font-weight="700">Sjekk og ansvar</text><text x="15" y="531" font-size="23" fill="#c7c3bc">Mennesket vurderer kilder,</text><text x="15" y="562" font-size="23" fill="#c7c3bc">presisjon og publisering</text></g>
+</g>
+<g stroke="#f4d37b" stroke-width="7" fill="none" stroke-linecap="round"><path d="M545 442H574M565 430L578 442L565 454M1037 442H1069M1060 430L1072 442L1060 454"/></g>
+<text x="80" y="807" fill="#b8ae9d" font-family="Arial,sans-serif" font-size="19">Redaksjonell prosessillustrasjon. Dette er en anbefalt arbeidsmåte – ikke et dokumentarfotografi.</text>
+</svg>
