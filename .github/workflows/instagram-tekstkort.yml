@@ -1,0 +1,42 @@
+name: Lag Instagram-tekstkort fra godkjente artikkelbilder
+
+on:
+  push:
+    branches:
+      - instagram-seks-tekstkort-2026-11-11
+    paths:
+      - scripts/generer-instagramkort.py
+      - .github/workflows/instagram-tekstkort.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Installer bildebibliotek
+        run: python -m pip install 'Pillow>=10,<13'
+      - name: Lag seks PNG-tekstkort
+        run: python scripts/generer-instagramkort.py
+      - name: Ta vare på bildefiler og kildeoversikt
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-seks-tekstkort-2026-11-11
+          path: Bilder/Instagram/
+          if-no-files-found: error
+      - name: Skriv PNG-filene tilbake til arbeidsgrenen
+        if: github.event_name == 'push'
+        run: |
+          git add Bilder/Instagram/
+          if ! git diff --cached --quiet; then
+            git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Instagram: seks tekstkort generert fra godkjente bilder [skip ci]"
+            git push
+          fi
