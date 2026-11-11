@@ -54,11 +54,27 @@ class PlanleggLydTest(unittest.TestCase):
         result = module.bygg_forslag([current, outdated, future, expired], POLICY, dt.date(2026, 11, 10))
         self.assertEqual(result["count"], 1)
         self.assertEqual(result["items"][0]["date"], "2026-11-10")
-        self.assertEqual(result["items"][0]["expires"], "2026-11-16")
+        self.assertEqual(result["items"][0]["expires"], "2026-11-12")
         self.assertTrue(result["privateCandidateOnly"])
         self.assertFalse(result["publicPlayable"])
         self.assertNotIn("audioUrl", result["items"][0])
         self.assertNotIn("speechText", result["items"][0])
+
+    def test_redaksjonell_holdbarhet_en_til_sju_dager(self):
+        original = sample()
+        _, _, _, publisert, expiry, _ = module.kontroller_kilde(original)
+        self.assertEqual(expiry, dt.date(2026, 11, 12))
+        for exp, forventet in [
+            ("2026-11-10", "2026-11-10"),
+            ("2026-11-14", "2026-11-14"),
+            ("2026-11-16", "2026-11-16"),
+            ("2026-11-17", "2026-11-16"),
+        ]:
+            row = {**original, "expires": exp}
+            self.assertEqual(module.kontroller_kilde(row)[4].isoformat(), forventet)
+        lang = {**original, "expires": "2026-11-16"}
+        self.assertEqual(module.bygg_forslag([lang], POLICY, dt.date(2026, 11, 16))["count"], 1)
+        self.assertEqual(module.bygg_forslag([original], POLICY, dt.date(2026, 11, 13))["count"], 0)
 
     def test_tekstendring_beholder_id_men_fornyer_lydhash(self):
         first = sample()
