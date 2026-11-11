@@ -1,5 +1,93 @@
 [
   {
+    "id": "notis-ukraina-abu-dhabi-20261111",
+    "category": "Verden",
+    "text": "Ukraina og Russland melder om noe framgang etter to dager med amerikanskledede samtaler i Abu Dhabi. Partene er enige om en større utveksling av krigsfanger, men står fortsatt langt fra hverandre om territorium og en fredsavtale, melder Reuters.",
+    "date": "2026-11-11",
+    "expires": "2026-11-14",
+    "url": "https://www.reuters.com/world/europe/us-russia-ukraine-start-second-day-abu-dhabi-peace-talks-2026-11-11/"
+  },
+  {
+    "id": "notis-botheim-landslaget-20261111",
+    "category": "Sport",
+    "text": "Viking-spissen Erik Botheim er hentet inn på Norges herrelandslag etter at Jørgen Strand Larsen måtte trekke seg fra samlingen med en ankelskade. Norge møter Wales på Ullevaal lørdag 14. november og Danmark i København tirsdag 17. november.",
+    "date": "2026-11-11",
+    "expires": "2026-11-14",
+    "url": "https://www.vikingfotball.no/nyheter/botheim-innkalt-til-landslaget"
+  },
+  {
+    "id": "notis-gps-beredskap-20261111",
+    "category": "Beredskap",
+    "text": "Regjeringen vil oppdatere Norges strategi for posisjonering og navigasjon. Målet er å gjøre samfunnet mindre sårbart dersom GPS og andre satellittsignaler blir forstyrret eller faller bort. Den gjeldende strategien er fra 2018.",
+    "date": "2026-11-11",
+    "url": "https://www.regjeringen.no/no/aktuelt/regjeringen-vil-gjore-norge-mindre-sarbart-for-gps-svikt/id3192316/"
+  },
+  {
+    "id": "notis-spania-generalstreik-20261111",
+    "category": "Verden",
+    "text": "Spania har hatt sin første generalstreik på 14 år. Fagforeningene oppgir at rundt fire millioner arbeidere deltok i protester mot høye boligkostnader og husleier. Reuters melder også om sammenstøt mellom politi og demonstranter.",
+    "date": "2026-11-11",
+    "expires": "2026-11-13",
+    "url": "https://www.reuters.com/business/world-at-work/workers-across-spain-stage-first-general-strike-14-years-anger-over-housing-2026-11-11/"
+  },
+  {
+    "id": "notis-gamle-munch-teater-20261110",
+    "category": "Kultur",
+    "text": "Regjeringen vil bruke det tidligere Munchmuseet på Tøyen som teaterhus for Nationaltheatret. Bygget skal bli midlertidig hovedscene under rehabiliteringen av Nationaltheatret, og senere romme permanente biscener. Forprosjektet er planlagt startet i 2027.",
+    "date": "2026-11-10",
+    "url": "https://www.regjeringen.no/no/aktuelt/regjeringa-vil-bruke-gamle-munch-pa-toyen-som-teaterhus-med-biscener-for-nationaltheatret/id3192180/"
+  },
+  {
+    "id": "notis-ssb-smabarnsforeldre-20261111",
+    "category": "Arbeidsliv",
+    "text": "En ny analyse fra Statistisk sentralbyrå viser at 47,2 prosent av yrkesaktive småbarnsmødre i 2025 opplevde ukentlig at jobben gikk utover privatlivet. Blant småbarnsfedre var andelen 37,1 prosent. Tallene kommer fra levekårsundersøkelsen om arbeidsmiljø.",
+    "date": "2026-11-11",
+    "url": "https://www.ssb.no/arbeid-og-lonn/arbeidsmiljo-sykefravaer-og-arbeidskonflikter/statistikk/arbeidsmiljo-levekarsundersokelsen/artikler/opplever-foreldre-oftere-at-jobben-gar-utover-privatlivet"
+  },
+  {
+    "id": "notis-kommunal-cybersikkerhet-20261110",
+    "category": "Teknologi",
+    "text": "Regjeringen vil at alle norske kommuner skal teste den digitale sikkerheten sin og rette opp svakheter. I statsbudsjettforslaget for 2027 vil regjeringen øke bevilgningen til Helse- og kommuneCERT med 12,5 millioner kroner for å styrke arbeidet mot dataangrep.",
+    "date": "2026-11-10",
+    "url": "https://www.regjeringen.no/no/aktuelt/vil-styrke-digital-sikkerhet-i-kommunene/id3192183/"
+  },
+  {
+    "id": "notis-indonesia-fornybaravtale-20261111",
+    "category": "Klima",
+    "text": "Norge og Indonesia har inngått en avtale som skal bidra til mer fornybar strøm og lavere utslipp i Indonesias kraftsektor. Norge kan kjøpe opptil 12 millioner tonn verifiserte utslippsreduksjoner over ti år. Betaling skal først skje når kuttene er gjennomført og dokumentert.",
+    "date": "2026-11-11",
+    "url": "https://www.regjeringen.no/no/aktuelt/skal-redusere-utslepp-fra-kraftsektoren-i-indonesia/id3192314/"
+  },
+  {
+    "id": "notis-laksepris-ssb-20261111",
+    "category": "Økonomi",
+    "text": "Eksportprisen på fersk eller kjølt norsk oppdrettslaks var i gjennomsnitt 73 kroner og 35 øre per kilo i uke 45, viser tall fra Statistisk sentralbyrå. Det er 2,2 prosent lavere enn uken før. Dette er eksportpris, ikke prisen i butikk.",
+    "date": "2026-11-11",
+    "url": "https://www.ssb.no/utenriksokonomi/utenrikshandel/statistikk/eksport-av-laks"
+  },
+  {
+    "id": "notis-skoletrusler-italia-20261111",
+    "category": "Verden",
+    "text": "Minst 300 skoler i Italia ble evakuert etter omfattende e-poster med bombetrusler onsdag, melder Reuters. Rundt 6 300 italienske skoler skal ha mottatt advarsler. Skoler i Storbritannia og Irland fikk lignende meldinger, som myndighetene der vurderte som falske.",
+    "date": "2026-11-11",
+    "expires": "2026-11-13",
+    "url": "https://www.reuters.com/world/least-300-italian-schools-evacuated-after-email-bomb-alerts-2026-11-11/"
+  },
+  {
+    "id": "notis-gollegiella-helander-20261111",
+    "category": "Kultur",
+    "text": "Professor emeritus Nils Øivind Helander fra Tana er tildelt den nordiske samiske språkprisen Gollegiella. Han hedres for et langvarig arbeid med nordsamisk språk, blant annet som lærer, forsker og språkekspert. Prisen ble kunngjort i Helsinki 11. november.",
+    "date": "2026-11-11",
+    "url": "https://www.regjeringen.no/no/aktuelt/nils-oivind-helander-er-vinner-av-nordisk-samisk-sprakpris-gollegiella/id3192255/"
+  },
+  {
+    "id": "notis-el-ferger-havneanlegg-20261111",
+    "category": "Samferdsel",
+    "text": "Norge hadde 101 ladeanlegg for elektriske ferger i 2026, mot 15 i 2019, ifølge Statistisk sentralbyrå. Samtidig økte antallet landstrømanlegg ved havnene fra 92 til 239. Oljeprodukter er likevel fortsatt den viktigste energikilden i norsk kysttransport samlet.",
+    "date": "2026-11-11",
+    "url": "https://www.ssb.no/transport-og-reiseliv/sjotransport/artikler/flere-landstromanlegg-og-ladestasjoner-for-ferjer"
+  },
+  {
     "category": "Sport",
     "text": "Fredrik Aursnes må stå over Norges kommende landslagssamling på grunn av en lyskestrekk, bekrefter Norges Fotballforbund. Hugo Vetlesen fra Club Brugge erstatter Benfica-spilleren i troppen. Norge møter Wales på Ullevaal 14. november og Danmark i København 17. november i Nasjonsligaen.",
     "date": "2026-11-09",
