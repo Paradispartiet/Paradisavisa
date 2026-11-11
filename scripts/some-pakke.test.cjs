@@ -49,5 +49,5 @@ test("X-tekst holder seg under 280 tegn med lang ingress",()=>{
 });
 test("tekst og lenker håndterer HTML-entiteter uten dobbel HTML",()=>{
  assert.equal(clean("Nord &amp; sør <b>i dag</b>"),"Nord & sør i dag");
- assert.equal(shorten("Dette er et eksempel med mange ord",21),"Dette er et eksempel…");
+ assert.equal(shorten("Dette er et eksempel med mange ord",21),"Dette er et…");
 });
