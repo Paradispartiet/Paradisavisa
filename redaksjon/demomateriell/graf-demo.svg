@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="title description">
+<title id="title">Eksempelgraf med tre stigende verdier</title>
+<desc id="description">Kun demonstrasjon. Verdiene 4 i 2024, 7 i 2025 og 10 i 2026 er funnet på og er ikke statistikk.</desc>
+<rect width="1000" height="600" fill="#0d0d0d"/>
+<text x="55" y="58" font-size="35" font-family="Arial,sans-serif" font-weight="700" fill="#ffffff">Illustrativ utvikling</text>
+<text x="55" y="96" font-size="21" font-family="Arial,sans-serif" fill="#f3d376">DEMO – oppdiktede tall, ikke statistikk</text>
+<g stroke="#454039" stroke-width="2"><path d="M135 145H940M135 220H940M135 295H940M135 370H940M135 445H940" /></g>
+<g fill="#dad4c8" font-family="Arial,sans-serif" font-size="22">
+<text x="88" y="453">0</text><text x="88" y="378">3</text><text x="88" y="303">6</text><text x="88" y="228">9</text><text x="75" y="153">12</text>
+<text x="252" y="497">2024</text><text x="512" y="497">2025</text><text x="772" y="497">2026</text>
+</g>
+<g fill="#ffdb62"><rect x="230" y="345" width="92" height="100" rx="3"/><rect x="490" y="270" width="92" height="175" rx="3"/><rect x="750" y="195" width="92" height="250" rx="3"/></g>
+<g fill="#111111" font-family="Arial,sans-serif" font-size="29" font-weight="700" text-anchor="middle"><text x="276" y="409">4</text><text x="536" y="352">7</text><text x="796" y="315">10</text></g>
+<text x="55" y="563" font-size="20" font-family="Arial,sans-serif" fill="#bcb7ac">Eksempel på forstørrbar graf med tilgjengelig datatabell ved siden av artikkelen.</text>
+</svg>
