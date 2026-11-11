@@ -1,5 +1,49 @@
 [
   {
+    "id": "notis-falske-rettskjennelser-india-20261111",
+    "category": "Verden",
+    "text": "Indiske myndigheter beordret blokkering av 129 pengespillnettsider på grunnlag av to rettskjennelser som Reuters har avdekket var forfalsket. En domstol har anmeldt saken, og politiet etterforsker dokumentforfalskning. Det er ikke fastslått hvem som laget dokumentene, eller om kunstig intelligens ble brukt.",
+    "date": "2026-11-11",
+    "expires": "2026-11-15",
+    "url": "https://www.reuters.com/world/india-ordered-website-takedowns-fake-court-orders-reuters-finds-police-launch-2026-11-11/"
+  },
+  {
+    "id": "notis-sjofart-hormuz-20261111",
+    "category": "Verden",
+    "text": "Skipstrafikken gjennom Hormuzstredet øker, men risikoen for angrep er fortsatt høy. I oktober passerte 31 tankskip med flytende naturgass ut av stredet, samtidig som en analyse registrerte 37 angrepne fartøy. FNs sjøfartsorganisasjon har bekreftet minst 25 omkomne sjøfolk siden konflikten startet, melder Reuters.",
+    "date": "2026-11-11",
+    "expires": "2026-11-14",
+    "url": "https://www.reuters.com/world/middle-east/hormuz-traffic-is-up-so-are-attacks-2026-11-11/"
+  },
+  {
+    "id": "notis-fractile-ai-brikker-20261111",
+    "category": "Teknologi",
+    "text": "Det britiske selskapet Fractile har hentet 720 millioner dollar i ny kapital og er verdsatt til sju milliarder dollar, ifølge Reuters. Selskapet utvikler databrikker for å kjøre KI-modeller og sier at teknologien kan redusere strømbruk og kostnader. Den første kommersielle brikken er planlagt neste år.",
+    "date": "2026-11-11",
+    "url": "https://www.reuters.com/legal/transactional/uk-backed-ai-chip-startup-fractile-hits-7-billion-valuation-funding-round-2026-11-11/"
+  },
+  {
+    "id": "notis-tu-stroma-eggstokkreft-20261111",
+    "category": "Vitenskap og helse",
+    "text": "Forskere har undersøkt om RNA-markøren Tu-Stroma i blod kan avsløre tidlige forstadier til en vanlig type eggstokkreft. Studien i Nature Medicine omfatter 506 personer og viste lovende treffsikkerhet. Forskerne understreker at større, framoverskuende studier trengs før testen kan brukes i vanlig helsetjeneste.",
+    "date": "2026-11-11",
+    "url": "https://www.nature.com/articles/s41591-026-04732-9"
+  },
+  {
+    "id": "notis-usa-inflasjon-oktober-20261111",
+    "category": "Økonomi",
+    "text": "Prisveksten i USA steg til fire prosent i oktober, målt mot samme måned året før, fra 3,7 prosent i september. Flere sentralbankrepresentanter åpner nå for raskere renteøkninger fordi prisstigningen rammer stadig flere varer og tjenester, melder AP. Rentebeslutningen er ikke tatt.",
+    "date": "2026-11-11",
+    "url": "https://apnews.com/article/inflation-gas-federal-reserve-prices-1318a1694472e2926e0a4ab5d8ca6457"
+  },
+  {
+    "id": "notis-ozonhullet-2026-nasa-20261109",
+    "category": "Natur",
+    "text": "Ozonhullet over Antarktis var det sjuende største i løpet av 48 år med målinger, opplyser NASA og NOAA. Uvanlige vindforhold bidro til årets størrelse. Forskerne understreker samtidig at ozonlaget fortsatt er på vei mot langsiktig bedring, blant annet som følge av internasjonale utslippsbegrensninger.",
+    "date": "2026-11-09",
+    "url": "https://science.nasa.gov/earth/2026-ozone-hole/"
+  },
+  {
     "id": "notis-eu-digital-fairness-20261111",
     "category": "Forbruker",
     "text": "EU-kommisjonen foreslår strengere regler mot manipulerende netthandel. Forslaget vil ramme abonnementsfeller, skjulte kostnader og design som presser folk til kjøp, og kreve tydeligere merking av reklame fra influensere. Reglene er ennå ikke vedtatt og må behandles av EU-parlamentet og medlemslandene.",
