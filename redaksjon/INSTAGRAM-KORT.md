@@ -12,7 +12,7 @@ Dette er et **delingskort**, ikke et nytt artikkelbilde. Den redaksjonelle [bild
 
 1. **Øvre bildefelt:** Det godkjente, relevante artikkelbildet. Behold bildeinnholdet og komponer utsnittet med ansikt, sted og sentrale symboler synlige. Ikke erstatt godkjente motiver med generisk KI-grafikk.
 2. **Nedre, svarte tekstfelt:** Tydelig **hvit, fet overskrift** (normalt én til tre linjer) og **kort ingress i lys grått** (helst to til tre korte setninger). God kontrast. Ikke kutt tekst med ellipse.
-3. **Nederst:** Diskret lenke/avsender: Paradisavisa. Det skal være lesbart uten å dominere.
+3. **Nederst:** Kun avsenderen **PARADISAVISA**. Ingen nettadresse, HTTP, www, QR-kode eller annen lenketekst på selve bildet. Dette skal være diskret og tydelig.
 4. **Format:** 1080 × 1350 piksler, PNG. Kontroller at 3:4-profilutsnittet fortsatt gjør både motiv og tittel forståelige.
 5. **Ikke:** rene bilder, hele artikkeltekster i kortet, tekst ovenpå personansikter, automatisk KI-generert tekst i illustrasjonen, uverifiserte fakta eller logo-/lenkedekor som skygger for saken.
 
