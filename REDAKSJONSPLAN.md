@@ -2,7 +2,7 @@
 
 **Motto: «Objektivt sett, fra vår synsvinkel.»**
 
-**Artikkelutforming:** [ARTIKKELSTANDARD.md](redaksjon/ARTIKKELSTANDARD.md) er én kanonisk standard for kildelenker i avsnittene, kildenoter under faktabærende avsnitt, bildeplassering, bildetekster og typografi. Bruk [fellesmalen](Maler/mal-artikkel.html) og [stilarket](artikkel.css) for nye artikler. [Bildehåndboken](redaksjon/BILDEHANDBOK.md) bestemmer motivvalg, etikk og bildeproduksjon. Eldre malfiler er historiske og skal ikke danne grunnlag for nye artikler.
+**Artikkelutforming:** [ARTIKKELSTANDARD.md](redaksjon/ARTIKKELSTANDARD.md) er én kanonisk standard for kildelenker i avsnittene, kildenoter under faktabærende avsnitt, bildeplassering, bildetekster og typografi. Interaktive deler som avstemninger, faktabokser, forstørrbare grafer, tidslinjer og forklaringsforløp styres av [LEVENDE-ARTIKLER.md](redaksjon/LEVENDE-ARTIKLER.md), med en [fungerende redaksjonell demo](redaksjon/artikkel-demo.html). Bruk [fellesmalen](Maler/mal-artikkel.html) og [stilarket](artikkel.css) for nye artikler. [Bildehåndboken](redaksjon/BILDEHANDBOK.md) bestemmer motivvalg, etikk og bildeproduksjon. Eldre malfiler er historiske og skal ikke danne grunnlag for nye artikler.
 
 ## Slik skal avisa fungere
 
