@@ -1,5 +1,17 @@
 # Norsk stemmesammenligning – NVCC (10. november 2026)
 
+## Beslutning 11. november 2026 – legg AI-stemmer på hylla
+
+Redaksjonen velger å **beholde lokal talesyntese (Web Speech / tilgjengelige systemstemmer) som Paradisradioens opplesning**. Den oppleves som stadig bedre, særlig på iPad. Arbeid med alternative, servergenererte MP3-stemmer og modelljakt **settes på pause på ubestemt tid**; ikke start flere stemmepiloter, prøvelyttepaneler eller providerintegrasjoner uten en ny eksplisitt redaksjonell beslutning.
+
+- **Behold:** gjeldende Web Speech-radiokontroller, nyhetsflyt og lokale stemmer.
+- **Ikke gjør:** automatisk bytte til MOSS, NVCC, Vox, Azure eller annen AI-stemme.
+- **Behold i reserve:** eksisterende privat MP3-teknologi, men ikke aktiver offentlig lyd.
+- **Release-gate:** `publicAudioEnabled=false`, `modelRightsStatus=PENDING`, `editorialAudioStatus=PENDING` til eventuell ny uttrykkelig beslutning.
+- **Videre arbeid:** forbedringer av brukeropplevelsen for lokal opplesning (spesielt på iPad), kun ved konkrete feil eller ønsker; ingen ny stemmejakt.
+
+Dette er en produktprioritering, ikke en påstand om at fremtidig syntetisk lyd er juridisk eller teknisk umulig.
+
 **Status: LYTTETEST AVVIST – KNN, MNN, KON OG MON. IKKE GODKJENT FOR PUBLISERING.**
 
 ## Oppdatert redaksjonell beslutning – 11. november 2026
