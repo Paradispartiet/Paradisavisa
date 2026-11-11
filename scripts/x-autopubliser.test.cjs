@@ -1,7 +1,7 @@
 "use strict";
 const test=require("node:test");
 const assert=require("node:assert/strict");
-const {oauthHeader,pct,validateManifest,runBatch,sendXPost} = require("./x-autopubliser.cjs");
+const {oauthHeader,pct,validateManifest,runBatch,sendXPost,assertCorrectXAccount} = require("./x-autopubliser.cjs");
 const SHA="a".repeat(40);
 const BASE="https://paradispartiet.github.io/Paradisavisa/";
 function article(i) {
@@ -93,4 +93,23 @@ test("X-avvisning håndteres uten automatisk retry eller avsløring av token",as
   const fakeFetch=async()=>{calls++;return {status:403};};
   await assert.rejects(sendXPost("Kontroll",env,fakeFetch),/HTTP 403/);
   assert.equal(calls,1);
+});
+
+test("Riktig X-brukerkonto må verifiseres før noen POST",async()=>{
+  const env={X_EXPECTED_USERNAME:"paradisavisa",X_API_KEY:"key",X_API_SECRET:"private",
+             X_ACCESS_TOKEN:"token",X_ACCESS_TOKEN_SECRET:"private"};
+  let observedHeader="";
+  const ok=await assertCorrectXAccount(env,async(_url,req)=>{
+    assert.equal(req.method,"GET");
+    observedHeader=req.headers.Authorization;
+    return {status:200,json:async()=>({data:{username:"Paradisavisa"}})};
+  });
+  assert.equal(ok,"Paradisavisa");
+  assert.match(observedHeader,/oauth_signature="/);
+  await assert.rejects(
+    assertCorrectXAccount({...env,X_EXPECTED_USERNAME:"feil_bruker"},
+      async()=>({status:200,json:async()=>({data:{username:"Paradisavisa"}})})),
+    /stemmer ikke/
+  );
+  await assert.rejects(assertCorrectXAccount({...env,X_EXPECTED_USERNAME:""}),/X_EXPECTED_USERNAME/);
 });
