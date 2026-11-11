@@ -4,7 +4,7 @@
 **Fotograf:** J. P. Fagerback (Jpfagerback), fotografert 18. juni 2005.
 **Kildeside:** https://commons.wikimedia.org/wiki/File:Munch_museet_T%C3%B8yen_18jun2005.jpg
 **Lisens:** 3-clause BSD (BSD-3-Clause), publisert av opphavspersonen på Wikimedia Commons.
-**Bruk:** Ekstern originalfil benyttet som arkivfoto i den publiserte Nationaltheatret-artikkelen og i forsidekortet. Dette er **ikke et fotografi fra 2026**, og heller ikke et foto av ferdig tilpassede teaterlokaler.
+**Bruk:** Bildet er lastet fra Wikimedias originalfil, kontrollert mot originalens SHA-1 (`c01b527e1ec263ef76b7e36b371f7c4f5af3906f`), beskåret og lagret som **lokal WebP** i `Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto.webp` (1600 × 900). Det er **ikke et fotografi fra 2026**, og heller ikke et foto av ferdig tilpassede teaterlokaler.
 
 ## Opphavsrettserklæring og vilkår
 
@@ -20,4 +20,4 @@ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
 
 Fotografnavnet er kreditering, ikke tilslutning til Paradisavisa.
 
-**Merknad:** Bruk av et eksternt bildebibliotek betyr at tilgangen til bildet avhenger av Wikimedia Commons. Ved en eventuell framtidig lokal kopi må den samme lisensen og kildereferansen følge filen.
+**Merknad:** Bildet er nå lagret lokalt i GitHub-repositoriet, slik at innlasting ikke avhenger av Wikimedia ved vanlig avvisning. BSD-3-Clause-lisensen og kildehenvisningen følger kopien.

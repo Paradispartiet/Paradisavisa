@@ -17,4 +17,9 @@ Bildene på forsiden skal variere i **sjanger, motiv, utsnitt og kildetype**. Kr
 6. Kontroller mobilutsnitt, delingsmetadata og bilder både på forside og artikkel før publisering.
 7. Gamle filer beholdes i Git-historikken som arkiv, men fjernes fra synlig artikkel og forside.
 
-**Eksternt bilde:** Arkivfotoet for Gamle Munch kommer fra Wikimedia Commons og lastes fra originalens opplastingsadresse. Se `Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto-LISENS.md`.
+**Lokalt arkivfoto:** Arkivfotoet for Gamle Munch kommer fra Wikimedia Commons, er SHA-1-verifisert og deretter lagret i Git som WebP. Se `Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto-LISENS.md`.
+
+
+## Teknisk leveranse
+
+Alle fire valgte motiver brukes nå som lokale **WebP-filer (1600 × 900)** i både forsidekort og artikkelsider. Tre original-SVG-filer er beholdt som redigerbare grafikkilder. Dette sikrer korrekte bilder ved deling i sosiale medier, uten å bruke de gamle AI-portrettene.
