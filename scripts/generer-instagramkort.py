@@ -46,7 +46,7 @@ POSTS = [
         "id": "serbia-studentbevegelse",
         "image": "Bilder/Artikler/serbia-studentprotest-novi-sad-2025-arkivfoto.jpg",
         "title": "Fra protest til valgseier",
-        "excerpt": "Tragedien i Novi Sad utløste studentprotester. Nå utfordrer bevegelsen makthaverne gjennom valg.",
+        "excerpt": "Studentlisten vant 140 av 250 mandater i Serbia. Protestene begynte etter at 16 mennesker mistet livet i Novi Sad i 2024.",
         "ig_url": "https://www.instagram.com/p/DfVmncljfSB/",
         "center": [0.49, 0.5],
         "image_credit": "Arkivfoto fra studentprotest i 2025 – ikke fra valget. Lisens i kildefil.",
