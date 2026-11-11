@@ -171,6 +171,17 @@ def render(post: dict) -> dict:
 
 def main() -> None:
     items = [render(post) for post in POSTS]
+    # Kontaktark for visuell redaksjonell kvalitetssjekk; ikke en Instagram-publiseringsfil.
+    thumbnail_w, thumbnail_h, gap = 300, 375, 18
+    overview = Image.new("RGB", (3 * thumbnail_w + 4 * gap,
+                                  2 * thumbnail_h + 3 * gap), "#17191d")
+    for position, item in enumerate(items):
+        with Image.open(ROOT / item["output"]) as card:
+            thumb = card.convert("RGB").resize((thumbnail_w, thumbnail_h),
+                                                 Image.Resampling.LANCZOS)
+        overview.paste(thumb, (gap + (position % 3) * (thumbnail_w + gap),
+                               gap + (position // 3) * (thumbnail_h + gap)))
+    overview.save(OUT / "oversikt.jpg", format="JPEG", quality=82, optimize=True)
     report = OUT / "kilderegister.json"
     report.write_text(json.dumps({"format": "Instagram 4:5 med tekst",
                                   "reference": "redaksjon/INSTAGRAM-KORT.md",
