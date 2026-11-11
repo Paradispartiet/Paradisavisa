@@ -25,7 +25,10 @@ def les_json(sti: pathlib.Path) -> list[dict]:
 def er_aktuell(notis: dict, idag: dt.date) -> bool:
     try:
         publisert = dt.date.fromisoformat(notis["date"])
-        if (idag - publisert).days not in range(7):
+        # Speil den publiserte radioens tre-dagersstandard.
+        # Redaksjonell expires kan utvide til maks sju kalenderdager.
+        alder = (idag - publisert).days
+        if alder not in range(7 if notis.get("expires") else 3):
             return False
         if notis.get("expires") and idag > dt.date.fromisoformat(notis["expires"]):
             return False
