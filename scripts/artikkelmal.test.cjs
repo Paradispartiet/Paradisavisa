@@ -42,3 +42,52 @@ test("Dokumentasjon viser til den kanoniske standarden",()=>{
  }
  assert.match(read("redaksjon/ARTIKKELSTANDARD.md"),/BILDEHANDBOK\.md/);
 });
+
+
+test("Levende moduler har fungerende semantikk og en reell demonstrasjon",()=>{
+ const demo=read("redaksjon/artikkel-demo.html");
+ assert.match(demo,/<meta name="robots" content="noindex, nofollow">/);
+ assert.match(demo,/data-av-poll="redaksjon-demo-tema"/);
+ assert.match(demo,/data-av-poll-js-required/);
+ assert.match(demo,/<form hidden>/);
+ assert.match(demo,/<fieldset>/);
+ assert.match(demo,/data-av-poll-result hidden/);
+ assert.match(demo,/data-av-zoom/);
+ assert.match(demo,/id="av-zoom-dialog"/);
+ assert.match(demo,/class="av-datatabell"/);
+ assert.match(demo,/class="av-tidslinje"/);
+ assert.match(demo,/data-av-explainer/);
+ assert.match(demo,/class="av-infoboks"/);
+ assert.match(demo,/data-av-kilde-note|class="av-kilde-note"/);
+ assert.match(demo,/oppdiktede demoverdier|oppdiktede eksempelverdier/i);
+ assert.match(demo,/artikkel-interaktiv\.js/);
+ assert.match(demo,/demomateriell\/graf-demo\.svg/);
+ assert.match(demo,/demomateriell\/prosess-demo\.svg/);
+});
+test("Grafen har tilgjengelige demoetiketter og kan ikke forveksles med tall fra en kilde",()=>{
+ const chart=read("redaksjon/demomateriell/graf-demo.svg");
+ const process=read("redaksjon/demomateriell/prosess-demo.svg");
+ assert.match(chart,/ikke statistikk/i);
+ assert.match(chart,/<title id="title">/);
+ assert.match(chart,/<desc id="description">/);
+ assert.match(process,/ikke dokumentasjon/i);
+ assert.match(process,/<desc id="desc">/);
+});
+test("Interaktive moduler er isolerte, skriptet er gyldig, uten falske meningsmålinger",()=>{
+ const js=read("artikkel-interaktiv.js");
+ assert.doesNotThrow(()=>new Function(js));
+ assert.match(js,/window\.localStorage/);
+ assert.match(js,/data-av-poll-js-required/);
+ assert.match(js,/showModal/);
+ assert.match(js,/data-av-explainer/);
+ assert.doesNotMatch(js,/fetch\s*\(/,"Ingen stemmer sendes til en upåvist server");
+ const css=read("artikkel.css");
+ for(const cls of [".av-poll",".av-tidslinje",".av-graf",".av-infoboks",".av-forklaring-kart",".av-zoom-dialog"]){
+  assert.ok(css.includes(cls),"Manglende modulstil: "+cls);
+ }
+ const template=read("Maler/mal-artikkel.html");
+ assert.match(template,/artikkel-interaktiv\.js/);
+ assert.match(template,/redaksjon\/artikkel-demo\.html/);
+ assert.match(template,/id="av-zoom-dialog"/);
+ assert.match(read("redaksjon/LEVENDE-ARTIKLER.md"),/GitHub Pages/);
+});
