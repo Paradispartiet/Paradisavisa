@@ -54,7 +54,9 @@ def kontroller_kilde(item: dict) -> tuple[str, str, str, dt.date, dt.date, str]:
     ):
         raise ValueError("Ugyldig redaksjonelt speechText")
     published = streng_dato(item.get("date"))
-    expires = streng_dato(item["expires"]) if item.get("expires") else published + dt.timedelta(days=6)
+    # Tre kalenderdager er standard; eksplisitt redaksjonelt utløp
+    # kan kortes ned eller forlenges til maks sju kalenderdager.
+    expires = streng_dato(item["expires"]) if item.get("expires") else published + dt.timedelta(days=2)
     expires = min(expires, published + dt.timedelta(days=6))
     if expires < published:
         raise ValueError("Notisens utløpsdato er før publiseringsdato")

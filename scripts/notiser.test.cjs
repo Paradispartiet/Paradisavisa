@@ -14,13 +14,27 @@ const fersk = (note, now = new Date(2026, 10, 9)) => vm.runInContext("isNotisAkt
 test("Datofilter skjuler gamle, udaterte, fremtidige og ugyldige notiser", () => {
   const note = date => ({ category: "Klima", text: "Kontrollert testnotis", date });
   assert.equal(fersk(note("2026-11-09")), true);
-  assert.equal(fersk(note("2026-11-03")), true);
+  assert.equal(fersk(note("2026-11-08"), new Date(2026, 10, 11)), false);
+  assert.equal(fersk(note("2026-11-03")), false);
   assert.equal(fersk(note("2026-11-02")), false);
   assert.equal(fersk(note("2025-10-24")), false);
   assert.equal(fersk(note("2026-11-10")), false);
   assert.equal(fersk(note("2026-02-30")), false);
   assert.equal(fersk({ text: "Utdatert uten dato" }), false);
 });
+test("Tre kalenderdager er standard, mens godkjent expires kan overstyre", () => {
+  const note = { category:"Vitenskap", text:"Ny forskningssak", date:"2026-11-09" };
+  assert.equal(fersk(note, new Date(2026, 10, 9)), true);
+  assert.equal(fersk(note, new Date(2026, 10, 11)), true);
+  assert.equal(fersk(note, new Date(2026, 10, 12)), false);
+  assert.equal(fersk({ ...note, expires:"2026-11-10" }, new Date(2026, 10, 11)), false);
+  assert.equal(fersk({ ...note, expires:"2026-11-13" }, new Date(2026, 10, 13)), true);
+  assert.equal(fersk({ ...note, expires:"2026-11-15" }, new Date(2026, 10, 15)), true);
+  assert.equal(fersk({ ...note, expires:"2026-11-16" }, new Date(2026, 10, 16)), false,
+    "Sju kalenderdager er en hard grense selv med senere expires");
+  assert.equal(fersk({ ...note, expires:"2026-11-31" }, new Date(2026, 10, 9)), false);
+});
+
 test("Eksplisitt utløpsdato begrenser ytterligere", () => {
   const note = { text: "Tidsavgrenset", date: "2026-11-09", expires: "2026-11-10" };
   assert.equal(fersk(note, new Date(2026, 10, 10)), true);

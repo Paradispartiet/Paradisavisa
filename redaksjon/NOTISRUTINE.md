@@ -32,6 +32,28 @@ Ikke behandl en pressemelding som uavhengig bekreftelse. Ved alvorlige, usikre e
 påstander: oppgi tydelig hvem som hevder hva, og kontroller helst mot flere uavhengige kilder.
 Skriv ikke som om et forslag er et vedtak, en avtale er gjennomført, eller en siktelse er en dom.
 
+## Holdbarhetsregel – vedtatt 11. november 2026
+
+**Standard: tre kalenderdager totalt**, altså publiseringsdagen og de to påfølgende
+dagene. En notis datert 11. november kan derfor normalt leses til og med
+13. november, men er ikke aktuell 14. november.
+
+Redaksjonen kan fastsette `expires` som eksplisitt unntak når hendelsen krever det:
+
+- **1–2 dager:** Ulykker, siktelser, pågående konflikter og andre raskt skiftende hendelser
+  som må sjekkes på nytt før videre bruk.
+- **3 dager (standard):** Vanlige nyheter innen samfunn, politikk, økonomi og sport.
+- **5–7 dager:** Dokumenterte forskningsresultater, større beslutninger og nyheter med
+  varig informasjonsverdi – bare når redaktøren har vurdert sakens aktualitet.
+
+`expires` er en **inkluderende sluttdato** (`YYYY-MM-DD`) og overstyrer
+standardperioden. Selv med `expires` kan notisen vises i høyst **sju kalenderdager**
+fra opprinnelig dato. Ikke flytt `date` for å forlenge levetiden, og ikke bruk maksimal
+utløpstid på alle nyheter. Kontrollér om de faktiske forholdene har endret seg.
+
+Samme regel brukes i notisbåndet, Paradisradioens Web Speech, den daglige rapporten
+og de private lydkandidatene. Den endrer ikke eller publiserer gamle notiser på nytt.
+
 ## 2. Én kildekontrollert notis om gangen
 
 Før en notis blir en ny oppføring i `notiser.json`:
@@ -42,8 +64,10 @@ Før en notis blir en ny oppføring i `notiser.json`:
 4. Legg inn **faktisk** dato i `date` (`YYYY-MM-DD`). Ikke dater en eldre nyhet på nytt.
 5. Bruk stabil, unik `id` for nye notiser. Ved retting: behold samme ID og oppdater
    teksten etter kildesjekk. Endre ikke en gammel sak til en annen sak med samme ID.
-6. Angi `expires` når opplysningen raskt mister aktualitet, f.eks. før en kamp,
-   planlagt møte eller pågående hendelse. Utløpsdatoen er inklusive den angitte dagen.
+6. Utelat `expires` ved normal levetid på tre kalenderdager. Angi
+   `expires` når en konkret nyhet trenger **kortere eller lengre holdbarhet**
+   (maks sju dager), f.eks. før en kamp, ved pågående hendelser eller for
+   forskning og større vedtak. Utløpsdatoen er inklusive den angitte dagen.
 7. Ikke lag `speechText` med andre fakta enn det redaksjonelt godkjente innholdet.
    Dersom uttale krever tilpasning, kontroller at ordlyden bevarer meningen.
 8. Kontroller samme kilde, sak og dato opp mot eksisterende notiser før ny oppføring.
@@ -58,7 +82,6 @@ Før en notis blir en ny oppføring i `notiser.json`:
   "category": "Samferdsel",
   "text": "Kort og dokumentert tekst om en faktisk kontrollert hendelse.",
   "date": "2026-11-11",
-  "expires": "2026-11-14",
   "url": "https://example.org/originalkilde"
 }
 ```

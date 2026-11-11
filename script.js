@@ -216,7 +216,9 @@ function isNotisAktuell(notis, now = new Date()) {
   if (!dato) return false;
   const dagnummer = value => Date.UTC(value.getFullYear(), value.getMonth(), value.getDate()) / 86400000;
   const alder = dagnummer(now) - dagnummer(dato);
-  if (alder < 0 || alder >= 7) return false;
+  // Tre kalenderdager som standard (publiseringsdagen + de to neste).
+  // Redaksjonelt expires kan korte ned eller forlenge til høyst sju dager.
+  if (alder < 0 || alder >= (notis.expires == null ? 3 : 7)) return false;
   if (notis.expires != null) {
     const utloep = parseDato(notis.expires);
     if (!utloep || dagnummer(now) > dagnummer(utloep)) return false;

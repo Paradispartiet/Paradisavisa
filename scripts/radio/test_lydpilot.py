@@ -28,6 +28,15 @@ class PilotTest(unittest.TestCase):
         self.assertFalse(mod.er_aktuell({"text": "Framtid", "date": "2026-11-10"}, d))
         self.assertFalse(mod.er_aktuell({"text": "Udatert"}, d))
 
+    def test_piloten_respekterer_tre_dager_og_redaksjonelle_unntak(self):
+        day = dt.date(2026, 11, 11)
+        note = {"text":"Test", "date":"2026-11-09"}
+        self.assertTrue(mod.er_aktuell(note, day))
+        self.assertFalse(mod.er_aktuell(note, dt.date(2026, 11, 12)))
+        self.assertFalse(mod.er_aktuell({**note, "expires":"2026-11-10"}, day))
+        self.assertTrue(mod.er_aktuell({**note, "expires":"2026-11-14"}, dt.date(2026, 11, 14)))
+        self.assertFalse(mod.er_aktuell({**note, "expires":"2026-11-30"}, dt.date(2026, 11, 16)))
+
     def test_publisert_og_arkiv_bare_uttale(self):
         d = dt.date(2026, 11, 9)
         aktiv = [{"category": "Sport", "text": "Dette er en godkjent sportnotis om norsk landslagssamling.", "date": "2026-11-09"}]
