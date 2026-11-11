@@ -14,7 +14,7 @@ const fersk = (note, now = new Date(2026, 10, 9)) => vm.runInContext("isNotisAkt
 test("Datofilter skjuler gamle, udaterte, fremtidige og ugyldige notiser", () => {
   const note = date => ({ category: "Klima", text: "Kontrollert testnotis", date });
   assert.equal(fersk(note("2026-11-09")), true);
-  assert.equal(fersk(note("2026-11-08")), false);
+  assert.equal(fersk(note("2026-11-08"), new Date(2026, 10, 11)), false);
   assert.equal(fersk(note("2026-11-03")), false);
   assert.equal(fersk(note("2026-11-02")), false);
   assert.equal(fersk(note("2025-10-24")), false);
