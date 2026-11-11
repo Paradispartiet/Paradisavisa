@@ -461,6 +461,7 @@ async function run(){
           (await page.evaluate(()=>window.__notisRadioTest.resumes))===1,
           label+": radioen kan ikke fortsette");
         await page.evaluate(()=>window.__notisRadioTest.utterances[0].onend?.());
+        await page.waitForTimeout(800);
         check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))>=2,
           label+": nyhetsradioen går ikke videre til neste notis");
         await radiopause.click();
