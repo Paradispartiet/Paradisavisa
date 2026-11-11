@@ -1,12 +1,20 @@
 [
   {
-  "title": "Sjelesorg – stillheten som samtale",
-  "excerpt": "En lavmælt og presis roman om nærhet, tro og etikk. Dag Johan Haugerud viser hvordan samtalen kan være både trøst og prøvestein.",
-  "image": "Bilder/Kultur/SJELESORG-illustrasjon.JPG",
-  "position": "center 85%",
-  "url": "artikler/2025-10-24-sjelesorg-stillheten-som-samtale.html",
-  "date": "2025-10-24"
-},
+    "title": "Filmanbefaling: Surplus – markedet som aldri sier nok",
+    "excerpt": "En svensk dokumentar fra 2003 bruker reklamens egne virkemidler til å stille et ubehagelig spørsmål: Blir vi lykkeligere av å kjøpe mer?",
+    "image": "Bilder/Kultur/2026-11-11-surplus-forbruk.svg",
+    "position": "center center",
+    "url": "artikler/2026-11-11-surplus-filmanbefaling.html",
+    "date": "2026-11-11"
+  },
+  {
+    "title": "Sjelesorg – stillheten som samtale",
+    "excerpt": "En lavmælt og presis roman om nærhet, tro og etikk. Dag Johan Haugerud viser hvordan samtalen kan være både trøst og prøvestein.",
+    "image": "Bilder/Kultur/SJELESORG-illustrasjon.JPG",
+    "position": "center 85%",
+    "url": "artikler/2025-10-24-sjelesorg-stillheten-som-samtale.html",
+    "date": "2025-10-24"
+  },
   {
     "title": "Kulturkirke for hvem?",
     "excerpt": "23 millioner til fellesskap – men Sofienberg kirke leies ut som selskapslokale.",
@@ -26,7 +34,7 @@
     "title": "Grafisk memoar: Majorstua (Blue Master)",
     "excerpt": "Plakatserien som fanger bydelens rytme og røykfrie nostalgi.",
     "image": "Bilder/kunst-lokka.PNG",
-"position": "center bottom",
+    "position": "center bottom",
     "url": "artikler/2025-10-08-grafisk-memoar-majorstua.html",
     "date": "2025-10-08"
   }
