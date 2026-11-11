@@ -12,9 +12,9 @@
   <link rel="icon" type="image/webp" href="assets/logo-paradisavisa.webp">
   <link rel="stylesheet" href="styles.css?v=41">
   <link rel="stylesheet" href="avisdesign.css?v=5">
-  <link rel="stylesheet" href="radio.css?v=1">
-  <script defer src="script.js?v=37"></script>
-  <script defer src="radio-player.js?v=1"></script>
+  <link rel="stylesheet" href="radio.css?v=2">
+  <script defer src="script.js?v=38"></script>
+  <script defer src="radio-player.js?v=2"></script>
 </head>
 <body class="notiser-side radio-side">
   <a class="hopp-til-innhold" href="#hovedinnhold">Hopp til radiospilleren</a>
@@ -44,22 +44,30 @@
       </div>
 
       <div class="radio-transport" role="group" aria-label="Avspillingskontroller">
-        <button type="button" data-radio="previous" aria-label="Forrige nyhet" disabled> <span aria-hidden="true">◀◀</span><span>Forrige</span></button>
+        <button type="button" data-radio="previous" aria-label="Forrige nyhet" disabled><span aria-hidden="true">⏮</span><span>Forrige</span></button>
         <button type="button" data-radio="play" class="radio-primar" disabled>▶ Spill</button>
-        <button type="button" data-radio="pause" disabled>Ⅱ Pause</button>
-        <button type="button" data-radio="next" aria-label="Neste nyhet" disabled><span>Neste</span><span aria-hidden="true">▶▶</span></button>
-        <button type="button" data-radio="stop" disabled>■ Stopp</button>
+        <button type="button" data-radio="next" aria-label="Neste nyhet" disabled><span>Neste</span><span aria-hidden="true">⏭</span></button>
       </div>
 
       <p data-radio="status" class="radio-status" role="status" aria-live="polite">Henter aktuelle nyheter …</p>
-      <button type="button" id="paradisradio-kontroller" class="radio-innstillinger-knapp">Velg norsk stemme <span aria-hidden="true">⚙</span></button>
+      <div class="radio-innstillingsrad">
+        <div class="radio-stemmegruppe">
+          <label for="paradisradio-stemme">Norsk opplesningsstemme</label>
+          <select id="paradisradio-stemme" data-radio="voice" disabled>
+            <option value="">Automatisk norsk stemme</option>
+          </select>
+          <p data-radio="voice-status" class="radio-stemmehjelp">Henter tilgjengelige systemstemmer …</p>
+        </div>
+        <button type="button" data-radio="stop" class="radio-stopp" disabled>■ Stopp radio</button>
+      </div>
 
       <div class="radio-spilleliste">
         <div class="radio-spilleliste-hode">
-          <h2>Neste nyheter</h2>
+          <h2>Spilleliste</h2>
           <span data-radio="count">Henter …</span>
         </div>
-        <ol data-radio="playlist" aria-label="Aktuelle nyheter i spillelisten"></ol>
+        <p class="radio-ko-hjelp">Trykk på en nyhet for å høre den.</p>
+        <ol data-radio="playlist" aria-label="Trykk for å spille en nyhet"></ol>
       </div>
     </section>
 
