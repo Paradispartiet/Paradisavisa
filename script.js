@@ -729,7 +729,7 @@ function loadNotiser() {
           }, mellomNyheterMs);
         };
         ytring.onerror = event => {
-          if (!radioAktiv || versjon !== radioVersjon) return;
+          if (!radioAktiv || versjon !== radioVersjon || radioOvergangTimeout !== null) return;
           // Programmatisk neste/forrige/stopp øker radioVersjon og treffer ikke her.
           // Safari kan ellers sende interrupted/canceled mens brukerens radio ser aktiv ut.
           if (event?.error === "canceled" || event?.error === "interrupted") {
