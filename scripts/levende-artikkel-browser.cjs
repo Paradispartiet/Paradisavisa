@@ -112,7 +112,48 @@ async function run(){
       assert.equal(await bankPoll.locator("form").isVisible(),false);
       assert.deepEqual(errors,[],name+": feil på virkelig bankfeature");
       await page.screenshot({path:path.join(root,"qa-screenshots","bankfeature-levende-"+name+".png"),fullPage:true});
+
+      // Andre virkelige pilot: KI-debatt med dokumenterte lenker og forklaringsgrafikk.
+      await page.goto(base+"/artikler/2026-11-11-maskinene-laerer-aa-skrive.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Når maskinene lærer å skrive/);
+      const dimensionsDebatt=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(dimensionsDebatt.width<=dimensionsDebatt.viewport+2,name+": KI-debatt har sidelengs scroll "+JSON.stringify(dimensionsDebatt));
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      assert.equal(await page.locator("figure.hero img").count(),1);
+      assert.equal(await page.locator("figure.av-skriveprosess-figur img").count(),1);
+      assert.ok(await page.locator(".av-kilde-note a").count()>=4);
+      assert.ok(await page.locator(".av-kilder-samlet li").count()>=8);
+      const debattImages=page.locator("article img");
+      for(let i=0;i<await debattImages.count();i++){
+        await debattImages.nth(i).scrollIntoViewIfNeeded();
+        await page.waitForFunction(index=>{
+          const img=document.querySelectorAll("article img")[index];
+          return Boolean(img&&img.complete&&img.naturalWidth>0);
+        },i,{timeout:15000});
+      }
+      const debateDetails=page.locator("details.av-infoboks");
+      await debateDetails.locator("summary").click();
+      assert.equal(await debateDetails.getAttribute("open"),"");
+      await page.locator('button[data-av-step="kontroll"]').click();
+      assert.equal(await page.locator('[data-av-panel="kontroll"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="ide"]').isVisible(),false);
+      await page.getByRole("link",{name:"Forstørr forklaringsgrafikken"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/skriveprosess-forklaringsgrafikk\\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),false);
+      const debatePoll=page.locator('[data-av-poll="ki-skriving-aapenhet-2026"]');
+      assert.equal(await debatePoll.locator("form").isVisible(),true);
+      await debatePoll.locator('input[value="aapenhet"]').check();
+      await debatePoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await debatePoll.locator("[data-av-poll-result]").innerText(),/Åpenhet om bruk av KI/);
+      assert.equal(await debatePoll.locator("form").isVisible(),false);
+      await page.reload({waitUntil:"load"});
+      assert.match(await debatePoll.locator("[data-av-poll-result]").innerText(),/Åpenhet om bruk av KI/);
+      assert.deepEqual(errors,[],name+": feil i KI-debatt");
+      await page.screenshot({path:path.join(root,"qa-screenshots","ki-debatt-levende-"+name+".png"),fullPage:true});
       await context.close();
+      console.log("OK: KI-debatt på "+name+" med kilder, grafikk, forklarer og lokal poll");
       console.log("OK: bankfeature på "+name+" med graf, kilder, tidslinje, forklarer og poll");
       console.log("OK: levende artikkel på "+name+" ("+viewport.width+" px)");
     }
@@ -126,6 +167,12 @@ async function run(){
     await page.locator("details.av-infoboks summary").click();
     assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
     assert.equal(await page.getByRole("link",{name:"Forstørr grafen"}).getAttribute("href"),"demomateriell/graf-demo.svg");
+    await page.goto(base+"/artikler/2026-11-11-maskinene-laerer-aa-skrive.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="ki-skriving-aapenhet-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="ki-skriving-aapenhet-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="ide"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="kontroll"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr forklaringsgrafikken"}).getAttribute("href"),/skriveprosess-forklaringsgrafikk\\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
