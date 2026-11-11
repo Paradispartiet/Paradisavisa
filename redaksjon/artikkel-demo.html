@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="nb" class="av-artikkelside"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#050505">
+<title>Levende artikkel – redaksjonell demonstrasjon | Paradisavisa</title>
+<link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="../artikkel.css">
+</head><body>
+<header class="av-artikkel-topp"><a href="../index.html">PARADISAVISA</a><span>Objektivt sett, fra vår synsvinkel.</span></header>
+<main><article class="av-artikkel">
+<header class="av-artikkel-ingang">
+  <p class="av-kategori">Internt redaksjonelt eksempel · Ikke publisert artikkel</p>
+  <h1>En artikkel skal kunne leses – og utforskes</h1>
+  <p class="av-ingress">Dette er en fungerende demonstrasjon av Paradisavisas felles artikkelutforming. Avstemning, faktaboks, forstørrbar graf, tidslinje og forklaringssteg vises sammen uten å miste en rolig leserytme.</p>
+  <p class="av-byline">Paradisavisas redaksjonelle demomal · 11. november 2026 · Illustrerte eksempler, ikke journalistikk</p>
+</header>
+<figure class="av-figur av-hovedbilde">
+ <img src="demomateriell/prosess-demo.svg" width="1200" height="675" alt="Tre illustrerte steg: undersøkelse, drøfting og beslutning." loading="eager">
+ <figcaption>Illustrativ forklaringsgrafikk laget for å vise bildestilen. Dette er ikke dokumentasjon fra en konkret plansak.</figcaption>
+</figure>
+
+<div class="av-prosa">
+ <div class="av-avsnitt"><p>Den beste artikkelen har én tydelig fortelling, men gir leseren muligheten til å gå dypere. Et tall kan få sin egen graf. En tidsrekke kan utforskes steg for steg. Et komplisert begrep kan forklares uten at hovedteksten stopper opp.</p></div>
+ <div class="av-avsnitt"><p>Også kildene hører til leseflyten: under et faktabærende avsnitt kan vi gi en kort, synlig henvisning i stedet for å samle all dokumentasjon nederst. Se <a href="ARTIKKELSTANDARD.md">den kanoniske artikkelstandarden</a> for konkrete regler.</p><p class="av-kilde-note">Redaksjonell standard: <a href="ARTIKKELSTANDARD.md">ARTIKKELSTANDARD.md</a> (internt eksempel på en avsnittskilde).</p></div>
+</div>
+
+<details class="av-infoboks">
+ <summary>Hva betyr «kanonisk artikkelmal»?</summary>
+ <div class="av-infoboks-innhold">
+  <p>Det betyr at alle sjangrene bruker samme lesestruktur og komponenter. Det er teksten, dokumentasjonen og det redaksjonelle behovet som bestemmer hvilke moduler som faktisk legges inn.</p>
+  <p>Faktaboksen kan åpnes med berøring, mus eller tastatur. Den skjuler forklaringen uten å fjerne den fra artikkelen.</p>
+ </div>
+</details>
+
+<div class="av-prosa"><div class="av-avsnitt"><p>En avstemning kan få leseren til å reflektere. Samtidig må avisa være åpen om hva et slikt skjema faktisk registrerer. På en statisk side kan vi demonstrere et personlig valg uten å påstå at det finnes en felles opptelling.</p></div></div>
+<section class="av-modul av-poll" data-av-poll="redaksjon-demo-tema" aria-labelledby="av-demo-poll-title">
+ <header><h2 id="av-demo-poll-title">Hva ville du utforsket videre?</h2>
+ <p class="av-modul-intro">Demonstrasjonsavstemning. Valget lagres bare i denne nettleseren. Det sendes ikke inn, og det vises ingen felles resultater.</p></header>
+ <p data-av-poll-js-required class="av-modul-kilde">Denne demonstrasjonsavstemningen trenger JavaScript. Den er ikke en offentlig opptelling.</p>
+ <form hidden>
+  <fieldset><legend>Velg ett tema</legend>
+   <label><input type="radio" name="choice" value="kilder"><span>Kilder og dokumentasjon</span></label>
+   <label><input type="radio" name="choice" value="graf"><span>Tall og grafer</span></label>
+   <label><input type="radio" name="choice" value="bakgrunn"><span>Bakgrunn og forklaringer</span></label>
+  </fieldset>
+  <p data-av-poll-error role="alert"></p>
+  <button type="submit" class="av-interaksjon-btn">Vis mitt svar</button>
+ </form>
+ <div class="av-poll-svar" data-av-poll-result hidden role="status" aria-live="polite">
+  <p>Du valgte: <strong data-av-poll-choice></strong></p>
+  <p>Ditt svar er ikke sendt til noen offentlig opptelling.</p>
+  <button type="button" class="av-interaksjon-btn av-interaksjon-btn--sekundaer" data-av-poll-change>Endre svaret</button>
+ </div>
+</section>
+
+<div class="av-prosa"><div class="av-avsnitt"><p>Når en graf ligger i teksten, skal den tåle et raskt blikk på en iPad – men også kunne forstørres og leses med datatabell. Den må ha tittel, enhet, dato og en oppgitt kilde til de faktiske verdiene.</p></div></div>
+<figure class="av-graf" id="demograf">
+ <h2>En graf som kan forstørres</h2>
+ <img src="demomateriell/graf-demo.svg" width="1000" height="600" alt="Demo-graf: illustrative verdier 4, 7 og 10 i årene 2024, 2025 og 2026. Dette er ikke reelle data." loading="lazy">
+ <figcaption>Dette er oppdiktede eksempelverdier som bare viser grafens utforming – <strong>ikke en faktisk statistikkserie.</strong></figcaption>
+ <div class="av-graf-kontroller">
+  <a class="av-zoom-knapp" href="demomateriell/graf-demo.svg" data-av-zoom>Forstørr grafen</a>
+ </div>
+ <details><summary>Vis tallene som tabell</summary><div class="av-tabell-rull"><table class="av-datatabell"><caption>Illustrative, oppdiktede demoverdier</caption><thead><tr><th scope="col">År</th><th scope="col">Eksempelverdi</th></tr></thead><tbody><tr><th scope="row">2024</th><td>4</td></tr><tr><th scope="row">2025</th><td>7</td></tr><tr><th scope="row">2026</th><td>10</td></tr></tbody></table></div></details>
+ <p class="av-modul-kilde">Kilde: Illustrasjonsdata skrevet til denne demoen. Ingen reell datakilde.</p>
+</figure>
+
+<div class="av-prosa"><div class="av-avsnitt"><p>En tidslinje kan samle dokumenterte hendelser uten å gjøre alle datoene til mellomtitler. Leseren kan åpne de hendelsene som trenger forklaring, og la resten stå sammenfoldet.</p></div></div>
+<section class="av-modul" aria-labelledby="demo-timeline-title">
+ <h2 id="demo-timeline-title">Tidslinje: Slik bygges en artikkel</h2>
+ <p class="av-modul-intro">Demonstrasjonstrinn – ikke en historisk tidslinje.</p>
+ <ol class="av-tidslinje">
+  <li><details open><summary><time>Steg 1</time>Undersøk hendelsen</summary><p>Finn dokumenter og bekreft hva som faktisk er kjent. Oppgi kilde når tidslinjen beskriver en reell hendelse.</p></details></li>
+  <li><details><summary><time>Steg 2</time>Sett opplysningene i sammenheng</summary><p>Forklar bakgrunn, motforestillinger og uavklarte spørsmål. Ikke gjør en hypotese til faktum.</p></details></li>
+  <li><details><summary><time>Steg 3</time>Vis konsekvens og oppfølging</summary><p>Skill mellom vedtak, foreslåtte tiltak og det som faktisk har skjedd etterpå.</p></details></li>
+ </ol>
+</section>
+
+<div class="av-prosa"><div class="av-avsnitt"><p>Noen ganger er det ikke en kronologi leseren trenger, men forståelse av hvordan en mekanisme virker. Da kan en trinnvis forklaring gi mer enn enda et avsnitt.</p></div></div>
+<section class="av-modul" data-av-explainer aria-labelledby="demo-process-title">
+ <h2 id="demo-process-title">Utforsk forklaringen trinn for trinn</h2>
+ <p class="av-modul-intro">Trykk på hvert steg for å se hva leseren trenger å forstå. Alle stegene er lesbare også uten JavaScript.</p>
+ <div class="av-forklaring-kart" role="group" aria-label="Velg forklaringssteg">
+  <button type="button" data-av-step="1">1. Undersøk</button>
+  <button type="button" data-av-step="2">2. Drøft</button>
+  <button type="button" data-av-step="3">3. Beslutt</button>
+ </div>
+ <div class="av-forklaring-panel" data-av-panel="1"><strong>Undersøk:</strong> Begynn med dokumenterbare observasjoner og oppgi hvilke forhold som ennå er usikre.</div>
+ <div class="av-forklaring-panel" data-av-panel="2"><strong>Drøft:</strong> La leseren se relevante perspektiver og interessekonflikter uten å forveksle dem med bevis.</div>
+ <div class="av-forklaring-panel" data-av-panel="3"><strong>Beslutt:</strong> Vis hva aktørene kan avgjøre, hvilke rammer som gjelder, og hva utfallet betyr.</div>
+</section>
+
+<div class="av-prosa">
+ <div class="av-avsnitt"><p>Ikke alle artikler trenger alle modulene. Et godt oppslag kan bestå av en sterk tekst, et meningsbærende bilde og noen presise kildelenker. En lang forklaringssak kan bruke flere moduler, men bare når de gir leseren mer å forstå.</p></div>
+ <section class="av-kilder-samlet" aria-labelledby="demo-kilder">
+  <h2 id="demo-kilder">Dokumentasjon for denne demonstrasjonen</h2>
+  <ul><li><a href="ARTIKKELSTANDARD.md">Paradisavisas artikkelstandard</a></li><li><a href="BILDEHANDBOK.md">Paradisavisas bildehåndbok</a></li></ul>
+  <p class="av-redaksjonell-note">Alle eksempler og tall er laget for demonstrasjonen. Avstemningen er lokal; den teller ikke stemmer fra andre lesere.</p>
+ </section>
+</div>
+</article></main>
+<footer class="av-artikkel-footer"><a href="../index.html">Til Paradisavisas forside</a></footer>
+<dialog id="av-zoom-dialog" class="av-zoom-dialog" aria-label="Forstørret graf">
+ <button type="button" data-av-zoom-close>Lukk <span aria-hidden="true">×</span></button>
+ <img data-av-zoom-image alt=""><p data-av-zoom-caption></p>
+</dialog>
+<script src="../artikkel-interaktiv.js" defer></script>
+</body></html>

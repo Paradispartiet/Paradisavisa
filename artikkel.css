@@ -1,0 +1,138 @@
+/* Kanonisk artikkelstil for nye artikler. Isolert fra forside, arkiv og eldre artikler. */
+.av-artikkelside{color-scheme:dark;background:#050505;color:#f4f1e9}
+.av-artikkelside body{margin:0;background:#050505;color:#f4f1e9;font-family:Georgia,"Times New Roman",serif}
+.av-artikkelside *{box-sizing:border-box}
+.av-artikkelside a{color:#ffda58;text-decoration:underline;text-underline-offset:.18em;text-decoration-thickness:.07em}
+.av-artikkelside a:hover,.av-artikkelside a:focus-visible{color:#fff}
+.av-artikkelside a:focus-visible{outline:2px solid #ffe075;outline-offset:3px}
+.av-artikkel-topp{padding:1.15rem clamp(1.1rem,4vw,2.1rem);border-bottom:1px solid #3e3b35}
+.av-artikkel-topp>a{display:block;max-width:65rem;margin:auto;color:#ffda58;text-decoration:none;font:800 clamp(1.8rem,5vw,3rem)/1.05 Georgia,serif;letter-spacing:-.035em}
+.av-artikkel-topp>span{display:block;max-width:65rem;margin:.4rem auto 0;font:400 .8rem/1.45 system-ui,sans-serif;color:#c5beb1}
+.av-artikkelside main{max-width:100%;margin:0 auto;padding:clamp(1.2rem,4vw,2.8rem) 1.25rem 5rem}
+.av-artikkelside article.av-artikkel{max-width:65rem;margin:0 auto;padding:0;font:inherit;line-height:inherit;color:inherit}
+.av-artikkel-ingang{max-width:53rem;margin:0 auto}
+.av-artikkel .av-kategori{font:800 .78rem/1.4 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#ffda58;margin:0 0 1.1rem}
+.av-artikkel h1{margin:0 0 .55em;font:800 clamp(2.35rem,6vw,4.7rem)/1.07 Georgia,serif;letter-spacing:-.035em;color:#fff;overflow-wrap:break-word}
+.av-artikkel .av-ingress{margin:0 0 1.2rem;font:400 clamp(1.22rem,2.5vw,1.75rem)/1.43 Georgia,serif;color:#eee5d6}
+.av-artikkel .av-byline{padding:.9rem 0;margin:1.25rem 0 1.5rem;border-block:1px solid #454138;font:400 .86rem/1.5 system-ui,sans-serif;color:#cbc4b9}
+.av-artikkel .av-figur{max-width:53rem;margin:clamp(1.6rem,4vw,2.5rem) auto;padding:0}
+.av-artikkel .av-figur img{display:block;max-width:100%;height:auto;margin:auto;border-radius:4px;object-fit:contain;background:#050505}
+.av-artikkel .av-hovedbilde img{width:100%;max-height:min(65vh,38rem)}
+.av-artikkel .av-mellombilde img{width:100%;max-height:min(65vh,34rem)}
+.av-artikkel .av-figur figcaption{max-width:49rem;margin:.6rem auto 0;color:#c2b9ac;font:400 .86rem/1.55 system-ui,sans-serif}
+.av-artikkel .av-prosa{max-width:46rem;margin:2.5rem auto 0;font:400 clamp(1.12rem,1.7vw,1.35rem)/1.75 Georgia,"Times New Roman",serif;color:#f4f0e8}
+.av-artikkel .av-avsnitt{margin:0 0 1.55rem}
+.av-artikkel .av-avsnitt>p{margin:0}
+.av-artikkel .av-kilde-note{margin-top:.5rem!important;color:#c4bdae;font:400 .85rem/1.55 system-ui,sans-serif}
+.av-artikkel .av-kilde-note a{color:#ffe08b}
+.av-artikkel .av-prosa h2{margin:2.25rem 0 .85rem;font:700 clamp(1.4rem,2vw,1.8rem)/1.3 Georgia,serif;color:#fff}
+.av-artikkel .av-prosa blockquote{margin:2rem 0;padding:.35rem 1.25rem;border-left:3px solid #f3d04f;color:#f5dea0}
+.av-artikkel .av-kilder-samlet{margin-top:3.5rem;padding-top:1.4rem;border-top:1px solid #494338}
+.av-artikkel .av-kilder-samlet h2{margin:0 0 .8rem;font:700 1.25rem/1.3 Georgia,serif;color:#fff}
+.av-artikkel .av-kilder-samlet ul{margin:0 0 1.25rem;padding-left:1.25rem;font:400 .92rem/1.6 system-ui,sans-serif}
+.av-artikkel .av-kilder-samlet li{margin-bottom:.65rem}
+.av-artikkel .av-redaksjonell-note{color:#c4bdae;font:400 .86rem/1.6 system-ui,sans-serif}
+.av-artikkel-footer{padding:1.7rem;text-align:center;border-top:1px solid #454138;font:400 .85rem/1.6 system-ui,sans-serif}
+@media(max-width:600px){
+ .av-artikkelside main{padding:1.45rem 1rem 3.5rem}
+ .av-artikkel .av-byline{font-size:.8rem}
+ .av-artikkel .av-prosa{margin-top:1.8rem;line-height:1.7}
+ .av-artikkel .av-hovedbilde img{max-height:55vh}
+ .av-artikkel .av-figur figcaption{font-size:.82rem}
+ .av-artikkel .av-kilde-note{font-size:.81rem}
+}
+
+
+/* -----------------------------------------------------------
+   Levende artikkelmoduler: alle fungerer i én lesesøyle.
+   Moduler er redaksjonelle valg, ikke obligatorisk pynt.
+   ----------------------------------------------------------- */
+.av-artikkel .av-modul{max-width:53rem;margin:2.7rem auto;padding:clamp(1rem,3vw,1.7rem);background:#11110f;border:1px solid #514a3b;border-radius:8px;color:#f4f0e8}
+.av-artikkel .av-modul>h2,.av-artikkel .av-modul>header h2{font:700 clamp(1.3rem,2vw,1.7rem)/1.25 Georgia,serif;margin:0 0 .65rem;color:#fff}
+.av-artikkel .av-modul p{margin:0 0 .9rem}
+.av-artikkel .av-modul .av-modul-intro{font:400 .98rem/1.6 system-ui,sans-serif;color:#dad3c5}
+.av-artikkel .av-modul small,.av-artikkel .av-modul .av-modul-kilde{display:block;color:#c8c0b1;font:400 .83rem/1.55 system-ui,sans-serif;margin:.85rem 0 0}
+.av-artikkel .av-modul .av-modul-kilde a{color:#ffdf82}
+.av-artikkel .av-interaksjon-btn,.av-artikkel .av-zoom-knapp{font:700 .94rem/1.2 system-ui,sans-serif;color:#090909;background:#ffdb57;border:1px solid #ffdb57;border-radius:5px;cursor:pointer;padding:.78rem 1rem;min-height:44px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.4rem}
+.av-artikkel .av-interaksjon-btn:hover,.av-artikkel .av-zoom-knapp:hover{background:#fff;color:#060606}
+.av-artikkel .av-interaksjon-btn:focus-visible,.av-artikkel .av-zoom-knapp:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.av-artikkel .av-interaksjon-btn--sekundaer{background:transparent;color:#ffe48b;border-color:#7a715d}
+.av-artikkel .av-interaksjon-btn--sekundaer:hover{background:#252218;color:#fff}
+
+/* Foldable fact/context boxes, native details/summary. */
+.av-artikkel details.av-infoboks{max-width:46rem;margin:2rem auto;border:1px solid #615843;background:#13120e;border-radius:7px;overflow:hidden;font:400 1rem/1.55 system-ui,sans-serif}
+.av-artikkel .av-infoboks summary{list-style:none;cursor:pointer;padding:1.05rem 1.25rem;display:flex;align-items:center;gap:.8rem;font-weight:750;color:#ffe28b}
+.av-artikkel .av-infoboks summary::-webkit-details-marker{display:none}
+.av-artikkel .av-infoboks summary::after{content:"+";margin-left:auto;font-weight:400;font-size:1.5rem;line-height:1}
+.av-artikkel .av-infoboks[open] summary::after{content:"−"}
+.av-artikkel .av-infoboks summary:focus-visible{outline:3px solid #ffe48b;outline-offset:-3px}
+.av-artikkel .av-infoboks-innhold{padding:0 1.25rem 1.25rem;color:#e7e0d4}
+.av-artikkel .av-infoboks-innhold p{margin:0 0 .7rem}
+.av-artikkel .av-infoboks-innhold ul{margin:.4rem 0;padding-left:1.3rem}
+
+/* Polls show only the reader's own answer, never invented percentages. */
+.av-artikkel .av-poll fieldset{border:0;margin:1rem 0 1.2rem;padding:0;min-width:0}
+.av-artikkel .av-poll legend{font:750 1.06rem/1.5 system-ui,sans-serif;margin-bottom:.8rem}
+.av-artikkel .av-poll label{display:flex;align-items:center;gap:.7rem;border:1px solid #645d4c;border-radius:6px;padding:.9rem .95rem;margin:.55rem 0;cursor:pointer;color:#f6f2eb;font:500 .98rem/1.35 system-ui,sans-serif}
+.av-artikkel .av-poll label:hover{background:#222017}
+.av-artikkel .av-poll label:has(input:checked){border-color:#ffdc69;background:#26210f}
+.av-artikkel .av-poll input[type="radio"]{accent-color:#ffd54d;inline-size:1.2rem;block-size:1.2rem;flex:0 0 auto}
+.av-artikkel .av-poll .av-poll-svar{border-left:3px solid #ffdd62;padding:1rem;background:#201d15;font:400 .98rem/1.6 system-ui,sans-serif}
+.av-artikkel .av-poll .av-poll-svar strong{color:#ffe28b}
+.av-artikkel .av-poll [data-av-poll-error]{color:#ffb2a5;font:500 .87rem/1.45 system-ui,sans-serif}
+.av-artikkel [hidden]{display:none!important}
+
+/* Expandable graphs, with readable caption, source and a data table. */
+.av-artikkel figure.av-graf{max-width:53rem;margin:2.6rem auto;background:#11110f;border:1px solid #554e3f;border-radius:8px;padding:clamp(.8rem,2vw,1.3rem)}
+.av-artikkel .av-graf>h2{font:700 1.45rem/1.3 Georgia,serif;margin:0 0 .8rem;color:#fff}
+.av-artikkel .av-graf img{display:block;max-width:100%;height:auto;max-height:24rem;margin:0 auto 1rem;border-radius:4px}
+.av-artikkel .av-graf figcaption{font:400 .88rem/1.55 system-ui,sans-serif;color:#d0c8b8}
+.av-artikkel .av-graf .av-graf-kontroller{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;margin:1.1rem 0 0}
+.av-artikkel .av-graf details{font:400 .88rem/1.5 system-ui,sans-serif;margin-top:1rem}
+.av-artikkel .av-graf details summary{color:#ffe28b;cursor:pointer;font-weight:700}
+.av-artikkel .av-tabell-rull{overflow-x:auto;max-width:100%;margin-top:.7rem}
+.av-artikkel table.av-datatabell{width:100%;border-collapse:collapse;font:400 .88rem/1.5 system-ui,sans-serif}
+.av-artikkel .av-datatabell th,.av-artikkel .av-datatabell td{border-bottom:1px solid #514b3e;padding:.6rem;text-align:left}
+.av-artikkel .av-datatabell th{font-weight:750;color:#ffe28b}
+.av-zoom-dialog{border:1px solid #756a50;border-radius:8px;background:#0a0a09;color:#f8f5ec;width:min(96vw,1300px);max-width:96vw;max-height:94vh;padding:1rem;overflow:auto}
+.av-zoom-dialog::backdrop{background:rgba(0,0,0,.9)}
+.av-zoom-dialog img{display:block;width:100%;height:auto;max-height:75vh;object-fit:contain;margin:1rem auto}
+.av-zoom-dialog p{font:400 .9rem/1.55 system-ui,sans-serif;color:#d1c8b7}
+.av-zoom-dialog button{float:right;background:#ffdc60;color:#070707;border:0;border-radius:5px;min-height:44px;padding:.7rem 1rem;font:700 .9rem system-ui,sans-serif;cursor:pointer}
+.av-zoom-dialog button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+/* Chronological events, individually expandable on touch/keyboard. */
+.av-artikkel .av-tidslinje{padding:0 0 0 1.1rem;margin:1.1rem 0 0;list-style:none;border-left:2px solid #8b7d59}
+.av-artikkel .av-tidslinje li{position:relative;margin:0 0 1.3rem 0}
+.av-artikkel .av-tidslinje li::before{content:"";position:absolute;top:1rem;left:-1.6rem;width:.85rem;height:.85rem;border:2px solid #ffd954;background:#10100e;border-radius:50%}
+.av-artikkel .av-tidslinje details{border-bottom:1px solid #4b4437;padding:.25rem 0 1rem}
+.av-artikkel .av-tidslinje summary{cursor:pointer;font:700 1rem/1.5 system-ui,sans-serif;color:#f6f1e7}
+.av-artikkel .av-tidslinje summary time{color:#ffe08c;display:block;font-size:.84rem;font-weight:600;margin-bottom:.2rem}
+.av-artikkel .av-tidslinje details p{font:400 .96rem/1.65 system-ui,sans-serif;color:#dfd8cb;margin:.7rem 0}
+.av-artikkel .av-tidslinje summary:focus-visible{outline:2px solid #ffe08c;outline-offset:4px}
+
+/* A visual explanatory sequence with keyboard-accessible selectable steps. */
+.av-artikkel .av-forklaring-kart{display:flex;flex-wrap:wrap;align-items:stretch;gap:.5rem;margin:1rem 0}
+.av-artikkel .av-forklaring-kart button{flex:1 1 10rem;min-height:52px;padding:.8rem;background:#262215;border:1px solid #7b6e4f;border-radius:6px;color:#f6ebd1;font:700 .93rem/1.4 system-ui,sans-serif;cursor:pointer}
+.av-artikkel .av-forklaring-kart button[aria-pressed="true"]{background:#ffdb5e;color:#080808;border-color:#ffdb5e}
+.av-artikkel .av-forklaring-kart button:focus-visible{outline:3px solid white;outline-offset:3px}
+.av-artikkel .av-forklaring-panel{border:1px solid #675b45;border-radius:5px;padding:1rem;margin-top:1rem;background:#211e17;font:400 1rem/1.6 system-ui,sans-serif}
+.av-artikkel .av-forklaring-panel strong{color:#ffe28b}
+
+/* Other reusable editorial punctuation: quote, key figures, comparison. */
+.av-artikkel .av-sitatkort{max-width:46rem;margin:2rem auto;padding:1.4rem 1.6rem;border-left:4px solid #ffdb57;background:#16140f;color:#f8e3b0}
+.av-artikkel .av-sitatkort blockquote{margin:0;font:italic 1.45rem/1.45 Georgia,serif}
+.av-artikkel .av-sitatkort figcaption{margin-top:.8rem;font:400 .87rem/1.5 system-ui,sans-serif;color:#d6cabc}
+.av-artikkel .av-nokkeltall{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr));gap:.7rem;margin:1rem 0}
+.av-artikkel .av-nokkeltall>div{padding:1rem;border:1px solid #665f4e;border-radius:6px}
+.av-artikkel .av-nokkeltall strong{display:block;font:800 clamp(1.35rem,3vw,2rem)/1.2 system-ui,sans-serif;color:#ffde72}
+.av-artikkel .av-nokkeltall span{display:block;font:400 .85rem/1.45 system-ui,sans-serif;color:#dad1c2;margin-top:.4rem}
+@media(max-width:600px){
+ .av-artikkel .av-modul{margin:2rem 0;padding:1rem}
+ .av-artikkel .av-graf{margin:2rem 0}
+ .av-artikkel .av-forklaring-kart{flex-direction:column}
+ .av-artikkel .av-forklaring-kart button{flex:0 0 auto}
+}
+@media(prefers-reduced-motion:reduce){
+ .av-artikkel *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
