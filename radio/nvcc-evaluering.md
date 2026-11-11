@@ -1,6 +1,27 @@
 # Norsk stemmesammenligning – NVCC (10. november 2026)
 
-**Status: LYTTETEST AVVIST – KNN OG MNN. IKKE GODKJENT FOR PUBLISERING.**
+## Beslutning 11. november 2026 – legg AI-stemmer på hylla
+
+Redaksjonen velger å **beholde lokal talesyntese (Web Speech / tilgjengelige systemstemmer) som Paradisradioens opplesning**. Den oppleves som stadig bedre, særlig på iPad. Arbeid med alternative, servergenererte MP3-stemmer og modelljakt **settes på pause på ubestemt tid**; ikke start flere stemmepiloter, prøvelyttepaneler eller providerintegrasjoner uten en ny eksplisitt redaksjonell beslutning.
+
+- **Behold:** gjeldende Web Speech-radiokontroller, nyhetsflyt og lokale stemmer.
+- **Ikke gjør:** automatisk bytte til MOSS, NVCC, Vox, Azure eller annen AI-stemme.
+- **Behold i reserve:** eksisterende privat MP3-teknologi, men ikke aktiver offentlig lyd.
+- **Release-gate:** `publicAudioEnabled=false`, `modelRightsStatus=PENDING`, `editorialAudioStatus=PENDING` til eventuell ny uttrykkelig beslutning.
+- **Videre arbeid:** forbedringer av brukeropplevelsen for lokal opplesning (spesielt på iPad), kun ved konkrete feil eller ønsker; ingen ny stemmejakt.
+
+Dette er en produktprioritering, ikke en påstand om at fremtidig syntetisk lyd er juridisk eller teknisk umulig.
+
+**Status: LYTTETEST AVVIST – KNN, MNN, KON OG MON. IKKE GODKJENT FOR PUBLISERING.**
+
+## Oppdatert redaksjonell beslutning – 11. november 2026
+
+Det ble produsert fire private MP3-er i [PR #124](https://github.com/Paradispartiet/Paradisavisa/pull/124) fra to notiser, med stemmene **KON (speaker ID 3)** og **MON (speaker ID 6)**. [Actions-kjøring 43008151696](https://github.com/Paradispartiet/Paradisavisa/actions/runs/43008151696) besto teknisk syntese/MP3-dekoding. Redaksjonens prøvelytting av **samtlige fire klipp** ga følgende tilbakemelding: «Veldig utydelig alle sammen, grøtete, det høres ut som samisk noen ganger, dårlig».
+
+**Konklusjon: KON og MON er avvist**, i tillegg til tidligere avviste KNN og MNN. Ordvalget om samisk gjengir lytterens subjektive inntrykk av uttalen, og er ikke en faktisk språkidentifikasjon eller kvalitetsvurdering av samisk. **Ikke bruk mer tid på å justere eller publisere disse fire stemmene.** PR #124 er lukket uten merge. Ingen endring i `radio/release-gate.json`; eksisterende Web Speech forblir aktiv.
+
+En ny prøve må skifte **stemmemodell / leverandør** og dokumentere forståelig bokmål, nøytral østnorsk nyhetsdiksjon, rettigheter til offentlig potensiell kommersiell lyd, og fungerende iPad-avspilling. At MP3 lar seg dekode er ikke en lyttekvalitetsgodkjenning.
+
 
 ## Redaksjonell lyttetilbakemelding – 10. november 2026
 
