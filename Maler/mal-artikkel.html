@@ -43,6 +43,19 @@
       <figcaption>Hva bildet viser og hvorfor det er relevant. Oppgi fotograf/opphav, lisens eller «KI-assistert redaksjonell illustrasjon, ikke dokumentarfoto».</figcaption>
     </figure>
 
+    <!--
+      LEVENDE ARTIKKELMODULER (VALGFRIE):
+      Velg nøyaktig det som forklarer saken bedre, ikke bruk alle automatisk.
+      • <details class="av-infoboks">: klikkbar faktaboks
+      • <section class="av-modul av-poll" data-av-poll="UNIK_POLL_ID">: lokal demonstrasjonsavstemning
+      • <figure class="av-graf"> med <a data-av-zoom>: forstørrbar kildebelagt graf + datatabell
+      • <section class="av-modul"> med <ol class="av-tidslinje">: utvidbar tidslinje
+      • <section class="av-modul" data-av-explainer>: interaktiv forklaringssekvens
+      • <figure class="av-sitatkort"> og <div class="av-nokkeltall">: sitat/nøkkeltall
+      EKSAKT HTML FOR MODULENE: redaksjon/artikkel-demo.html
+      REGLER, KILDER, ETIKK OG JUSS: redaksjon/LEVENDE-ARTIKLER.md
+      Alle bildefiler og grafer krever ekte opphav, gyldig kilde og tillatelse.
+    -->
     <div class="av-prosa">
       <div class="av-avsnitt">
         <p>Åpningsavsnittet gir leseren hovedpoenget. Når en sentral faktapåstand omtales, kan en <a href="https://www.ssb.no/" rel="noopener noreferrer">relevant originalkilde</a> knyttes til ordene den dokumenterer. BYTT_KILDE_OG_PÅSTAND.</p>
@@ -81,6 +94,13 @@
     </div>
   </article>
 </main>
+<!-- Én modal for store grafer/bilder. Lenker fungerer også dersom JavaScript ikke støttes. -->
+<dialog id="av-zoom-dialog" class="av-zoom-dialog" aria-label="Forstørret graf eller bilde">
+  <button type="button" data-av-zoom-close>Lukk <span aria-hidden="true">×</span></button>
+  <img data-av-zoom-image alt="">
+  <p data-av-zoom-caption></p>
+</dialog>
 <footer class="av-artikkel-footer"><a href="../index.html">Til Paradisavisas forside</a></footer>
+<script src="../artikkel-interaktiv.js" defer></script>
 </body>
 </html>
