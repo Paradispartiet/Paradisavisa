@@ -6,11 +6,9 @@ ikke lisens-, vekt- eller lydkvalitetsgodkjenning.
 """
 from __future__ import annotations
 
-import argparse
 import json
 import os
 import re
-import sys
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
@@ -112,11 +110,6 @@ def evaluate(rows: list[dict]) -> bool:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--require-primary", action="store_true",
-                        help="Stopp den manuelle lydjobben før stor installasjon")
-    args = parser.parse_args()
-
     rows = [check(repo) for repo in REPOSITORIES]
     ready = evaluate(rows)
     print(json.dumps({"canAttemptPrivateMoss": ready, "models": rows},
@@ -134,8 +127,8 @@ def main() -> int:
                 output.write("- `" + row["repository"] + "`: **" + row["access"] + "**\n")
             output.write("\n" + msg + "\n")
 
-    return 2 if args.require_primary and not ready else 0
+    return 0  # Diagnostikk er ikke lisens- eller publiseringsgodkjenning
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())
