@@ -11,7 +11,7 @@ test("Bankartikkelen beholder identitet, publiseringsdato og originalbilder",()=
  assert.match(html,/feature06-bankene-hovedbilde-2026\.webp/);
  assert.match(html,/feature06-bankene-sekundaerillustrasjon-2026\.webp/);
  assert.match(html,/class="av-artikkel"/);
- assert.match(html,/href="\.\.\/artikkel\.css"/);
+ assert.match(html,/href="\.\.\/artikkel\.css\?v=20261111b"/);
  assert.match(html,/artikkel-interaktiv\.js/);
  assert.match(html,/class="av-prosa"/);
  assert.equal((html.match(/<h1\b/g)||[]).length,1);
