@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="t d">
+<title id="t">To teatersteder – midlertidig hovedscene på Tøyen og hovedscene tilbake i sentrum</title>
+<desc id="d">Konseptuell forklaringsgrafikk av regjeringens plan fra 10. november 2026. Under rehabiliteringen er Gamle Munch på Tøyen planlagt som midlertidig hovedscene. Etter rehabiliteringen skal Nationaltheatrets hovedscene tilbake til sentrum, mens Gamle Munch skal huse permanente biscener. Grafikken viser roller, ikke arkitekttegninger eller faktiske bygg.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#10141a"/><stop offset="1" stop-color="#171318"/></linearGradient>
+<linearGradient id="stage" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#4f2530"/><stop offset="1" stop-color="#2c1725"/></linearGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<text x="78" y="97" fill="#fff5e2" font-family="Georgia,serif" font-size="58" font-weight="700">Nationaltheatret får to teatersteder</text>
+<text x="78" y="151" fill="#cfc4b5" font-family="Arial,sans-serif" font-size="27">Slik beskriver regjeringen den planlagte bruken før og etter rehabiliteringen</text>
+<line x1="800" x2="800" y1="198" y2="735" stroke="#615649" stroke-width="3" stroke-dasharray="9 14"/>
+<g font-family="Arial,sans-serif">
+<text x="85" y="226" fill="#ffe08a" font-size="28" font-weight="750">UNDER REHABILITERINGEN</text>
+<text x="870" y="226" fill="#ffe08a" font-size="28" font-weight="750">ETTER REHABILITERINGEN</text>
+</g>
+
+<!-- Left, old museum used for temporary main stage. -->
+<g transform="translate(82 273)">
+<rect x="20" y="65" width="626" height="343" rx="12" fill="#1a2228" stroke="#8bb3ba" stroke-width="5"/>
+<rect x="68" y="135" width="527" height="195" rx="8" fill="url(#stage)" stroke="#b78479" stroke-width="3"/>
+<path d="M68 135 Q170 235 68 330L136 330Q214 232 136 135ZM595 135Q492 238 595 330L525 330Q452 227 525 135Z" fill="#823f4e"/>
+<path d="M258 135L258 330M370 135L370 330" stroke="#b98c87" opacity=".5"/>
+<path d="M210 318Q329 283 448 318" stroke="#e9cb8e" stroke-width="9" fill="none"/>
+<g fill="#f9dc93"><circle cx="202" cy="119" r="9"/><circle cx="330" cy="119" r="9"/><circle cx="458" cy="119" r="9"/></g>
+<text x="333" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#ffffff" font-weight="700">Gamle Munch på Tøyen</text>
+<text x="333" y="458" text-anchor="middle" font-family="Arial,sans-serif" font-size="34" fill="#fff0db" font-weight="750">Midlertidig hovedscene</text>
+<text x="333" y="499" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" fill="#c8c7c6">mens bygget i sentrum settes i stand</text>
+</g>
+
+<!-- Right: two simple schematic stage icons, status after restoration -->
+<g transform="translate(835 273)">
+<g>
+<rect x="22" y="61" width="323" height="345" rx="12" fill="#27231e" stroke="#deb96d" stroke-width="5"/>
+<path d="M56 145H308L280 185H84Z" fill="#ad9175"/>
+<rect x="78" y="189" width="43" height="139" fill="#b3a084"/>
+<rect x="162" y="189" width="43" height="139" fill="#b3a084"/>
+<rect x="245" y="189" width="43" height="139" fill="#b3a084"/>
+<rect x="55" y="333" width="252" height="27" fill="#998673"/>
+<text x="185" y="31" text-anchor="middle" font-family="Georgia,serif" fill="#fff9ee" font-size="31" font-weight="700">Sentrum</text>
+<text x="185" y="451" text-anchor="middle" font-family="Arial,sans-serif" fill="#fff0db" font-size="25" font-weight="700">Hovedscene</text>
+<text x="185" y="488" text-anchor="middle" font-family="Arial,sans-serif" fill="#d3c8b5" font-size="21">tilbake</text>
+</g>
+<g transform="translate(390 0)">
+<rect x="0" y="61" width="323" height="345" rx="12" fill="#18262b" stroke="#89afb7" stroke-width="5"/>
+<rect x="37" y="155" width="249" height="174" rx="7" fill="#283c45" stroke="#70949d" stroke-width="3"/>
+<path d="M51 179H273M51 207H273M51 235H273M51 263H273M51 291H273" stroke="#648994" stroke-width="5"/>
+<path d="M111 155V329M181 155V329M247 155V329" stroke="#648994" stroke-width="5"/>
+<text x="160" y="31" text-anchor="middle" font-family="Georgia,serif" fill="#fff9ee" font-size="31" font-weight="700">Tøyen</text>
+<text x="160" y="451" text-anchor="middle" font-family="Arial,sans-serif" fill="#fff0db" font-size="25" font-weight="700">Permanente biscener</text>
+<text x="160" y="488" text-anchor="middle" font-family="Arial,sans-serif" fill="#d3c8b5" font-size="21">etter planen</text>
+</g>
+</g>
+<rect x="80" y="810" width="1440" height="3" fill="#615b51"/>
+<text x="80" y="854" fill="#c9c2b6" font-family="Arial,sans-serif" font-size="22">Kilde: Kultur- og likestillingsdepartementet, 10.11.2026. Skjematisk illustrasjon – ikke bygg- eller scenetegning.</text>
+</svg>
