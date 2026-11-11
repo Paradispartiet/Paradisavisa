@@ -10,6 +10,10 @@ Nyhetshjulene på forsiden oppdateres når en enkelt sak publiseres. De viser fa
 
 Paradisavisa er en selvstendig nettavis, ikke et partiorgan. Stoffvalg kan ha et gjenkjennelig redaksjonelt blikk, men nyheter skal bygge på etterprøvbare fakta – ikke på Paradispartiets standpunkter. Kommentarer, analyser og debattinnlegg merkes tydelig.
 
+## Daglige notiser og Paradisradioen
+
+For kortnyheter bruker vi samme redaksjonelle prinsipp: hver notis blir kontrollert og kan publiseres individuelt. Arbeidsbeskrivelse, kildesjekk, utløpsregler og den daglige **lese- og statusrapporten** ligger i [`redaksjon/NOTISRUTINE.md`](redaksjon/NOTISRUTINE.md). Rapporten henter ikke nyheter og publiserer ingenting automatisk.
+
 ## Løpende arbeidsflyt – én sak om gangen
 
 1. **Finn en reell nyhet.** Følg utviklingen i relevante primærkilder og flere redaktørstyrte medier. Prioriter etter vesentlighet, relevans og dokumentasjon.
