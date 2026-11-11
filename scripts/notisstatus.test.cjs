@@ -21,7 +21,7 @@ test("Rapporten skiller aktive, kommende, utløpende og gamle notiser", () => {
   const saker = [
     lag("ny", "2026-11-11"),
     lag("snart", "2026-11-10", {expires:"2026-11-12"}),
-    lag("sju", "2026-11-05"),
+    lag("sju", "2026-11-05", {expires:"2026-11-11"}),
     lag("gammel", "2026-11-04"),
     lag("utloept", "2026-11-10", {expires:"2026-11-10"}),
     lag("framtid", "2026-11-12")
@@ -36,6 +36,21 @@ test("Rapporten skiller aktive, kommende, utløpende og gamle notiser", () => {
   assert.equal(r.ugyldige, 0);
   assert.deepEqual(r.saker.map(s=>s.status),
     ["aktuell","utløper snart","utløper snart","utløpt","utløpt","framtidig"]);
+});
+
+test("Rapporten gir samme tre-dagersperiode som nettleserradioen", () => {
+  const note = lag("kort", "2026-11-09");
+  const normal = analyseNotiser([note], "2026-11-11");
+  assert.equal(normal.aktive, 1);
+  assert.equal(normal.utlopSnart, 1);
+  assert.equal(normal.saker[0].dagerIgjen, 0);
+  assert.equal(analyseNotiser([note], "2026-11-12").utlopte, 1);
+  assert.equal(analyseNotiser([{ ...note, expires:"2026-11-10" }], "2026-11-11").utlopte, 1);
+  const lang = {...note, expires:"2026-11-15"};
+  assert.equal(analyseNotiser([lang], "2026-11-15").aktive, 1);
+  assert.equal(analyseNotiser([lang], "2026-11-16").utlopte, 1);
+  const over = {...note, expires:"2026-11-30"};
+  assert.equal(analyseNotiser([over], "2026-11-16").utlopte, 1);
 });
 
 test("Duplikater, manglende kilde og feil i holdbarhet er tekniske avvik", () => {
