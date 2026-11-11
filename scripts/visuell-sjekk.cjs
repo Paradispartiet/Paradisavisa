@@ -557,12 +557,35 @@ async function run(){
               label+": radiosiden mangler oppdatert spilleliste");
             check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===0,
               label+": radioen starter automatisk ved sidelasting");
+            // Direkte stemmevalg på radiosiden, uten å åpne notisbåndets meny.
+            const stemmeRadio=page.locator("#paradisradio-stemme");
+            check(await stemmeRadio.isVisible(), label+": norsk stemmevalg mangler på radiosiden");
+            check(!(await page.locator(".notis-valgpanel").isVisible()),
+              label+": stemmevalg må ikke åpne notisbåndets meny");
+            await page.evaluate(()=>{
+              const s=window.__notisRadioTest;
+              s.voices=[
+                {name:"Norsk system 1",lang:"nb-NO",voiceURI:"ipad-1",default:true},
+                {name:"Norsk system 2",lang:"nb-NO",voiceURI:"ipad-2"}
+              ];
+              s.listeners.voiceschanged?.();
+            });
+            check(await stemmeRadio.locator("option").count()===3,
+              label+": asynkrone norske stemmer mangler på radiosiden");
+            await stemmeRadio.selectOption({label:"Norsk system 2 (nb-NO)"});
+            check((await page.evaluate(()=>localStorage.getItem("paradisavisa-radiostemme"))).includes("ipad-2"),
+              label+": valg på radiosiden lagres ikke i radiomotoren");
+            check((await page.locator(".notis-stemme-select").inputValue())===
+              (await stemmeRadio.inputValue()),
+              label+": radiosiden og notismenyen bruker ikke samme stemme");
             const spill=page.locator("[data-radio='play']");
             await spill.click();
             check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===1,
               label+": Spill skal starte én og bare én opplesning");
             check(await page.locator("[data-radio='stop']").isEnabled(),
               label+": stoppknappen er utilgjengelig under opplesning");
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken[0]?.voice))==="Norsk system 2",
+              label+": radiosiden sender ikke valgt norsk systemstemme til talen");
             const naa=await page.locator("[data-radio='headline']").textContent();
             check(naa && naa.length>20,label+": nåværende nyhet mangler");
 
@@ -573,11 +596,23 @@ async function run(){
             check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===3,
               label+": forrige nyhet starter ikke");
 
-            await page.locator("[data-radio='pause']").click();
-            check((await page.locator("[data-radio='play']").textContent()).includes("Fortsett"),
+            // Trykk på en bestemt sak. Hoppet bruker samme Web Speech-motor.
+            const koKnapp=page.locator("[data-radio='playlist'] .radio-ko-knapp");
+            check(await koKnapp.count()>=2, label+": klikkbar spilleliste har for få nyheter");
+            await koKnapp.nth(1).click();
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===4,
+              label+": klikk på nyhet starter ikke valgt notis");
+            check((await page.locator("[data-radio='playlist'] li").nth(1).getAttribute("aria-current"))==="true",
+              label+": valgt nyhet blir ikke markert som aktiv");
+            check((await page.locator("[data-radio='headline']").textContent()).length>20,
+              label+": aktiv notis vises ikke i spillerhode");
+
+            // Én stor knapp skifter mellom Spill, Pause og Fortsett.
+            await spill.click();
+            check((await spill.textContent()).includes("Fortsett"),
               label+": pause/fortsett deler ikke radiotilstand");
-            await page.locator("[data-radio='play']").click();
-            check((await page.locator("[data-radio='play']").textContent()).includes("Spiller"),
+            await spill.click();
+            check((await spill.textContent()).includes("Pause"),
               label+": radiosiden gjenopptar ikke tale");
 
             // Den lille menyen viser samme radiotilstand, ikke en konkurrerende motor.
