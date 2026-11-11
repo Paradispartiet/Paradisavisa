@@ -53,9 +53,23 @@
 .av-artikkel .av-modul .av-modul-intro{font:400 .98rem/1.6 system-ui,sans-serif;color:#dad3c5}
 .av-artikkel .av-modul small,.av-artikkel .av-modul .av-modul-kilde{display:block;color:#c8c0b1;font:400 .83rem/1.55 system-ui,sans-serif;margin:.85rem 0 0}
 .av-artikkel .av-modul .av-modul-kilde a{color:#ffdf82}
-.av-artikkel .av-interaksjon-btn,.av-artikkel .av-zoom-knapp{font:700 .94rem/1.2 system-ui,sans-serif;color:#090909;background:#ffdb57;border:1px solid #ffdb57;border-radius:5px;cursor:pointer;padding:.78rem 1rem;min-height:44px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.4rem}
-.av-artikkel .av-interaksjon-btn:hover,.av-artikkel .av-zoom-knapp:hover{background:#fff;color:#060606}
-.av-artikkel .av-interaksjon-btn:focus-visible,.av-artikkel .av-zoom-knapp:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.av-artikkel .av-interaksjon-btn{font:700 .94rem/1.2 system-ui,sans-serif;color:#090909;background:#ffdb57;border:1px solid #ffdb57;border-radius:5px;cursor:pointer;padding:.78rem 1rem;min-height:44px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.4rem}
+.av-artikkel .av-interaksjon-btn:hover{background:#fff;color:#060606}
+.av-artikkel .av-interaksjon-btn:focus-visible,.av-artikkel .av-zoom-knapp:focus-visible{outline:2px solid #ffe076;outline-offset:2px}
+/* Zoom is an understated text action, not the primary yellow article CTA.
+   Keep a full 44px touch target despite the compact visual appearance. */
+.av-artikkel .av-zoom-knapp{
+  display:inline-flex;align-items:center;justify-content:flex-start;gap:.38rem;
+  width:auto;max-width:100%;min-height:44px;padding:.18rem .25rem;
+  font:600 .82rem/1.35 system-ui,sans-serif;color:#ffe18a;
+  background:transparent;border:0;border-radius:2px;
+  text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px;
+  cursor:zoom-in
+}
+.av-artikkel .av-zoom-knapp::before{content:"⤢";display:inline-block;font:600 1.05rem/1 system-ui,sans-serif;text-decoration:none}
+.av-artikkel .av-zoom-knapp:hover{background:transparent;color:#fff;text-decoration-thickness:2px}
+.av-artikkel .av-graf .av-graf-kontroller{margin:.35rem 0 .65rem}
+.av-artikkel .av-figur .av-graf-kontroller{margin:.2rem 0 .6rem}
 .av-artikkel .av-interaksjon-btn--sekundaer{background:transparent;color:#ffe48b;border-color:#7a715d}
 .av-artikkel .av-interaksjon-btn--sekundaer:hover{background:#252218;color:#fff}
 
