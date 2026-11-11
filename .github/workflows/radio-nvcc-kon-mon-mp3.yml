@@ -1,0 +1,98 @@
+name: Paradisradioen – reelle MP3-prøver KON/MON (privat)
+
+on:
+  pull_request:
+    paths:
+      - "scripts/radio/generer_nvcc_prover.py"
+      - "scripts/radio/test_nvcc_voice_unit.py"
+      - ".github/workflows/radio-nvcc-kon-mon-mp3.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: radio-kon-mon-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  produsere-privat-mp3:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sjekk sperre og norske stemme-ID-er
+        run: |
+          python -m unittest discover -s scripts/radio -p "test_*.py" -v
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          policy = json.loads(Path("radio/release-gate.json").read_text(encoding="utf-8"))
+          assert policy["publicAudioEnabled"] is False
+          assert policy["modelRightsStatus"] == "PENDING"
+          assert policy["editorialAudioStatus"] == "PENDING"
+          print("Offentlig MP3 er fortsatt sperret")
+          PY
+
+      - name: Installer gratis lokal syntese og lydkontroll
+        run: |
+          python -m pip install --disable-pip-version-check \
+            "piper-tts==1.8.0" "huggingface_hub==0.36.0" \
+            "mutagen==1.47.0" "imageio-ffmpeg==0.6.0"
+          python - <<'PY'
+          import os
+          import imageio_ffmpeg
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as file:
+              file.write("RADIO_FFMPEG_EXECUTABLE=" + imageio_ffmpeg.get_ffmpeg_exe() + "\n")
+          PY
+
+      - name: Hent fast norsk NVCC-checkpoint fra eksisterende lydløype
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from huggingface_hub import hf_hub_download
+          repo = "rhasspy/piper-voices"
+          revision = "e7229f7d33a10e145e109b886d661984201ac3c4"
+          root = "no/no_NO/nvcc/medium/"
+          for name in ["no_NO-nvcc-medium.onnx", "no_NO-nvcc-medium.onnx.json", "MODEL_CARD"]:
+              result = Path(hf_hub_download(
+                  repo_id=repo, revision=revision, filename=root + name,
+                  local_dir="nvcc-modell"))
+              if not result.is_file() or not result.stat().st_size:
+                  raise RuntimeError("Manglende modellfil: " + name)
+          print("Fast stemmemodell hentet:", revision)
+          PY
+
+      - name: Produser fire faktiske MP3-opplesninger med KON og MON
+        run: |
+          python scripts/radio/generer_nvcc_prover.py \
+            --model-root nvcc-modell --output kon-mon-lyd \
+            --speaker-set kon-mon --count 2
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("kon-mon-lyd/rapport.json").read_text(encoding="utf-8"))
+          assert report["publicPlayable"] is False
+          assert report["qualityApproved"] is False
+          assert report["sampleCount"] == 2
+          assert report["audioCount"] == 4
+          assert {row["speaker"] for row in report["samples"]} == {"KON", "MON"}
+          assert all(row["codec"] == "mp3" and row["durationSeconds"] > 2 for row in report["samples"])
+          assert len(list(Path("kon-mon-lyd/lydproever").glob("*.mp3"))) == 4
+          print("Fire ferdige, dekodede MP3-filer. Ingen nettavis-publisering.")
+          PY
+
+      - name: Lever bare private MP3-filer – ingen HTML-paneler
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paradisradio-nvcc-kon-mon-mp3
+          path: |
+            kon-mon-lyd/rapport.json
+            kon-mon-lyd/lydproever/*.mp3
+          if-no-files-found: warn
+          retention-days: 7
