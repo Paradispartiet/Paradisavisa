@@ -97,6 +97,18 @@ test("Radiotekst tilpasses uttale uten å endre godkjent notis", () => {
   assert.equal(lageTekst({text:"120 kr"}),"Nyheter. 120 kroner");
 });
 
+test("Radiomotoren gir pust mellom notiser og krever brukertrykk etter taleavbrudd", () => {
+  assert.match(script,/const mellomNyheterMs = 650/);
+  assert.match(script,/radioOvergangTimeout = setTimeout/);
+  assert.match(script,/clearTimeout\(radioOvergangTimeout\)/);
+  assert.match(script,/event\?\.error === "interrupted"/);
+  assert.match(script,/radioKreverOmstart = true/);
+  assert.match(script,/spillFraKo\(indeks\)/);
+  assert.match(script,/visibilitychange/);
+  assert.match(script,/tale\?\.speaking/);
+  assert.match(script,/Trykk Fortsett for å starte denne nyheten på nytt/);
+});
+
 test("Norsk stemmevalg bevares, mens ekstra radiotempo fjernes", () => {
   assert.match(script,/voiceschanged/);
   assert.match(script,/getVoices/);

@@ -461,6 +461,7 @@ async function run(){
           (await page.evaluate(()=>window.__notisRadioTest.resumes))===1,
           label+": radioen kan ikke fortsette");
         await page.evaluate(()=>window.__notisRadioTest.utterances[0].onend?.());
+        await page.waitForTimeout(800);
         check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))>=2,
           label+": nyhetsradioen går ikke videre til neste notis");
         await radiopause.click();
@@ -626,6 +627,54 @@ async function run(){
             await spill.click();
             check((await spill.textContent()).includes("Pause"),
               label+": radiosiden gjenopptar ikke tale");
+
+            // Web Speech avslutter en notis: pustepausen gir ingen ekstra tale
+            // og overgang til neste notis skjer først etter ca. 650 ms.
+            const foerOvergang=await page.evaluate(()=>window.__notisRadioTest.spoken.length);
+            await page.evaluate(()=>window.__notisRadioTest.utterances.at(-1).onend?.());
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===foerOvergang,
+              label+": neste nyhet starter uten naturlig pause");
+            check((await page.locator("[data-radio='status']").textContent()).includes("Kort pause"),
+              label+": pause mellom nyheter mangler status");
+            await page.waitForTimeout(850);
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===foerOvergang+1,
+              label+": neste nyhet starter ikke etter pausen");
+
+            // Safari kan avbryte uten at radioen får en vellykket onend.
+            // Brukeren må da trykke Fortsett; samme nyhet starter fra begynnelsen.
+            const foerAvbrudd=await page.evaluate(()=>window.__notisRadioTest.spoken.length);
+            const avbruttTekst=await page.evaluate(()=>window.__notisRadioTest.spoken.at(-1).text);
+            await page.evaluate(()=>window.__notisRadioTest.utterances.at(-1).onerror?.({error:"interrupted"}));
+            check((await spill.textContent()).includes("Fortsett"),
+              label+": avbrutt tale vises ikke som Fortsett");
+            check((await page.locator("[data-radio='status']").textContent()).includes("ble avbrutt"),
+              label+": avbrutt tale blir ikke forklart");
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===foerAvbrudd,
+              label+": avbrutt tale starter uventet uten brukertrykk");
+            await spill.click();
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===foerAvbrudd+1,
+              label+": Fortsett starter ikke opplesning etter avbrudd");
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.at(-1).text))===avbruttTekst,
+              label+": Fortsett skal starte samme avbrutte nyhet");
+
+            // Bevisst Neste kaller cancel; et sent canceled fra gammel ytring
+            // skal ikke gjøre den nye opplesningen til en avbrutt radio.
+            const forrigeYtring=await page.evaluate(()=>window.__notisRadioTest.utterances.length-1);
+            await page.locator("[data-radio='next']").click();
+            await page.evaluate(indeks=>window.__notisRadioTest.utterances[indeks].onerror?.({error:"canceled"}),forrigeYtring);
+            check(!(await spill.textContent()).includes("Fortsett"),
+              label+": gammelt canceled-avbrudd stopper den nye nyheten");
+
+            // Pause midt i overgang må stoppe tidsuret; neste sak venter til Fortsett.
+            const foerPauseMellom=await page.evaluate(()=>window.__notisRadioTest.spoken.length);
+            await page.evaluate(()=>window.__notisRadioTest.utterances.at(-1).onend?.());
+            await spill.click();
+            await page.waitForTimeout(850);
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===foerPauseMellom,
+              label+": nyheten starter mens lytteren har pauset mellom sakene");
+            await spill.click();
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===foerPauseMellom+1,
+              label+": radioen fortsetter ikke etter pausen mellom sakene");
 
             // Den lille menyen viser samme radiotilstand, ikke en konkurrerende motor.
             const meny=page.locator(".notis-valgknapp");
