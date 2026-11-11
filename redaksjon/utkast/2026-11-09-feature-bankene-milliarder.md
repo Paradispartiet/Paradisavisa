@@ -41,7 +41,9 @@ Finans Norge utdypet også forklaringen i et skriftlig svar til Paradisavisa 10.
 
 Et uavhengig innblikk i hvor raskt renteendringer slår gjennom, finnes i **Forbrukerrådets analyse fra 20. mai 2026**. Den sammenligner når banker justerte tilbudene til **nye** boliglånskunder etter styringsrenteendringer. I renteoppgangsperioden 2021–2023 var medianen for standardlån **12,8 dager**, mens medianen i de to rentenedsettelsene i 2025 var **fire dager**. Analysen viser betydelig variasjon mellom banker og låneprodukter, men målene er fra **ulike perioder med ulikt antall renteendringer**. Den forteller **ikke** hvor raskt en eksisterende kunde fikk ny rente på sitt eget lån. Det er derfor ikke et direkte motbevis mot Finans Norges forklaring om varslingsfrist på eksisterende lån.
 
-Forbrukerrådets offentlig publiserte **Bytteundersøkelsen 2026** viser at **32 prosent av boliglånskundene i undersøkelsen oppga å ha flyttet eller reforhandlet boliglånet i 2025**, mot 27 prosent året før. Blant dem som ikke flyttet eller reforhandlet i 2025, svarte 27 prosent at de aldri hadde gjort det. Tallene viser aktivitet og passivitet i markedet samtidig, men ikke hvorfor bankene samlet tjener akkurat det de gjør. Undersøkelsen er utført som en vektet nettundersøkelse; metodens oppgitte feltarbeidsår avklares med rapportutgiveren før en mer detaljert metodepresentasjon.
+Forbrukerrådets offentlig publiserte [**Bytteundersøkelsen 2026**](https://www.forbrukerradet.no/rapporter/bytteundersokelsen-2026/) og [oppsummeringen fra 11. mai](https://www.forbrukerradet.no/siste-nytt/mange-kan-fortsatt-spare-mye-penger-pa-boliglanet/) oppgir at **omtrent én av tre boliglånskunder** flyttet eller reforhandlet boliglånet i 2025, en økning fra året før. Av dem som ikke gjorde dette, svarte **nær en tredjedel** at de aldri hadde flyttet eller reforhandlet. Tallene sier noe om aktivitet og passivitet, men viser ikke hvorfor bankene samlet tjener det de gjør.
+
+Forbrukerrådet peker dessuten på **totalkundeprogrammer**: Ifølge den offentlige oppsummeringen oppga halvparten av dem **som både hadde kundeprogram og ikke hadde flyttet eller reforhandlet**, at programmet var hovedårsaken. Dette er en avgrenset undergruppe, ikke halvparten av alle boliglånskunder. Den offentlige artikkelen bruker avrundede opplysninger; en intern datokonflikt om feltarbeidsåret i rapporten er ennå ikke avklart.
 
 ## Hvem er bankens kunde – og hvem er banken til for?
 
@@ -65,7 +67,7 @@ Bankenes milliardresultat er derfor både et tegn på inntjening og et rimelig u
 - **Finanstilsynet:** «Finansielt utsyn – juni 2026», bankenes lønnsomhet og risiko. https://www.finanstilsynet.no/publikasjoner-og-analyser/finansielt-utsyn/finansielt-utsyn---juni-2026/html/2026/
 - **Finans Norge (bransjekilde):** Analyse av seks største bankenes tredje kvartal, publisert 5. november 2026. Kildegrunnlag: kvartalsrapporter fra disse bankene, ikke hele SSB-populasjonen. https://www.finansnorge.no/artikler/2026/11/sterkt-tredje-kvartal/
 - **Forbrukerrådet (forbrukerperspektiv), 11. mai 2026:** Bytteundersøkelsen 2026 om boliglån, prut og bankbytte. https://www.forbrukerradet.no/rapporter/bytteundersokelsen-2026/ 
-- **Forbrukerrådet, 11. mai 2026:** Oppsummering med kundetall og forbrukerperspektiv. https://www.forbrukerradet.no/?p=54728
+- **Forbrukerrådet, 11. mai 2026:** Oppsummering med kundetall og forbrukerperspektiv. https://www.forbrukerradet.no/siste-nytt/mange-kan-fortsatt-spare-mye-penger-pa-boliglanet/
 
 - **Forbrukerrådet, 20. mai 2026:** *Fra styringsrente til utlånsrente – hvor raskt endrer bankene utlånsrenta?* Finansportal-data for **tilbud til nye kunder** i 2021–2023 og 2025. https://www.forbrukerradet.no/rapporter/fra-styringsrente-til-utlansrente-hvor-raskt-endrer-bankene-utlansrenta/
 
