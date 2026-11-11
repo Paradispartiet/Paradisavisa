@@ -153,7 +153,7 @@ def render(post: dict) -> dict:
     if y > TEXT_BOTTOM:
         raise ValueError(f"Ingress overskrider nedre grense for {post['id']}")
 
-    draw.text((MARGIN, FOOTER_Y), "https://paradispartiet.github.io/Paradisavisa/",
+    draw.text((MARGIN, FOOTER_Y), "PARADISAVISA",
               font=font(False, 27), fill=GOLD, anchor="lm")
 
     OUT.mkdir(parents=True, exist_ok=True)
