@@ -80,6 +80,30 @@ test("Seks nye notiser er fra atskilte dokumenterte kilder", () => {
   }
 });
 
+test("Seks nye kveldssaker har kildelenke, gyldig dato og unike ID-er", () => {
+  const notiser = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const ids = [
+    "notis-falske-rettskjennelser-india-20261111",
+    "notis-sjofart-hormuz-20261111",
+    "notis-fractile-ai-brikker-20261111",
+    "notis-tu-stroma-eggstokkreft-20261111",
+    "notis-usa-inflasjon-oktober-20261111",
+    "notis-ozonhullet-2026-nasa-20261109"
+  ];
+  assert.equal(new Set(notiser.map(n => n.url)).size, notiser.length,
+    "To notiser skal ikke bruke samme kildelenke");
+  assert.equal(new Set(notiser.filter(n => n.id).map(n => n.id)).size,
+    notiser.filter(n => n.id).length, "Stabile ID-er skal ikke kollidere");
+  for (const id of ids) {
+    const n = notiser.find(note => note.id === id);
+    assert.ok(n, "Mangler kildekontrollert notis " + id);
+    assert.ok(fersk(n, new Date(2026, 10, 11)), "Notisen er ikke gyldig 11. november");
+    assert.ok(n.text.trim().split(/\s+/).length >= 27 && n.text.trim().split(/\s+/).length <= 70,
+      "Lengden er ikke tilpasset kort radioopplesning");
+    assert.equal(new URL(n.url).protocol, "https:", "Originalkilden må være sikker lenke");
+  }
+});
+
 test("Notisbåndet bruker bare 2×/4×/5× og samler radio/pause/fart i én meny", () => {
   assert.match(script, /const fartvalg = \[2, 4, 5\]/);
   assert.match(script, /lagret === 6/);
