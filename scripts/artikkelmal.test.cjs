@@ -12,7 +12,7 @@ test("Én kanonisk mal har nødvendig artikkelstruktur og ingen publiserbare pla
  assert.match(h,/<meta name="robots" content="noindex, nofollow">/);
  assert.match(h,/<article class="av-artikkel">/);
  assert.equal((h.match(/<h1\b/g)||[]).length,1);
- assert.match(h,/<link rel="stylesheet" href="\.\.\/artikkel\.css">/);
+ assert.match(h,/<link rel="stylesheet" href="\.\.\/artikkel\.css\?v=20261111b">/);
  assert.match(h,/<figure class="av-figur av-hovedbilde">/);
  assert.match(h,/<figure class="av-figur av-mellombilde">/);
  assert.equal((h.match(/<figcaption>/g)||[]).length,2);
