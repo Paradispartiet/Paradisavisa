@@ -303,7 +303,7 @@ async function run(){
 
       // Sixth pilot: political commentary about a public basic product range.
       await page.goto(base+"/artikler/2026-11-06-staten-bor-lage-ting-som-varer.html",{waitUntil:"load"});
-      assert.match(await page.title(),/Staten bør lage ting som varer/);
+      assert.match(await page.title(),/Staten skal lage ting som varer/);
       await assertCompactZoomLinks(page,name+": grunnsortiment-kommentar");
       assert.equal(await page.locator("article.av-artikkel h1").count(),1);
       assert.ok(await page.locator(".av-kilde-note a").count()>=7);
