@@ -300,6 +300,43 @@ async function run(){
       assert.match(await ronaldoPoll.locator("[data-av-poll-result]").innerText(),/Hele karrieren/);
       assert.deepEqual(errors,[],name+": JavaScript-feil i Ronaldo-analysen");
       await page.screenshot({path:path.join(root,"qa-screenshots","ronaldo-levende-"+name+".png"),fullPage:true});
+
+      // Sixth pilot: political commentary about a public basic product range.
+      await page.goto(base+"/artikler/2026-11-06-staten-bor-lage-ting-som-varer.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Staten bør lage ting som varer/);
+      await assertCompactZoomLinks(page,name+": grunnsortiment-kommentar");
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      assert.ok(await page.locator(".av-kilde-note a").count()>=7);
+      const basicDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(basicDims.width<=basicDims.viewport+2,name+": grunnsortiment-kommentar har sidelengs scroll "+JSON.stringify(basicDims));
+      assert.equal(await page.locator("article figure img").count(),2);
+      const basicImages=page.locator("article figure img");
+      for(let i=0;i<await basicImages.count();i++){
+        await basicImages.nth(i).scrollIntoViewIfNeeded();
+        await page.waitForFunction(index=>{
+          const img=document.querySelectorAll("article figure img")[index];
+          return !!img&&img.complete&&img.naturalWidth>0;
+        },i,{timeout:15000});
+      }
+      await page.getByRole("link",{name:"Forstørr diagrammet over offentlig ansvarsdeling"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/staten-grunnsortiment-ansvarsdeling\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),false);
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="etterprove"]').click();
+      assert.equal(await page.locator('[data-av-panel="etterprove"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="prioritere"]').isVisible(),false);
+      const basicPoll=page.locator('[data-av-poll="offentlig-grunnsortiment-prioritering-2026"]');
+      assert.equal(await basicPoll.locator("form").isVisible(),true);
+      await basicPoll.locator('input[value="ingen"]').check();
+      await basicPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await basicPoll.locator("[data-av-poll-result]").innerText(),/Ingen offentlig produktordning foreløpig/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await basicPoll.locator("[data-av-poll-result]").innerText(),/Ingen offentlig produktordning foreløpig/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i kommentar om offentlige varer");
+      await page.screenshot({path:path.join(root,"qa-screenshots","grunnsortiment-kommentar-"+name+".png"),fullPage:true});
       await context.close();
       console.log("OK: Ronaldo-sportanalyse på "+name+" med originalbilder, pressdiagram, tidslinje og poll");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
@@ -341,6 +378,12 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="starte"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="vinne"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr taktikkdiagrammet om presspillet"}).getAttribute("href"),/ronaldo-presspill-forklaringsdiagram\.svg/);
+    await page.goto(base+"/artikler/2026-11-06-staten-bor-lage-ting-som-varer.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="offentlig-grunnsortiment-prioritering-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="offentlig-grunnsortiment-prioritering-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="prioritere"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="etterprove"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr diagrammet over offentlig ansvarsdeling"}).getAttribute("href"),/staten-grunnsortiment-ansvarsdeling\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
