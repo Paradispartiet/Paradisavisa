@@ -25,6 +25,10 @@ jobs:
           node-version: '22'
       - name: Valider enkeltartikler, bilder og nyhetsstrømmer
         run: node scripts/valider-artikler.cjs
+      - name: Test Aha artikkelarkiv og frivillig lesehistorikk
+        run: node --test scripts/paradisavisa-aha.test.cjs
+      - name: Test Aha innlogging og utlogging i avisens meny
+        run: node --test scripts/paradisavisa-aha-auth.test.cjs
       - name: Test felles artikkelmal, kildelinker og bildeutforming
         run: node --test scripts/artikkelmal.test.cjs
       - name: Test bankfeature-pilotens graf, kildedokumentasjon og moduler
