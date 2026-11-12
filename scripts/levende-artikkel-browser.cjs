@@ -377,6 +377,41 @@ async function run(){
       assert.match(await sovereigntyPoll.locator("[data-av-poll-result]").innerText(),/Øve på avbrudd/);
       assert.deepEqual(errors,[],name+": JavaScript-feil i digital suverenitet-feature");
       await page.screenshot({path:path.join(root,"qa-screenshots","nordisk-digital-suverenitet-"+name+".png"),fullPage:true});
+      // Eighth pilot: Serbian student election, final RIK seats and accessible map.
+      await page.goto(base+"/artikler/2026-11-02-serbia-studentvalget.html",{waitUntil:"load"});
+      assert.match(await page.title(),/De sørget i 16 minutter/);
+      await assertCompactZoomLinks(page,name+": Serbia-valget");
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      const serbiaDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(serbiaDims.width<=serbiaDims.viewport+2,name+": Serbia-artikkelen har sidelengs scroll "+JSON.stringify(serbiaDims));
+      assert.equal(await page.locator("article figure img").count(),2);
+      for(const img of await page.locator("article figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{el.addEventListener("load",resolve,{once:true});el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});});});
+        assert.ok(await img.evaluate(el=>el.naturalWidth>0),name+": Serbia photo/map failed to load");
+      }
+      assert.ok(await page.locator(".av-kilde-note a").count()>=2);
+      await page.getByRole("link",{name:"Forstørr orienteringskartet over proteststedene i Serbia"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/serbia-studentbevegelse-orienteringskart\.svg/);
+      await page.keyboard.press("Escape");
+      await page.locator(".av-tidslinje li:nth-child(5) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(5) details").getAttribute("open"),"");
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="mobilisering"]').click();
+      assert.equal(await page.locator('[data-av-panel="mobilisering"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="sorg"]').isVisible(),false);
+      const serbiaPoll=page.locator('[data-av-poll="serbia-studentvalg-ansvar-2026"]');
+      assert.equal(await serbiaPoll.locator("form").isVisible(),true);
+      await serbiaPoll.locator('input[value="etterforskning"]').check();
+      await serbiaPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await serbiaPoll.locator("[data-av-poll-result]").innerText(),/Åpen etterforskning/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await serbiaPoll.locator("[data-av-poll-result]").innerText(),/Åpen etterforskning/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i Serbia-feature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","serbia-studentvalg-"+name+".png"),fullPage:true});
+
       await context.close();
       console.log("OK: Ronaldo-sportanalyse på "+name+" med originalbilder, pressdiagram, tidslinje og poll");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
