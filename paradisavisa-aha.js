@@ -2,6 +2,14 @@
 (() => {
   "use strict";
   const KEY = "aha_paradisavisa_library_v1";
+  const OWNER_KEY = "aha_paradisavisa_cloud_owner_v1";
+  let verifiedLocalOwner = false;
+  let ownerCheckVersion = 0;
+  function localOwner() {
+    try { return localStorage.getItem(OWNER_KEY) || ""; }
+    catch { return "unavailable"; }
+  }
+  function localAccessAllowed() { return !localOwner() || verifiedLocalOwner; }
   const AHA_URL = new URL("/AHA-EchoNet/paradisavisa.html", location.origin).href;
   const article = document.querySelector(".story-body, .av-artikkel, article");
   const main = document.querySelector("main");
@@ -22,6 +30,9 @@
   const dateNow = () => new Date().toISOString();
   const empty = () => ({ version: 1, trackingEnabled: false, articles: [] });
   const read = () => {
+    // Account-bound history must never be rendered or updated for guests or
+    // other Aha accounts on a shared browser profile.
+    if (!localAccessAllowed()) return empty();
     try {
       const value = JSON.parse(localStorage.getItem(KEY) || "null");
       if (value?.version !== 1 || !Array.isArray(value.articles)) return empty();
@@ -29,6 +40,10 @@
     } catch { return empty(); }
   };
   const write = (data) => {
+    if (!localAccessAllowed()) {
+      setStatus("Det lokale biblioteket er knyttet til en Aha-konto. Logg inn med riktig konto for å endre det.");
+      return false;
+    }
     try { localStorage.setItem(KEY, JSON.stringify(data)); return true; }
     catch { setStatus("Kunne ikke lagre lokalt. Kontroller nettleserens lagringsinnstillinger."); return false; }
   };
@@ -60,6 +75,11 @@
   const buttons = (key) => section.querySelector('[data-aha="' + key + '"]');
   function setStatus(message) { if (status) status.textContent = message; }
   function syncUi() {
+    const locked = !localAccessAllowed();
+    for (const action of ["save", "read", "tracking", "export"]) {
+      buttons(action).disabled = locked;
+    }
+    if (locked) setStatus("Dette lokale biblioteket er låst til en Aha-konto. Logg inn med samme konto for å vise og endre lesestatus.");
     const data = read();
     const item = data.articles.find((entry) => entry?.id === id);
     buttons("save").textContent = item?.savedAt ? "Lagret i Aha ✓" : "Lagre i Aha";
@@ -102,10 +122,11 @@
   });
   let visitRecorded = false;
   function recordVisit() {
-    if (visitRecorded || !read().trackingEnabled) return;
+    if (!localAccessAllowed() || visitRecorded || !read().trackingEnabled) return;
     visitRecorded = upsert("openedAt", dateNow(), true);
   }
   function checkReading() {
+    if (!localAccessAllowed()) return;
     const data = read();
     if (!data.trackingEnabled) return;
     const bottom = article.getBoundingClientRect().bottom;
@@ -116,7 +137,46 @@
       }
     }
   }
+  async function verifyLocalOwner() {
+    const seq = ++ownerCheckVersion;
+    const owner = localOwner();
+    if (!owner) {
+      verifiedLocalOwner = false; // Guest mode still works when unbound.
+      syncUi();
+      return;
+    }
+    const auth = globalThis.ParadisavisaAhaAuth;
+    if (!auth?.getVerifiedUserId) {
+      verifiedLocalOwner = false;
+      syncUi();
+      return; // The auth module will signal when it has finished loading.
+    }
+    let verifiedId = "";
+    try { verifiedId = await auth.getVerifiedUserId(); } catch {}
+    if (seq !== ownerCheckVersion || localOwner() !== owner) return;
+    verifiedLocalOwner = Boolean(verifiedId && verifiedId === owner);
+    syncUi();
+    if (verifiedLocalOwner) {
+      recordVisit();
+      checkReading();
+    }
+  }
+  if (localOwner()) {
+    document.addEventListener?.("paradisavisa:aha-auth-ready", verifyLocalOwner);
+    document.addEventListener?.("paradisavisa:aha-account-changed", () => {
+      verifiedLocalOwner = false;
+      syncUi();
+      verifyLocalOwner();
+    });
+    addEventListener("storage", (event) => {
+      if (event.key !== OWNER_KEY && !/-auth-token$/.test(String(event.key || ""))) return;
+      verifiedLocalOwner = false;
+      syncUi();
+      verifyLocalOwner();
+    });
+  }
   syncUi();
+  verifyLocalOwner();
   recordVisit();
   addEventListener("scroll", checkReading, { passive: true });
   checkReading();
