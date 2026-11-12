@@ -337,6 +337,46 @@ async function run(){
       assert.match(await basicPoll.locator("[data-av-poll-result]").innerText(),/Ingen offentlig produktordning foreløpig/);
       assert.deepEqual(errors,[],name+": JavaScript-feil i kommentar om offentlige varer");
       await page.screenshot({path:path.join(root,"qa-screenshots","grunnsortiment-kommentar-"+name+".png"),fullPage:true});
+
+      // Seventh living pilot: Nordic and Baltic digital sovereignty feature.
+      await page.goto(base+"/artikler/2026-11-10-norden-teknologigigantene.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Kan Norden frigjøre seg fra teknologigigantene/);
+      await assertCompactZoomLinks(page,name+": digital-suverenitet");
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      assert.ok(await page.locator(".av-kilde-note a").count()>=9);
+      const sovereigntyDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(sovereigntyDims.width<=sovereigntyDims.viewport+2,name+": digital suverenitet har sidelengs scroll "+JSON.stringify(sovereigntyDims));
+      assert.equal(await page.locator("article figure img").count(),3);
+      const sovereigntyImages=page.locator("article figure img");
+      for(let i=0;i<await sovereigntyImages.count();i++){
+        await sovereigntyImages.nth(i).scrollIntoViewIfNeeded();
+        await page.waitForFunction(index=>{
+          const img=document.querySelectorAll("article figure img")[index];
+          return !!img&&img.complete&&img.naturalWidth>0;
+        },i,{timeout:15000});
+      }
+      await page.getByRole("link",{name:"Forstørr diagrammet om leverandøravhengighet"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/digital-suverenitet-exit-forklaringsgrafikk\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),false);
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="beredskap"]').click();
+      assert.equal(await page.locator('[data-av-panel="beredskap"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="data"]').isVisible(),false);
+      assert.equal(await page.locator(".av-tidslinje li").count(),5);
+      await page.locator(".av-tidslinje li:nth-child(5) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(5) details").getAttribute("open"),"");
+      const sovereigntyPoll=page.locator('[data-av-poll="digital-suverenitet-kommune-2026"]');
+      assert.equal(await sovereigntyPoll.locator("form").isVisible(),true);
+      await sovereigntyPoll.locator('input[value="drift"]').check();
+      await sovereigntyPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await sovereigntyPoll.locator("[data-av-poll-result]").innerText(),/Øve på avbrudd/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await sovereigntyPoll.locator("[data-av-poll-result]").innerText(),/Øve på avbrudd/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i digital suverenitet-feature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","nordisk-digital-suverenitet-"+name+".png"),fullPage:true});
       await context.close();
       console.log("OK: Ronaldo-sportanalyse på "+name+" med originalbilder, pressdiagram, tidslinje og poll");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
@@ -384,6 +424,12 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="prioritere"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="etterprove"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr diagrammet over offentlig ansvarsdeling"}).getAttribute("href"),/staten-grunnsortiment-ansvarsdeling\.svg/);
+    await page.goto(base+"/artikler/2026-11-10-norden-teknologigigantene.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="digital-suverenitet-kommune-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="digital-suverenitet-kommune-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="data"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="beredskap"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr diagrammet om leverandøravhengighet"}).getAttribute("href"),/digital-suverenitet-exit-forklaringsgrafikk\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
