@@ -412,6 +412,47 @@ async function run(){
       assert.deepEqual(errors,[],name+": JavaScript-feil i Serbia-feature");
       await page.screenshot({path:path.join(root,"qa-screenshots","serbia-studentvalg-"+name+".png"),fullPage:true});
 
+      // Ninth pilot: original Norwegian–Russian analysis with factual status update and living diagram.
+      await page.goto(base+"/artikler/2026-11-11-norge-russland-eu-abu-dhabi.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Norge har fortsatt en vei til Moskva/);
+      await assertCompactZoomLinks(page,name+": diplomati");
+      assert.equal(await page.locator("article.av-artikkel h1").count(),0); // H1 stays outside the text column.
+      assert.equal(await page.locator("main h1").count(),1);
+      assert.equal(await page.locator("main figure img").count(),2);
+      const diplomaDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(diplomaDims.width<=diplomaDims.viewport+2,name+": diplomatifeature har sidelengs scroll "+JSON.stringify(diplomaDims));
+      for(const img of await page.locator("main figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(async el=>{
+          if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{
+            el.addEventListener("load",resolve,{once:true});
+            el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});
+          });
+        });
+        assert.ok(await img.evaluate(el=>el.naturalWidth>0),name+": diplomatiillustrasjon mangler");
+      }
+      await page.getByRole("link",{name:"Forstørr oversikten over de diplomatiske kanalene"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/abu-dhabi-diplomatiske-kanaler\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator(".av-tidslinje li").count(),6);
+      await page.locator(".av-tidslinje li:nth-child(6) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(6) details").getAttribute("open"),"");
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="avtale"]').click();
+      assert.equal(await page.locator('[data-av-panel="avtale"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="kontakt"]').isVisible(),false);
+      const diplomaPoll=page.locator('[data-av-poll="diplomati-europa-ukraina-2026"]');
+      assert.equal(await diplomaPoll.locator("form").isVisible(),true);
+      await diplomaPoll.locator('input[value="garantier"]').check();
+      await diplomaPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await diplomaPoll.locator("[data-av-poll-result]").innerText(),/Troverdige sikkerhetsgarantier/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await diplomaPoll.locator("[data-av-poll-result]").innerText(),/Troverdige sikkerhetsgarantier/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i diplomatifeature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","diplomati-norge-russland-"+name+".png"),fullPage:true});
+
       await context.close();
       console.log("OK: Ronaldo-sportanalyse på "+name+" med originalbilder, pressdiagram, tidslinje og poll");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
@@ -465,6 +506,12 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="data"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="beredskap"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr diagrammet om leverandøravhengighet"}).getAttribute("href"),/digital-suverenitet-exit-forklaringsgrafikk\.svg/);
+    await page.goto(base+"/artikler/2026-11-11-norge-russland-eu-abu-dhabi.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="diplomati-europa-ukraina-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="diplomati-europa-ukraina-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="kontakt"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="gjennomforing"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr oversikten over de diplomatiske kanalene"}).getAttribute("href"),/abu-dhabi-diplomatiske-kanaler\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
