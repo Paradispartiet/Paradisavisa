@@ -506,13 +506,13 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="data"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="beredskap"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr diagrammet om leverandøravhengighet"}).getAttribute("href"),/digital-suverenitet-exit-forklaringsgrafikk\.svg/);
-    await context.close();
     await page.goto(base+"/artikler/2026-11-11-norge-russland-eu-abu-dhabi.html",{waitUntil:"load"});
     assert.equal(await page.locator('[data-av-poll="diplomati-europa-ukraina-2026"] form').isVisible(),false);
     assert.equal(await page.locator('[data-av-poll="diplomati-europa-ukraina-2026"] [data-av-poll-js-required]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="kontakt"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="gjennomforing"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr oversikten over de diplomatiske kanalene"}).getAttribute("href"),/abu-dhabi-diplomatiske-kanaler\.svg/);
+    await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
     await browser.close();
