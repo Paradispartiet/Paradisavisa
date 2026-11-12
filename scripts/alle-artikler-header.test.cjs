@@ -9,11 +9,11 @@ test("Alle publiserte HTML-artikler har fungerende felles toppmeny eller statisk
  assert.ok(articles.length>=40,"uventet få artikler");
  for(const name of articles){
   const html=fs.readFileSync(path.join(dir,name),"utf8");
-  const existing=/id=["']header-placeholder["']/.test(html)&&/src=["'][^"']*script\.js/.test(html)&&/href=["'][^"']*styles\.css/.test(html);
+  const existing=/id=["']header-placeholder["']/.test(html)&&/src=["'][^"']*script\.js/.test(html)&&/href=["'][^"']*styles\.css/.test(html)&&/class=["']avisa-article-fallback["']/.test(html)&&/href=["'][^"']*artikkel-header\.css/.test(html);
   const fallback=/class=["']avisa-article-fallback["']/.test(html)&&/href=["'][^"']*artikkel-header\.css/.test(html)&&/src=["'][^"']*artikkel-header\.js/.test(html);
   assert.ok(existing||fallback,name+": mangler felles header, meny eller script");
-  if(fallback){
-   assert.equal((html.match(/class="avisa-article-fallback"/g)||[]).length,1,name+": duplisert toppheader");
+  if(existing||fallback){
+   assert.equal((html.match(/class="avisa-article-fallback"/g)||[]).length,1,name+": manglende eller duplisert fallback");
    assert.match(html,/<details class="pa-menu">/,name+": meny må virke uten JS");
    assert.match(html,/<nav aria-label="Hovedmeny">/);
    for(const href of canonical)assert.ok(html.includes('href="../'+href+'"'),name+": mangler navigasjonslenken "+href);
