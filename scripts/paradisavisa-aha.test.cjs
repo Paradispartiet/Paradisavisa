@@ -18,6 +18,17 @@ function harness(options = {}) {
       }]
     }));
   }
+  if (options.preloaded) {
+    store.set("aha_paradisavisa_library_v1", JSON.stringify({
+      version: 1, trackingEnabled: false,
+      articles: Array.from({ length: options.preloaded }, (_, i) => ({
+        id: "/Paradisavisa/artikler/gammel-" + i + ".html",
+        url: "https://paradispartiet.github.io/Paradisavisa/artikler/gammel-" + i + ".html",
+        title: "Eldre lagret artikkel " + i,
+        savedAt: "2026-11-11T10:00:00.000Z"
+      }))
+    }));
+  }
   let currentUser = options.verifiedUserId || "";
   const article = { textContent: "Artikkel om Nationaltheatret og Gamle Munch. ", querySelector() { return null; }, getBoundingClientRect: () => ({ bottom: 1800 }) };
   const anchor = { insertAdjacentElement() {} };
@@ -118,6 +129,16 @@ test("Samme Aha-konto låser opp, og kontobytte låser historikken på nytt", as
   await new Promise((resolve) => setImmediate(resolve));
   assert.equal(h.buttons.save.disabled, true);
 });
+test("Lagring av artikkel nummer 5001 bevarer alle eksisterende lagrede artikler", () => {
+  const h = harness({ preloaded: 5000 });
+  const original = h.store.get("aha_paradisavisa_library_v1");
+  h.buttons.save.click();
+  assert.equal(h.store.get("aha_paradisavisa_library_v1"), original);
+  assert.equal(h.data().articles.length, 5000);
+  assert.ok(h.data().articles.some(item => item.id === "/Paradisavisa/artikler/gammel-0.html"));
+  assert.equal(h.data().articles.some(item => item.id === "/Paradisavisa/artikler/test.html"), false);
+});
+
 test("Avisen laster broen bare på artikkelsider", () => {
   assert.match(mainScript, /paradisavisa-aha\.js/);
   assert.match(mainScript, /artikler\|posts/);
