@@ -1,0 +1,52 @@
+name: Paradisavisa Aha bridge – isolated verification
+
+on:
+  push:
+    branches:
+      - feature/paradisavisa-aha-bridge-v1
+  pull_request:
+    paths:
+      - 'paradisavisa-aha*.js'
+      - 'scripts/paradisavisa-aha*.cjs'
+      - 'script.js'
+      - 'index.html'
+      - 'header.html'
+      - 'styles.css'
+      - '.github/workflows/paradisavisa-aha-bridge-v1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  node:
+    name: Aha article and account tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test reading consent and account-bound article controls
+        run: node --test scripts/paradisavisa-aha.test.cjs
+      - name: Test shared Aha sign-in menu and logout
+        run: node --test scripts/paradisavisa-aha-auth.test.cjs
+      - name: Static syntax check
+        run: |
+          node --check script.js
+          node --check paradisavisa-aha.js
+          node --check paradisavisa-aha-auth.js
+
+  browser:
+    name: Real mobile and desktop menu DOM
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - name: Verify published page structures and account menu
+        run: node scripts/paradisavisa-aha-auth-browser.cjs
