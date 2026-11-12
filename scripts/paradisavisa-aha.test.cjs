@@ -7,7 +7,7 @@ const path = require("node:path");
 const source = fs.readFileSync(path.join(__dirname, "..", "paradisavisa-aha.js"), "utf8");
 const mainScript = fs.readFileSync(path.join(__dirname, "..", "script.js"), "utf8");
 function harness() {
-  const store = new Map(), buttons = {}, listeners = {};
+  const store = new Map(), buttons = {}, listeners = {}, downloaded = [];
   const article = { textContent: "Artikkel om Nationaltheatret og Gamle Munch. ", querySelector() { return null; }, getBoundingClientRect: () => ({ bottom: 1800 }) };
   const anchor = { insertAdjacentElement() {} };
   const main = { querySelector() { return anchor; }, insertBefore() {} };
@@ -26,14 +26,15 @@ function harness() {
   };
   const document = {
     head: { appendChild() {} },
+    body: { appendChild(node) { downloaded.push(node); } },
     querySelector(q) { return selectors[q] || null; },
-    createElement(type) { return type === "section" ? section : { textContent: "" }; }
+    createElement(type) { return type === "section" ? section : type === "a" ? { click() { this.wasClicked = true; }, remove() {} } : { textContent: "" }; }
   };
   const ctx = { document, location: { origin: "https://paradispartiet.github.io", pathname: "/Paradisavisa/artikler/test.html", href: "https://paradispartiet.github.io/Paradisavisa/artikler/test.html" },
-    URL, Date, innerHeight: 700, addEventListener(name, fn) { listeners[name] = fn; },
+    URL, Date, Blob, setTimeout(fn) { fn(); }, innerHeight: 700, addEventListener(name, fn) { listeners[name] = fn; },
     localStorage: { getItem(k) { return store.get(k) || null; }, setItem(k, v) { store.set(k, v); } } };
   vm.runInNewContext(source, ctx, { filename: "paradisavisa-aha.js" });
-  return { buttons, listeners, store, article, data: () => JSON.parse(store.get("aha_paradisavisa_library_v1") || "null") };
+  return { buttons, listeners, store, downloaded, article, data: () => JSON.parse(store.get("aha_paradisavisa_library_v1") || "null") };
 }
 
 test("Ingen sporing skjer når en artikkel bare åpnes", () => {
@@ -65,6 +66,16 @@ test("Opt-in registrerer åpning; gjennomført lesing registreres ved slutten", 
   assert.ok(h.data().articles[0].readAt);
   h.buttons.tracking.click();
   assert.equal(h.data().trackingEnabled, false);
+});
+test("JSON-eksport krever lagret materiale og gir en lokal fil", () => {
+  const h = harness();
+  h.buttons.export.click();
+  assert.equal(h.downloaded.length, 0);
+  h.buttons.save.click();
+  h.buttons.export.click();
+  assert.equal(h.downloaded.length, 1);
+  assert.equal(h.downloaded[0].download, "paradisavisa-til-aha.json");
+  assert.equal(h.downloaded[0].wasClicked, true);
 });
 test("Avisen laster broen bare på artikkelsider", () => {
   assert.match(mainScript, /paradisavisa-aha\.js/);
