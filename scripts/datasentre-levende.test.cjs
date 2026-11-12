@@ -14,7 +14,7 @@ test("Eksisterende datasenteranalyse beholder tittel, dato, hovedbilde og origin
  assert.match(html,/KI-assistert redaksjonell illustrasjon/);
  assert.match(html,/class="story-body av-artikkel"/);
  assert.match(html,/class="av-prosa"/);
- assert.match(html,/href="\.\.\/artikkel\.css"/);
+ assert.match(html,/href="\.\.\/artikkel\.css\?v=20261111b"/);
  assert.match(html,/src="\.\.\/artikkel-interaktiv\.js"/);
 });
 test("Kilder er ved påstandene, og forslag forveksles ikke med innførte tiltak",()=>{
