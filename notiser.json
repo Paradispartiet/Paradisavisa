@@ -1,5 +1,64 @@
 [
   {
+    "id": "notis-spania-generalstreik-20261111",
+    "category": "Samfunn",
+    "text": "Om lag 120 000 mennesker demonstrerte i Madrid onsdag mot høye boligpriser og husleier, ifølge spanske myndigheter. Markeringen fant sted samtidig med Spanias første landsomfattende generalstreik på 14 år. Demonstrantene krever at det blir mulig å bo uten at store deler av lønnen går til husleie.",
+    "date": "2026-11-11",
+    "expires": "2026-11-13",
+    "url": "https://www.afp.com/en/general-strike-over-housing-brings-out-hundreds-thousands-spain"
+  },
+  {
+    "id": "notis-nussir-gruvekjop-20261111",
+    "category": "Politikk",
+    "text": "MDG vil at Stortinget midlertidig stanser ACG Metals' planlagte kjøp av Nussir-gruven i Finnmark inntil norske sikkerhetsmyndigheter har vurdert risikoen. Kobberforekomsten er strategisk viktig, og spørsmål om kjøperens russiske forbindelser har skapt politisk strid. Forslaget var varslet onsdag, ikke vedtatt.",
+    "date": "2026-11-11",
+    "url": "https://www.vg.no/nyheter/i/2v1L2a/mdg-vil-stoppe-russisk-gruvekjoep-tatt-i-loegn"
+  },
+  {
+    "id": "notis-australia-ki-straff-20261111",
+    "category": "Teknologi",
+    "text": "Australia vurderer å innføre straffansvar for KI-selskaper som ikke gjør rimelige tiltak for å hindre skade fra modellene sine. Regjeringen undersøker også bøter og strengere rapporteringskrav. Forslaget kommer etter en sikkerhetshendelse knyttet til landets Medicare-system; ingen ny straffebestemmelse er foreløpig vedtatt.",
+    "date": "2026-11-11",
+    "url": "https://www.abc.net.au/news/2026-11-11/australia-considers-criminal-charges-for-ai-companies/107368676"
+  },
+  {
+    "id": "notis-gullbjorn-kasakhstan-20261111",
+    "category": "Historie",
+    "text": "Arkeologer har funnet en rundt 2 200 år gammel bjørnefigur av gull i en gravhaug i Kasakhstan. Figuren sto på bakbeina og kan ha vært sydd på et hodeplagg. I graven fant forskerne også levninger som kan tilhøre sju mennesker, et uvanlig høyt antall for denne typen gravhaug.",
+    "date": "2026-11-11",
+    "expires": "2026-11-15",
+    "url": "https://www.livescience.com/archaeology/2-200-year-old-gold-bear-figurine-and-surprising-number-of-bones-found-in-massive-burial-mound-in-kazakhstan"
+  },
+  {
+    "id": "notis-avedon-dokumentar-netflix-20261111",
+    "category": "Kultur",
+    "text": "Ron Howards dokumentar «Avedon» hadde premiere på Netflix 11. november. Filmen forteller historien om fotografen Richard Avedon, som preget både motefotografi og portrettkunst. Produksjonen fikk tilgang til hans personlige arkiv, med tidligere upubliserte fotografier, filmopptak og samtaler med mennesker som kjente ham.",
+    "date": "2026-11-11",
+    "url": "https://www.netflix.com/tudum/articles/avedon-release-date-news"
+  },
+  {
+    "id": "notis-bricklink-stengt-20261111",
+    "category": "Digitalt",
+    "text": "Legos bruktmarkedsplass BrickLink er fortsatt stengt etter at selskapet oppdaget uvanlig aktivitet på plattformen. I en oppdatering 11. november opplyste BrickLink at de undersøker hendelsen og sikrer tjenesten før den åpnes igjen. Årsaken og omfanget er ennå ikke offentlig avklart.",
+    "date": "2026-11-11",
+    "expires": "2026-11-12",
+    "url": "https://brickset.com/article/136081/bricklink-issues-statement-on-downtime"
+  },
+  {
+    "id": "notis-kongefamilien-maraton-20261111",
+    "category": "Sport",
+    "text": "En forsinket resultatliste viser at kronprinsesse Ingrid Alexandra fullførte maratonløpet mellom Nice og Cannes på 4.42.59 – to sekunder raskere enn kong Haakon, som fikk tiden 4.43.01. Tidtakersystemet hadde sluttet å registrere kronprinsessens mellomtider under løpet, melder VG.",
+    "date": "2026-11-11",
+    "url": "https://www.vg.no/rampelys/i/wdE7Gn/kronprinsessen-slo-kongen-med-to-sekunder"
+  },
+  {
+    "id": "notis-trinidad-avkriminalisering-20261111",
+    "category": "Rettigheter",
+    "text": "Trinidad og Tobagos øverste ankedomstol, Judicial Committee of the Privy Council i London, har slått ned på lovbestemmelser som kriminaliserte frivillig sex mellom voksne av samme kjønn. Avgjørelsen kom 10. november etter en langvarig rettskamp og er en viktig seier for rettighetsforkjempere i Karibia.",
+    "date": "2026-11-11",
+    "url": "https://www.lawgazette.co.uk/news/london-ruling-decriminalises-gay-sex-in-trinidad-and-tobago/5128497.article"
+  },
+  {
     "id": "notis-eu-budsjettavtale-20261111",
     "category": "Verden",
     "text": "EU-landene og Europaparlamentets forhandlere er enige om et forslag til EU-budsjett for 2027. Avtalen omfatter 199,7 milliarder euro i nye budsjettforpliktelser og 211,5 milliarder euro i utbetalinger. Begge institusjonene må fortsatt godkjenne resultatet formelt, opplyser EUs ministerråd.",
@@ -152,14 +211,6 @@
     "text": "Regjeringen vil oppdatere Norges strategi for posisjonering og navigasjon. Målet er å gjøre samfunnet mindre sårbart dersom GPS og andre satellittsignaler blir forstyrret eller faller bort. Den gjeldende strategien er fra 2018.",
     "date": "2026-11-11",
     "url": "https://www.regjeringen.no/no/aktuelt/regjeringen-vil-gjore-norge-mindre-sarbart-for-gps-svikt/id3192316/"
-  },
-  {
-    "id": "notis-spania-generalstreik-20261111",
-    "category": "Verden",
-    "text": "Spania har hatt sin første generalstreik på 14 år. Fagforeningene oppgir at rundt fire millioner arbeidere deltok i protester mot høye boligkostnader og husleier. Reuters melder også om sammenstøt mellom politi og demonstranter.",
-    "date": "2026-11-11",
-    "expires": "2026-11-13",
-    "url": "https://www.reuters.com/business/world-at-work/workers-across-spain-stage-first-general-strike-14-years-anger-over-housing-2026-11-11/"
   },
   {
     "id": "notis-gamle-munch-teater-20261110",
