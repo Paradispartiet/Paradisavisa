@@ -182,6 +182,23 @@ test("Sexy sosialister er faktasjekket og tidsavgrenset til tre dager", () => {
   assert.equal(new Set(notes.map(x => x.url)).size, notes.length);
 });
 
+test("Lagmannsrettens bagasjeromssak er kildebelagt og riktig tidsavgrenset", () => {
+  const notes = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const note = notes.find(n => n.id === "notis-bagasjerom-oppreisning-eidsivating-20261112");
+  assert.ok(note, "Mangler rettsnotisen fra 12. november");
+  assert.equal(note.category, "Rett og samfunn");
+  assert.equal(note.date, "2026-11-12");
+  assert.equal(note.expires, undefined, "Normalt tre kalenderdager");
+  assert.ok(note.text.includes("to mot én") && note.text.includes("80 000") &&
+    note.text.includes("55 000") && note.text.includes("16-åring"));
+  assert.equal(note.url,
+    "https://rett24.no/articles/sjafor-ma-betale-full-oppreisning-til-passasjer-som-satte-seg-i-bagasjerommet");
+  assert.equal(fersk(note, new Date(2026, 10, 12)), true);
+  assert.equal(fersk(note, new Date(2026, 10, 14)), true);
+  assert.equal(fersk(note, new Date(2026, 10, 15)), false);
+  assert.equal(new Set(notes.map(x => x.url)).size, notes.length);
+});
+
 test("Notisbåndet bruker bare 2×/4×/5× og samler radio/pause/fart i én meny", () => {
   assert.match(script, /const fartvalg = \[2, 4, 5\]/);
   assert.match(script, /lagret === 6/);
