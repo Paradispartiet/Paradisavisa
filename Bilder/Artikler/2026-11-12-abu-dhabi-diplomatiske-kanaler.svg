@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" role="img" aria-labelledby="t d">
+<title id="t">Tre forskjellige diplomatiske kanaler omkring Abu Dhabi-forhandlingene</title>
+<desc id="d">Skjematisk diagram, ikke et kart eller referat av faktiske plasseringer. Direkte forhandlinger 10 til 11 november: USA, Ukraina og Russland. Separate europeiske konsultasjoner 10 november: EU, europeiske land, NATO, Ukraina og USA, uten Russland. Norsk-finsk telefonsamtale med Putin: 27 oktober, ikke del av trilaterale Abu Dhabi-møtene.</desc>
+<rect width="960" height="620" fill="#101214" rx="14"/>
+<text x="38" y="48" fill="#ffe082" font-size="22" font-weight="800" letter-spacing="1.4" font-family="system-ui,sans-serif">HVEM SNAKKER MED HVEM?</text>
+<text x="38" y="76" fill="#c9c9c7" font-size="17" font-family="system-ui,sans-serif">Tre kanaler – ikke ett felles forhandlingsbord</text>
+<g font-family="system-ui,sans-serif">
+<rect x="32" y="100" width="896" height="151" rx="10" fill="#203028" stroke="#8ed0a5" stroke-width="2"/>
+<text x="52" y="130" font-size="17" font-weight="800" fill="#a4e4b9">10.–11. NOVEMBER · DIREKTE TREPARTSSAMTALER</text>
+<rect x="60" y="151" width="213" height="66" rx="7" fill="#33483b"/><text x="166" y="192" text-anchor="middle" fill="#fff" font-weight="700" font-size="23">USA</text>
+<rect x="374" y="151" width="213" height="66" rx="7" fill="#33483b"/><text x="480" y="192" text-anchor="middle" fill="#fff" font-weight="700" font-size="23">UKRAINA</text>
+<rect x="687" y="151" width="213" height="66" rx="7" fill="#33483b"/><text x="794" y="192" text-anchor="middle" fill="#fff" font-weight="700" font-size="23">RUSSLAND</text>
+<path d="M285 185H359M599 185H675" fill="none" stroke="#afe9bd" stroke-width="3" stroke-dasharray="9 7"/>
+<text x="52" y="240" font-size="13" fill="#d2e4d4">USA meglet mellom Ukraina og Russland · ingen fredsavtale</text>
+<rect x="32" y="270" width="896" height="160" rx="10" fill="#262538" stroke="#aca0ed" stroke-width="2"/>
+<text x="52" y="302" font-size="17" font-weight="800" fill="#c8bafa">10. NOVEMBER · SEPARATE EUROPEISKE KONSULTASJONER</text>
+<rect x="60" y="319" width="450" height="69" rx="7" fill="#39364f"/><text x="285" y="346" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">EU, EUROPEISKE LAND, NATO</text><text x="285" y="371" text-anchor="middle" fill="#d9d2f3" font-size="16">Sikkerhetsgarantier og europeisk rolle</text>
+<rect x="606" y="319" width="294" height="69" rx="7" fill="#39364f"/><text x="753" y="358" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">UKRAINA + USA</text>
+<path d="M525 354H589" stroke="#d4c4ff" stroke-width="3" stroke-dasharray="9 7"/>
+<text x="52" y="414" font-size="14" fill="#e5dff9">Russland deltok ikke i dette møtet</text>
+<rect x="32" y="450" width="896" height="114" rx="10" fill="#2e2a20" stroke="#ebcd78" stroke-width="2"/>
+<text x="52" y="482" font-size="17" font-weight="800" fill="#ffe195">27. OKTOBER · NORDISK TELEFONKONTAKT</text>
+<text x="70" y="523" font-size="22" font-weight="700" fill="#fff">STØRE + STUBB</text>
+<path d="M300 517H570" fill="none" stroke="#e9cb78" stroke-width="3" stroke-dasharray="9 7"/>
+<text x="593" y="523" font-size="22" font-weight="700" fill="#fff">PUTIN</text>
+<text x="52" y="550" font-size="14" fill="#eedfbf">Samtale i samråd med Ukraina – ikke på vegne av hele Europa</text>
+<text x="38" y="600" font-size="16" fill="#bbb7aa">Kilder: EU-rådet 10.11 · Reuters 11.11 · Statsministerens kontor 27.10</text>
+</g></svg>
