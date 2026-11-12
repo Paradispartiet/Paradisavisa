@@ -1,8 +1,92 @@
 {
   "arbeidsflyt": "fortlopende",
   "beskrivelse": "Hver artikkel behandles og publiseres enkeltvis når den er faktakontrollert og godkjent. Datoen registrert angir arbeidsmappen, ikke publiseringsdato eller utgave.",
-  "oppdatert": "2026-11-10",
+  "oppdatert": "2026-11-12",
   "artikler": [
+    {
+      "id": "boligopproret-spania-20261112",
+      "tittel": "Boligopprøret: Når lønnen ikke rekker til husleien",
+      "kategori": "Nyheter – verden og samfunn",
+      "artikkel": "utkast/2026-11-12/boligopproret-spania.html",
+      "bilde": "utkast/2026-11-12/bilder/boligopproret-spania.svg",
+      "registrert": "2026-11-12",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "appene-som-manipulerer-20261112",
+      "tittel": "Appene som vil bestemme for deg – nå vil EU sette grenser",
+      "kategori": "Feature – teknologi og forbruker",
+      "artikkel": "utkast/2026-11-12/appene-som-manipulerer.html",
+      "bilde": "utkast/2026-11-12/bilder/appene-som-manipulerer.svg",
+      "registrert": "2026-11-12",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "nussir-hvem-eier-kobberet-20261112",
+      "tittel": "Kampen om Nussir: Hvem skal eie kobberet under Finnmark?",
+      "kategori": "Nyheter – politikk og næringsliv",
+      "artikkel": "utkast/2026-11-12/nussir-hvem-eier-kobberet.html",
+      "bilde": "utkast/2026-11-12/bilder/nussir-hvem-eier-kobberet.svg",
+      "registrert": "2026-11-12",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "smabarnsforeldre-jobbpress-20261112",
+      "tittel": "Foreldregenerasjonen som tar med seg jobben hjem",
+      "kategori": "Nyheter – arbeidsliv og familie",
+      "artikkel": "utkast/2026-11-12/smabarnsforeldre-jobbpress.html",
+      "bilde": "utkast/2026-11-12/bilder/smabarnsforeldre-jobbpress.svg",
+      "registrert": "2026-11-12",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "gullbjornen-kasakhstan-20261112",
+      "tittel": "Gullbjørnen som overlevde gravrøverne",
+      "kategori": "Nyheter – forskning og historie",
+      "artikkel": "utkast/2026-11-12/gullbjornen-kasakhstan.html",
+      "bilde": "utkast/2026-11-12/bilder/gullbjornen-kasakhstan.svg",
+      "registrert": "2026-11-12",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "avedon-fotografen-amerika-20261112",
+      "tittel": "Fotografen som fikk Amerika til å se seg selv",
+      "kategori": "Kultur – film og fotografi",
+      "artikkel": "utkast/2026-11-12/avedon-fotografen-amerika.html",
+      "bilde": "utkast/2026-11-12/bilder/avedon-fotografen-amerika.svg",
+      "registrert": "2026-11-12",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "norge-vannlekkasjer-20261112",
+      "tittel": "Vannet som forsvinner før det når springen",
+      "kategori": "Nyheter – samfunn og infrastruktur",
+      "artikkel": "utkast/2026-11-12/norge-vannlekkasjer.html",
+      "bilde": "utkast/2026-11-12/bilder/norge-vannlekkasjer.svg",
+      "registrert": "2026-11-12",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
     {
       "id": "feature-06-bankene",
       "tittel": "Bankene tjener milliarder – hvem betaler?",
