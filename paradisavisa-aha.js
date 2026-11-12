@@ -49,7 +49,7 @@
   const section = document.createElement("section");
   section.className = "av-aha-bridge";
   section.setAttribute("aria-label", "Samle artikkelen i AHA");
-  section.innerHTML = '<strong>Aha · Bygg kunnskap av det du leser</strong><p class="av-aha-description">Lagre artikkelen privat, eller merk den som lest. Du bestemmer om framtidig lesing skal registreres.</p><div class="av-aha-actions"><button type="button" data-aha="save">Lagre i Aha</button><button type="button" data-aha="read">Merk som lest</button><button type="button" data-aha="tracking">Aktiver lesehistorikk</button><a data-aha="open" href="' + AHA_URL + '">Mitt artikkelbibliotek i Aha</a></div><p class="av-aha-status" role="status" aria-live="polite"></p>';
+  section.innerHTML = '<strong>Aha · Bygg kunnskap av det du leser</strong><p class="av-aha-description">Lagre artikkelen privat, eller merk den som lest. Du bestemmer om framtidig lesing skal registreres.</p><div class="av-aha-actions"><button type="button" data-aha="save">Lagre i Aha</button><button type="button" data-aha="read">Merk som lest</button><button type="button" data-aha="tracking">Aktiver lesehistorikk</button><button type="button" data-aha="export">Eksporter til Aha (JSON)</button><a data-aha="open" href="' + AHA_URL + '">Mitt artikkelbibliotek i Aha</a></div><p class="av-aha-status" role="status" aria-live="polite"></p>';
   const style = document.createElement("style");
   style.textContent = '.av-aha-bridge{box-sizing:border-box;margin:1.5rem 0 2.5rem;padding:1.1rem;border:1px solid #525252;border-radius:12px;background:#111;color:#f5f5f5;font:400 14px/1.5 system-ui,sans-serif}.av-aha-bridge strong{display:block;color:white;font-size:1rem}.av-aha-bridge p{color:#cecece;margin:.4rem 0 .8rem}.av-aha-actions{display:flex;gap:.5rem;flex-wrap:wrap}.av-aha-actions button,.av-aha-actions a{font:600 13px/1.3 system-ui,sans-serif;text-decoration:none;color:#fff;background:#242424;border:1px solid #777;border-radius:7px;padding:.65rem .85rem;cursor:pointer}.av-aha-actions button:focus-visible,.av-aha-actions a:focus-visible{outline:2px solid #8bb9ff;outline-offset:3px}.av-aha-actions button[aria-pressed="true"]{border-color:#a5cbff;background:#223347}.av-aha-status{min-height:1.2em}';
   document.head.appendChild(style);
@@ -85,6 +85,20 @@
       setStatus(data.trackingEnabled ? "Lesehistorikk er på, kun i denne nettleseren. Artikler blir markert lest når du kommer til slutten." : "Automatisk lesehistorikk er slått av. Eksisterende historikk er beholdt og kan slettes i Aha.");
       if (data.trackingEnabled) recordVisit();
     }
+  });
+  buttons("export").addEventListener("click", () => {
+    const data = read();
+    if (!data.articles.length) return setStatus("Du har ingen registrerte artikler å eksportere.");
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    const objectUrl = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = objectUrl;
+    link.download = "paradisavisa-til-aha.json";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+    setStatus("Biblioteket ble eksportert til en fil som du kan importere i Aha.");
   });
   let visitRecorded = false;
   function recordVisit() {
