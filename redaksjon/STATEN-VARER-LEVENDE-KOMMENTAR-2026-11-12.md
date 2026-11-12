@@ -9,14 +9,15 @@
 
 Dette er en politisk kommentar som argumenterer for et offentlig grunnsortiment: varige TV-er, telefoner, verktøy, datamaskiner, programvare og enkelte fellestjenester. Utfordringen er å forklare forskjellen mellom politisk styring, faktisk utviklingsansvar, uavhengig forskning og offentlig kontroll **uten** å gi inntrykk av at en statlig fabrikk eller UiO-avtale allerede eksisterer.
 
-Den opprinnelige godkjente heroillustrasjonen `Bilder/Artikler/2026-11-06-offentlig-grunnsortiment.svg` beholdes uendret, også i sosiale delingsmetadata. En ny, tydelig **skjematisk** figur `Bilder/Artikler/2026-11-12-staten-grunnsortiment-ansvarsdeling.svg` viser fire foreslåtte ansvarsledd, ikke organisasjonskartet til en eksisterende etat.
+**Revidert hovedbilde – godkjent av redaksjonen 12. november:** Den tidligere SVG-hovedillustrasjonen er erstattet av den nye, symbolske verkstedscenen `Bilder/Artikler/2026-11-12-staten-skal-lage-ting-som-varer-hovedbilde.webp` (1672 × 941 piksler, WebP 262 104 bytes). Den viser varig TV, slank bærbar PC, demonterbar telefon, radio, reparasjonsverktøy, politiske fellesskapssymboler og tegninger. Den **siste redigerte varianten** med tynnere PC-skjerm er den godkjente versjonen. Bildet er KI-assistert redaksjonell illustrasjon, ikke foto av et eksisterende statlig verksted. Den gamle `Bilder/Artikler/2026-11-06-offentlig-grunnsortiment.svg` bevares bare som arkivfil. Nytt WebP-bilde brukes nå som hovedbilde i artikkelen, som bilde i `kommentarer.json`, og som `og:image` og `twitter:image`; artikkelens URL og opprinnelige publiseringsdato er uendret. En egen, tydelig **skjematisk** forklaringsfigur `Bilder/Artikler/2026-11-12-staten-grunnsortiment-ansvarsdeling.svg` viser fire foreslåtte ansvarsledd, ikke organisasjonskartet til en eksisterende etat.
 
 ## Endringer
 
-- Behold overskrift, ingress, avsender, hovedargument og opprinnelig publiseringsdato. Legg til riktig revidertdato 12. november.
+- Tittelen er endret på redaksjonell bestilling fra «Staten bør lage ting som varer» til **«Staten skal lage ting som varer»**. Ingress, avsender, hovedargument, kanonisk URL og opprinnelig publiseringsdato beholdes. Legg til riktig revidertdato 12. november.
 - Innfør felles `artikkel.css?v=20261112a` og `artikkel-interaktiv.js` i den eksisterende sidens design i stedet for å introdusere en separat kommentar-motor.
 - Fjern tre overflødige mellomtitler og behold orienterende titler ved reelle temaskifter.
 - Syv diskrete kildenoter under faktabærende avsnitt, i tillegg til synlig samlet kildeoversikt.
+- Godkjent bilde publiseres som en faktisk fil i repoet, ikke bare en prompt, bildeplassholder eller erstatnings-SVG. Social deling bruker det samme motivet.
 - Tydelig merket originaldiagram, med skjermleserbeskrivelse og den lille, tilgjengelige «Forstørr»-lenken. Klikk åpner eksisterende bilde-dialog, uten JavaScript åpner lenken selve SVG-filen.
 - Tretrinns interaktiv forklarmodell for demokratisk prioritering, offentlig utvikling og uavhengig kontroll. Dette er et **tenkt beslutningsløp**, ikke en vedtatt ansvarsfordeling.
 - Klikkbar faktaboks om offentlig alternativ kontra monopol, og uavklarte kostnader/kvalitetskrav.
@@ -34,7 +35,7 @@ Den opprinnelige godkjente heroillustrasjonen `Bilder/Artikler/2026-11-06-offent
 
 ## Kontroll og publiseringsport
 
-- `node --test scripts/staten-varer-levende.test.cjs`: bevarer avsender, publiseringsdato og hero; verifiserer kildeskille, ny illustrasjon og interaktive kontroller.
+- `node --test scripts/staten-varer-levende.test.cjs`: bevarer avsender, opprinnelig publiseringsdato og nytt godkjent hero; verifiserer WebP-signatur, filstørrelse, `kommentarer.json`, `og:image`, `twitter:image`, kildeskille, sekundærillustrasjon og interaktive kontroller.
 - `node scripts/levende-artikkel-browser.cjs`: faktisk Chromium på 390/820/1180/1440 px og uten JavaScript, med kontroll av bilder, lenkenes størrelse, zoom, faktaboks, tre trinn, lokal avstemning og ingen horisontal scroll.
 - Samlet artikkel-CI og visuell workflow må være **grønne** før merge.
 - Etter merge: kontroller GitHub Pages-deploy og offentlig artikkel samt kommentarer-kortet. Ikke endre `kommentarer.json` dersom originalt kort fortsatt er riktig.
