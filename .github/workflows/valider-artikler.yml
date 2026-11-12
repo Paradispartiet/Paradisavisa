@@ -47,6 +47,8 @@ jobs:
         run: node --test scripts/serbia-studentvalg-levende.test.cjs
       - name: Test diplomatiforklaringen, kilder og moduler
         run: node --test scripts/diplomati-norge-russland-levende.test.cjs
+      - name: Test oljeprisen – sluttkurser, kilder og levende komponenter
+        run: node --test scripts/oljepris-levende.test.cjs
       - name: Test tre nyhetssaker og eksakte WebP-originaler
         run: node --test scripts/tre-saker-2026-11-10.test.cjs
       - name: Test fire forsidekort og sideveis blaing
