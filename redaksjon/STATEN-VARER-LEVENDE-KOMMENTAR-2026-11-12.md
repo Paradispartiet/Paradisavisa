@@ -1,8 +1,8 @@
-# «Staten bør lage ting som varer» – sjette levende artikkelpilot
+# «Staten skal lage ting som varer» – sjette levende artikkelpilot
 
 **Revisjon:** 12. november 2026  
 **Første publisering:** 6. november 2026 (opprinnelig dato beholdes)  
-**Artikkel:** [Staten bør lage ting som varer](../artikler/2026-11-06-staten-bor-lage-ting-som-varer.html)  
+**Artikkel:** [Staten skal lage ting som varer](../artikler/2026-11-06-staten-bor-lage-ting-som-varer.html)  
 **Sjanger:** Kommentar, av Paradispartiet. **Ikke en nyhetsmelding om vedtatt statlig program.**
 
 ## Redaksjonelt valg
