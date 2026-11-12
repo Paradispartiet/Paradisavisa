@@ -161,7 +161,12 @@
   }
 
   function initAll() {
-    document.querySelectorAll(".avis-topp").forEach(initMenu);
+    document.querySelectorAll(".avis-topp").forEach((header) => {
+      initMenu(header);
+      // Account code may finish loading after the visitor opened the menu.
+      // In that case verify the session without requiring another tap.
+      if (header.querySelector(".avisa-menu:not([hidden])")) refresh(menuOf(header));
+    });
   }
 
   global.addEventListener("pageshow", (event) => {
