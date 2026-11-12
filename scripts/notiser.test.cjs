@@ -118,6 +118,35 @@ test("Seks nye kveldssaker har kildelenke, gyldig dato og unike ID-er", () => {
   }
 });
 
+test("Seks nyheter har originalkilde, riktig dato og redaksjonelt avgrenset holdbarhet", () => {
+  const items = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const keys = [
+    "notis-eu-budsjettavtale-20261111",
+    "notis-mediepolitikk-unge-20261110",
+    "notis-ki-utdanning-horing-20261110",
+    "notis-nordisk-afrikansk-utenriksministre-20261110",
+    "notis-ssb-fengsel-lavt-niva-20261110",
+    "notis-ssb-ikt-bedrifter-20261110"
+  ];
+  assert.equal(new Set(items.map(x => x.url)).size, items.length,
+    "Ingen ulike notiser skal ha samme kilde-URL");
+  assert.equal(new Set(items.filter(x => x.id).map(x => x.id)).size,
+    items.filter(x => x.id).length, "Ingen ID-kollisjoner");
+  for(const key of keys) {
+    const note = items.find(x => x.id === key);
+    assert.ok(note, "Mangler notis " + key);
+    assert.equal(note.date, key.includes("20261111") ? "2026-11-11" : "2026-11-10");
+    assert.ok(fersk(note, new Date(2026, 10, 11)), "Utdatert på kontrolltidspunkt " + key);
+    assert.equal(new URL(note.url).protocol, "https:");
+    assert.ok(note.text.trim().split(/\s+/).length >= 25 &&
+      note.text.trim().split(/\s+/).length <= 65, "Ikke passende radiolengde " + key);
+  }
+  assert.equal(items.find(x => x.id === keys[2]).expires, "2026-11-14");
+  assert.equal(items.find(x => x.id === keys[3]).expires, "2026-11-16");
+  assert.equal(fersk(items.find(x => x.id === keys[3]), new Date(2026, 10, 17)), false,
+    "Selv framtidige møter må ikke beholde foreldet notis utover sju dager");
+});
+
 test("Notisbåndet bruker bare 2×/4×/5× og samler radio/pause/fart i én meny", () => {
   assert.match(script, /const fartvalg = \[2, 4, 5\]/);
   assert.match(script, /lagret === 6/);
