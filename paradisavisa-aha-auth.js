@@ -89,6 +89,16 @@
     return clientPromise;
   }
 
+  async function getVerifiedUserId() {
+    if (!hasAhaToken()) return "";
+    try {
+      const client = await getClient();
+      const { data, error } = await client.auth.getUser();
+      return error || !data?.user?.id || data.user.is_anonymous
+        ? "" : String(data.user.id);
+    } catch { return ""; }
+  }
+
   async function refresh(menu) {
     if (!menu) return;
     const seq = (pending.get(menu) || 0) + 1;
@@ -137,6 +147,9 @@
       const result = await global.AHAAuth.signOut();
       if (!result?.ok) throw new Error(result?.error?.message || "Utlogging feilet.");
       showGuest(menu, "Logget ut fra Aha, History GO og Paradisavisa.");
+      if (typeof document.dispatchEvent === "function" && typeof global.Event === "function") {
+        document.dispatchEvent(new global.Event("paradisavisa:aha-account-changed"));
+      }
     } catch {
       status(menu, "Kunne ikke logge ut. Prøv igjen.");
     } finally {
@@ -184,7 +197,13 @@
     });
   });
 
-  global.ParadisavisaAhaAuth = Object.freeze({ initMenu, onMenuOpen, refresh, loginUrl, getReturnPath });
+  global.ParadisavisaAhaAuth = Object.freeze({
+    initMenu, onMenuOpen, refresh, loginUrl, getReturnPath, getVerifiedUserId
+  });
+  // Article controls may have loaded before this separate menu script.
+  if (typeof document.dispatchEvent === "function" && typeof global.Event === "function") {
+    document.dispatchEvent(new global.Event("paradisavisa:aha-auth-ready"));
+  }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initAll);
