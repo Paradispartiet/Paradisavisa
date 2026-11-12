@@ -28,7 +28,7 @@ test("Oppdatering 6 november 2026 og rettslige reservasjoner",()=>{
  assert.match(html,/retter den midlertidige forføyningen seg mot de formelle partene/);
  assert.match(html,/støttetallet må ikke forveksles med hvem som omfattes/);
  assert.match(html,/rettskraftig avgjort/);
- assert.match(html,/ikke fastslått lovbrudd/);
+ assert.match(html,/ikke er fastslått lovbrudd/);
  assert.match(html,/manglende|har ikke selv sett den fullstendige rettsteksten/);
  assert.match(html,/reuters\.com\/business\/meta-pauses-planned-terms-updates-keeps-existing-rules-place-2026-11-06/);
  assert.match(html,/gov\.uk\/cma-cases\/suspected-abuse-of-a-dominant-position/);
