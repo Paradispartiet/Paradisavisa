@@ -153,7 +153,7 @@ test("Posten-streiken har riktig klokkeslett, kildelenke og dato", () => {
   assert.ok(note, "Varslet politisk streik må finnes i radioen");
   assert.equal(note.date, "2026-11-11");
   assert.equal(note.expires, "2026-11-16");
-  assert.match(note.text, /15\\.00 til 15\\.15/);
+  assert.match(note.text, /15\.00 til 15\.15/);
   assert.match(note.text, /varslet/);
   assert.ok(note.url.startsWith("https://kommunikasjon.ntb.no/pressemelding/19138472/"));
   assert.equal(fersk(note, new Date(2026, 10, 12)), true);
