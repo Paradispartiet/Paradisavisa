@@ -582,6 +582,33 @@ async function run(){
       assert.deepEqual(errors,[],name+": JavaScript-feil i Sofienberg-feature");
       await page.screenshot({path:path.join(root,"qa-screenshots","sofienberg-levende-"+name+".png"),fullPage:true});
 
+      // Alle artikler skal ha Paradisavisas samme mobil-/iPad-meny, også eldre sider.
+      for(const [slug,existing] of [
+        ["2025-09-26-Legeflukt.html",false],
+        ["2026-11-02-nav-rettigheter-automatisk-hjelp.html",false],
+        ["2026-11-02-meta-plattformmakt-pressefrihet.html",false],
+        ["2026-11-05-oljeprisfall-usa-valg-norge.html",true]
+      ]){
+        await page.goto(base+"/artikler/"+slug,{waitUntil:"load"});
+        if(existing)await page.locator("header.avisa-shared-header").waitFor({state:"visible"});
+        else await page.locator("header.avisa-artikkel-injisert").waitFor({state:"visible"});
+        assert.equal(await page.locator("header.avisa-shared-header").count(),1,name+": mer enn én menystamme på "+slug);
+        const shared=page.locator("header.avisa-shared-header");
+        assert.ok(await shared.getByRole("link",{name:"Paradisavisa – forsiden"}).isVisible(),name+": merke mangler "+slug);
+        const button=shared.getByRole("button",{name:"Åpne meny"});
+        assert.equal(await button.isVisible(),true,name+": menyknapp er skjult "+slug);
+        await button.click();
+        assert.equal(await shared.getByRole("button",{name:"Lukk meny"}).getAttribute("aria-expanded"),"true");
+        assert.equal(await shared.getByRole("navigation",{name:"Hovedmeny"}).isVisible(),true);
+        assert.match(await shared.getByRole("link",{name:"Kulturarkiv"}).getAttribute("href"),/\/kultur\.html$/);
+        assert.match(await shared.getByRole("link",{name:"Paradisradioen"}).getAttribute("href"),/\/paradisradio\.html$/);
+        await page.keyboard.press("Escape");
+        assert.equal(await shared.getByRole("button",{name:"Åpne meny"}).getAttribute("aria-expanded"),"false");
+        const headerBounds=await shared.evaluate(el=>{const r=el.getBoundingClientRect();return {left:r.left,right:r.right,w:innerWidth};});
+        assert.ok(headerBounds.left>=-2&&headerBounds.right<=headerBounds.w+2,name+": toppmenyen flyter ut "+JSON.stringify(headerBounds));
+      }
+      await page.screenshot({path:path.join(root,"qa-screenshots","felles-header-"+name+".png"),fullPage:false});
+
       await context.close();
       console.log("OK: Ronaldo-sportanalyse på "+name+" med originalbilder, pressdiagram, tidslinje og poll");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
@@ -663,6 +690,14 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="sambruk"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr prisgrafikken for tre Sofienberg-arrangementer"}).getAttribute("href"),/sofienberg-priseksempler\.svg/);
     assert.match(await page.getByRole("link",{name:"Forstørr adgangsdiagrammet for Sofienberg kirke"}).getAttribute("href"),/sofienberg-adgang-ikke-samme\.svg/);
+    // Den statiske <details>-menyen er funksjonell uten JavaScript eller header.html-fetch.
+    await page.goto(base+"/artikler/2026-11-02-nav-rettigheter-automatisk-hjelp.html",{waitUntil:"load"});
+    const staticHeader=page.locator("header.avisa-article-fallback");
+    assert.equal(await staticHeader.isVisible(),true);
+    await staticHeader.locator("details.pa-menu summary").click();
+    assert.equal(await staticHeader.locator("details.pa-menu").getAttribute("open"),"");
+    assert.equal(await staticHeader.getByRole("link",{name:"Kulturarkiv"}).isVisible(),true);
+    assert.equal(await staticHeader.getByRole("link",{name:"Paradisradioen"}).isVisible(),true);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
