@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="630" viewBox="0 0 940 630" role="img" aria-labelledby="t d">
+<title id="t">Slik kan lavere oljepris påvirke ulike deler av norsk økonomi</title>
+<desc id="d">Redaksjonell forklaringsmodell. Lavere råoljepris kan gi lavere petroleuminntekter over tid, men effekten avhenger av skatter, kostnader og produksjon. Drivstoff kan bli billigere, men pumpeprisen påvirkes også av avgifter, raffinering, distribusjon og kronekurs. En lavere oljepris betyr ikke nødvendigvis lavere klimautslipp fordi prisfallet kan skyldes økt tilbud eller lavere risikopremie.</desc>
+<rect width="940" height="630" rx="16" fill="#121417"/>
+<g font-family="system-ui,sans-serif">
+<text x="40" y="56" fill="#ffe082" font-size="24" font-weight="800">SAMME PRISFALL – ULIKE VIRKNINGER</text>
+<text x="40" y="84" fill="#c7c5c1" font-size="16">En prinsippskisse, ikke en prognose for norsk økonomi</text>
+<rect x="278" y="113" width="386" height="76" rx="12" fill="#f1cf66"/>
+<text x="471" y="144" text-anchor="middle" font-size="23" font-weight="800" fill="#161616">LAVERE RÅOLJEPRIS</text>
+<text x="471" y="173" text-anchor="middle" font-size="15" fill="#252525">Kan skyldes tilbud, etterspørsel eller risiko</text>
+<path d="M471 190V225M471 225H169V257M471 225H471V257M471 225H770V257" stroke="#a5adac" stroke-width="3" fill="none" stroke-linecap="round"/>
+<rect x="31" y="257" width="278" height="242" rx="10" fill="#2a2821" stroke="#e0b765" stroke-width="2"/>
+<rect x="331" y="257" width="278" height="242" rx="10" fill="#1d2c34" stroke="#84cbe3" stroke-width="2"/>
+<rect x="631" y="257" width="278" height="242" rx="10" fill="#20312b" stroke="#94d4ad" stroke-width="2"/>
+<text x="170" y="296" text-anchor="middle" fill="#f4d48d" font-size="21" font-weight="800">STATENS INNTEKTER</text>
+<text x="170" y="335" text-anchor="middle" fill="#f6f6f4" font-size="18">Kan bli lavere</text>
+<text x="170" y="362" text-anchor="middle" fill="#dfd6c5" font-size="16">hvis prisfallet varer</text>
+<text x="170" y="403" text-anchor="middle" fill="#dfd6c5" font-size="16">Også produksjon, gass,</text>
+<text x="170" y="428" text-anchor="middle" fill="#dfd6c5" font-size="16">skatt og kostnader betyr noe</text>
+<text x="470" y="296" text-anchor="middle" fill="#a5e1ed" font-size="21" font-weight="800">DRIVSTOFF</text>
+<text x="470" y="335" text-anchor="middle" fill="#f6f6f4" font-size="18">Kan bli billigere</text>
+<text x="470" y="362" text-anchor="middle" fill="#dfd9cf" font-size="16">men ikke 1:1 med Brent</text>
+<text x="470" y="403" text-anchor="middle" fill="#dfd9cf" font-size="16">Avgifter, valuta, raffinering</text>
+<text x="470" y="428" text-anchor="middle" fill="#dfd9cf" font-size="16">og distribusjon påvirker pris</text>
+<text x="770" y="296" text-anchor="middle" fill="#a5e2b9" font-size="21" font-weight="800">KLIMA</text>
+<text x="770" y="335" text-anchor="middle" fill="#f6f6f4" font-size="18">Ingen automatisk gevinst</text>
+<text x="770" y="362" text-anchor="middle" fill="#e1dfd3" font-size="16">Et prisfall er ikke bevis</text>
+<text x="770" y="403" text-anchor="middle" fill="#e1dfd3" font-size="16">på lavere forbruk</text>
+<text x="770" y="428" text-anchor="middle" fill="#e1dfd3" font-size="16">eller reduserte utslipp</text>
+<text x="40" y="544" fill="#f6e6bf" font-size="18" font-weight="700">Nøkkelen: Hva forårsaker prisfallet – og hvor lenge varer det?</text>
+<text x="40" y="579" fill="#c9c9c4" font-size="15">Redaksjonell forklaring med utgangspunkt i IMF, IEA og Norges Bank.</text>
+<text x="40" y="604" fill="#b0b0ad" font-size="15">Ingen av virkningene over er en tallfestet prognose.</text>
+</g></svg>
