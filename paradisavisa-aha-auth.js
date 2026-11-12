@@ -51,7 +51,7 @@
     if (guest) guest.hidden = true;
     if (member) member.hidden = false;
     if (label) label.textContent = String(name || "Min Aha-konto").trim().slice(0, 90);
-    status(menu, "Innlogget med Aha. Samme konto som i History GO.");
+    status(menu, "Innlogget med Aha og History GO. Artikkelbiblioteket lagres foreløpig lokalt.");
   }
 
   function loadScript(src) {
