@@ -496,6 +496,49 @@ async function run(){
       assert.deepEqual(errors,[],name+": JavaScript-feil i oljepris-feature");
       await page.screenshot({path:path.join(root,"qa-screenshots","oljepris-levende-"+name+".png"),fullPage:true});
 
+      // Eleventh pilot: original Meta journalism-rights story + source-backed interactivity.
+      await page.goto(base+"/artikler/2026-11-02-meta-plattformmakt-pressefrihet.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Hvem bestemmer over journalistikken/);
+      await assertCompactZoomLinks(page,name+": Meta",2);
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      assert.equal(await page.locator("article.av-artikkel h1").isVisible(),true);
+      const metaDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(metaDims.width<=metaDims.viewport+2,name+": Meta-saken har sidelengs scroll "+JSON.stringify(metaDims));
+      assert.equal(await page.locator("article.av-artikkel figure img").count(),4);
+      for(const img of await page.locator("article.av-artikkel figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{
+          el.addEventListener("load",resolve,{once:true});
+          el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});
+        });});
+        assert.ok(await img.evaluate(el=>el.naturalWidth>0),name+": Meta-bilde eller grafikk mangler");
+      }
+      await page.getByRole("link",{name:"Forstørr oversikten over 180 støttespillere og ti formelle parter"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/meta-norske-mediehus-180-10\.svg/);
+      await page.keyboard.press("Escape");
+      await page.getByRole("link",{name:"Forstørr diagrammet om lenkedeling, indeksering og innholdsrettigheter"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/meta-lenke-innhenting-rettigheter\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator(".av-tidslinje li").count(),6);
+      await page.locator(".av-tidslinje li:nth-child(6) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(6) details").getAttribute("open"),"");
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="avtale"]').click();
+      assert.equal(await page.locator('[data-av-panel="avtale"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="lenke"]').isVisible(),false);
+      const metaPoll=page.locator('[data-av-poll="meta-pressefrihet-vilkar-2026"]');
+      assert.equal(await metaPoll.locator("form").isVisible(),true);
+      await metaPoll.locator('input[value="innsyn"]').check();
+      await metaPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await metaPoll.locator("[data-av-poll-result]").innerText(),/Åpenhet om hvilke data/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await metaPoll.locator("[data-av-poll-result]").innerText(),/Åpenhet om hvilke data/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i Meta-feature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","meta-levende-"+name+".png"),fullPage:true});
+
       await context.close();
       console.log("OK: Ronaldo-sportanalyse på "+name+" med originalbilder, pressdiagram, tidslinje og poll");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
@@ -562,6 +605,14 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="norge"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr grafen over Brents sluttkurser i november"}).getAttribute("href"),/brent-november-sluttkurser\.svg/);
     assert.match(await page.getByRole("link",{name:"Forstørr forklaringsgrafikken om oljeprisens virkninger i Norge"}).getAttribute("href"),/oljepris-norge-virkninger\.svg/);
+    await page.goto(base+"/artikler/2026-11-02-meta-plattformmakt-pressefrihet.html",{waitUntil:"load"});
+    assert.equal(await page.locator('article.av-artikkel h1').isVisible(),true);
+    assert.equal(await page.locator('[data-av-poll="meta-pressefrihet-vilkar-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="meta-pressefrihet-vilkar-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="lenke"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="myndighet"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr oversikten over 180 støttespillere og ti formelle parter"}).getAttribute("href"),/meta-norske-mediehus-180-10\.svg/);
+    assert.match(await page.getByRole("link",{name:"Forstørr diagrammet om lenkedeling, indeksering og innholdsrettigheter"}).getAttribute("href"),/meta-lenke-innhenting-rettigheter\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
