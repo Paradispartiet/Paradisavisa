@@ -257,13 +257,7 @@ async function run(){
       console.log("OK: kulturartikkel på "+name+" med originalfoto, tidslinje, faktaboks og faseforklaring");
 
       // Fifth pilot: sport analysis of Ronaldo with original illustration pair.
-      await page.goto(base+"/artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",{waitUntil:"load"});
-    assert.equal(await page.locator('[data-av-panel="under"]').isVisible(),true);
-    assert.equal(await page.locator('[data-av-panel="etter"]').isVisible(),true);
-    assert.match(await page.getByRole("link",{name:"Forstørr diagrammet over de to teaterstedene"}).getAttribute("href"),/nationaltheatret-to-scener-forklaring\.svg/);
-    await page.locator("details.av-infoboks summary").click();
-    assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
-    await page.goto(base+"/artikler/2026-11-05-ronaldo-landslagsavskjed.html",{waitUntil:"load"});
+      await page.goto(base+"/artikler/2026-11-05-ronaldo-landslagsavskjed.html",{waitUntil:"load"});
       assert.match(await page.title(),/Ronaldo var en gigant/);
       await assertCompactZoomLinks(page,name+": Ronaldo");
       assert.equal(await page.locator("article.av-artikkel h1").count(),1);
@@ -335,6 +329,12 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="effekt"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="samfunn"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr køgrafen"}).getAttribute("href"),/datasentre-kraftko-graf\.svg/);
+    await page.goto(base+"/artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-panel="under"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="etter"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr diagrammet over de to teaterstedene"}).getAttribute("href"),/nationaltheatret-to-scener-forklaring\.svg/);
+    await page.locator("details.av-infoboks summary").click();
+    assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
     await page.goto(base+"/artikler/2026-11-05-ronaldo-landslagsavskjed.html",{waitUntil:"load"});
     assert.equal(await page.locator('[data-av-poll="ronaldo-ettermale-2026"] form').isVisible(),false);
     assert.equal(await page.locator('[data-av-poll="ronaldo-ettermale-2026"] [data-av-poll-js-required]').isVisible(),true);
