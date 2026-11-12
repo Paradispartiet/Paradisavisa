@@ -1,5 +1,48 @@
 [
   {
+    "id": "notis-ssb-ledige-stillinger-20261112",
+    "category": "Arbeidsliv",
+    "text": "Norge hadde 89 500 ledige stillinger i tredje kvartal, 2 500 flere enn kvartalet før, viser sesongjusterte tall fra SSB. Det tilsvarer en økning på 2,9 prosent. Byrået mener nedgangen siden 2022 kan ha stoppet opp. Tallet beskriver stillinger som var ledige på et måletidspunkt, ikke nye utlysninger.",
+    "date": "2026-11-12",
+    "url": "https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/ledige-stillingar/artikler/nesten-90-000-ledige-stillingar"
+  },
+  {
+    "id": "notis-sporveien-politisk-streik-posten-20261111",
+    "category": "Samferdsel",
+    "text": "Trikker og T-baner i Oslo er varslet stanset mandag 16. november fra klokken 15.00 til 15.15. Sporveisansatte vil gjennomføre en politisk solidaritetsstreik mot regjeringens foreslåtte kutt i Posten. Postansatte er samtidig oppfordret til en lengre aksjon, opplyser Fagforbundet. Streiken er varslet, ikke gjennomført.",
+    "date": "2026-11-11",
+    "expires": "2026-11-16",
+    "url": "https://prod.fagforbundet.no/a/391691/sporveisarbeidere-streiker-i-solidaritet-med-postansatte/"
+  },
+  {
+    "id": "notis-nordisk-forsvarsavtale-20261112",
+    "category": "Forsvar",
+    "text": "Norge, Sverige, Danmark, Finland og Island vil arbeide mot en felles nordisk forsvarsavtale, opplyser forsvarsminister Tore O. Sandvik. Målet er tettere integrasjon innen NATO og enklere transport av soldater og materiell over grensene. Landene må blant annet avklare ulike lover og regler. Avtalen er ennå ikke inngått, melder Reuters.",
+    "date": "2026-11-12",
+    "url": "https://www.reuters.com/business/aerospace-defense/nordic-countries-work-towards-common-defence-deal-norway-says-2026-11-12/"
+  },
+  {
+    "id": "notis-mdg-skeive-veivisere-20261112",
+    "category": "Utdanning",
+    "text": "Miljøpartiet De Grønne vil opprette et nasjonalt program med «skeive veivisere» som besøker skoler og underviser om seksuell orientering og mangfold. Partiet mener ordningen kan motvirke homohets, og vil ta kravet inn i budsjettforhandlingene med Arbeiderpartiet, skriver Klassekampen. Dette er et politisk forslag, ikke et vedtak.",
+    "date": "2026-11-12",
+    "url": "https://klassekampen.no/artikkel/2026-11-12/mdg-vil-ha-skeive-veivisere-i-skolen"
+  },
+  {
+    "id": "notis-nkom-fm-beredskapsradio-20261112",
+    "category": "Beredskap",
+    "text": "Nasjonal kommunikasjonsmyndighet advarer mot butikker som markedsfører radioer uten DAB+ som beredskapsradioer. En nødradio i Norge bør kunne ta inn DAB+ og fungere på batteri, sier Nkom. Etaten mener feil markedsføring kan gi falsk trygghet i en krise. Forbrukertilsynet vil undersøke saken på nytt.",
+    "date": "2026-11-12",
+    "url": "https://nkom.no/aktuelt/advarer-om-beredskapsradioer"
+  },
+  {
+    "id": "notis-ssb-industriinvesteringer-20261112",
+    "category": "Økonomi",
+    "text": "Norske industribedrifter anslår investeringer på 40,7 milliarder kroner i 2026, rundt ti prosent lavere enn tilsvarende anslag for 2025, ifølge SSB. Flere store prosjekter ble avsluttet i fjor, mens andre er utsatt eller endret. Anslagene kan fortsatt bli revidert; dette er ikke endelige regnskapstall.",
+    "date": "2026-11-12",
+    "url": "https://www.ssb.no/energi-og-industri/industri-og-bergverksdrift/statistikk/investeringer-i-olje-og-gass-industri-bergverk-og-kraftforsyning/artikler/lavere-anslag-for-industriinvesteringene-i-2026"
+  },
+  {
     "id": "notis-spania-generalstreik-20261111",
     "category": "Samfunn",
     "text": "Om lag 120 000 mennesker demonstrerte i Madrid onsdag mot høye boligpriser og husleier, ifølge spanske myndigheter. Markeringen fant sted samtidig med Spanias første landsomfattende generalstreik på 14 år. Demonstrantene krever at det blir mulig å bo uten at store deler av lønnen går til husleie.",
