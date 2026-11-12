@@ -5,7 +5,7 @@ const html=read("artikler/2026-11-06-staten-bor-lage-ting-som-varer.html");
 const svg=read("Bilder/Artikler/2026-11-12-staten-grunnsortiment-ansvarsdeling.svg");
 
 test("Kommentar beholder tittel, avsender, publiseringsdato og godkjent hovedbilde",()=>{
- assert.match(html,/<h1 class="title">Staten bør lage ting som varer<\/h1>/);
+ assert.match(html,/<h1 class="title">Staten skal lage ting som varer<\/h1>/);
  assert.equal((html.match(/<h1\b/g)||[]).length,1);
  assert.match(html,/article:published_time" content="2026-11-06"/);
  assert.match(html,/article:modified_time" content="2026-11-12"/);
