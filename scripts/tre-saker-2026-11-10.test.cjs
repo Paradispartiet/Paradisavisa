@@ -40,7 +40,7 @@ for(const item of items){
   assert.ok(html.includes('property="og:image:alt"'));
   assert.ok(html.includes('rel="canonical" href="'+base+item.article+'"'));
   assert.ok(html.includes('article:published_time" content="'+card.date+'"'));
-  if(item.modified)assert.ok(html.includes('article:modified_time" content='+(item.modifiedDate||"2026-11-11")+''));
+  if(item.modified)assert.ok(html.includes('article:modified_time" content="'+(item.modifiedDate||"2026-11-11")+'"'));
   assert.equal((html.match(/<h1\b/g)||[]).length,1);
   assert.match(html,/<figcaption class="story-caption">[\s\S]*?<\/figcaption>/);
   assert.ok(!html.includes("Vurderingsbilde – ikke endelig godkjent"));
