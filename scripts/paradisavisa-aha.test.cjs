@@ -56,7 +56,7 @@ function harness(options = {}) {
   const ctx = { document, location: { origin: "https://paradispartiet.github.io", pathname: "/Paradisavisa/artikler/test.html", href: "https://paradispartiet.github.io/Paradisavisa/artikler/test.html" },
     URL, Date, Blob, setTimeout(fn) { fn(); }, innerHeight: 700, addEventListener(name, fn) { listeners[name] = fn; },
     localStorage: { getItem(k) { return store.get(k) || null; }, setItem(k, v) { store.set(k, v); } } };
-  if (options.owner) {
+  if (options.owner || options.verifiedUserId) {
     ctx.ParadisavisaAhaAuth = { async getVerifiedUserId() { return currentUser; } };
   }
   vm.runInNewContext(source, ctx, { filename: "paradisavisa-aha.js" });
@@ -129,6 +129,22 @@ test("Samme Aha-konto låser opp, og kontobytte låser historikken på nytt", as
   await new Promise((resolve) => setImmediate(resolve));
   assert.equal(h.buttons.save.disabled, true);
 });
+test("an article opened as a guest locks immediately when another tab binds its library to an account", async () => {
+  const owner = "11111111-1111-4111-8111-111111111111";
+  const h = harness({ verifiedUserId: owner });
+  assert.equal(h.buttons.save.disabled, false);
+  h.store.set("aha_paradisavisa_cloud_owner_v1", owner);
+  h.listeners.storage({ key: "aha_paradisavisa_cloud_owner_v1" });
+  assert.equal(h.buttons.save.disabled, true, "Owner claim should lock controls during verification");
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(h.buttons.save.disabled, false, "Only verified owner unlocks");
+  h.setVerifiedUserId("");
+  h.listeners.storage({ key: "sb-wshmybqyksrwkawqleiz-auth-token" });
+  assert.equal(h.buttons.save.disabled, true);
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(h.buttons.save.disabled, true);
+});
+
 test("Lagring av artikkel nummer 5001 bevarer alle eksisterende lagrede artikler", () => {
   const h = harness({ preloaded: 5000 });
   const original = h.store.get("aha_paradisavisa_library_v1");
