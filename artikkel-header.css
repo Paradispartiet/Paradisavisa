@@ -1,0 +1,76 @@
+/* Paradisavisa: en isolert, gjenbrukbar header for alle eldre /artikler/-sider.
+   Faller tilbake på semantiske <details> med samme lenker som header.html uten JS. */
+.avisa-article-fallback,.avisa-shared-header.avisa-artikkel-injisert {
+ box-sizing:border-box!important;position:sticky!important;top:0!important;z-index:9000!important;
+ display:block!important;width:100%!important;max-width:none!important;
+ background:#080808!important;color:#f4f0e9!important;
+ border-top:2px solid #ffd94f!important;border-bottom:1px solid #494536!important;
+ padding:0!important;margin:0!important;box-shadow:none!important;
+ font:400 14px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+}
+.avisa-article-fallback *,.avisa-shared-header.avisa-artikkel-injisert * {box-sizing:border-box}
+.avisa-article-fallback .pa-header-inner,.avisa-artikkel-injisert .avis-topp-inner{
+ display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;position:relative;
+ width:100%;max-width:1180px;margin:auto;padding:1rem 1.25rem;gap:.65rem 1rem;
+}
+.avisa-article-fallback .pa-header-brand>a,.avisa-artikkel-injisert .avis-kompakt-merke{
+ display:inline-block;color:#ffda58!important;font:800 clamp(1.55rem,3vw,2.15rem)/1.08 Georgia,serif!important;
+ letter-spacing:-.06em!important;text-decoration:none!important;background:none!important;border:0!important;
+}
+.avisa-article-fallback .pa-header-brand>a:hover,.avisa-artikkel-injisert .avis-kompakt-merke:hover{color:#ffe996!important}
+.avisa-article-fallback .pa-header-brand>p,.avisa-artikkel-injisert .avis-motto{
+ font:italic .83rem/1.45 Georgia,serif!important;color:#d3cbbb!important;margin:.3rem 0 0!important;
+ letter-spacing:0!important;text-transform:none!important;
+}
+.avisa-article-fallback .pa-header-actions,.avisa-artikkel-injisert .avis-topp-handlinger{
+ display:flex;align-items:center;gap:.65rem;grid-column:2;grid-row:1;
+}
+.avisa-article-fallback .pa-header-actions>a,.avisa-artikkel-injisert .avis-topp-siste{
+ color:#e9e6df!important;text-decoration:none!important;border-bottom:1px solid #655b47!important;
+ white-space:nowrap;font:600 .86rem/1.35 system-ui,sans-serif!important;padding:.6rem .15rem;
+}
+.avisa-article-fallback .pa-menu,.avisa-artikkel-injisert .avisa-menu{font-family:system-ui,sans-serif!important}
+.avisa-article-fallback .pa-menu{position:relative}
+.avisa-article-fallback .pa-menu>summary,.avisa-artikkel-injisert .nav-toggle{
+ list-style:none;display:inline-flex!important;align-items:center;justify-content:center;gap:.35rem;
+ min-height:44px!important;padding:.55rem .75rem!important;
+ color:#ffda58!important;background:transparent!important;border:1px solid #806e38!important;
+ border-radius:4px!important;cursor:pointer!important;
+ font:700 .84rem/1.2 system-ui,sans-serif!important;text-transform:none!important;letter-spacing:0!important;
+}
+.avisa-article-fallback .pa-menu>summary::-webkit-details-marker{display:none}
+.avisa-article-fallback .pa-menu>summary::before{content:"☰";font-size:1.1rem}
+.avisa-article-fallback .pa-menu[open]>summary::before{content:"×"}
+.avisa-article-fallback .pa-menu>summary:hover,.avisa-article-fallback .pa-menu[open]>summary,
+.avisa-artikkel-injisert .nav-toggle:hover,.avisa-artikkel-injisert .nav-toggle[aria-expanded="true"]{
+ background:#2a2518!important;border-color:#ffd94f!important;
+}
+.avisa-article-fallback .pa-menu>nav,.avisa-artikkel-injisert .avisa-menu:not([hidden]){
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.25rem!important;
+ position:absolute!important;top:calc(100% + .35rem)!important;right:0!important;
+ width:min(415px,calc(100vw - 1.5rem))!important;max-width:calc(100vw - 1.5rem)!important;
+ padding:.55rem!important;margin:0!important;background:#131313!important;
+ border:1px solid #464139!important;border-radius:5px!important;
+ box-shadow:0 16px 42px rgba(0,0,0,.65)!important;z-index:9001!important;
+}
+.avisa-artikkel-injisert .avisa-menu:not([hidden]){top:calc(100% - .2rem)!important;right:1rem!important}
+.avisa-artikkel-injisert .avisa-menu[hidden],.avisa-artikkel-injisert .nav-toggle[hidden]{display:none!important}
+.avisa-article-fallback .pa-menu:not([open])>nav{display:none!important}
+.avisa-article-fallback .pa-menu>nav>a,.avisa-artikkel-injisert .avisa-menu>a{
+ display:block!important;text-align:left!important;color:#eeeae2!important;text-decoration:none!important;
+ background:transparent!important;white-space:normal!important;min-width:0!important;border:0!important;
+ font:600 .88rem/1.4 system-ui,sans-serif!important;padding:.8rem .65rem!important;
+ border-radius:3px!important;
+}
+.avisa-article-fallback .pa-menu>nav>a:hover,.avisa-artikkel-injisert .avisa-menu>a:hover{background:#27251d!important;color:#ffe48a!important}
+.avisa-article-fallback a:focus-visible,.avisa-article-fallback summary:focus-visible,
+.avisa-artikkel-injisert a:focus-visible,.avisa-artikkel-injisert button:focus-visible{
+ outline:3px solid #ffe48a!important;outline-offset:2px!important;
+}
+@media(max-width:700px){
+ .avisa-article-fallback .pa-header-inner,.avisa-artikkel-injisert .avis-topp-inner{padding:.9rem .8rem}
+ .avisa-article-fallback .pa-header-actions>a,.avisa-artikkel-injisert .avis-topp-siste{display:none!important}
+ .avisa-article-fallback .pa-header-brand>a,.avisa-artikkel-injisert .avis-kompakt-merke{font-size:clamp(1.35rem,6vw,1.85rem)!important}
+ .avisa-article-fallback .pa-header-brand>p,.avisa-artikkel-injisert .avis-motto{font-size:.76rem!important}
+}
+@media(prefers-reduced-motion:reduce){.avisa-article-fallback *, .avisa-artikkel-injisert *{transition:none!important}}
