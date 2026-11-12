@@ -16,7 +16,7 @@ test("Kommentar beholder tittel, avsender, publiseringsdato og godkjent hovedbil
  assert.match(html,/width="1672" height="941"/);
  assert.match(html,/KI-assistert redaksjonell illustrasjon/);
  assert.doesNotMatch(html,/2026-11-06-offentlig-grunnsortiment\.svg/);
- assert.match(html,/ikke eksisterende statlige produkter/);
+ assert.match(html,/Dette er ikke et fotografi av en virkelig statlig produsent eller eksisterende offentlige produkter/);
  assert.match(html,/class="av-artikkel"/);
  assert.match(html,/class="body av-prosa"/);
  assert.match(html,/href="\.\.\/artikkel\.css\?v=20261112a"/);
