@@ -453,6 +453,49 @@ async function run(){
       assert.deepEqual(errors,[],name+": JavaScript-feil i diplomatifeature");
       await page.screenshot({path:path.join(root,"qa-screenshots","diplomati-norge-russland-"+name+".png"),fullPage:true});
 
+      // Tenth living feature: oil price settlements, original image, charts and no fabricated pump prices.
+      await page.goto(base+"/artikler/2026-11-05-oljeprisfall-usa-valg-norge.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Oljeprisen falt nesten ni prosent/);
+      await assertCompactZoomLinks(page,name+": oljepris",2);
+      assert.equal(await page.locator("main h1").count(),1);
+      assert.equal(await page.locator("main figure img").count(),3);
+      const oilDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(oilDims.width<=oilDims.viewport+2,name+": oljeprissak har horisontal scroll "+JSON.stringify(oilDims));
+      for(const img of await page.locator("main figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{
+          el.addEventListener("load",resolve,{once:true});
+          el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});
+        });});
+        assert.ok(await img.evaluate(el=>el.naturalWidth>0),name+": oljeprisfoto eller diagram mangler");
+      }
+      assert.equal(await page.locator("table.av-datatabell tbody tr").count(),7);
+      await page.getByRole("link",{name:"Forstørr grafen over Brents sluttkurser i november"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/brent-november-sluttkurser\.svg/);
+      await page.keyboard.press("Escape");
+      await page.getByRole("link",{name:"Forstørr forklaringsgrafikken om oljeprisens virkninger i Norge"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/oljepris-norge-virkninger\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator(".av-tidslinje li").count(),5);
+      await page.locator(".av-tidslinje li:nth-child(5) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(5) details").getAttribute("open"),"");
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="ettersporsel"]').click();
+      assert.equal(await page.locator('[data-av-panel="ettersporsel"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="risiko"]').isVisible(),false);
+      const oilPoll=page.locator('[data-av-poll="oljepris-norsk-okonomi-2026"]');
+      assert.equal(await oilPoll.locator("form").isVisible(),true);
+      await oilPoll.locator('input[value="klima"]').check();
+      await oilPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await oilPoll.locator("[data-av-poll-result]").innerText(),/faktisk oljeforbruk og utslipp/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await oilPoll.locator("[data-av-poll-result]").innerText(),/faktisk oljeforbruk og utslipp/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i oljepris-feature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","oljepris-levende-"+name+".png"),fullPage:true});
+
       await context.close();
       console.log("OK: Ronaldo-sportanalyse på "+name+" med originalbilder, pressdiagram, tidslinje og poll");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
@@ -512,6 +555,13 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="kontakt"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="gjennomforing"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr oversikten over de diplomatiske kanalene"}).getAttribute("href"),/abu-dhabi-diplomatiske-kanaler\.svg/);
+    await page.goto(base+"/artikler/2026-11-05-oljeprisfall-usa-valg-norge.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="oljepris-norsk-okonomi-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="oljepris-norsk-okonomi-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="risiko"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="norge"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr grafen over Brents sluttkurser i november"}).getAttribute("href"),/brent-november-sluttkurser\.svg/);
+    assert.match(await page.getByRole("link",{name:"Forstørr forklaringsgrafikken om oljeprisens virkninger i Norge"}).getAttribute("href"),/oljepris-norge-virkninger\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
