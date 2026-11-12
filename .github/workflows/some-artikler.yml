@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/some-*.cjs'
       - 'scripts/some-*.py'
+      - 'scripts/x-autopubliser*.cjs'
       - '.github/workflows/some-artikler.yml'
   push:
     branches: [main]
@@ -18,6 +19,7 @@ on:
       - 'posts.json'
       - 'scripts/some-*.cjs'
       - 'scripts/some-*.py'
+      - 'scripts/x-autopubliser*.cjs'
       - '.github/workflows/some-artikler.yml'
 
 permissions:
@@ -38,6 +40,8 @@ jobs:
           node-version: '22'
       - name: Kontroller SoMe-pakkens logikk
         run: node --test scripts/some-pakke.test.cjs
+      - name: Test direkte X-integrasjon og engangssperre
+        run: node --test scripts/x-autopubliser.test.cjs
       - name: Installer bildebibliotek for visuell korttest
         run: python3 -m pip install 'Pillow>=10,<13' 'CairoSVG>=2,<3'
       - name: Test faktiske kortbilder og tekstsperre
@@ -47,6 +51,8 @@ jobs:
     name: Oppdag, verifiser og bygg SoMe-pakken
     if: github.event_name == 'push'
     needs: tester
+    outputs:
+      count: ${{ steps.scan.outputs.count }}
     runs-on: ubuntu-24.04
     timeout-minutes: 13
     steps:
@@ -91,5 +97,38 @@ jobs:
         if: steps.scan.outputs.count != '0'
         run: |
           echo "SoMe-bilder og tekster er automatisk laget etter offentlig verifisering." >> "$GITHUB_STEP_SUMMARY"
-          echo "IKKE SENDT: Automatisk konto-publisering venter på Metricool API-tilgang og koblet X-konto." >> "$GITHUB_STEP_SUMMARY"
+          echo "Instagram: klargjort, ikke sendt. X: direkte autopublisering er bare aktiv ved godkjent kontotilgang og X_AUTOPUBLISH_ENABLED=true." >> "$GITHUB_STEP_SUMMARY"
           echo "Ingen eldre artikler eller konto-innlegg ble endret." >> "$GITHUB_STEP_SUMMARY"
+
+  x_publiser:
+    name: Publiser X direkte etter verifisert artikkel (eksplisitt aktivert)
+    needs: klargjor
+    if: github.event_name == 'push' && needs.klargjor.outputs.count != '0' && vars.X_AUTOPUBLISH_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    concurrency:
+      group: paradisavisa-x-publisering-alle-kjoringer
+      cancel-in-progress: false
+    steps:
+      - name: Hent koden
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Hent verifisert SoMe-pakke, ikke hele avisarkivet
+        uses: actions/download-artifact@v4
+        with:
+          name: some-pakke-${{ github.sha }}
+          path: ${{ runner.temp }}/some-pakke
+      - name: Publiser på X med engangslås og maksimalt ti lenkeinnlegg per måned
+        env:
+          X_AUTOPUBLISH_ENABLED: ${{ vars.X_AUTOPUBLISH_ENABLED }}
+          X_EXPECTED_USERNAME: ${{ vars.X_EXPECTED_USERNAME }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          GH_WRITE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/x-autopubliser.cjs --manifest "$RUNNER_TEMP/some-pakke/manifest.json"

@@ -33,6 +33,8 @@ jobs:
         run: node --test scripts/ki-debatt-levende.test.cjs
       - name: Test datasenterartikkelens MW-tall, kilder og levende moduler
         run: node --test scripts/datasentre-levende.test.cjs
+      - name: Test Ronaldo-analysens dokumentasjon, fotballgrafikk og moduler
+        run: node --test scripts/ronaldo-levende.test.cjs
       - name: Test Nationaltheatret-artikkelen, kildene og kulturmodulene
         run: node --test scripts/nationaltheatret-levende.test.cjs
       - name: Test tre nyhetssaker og eksakte WebP-originaler
