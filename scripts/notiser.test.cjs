@@ -163,6 +163,25 @@ test("Posten-streiken har riktig klokkeslett, kildelenke og dato", () => {
   assert.equal(new Set(sourceUrls).size, sourceUrls.length);
 });
 
+test("Sexy sosialister er faktasjekket og tidsavgrenset til tre dager", () => {
+  const notes = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const id = "notis-sexy-sosialister-donasjoner-20261111";
+  const note = notes.find(x => x.id === id);
+  assert.ok(note, "Kalenderstriden skal være med i notisbåndet");
+  assert.equal(note.category, "Politikk og kultur");
+  assert.equal(note.date, "2026-11-11");
+  assert.equal(note.expires, undefined, "Tre dager er standard");
+  assert.ok(note.text.includes("Rødt") && note.text.includes("SV"));
+  assert.ok(note.text.includes("donere direkte") && note.text.includes("Skogøy sier"),
+    "Salgstall og oppfordring skal tilskrives kilden");
+  assert.equal(note.url,
+    "https://www.fagbladet.no/nyheter/vurderer-a-melde-seg-ut-av-sv-etter-sexy-sosialist-kalender/764005");
+  assert.equal(fersk(note, new Date(2026, 10, 12)), true);
+  assert.equal(fersk(note, new Date(2026, 10, 13)), true);
+  assert.equal(fersk(note, new Date(2026, 10, 14)), false);
+  assert.equal(new Set(notes.map(x => x.url)).size, notes.length);
+});
+
 test("Notisbåndet bruker bare 2×/4×/5× og samler radio/pause/fart i én meny", () => {
   assert.match(script, /const fartvalg = \[2, 4, 5\]/);
   assert.match(script, /lagret === 6/);
