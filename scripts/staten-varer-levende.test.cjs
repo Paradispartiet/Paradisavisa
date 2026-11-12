@@ -3,6 +3,8 @@ const test=require("node:test"),assert=require("node:assert/strict"),fs=require(
 const read=name=>fs.readFileSync(path.join(__dirname,"..",name),"utf8");
 const html=read("artikler/2026-11-06-staten-bor-lage-ting-som-varer.html");
 const svg=read("Bilder/Artikler/2026-11-12-staten-grunnsortiment-ansvarsdeling.svg");
+const cards=JSON.parse(read("kommentarer.json"));
+const heroPath="Bilder/Artikler/2026-11-12-staten-skal-lage-ting-som-varer-hovedbilde.webp";
 
 test("Kommentar beholder tittel, avsender, publiseringsdato og godkjent hovedbilde",()=>{
  assert.match(html,/<h1 class="title">Staten skal lage ting som varer<\/h1>/);
@@ -10,7 +12,10 @@ test("Kommentar beholder tittel, avsender, publiseringsdato og godkjent hovedbil
  assert.match(html,/article:published_time" content="2026-11-06"/);
  assert.match(html,/article:modified_time" content="2026-11-12"/);
  assert.match(html,/Kommentar fra Paradispartiet/);
- assert.match(html,/2026-11-06-offentlig-grunnsortiment\.svg/);
+ assert.match(html,/2026-11-12-staten-skal-lage-ting-som-varer-hovedbilde\.webp/);
+ assert.match(html,/width="1672" height="941"/);
+ assert.match(html,/KI-assistert redaksjonell illustrasjon/);
+ assert.doesNotMatch(html,/2026-11-06-offentlig-grunnsortiment\.svg/);
  assert.match(html,/ikke eksisterende statlige produkter/);
  assert.match(html,/class="av-artikkel"/);
  assert.match(html,/class="body av-prosa"/);
@@ -48,4 +53,20 @@ test("Levende kommentar: originalgrafikk, liten zoom, forklaring, faktaboks og l
  assert.match(html,/data-av-poll-js-required/);
  assert.match(html,/Ingen samlede stemmetall eller prosenter vises/);
  assert.match(html,/value="ingen"/);
+});
+
+test("Godkjent illustrasjon er en virkelig skarp WebP i repoet, og den brukes på forside og deling",()=>{
+ const full=path.join(__dirname,"..",heroPath);
+ const img=fs.readFileSync(full);
+ assert.ok(img.length>150000,"Hovedbildet skal være høyoppløselig, ikke et lite ikon");
+ assert.ok(img.length<1500000,"Bildeformat må fungere effektivt i mobilnett");
+ assert.equal(img.subarray(0,4).toString(),"RIFF");
+ assert.equal(img.subarray(8,12).toString(),"WEBP");
+ assert.match(html,/og:image" content="https:\/\/paradispartiet\.github\.io\/Paradisavisa\/Bilder\/Artikler\/2026-11-12-staten-skal-lage-ting-som-varer-hovedbilde\.webp"/);
+ assert.match(html,/twitter:image" content="https:\/\/paradispartiet\.github\.io\/Paradisavisa\/Bilder\/Artikler\/2026-11-12-staten-skal-lage-ting-som-varer-hovedbilde\.webp"/);
+ const card=cards.find(x=>x.url==="artikler/2026-11-06-staten-bor-lage-ting-som-varer.html");
+ assert.ok(card,"Kanonisk kommentar-kort mangler");
+ assert.equal(card.title,"Staten skal lage ting som varer");
+ assert.equal(card.image,heroPath);
+ assert.equal(card.date,"2026-11-06");
 });
