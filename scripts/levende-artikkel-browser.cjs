@@ -539,6 +539,49 @@ async function run(){
       assert.deepEqual(errors,[],name+": JavaScript-feil i Meta-feature");
       await page.screenshot({path:path.join(root,"qa-screenshots","meta-levende-"+name+".png"),fullPage:true});
 
+      // Twelfth pilot: local Sofienberg commentary with two original illustrations and two sourced charts.
+      await page.goto(base+"/artikler/2026-11-03-sofienberg-kirke-varmestue.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Sofienberg kirke er varm/);
+      await assertCompactZoomLinks(page,name+": Sofienberg",2);
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      assert.equal(await page.locator("article.av-artikkel figure img").count(),4);
+      const sofDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(sofDims.width<=sofDims.viewport+2,name+": Sofienberg har sidelengs scroll "+JSON.stringify(sofDims));
+      for(const img of await page.locator("article.av-artikkel figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{
+          el.addEventListener("load",resolve,{once:true});
+          el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});
+        });});
+        assert.ok(await img.evaluate(el=>el.naturalWidth>0),name+": Sofienberg-bilde eller kildegrafikk mangler");
+      }
+      assert.equal(await page.locator(".av-datatabell tbody tr").count(),3);
+      await page.getByRole("link",{name:"Forstørr prisgrafikken for tre Sofienberg-arrangementer"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/sofienberg-priseksempler\.svg/);
+      await page.keyboard.press("Escape");
+      await page.getByRole("link",{name:"Forstørr adgangsdiagrammet for Sofienberg kirke"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/sofienberg-adgang-ikke-samme\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator(".av-tidslinje li").count(),5);
+      await page.locator(".av-tidslinje li:nth-child(5) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(5) details").getAttribute("open"),"");
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="drift"]').click();
+      assert.equal(await page.locator('[data-av-panel="drift"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="tid"]').isVisible(),false);
+      const sofPoll=page.locator('[data-av-poll="sofienberg-varmestue-prioritering-2026"]');
+      assert.equal(await sofPoll.locator("form").isVisible(),true);
+      await sofPoll.locator('input[value="varmestue"]').check();
+      await sofPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await sofPoll.locator("[data-av-poll-result]").innerText(),/Faste tider med gratis varmestue/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await sofPoll.locator("[data-av-poll-result]").innerText(),/Faste tider med gratis varmestue/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i Sofienberg-feature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","sofienberg-levende-"+name+".png"),fullPage:true});
+
       await context.close();
       console.log("OK: Ronaldo-sportanalyse på "+name+" med originalbilder, pressdiagram, tidslinje og poll");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
@@ -613,6 +656,13 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="myndighet"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr oversikten over 180 støttespillere og ti formelle parter"}).getAttribute("href"),/meta-norske-mediehus-180-10\.svg/);
     assert.match(await page.getByRole("link",{name:"Forstørr diagrammet om lenkedeling, indeksering og innholdsrettigheter"}).getAttribute("href"),/meta-lenke-innhenting-rettigheter\.svg/);
+    await page.goto(base+"/artikler/2026-11-03-sofienberg-kirke-varmestue.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="sofienberg-varmestue-prioritering-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="sofienberg-varmestue-prioritering-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="tid"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="sambruk"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr prisgrafikken for tre Sofienberg-arrangementer"}).getAttribute("href"),/sofienberg-priseksempler\.svg/);
+    assert.match(await page.getByRole("link",{name:"Forstørr adgangsdiagrammet for Sofienberg kirke"}).getAttribute("href"),/sofienberg-adgang-ikke-samme\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
