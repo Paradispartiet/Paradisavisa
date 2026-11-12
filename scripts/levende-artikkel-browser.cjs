@@ -609,6 +609,47 @@ async function run(){
       }
       await page.screenshot({path:path.join(root,"qa-screenshots","felles-header-"+name+".png"),fullPage:false});
 
+      // Feature 13: NAV-kommentar, rettskilder og felles header.
+      await page.goto(base+"/artikler/2026-11-02-nav-rettigheter-automatisk-hjelp.html",{waitUntil:"load"});
+      await page.locator("header.avisa-shared-header").waitFor({state:"visible"});
+      assert.match(await page.title(),/Når noen ber om hjelp/);
+      await assertCompactZoomLinks(page,name+": NAV-kommentar",2);
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      assert.equal(await page.locator("article.av-artikkel h1").isVisible(),true);
+      assert.equal(await page.locator("article.av-artikkel figure img").count(),3);
+      const navDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(navDims.width<=navDims.viewport+2,name+": NAV-kommentar gir horisontal scroll "+JSON.stringify(navDims));
+      for(const img of await page.locator("article.av-artikkel figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{
+          el.addEventListener("load",resolve,{once:true});
+          el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});
+        });});
+        assert.ok(await img.evaluate(el=>el.naturalWidth>0),name+": NAV-illustrasjon mangler");
+      }
+      await page.getByRole("link",{name:"Forstørr sammenligningen mellom dagens NAV-ordning og Paradisavisas forslag"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/nav-dagens-ordning-vs-forslag\.svg/);
+      await page.keyboard.press("Escape");
+      await page.getByRole("link",{name:"Forstørr oversikten over sosialtjenesteloven paragraf 17 til 20"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/nav-loven-paragrafene-17-20\.svg/);
+      await page.keyboard.press("Escape");
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="nød"]').click();
+      assert.equal(await page.locator('[data-av-panel="nød"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="søknad"]').isVisible(),false);
+      const navPoll=page.locator('[data-av-poll="nav-hjelp-trygghet-2026"]');
+      assert.equal(await navPoll.locator("form").isVisible(),true);
+      await navPoll.locator('input[value="personvern"]').check();
+      await navPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await navPoll.locator("[data-av-poll-result]").innerText(),/Mer personvern og tydeligere rettssikkerhet/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await navPoll.locator("[data-av-poll-result]").innerText(),/Mer personvern og tydeligere rettssikkerhet/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i NAV-feature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","nav-hjelp-levende-"+name+".png"),fullPage:true});
+
       await context.close();
       console.log("OK: Ronaldo-sportanalyse på "+name+" med originalbilder, pressdiagram, tidslinje og poll");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
@@ -705,6 +746,14 @@ async function run(){
     assert.equal(await existingFallback.locator("details.pa-menu").getAttribute("open"),"");
     assert.equal(await existingFallback.getByRole("link",{name:"Kulturarkiv"}).isVisible(),true);
     assert.equal(await existingFallback.getByRole("link",{name:"Paradisradioen"}).isVisible(),true);
+    await page.goto(base+"/artikler/2026-11-02-nav-rettigheter-automatisk-hjelp.html",{waitUntil:"load"});
+    assert.equal(await page.locator('article.av-artikkel h1').isVisible(),true);
+    assert.equal(await page.locator('[data-av-poll="nav-hjelp-trygghet-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="nav-hjelp-trygghet-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="søknad"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="rettssikkerhet"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr sammenligningen mellom dagens NAV-ordning og Paradisavisas forslag"}).getAttribute("href"),/nav-dagens-ordning-vs-forslag\.svg/);
+    assert.match(await page.getByRole("link",{name:"Forstørr oversikten over sosialtjenesteloven paragraf 17 til 20"}).getAttribute("href"),/nav-loven-paragrafene-17-20\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
