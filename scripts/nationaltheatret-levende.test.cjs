@@ -10,7 +10,7 @@ test("Nationaltheatret: godkjent arkivfoto, kreditering og opprinnelig publiseri
  assert.match(h,/article:published_time" content="2026-11-10"/);
  assert.match(h,/article:modified_time" content="2026-11-12"/);
  assert.match(h,/2026-11-11-gamle-munch-arkivfoto\.webp/);
- assert.match(h,/18\. juni 2005/);
+ assert.match(h,/fotografert i 2005/);
  assert.match(h,/J\. P\. Fagerback/);
  assert.match(h,/Wikimedia Commons/);
  assert.match(h,/class="story-body av-artikkel"/);
