@@ -25,6 +25,8 @@ jobs:
           node-version: '22'
       - name: Valider enkeltartikler, bilder og nyhetsstrømmer
         run: node scripts/valider-artikler.cjs
+      - name: Test sju originale redaksjonelle bilder og korrekt kategori
+        run: node --test scripts/sju-artikkelbilder.test.cjs
       - name: Test felles artikkelmal, kildelinker og bildeutforming
         run: node --test scripts/artikkelmal.test.cjs
       - name: Test bankfeature-pilotens graf, kildedokumentasjon og moduler
