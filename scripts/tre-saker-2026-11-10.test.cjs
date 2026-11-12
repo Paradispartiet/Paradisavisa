@@ -15,7 +15,7 @@ const base="https://paradispartiet.github.io/Paradisavisa/";
 const items=[
 {article:"artikler/2026-11-10-massie-hegseth-riksrettsforslag.html",image:"Bilder/Artikler/2026-11-11-hegseth-massie-maktkonflikt.webp",sha:"51bad4a93b0eb71942a2c25fc356be1e5e25b172",sources:6,width:1280,height:720,modified:true},
 {article:"artikler/2026-11-10-hvem-skal-fa-norges-strom.html",image:"Bilder/Artikler/2026-11-10-datasentre-kraftnett.webp",sha:"b4a8b953d659da15043445a2b1cc5ca3beb9cd4f",sources:9},
-{article:"artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",image:"Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto.webp",sha:"3106e3e9fe493691d859cd810a4edca8cf9639dd",sources:11,photo:true,modified:true,feed:"kultur"},
+{article:"artikler/2026-11-10-nationaltheatret-gamle-munch-toyen.html",image:"Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto.webp",sha:"3106e3e9fe493691d859cd810a4edca8cf9639dd",sources:11,photo:true,modified:true,modifiedDate:"2026-11-12",feed:"kultur"},
 {article:"artikler/2026-11-05-usa-valget-topartisystem-og-medier.html",image:"Bilder/Artikler/2026-11-05-usa-ludo-politisk-satire.jpg",sha:"df217d18d67963da2fdf9c6f07bdb02f09f12de2",mime:"image/jpeg"}
 ];
 test("fire redaksjonsbilder er ulike og tilknyttede nyhets- og kulturkort har riktige lenker",()=>{
@@ -40,15 +40,15 @@ for(const item of items){
   assert.ok(html.includes('property="og:image:alt"'));
   assert.ok(html.includes('rel="canonical" href="'+base+item.article+'"'));
   assert.ok(html.includes('article:published_time" content="'+card.date+'"'));
-  if(item.modified)assert.ok(html.includes('article:modified_time" content="2026-11-11"'));
+  if(item.modified)assert.ok(html.includes('article:modified_time" content="'+(item.modifiedDate||"2026-11-11")+'"'));
   assert.equal((html.match(/<h1\b/g)||[]).length,1);
   assert.match(html,/<figcaption class="story-caption">[\s\S]*?<\/figcaption>/);
   assert.ok(!html.includes("Vurderingsbilde – ikke endelig godkjent"));
   assert.ok(!html.includes('name="robots" content="noindex'));
   if(item.photo){
    assert.match(html,/J\. P\. Fagerback/);
-   assert.match(html,/18\. juni 2005/);
-   assert.match(html,/Arkivfoto/);
+   assert.match(html,/fotografert i 2005/);
+   assert.match(html,/Det faktiske Gamle Munch på Tøyen/);
    const license=read("Bilder/Artikler/2026-11-11-gamle-munch-arkivfoto-LISENS.md");
    assert.match(license,/BSD-3-Clause/);
    assert.match(license,/c01b527e1ec263ef76b7e36b371f7c4f5af3906f/);
