@@ -698,6 +698,13 @@ async function run(){
     assert.equal(await staticHeader.locator("details.pa-menu").getAttribute("open"),"");
     assert.equal(await staticHeader.getByRole("link",{name:"Kulturarkiv"}).isVisible(),true);
     assert.equal(await staticHeader.getByRole("link",{name:"Paradisradioen"}).isVisible(),true);
+    await page.goto(base+"/artikler/2026-11-05-oljeprisfall-usa-valg-norge.html",{waitUntil:"load"});
+    const existingFallback=page.locator("#header-placeholder header.avisa-article-fallback");
+    assert.equal(await existingFallback.isVisible(),true);
+    await existingFallback.locator("details.pa-menu summary").click();
+    assert.equal(await existingFallback.locator("details.pa-menu").getAttribute("open"),"");
+    assert.equal(await existingFallback.getByRole("link",{name:"Kulturarkiv"}).isVisible(),true);
+    assert.equal(await existingFallback.getByRole("link",{name:"Paradisradioen"}).isVisible(),true);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
