@@ -55,7 +55,12 @@
     if (countVisit) next.openCount = (Number(previous?.openCount) || 0) + 1;
     if (!previous) data.articles.push(next);
     else data.articles[data.articles.indexOf(previous)] = next;
-    if (data.articles.length > 5000) data.articles = data.articles.slice(-5000);
+    // Never evict older saved/marked-read entries silently at the limit.
+    // The user can export or clear history explicitly from Aha first.
+    if (data.articles.length > 5000) {
+      setStatus("Biblioteket har nådd grensen på 5000 artikler. Ingen tidligere registreringer er fjernet. Eksporter eller rydd i biblioteket i Aha.");
+      return false;
+    }
     const success = write(data);
     if (success) syncUi();
     return success;
