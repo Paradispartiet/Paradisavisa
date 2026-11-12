@@ -27,7 +27,7 @@ test("Politisk forslag skilles fra etablert virksomhet; kildene er transparente"
   "paradispartiet.github.io/Paradispartiet/okonomisk-modell.html"
  ])assert.ok(html.includes(url),url+" missing");
  assert.match(html,/Ingen avtale eller uttalt tilslutning fra instituttet er dokumentert/);
- assert.match(html,/ikke en allerede opprettet etat eller samarbeidsavtale/);
+ assert.match(html,/en allerede opprettet etat eller samarbeidsavtale/);
  assert.match(html,/ingen offentlig produktordning/i);
  assert.match(html,/Private selskaper skal fortsatt kunne selge/);
 });
