@@ -14,7 +14,7 @@ function harness() {
   function makeButton(name) {
     return buttons[name] = { textContent: "", setAttribute() {}, addEventListener(name, fn) { this[name] = fn; } };
   }
-  ["save", "read", "tracking"].forEach(makeButton);
+  ["save", "read", "tracking", "export"].forEach(makeButton);
   const section = { className: "", setAttribute() {}, innerHTML: "",
     querySelector(selector) { return selector === ".av-aha-status" ? { textContent: "" } : buttons[selector.match(/data-aha="([^"]+)"/)?.[1]]; } };
   const selectors = {
