@@ -43,6 +43,8 @@ jobs:
         run: node --test scripts/staten-varer-levende.test.cjs
       - name: Test digital suverenitet-feature med kilder og forklaringsmoduler
         run: node --test scripts/norden-digital-levende.test.cjs
+      - name: Test Serbia-valgets sluttresultat og levende utenriksmoduler
+        run: node --test scripts/serbia-studentvalg-levende.test.cjs
       - name: Test tre nyhetssaker og eksakte WebP-originaler
         run: node --test scripts/tre-saker-2026-11-10.test.cjs
       - name: Test fire forsidekort og sideveis blaing
