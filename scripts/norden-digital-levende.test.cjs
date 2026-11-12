@@ -30,7 +30,7 @@ test("Tydelig dokumenterte primærkilder og skille mellom intensjon og vedtak",(
  assert.match(html,/politisk intensjonserklæring, ikke en avtale/);
  assert.match(html,/faglig anbefaling/);
  assert.match(html,/11 punkter/);
- assert.match(html,/ikke en vedtatt lovregel/);
+ assert.match(html,/ikke<\/strong> en vedtatt lovregel|ikke en vedtatt lovregel/);
  assert.match(html,/innspill.*8\. desember 2026/);
  assert.match(html,/et skriftlig svar til Paradisavisa/);
 });
