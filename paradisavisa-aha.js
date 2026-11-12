@@ -166,20 +166,23 @@
       checkReading();
     }
   }
-  if (localOwner()) {
-    document.addEventListener?.("paradisavisa:aha-auth-ready", verifyLocalOwner);
-    document.addEventListener?.("paradisavisa:aha-account-changed", () => {
-      verifiedLocalOwner = false;
-      syncUi();
-      verifyLocalOwner();
-    });
-    addEventListener("storage", (event) => {
-      if (event.key !== OWNER_KEY && !/-auth-token$/.test(String(event.key || ""))) return;
-      verifiedLocalOwner = false;
-      syncUi();
-      verifyLocalOwner();
-    });
-  }
+  // Register even in guest mode: a different tab may adopt the old guest
+  // library for an Aha account while this article remains open. That owner
+  // marker must lock controls immediately without requiring a page reload.
+  document.addEventListener?.("paradisavisa:aha-auth-ready", verifyLocalOwner);
+  document.addEventListener?.("paradisavisa:aha-account-changed", () => {
+    ++ownerCheckVersion;
+    verifiedLocalOwner = false;
+    syncUi();
+    void verifyLocalOwner();
+  });
+  addEventListener("storage", (event) => {
+    if (event.key !== OWNER_KEY && !/-auth-token$/.test(String(event.key || ""))) return;
+    ++ownerCheckVersion;
+    verifiedLocalOwner = false;
+    syncUi();
+    void verifyLocalOwner();
+  });
   syncUi();
   verifyLocalOwner();
   recordVisit();
