@@ -48,7 +48,7 @@ def convert(slug: str) -> dict:
         raise ValueError(f"{slug}: feil originalstørrelse")
     if re.search(rb'<(?:image|script|foreignObject)\\b', svg, re.I):
         raise ValueError(f"{slug}: ekstern ressurs eller script i SVG")
-    if b"http://" in svg or b"https://" in svg.replace(b"http://www.w3.org/2000/svg", b""):
+    if b"http://" in svg.replace(b"http://www.w3.org/2000/svg", b"") or b"https://" in svg:
         raise ValueError(f"{slug}: uventet ekstern URL i SVG")
     png = cairosvg.svg2png(bytestring=svg, output_width=1600, output_height=900)
     im = Image.open(io.BytesIO(png)).convert("RGB")
