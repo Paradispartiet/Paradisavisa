@@ -83,3 +83,11 @@ body:has(> .avisa-article-fallback)>main>.mast,
 body:has(> .avisa-shared-header.avisa-artikkel-injisert)>main>.mast,
 body:has(> .avisa-article-fallback)>main>.masthead,
 body:has(> .avisa-shared-header.avisa-artikkel-injisert)>main>.masthead {display:none!important}
+
+/* Eksisterende header-placeholder har også en lesbar statisk meny uten JavaScript. */
+#header-placeholder:has(> .avisa-article-fallback){
+ position:sticky!important;top:0!important;z-index:9000!important;width:100%!important;
+}
+body:has(> #header-placeholder > .avisa-article-fallback)>header:not(.avisa-article-fallback){
+ display:none!important;
+}
