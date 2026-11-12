@@ -147,6 +147,22 @@ test("Seks nyheter har originalkilde, riktig dato og redaksjonelt avgrenset hold
     "Selv framtidige møter må ikke beholde foreldet notis utover sju dager");
 });
 
+test("Posten-streiken har riktig klokkeslett, kildelenke og dato", () => {
+  const notes = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const note = notes.find(n => n.id === "notis-sporveien-politisk-streik-posten-20261111");
+  assert.ok(note, "Varslet politisk streik må finnes i radioen");
+  assert.equal(note.date, "2026-11-11");
+  assert.equal(note.expires, "2026-11-16");
+  assert.match(note.text, /15\\.00 til 15\\.15/);
+  assert.match(note.text, /varslet/);
+  assert.ok(note.url.startsWith("https://kommunikasjon.ntb.no/pressemelding/19138472/"));
+  assert.equal(fersk(note, new Date(2026, 10, 12)), true);
+  assert.equal(fersk(note, new Date(2026, 10, 16)), true);
+  assert.equal(fersk(note, new Date(2026, 10, 17)), false);
+  const sourceUrls = notes.map(n => n.url);
+  assert.equal(new Set(sourceUrls).size, sourceUrls.length);
+});
+
 test("Notisbåndet bruker bare 2×/4×/5× og samler radio/pause/fart i én meny", () => {
   assert.match(script, /const fartvalg = \[2, 4, 5\]/);
   assert.match(script, /lagret === 6/);
