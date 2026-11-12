@@ -2,6 +2,15 @@ document.addEventListener("DOMContentLoaded", () => {
   initAvisaMenu();
   initSharedHeader();
   initMastheadScroll();
+  // The account menu stays usable without this optional status script.
+  // Load it from the newspaper root so article pages share one implementation.
+  const activeScript = Array.from(document.scripts).find((node) => /\/script\.js(?:\?.*)?$/.test(node.src));
+  if (activeScript) {
+    const authScript = document.createElement("script");
+    authScript.src = new URL("paradisavisa-aha-auth.js", activeScript.src).href;
+    authScript.defer = true;
+    document.head.appendChild(authScript);
+  }
   // Lesehistorikk er opt-in; last bare broen på faktiske artikkelsider.
   if (/\/(?:artikler|posts)\/[^/]+\.html$/i.test(location.pathname)) {
     const ownScript = Array.from(document.scripts).find(node => /\/script\.js(?:\?.*)?$/.test(node.src));
@@ -88,6 +97,7 @@ function initSharedHeader() {
         document.body.classList.add("har-felles-header");
       }
       initAvisaMenu();
+      window.ParadisavisaAhaAuth?.initMenu(header);
     })
     .catch(err => {
       console.error("Felles toppmeny feilet:", err);
@@ -115,7 +125,12 @@ function initAvisaMenu() {
     button.hidden = false;
     document.documentElement.classList.add("avis-meny-klar");
 
-    button.addEventListener("click", () => setOpen(nav.hidden));
+    window.ParadisavisaAhaAuth?.initMenu(header);
+    button.addEventListener("click", () => {
+      const nextOpen = nav.hidden;
+      setOpen(nextOpen);
+      if (nextOpen) window.ParadisavisaAhaAuth?.onMenuOpen(header);
+    });
 
     nav.addEventListener("click", e => {
       if (e.target.closest("a")) setOpen(false);
