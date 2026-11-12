@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="700" viewBox="0 0 960 700" role="img" aria-labelledby="t d">
+<title id="t">Dagens sosialhjelpsløp sammenlignet med Paradisavisas foreslåtte modell</title>
+<desc id="d">Øverst: dagens ordning krever søknad med opplysninger og eventuelle vedlegg, NAV gjør individuell vurdering, fatter vedtak og gir mulighet for klage; i nødssituasjoner kreves raskt svar. Nederst: Paradisavisas redaksjonelle forslag om enklere kontakt, gjenbruk av kjente opplysninger, rask nødvendig hjelp og mer målrettet kontroll i etterkant. Den nederste modellen er ikke gjeldende rett eller NAVs vedtatte system.</desc>
+<rect width="960" height="700" rx="16" fill="#121518"/>
+<g font-family="system-ui,sans-serif">
+<text x="36" y="52" fill="#ffe397" font-size="26" font-weight="800">SØKNAD I DAG – OG EN ANNEN MODELL</text>
+<text x="36" y="86" fill="#d1d5cf" font-size="16">To forløp med ulik status: dagens regler øverst, redaksjonelt forslag nederst</text>
+<rect x="32" y="117" width="897" height="235" rx="12" fill="#1e2b33" stroke="#8ac6de" stroke-width="2"/>
+<text x="52" y="154" fill="#bfe8f4" font-size="20" font-weight="800">DAGENS ORDNING · LOV OG NAV-VEILEDNING</text>
+<rect x="50" y="186" width="203" height="97" rx="8" fill="#345064"/><text x="151" y="230" text-anchor="middle" fill="white" font-size="18" font-weight="700">SØKNAD</text><text x="264" y="244" fill="#f9e2a6" font-size="24">›</text>
+<rect x="271" y="186" width="203" height="97" rx="8" fill="#345064"/><text x="372" y="230" text-anchor="middle" fill="white" font-size="18" font-weight="700">OPPLYSNINGER</text><text x="485" y="244" fill="#f9e2a6" font-size="24">›</text>
+<rect x="492" y="186" width="203" height="97" rx="8" fill="#345064"/><text x="593" y="230" text-anchor="middle" fill="white" font-size="14" font-weight="700">INDIVIDUELL VURDERING</text><text x="706" y="244" fill="#f9e2a6" font-size="24">›</text>
+<rect x="713" y="186" width="203" height="97" rx="8" fill="#345064"/><text x="814" y="230" text-anchor="middle" fill="white" font-size="18" font-weight="700">VEDTAK / KLAGE</text>
+<text x="52" y="318" fill="#d3e1e7" font-size="16">I en nødssituasjon skal NAV gi raskt svar. Saksopplysning og vedtak gjelder fortsatt.</text>
+<rect x="32" y="373" width="897" height="263" rx="12" fill="#302c20" stroke="#e4c17e" stroke-width="2"/>
+<text x="52" y="410" fill="#ffe4a6" font-size="20" font-weight="800">PARADISAVISAS FORSLAG · IKKE GJELDENDE ORDNING</text>
+<rect x="50" y="448" width="203" height="97" rx="8" fill="#5a4b31"/><text x="151" y="488" text-anchor="middle" fill="white" font-size="16" font-weight="700">ENKEL KONTAKT</text><text x="264" y="507" fill="#ffe4a6" font-size="24">›</text>
+<rect x="271" y="448" width="203" height="97" rx="8" fill="#5a4b31"/><text x="372" y="488" text-anchor="middle" fill="white" font-size="16" font-weight="700">GJENBRUK AV DATA</text><text x="485" y="507" fill="#ffe4a6" font-size="24">›</text>
+<rect x="492" y="448" width="203" height="97" rx="8" fill="#5a4b31"/><text x="593" y="488" text-anchor="middle" fill="white" font-size="16" font-weight="700">NØDVENDIG HJELP</text><text x="706" y="507" fill="#ffe4a6" font-size="24">›</text>
+<rect x="713" y="448" width="203" height="97" rx="8" fill="#5a4b31"/><text x="814" y="488" text-anchor="middle" fill="white" font-size="14" font-weight="700">MÅLRETTET KONTROLL</text>
+<text x="52" y="583" fill="#f0e6cf" font-size="16">Forslaget krever juridiske, praktiske og personvernmessige avklaringer.</text>
+<text x="36" y="673" fill="#bfc4c2" font-size="15">Kildebakgrunn: nav.no/okonomisk-sosialhjelp, nav.no/ikke-penger og sosialtjenesteloven.</text>
+</g></svg>
