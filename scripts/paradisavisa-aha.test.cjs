@@ -97,8 +97,7 @@ test("JSON-eksport krever lagret materiale og gir en lokal fil", () => {
 test("Eierbundet leselogg kan ikke sees eller endres fra en annen konto", async () => {
   const firstUser = "11111111-1111-4111-8111-111111111111";
   const h = harness({ owner: firstUser, verifiedUserId: "22222222-2222-4222-8222-222222222222" });
-  await Promise.resolve();
-  await Promise.resolve();
+  await new Promise((resolve) => setImmediate(resolve));
   assert.equal(h.buttons.save.disabled, true);
   assert.equal(h.buttons.tracking.disabled, true);
   assert.equal(h.buttons.export.disabled, true);
@@ -111,14 +110,12 @@ test("Eierbundet leselogg kan ikke sees eller endres fra en annen konto", async 
 test("Samme Aha-konto låser opp, og kontobytte låser historikken på nytt", async () => {
   const owner = "11111111-1111-4111-8111-111111111111";
   const h = harness({ owner, verifiedUserId: owner });
-  await Promise.resolve();
-  await Promise.resolve();
+  await new Promise((resolve) => setImmediate(resolve));
   assert.equal(h.buttons.save.disabled, false);
   h.setVerifiedUserId("");
   h.listeners["document:paradisavisa:aha-account-changed"]();
   assert.equal(h.buttons.save.disabled, true);
-  await Promise.resolve();
-  await Promise.resolve();
+  await new Promise((resolve) => setImmediate(resolve));
   assert.equal(h.buttons.save.disabled, true);
 });
 test("Avisen laster broen bare på artikkelsider", () => {
