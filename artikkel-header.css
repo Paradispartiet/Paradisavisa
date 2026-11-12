@@ -74,3 +74,12 @@
  .avisa-article-fallback .pa-header-brand>p,.avisa-artikkel-injisert .avis-motto{font-size:.76rem!important}
 }
 @media(prefers-reduced-motion:reduce){.avisa-article-fallback *, .avisa-artikkel-injisert *{transition:none!important}}
+
+/* Den tidligere lokale merkevaren skal ikke gjentas rett under den kanoniske menyen.
+   Skjul bare sidens gamle topplinje; overskrift og artikkelinnhold berøres ikke. */
+body:has(> .avisa-article-fallback)>header:not(.avisa-article-fallback),
+body:has(> .avisa-shared-header.avisa-artikkel-injisert)>header:not(.avisa-shared-header),
+body:has(> .avisa-article-fallback)>main>.mast,
+body:has(> .avisa-shared-header.avisa-artikkel-injisert)>main>.mast,
+body:has(> .avisa-article-fallback)>main>.masthead,
+body:has(> .avisa-shared-header.avisa-artikkel-injisert)>main>.masthead {display:none!important}
