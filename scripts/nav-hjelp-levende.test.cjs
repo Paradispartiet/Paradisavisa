@@ -13,7 +13,7 @@ test("Kommentar, satirisk originalbilde, dato og kanonisk avisheader bevares",()
  assert.match(html,/article:published_time" content="2026-11-02"/);
  assert.match(html,/article:modified_time" content="2026-11-12"/);
  assert.match(html,/Bilder\/nav-satire-skopuss\.jpg/);
- assert.match(html,/en allegori over maktubalanse, ikke en faktisk hendelse/);
+ assert.match(html,/[Ee]n allegori over maktubalanse, ikke en faktisk hendelse/);
  assert.match(html,/class="story av-artikkel"/);
  assert.match(html,/class="avisa-article-fallback"/);
  assert.match(html,/artikkel-header\.css/);
