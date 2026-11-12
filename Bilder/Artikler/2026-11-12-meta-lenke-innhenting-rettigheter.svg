@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="640" viewBox="0 0 1000 640" role="img" aria-labelledby="title description">
+<title id="title">Tre ulike måter journalistisk innhold kan brukes på</title>
+<desc id="description">Prinsippskisse som skiller lenkedeling, indeksering og mulig videre bruk av innhold etter avtaleklausuler. En lenke fra en redaksjon til en plattform gir ikke automatisk rett til å kopiere alt innhold på redaksjonens nettside. Meta bestrider at de foreslåtte klausulene utvider slike rettigheter, mens utgivere og jurister har uttrykt bekymring. Illustrasjonen dokumenterer ikke at Meta faktisk har hentet innhold.</desc>
+<rect width="1000" height="640" rx="18" fill="#0d1115"/>
+<g font-family="system-ui,sans-serif">
+<text x="38" y="50" fill="#ffe5a0" font-size="27" font-weight="800">EN LENKE ER IKKE EN BLANKOFULLMAKT</text>
+<text x="38" y="83" fill="#cfd6d4" font-size="17">Tre forskjellige handlinger – med forskjellige spørsmål om rettigheter</text>
+<rect x="28" y="116" width="298" height="388" rx="11" fill="#1e302b" stroke="#95d4b7" stroke-width="3"/>
+<rect x="352" y="116" width="298" height="388" rx="11" fill="#242d3a" stroke="#a0c7ec" stroke-width="3"/>
+<rect x="676" y="116" width="296" height="388" rx="11" fill="#332a29" stroke="#e7b08b" stroke-width="3"/>
+<text x="52" y="157" fill="#b5e8ca" font-size="19" font-weight="800">1 · DELE EN LENKE</text>
+<text x="376" y="157" fill="#b6dafa" font-size="19" font-weight="800">2 · INDEKSERE</text>
+<text x="700" y="157" fill="#f7c59c" font-size="19" font-weight="800">3 · BRUKE INNHOLD</text>
+<rect x="66" y="191" width="224" height="72" rx="9" fill="#334940"/>
+<text x="178" y="224" text-anchor="middle" font-size="20" font-weight="700" fill="white">Artikkel</text>
+<text x="178" y="249" text-anchor="middle" font-size="14" fill="#dee6df">fra mediehuset</text>
+<path d="M178 272v48" stroke="#b1e3c1" stroke-width="4" stroke-dasharray="8 6"/>
+<rect x="66" y="329" width="224" height="65" rx="9" fill="#334940"/>
+<text x="178" y="370" text-anchor="middle" font-size="18" font-weight="700" fill="white">Lenke på plattform</text>
+<text x="52" y="427" fill="#e9efe8" font-size="16">Leseren kan klikke seg</text><text x="52" y="450" fill="#e9efe8" font-size="16">til originalpublikasjonen.</text>
+<rect x="391" y="191" width="220" height="72" rx="9" fill="#3d4d61"/>
+<text x="501" y="220" text-anchor="middle" font-size="19" font-weight="700" fill="white">Automatisk</text>
+<text x="501" y="245" text-anchor="middle" font-size="17" fill="#e3eaf3">gjennomgang</text>
+<path d="M501 272v48" stroke="#b1d3f5" stroke-width="4" stroke-dasharray="8 6"/>
+<rect x="391" y="329" width="220" height="65" rx="9" fill="#3d4d61"/>
+<text x="501" y="355" text-anchor="middle" font-size="18" font-weight="700" fill="white">Indeks / utdrag</text>
+<text x="501" y="377" text-anchor="middle" font-size="14" fill="#dce5f1">avgrensning kan variere</text>
+<text x="376" y="427" fill="#e4e9f0" font-size="16">Tekniske signaler som</text><text x="376" y="450" fill="#e4e9f0" font-size="16">robots.txt blir relevante.</text>
+<rect x="715" y="191" width="217" height="72" rx="9" fill="#58433b"/>
+<text x="824" y="221" text-anchor="middle" font-size="18" font-weight="700" fill="white">Avtalevilkår</text>
+<text x="824" y="245" text-anchor="middle" font-size="14" fill="#eee0d5">om mulig viderebruk</text>
+<path d="M824 272v48" stroke="#f3bd94" stroke-width="4" stroke-dasharray="8 6"/>
+<rect x="715" y="329" width="217" height="65" rx="9" fill="#58433b"/>
+<text x="824" y="356" text-anchor="middle" font-size="18" font-weight="700" fill="white">Utvikle tjenester</text>
+<text x="824" y="378" text-anchor="middle" font-size="14" fill="#eee0d5">om tillatelsen gjelder</text>
+<text x="700" y="427" fill="#f3e6dd" font-size="16">Dette er stridens kjerne.</text><text x="700" y="450" fill="#f3e6dd" font-size="16">Omfanget er omtvistet.</text>
+<rect x="28" y="524" width="944" height="83" rx="9" fill="#24221b" stroke="#8c8066"/>
+<text x="48" y="553" fill="#ffe5a0" font-size="17" font-weight="700">Skissen er ingen dokumentasjon på faktisk innhenting.</text>
+<text x="48" y="581" fill="#e0d8c7" font-size="15">Kilder: Nieman Journalism Lab, Meta-uttalelser gjengitt 17.10; Schibsted 29.10.</text>
+</g></svg>
