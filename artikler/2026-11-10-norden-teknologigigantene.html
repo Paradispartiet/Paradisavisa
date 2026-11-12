@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="no">
+<html lang="nb" class="av-artikkelside">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#000000">
@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://paradispartiet.github.io/Paradisavisa/Bilder/Artikler/feature07-nordisk-digital-suverenitet-hovedbilde-2026.webp">
 <meta property="article:published_time" content="2026-11-10">
-<meta property="article:modified_time" content="2026-11-11">
+<meta property="article:modified_time" content="2026-11-12">
 <link rel="canonical" href="https://paradispartiet.github.io/Paradisavisa/artikler/2026-11-10-norden-teknologigigantene.html">
 <style>
 :root{color-scheme:dark}*{box-sizing:border-box}
@@ -40,55 +40,140 @@ article ul,article ol{padding-left:1.3em}
 footer{border-top:1px solid #292929;padding:25px 22px;text-align:center;font:14px/1.5 system-ui,sans-serif;color:#b5ac98}
 @media(max-width:640px){main{padding-top:24px}article h1{margin-top:22px}}
 </style>
+<link rel="stylesheet" href="../artikkel.css?v=20261112a">
+<style>
+/* Adapts the original design to the shared living article library without new components. */
+.av-artikkelside main{max-width:1020px;padding:36px 22px 100px}
+.av-artikkelside article.av-artikkel{max-width:1020px}
+.av-artikkelside .av-prosa{max-width:760px;margin:0 auto;font-family:Georgia,serif}
+.av-artikkelside .hero-illustrasjon.av-hovedbilde,.av-artikkelside .analyse-illustrasjon.av-mellombilde{max-width:100%;margin:2rem auto}
+.av-artikkelside .hero-illustrasjon.av-hovedbilde img,.av-artikkelside .analyse-illustrasjon.av-mellombilde img{max-height:min(62vh,37rem);object-fit:contain;aspect-ratio:unset;background:#101210}
+.av-artikkelside .av-prosa p.av-kilde-note{font:400 .84rem/1.55 system-ui,sans-serif!important;color:#cbc1b3!important;margin:.35rem 0 1.25rem}
+.av-artikkelside .av-prosa p.av-kilde-note a{color:#ffe08f!important;text-decoration:underline}
+.av-artikkelside .av-prosa .av-figur{margin:2rem auto;max-width:100%}
+.av-artikkelside .av-prosa .av-figur img{max-height:min(62vh,37rem);object-fit:contain}
+.av-artikkelside .av-prosa .av-figur figcaption{font:400 .86rem/1.55 system-ui,sans-serif;color:#cec5b8}
+.av-artikkelside .av-prosa .av-figur .av-graf-kontroller{margin:.2rem 0 .6rem}
+.av-artikkelside .av-prosa .av-modul{max-width:100%;margin:2rem auto}
+.av-artikkelside .av-prosa .av-modul h2{font:700 clamp(1.35rem,2.1vw,1.7rem)/1.32 Georgia,serif!important;margin:0 0 .8rem}
+.av-artikkelside .av-prosa .av-modul p{font:400 .97rem/1.6 system-ui,sans-serif!important;color:#e7e0d4!important;margin:0 0 .65rem}
+.av-artikkelside .av-prosa .av-modul p.av-modul-intro,.av-artikkelside .av-prosa .av-modul p.av-modul-kilde{font:400 .86rem/1.55 system-ui,sans-serif!important;color:#cbc2b4!important}
+.av-artikkelside .av-prosa .av-modul a{color:#ffe08c!important}
+.av-artikkelside .av-prosa .av-infoboks-innhold p{font:400 .96rem/1.6 system-ui,sans-serif!important;color:#e6ddd1!important}
+.av-artikkelside .av-prosa .av-tidslinje li p{font:400 .95rem/1.55 system-ui,sans-serif!important}
+.av-artikkelside .av-prosa .av-kilder-samlet li{font:400 .86rem/1.6 system-ui,sans-serif!important;color:#d6ccbc!important}
+.av-artikkelside .av-prosa .av-kilder-samlet a{color:#ffe08c!important}
+.av-artikkelside .av-prosa .av-forklaring-panel{font:400 .95rem/1.6 system-ui,sans-serif!important}
+@media(max-width:640px){.av-artikkelside main{padding:24px 18px 75px}}
+</style>
 </head><body>
 <header><a class="brand" href="../index.html">PARADISAVISA</a> <span class="motto">Objektivt sett, fra vår synsvinkel.</span></header>
 <main><p class="draft">Feature / TEKNOLOGI OG SAMFUNN · 10. november 2026</p>
-<article><h1>Kan Norden frigjøre seg fra teknologigigantene?</h1>
+<article class="av-artikkel"><h1>Kan Norden frigjøre seg fra teknologigigantene?</h1>
 
 
 <p class="lead">Norden og Baltikum er blant verdens mest digitaliserte samfunn. Nettopp derfor er vi blitt avhengige av noen få leverandører av systemene vi bruker for å arbeide, kommunisere og lagre informasjon. Nå har digitaliseringsministrene samlet seg om å styrke regionens digitale selvstendighet. Men betyr det nye offentlige alternativer – eller bare bedre kontroll med de gamle?</p>
-<figure class="hero-illustrasjon"><img src="../Bilder/Artikler/feature07-nordisk-digital-suverenitet-hovedbilde-2026.webp" alt="KI-assistert illustrasjon av en tekniker som arbeider med nettverkskabler i en datasal, med serverrack og en kollega i bakgrunnen." width="1600" height="900" loading="eager" decoding="async"><figcaption>KI-assistert redaksjonell illustrasjon av digital infrastruktur. Viser ikke et virkelig nordisk-baltisk datasenter eller prosjekt.</figcaption></figure>
+<figure class="hero-illustrasjon av-figur av-hovedbilde"><img src="../Bilder/Artikler/feature07-nordisk-digital-suverenitet-hovedbilde-2026.webp" alt="KI-assistert illustrasjon av en tekniker som arbeider med nettverkskabler i en datasal, med serverrack og en kollega i bakgrunnen." width="1600" height="900" loading="eager" decoding="async"><figcaption>KI-assistert redaksjonell illustrasjon av digital infrastruktur. Viser ikke et virkelig nordisk-baltisk datasenter eller prosjekt.</figcaption></figure>
+<div class="av-prosa">
 <p>En offentlig ansatt åpner et dokument, deltar i et videomøte og lagrer arbeidsdagen i en skytjeneste. En kommune tar i bruk en ny KI-løsning. En skole og et sykehus er avhengige av at systemene deres kan snakke med hverandre. For brukeren virker dette som separate verktøy. Sett fra samfunnets side er det en sammenhengende infrastruktur for informasjon, kommunikasjon og beslutninger.</p>
 <p>Hvem eier teknologien? Hvem kan endre vilkårene? Kan data flyttes uten at tjenestene stopper? Og hvem kan reparere systemet dersom leverandøren svikter?</p>
 <p>Dette er ikke bare tekniske spørsmål. De handler om hvem som beholder handlefriheten når stadig mer offentlig virksomhet er digital.</p>
 <h2>Ministrene har erkjent avhengigheten</h2>
 <p><strong>6. november 2026 vedtok digitaliseringsministre fra Norden og Baltikum en felles erklæring om digital suverenitet i København.</strong> Erklæringen sier uttrykkelig at regionen – i likhet med resten av Europa – er blitt for avhengig av et lite antall leverandører av digitale produkter, tjenester og kritisk infrastruktur.</p>
+<p class="av-kilde-note">Primærkilde: <a href="https://www.norden.org/en/declaration/common-nordic-and-baltic-approach-digital-sovereignty" rel="noopener noreferrer">Nordisk ministerråds felles erklæring, vedtatt 6. november 2026</a>. Erklæringen uttrykker politiske ambisjoner, ikke ferdig vedtatte teknologiprosjekter.</p>
 <p>Det er en viktig politisk erkjennelse. Landene er sterke på å ta teknologi i bruk, men det betyr ikke at de selv kontrollerer grunnsystemene bak den.</p>
 <p>Erklæringen peker på muligheter for samarbeid om skytjenester, sikring av undersjøiske kommunikasjonskabler, nye felles digitale løsninger og forskning. Den viser også til nordisk-baltisk samarbeid om elektronisk identitet og det felles KI-initiativet New Nordics AI.</p>
+<p class="av-kilde-note">Kilder: <a href="https://www.norden.org/en/declaration/common-nordic-and-baltic-approach-digital-sovereignty" rel="noopener noreferrer">selve ministererklæringen</a> og <a href="https://www.norden.org/en/news/nordic-and-baltic-ministers-sign-joint-statement-increased-digital-sovereignty" rel="noopener noreferrer">Nordisk ministerråds omtale</a>. Listen beskriver mulige samarbeidsområder.</p>
 <p>Dokumentet er samtidig <strong>en politisk intensjonserklæring, ikke en avtale om å erstatte bestemte amerikanske selskaper, bygge en ferdig nordisk nettsky eller innføre en offentlig kontorpakke</strong>. Det fastsetter heller ikke i seg selv hva slike prosjekter skal koste.</p>
-<h2>Hva betyr selvstendighet når alle er koblet sammen?</h2>
+
 <p>Digital suverenitet kan bety flere ting. En snever forståelse handler om hvor serverne står og hvilke lands lover som gjelder for databehandlingen. En bredere forståelse handler om evnen til å velge mellom leverandører, få tilgang til egne data i åpne formater, videreutvikle systemer og opprettholde samfunnskritiske funksjoner når noe går galt.</p>
 <p>Det er lett å tro at et datasenter i Norge automatisk gjør en tjeneste norsk og uavhengig. Slik er det ikke nødvendigvis. Programvare, underleverandører, juridiske avtaler, drift, sikkerhetsoppdateringer og kontroll over identitetssystemer kan fortsatt ligge andre steder. På samme måte er en løsning med åpen kildekode ikke automatisk gratis eller trygg. Den krever kompetanse, vedlikehold, sikkerhetstesting og en organisasjon som tar ansvar.</p>
+<details class="av-infoboks"><summary>Tre begreper som ofte blandes sammen: åpen kode, åpne standarder og kontroll</summary>
+<div class="av-infoboks-innhold">
+<p><strong>Åpen kildekode</strong> gir rett til å se, bruke, endre og dele kode på vilkår fastsatt av en åpen lisens. Det garanterer ikke at noen vedlikeholder løsningen eller at den har nødvendige sikkerhetskontroller.</p>
+<p><strong>Åpne standarder</strong> kan gjøre det lettere å flytte data og få systemer til å samhandle, men det må testes at formatene og grensesnittene faktisk fungerer.</p>
+<p><strong>Digital suverenitet</strong> handler her om valgfrihet, reell kontroll og robusthet. Å ha serverne i Norge alene løser ikke spørsmål om eierskap, leverandøravtaler eller beredskap.</p>
+<p class="av-kilde-note">Kilder: <a href="https://www.digdir.no/digitalisering-og-samordning/gi-oss-innspill-hvordan-skal-offentlig-sektor-forholde-seg-til-apen-kildekode/8494" rel="noopener noreferrer">Digdir om åpen kildekode</a> og <a href="https://www.norden.org/en/declaration/common-nordic-and-baltic-approach-digital-sovereignty" rel="noopener noreferrer">den nordisk-baltiske erklæringen</a>. Begrepsforklaringen er redaksjonell.</p>
+</div></details>
 <p>Det relevante spørsmålet er derfor ikke om Norden kan stenge verden ute. Det er om de nordiske og baltiske landene kan <strong>beholde reelle alternativer og kontroll over de viktigste funksjonene</strong>, også når de handler teknologi på et internasjonalt marked.</p>
-<h2>Den offentlige verktøykassen</h2>
+
 <p>En praktisk måte å prøve ambisjonen på, er å se på verktøyene offentlig sektor bruker hver eneste dag: tekstbehandling, regneark, dokumentdeling, e-post, videomøter, identitetskontroll, arkiv og KI-assistenter.</p>
 <p>Kunne landene utvikle, finansiere eller bestille et felles grunnsortiment for slike oppgaver? Et alternativ trenger ikke å være fullstendig nytt eller produsert av staten alene. Åpne standarder, offentlig styrte felleskomponenter, åpne programvareprosjekter og konkurranse mellom uavhengige leverandører kan være ulike veier til mindre avhengighet.</p>
 <p>Men hvert valg skaper nye spørsmål. Hvem sørger for universell utforming? Hvem holder programvaren sikker? Hvordan sikres språkene i regionen? Hvordan flytter man dokumenter uten å miste formatering, tilgangsstyring eller historikk? Og kan en nordisk leverandør klare oppgaven like godt og rimelig som de største internasjonale aktørene?</p>
 <p>En felles bestilling fra flere land kan gi større marked og forutsigbarhet. Den kan også bli tungrodd og kostbar hvis den ikke starter med presise krav og prøver løsninger i liten skala. Det er nettopp disse avveiningene politikerne må svare på før «digital suverenitet» kan bli noe innbyggerne merker.</p>
 <h2>Fra ministererklæring til en norsk exit-plan</h2>
 <p>Dette er ikke bare en teoretisk diskusjon. En arbeidsgruppe for det offentlige digitaliseringssamarbeidet Skate presenterte høsten 2026 rapporten <em>Skiftende skydekke</em> om hvordan offentlige virksomheter kan unngå å bli låst til én skyleverandør. Da Digitaliseringsdirektoratet offentliggjorde rapporten 30. september, løftet det fram <strong>elleve punkter for en god exit-strategi</strong>. Arbeidsgruppen anbefaler å kartlegge tekniske avhengigheter, ha beredskapsplan for tap av tjenester og bruke åpne standarder og åpen kildekode der det kan redusere leverandørbinding.</p>
+<p class="av-kilde-note">Bakgrunn: <a href="https://www.digdir.no/digitalisering-og-samordning/skiftende-skydekke/8337" rel="noopener noreferrer">Skate-rapporten Skiftende skydekke, 18. august 2026</a>. Rapportens dato skilles fra Digdirs omtale 30. september.</p>
+<figure class="av-figur av-mellombilde" aria-labelledby="exit-figurtekst">
+<img src="../Bilder/Artikler/2026-11-12-digital-suverenitet-exit-forklaringsgrafikk.svg" width="1600" height="900" loading="lazy" decoding="async" alt="Fire faktorer ved leverandørbytte: data og filformater, identitet og tilgang, programmer og integrasjon, samt drift og beredskap. Firestegsmodellen er en redaksjonell forenkling, ikke offisiell sjekkliste.">
+<figcaption id="exit-figurtekst">En kommune kan ha dokumentene sine og likevel mangle mulighet til å bytte system. Grafikken illustrerer fire avhengigheter, ikke et faktisk gjennomført leverandørbytte. <a href="https://www.digdir.no/digitalisering-og-samordning/skiftende-skydekke/8337" rel="noopener noreferrer">Faglig grunnlag: Skiftende skydekke</a>.</figcaption>
+<p class="av-graf-kontroller"><a href="../Bilder/Artikler/2026-11-12-digital-suverenitet-exit-forklaringsgrafikk.svg" class="av-zoom-knapp" data-av-zoom aria-label="Forstørr diagrammet om leverandøravhengighet">Forstørr</a></p>
+</figure>
+<section class="av-modul" data-av-explainer aria-labelledby="exit-trinn-tittel">
+<h2 id="exit-trinn-tittel">Kan kommunen faktisk bytte system?</h2>
+<p class="av-modul-intro">Utforsk en forenklet prøve på om alternativene er reelle. Dette er en redaksjonell modell basert på anbefalingene, ikke Digdirs offisielle 11-punktsliste.</p>
+<div class="av-forklaring-kart" role="group" aria-label="Velg en del av leverandørbyttet">
+<button type="button" data-av-step="data">1. Data</button>
+<button type="button" data-av-step="tilgang">2. Tilgang</button>
+<button type="button" data-av-step="systemer">3. Systemene</button>
+<button type="button" data-av-step="beredskap">4. Beredskap</button>
+</div>
+<div class="av-forklaring-panel" data-av-panel="data"><strong>Filene kan tas ut – men er de brukbare?</strong> Kontroller åpne formater, metadata, dokumenthistorikk og om data kan importeres med riktig mening i et nytt system.</div>
+<div class="av-forklaring-panel" data-av-panel="tilgang"><strong>Hvem har tilgang etter byttet?</strong> Sjekk identiteter, brukerrettigheter, revisjonslogger og kritiske integrasjoner. En sikker datakopi er ikke nok hvis ansatte ikke får logget inn.</div>
+<div class="av-forklaring-panel" data-av-panel="systemer"><strong>Kan arbeidet fortsette?</strong> Sjekk at arkiv, saksbehandling, møter og nødvendige grensesnitt faktisk fungerer hos en annen leverandør, med dokumentert kvalitet og kostnad.</div>
+<div class="av-forklaring-panel" data-av-panel="beredskap"><strong>Hvem drifter plan B?</strong> Øv på avbrudd, avtal ansvar og test gjenoppretting. Flere skyleverandører er heller ikke automatisk god beredskap uten kompetanse og samordnet sikkerhet.</div>
+<p class="av-modul-kilde">Faglig bakgrunn: <a href="https://www.digdir.no/digitalisering-og-samordning/skiftende-skydekke/8337" rel="noopener noreferrer">Skiftende skydekke</a> og <a href="https://www.digdir.no/digitalisering-og-samordning/ny-rapport-dette-bor-en-god-exit-strategi-fra-skytjenester-inneholde/8428" rel="noopener noreferrer">Digdirs omtale av exit-strategi</a>. Trinnene og formuleringene er Paradisavisas pedagogiske forenkling.</p>
+</section>
+<p class="av-kilde-note">Kilder: <a href="https://www.digdir.no/digitalisering-og-samordning/ny-rapport-dette-bor-en-god-exit-strategi-fra-skytjenester-inneholde/8428" rel="noopener noreferrer">Digdirs omtale av elleve punkter, 30. september 2026</a> og <a href="https://www.digdir.no/digitalisering-og-samordning/skiftende-skydekke/8337" rel="noopener noreferrer">hele Skate-rapporten</a>. Rapporten gir anbefalinger, ikke nye juridiske plikter.</p>
 <p>For en kommune kan prøven være svært konkret: Kan dokumentene tas ut i et lesbart format? Kan tilgangsstyring og nødvendige tjenester videreføres hos en annen leverandør? Vet kommunen hva et skifte vil koste, og hvilke kritiske tjenester som må fungere ved et avbrudd? Arbeidsgruppen understreker at muligheten til å bytte må vurderes <strong>praktisk, teknisk, økonomisk og juridisk</strong>. Å kunne eksportere filer er ikke nødvendigvis det samme som å kunne fortsette driften.</p>
 <p><em>Skiftende skydekke</em> er en <strong>faglig anbefaling</strong>, ikke et pålegg om å avslutte eksisterende avtaler eller et vedtak om en ny statlig skytjeneste. Hybrid- og multisky-løsninger kan øke handlingsrommet, men innebærer også kostnader og behov for kompetanse, koordinering og sikkerhetsarbeid. Det er et bedre utgangspunkt for å måle digital selvstendighet enn å telle hvor mange ganger politikere bruker selve ordet.</p>
-<h2>Kunstig intelligens gjør spørsmålet skarpere</h2>
+
 <p>I sin norske pressemelding opplyser regjeringen at <strong>Norge skal prioritere trygg KI, digital sikkerhet og suverenitet når landet overtar formannskapet i Nordisk ministerråds digitaliseringssamarbeid i 2027</strong>. Digitaliseringsminister Torgeir Micaelsen peker på at et fåtall selskaper utvikler de mest avanserte KI-modellene.</p>
+<p class="av-kilde-note">Kilde: <a href="https://www.regjeringen.no/no/aktuelt/nordisk-baltisk-samarbeid-om-digital-suverenitet-norge-vil-prioritere-trygg-ki/id3191990/" rel="noopener noreferrer">Digitaliserings- og forvaltningsdepartementet, 6. november 2026</a>. Dette gjelder prioriteringer for det norske formannskapet i 2027.</p>
 <p>Avhengigheten er sammensatt. Én leverandør kan kontrollere modellen, en annen skytjenesten den kjører på, en tredje dataene som mates inn, mens den offentlige virksomheten har ansvaret for at resultatet blir riktig. Hvis en offentlig tjeneste blir avhengig av dette systemet, er det ikke nok å spørre om KI-en svarer godt. Man må også vite hvordan beslutninger kan etterprøves, hvilke data som brukes, hvilke avtaler som gjelder, og hvordan løsningen kan skiftes ut.</p>
 <p>Nordisk-baltisk samarbeid kan gi bedre krav til innkjøp, sikkerhet og åpne grensesnitt. Men en erklæring gir ennå ikke svar på hvem som skal bygge, drive og betale for alternativene.</p>
 <p>Det finnes allerede mer konkrete forslag. I <strong>juni 2026</strong> la <strong>Tekna, NITO og Forbrukerrådet</strong> fram anbefalinger om digital suverenitet i offentlig sektor. De ba blant annet om at offentlige anskaffelser legger større vekt på <strong>åpen kildekode, åpne standarder, interoperabilitet og muligheten til å flytte data</strong>. Det er organisasjonenes politiske forslag, ikke vedtatt norsk innkjøpspolitikk. Forbrukerrådets rapport <em>Breaking Free</em> fra februar argumenterte også for at offentlig innkjøpsmakt kan brukes til å støtte reelle alternativer til de største teknologiplattformene.</p>
+<p class="av-kilde-note">Partskilde: <a href="https://www.forbrukerradet.no/?p=54996" rel="noopener noreferrer">Forbrukerrådets felles utspill med Tekna og NITO, 23. juni 2026</a>. Organisasjonenes anbefalinger er ikke vedtatt innkjøpspolitikk.</p>
 <p>I et skriftlig svar til Paradisavisa <strong>11. november</strong> understreker Forbrukerrådet at leverandøravhengighet er særlig viktig å redusere i systemer knyttet til <strong>kritisk infrastruktur</strong>. Organisasjonen vil ikke rangere bestemte offentlige tjenester, men mener at offentlig sektor som innkjøper bør styrke alternative leverandører. Den fremhever åpne standarder som en forutsetning for at data kan flyttes og ulike systemer fungere sammen, og viser til <a href="https://www.tekna.no/aktuelt/slik-kan-vi-losrive-oss-fra-big-tech/" target="_blank" rel="noopener noreferrer">det felles utspillet med Tekna og NITO</a>.</p>
 <p>Forbrukerrådet tar ikke stilling til om staten bør utvikle en egen kontorpakke eller andre bestemte produkter. I svaret peker organisasjonen samtidig på risikoen ved offentlig egenutvikling: manglende stordriftsfordeler, svake kvalitetskrav og utilstrekkelige ressurser til sikkerhet, drift og vedlikehold. Den etterlyser tydelige myndighetsføringer som balanserer kostnader, sikkerhet, personvern og funksjonskvalitet. Svaret gir dermed støtte til mer digital valgfrihet, men ikke en blankofullmakt til én bestemt modell for offentlig teknologiproduksjon.</p>
 <p>Det finnes også et nyere norsk forslag til felles praksis. <strong>28. oktober 2026</strong> la Digitaliseringsdirektoratet fram et <strong>utkast til nasjonal veileder for åpen kildekode i offentlig sektor</strong>. Forslaget sier at programvare utviklet for offentlige midler som hovedregel bør deles under åpen lisens når det er forsvarlig, og at offentlige virksomheter bør kunne gjenbruke og bidra til åpne prosjekter. Digdir ber om innspill <strong>innen 8. desember 2026</strong>. Dette er <strong>ikke</strong> en vedtatt lovregel eller et ferdig system. Digdir peker samtidig på behov for sikkerhet, personvern, vedlikehold og finansiering av åpne komponenter.</p>
+<p class="av-kilde-note">Kilde: <a href="https://www.digdir.no/digitalisering-og-samordning/gi-oss-innspill-hvordan-skal-offentlig-sektor-forholde-seg-til-apen-kildekode/8494" rel="noopener noreferrer">Digdirs høringsutkast om åpen kildekode, 28. oktober 2026</a>. Dette er et forslag med frist 8. desember, ikke en fastsatt nasjonal regel.</p>
+<section class="av-modul" aria-labelledby="suverenitet-tidslinje">
+<h2 id="suverenitet-tidslinje">Hva har skjedd – og hva er fortsatt på høring?</h2>
+<p class="av-modul-intro">Datoene viser dokumenterte milepæler. Framtidige prosesser er merket som planlagte.</p>
+<ol class="av-tidslinje">
+<li><details><summary><time datetime="2026-08-18">18. august 2026</time>Skate-rapporten publiseres</summary><p>Arbeidsgruppen beskriver endringsevnen ved bruk av skytjenester og anbefaler tiltak mot uønsket leverandørbinding. <a href="https://www.digdir.no/digitalisering-og-samordning/skiftende-skydekke/8337" rel="noopener noreferrer">Digdirs rapportsamling</a>.</p></details></li>
+<li><details><summary><time datetime="2026-09-30">30. september 2026</time>Digdir trekker fram 11 punkter</summary><p>Direktoratet publiserer en oppsummering av råd om exit-strategi. Dette er faglige anbefalinger, ikke nye lovkrav. <a href="https://www.digdir.no/digitalisering-og-samordning/ny-rapport-dette-bor-en-god-exit-strategi-fra-skytjenester-inneholde/8428" rel="noopener noreferrer">Digdirs oppsummering</a>.</p></details></li>
+<li><details><summary><time datetime="2026-10-28">28. oktober 2026</time>Utkast om åpen kildekode</summary><p>Digdir legger fram et utkast til nasjonal veileder og inviterer til innspill. <a href="https://www.digdir.no/digitalisering-og-samordning/gi-oss-innspill-hvordan-skal-offentlig-sektor-forholde-seg-til-apen-kildekode/8494" rel="noopener noreferrer">Digdirs innspillsside</a>.</p></details></li>
+<li><details><summary><time datetime="2026-11-06">6. november 2026</time>Nordisk-baltisk ministererklæring</summary><p>Ministrene uttrykker felles ambisjoner om digital suverenitet. De vedtar ikke i seg selv en ferdig kontorpakke eller skytjeneste. <a href="https://www.norden.org/en/declaration/common-nordic-and-baltic-approach-digital-sovereignty" rel="noopener noreferrer">Les erklæringen</a>.</p></details></li>
+<li><details><summary><time datetime="2026-12-08">8. desember 2026 – planlagt frist</time>Frist for innspill om åpen kode</summary><p>Fristen gjelder forslaget til veileder. Ingen endelig regel er vedtatt på grunnlag av høringen per 12. november. <a href="https://www.digdir.no/digitalisering-og-samordning/gi-oss-innspill-hvordan-skal-offentlig-sektor-forholde-seg-til-apen-kildekode/8494" rel="noopener noreferrer">Digdir – frist og invitasjon</a>.</p></details></li>
+</ol></section>
 <p>Samtidig er ikke alternativene kostnadsfrie. En offentlig styrt løsning må ha et ansvarlig fagmiljø, oppdateringer, drift, sikkerhetsrevisjon, beredskap og tydelig ansvarsfordeling. Ambisjonene må derfor vurderes mot faktiske offentlige innkjøp, med sammenlignbare data om pris, drift, sikkerhet og muligheten til å bytte leverandør. En løsning blir ikke automatisk bedre fordi den er nordisk eller offentlig eid.</p>
 <h2>Et sikkerhetsspørsmål – ikke bare et markedsspørsmål</h2>
 <p>Nordisk råd vedtok i oktober en strategi for samfunnssikkerhet som anbefaler å kartlegge kritisk digital infrastruktur og utvikle felles krav til anskaffelser og leverandørstyring. Rådet peker også på behovet for samarbeid om mobilnett, satellitter og beskyttelse mot digitale påvirkningsoperasjoner.</p>
-<figure class="analyse-illustrasjon"><img src="../Bilder/Artikler/feature07-nordisk-digital-suverenitet-sekundaerillustrasjon-2026.webp" alt="KI-assistert, symbolsk illustrasjon av tekniker ved serverrack, undersjøisk datakabel og nordiske offentlige tjenester i vinterlandskap." width="1600" height="900" loading="lazy" decoding="async"><figcaption>KI-assistert redaksjonell analyseillustrasjon av digital infrastruktur og samfunnets avhengighet av den. Konstruert motiv – ikke et fotografi av et virkelig nordisk-baltisk prosjekt eller en bestemt kabel.</figcaption></figure>
+<p class="av-kilde-note">Kilde: <a href="https://pub.norden.org/politiknord2026-717/5-digital-resilience-and-information-security.html" rel="noopener noreferrer">Nordisk råds strategi om digital motstandskraft, 28. oktober 2026</a>. Sikkerhetsanbefalingene er ikke et bevis for at infrastruktur allerede er etablert.</p>
+<figure class="analyse-illustrasjon av-figur av-mellombilde"><img src="../Bilder/Artikler/feature07-nordisk-digital-suverenitet-sekundaerillustrasjon-2026.webp" alt="KI-assistert, symbolsk illustrasjon av tekniker ved serverrack, undersjøisk datakabel og nordiske offentlige tjenester i vinterlandskap." width="1600" height="900" loading="lazy" decoding="async"><figcaption>KI-assistert redaksjonell analyseillustrasjon av digital infrastruktur og samfunnets avhengighet av den. Konstruert motiv – ikke et fotografi av et virkelig nordisk-baltisk prosjekt eller en bestemt kabel.</figcaption></figure>
 <p>Sikkerhet handler om mer enn å beskytte data mot innbrudd. Systemer må også kunne fungere under avbrudd, leverandørproblemer og internasjonale konflikter. Det kan innebære flere uavhengige driftsmuligheter, bedre lokale beredskapsplaner og muligheten til å eksportere informasjon i formater som andre systemer kan lese.</p>
 <p>Å velge bort én dominerende leverandør er imidlertid ikke en garanti mot å få en ny. Offentlig samarbeid bør derfor måles etter om det <strong>øker innbyggernes og virksomhetenes faktiske valgmuligheter</strong>.</p>
-<h2>Fra erklæring til et fungerende alternativ</h2>
+
 <p>Den nordisk-baltiske erklæringen har som ambisjon å gjøre regionen mer digitalt integrert innen 2030. Hvor mye som kan oppnås, avhenger av hva regjeringene vil bevilge, hvilke standarder de velger, og om anskaffelsene faktisk legger til rette for alternativer.</p>
 <p>På spørsmål fra Paradisavisa om hvilke fellesprosjekter som faktisk er besluttet, hvilke budsjetter og frister som gjelder, og hvordan offentlige alternativer kan innføres, svarte Digitaliserings- og forvaltningsdepartementet 10. november at departementet ikke hadde noen kommentar. Det er ikke en avvisning av ministererklæringen, men innebærer at departementet ikke har gitt avisen nye konkrete svar på gjennomføringen.</p>
 <p>Det avgjørende spørsmålet er konkret: <strong>Hvilket digitalt verktøy kunne nordiske land samarbeide om å levere bedre allerede nå?</strong> Og hvordan kan resultatet måles etter sikkerhet, kostnader, tilgjengelighet og muligheten til å velge en annen leverandør?</p>
+<section class="av-modul av-poll" data-av-poll="digital-suverenitet-kommune-2026" aria-labelledby="suverenitet-poll">
+<h2 id="suverenitet-poll">Hva bør en kommune teste først?</h2>
+<p class="av-modul-intro">Et frivillig leserspørsmål, ikke en representativ måling. Bare ditt eget svar lagres lokalt i nettleseren. Ingen fellestall eller prosenter vises.</p>
+<p class="av-modul-kilde" data-av-poll-js-required>Avstemningen trenger JavaScript og sender ikke svar til en server.</p>
+<form hidden><fieldset><legend>Velg en første test ved mulig leverandørbytte</legend>
+<label><input type="radio" name="choice" value="filer"><span>Eksportere og åpne dokumentene et annet sted</span></label>
+<label><input type="radio" name="choice" value="tilgang"><span>Kontrollere identiteter og tilgangsrettigheter</span></label>
+<label><input type="radio" name="choice" value="drift"><span>Øve på avbrudd og en uavhengig driftsløsning</span></label>
+<label><input type="radio" name="choice" value="kostnad"><span>Sammenligne totalkostnader og funksjonskvalitet</span></label>
+<label><input type="radio" name="choice" value="usikker"><span>Jeg er usikker</span></label>
+</fieldset><p data-av-poll-error role="alert"></p><button type="submit" class="av-interaksjon-btn">Vis mitt svar</button></form>
+<div class="av-poll-svar" data-av-poll-result hidden role="status" aria-live="polite"><p>Du valgte: <strong data-av-poll-choice></strong></p><p>Dette er bare ditt eget svar, ikke en samlet opptelling.</p><button class="av-interaksjon-btn av-interaksjon-btn--sekundaer" data-av-poll-change type="button">Endre svaret</button></div>
+</section>
 <p>Det er der en stor idé om digital selvstendighet begynner å ligne en tjeneste samfunnet kan bruke.</p>
-<h2>Kilder og dokumentasjon</h2>
+<h2 class="av-kilder-samlet">Kilder og dokumentasjon</h2>
 <ul>
 <li><strong>Nordisk ministerråd, felles erklæring vedtatt 6. november 2026:</strong> «A common Nordic and Baltic approach to digital sovereignty». Erklæringen, ikke bare pressemeldingen, ligger til grunn for beskrivelsen av forpliktelser og begrensninger. <a target="_blank" rel="noopener noreferrer" href="https://www.norden.org/sv/declaration/common-nordic-and-baltic-approach-digital-sovereignty">https://www.norden.org/sv/declaration/common-nordic-and-baltic-approach-digital-sovereignty</a></li>
 <li><strong>Nordisk ministerråd, 6. november 2026:</strong> Referat/pressemelding om enighet, avhengighet, prosjekter og New Nordics AI. <a target="_blank" rel="noopener noreferrer" href="https://www.norden.org/en/news/nordic-and-baltic-ministers-sign-joint-statement-increased-digital-sovereignty">https://www.norden.org/en/news/nordic-and-baltic-ministers-sign-joint-statement-increased-digital-sovereignty</a></li>
@@ -103,7 +188,9 @@ footer{border-top:1px solid #292929;padding:25px 22px;text-align:center;font:14p
 <li><strong>Digitaliseringsdirektoratet, 28. oktober 2026:</strong> Utkast til nasjonal veileder for åpen kildekode, med innspillsfrist 8. desember. <a target="_blank" rel="noopener noreferrer" href="https://www.digdir.no/digitalisering-og-samordning/gi-oss-innspill-hvordan-skal-offentlig-sektor-forholde-seg-til-apen-kildekode/8494">Digdirs invitasjon til innspill</a></li>
 <li><strong>Digdir, 28. oktober 2026:</strong> Forslag om at offentlig finansiert kildekode bør gjøres åpent tilgjengelig når det er forsvarlig. <a target="_blank" rel="noopener noreferrer" href="https://www.digdir.no/digitalisering-og-samordning/apen-kildekode-som-hovedregel/8495">Åpen kildekode som hovedregel</a></li>
 </ul>
-</article>
+</div></article>
 
-</main><footer>Paradisavisa · Feature · <a href="../index.html">Til forsiden</a></footer>
+</main><dialog id="av-zoom-dialog" class="av-zoom-dialog" aria-label="Forstørret forklaringsgrafikk"><button type="button" data-av-zoom-close>Lukk ×</button><img data-av-zoom-image alt=""><p data-av-zoom-caption></p></dialog>
+<script defer src="../artikkel-interaktiv.js"></script>
+<footer>Paradisavisa · Feature · <a href="../index.html">Til forsiden</a></footer>
 </body></html>

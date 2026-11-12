@@ -1,0 +1,92 @@
+{
+  "date": "2026-11-12",
+  "purpose": "Sju originalillustrasjoner for kildekontrollerte artikkelutkast",
+  "publication_approved": false,
+  "image_use": "Utkast. Kontroller og godkjenn enkeltvis før publisering.",
+  "items": [
+    {
+      "slug": "boligopproret-spania",
+      "source": "redaksjon/illustrasjoner/2026-11-12/boligopproret-spania-original.svg",
+      "source_sha256": "dcd4792904b75bd20e8c0e20a2dd481915fe480feb2c43320ea7df3ddce0ee21",
+      "file": "utkast/2026-11-12/bilder/boligopproret-spania.webp",
+      "webp_sha256": "7956cd861c0dd201199cc67019b15e01b7c55e4321e7315a88d2b80db1192f15",
+      "bytes": 53662,
+      "width": 1600,
+      "height": 900,
+      "status": "redaksjonell illustrasjonskandidat; ikke godkjent for publisering",
+      "caption": "Redaksjonell illustrasjon: boligprotest i et generisk, Madrid-inspirert byrom i regnvær. Ikke foto fra demonstrasjonen."
+    },
+    {
+      "slug": "appene-som-manipulerer",
+      "source": "redaksjon/illustrasjoner/2026-11-12/appene-som-manipulerer-original.svg",
+      "source_sha256": "7df25affe5417969594ca60f14dbde24e4ffb6d12760f265681345d05941061b",
+      "file": "utkast/2026-11-12/bilder/appene-som-manipulerer.webp",
+      "webp_sha256": "c9609e5e137181d6d201d24ae36edd5580d386a51600a400189633a14c418e87",
+      "bytes": 37026,
+      "width": 1600,
+      "height": 900,
+      "status": "redaksjonell illustrasjonskandidat; ikke godkjent for publisering",
+      "caption": "Redaksjonell illustrasjon: mobilgrensesnitt, gjentatte varsler og digitale valgfeller. Ingen virkelig appskjerm."
+    },
+    {
+      "slug": "nussir-hvem-eier-kobberet",
+      "source": "redaksjon/illustrasjoner/2026-11-12/nussir-hvem-eier-kobberet-original.svg",
+      "source_sha256": "0d3b74912b0af18b727a9d2530c07294cd4cadfdbfd8fd3327280249fc1e800f",
+      "file": "utkast/2026-11-12/bilder/nussir-hvem-eier-kobberet.webp",
+      "webp_sha256": "e5e18d0f6c30fbe9aa2c50640e77d4bc602f7155869c520efaff2504ec895759",
+      "bytes": 35128,
+      "width": 1600,
+      "height": 900,
+      "status": "redaksjonell illustrasjonskandidat; ikke godkjent for publisering",
+      "caption": "Redaksjonell illustrasjon av et generisk nordnorsk fjord- og gruvelandskap. Ikke geografisk dokumentasjon av Nussir."
+    },
+    {
+      "slug": "smabarnsforeldre-jobbpress",
+      "source": "redaksjon/illustrasjoner/2026-11-12/smabarnsforeldre-jobbpress-original.svg",
+      "source_sha256": "6f8fd52b7fef9869b9fc6543b89def0866e2ae06c8d02e8d1eddba93c86bb164",
+      "file": "utkast/2026-11-12/bilder/smabarnsforeldre-jobbpress.webp",
+      "webp_sha256": "b8775dd4666ea59937309aaa1e89a8569f05913a0ea77836f8dabb739e6a4298",
+      "bytes": 22824,
+      "width": 1600,
+      "height": 900,
+      "status": "redaksjonell illustrasjonskandidat; ikke godkjent for publisering",
+      "caption": "Redaksjonell illustrasjon av en familiekveld med barn og arbeid ved kjøkkenbordet. Personene er oppdiktede."
+    },
+    {
+      "slug": "gullbjornen-kasakhstan",
+      "source": "redaksjon/illustrasjoner/2026-11-12/gullbjornen-kasakhstan-original.svg",
+      "source_sha256": "12dc47be83c8fd7ac09cf4d9a04de27307c518683d6a9892566f731bd3d2ba7a",
+      "file": "utkast/2026-11-12/bilder/gullbjornen-kasakhstan.webp",
+      "webp_sha256": "1037442b75777230111e34c7cb1c68fdf25b47c13a36c791095fdff5ca9f81ad",
+      "bytes": 28522,
+      "width": 1600,
+      "height": 900,
+      "status": "redaksjonell illustrasjonskandidat; ikke godkjent for publisering",
+      "caption": "Symbolillustrasjon av et gullornament i arkeologisk jord. Ikke foto eller eksakt rekonstruksjon av funnet."
+    },
+    {
+      "slug": "avedon-fotografen-amerika",
+      "source": "redaksjon/illustrasjoner/2026-11-12/avedon-fotografen-amerika-original.svg",
+      "source_sha256": "7f3b91e044fa2f6f990427d385694e32dd56b0ad601afd7fccac837a5d79c213",
+      "file": "utkast/2026-11-12/bilder/avedon-fotografen-amerika.webp",
+      "webp_sha256": "09f7c8967455ae680e791ad40ead955df92711d54bd17a6f03221f5c6ca2c1c0",
+      "bytes": 20032,
+      "width": 1600,
+      "height": 900,
+      "status": "redaksjonell illustrasjonskandidat; ikke godkjent for publisering",
+      "caption": "Redaksjonell illustrasjon av et fotografistudio. Ingen originalfotografi av Richard Avedon er gjengitt."
+    },
+    {
+      "slug": "norge-vannlekkasjer",
+      "source": "redaksjon/illustrasjoner/2026-11-12/norge-vannlekkasjer-original.svg",
+      "source_sha256": "7fbc34610b2abf7b5388ffe7bf155dbf0dc8608cc36729e73217780b1739dc35",
+      "file": "utkast/2026-11-12/bilder/norge-vannlekkasjer.webp",
+      "webp_sha256": "e03d3dbe0773527a3e711cb7bc42e266d68bac7a0e9a216d96037417e08b22ae",
+      "bytes": 26222,
+      "width": 1600,
+      "height": 900,
+      "status": "redaksjonell illustrasjonskandidat; ikke godkjent for publisering",
+      "caption": "Redaksjonell snittillustrasjon av vannledning med lekkasje under en bygate. Ikke foto eller måling fra en bestemt kommune."
+    }
+  ]
+}

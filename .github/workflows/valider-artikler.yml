@@ -29,6 +29,8 @@ jobs:
         run: node --test scripts/paradisavisa-aha.test.cjs
       - name: Test Aha innlogging og utlogging i avisens meny
         run: node --test scripts/paradisavisa-aha-auth.test.cjs
+      - name: Test sju originale redaksjonelle bilder og korrekt kategori
+        run: node --test scripts/sju-artikkelbilder.test.cjs
       - name: Test felles artikkelmal, kildelinker og bildeutforming
         run: node --test scripts/artikkelmal.test.cjs
       - name: Test bankfeature-pilotens graf, kildedokumentasjon og moduler
@@ -41,6 +43,18 @@ jobs:
         run: node --test scripts/ronaldo-levende.test.cjs
       - name: Test Nationaltheatret-artikkelen, kildene og kulturmodulene
         run: node --test scripts/nationaltheatret-levende.test.cjs
+      - name: Test kommentar om offentlige varer og tjenester
+        run: node --test scripts/staten-varer-levende.test.cjs
+      - name: Test digital suverenitet-feature med kilder og forklaringsmoduler
+        run: node --test scripts/norden-digital-levende.test.cjs
+      - name: Test Serbia-valgets sluttresultat og levende utenriksmoduler
+        run: node --test scripts/serbia-studentvalg-levende.test.cjs
+      - name: Test diplomatiforklaringen, kilder og moduler
+        run: node --test scripts/diplomati-norge-russland-levende.test.cjs
+      - name: Test oljeprisen – sluttkurser, kilder og levende komponenter
+        run: node --test scripts/oljepris-levende.test.cjs
+      - name: Test Meta-saken – oppdatert kildegrunnlag, rettslige forbehold og levende moduler
+        run: node --test scripts/meta-plattformmakt-levende.test.cjs
       - name: Test tre nyhetssaker og eksakte WebP-originaler
         run: node --test scripts/tre-saker-2026-11-10.test.cjs
       - name: Test fire forsidekort og sideveis blaing

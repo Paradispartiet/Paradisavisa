@@ -300,6 +300,245 @@ async function run(){
       assert.match(await ronaldoPoll.locator("[data-av-poll-result]").innerText(),/Hele karrieren/);
       assert.deepEqual(errors,[],name+": JavaScript-feil i Ronaldo-analysen");
       await page.screenshot({path:path.join(root,"qa-screenshots","ronaldo-levende-"+name+".png"),fullPage:true});
+
+      // Sixth pilot: political commentary about a public basic product range.
+      await page.goto(base+"/artikler/2026-11-06-staten-bor-lage-ting-som-varer.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Staten skal lage ting som varer/);
+      await assertCompactZoomLinks(page,name+": grunnsortiment-kommentar");
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      assert.ok(await page.locator(".av-kilde-note a").count()>=7);
+      const basicDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(basicDims.width<=basicDims.viewport+2,name+": grunnsortiment-kommentar har sidelengs scroll "+JSON.stringify(basicDims));
+      assert.equal(await page.locator("article figure img").count(),2);
+      const basicImages=page.locator("article figure img");
+      for(let i=0;i<await basicImages.count();i++){
+        await basicImages.nth(i).scrollIntoViewIfNeeded();
+        await page.waitForFunction(index=>{
+          const img=document.querySelectorAll("article figure img")[index];
+          return !!img&&img.complete&&img.naturalWidth>0;
+        },i,{timeout:15000});
+      }
+      await page.getByRole("link",{name:"Forstørr diagrammet over offentlig ansvarsdeling"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/staten-grunnsortiment-ansvarsdeling\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),false);
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="etterprove"]').click();
+      assert.equal(await page.locator('[data-av-panel="etterprove"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="prioritere"]').isVisible(),false);
+      const basicPoll=page.locator('[data-av-poll="offentlig-grunnsortiment-prioritering-2026"]');
+      assert.equal(await basicPoll.locator("form").isVisible(),true);
+      await basicPoll.locator('input[value="ingen"]').check();
+      await basicPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await basicPoll.locator("[data-av-poll-result]").innerText(),/Ingen offentlig produktordning foreløpig/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await basicPoll.locator("[data-av-poll-result]").innerText(),/Ingen offentlig produktordning foreløpig/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i kommentar om offentlige varer");
+      await page.screenshot({path:path.join(root,"qa-screenshots","grunnsortiment-kommentar-"+name+".png"),fullPage:true});
+
+      // Seventh living pilot: Nordic and Baltic digital sovereignty feature.
+      await page.goto(base+"/artikler/2026-11-10-norden-teknologigigantene.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Kan Norden frigjøre seg fra teknologigigantene/);
+      await assertCompactZoomLinks(page,name+": digital-suverenitet");
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      assert.ok(await page.locator(".av-kilde-note a").count()>=9);
+      const sovereigntyDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(sovereigntyDims.width<=sovereigntyDims.viewport+2,name+": digital suverenitet har sidelengs scroll "+JSON.stringify(sovereigntyDims));
+      assert.equal(await page.locator("article figure img").count(),3);
+      const sovereigntyImages=page.locator("article figure img");
+      for(let i=0;i<await sovereigntyImages.count();i++){
+        await sovereigntyImages.nth(i).scrollIntoViewIfNeeded();
+        await page.waitForFunction(index=>{
+          const img=document.querySelectorAll("article figure img")[index];
+          return !!img&&img.complete&&img.naturalWidth>0;
+        },i,{timeout:15000});
+      }
+      await page.getByRole("link",{name:"Forstørr diagrammet om leverandøravhengighet"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/digital-suverenitet-exit-forklaringsgrafikk\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),false);
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="beredskap"]').click();
+      assert.equal(await page.locator('[data-av-panel="beredskap"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="data"]').isVisible(),false);
+      assert.equal(await page.locator(".av-tidslinje li").count(),5);
+      await page.locator(".av-tidslinje li:nth-child(5) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(5) details").getAttribute("open"),"");
+      const sovereigntyPoll=page.locator('[data-av-poll="digital-suverenitet-kommune-2026"]');
+      assert.equal(await sovereigntyPoll.locator("form").isVisible(),true);
+      await sovereigntyPoll.locator('input[value="drift"]').check();
+      await sovereigntyPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await sovereigntyPoll.locator("[data-av-poll-result]").innerText(),/Øve på avbrudd/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await sovereigntyPoll.locator("[data-av-poll-result]").innerText(),/Øve på avbrudd/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i digital suverenitet-feature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","nordisk-digital-suverenitet-"+name+".png"),fullPage:true});
+      // Eighth pilot: Serbian student election, final RIK seats and accessible map.
+      await page.goto(base+"/artikler/2026-11-02-serbia-studentvalget.html",{waitUntil:"load"});
+      assert.match(await page.title(),/De sørget i 16 minutter/);
+      await assertCompactZoomLinks(page,name+": Serbia-valget");
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      const serbiaDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(serbiaDims.width<=serbiaDims.viewport+2,name+": Serbia-artikkelen har sidelengs scroll "+JSON.stringify(serbiaDims));
+      assert.equal(await page.locator("article figure img").count(),2);
+      for(const img of await page.locator("article figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{el.addEventListener("load",resolve,{once:true});el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});});});
+        assert.ok(await img.evaluate(el=>el.naturalWidth>0),name+": Serbia photo/map failed to load");
+      }
+      assert.ok(await page.locator(".av-kilde-note a").count()>=2);
+      await page.getByRole("link",{name:"Forstørr orienteringskartet over proteststedene i Serbia"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/serbia-studentbevegelse-orienteringskart\.svg/);
+      await page.keyboard.press("Escape");
+      await page.locator(".av-tidslinje li:nth-child(5) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(5) details").getAttribute("open"),"");
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="mobilisering"]').click();
+      assert.equal(await page.locator('[data-av-panel="mobilisering"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="sorg"]').isVisible(),false);
+      const serbiaPoll=page.locator('[data-av-poll="serbia-studentvalg-ansvar-2026"]');
+      assert.equal(await serbiaPoll.locator("form").isVisible(),true);
+      await serbiaPoll.locator('input[value="etterforskning"]').check();
+      await serbiaPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await serbiaPoll.locator("[data-av-poll-result]").innerText(),/Åpen etterforskning/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await serbiaPoll.locator("[data-av-poll-result]").innerText(),/Åpen etterforskning/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i Serbia-feature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","serbia-studentvalg-"+name+".png"),fullPage:true});
+
+      // Ninth pilot: original Norwegian–Russian analysis with factual status update and living diagram.
+      await page.goto(base+"/artikler/2026-11-11-norge-russland-eu-abu-dhabi.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Norge har fortsatt en vei til Moskva/);
+      await assertCompactZoomLinks(page,name+": diplomati");
+      assert.equal(await page.locator("article.av-artikkel h1").count(),0); // H1 stays outside the text column.
+      assert.equal(await page.locator("main h1").count(),1);
+      assert.equal(await page.locator("main figure img").count(),2);
+      const diplomaDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(diplomaDims.width<=diplomaDims.viewport+2,name+": diplomatifeature har sidelengs scroll "+JSON.stringify(diplomaDims));
+      for(const img of await page.locator("main figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(async el=>{
+          if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{
+            el.addEventListener("load",resolve,{once:true});
+            el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});
+          });
+        });
+        assert.ok(await img.evaluate(el=>el.naturalWidth>0),name+": diplomatiillustrasjon mangler");
+      }
+      await page.getByRole("link",{name:"Forstørr oversikten over de diplomatiske kanalene"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/abu-dhabi-diplomatiske-kanaler\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator(".av-tidslinje li").count(),6);
+      await page.locator(".av-tidslinje li:nth-child(6) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(6) details").getAttribute("open"),"");
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="avtale"]').click();
+      assert.equal(await page.locator('[data-av-panel="avtale"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="kontakt"]').isVisible(),false);
+      const diplomaPoll=page.locator('[data-av-poll="diplomati-europa-ukraina-2026"]');
+      assert.equal(await diplomaPoll.locator("form").isVisible(),true);
+      await diplomaPoll.locator('input[value="garantier"]').check();
+      await diplomaPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await diplomaPoll.locator("[data-av-poll-result]").innerText(),/Troverdige sikkerhetsgarantier/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await diplomaPoll.locator("[data-av-poll-result]").innerText(),/Troverdige sikkerhetsgarantier/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i diplomatifeature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","diplomati-norge-russland-"+name+".png"),fullPage:true});
+
+      // Tenth living feature: oil price settlements, original image, charts and no fabricated pump prices.
+      await page.goto(base+"/artikler/2026-11-05-oljeprisfall-usa-valg-norge.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Oljeprisen falt nesten ni prosent/);
+      await assertCompactZoomLinks(page,name+": oljepris",2);
+      assert.equal(await page.locator("main h1").count(),1);
+      assert.equal(await page.locator("main figure img").count(),3);
+      const oilDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(oilDims.width<=oilDims.viewport+2,name+": oljeprissak har horisontal scroll "+JSON.stringify(oilDims));
+      for(const img of await page.locator("main figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{
+          el.addEventListener("load",resolve,{once:true});
+          el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});
+        });});
+        assert.ok(await img.evaluate(el=>el.naturalWidth>0),name+": oljeprisfoto eller diagram mangler");
+      }
+      assert.equal(await page.locator("table.av-datatabell tbody tr").count(),7);
+      await page.getByRole("link",{name:"Forstørr grafen over Brents sluttkurser i november"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/brent-november-sluttkurser\.svg/);
+      await page.keyboard.press("Escape");
+      await page.getByRole("link",{name:"Forstørr forklaringsgrafikken om oljeprisens virkninger i Norge"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(el=>el.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/oljepris-norge-virkninger\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator(".av-tidslinje li").count(),5);
+      await page.locator(".av-tidslinje li:nth-child(5) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(5) details").getAttribute("open"),"");
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="ettersporsel"]').click();
+      assert.equal(await page.locator('[data-av-panel="ettersporsel"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="risiko"]').isVisible(),false);
+      const oilPoll=page.locator('[data-av-poll="oljepris-norsk-okonomi-2026"]');
+      assert.equal(await oilPoll.locator("form").isVisible(),true);
+      await oilPoll.locator('input[value="klima"]').check();
+      await oilPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await oilPoll.locator("[data-av-poll-result]").innerText(),/faktisk oljeforbruk og utslipp/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await oilPoll.locator("[data-av-poll-result]").innerText(),/faktisk oljeforbruk og utslipp/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i oljepris-feature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","oljepris-levende-"+name+".png"),fullPage:true});
+
+      // Eleventh pilot: original Meta journalism-rights story + source-backed interactivity.
+      await page.goto(base+"/artikler/2026-11-02-meta-plattformmakt-pressefrihet.html",{waitUntil:"load"});
+      assert.match(await page.title(),/Hvem bestemmer over journalistikken/);
+      await assertCompactZoomLinks(page,name+": Meta",2);
+      assert.equal(await page.locator("article.av-artikkel h1").count(),1);
+      assert.equal(await page.locator("article.av-artikkel h1").isVisible(),true);
+      const metaDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
+      assert.ok(metaDims.width<=metaDims.viewport+2,name+": Meta-saken har sidelengs scroll "+JSON.stringify(metaDims));
+      assert.equal(await page.locator("article.av-artikkel figure img").count(),4);
+      for(const img of await page.locator("article.av-artikkel figure img").all()){
+        await img.scrollIntoViewIfNeeded();
+        await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{
+          el.addEventListener("load",resolve,{once:true});
+          el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});
+        });});
+        assert.ok(await img.evaluate(el=>el.naturalWidth>0),name+": Meta-bilde eller grafikk mangler");
+      }
+      await page.getByRole("link",{name:"Forstørr oversikten over 180 støttespillere og ti formelle parter"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/meta-norske-mediehus-180-10\.svg/);
+      await page.keyboard.press("Escape");
+      await page.getByRole("link",{name:"Forstørr diagrammet om lenkedeling, indeksering og innholdsrettigheter"}).click();
+      assert.equal(await page.locator("#av-zoom-dialog").evaluate(d=>d.open),true);
+      assert.match(await page.locator("#av-zoom-dialog img").getAttribute("src"),/meta-lenke-innhenting-rettigheter\.svg/);
+      await page.keyboard.press("Escape");
+      assert.equal(await page.locator(".av-tidslinje li").count(),6);
+      await page.locator(".av-tidslinje li:nth-child(6) summary").click();
+      assert.equal(await page.locator(".av-tidslinje li:nth-child(6) details").getAttribute("open"),"");
+      await page.locator("details.av-infoboks summary").click();
+      assert.equal(await page.locator("details.av-infoboks").getAttribute("open"),"");
+      await page.locator('button[data-av-step="avtale"]').click();
+      assert.equal(await page.locator('[data-av-panel="avtale"]').isVisible(),true);
+      assert.equal(await page.locator('[data-av-panel="lenke"]').isVisible(),false);
+      const metaPoll=page.locator('[data-av-poll="meta-pressefrihet-vilkar-2026"]');
+      assert.equal(await metaPoll.locator("form").isVisible(),true);
+      await metaPoll.locator('input[value="innsyn"]').check();
+      await metaPoll.getByRole("button",{name:"Vis mitt svar"}).click();
+      assert.match(await metaPoll.locator("[data-av-poll-result]").innerText(),/Åpenhet om hvilke data/);
+      await page.reload({waitUntil:"load"});
+      assert.match(await metaPoll.locator("[data-av-poll-result]").innerText(),/Åpenhet om hvilke data/);
+      assert.deepEqual(errors,[],name+": JavaScript-feil i Meta-feature");
+      await page.screenshot({path:path.join(root,"qa-screenshots","meta-levende-"+name+".png"),fullPage:true});
+
       await context.close();
       console.log("OK: Ronaldo-sportanalyse på "+name+" med originalbilder, pressdiagram, tidslinje og poll");
       console.log("OK: datasenteranalyse på "+name+" med kilder, køgraf, beslutningskart, tidslinje og poll");
@@ -341,6 +580,39 @@ async function run(){
     assert.equal(await page.locator('[data-av-panel="starte"]').isVisible(),true);
     assert.equal(await page.locator('[data-av-panel="vinne"]').isVisible(),true);
     assert.match(await page.getByRole("link",{name:"Forstørr taktikkdiagrammet om presspillet"}).getAttribute("href"),/ronaldo-presspill-forklaringsdiagram\.svg/);
+    await page.goto(base+"/artikler/2026-11-06-staten-bor-lage-ting-som-varer.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="offentlig-grunnsortiment-prioritering-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="offentlig-grunnsortiment-prioritering-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="prioritere"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="etterprove"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr diagrammet over offentlig ansvarsdeling"}).getAttribute("href"),/staten-grunnsortiment-ansvarsdeling\.svg/);
+    await page.goto(base+"/artikler/2026-11-10-norden-teknologigigantene.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="digital-suverenitet-kommune-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="digital-suverenitet-kommune-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="data"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="beredskap"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr diagrammet om leverandøravhengighet"}).getAttribute("href"),/digital-suverenitet-exit-forklaringsgrafikk\.svg/);
+    await page.goto(base+"/artikler/2026-11-11-norge-russland-eu-abu-dhabi.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="diplomati-europa-ukraina-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="diplomati-europa-ukraina-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="kontakt"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="gjennomforing"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr oversikten over de diplomatiske kanalene"}).getAttribute("href"),/abu-dhabi-diplomatiske-kanaler\.svg/);
+    await page.goto(base+"/artikler/2026-11-05-oljeprisfall-usa-valg-norge.html",{waitUntil:"load"});
+    assert.equal(await page.locator('[data-av-poll="oljepris-norsk-okonomi-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="oljepris-norsk-okonomi-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="risiko"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="norge"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr grafen over Brents sluttkurser i november"}).getAttribute("href"),/brent-november-sluttkurser\.svg/);
+    assert.match(await page.getByRole("link",{name:"Forstørr forklaringsgrafikken om oljeprisens virkninger i Norge"}).getAttribute("href"),/oljepris-norge-virkninger\.svg/);
+    await page.goto(base+"/artikler/2026-11-02-meta-plattformmakt-pressefrihet.html",{waitUntil:"load"});
+    assert.equal(await page.locator('article.av-artikkel h1').isVisible(),true);
+    assert.equal(await page.locator('[data-av-poll="meta-pressefrihet-vilkar-2026"] form').isVisible(),false);
+    assert.equal(await page.locator('[data-av-poll="meta-pressefrihet-vilkar-2026"] [data-av-poll-js-required]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="lenke"]').isVisible(),true);
+    assert.equal(await page.locator('[data-av-panel="myndighet"]').isVisible(),true);
+    assert.match(await page.getByRole("link",{name:"Forstørr oversikten over 180 støttespillere og ti formelle parter"}).getAttribute("href"),/meta-norske-mediehus-180-10\.svg/);
+    assert.match(await page.getByRole("link",{name:"Forstørr diagrammet om lenkedeling, indeksering og innholdsrettigheter"}).getAttribute("href"),/meta-lenke-innhenting-rettigheter\.svg/);
     await context.close();
     console.log("OK: statisk fallback uten JavaScript");
   } finally {
