@@ -2,6 +2,16 @@ document.addEventListener("DOMContentLoaded", () => {
   initAvisaMenu();
   initSharedHeader();
   initMastheadScroll();
+  // Lesehistorikk er opt-in; last bare broen på faktiske artikkelsider.
+  if (/\/(?:artikler|posts)\/[^/]+\.html$/i.test(location.pathname)) {
+    const ownScript = Array.from(document.scripts).find(node => /\/script\.js(?:\?.*)?$/.test(node.src));
+    if (ownScript) {
+      const bridge = document.createElement("script");
+      bridge.src = new URL("paradisavisa-aha.js", ownScript.src).href;
+      bridge.defer = true;
+      document.head.appendChild(bridge);
+    }
+  }
 
   // Nyhetsinnhold lastes uavhengig av notisbåndet. Nettfeil i en
   // enkelt JSON-fil skal aldri hindre andre seksjoner i å vises.
