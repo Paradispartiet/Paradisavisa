@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" role="img" aria-labelledby="maptitle mapdesc">
+<title id="maptitle">Hvor protestbevegelsen vokste fram: Novi Sad, Beograd og Niš</title>
+<desc id="mapdesc">Skjematisk orienteringskart, ikke målestokkriktig. Novi Sad ligger nordvest for hovedstaden Beograd, mens Niš ligger lenger sørøst. Novi Sad var stedet for stasjonsulykken. Store studentdemonstrasjoner ble holdt i Beograd og Niš.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#19272d"/><stop offset="1" stop-color="#111318"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="9"/></filter></defs>
+<rect width="940" height="560" fill="url(#bg)" rx="16"/>
+<g opacity=".3" stroke="#536267" stroke-width="1"><path d="M46 94H894M46 176H894M46 258H894M46 340H894M46 422H894M46 504H894M126 75V510M276 75V510M426 75V510M576 75V510M726 75V510M876 75V510"/></g>
+<text x="56" y="56" fill="#f6dd78" font-size="20" font-weight="750" font-family="system-ui,sans-serif" letter-spacing="2">SERBIA · ORIENTERING</text>
+<text x="56" y="528" fill="#a8b2b2" font-size="17" font-family="system-ui,sans-serif">Skjematisk plassering · ikke et presist geografisk kart</text>
+<path d="M55 202Q170 145 304 167T554 170T875 123" fill="none" stroke="#3b8298" stroke-width="7" opacity=".7" stroke-linecap="round"/>
+<text x="744" y="144" fill="#91c8d4" font-family="system-ui,sans-serif" font-size="16">Donau (skjematisk)</text>
+<path d="M328 177 L450 247 L696 407" stroke="#ead282" stroke-width="3" stroke-dasharray="11 10" opacity=".75" fill="none"/>
+<g font-family="system-ui,sans-serif" font-weight="700">
+<circle cx="328" cy="177" r="24" fill="#ffe17a" opacity=".13" filter="url(#glow)"/><circle cx="328" cy="177" r="11" fill="#ffe17a" stroke="#081014" stroke-width="4"/>
+<text x="302" y="133" text-anchor="middle" fill="#fff" font-size="25">NOVI SAD</text><text x="302" y="153" text-anchor="middle" fill="#d5cdbb" font-size="15" font-weight="400">Ulykken 2024</text>
+<circle cx="450" cy="247" r="11" fill="#ffa98b" stroke="#081014" stroke-width="4"/>
+<text x="482" y="242" fill="#fff" font-size="25">BEOGRAD</text><text x="482" y="264" fill="#d5cdbb" font-size="15" font-weight="400">Hovedstad · protester</text>
+<circle cx="696" cy="407" r="11" fill="#9fdccc" stroke="#081014" stroke-width="4"/>
+<text x="723" y="402" fill="#fff" font-size="25">NIŠ</text><text x="723" y="424" fill="#d5cdbb" font-size="15" font-weight="400">Protest 2025</text>
+</g>
+<path d="M840 65l-12 36h24z" fill="#ffe17a"/><text x="840" y="119" text-anchor="middle" fill="#ffebba" font-family="system-ui,sans-serif" font-weight="700" font-size="16">N</text>
+</svg>
