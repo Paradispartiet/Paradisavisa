@@ -37,6 +37,8 @@ jobs:
         run: node --test scripts/ronaldo-levende.test.cjs
       - name: Test Nationaltheatret-artikkelen, kildene og kulturmodulene
         run: node --test scripts/nationaltheatret-levende.test.cjs
+      - name: Test kommentar om offentlige varer og tjenester
+        run: node --test scripts/staten-varer-levende.test.cjs
       - name: Test tre nyhetssaker og eksakte WebP-originaler
         run: node --test scripts/tre-saker-2026-11-10.test.cjs
       - name: Test fire forsidekort og sideveis blaing
