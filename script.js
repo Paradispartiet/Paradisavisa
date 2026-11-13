@@ -448,7 +448,7 @@ function loadNotiser() {
         });
       }
 
-      // Én knapp åpner alle tre kontrollene. Panelet dekker aldri løpende tekst.
+      // Én knapp åpner båndhastighet, talehastighet og avspillingskontroller.
       const kontroller = document.createElement("div");
       kontroller.className = "notis-kontroller";
       const valgknapp = document.createElement("button");
