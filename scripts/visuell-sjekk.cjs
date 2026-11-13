@@ -435,9 +435,18 @@ async function run(){
         check((await page.evaluate(()=>localStorage.getItem("paradisavisa-radiostemme"))).includes("nb-2"),
           label+": radiostemmen blir ikke lagret");
         check(await page.locator(".notis-hastighet").count()===1,
-          label+": bare én hastighetsfunksjon skal finnes");
-        check(await page.locator(".notis-tempo-select").count()===0,
-          label+": ekstra taletempo-velger skal være fjernet");
+          label+": notisbåndet skal ha egen hastighetsvelger");
+        const tempo=page.locator(".notis-tempo-select");
+        check(await tempo.count()===1 && await tempo.isVisible(),
+          label+": separat talehastighet mangler i samme radiomeny");
+        check(JSON.stringify(await tempo.locator("option").allTextContents())===
+          JSON.stringify(["0,9× – rolig","1,0× – normalt","1,1× – raskere"]),
+          label+": opplesningen må ha 0,9×, 1,0× og 1,1×");
+        await tempo.selectOption("1.1");
+        check((await page.evaluate(()=>localStorage.getItem("paradisavisa-radiotempo")))==="1.1",
+          label+": valgt talehastighet lagres ikke");
+        check((await fartknapp.textContent()).includes("5×"),
+          label+": endring av talehastigheten endrer feilaktig båndhastigheten");
 
         const radio=page.locator(".notis-radio");
         const radiopause=page.locator(".notis-radio-pause");
@@ -450,8 +459,8 @@ async function run(){
           label+": nyhetsradioen startet ikke");
         const lest=await page.evaluate(()=>window.__notisRadioTest.spoken);
         check(lest.length===1 && lest[0].lang==="nb-NO" &&
-          lest[0].voice==="Norsk test 2" && lest[0].rate===1 && lest[0].text.length>30,
-          label+": nyhetsradioen bruker ikke valgt norsk stemme med normalt taletempo");
+          lest[0].voice==="Norsk test 2" && lest[0].rate===1.1 && lest[0].text.length>30,
+          label+": nyhetsradioen bruker ikke valgt norsk stemme og hastighet");
         await radiopause.click();
         check((await radiopause.getAttribute("aria-pressed"))==="true" &&
           (await page.evaluate(()=>window.__notisRadioTest.pauses))===1,
@@ -460,10 +469,15 @@ async function run(){
         check((await radiopause.getAttribute("aria-pressed"))==="false" &&
           (await page.evaluate(()=>window.__notisRadioTest.resumes))===1,
           label+": radioen kan ikke fortsette");
+        await tempo.selectOption("0.9");
+        check((await page.evaluate(()=>window.__notisRadioTest.spoken[0].rate))===1.1,
+          label+": endret talehastighet skal ikke avbryte pågående notis");
         await page.evaluate(()=>window.__notisRadioTest.utterances[0].onend?.());
         await page.waitForTimeout(800);
         check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))>=2,
           label+": nyhetsradioen går ikke videre til neste notis");
+        check((await page.evaluate(()=>window.__notisRadioTest.spoken[1].rate))===0.9,
+          label+": ny talehastighet gjelder ikke fra neste notis");
         await radiopause.click();
         const resumeForStopp=await page.evaluate(()=>window.__notisRadioTest.resumes);
         await radio.click();
@@ -572,7 +586,9 @@ async function run(){
               label+": radioen starter automatisk ved sidelasting");
             // Direkte stemmevalg på radiosiden, uten å åpne notisbåndets meny.
             const stemmeRadio=page.locator("#paradisradio-stemme");
+            const tempoRadio=page.locator("#paradisradio-tempo");
             check(await stemmeRadio.isVisible(), label+": norsk stemmevalg mangler på radiosiden");
+            check(await tempoRadio.isVisible(), label+": talehastighet mangler på radiosiden");
             check(!(await page.locator(".notis-valgpanel").isVisible()),
               label+": stemmevalg må ikke åpne notisbåndets meny");
             await page.evaluate(()=>{
@@ -591,14 +607,20 @@ async function run(){
             check((await page.locator(".notis-stemme-select").inputValue())===
               (await stemmeRadio.inputValue()),
               label+": radiosiden og notismenyen bruker ikke samme stemme");
+            await tempoRadio.selectOption("1.1");
+            check((await page.locator(".notis-tempo-select").inputValue())==="1.1",
+              label+": radiosiden og notismenyen bruker ikke samme talehastighet");
+            check((await page.evaluate(()=>localStorage.getItem("paradisavisa-radiotempo")))==="1.1",
+              label+": talehastigheten fra radiosiden lagres ikke");
             const spill=page.locator("[data-radio='play']");
             await spill.click();
             check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===1,
               label+": Spill skal starte én og bare én opplesning");
             check(await page.locator("[data-radio='stop']").isEnabled(),
               label+": stoppknappen er utilgjengelig under opplesning");
-            check((await page.evaluate(()=>window.__notisRadioTest.spoken[0]?.voice))==="Norsk system 2",
-              label+": radiosiden sender ikke valgt norsk systemstemme til talen");
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken[0]?.voice))==="Norsk system 2" &&
+              (await page.evaluate(()=>window.__notisRadioTest.spoken[0]?.rate))===1.1,
+              label+": radiosiden sender ikke valgt norsk stemme og hastighet til talen");
             const naa=await page.locator("[data-radio='headline']").textContent();
             check(naa && naa.length>20,label+": nåværende nyhet mangler");
 
@@ -683,6 +705,12 @@ async function run(){
               label+": radiomenyen og radiosiden har ulik tilstand");
             const lenke=await page.locator(".notis-radio-side-lenke").getAttribute("href");
             check(lenke.includes("paradisradio.html"),label+": full radioside mangler i notismenyen");
+            // Menyen ligger som forventet over innhold på mobil. Lukk den
+            // før vi bruker spillerens Stopp-knapp under menyen.
+            await meny.click();
+            check(!(await page.locator(".notis-valgpanel").isVisible()),
+              label+": radiomenyen kan ikke lukkes igjen");
+            await page.locator("[data-radio='stop']").evaluate(el=>el.scrollIntoView({block:"center"}));
             await page.locator("[data-radio='stop']").click();
             check((await page.locator(".notis-radio").getAttribute("aria-pressed"))==="false",
               label+": stopp på radiosiden oppdaterer ikke radiomenyen");
