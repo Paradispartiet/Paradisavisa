@@ -293,12 +293,16 @@ function loadNotiser() {
       const band = document.querySelector(".notisbånd");
       const innhold = band?.querySelector(".notisinnhold");
       if (!band || !innhold || !Array.isArray(items)) return;
-      const aktuelle = items.filter(item => isNotisAktuell(item));
+      // Samme datoorden i notisbåndet og radiosiden, uavhengig av filrekkefølge.
+      let aktuelle = items.filter(item => isNotisAktuell(item))
+        .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
       band.hidden = !aktuelle.length;
       if (!aktuelle.length) {
         band.style.display = "none";
         innhold.replaceChildren();
         window.dispatchEvent(new Event("paradisradio:empty"));
+        // Siden kan stå åpen uten notiser til neste publisering.
+        window.setTimeout(loadNotiser, 5 * 60 * 1000);
         return;
       }
       band.style.removeProperty("display");
@@ -324,6 +328,7 @@ function loadNotiser() {
       const lagNotiselement = n => {
         const element = document.createElement("span");
         element.className = "notis-element";
+        element.dataset.notisKey = radioNotisNokkel(n);
         const item = document.createElement("span");
         item.className = "notis-tekst";
         const category = document.createElement("strong");
@@ -962,6 +967,89 @@ function loadNotiser() {
       });
       kontroller.append(valgknapp, panel);
       band.appendChild(kontroller);
+      // Sjekk samme notiskatalog regelmessig mens siden er åpen, også etter
+      // datobytte. Ingen omstart av tale, og ingen ekstra radiomotor.
+      let oppdateringPaagar = false;
+      const oppdaterAktuelleNotiser = async () => {
+        if (oppdateringPaagar || document.visibilityState === "hidden") return;
+        oppdateringPaagar = true;
+        try {
+          const response = await fetch(source, { cache: "no-store" });
+          if (!response.ok) throw new Error("Kunne ikke oppdatere notiser");
+          const data = await response.json();
+          if (!Array.isArray(data)) throw new Error("Ugyldig notiskatalog");
+          const nye = data.filter(item => isNotisAktuell(item))
+            .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+          // Sammenlign hele innholdet: rettede notiser skal også slå gjennom.
+          if (JSON.stringify(nye) === JSON.stringify(aktuelle)) {
+            radioSistOppdatert = Date.now();
+            return;
+          }
+
+          const gammelKo = radiosaker;
+          const gjeldende = gammelKo[radioGjeldendeIndeks];
+          const uavspilte = gammelKo.slice(radioIndeks);
+          const nyKo = prioriterNyeRadioNotiser(gammelKo, data);
+          const finn = notis => nyKo.findIndex(n => radioNotisNokkel(n) === radioNotisNokkel(notis));
+          radiosaker = nyKo;
+          radioSistOppdatert = Date.now();
+          if (radioAktiv) {
+            // Fortsett med neste uavspilte, eksisterende notis. Nye saker
+            // ligger foran i listen og leses ved neste rundeskifte.
+            const neste = uavspilte.find(n => finn(n) >= 0);
+            radioIndeks = neste ? finn(neste) : nyKo.length;
+            radioGjeldendeIndeks = gjeldende ? finn(gjeldende) : -1;
+          } else {
+            radioIndeks = 0;
+            radioGjeldendeIndeks = -1;
+          }
+
+          aktuelle = nye;
+          nesteNotisIndeks = 0;
+          if (!aktuelle.length) {
+            tickerAnimasjon?.cancel();
+            tickerAnimasjon = null;
+            innhold.replaceChildren();
+            band.hidden = true;
+            band.style.display = "none";
+            if (radioAktiv) stoppRadio("Ingen ferske notiser å lese opp.");
+            window.dispatchEvent(new Event("paradisradio:empty"));
+          } else {
+            band.hidden = false;
+            band.style.removeProperty("display");
+            const forste = innhold.firstElementChild;
+            if (forste && aktuelle.some(n => radioNotisNokkel(n) === forste.dataset.notisKey)) {
+              // La den synlige notisen rulle ferdig, men fjern foreldet kø.
+              // Neste element må følge etter det som allerede er synlig.
+              nesteNotisIndeks = aktuelle.findIndex(n =>
+                radioNotisNokkel(n) === forste.dataset.notisKey) + 1;
+              Array.from(innhold.children).slice(1).forEach(el => el.remove());
+              fyllNotisspor();
+            } else {
+              tickerAnimasjon?.cancel();
+              tickerAnimasjon = null;
+              innhold.replaceChildren();
+              startNesteNotis();
+            }
+          }
+          varsleSpiller();
+        } catch (error) {
+          // Behold sist godkjente innhold ved nettfeil; ingen falske notiser.
+          console.warn("Kunne ikke oppdatere notiser:", error);
+        } finally {
+          oppdateringPaagar = false;
+        }
+      };
+      const oppfriskIntervall = window.setInterval(oppdaterAktuelleNotiser, 5 * 60 * 1000);
+      const vedTilbakekomst = () => {
+        if (document.visibilityState === "visible") oppdaterAktuelleNotiser();
+      };
+      document.addEventListener("visibilitychange", vedTilbakekomst);
+      window.addEventListener("pagehide", () => {
+        window.clearInterval(oppfriskIntervall);
+        document.removeEventListener("visibilitychange", vedTilbakekomst);
+      });
+
       // Radiosiden og det lille kontrollpanelet bruker samme spiller i denne fanen.
       window.dispatchEvent(new Event("paradisradio:ready"));
 

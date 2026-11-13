@@ -374,3 +374,33 @@ test("Radioikonet åpner samme kontroller, og menylinken går til en eksisterend
   assert.match(script, /radioSistOppdatert/);
   assert.match(script, /5 \* 60 \* 1000/);
 });
+
+
+test("Åpen radioside og notisbånd får ferske saker uten ny radiomotor", () => {
+  const start = script.indexOf("const oppdaterAktuelleNotiser = async () =>");
+  const slutt = script.indexOf("// Radiosiden og det lille kontrollpanelet bruker samme spiller", start);
+  assert.ok(start > 0 && slutt > start, "Mangler oppfriskning av den delte notiskatalogen");
+  const kode = script.slice(start, slutt);
+  assert.match(kode, /fetch\(source, \{ cache: "no-store" \}\)/);
+  assert.match(kode, /data\.filter\(item => isNotisAktuell\(item\)\)/);
+  assert.match(kode, /prioriterNyeRadioNotiser\(gammelKo, data\)/);
+  assert.match(kode, /radioIndeks = neste \? finn\(neste\) : nyKo\.length/);
+  assert.match(kode, /nesteNotisIndeks = aktuelle\.findIndex/);
+  assert.match(kode, /oppfriskIntervall = window\.setInterval\(oppdaterAktuelleNotiser, 5 \* 60 \* 1000\)/);
+  assert.match(kode, /document\.addEventListener\("visibilitychange", vedTilbakekomst\)/);
+  assert.match(kode, /window\.clearInterval\(oppfriskIntervall\)/);
+  assert.doesNotMatch(kode, /new SpeechSynthesisUtterance|tale\.speak\(/,
+    "En notisoppdatering skal ikke starte opplesning uten brukerklikk");
+  assert.match(script, /window\.setTimeout\(loadNotiser, 5 \* 60 \* 1000\)/,
+    "Også en tom notisstrøm må kunne oppdage neste publisering");
+});
+
+test("Nyhetsstrømmen holder 13. november-sakene aktive 13.–15. november", () => {
+  const noter = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const dagens = noter.filter(n => n.date === "2026-11-13");
+  assert.equal(dagens.length, 6);
+  for (const dag of [13,14,15]) {
+    assert.equal(dagens.filter(n => fersk(n, new Date(2026, 10, dag))).length, 6);
+  }
+  assert.equal(dagens.filter(n => fersk(n, new Date(2026, 10, 16))).length, 0);
+});
