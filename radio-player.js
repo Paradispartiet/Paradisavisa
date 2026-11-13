@@ -19,6 +19,7 @@
     const listeAntall = finn("count");
     const stemmevalg = finn("voice");
     const stemmeStatus = finn("voice-status");
+    const tempoSelect = finn("tempo");
     let spiller = null;
     let unsubscribe = null;
     let visteNotiser = [];
@@ -65,6 +66,8 @@
       stemmevalg.value = stemmer.some(stemme => stemme.value === valgt) ? valgt : "";
       stemmevalg.disabled = !tilstand.taleTilgjengelig;
       stemmeStatus.textContent = tilstand.stemmeInfo || "Lokal opplesning fra enheten.";
+      tempoSelect.value = String(tilstand.valgtTaletempo ?? 1);
+      tempoSelect.disabled = !tilstand.taleTilgjengelig;
     };
     const visKo = (notiser, tilstand, tilgjengelig) => {
       // Ikke bygg om listen for hver talestatus: det beholder fokus på iPad og for tastatur.
@@ -160,6 +163,7 @@
     neste.addEventListener("click", () => spiller?.next());
     forrige.addEventListener("click", () => spiller?.previous());
     stemmevalg.addEventListener("change", () => spiller?.setVoice(stemmevalg.value));
+    tempoSelect.addEventListener("change", () => spiller?.setTempo(tempoSelect.value));
     window.addEventListener("paradisradio:ready", spillFraMotor);
     window.addEventListener("paradisradio:empty", () => {
       if (!spiller) visTom("Ingen ferske nyheter å spille. Tidligere notiser er arkivert.");
