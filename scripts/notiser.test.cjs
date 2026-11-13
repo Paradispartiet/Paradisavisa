@@ -263,7 +263,7 @@ test("Firefox skal ikke reservere falsk bunnsikkerhetssone under notisbåndet", 
 test("Notisbåndet animerer bare et kort spor uten å lage en gigantisk liste", () => {
   const css = fs.readFileSync(path.join(root, "styles.css"), "utf8");
   const ticker = script.slice(script.indexOf("const lagNotiselement = n =>"),
-    script.indexOf("// Én knapp åpner alle tre kontrollene."));
+    script.indexOf("// Én knapp åpner båndhastighet, talehastighet og avspillingskontroller."));
   assert.ok(ticker.length > 200, "Mangler det resirkulerende notissporet");
   assert.match(ticker, /innhold\.animate\(/);
   assert.match(ticker, /animasjon\.onfinish =/);
