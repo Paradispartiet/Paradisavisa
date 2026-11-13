@@ -1,5 +1,47 @@
 [
   {
+    "id": "notis-ordforer-banenor-anmeldt-20261113",
+    "category": "Samferdsel",
+    "text": "Grane-ordfører Raymond Fagerli fra Senterpartiet gikk i oktober ut mot det dårlige togtilbudet på Nordlandsbanen. Etter at han lot seg fotografere stående i togsporet, ble han anmeldt av Bane Nor, skriver Klassekampen. Kritikken av togtilbudet fikk dermed en uventet oppfølging.",
+    "date": "2026-11-13",
+    "url": "https://klassekampen.no/artikkel/2026-11-13/anmeldte-ordforer-for-a-sta-i-togsporet"
+  },
+  {
+    "id": "notis-sultestreiker-dommer-jobbsoknad-20261113",
+    "category": "Rett og samfunn",
+    "text": "Borgarting lagmannsrett har opphevet dommen mot en klimaaktivist som sultestreiket foran Stortinget. Oslo tingrett ga ham 20 000 kroner i bot for ikke å flytte teltet sitt. Dommerfullmektigen hadde søkt jobb hos Riksadvokaten dagen før rettssaken. Lagmannsretten mener søknaden kunne skape tvil om habiliteten, og saken må behandles på nytt.",
+    "date": "2026-11-13",
+    "url": "https://rett24.no/articles/dom-mot-klimaaktivist-som-sultestreiket-oppheves-fordi-dommeren-hadde-sokt-ny-jobb"
+  },
+  {
+    "id": "notis-horst-forlag-ki-kontrakter-20261113",
+    "category": "Kultur",
+    "text": "Jørn Lier Horsts bøker kan møte nye krav i utlandet etter debatten om KI-bruk i krimlitteraturen. Ifølge Klassekampen har hans tyske forlag kontraktsfestet et forbud mot KI-genererte tekster, mens det franske forlaget vil bruke en KI-detektor fra nyttår. At en detektor gir utslag, er ikke i seg selv bevis på at en tekst er KI-skrevet.",
+    "date": "2026-11-13",
+    "url": "https://klassekampen.no/artikkel/2026-11-13/horst-kan-fa-trobbel-i-utlandet"
+  },
+  {
+    "id": "notis-hoyesterett-oljefelt-ugyldige-20261113",
+    "category": "Klima og rett",
+    "text": "Høyesterett har med seks mot fem stemmer kjent statens godkjenninger av oljefeltene Breidablikk, Tyrving og Yggdrasil ugyldige. Klimakonsekvensene var ikke godt nok behandlet i sammenheng med andre utbygginger. Departementet må vurdere vedtakene på nytt. Dommen opphever likevel ikke automatisk oljeselskapenes tillatelser, understreker Høyesterett.",
+    "date": "2026-11-13",
+    "url": "https://rett24.no/articles/staten-tapte-klimasaken-i-storkammeret-og-ma-behandle-soknaden-pa-nytt"
+  },
+  {
+    "id": "notis-puskas-alta-bakgrunnsmusikk-20261113",
+    "category": "Kultur",
+    "text": "Puskas Musikk & Platebar i Alta har vunnet TONOs kåring av «Norges beste bakgrunnsmusikk 2026». Stedet slo blant annet en restaurant i Trondheim og et legesenter i Sandnes. Juryen valgte fem finalister, mens publikum stemte fram vinneren. Prisen skal overrekkes mandag 16. november, med en konsert av Gunn Kvaale.",
+    "date": "2026-11-13",
+    "url": "https://kommunikasjon.ntb.no/pressemelding/19141857/puskas-musikk-and-platebar-i-alta-har-norges-beste-bakgrunnsmusikk-2026?lang=no&publisherId=17849052"
+  },
+  {
+    "id": "notis-norsk-industri-stotter-posten-20261113",
+    "category": "Arbeidsliv",
+    "text": "De postansatte har fått en uventet støttespiller i striden om kutt i postomdelingen. Norsk Industri, NHOs største landsforening, advarer mot at kuttene kan svekke beredskap og demokratisk tilgang til informasjon. Klassekampen viser til høringssvaret fra direktør Harald Solberg. Reaksjonen kommer før den varslede politiske streiken blant postansatte mandag.",
+    "date": "2026-11-13",
+    "url": "https://klassekampen.no/artikkel/2026-11-13/postansatte-far-stotte-fra-nho-kjempe"
+  },
+  {
     "id": "notis-bagasjerom-oppreisning-eidsivating-20261112",
     "category": "Rett og samfunn",
     "text": "En 16-åring ble alvorlig skadet da en beruset 18-åring kjørte gjennom en åker og inn i et tre. Gutten satt i bagasjerommet. Eidsivating lagmannsrett mener, med to mot én stemme, at han ikke hadde reell mulighet til å komme seg ut. Sjåføren må betale 80 000 kroner i oppreisning, mot 55 000 i tingretten.",
