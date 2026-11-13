@@ -1020,6 +1020,9 @@ function loadNotiser() {
             const forste = innhold.firstElementChild;
             if (forste && aktuelle.some(n => radioNotisNokkel(n) === forste.dataset.notisKey)) {
               // La den synlige notisen rulle ferdig, men fjern foreldet kø.
+              // Neste element må følge etter det som allerede er synlig.
+              nesteNotisIndeks = aktuelle.findIndex(n =>
+                radioNotisNokkel(n) === forste.dataset.notisKey) + 1;
               Array.from(innhold.children).slice(1).forEach(el => el.remove());
               fyllNotisspor();
             } else {
