@@ -31,6 +31,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Test faktiske nettsider på mobil og PC
         run: node scripts/visuell-sjekk.cjs
+      - name: Test Aha-konto i avisens meny med mobil og desktop DOM
+        run: node scripts/paradisavisa-aha-auth-browser.cjs
       - name: Test levende artikkel på mobil, iPad, PC og uten JavaScript
         run: node scripts/levende-artikkel-browser.cjs
       - name: Test original HTTPS-mediekontrollside på mobil og iPad-størrelse

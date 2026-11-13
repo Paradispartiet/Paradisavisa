@@ -1,0 +1,113 @@
+name: Paradisavisa Aha bridge – isolated verification
+
+on:
+  push:
+    branches:
+      - feature/paradisavisa-aha-bridge-v1
+  pull_request:
+    paths:
+      - 'paradisavisa-aha*.js'
+      - 'scripts/paradisavisa-aha*.cjs'
+      - 'script.js'
+      - 'index.html'
+      - 'header.html'
+      - 'styles.css'
+      - '.github/workflows/paradisavisa-aha-bridge-v1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  node:
+    name: Aha article and account tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test reading consent and account-bound article controls
+        run: node --test scripts/paradisavisa-aha.test.cjs
+      - name: Test shared Aha sign-in menu and logout
+        run: node --test scripts/paradisavisa-aha-auth.test.cjs
+      - name: Static syntax check
+        run: |
+          node --check script.js
+          node --check paradisavisa-aha.js
+          node --check paradisavisa-aha-auth.js
+
+  browser:
+    name: Real mobile and desktop menu DOM
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - name: Verify published page structures and account menu
+        run: node scripts/paradisavisa-aha-auth-browser.cjs
+
+  integrated-articles:
+    name: Article validation against merged current main
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate content, images, drafts and the news feed
+        run: node scripts/valider-artikler.cjs
+      - name: Run the current main article and publishing contracts
+        run: |
+          node --test scripts/artikkelmal.test.cjs
+          node --test scripts/bank-artikkel-levende.test.cjs
+          node --test scripts/ki-debatt-levende.test.cjs
+          node --test scripts/datasentre-levende.test.cjs
+          node --test scripts/ronaldo-levende.test.cjs
+          node --test scripts/nationaltheatret-levende.test.cjs
+          node --test scripts/tre-saker-2026-11-10.test.cjs
+          node --test scripts/forside-scroll.test.cjs
+          node --test scripts/notiser.test.cjs
+          node --test scripts/radio/mp3_preview_player.test.cjs
+          node --test scripts/radio/https_media_probe.test.cjs
+          node --test scripts/redaksjonelle-sperrer.test.cjs
+          node --test scripts/publiser-artikkel.test.cjs
+      - name: Verify private Norwegian audio pilot
+        run: python3 -m unittest discover -s scripts/radio -p "test_*.py" -v
+      - name: Ensure an unapproved draft cannot be published
+        run: |
+          if node scripts/publiser-artikkel.cjs cyberrisiko 2026-10-31; then
+            echo "An unapproved draft was incorrectly published"
+            exit 1
+          fi
+
+  integrated-browser:
+    name: Full newspaper mobile, iPad and desktop regression
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - name: Verify newspaper layout on mobile and desktop
+        run: node scripts/visuell-sjekk.cjs
+      - name: Verify live story on mobile, iPad, PC and without JavaScript
+        run: node scripts/levende-artikkel-browser.cjs
+      - name: Verify HTTPS-media original on mobile and iPad
+        run: node scripts/radio/https_media_probe_browser.cjs
+      - name: Keep screenshots for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aha-integrated-visual-regression
+          path: qa-screenshots/
+          if-no-files-found: ignore
+          retention-days: 7
