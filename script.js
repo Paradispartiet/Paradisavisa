@@ -448,7 +448,7 @@ function loadNotiser() {
         });
       }
 
-      // Én knapp åpner alle tre kontrollene. Panelet dekker aldri løpende tekst.
+      // Én knapp åpner båndhastighet, talehastighet og avspillingskontroller.
       const kontroller = document.createElement("div");
       kontroller.className = "notis-kontroller";
       const valgknapp = document.createElement("button");
@@ -508,8 +508,8 @@ function loadNotiser() {
       fartmeny.setAttribute("role", "group");
       fartmeny.setAttribute("aria-label", "Velg hastighet for notisbåndet");
       const oppdaterFartknapper = () => {
-        fartknapp.textContent = "Hastighet · " + valgtFart + "×";
-        fartknapp.setAttribute("aria-label", "Velg hastighet – nå " + valgtFart + "×");
+        fartknapp.textContent = "Tekstbånd · " + valgtFart + "×";
+        fartknapp.setAttribute("aria-label", "Velg hastighet for notisbåndet – nå " + valgtFart + "×");
         fartmeny.querySelectorAll("button[data-fart]").forEach(knapp => {
           knapp.setAttribute("aria-pressed", String(Number(knapp.dataset.fart) === valgtFart));
         });
@@ -543,7 +543,7 @@ function loadNotiser() {
       // Tale startes bare med et brukergest, og stoppes når siden forlates.
       const tale = window.speechSynthesis;
       const harTale = Boolean(tale && typeof window.SpeechSynthesisUtterance === "function");
-      // Valg av systemstemme. Kun én hastighetskontroll: notisbåndets 2×/4×/5×.
+      // Norsk systemstemme og separat taletempo i samme meny som båndhastigheten.
       const radioInnstillinger = document.createElement("div");
       radioInnstillinger.className = "notis-radio-innstillinger";
 
@@ -604,8 +604,43 @@ function loadNotiser() {
       }
       oppdaterStemmer();
 
-      // Tale spilles i normal hastighet (1×). Båndets hastighet påvirker ikke opplesningen.
-      radioInnstillinger.append(stemmeLabel, stemmeSelect, stemmeInfo);
+      // Gjeninnført separat taletempo fra PR #73. Dette påvirker aldri
+      // notisbåndets 2×/4×/5× og gjelder fra neste oppleste nyhet.
+      const taletempo = [
+        { verdi: 0.9, tekst: "0,9× – rolig" },
+        { verdi: 1, tekst: "1,0× – normalt" },
+        { verdi: 1.1, tekst: "1,1× – raskere" }
+      ];
+      let valgtTaletempo = 1;
+      try {
+        const lagret = Number(localStorage.getItem("paradisavisa-radiotempo"));
+        if (taletempo.some(valg => valg.verdi === lagret)) valgtTaletempo = lagret;
+      } catch (_) { /* Uten lokal lagring brukes normalt taletempo. */ }
+      const tempoLabel = document.createElement("label");
+      tempoLabel.htmlFor = "notis-radiotempo";
+      tempoLabel.textContent = "Talehastighet";
+      const tempoSelect = document.createElement("select");
+      tempoSelect.id = "notis-radiotempo";
+      tempoSelect.className = "notis-tempo-select";
+      tempoSelect.disabled = !harTale;
+      for (const valg of taletempo) {
+        const option = document.createElement("option");
+        option.value = String(valg.verdi);
+        option.textContent = valg.tekst;
+        tempoSelect.appendChild(option);
+      }
+      tempoSelect.value = String(valgtTaletempo);
+      const settTaletempo = verdi => {
+        const nummer = Number(verdi);
+        if (!taletempo.some(valg => valg.verdi === nummer)) return;
+        valgtTaletempo = nummer;
+        tempoSelect.value = String(nummer);
+        try { localStorage.setItem("paradisavisa-radiotempo", String(nummer)); }
+        catch (_) { /* Valget gjelder likevel i denne fanen. */ }
+        varsleSpiller();
+      };
+      tempoSelect.addEventListener("change", () => settTaletempo(tempoSelect.value));
+      radioInnstillinger.append(stemmeLabel, stemmeSelect, stemmeInfo, tempoLabel, tempoSelect);
 
       const radioknapp = document.createElement("button");
       radioknapp.type = "button";
@@ -640,6 +675,7 @@ function loadNotiser() {
         koIndeks: radioAktiv ? radiosaker.filter(item => isNotisAktuell(item)).indexOf(radiosaker[radioGjeldendeIndeks]) : -1,
         stemmer: norskeStemmer.map(stemme => ({ value: stemmeNokkel(stemme), label: stemme.name + " (" + stemme.lang + ")" })),
         valgtStemme: valgtStemme,
+        valgtTaletempo: valgtTaletempo,
         stemmeInfo: stemmeInfo.textContent,
         status: radiostatus.textContent,
         taleTilgjengelig: harTale
@@ -749,7 +785,7 @@ function loadNotiser() {
         radioKreverOmstart = false;
         const ytring = new window.SpeechSynthesisUtterance(lagRadioOpplesning(notis));
         ytring.lang = "nb-NO";
-        ytring.rate = 1;
+        ytring.rate = valgtTaletempo;
         const norsk = norskeStemmer.find(stemme => stemmeNokkel(stemme) === valgtStemme) ||
           norskeStemmer.find(stemme => /^nb[-_]NO$/i.test(stemme.lang) && stemme.default) ||
           norskeStemmer.find(stemme => /^nb[-_]NO$/i.test(stemme.lang)) ||
@@ -904,6 +940,7 @@ function loadNotiser() {
           catch (_) { /* Valget fungerer i denne fanen. */ }
           varsleSpiller();
         },
+        setTempo(verdi) { settTaletempo(verdi); },
         next() { hoppRadio(1); },
         previous() { hoppRadio(-1); }
       };

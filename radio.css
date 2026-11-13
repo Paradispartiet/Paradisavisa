@@ -246,3 +246,6 @@
   .radio-ko-knapp { grid-template-columns: 1.5rem minmax(0,1fr) 1.5rem; gap: .55rem; padding: .75rem .6rem; }
   .radio-stopp { width: 100%; }
 }
+
+/* Separat stemmehastighet på radiosiden, med samme valg som i notismenyer. */
+.radio-stemmegruppe .radio-tempo-label { margin-top: .75rem; }

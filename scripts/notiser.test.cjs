@@ -263,7 +263,7 @@ test("Firefox skal ikke reservere falsk bunnsikkerhetssone under notisbåndet", 
 test("Notisbåndet animerer bare et kort spor uten å lage en gigantisk liste", () => {
   const css = fs.readFileSync(path.join(root, "styles.css"), "utf8");
   const ticker = script.slice(script.indexOf("const lagNotiselement = n =>"),
-    script.indexOf("// Én knapp åpner alle tre kontrollene."));
+    script.indexOf("// Én knapp åpner båndhastighet, talehastighet og avspillingskontroller."));
   assert.ok(ticker.length > 200, "Mangler det resirkulerende notissporet");
   assert.match(ticker, /innhold\.animate\(/);
   assert.match(ticker, /animasjon\.onfinish =/);
@@ -330,16 +330,45 @@ test("Radiomotoren gir pust mellom notiser og krever brukertrykk etter taleavbru
   assert.match(script,/Trykk Fortsett for å starte denne nyheten på nytt/);
 });
 
-test("Norsk stemmevalg bevares, mens ekstra radiotempo fjernes", () => {
-  assert.match(script,/voiceschanged/);
-  assert.match(script,/getVoices/);
-  assert.match(script,/paradisavisa-radiostemme/);
-  assert.doesNotMatch(script,/paradisavisa-radiotempo/);
-  assert.match(script,/notis-stemme-select/);
-  assert.doesNotMatch(script,/notis-tempo-select/);
-  assert.match(script,/notis-radio-pause/);
-  assert.match(script,/lagRadioOpplesning\(notis\)/);
-  assert.match(script,/ytring\.rate = 1;/);
+test("To uavhengige hastighetsvelgere ligger i samme notisradiomeny", () => {
+  // Båndet beholder sine tre hastigheter og får en tydelig egen etikett.
+  assert.match(script, /const fartvalg = \[2, 4, 5\]/);
+  assert.match(script, /fartknapp\.textContent = "Tekstbånd · "/);
+  assert.match(script, /tickerAnimasjon\.playbackRate = valgtFart/);
+  // Talevelgeren fra PR #73 er gjeninnført, under samme eksisterende panel.
+  assert.match(script, /tempoLabel\.textContent = "Talehastighet"/);
+  assert.match(script, /tempoSelect\.className = "notis-tempo-select"/);
+  assert.match(script, /radioInnstillinger\.append\(stemmeLabel, stemmeSelect, stemmeInfo, tempoLabel, tempoSelect\)/);
+  assert.match(script, /panel\.append\(radioknapp, radioPauseknapp, radioInnstillinger, radiostatus, radioSideLenke\)/);
+  for (const tempo of ["0.9", "1", "1.1"]) {
+    assert.match(script, new RegExp("verdi: " + tempo.replace(".", "\\.") + "(?:,| \\})"));
+  }
+  assert.match(script, /let valgtTaletempo = 1/);
+  assert.match(script, /paradisavisa-radiotempo/);
+  assert.match(script, /ytring\.rate = valgtTaletempo/);
+  assert.match(script, /settTaletempo\(tempoSelect\.value\)/);
+  assert.match(script, /setTempo\(verdi\) \{ settTaletempo\(verdi\); \}/);
+  assert.match(script, /taletempo\.some\(valg => valg\.verdi === nummer\)/,
+    "Ukjente hastigheter skal ikke aksepteres");
+  assert.match(script, /paradisavisa-radiostemme/);
+  assert.match(script, /notis-radio-pause/);
+  assert.match(script, /lagRadioOpplesning\(notis\)/);
+  assert.match(script, /radioknapp\.addEventListener\("click"/,
+    "Stemmeopplesningen skal fortsatt kreve et brukertrykk");
+});
+
+test("Radiosiden har egen talehastighet bundet til den delte motoren", () => {
+  const html = fs.readFileSync(path.join(root, "paradisradio.html"), "utf8");
+  const side = fs.readFileSync(path.join(root, "radio-player.js"), "utf8");
+  assert.match(html, /data-radio="tempo"/);
+  assert.match(html, /value="0\.9"/);
+  assert.match(html, /value="1"/);
+  assert.match(html, /value="1\.1"/);
+  assert.match(side, /tempoSelect = finn\("tempo"\)/);
+  assert.match(side, /tilstand\.valgtTaletempo/);
+  assert.match(side, /spiller\?\.setTempo\(tempoSelect\.value\)/);
+  assert.doesNotMatch(side, /new\s+(?:window\.)?SpeechSynthesisUtterance/,
+    "Radiosiden skal bruke den eksisterende motoren, ikke lage en ny");
 });
 
 
@@ -361,7 +390,7 @@ test("Radioikonet åpner samme kontroller, og menylinken går til en eksisterend
   assert.match(radio, /data-radio="stop"/);
   assert.match(radio, /data-radio="next"/);
   assert.match(radio, /data-radio="previous"/);
-  assert.match(radio, /radio-player\.js\?v=2/);
+  assert.match(radio, /radio-player\.js\?v=3/);
   const side = fs.readFileSync(path.join(root, "radio-player.js"), "utf8");
   assert.match(side, /window\.ParadisRadioPlayer/);
   assert.doesNotMatch(side, /new\s+(?:window\.)?SpeechSynthesisUtterance/);
