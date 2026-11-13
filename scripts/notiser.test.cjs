@@ -199,6 +199,40 @@ test("Lagmannsrettens bagasjeromssak er kildebelagt og riktig tidsavgrenset", ()
   assert.equal(new Set(notes.map(x => x.url)).size, notes.length);
 });
 
+test("Seks kildebelagte norske notiser fra 13. november er unike og tidsstyrte", () => {
+  const notes = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const ids = [
+    "notis-ordforer-banenor-anmeldt-20261113",
+    "notis-sultestreiker-dommer-jobbsoknad-20261113",
+    "notis-horst-forlag-ki-kontrakter-20261113",
+    "notis-hoyesterett-oljefelt-ugyldige-20261113",
+    "notis-puskas-alta-bakgrunnsmusikk-20261113",
+    "notis-norsk-industri-stotter-posten-20261113"
+  ];
+  assert.ok(notes.length >= 52, "Tidligere godkjente notiser skal beholdes");
+  assert.equal(new Set(notes.map(n => n.url)).size, notes.length);
+  const named = notes.filter(n => n.id);
+  assert.equal(new Set(named.map(n => n.id)).size, named.length);
+  for (const id of ids) {
+    const n = notes.find(n => n.id === id);
+    assert.ok(n, "Mangler notis: " + id);
+    assert.equal(n.date, "2026-11-13");
+    assert.equal(n.expires, undefined, "Normal holdbarhet er tre kalenderdager");
+    assert.ok(n.url.startsWith("https://"));
+    assert.ok(n.text.trim().split(/\s+/).length >= 25 && n.text.trim().split(/\s+/).length <= 65);
+    assert.equal(fersk(n, new Date(2026, 10, 13)), true);
+    assert.equal(fersk(n, new Date(2026, 10, 15)), true);
+    assert.equal(fersk(n, new Date(2026, 10, 16)), false);
+  }
+  const horst = notes.find(n => n.id === ids[2]);
+  assert.match(horst.text, /ikke i seg selv bevis/);
+  const klima = notes.find(n => n.id === ids[3]);
+  assert.match(klima.text, /seks mot fem/);
+  assert.match(klima.text, /ikke automatisk/);
+  const post = notes.find(n => n.id === ids[5]);
+  assert.match(post.text, /Norsk Industri/);
+});
+
 test("Notisbåndet bruker bare 2×/4×/5× og samler radio/pause/fart i én meny", () => {
   assert.match(script, /const fartvalg = \[2, 4, 5\]/);
   assert.match(script, /lagret === 6/);
