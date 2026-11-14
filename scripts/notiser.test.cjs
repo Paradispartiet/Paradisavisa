@@ -233,6 +233,37 @@ test("Seks kildebelagte norske notiser fra 13. november er unike og tidsstyrte",
   assert.match(post.text, /Norsk Industri/);
 });
 
+test("Rettferdsvederlag og lakseutbrudd 13. november er to forskjellige, korrekt tidsstyrte notiser", () => {
+  const notes = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const ids = [
+    "notis-rettferdsvederlag-avvikling-forslag-20261113",
+    "notis-laks-audna-sopp-trondelag-20261113"
+  ];
+  assert.equal(notes.length, 54, "De 52 eksisterende notisene skal beholdes og to legges til");
+  assert.equal(new Set(notes.map(n => n.url)).size, notes.length, "Ingen gjentatt kildelenke");
+  assert.equal(new Set(notes.filter(n => n.id).map(n => n.id)).size,
+    notes.filter(n => n.id).length, "Ingen ID-kollisjoner");
+  for (const id of ids) {
+    const n = notes.find(note => note.id === id);
+    assert.ok(n, "Mangler notisen " + id);
+    assert.equal(n.date, "2026-11-13");
+    assert.equal(n.expires, undefined, "Tre kalenderdager er standard");
+    assert.ok(n.url.startsWith("https://"), "HTTPS-kilde kreves");
+    assert.ok(n.text.trim().split(/\\s+/).length >= 25 &&
+      n.text.trim().split(/\\s+/).length <= 65, "Radioformat 25–65 ord");
+    assert.equal(fersk(n, new Date(2026, 10, 14)), true);
+    assert.equal(fersk(n, new Date(2026, 10, 15)), true);
+    assert.equal(fersk(n, new Date(2026, 10, 16)), false);
+  }
+  const ordning = notes.find(n => n.id === ids[0]);
+  assert.match(ordning.text, /foreslår/);
+  assert.match(ordning.text, /dersom Stortinget vedtar/);
+  const laks = notes.find(n => n.id === ids[1]);
+  assert.match(laks.text, /frykter at opptil 90 prosent/);
+  assert.match(laks.text, /prøvesvar må bekrefte årsaken/);
+  assert.match(laks.text, /ikke fastslått at utbruddene har samme årsak/);
+});
+
 test("Notisbåndet bruker bare 2×/4×/5× og samler radio/pause/fart i én meny", () => {
   assert.match(script, /const fartvalg = \[2, 4, 5\]/);
   assert.match(script, /lagret === 6/);
