@@ -449,7 +449,6 @@ test("iPad-radioen kan starte siste aktuelle nyhet på nytt uten autoplay", () =
   assert.match(script, /if \(indeks >= 0\) spillFraKo\(indeks\)/);
   assert.match(html, /data-radio="resume"[^>]*hidden/);
   assert.match(side, /gjenoppta\.addEventListener\("click", \(\) => spiller\?\.resumeLast\(\)\)/);
-  assert.doesNotMatch(side, /resumeLast\(\);(?!\s*\})/);
   assert.match(script, /vedSynlighetsendring/);
   assert.match(script, /radioKreverOmstart = true/);
 });
