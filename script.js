@@ -318,15 +318,84 @@ function oppdaterRadioKoUnderSending(gammelKo, hentede, nesteIndeks, gjeldende, 
 }
 
 /* ---------- Godkjent radiotekst med konservativ uttaletilpasning ---------- */
+// Bare trygge, entydige forkortelser utvides automatisk. Ukjente navn,
+// stedsnavn og initialord krever eksplisitt redaksjonelt uttalevalg.
+const radioForkortelser = Object.freeze({
+  KI: "kunstig intelligens",
+  SV: "Sosialistisk Venstreparti",
+  MDG: "Miljøpartiet De Grønne",
+  NHO: "Næringslivets Hovedorganisasjon",
+  NRK: "Norsk rikskringkasting"
+});
+function norskRadioTall(tall) {
+  const underTjue = ["null", "ett", "to", "tre", "fire", "fem", "seks", "sju",
+    "åtte", "ni", "ti", "elleve", "tolv", "tretten", "fjorten", "femten",
+    "seksten", "sytten", "atten", "nitten"];
+  if (tall < 20) return underTjue[tall];
+  const tier = ["", "", "tjue", "tretti", "førti", "femti"][Math.floor(tall / 10)];
+  return tier + (tall % 10 === 1 ? "en" : tall % 10 ? underTjue[tall % 10] : "");
+}
+function norskRadioKlokkeslett(timer, minutter) {
+  const time = Number(timer);
+  const minutt = Number(minutter);
+  if (!Number.isInteger(time) || !Number.isInteger(minutt) ||
+      time < 0 || time > 23 || minutt < 0 || minutt > 59) return null;
+  return norskRadioTall(time) + (minutt === 0 ? "" :
+    " " + (minutt < 10 ? "null " : "") + norskRadioTall(minutt));
+}
 function lagRadioOpplesning(notis) {
-  // Taleavvik kan settes eksplisitt av redaksjonen, ikke genereres fritt av AI.
+  // speechText er hele redaksjonens alternative taletekst.
+  // speechPronunciations er et mindre, lokalt uttaleoppslag for egennavn
+  // og vanskelige fraser. Begge påvirker bare Web Speech, aldri notisbåndet.
   const tekst = typeof notis?.speechText === "string" && notis.speechText.trim()
     ? notis.speechText : notis?.text;
-  const innhold = String(tekst || "").trim()
-    .replace(/(\d+(?:[.,]\d+)?)\s*%/g, "$1 prosent")
-    .replace(/(\d+(?:[.,]\d+)?)\s*kr\b/gi, "$1 kroner")
-    .replace(/\b(mrd|mill)\./gi, ord => ord.toLowerCase().startsWith("mrd")
-      ? "milliarder" : "millioner");
+  let innhold = String(tekst || "").trim();
+  const uttaler = notis?.speechPronunciations;
+  if (uttaler && typeof uttaler === "object" && !Array.isArray(uttaler)) {
+    for (const [original, erstatning] of Object.entries(uttaler).slice(0, 20)) {
+      if (!original || original.length > 90 || typeof erstatning !== "string" ||
+          !erstatning.trim() || erstatning.length > 180) continue;
+      // Erstatt bare hele navn/fraser: "Alta" kan ikke endre "Altaværing".
+      const bokstavelig = original.replace(/[.*+?^$()|[\]{}\\]/g, "\\$&");
+      const navn = new RegExp("(^|[^\\p{L}\\p{N}])" + bokstavelig +
+        "(?=$|[^\\p{L}\\p{N}])", "gu");
+      innhold = innhold.replace(navn, (_, foran) => foran + erstatning);
+    }
+  }
+  // Et initialord som KI-bruk trenger sin egen redaksjonelle frase;
+  // utvid aldri automatisk midt i sammensatte ord eller personnavn.
+  innhold = innhold.replace(
+    /(^|[^A-Za-zÆØÅæøå0-9])([A-Z]{2,5})(?=$|[^A-Za-zÆØÅæøå0-9-])/g,
+    (hele, foran, forkortelse) => foran + (radioForkortelser[forkortelse] || forkortelse));
+  innhold = innhold
+    .replace(/\bbl\.\s*a\./gi, "blant annet")
+    .replace(/\bf\.\s*eks\./gi, "for eksempel")
+    .replace(/\bca\./gi, "cirka")
+    .replace(/\bkl\.\s*(?=\d)/gi, "klokken ")
+    .replace(/\bklokken\s+(\d{1,2})[.:](\d{2})\s+til\s+(\d{1,2})[.:](\d{2})\b/gi,
+      (hele, t1, m1, t2, m2) => {
+        const fra = norskRadioKlokkeslett(t1, m1);
+        const til = norskRadioKlokkeslett(t2, m2);
+        return fra && til ? "klokken " + fra + " til " + til : hele;
+      })
+    .replace(/\bklokken\s+(\d{1,2})[.:](\d{2})\b/gi,
+      (hele, timer, minutter) => {
+        const uttale = norskRadioKlokkeslett(timer, minutter);
+        return uttale ? "klokken " + uttale : hele;
+      });
+  const enhet = (mengde, type) => {
+    const ett = Number(String(mengde).replace(/[ .\u00a0]/g, "").replace(",", ".")) === 1;
+    return type.toLowerCase() === "mrd"
+      ? ett ? "milliard" : "milliarder"
+      : ett ? "million" : "millioner";
+  };
+  innhold = innhold
+    .replace(/\b(\d+(?:[ .\u00a0]\d{3})*(?:[,.]\d+)?)\s*(mrd|mill)\.\s*kr\b/gi,
+      (_, mengde, type) => mengde + " " + enhet(mengde, type) + " kroner")
+    .replace(/\b(\d+(?:[ .\u00a0]\d{3})*(?:[,.]\d+)?)\s*(mrd|mill)\./gi,
+      (_, mengde, type) => mengde + " " + enhet(mengde, type))
+    .replace(/\b(\d+(?:[ .\u00a0]\d{3})*(?:[,.]\d+)?)\s*kr\b/gi, "$1 kroner")
+    .replace(/\b(\d+(?:[ .\u00a0]\d{3})*(?:[,.]\d+)?)\s*%/g, "$1 prosent");
   return String(notis?.category || "Nyheter").trim() + ". " + innhold;
 }
 
