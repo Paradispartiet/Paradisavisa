@@ -569,6 +569,89 @@ body.sport-side,body.notiser-side {padding-top:0}
   .sport-side #sportshjul-grid .hjul-card h3 {font-size:1.42rem}
 }
 
+/* Notislenker: les hos oss eller åpne den dokumenterte originalkilden. */
+.notiser-side .notis-oversikt[hidden],
+.notiser-side .notis-detalj[hidden] {display:none}
+.notiser-side .notis-kortlenker {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  column-gap:1.1rem;
+  row-gap:.55rem;
+  margin-top:1rem;
+  font:600 .8rem/1.55 Inter,system-ui,sans-serif;
+}
+.notiser-side .notis-kortlenker a,
+.notiser-side .notis-detalj-kilder a {
+  color:#eccb79;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  overflow-wrap:anywhere;
+}
+.notiser-side .notis-kortlenker a:hover,
+.notiser-side .notis-detalj-kilder a:hover {color:#fff}
+.notiser-side .notis-kilde {color:#9c9587}
+.notiser-side .notis-detalj {
+  max-width:780px;
+  margin:0 auto;
+  padding:.6rem 0 3rem;
+  color:#eeeae2;
+}
+.notiser-side .notis-detalj-tilbake {
+  display:inline-block;
+  padding:.45rem 0;
+  margin-bottom:clamp(1.3rem,4vw,2.8rem);
+  color:#c9c3b8;
+  font:600 .85rem/1.5 Inter,system-ui,sans-serif;
+  text-underline-offset:4px;
+}
+.notiser-side .notis-detalj-tilbake:hover {color:#fff}
+.notiser-side .notis-detalj-meta {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.55rem 1.1rem;
+  margin-bottom:1.1rem;
+  color:#bcb4a6;
+  font:600 .78rem/1.5 Inter,system-ui,sans-serif;
+}
+.notiser-side .notis-detalj-meta .notis-kategori {
+  color:#e6c365;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.notiser-side .notis-detalj h1 {
+  margin:0 0 1.5rem;
+  color:#fff;
+  font:700 clamp(1.85rem,4.3vw,3.45rem)/1.17 Georgia,serif;
+  letter-spacing:-.025em;
+  overflow-wrap:break-word;
+}
+.notiser-side .notis-detalj .notis-detalj-tekst {
+  margin:0 0 2.3rem;
+  max-width:68ch;
+  color:#e6e1d8;
+  font:400 clamp(1.05rem,1.55vw,1.22rem)/1.8 Inter,system-ui,sans-serif;
+}
+.notiser-side .notis-detalj-kilder {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.55rem 1.1rem;
+  padding:1.1rem 0;
+  border-top:1px solid #5d5547;
+  border-bottom:1px solid #403b33;
+  font:500 .86rem/1.65 Inter,system-ui,sans-serif;
+}
+.notiser-side .notis-detalj-kilder strong {
+  color:#fff;
+  font-weight:700;
+}
+.notiser-side .notis-detalj-arkiv {
+  margin:1.15rem 0 0;
+  color:#c7bcb0;
+  font:400 .83rem/1.6 Inter,system-ui,sans-serif;
+}
+
 /* Lesbarhetskrav: artikkeloversikter er alltid hvit skrift på sort. */
 .avis-forside{background:#000;color:#fff}
 .avis-forside .avis-motto,.avis-forside .avis-kategorier,.avis-forside .avis-leserinfo p,.avis-forside .seksjonsinfo,.avis-forside .hjul-card h3,.avis-forside .hjul-card p,.avis-forside .forside-dato,.avis-forside .avis-seksjon .seksjonstittel,.avis-forside .avis-seksjonslenke{color:#fff!important}
