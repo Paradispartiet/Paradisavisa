@@ -321,6 +321,57 @@ test("Nye radiomeldinger kommer først, uten å omstokke gamle eller gjenta dupl
   assert.ok(resultat.every(n => fersk(n, now)));
 });
 
+test("Radiokøen prioriterer nye og ferske notiser og varierer kategorier", () => {
+  const fordel = vm.runInContext("fordelRadioKategorier", sandbox);
+  const lag = (id, category, date = "2026-11-13") =>
+    ({ id, category, date, text: "Kildekontrollert sak " + id, url: "https://example.org/" + id });
+  const original = [
+    lag("k1", "Kultur"), lag("k2", "Kultur"), lag("s", "Sport"),
+    lag("r", "Rett"), lag("e", "Økonomi", "2026-11-12")
+  ];
+  const sortert = fordel([...original, original[0]], "Kultur");
+  assert.equal(sortert.length, 5, "Dubletter skal ikke kunne gi to opplesninger");
+  assert.deepEqual(Array.from(sortert, n => n.id), ["s","k1","r","k2","e"],
+    "Samme dags saker skal veksle kategori når det finnes alternativer");
+  const prioritert = fordel(original, "Kultur", new Set(["id:k2"]));
+  assert.equal(prioritert[0].id, "k2", "Helt ny notis skal komme først selv ved lik kategori");
+  assert.equal(prioritert.at(-1).id, "e", "Eldre dato skal ikke fortrenge nyere");
+});
+
+test("Live radiooppdatering beholder lest del og fletter inn nye uten gjentakelser", () => {
+  const oppdater = vm.runInContext("oppdaterRadioKoUnderSending", sandbox);
+  const lag = (id, category, date = "2026-11-13") =>
+    ({ id, category, date, text: "Sak " + id, url: "https://example.org/" + id });
+  const a = lag("a", "Kultur"), b = lag("b", "Kultur"), c = lag("c", "Sport");
+  const ny = lag("ny", "Rett"), eldre = lag("gammel", "Sport", "2026-11-10");
+  const korrigertB = { ...b, text: "Korrigert og fortsatt gyldig" };
+  // A er allerede lest. Radioen leser B når en ny C-katalog ankommer.
+  const oppdatert = oppdater([a,b,c], [ny,ny,c,korrigertB,a,eldre], 2, b, new Date(2026,10,14));
+  const keys = Array.from(oppdatert.ko, n => n.id);
+  assert.deepEqual(keys.slice(0,2), ["a","b"]);
+  assert.equal(oppdatert.nesteIndeks, 2);
+  assert.equal(oppdatert.gjeldendeIndeks, 1);
+  assert.equal(keys[2], "ny", "Ny kildekontrollert notis skal leses ved neste pause");
+  assert.equal(oppdatert.ko[1].text, korrigertB.text,
+    "Korrigering av stabil notis-ID skal slå gjennom uten ny køplass");
+  assert.deepEqual(keys, ["a","b","ny","c"],
+    "Ingen dubletter eller utløpte notiser skal leses i denne runden");
+  // Også når siste notis allerede er lest før oppdateringen kommer,
+  // skal en ny sak kunne starte som neste uten å gjenta gamle.
+  const etterSiste = oppdater([a,b], [ny,b,a], 2, b, new Date(2026,10,14));
+  assert.equal(etterSiste.nesteIndeks, 2);
+  assert.equal(etterSiste.ko[2].id, "ny");
+});
+
+test("Lite nyhetstilfang gir aldri en endeløs ett- eller to-notisløkke", () => {
+  assert.match(script, /const begynnNesteRunde = \(oppdaterte, versjon, nyeNokler = new Set\(\)\)/);
+  assert.match(script, /radiosaker\.length <= 2 && nyeNokler\.size === 0/);
+  assert.match(script, /Alle aktuelle nyheter er lest opp\. Trykk Spill for å høre dem igjen/);
+  assert.match(script, /begynnNesteRunde\(nesteKo, versjon, nyeNokler\)/);
+  assert.match(script, /begynnNesteRunde\(radiosaker, versjon\)/);
+  assert.doesNotMatch(script, /setInterval\(\(\) => tale\.speak/);
+});
+
 test("Redigert kjent ID oppdateres uten å bli en ny sak", () => {
   const prioriter = vm.runInContext("prioriterNyeRadioNotiser", sandbox);
   const now = new Date(2026, 10, 11);
@@ -336,7 +387,7 @@ test("Navigasjon i radioen bruker bare aktive notiser", () => {
   assert.match(script, /const ferske = radiosaker\.filter\(item => isNotisAktuell\(item\)\);/);
   assert.match(script, /const fra = ferske\.indexOf\(radiosaker\[radioGjeldendeIndeks\]\);/);
   assert.match(script, /spillFraKo\(mål\);/);
-  assert.match(script, /radiosaker = prioriterNyeRadioNotiser\(radiosaker, data\);/);
+  assert.match(script, /const nesteKo = prioriterNyeRadioNotiser\(radiosaker, data\);/);
 });
 
 test("Radiotekst tilpasses uttale uten å endre godkjent notis", () => {
@@ -443,8 +494,9 @@ test("Åpen radioside og notisbånd får ferske saker uten ny radiomotor", () =>
   const kode = script.slice(start, slutt);
   assert.match(kode, /fetch\(source, \{ cache: "no-store" \}\)/);
   assert.match(kode, /data\.filter\(item => isNotisAktuell\(item\)\)/);
-  assert.match(kode, /prioriterNyeRadioNotiser\(gammelKo, data\)/);
-  assert.match(kode, /radioIndeks = neste \? finn\(neste\) : nyKo\.length/);
+  assert.match(kode, /oppdaterRadioKoUnderSending\(gammelKo, data, radioIndeks, gjeldende\)/);
+  assert.match(kode, /radioIndeks = plan\.nesteIndeks/);
+  assert.match(kode, /radioGjeldendeIndeks = plan\.gjeldendeIndeks/);
   assert.match(kode, /nesteNotisIndeks = aktuelle\.findIndex/);
   assert.match(kode, /oppfriskIntervall = window\.setInterval\(oppdaterAktuelleNotiser, 5 \* 60 \* 1000\)/);
   assert.match(kode, /document\.addEventListener\("visibilitychange", vedTilbakekomst\)/);

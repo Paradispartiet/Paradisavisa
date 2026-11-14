@@ -264,6 +264,59 @@ function prioriterNyeRadioNotiser(gamle, hentede, now = new Date()) {
   return prioritet;
 }
 
+// Ferskeste publiseringsdag kommer først. Innen samme dag veksles kategorier
+// når mulig, uten å endre dato, tekst eller redaksjonell prioritering av nye
+// notiser. Nye ID-er får en egen prioritert gruppe før resten av køen.
+function fordelRadioKategorier(notiser, forrigeKategori = "", prioriterteNokler = new Set()) {
+  const unike = new Map();
+  for (const notis of Array.isArray(notiser) ? notiser : []) {
+    const nokkel = radioNotisNokkel(notis);
+    if (!unike.has(nokkel)) unike.set(nokkel, notis);
+  }
+  const erPrioritert = notis => prioriterteNokler.has(radioNotisNokkel(notis));
+  const kategori = notis => String(notis?.category || "Nyheter").trim().toLocaleLowerCase("nb-NO");
+  const sortert = [...unike.values()].sort((a, b) =>
+    Number(erPrioritert(b)) - Number(erPrioritert(a)) ||
+    String(b.date || "").localeCompare(String(a.date || "")));
+  const resultat = [];
+  let forrige = String(forrigeKategori || "").trim().toLocaleLowerCase("nb-NO");
+  while (sortert.length) {
+    // Bare lik prioritet og samme dato kan bytte plass. Eldre saker skal
+    // aldri fortrenge ferskere, og nye saker skal ikke havne bak gamle.
+    const erNy = erPrioritert(sortert[0]);
+    const dato = sortert[0].date;
+    const slutt = sortert.findIndex(n => erPrioritert(n) !== erNy || n.date !== dato);
+    const gruppe = sortert.splice(0, slutt < 0 ? sortert.length : slutt);
+    while (gruppe.length) {
+      const alternativ = gruppe.findIndex(n => kategori(n) !== forrige);
+      const [neste] = gruppe.splice(alternativ >= 0 ? alternativ : 0, 1);
+      resultat.push(neste);
+      forrige = kategori(neste);
+    }
+  }
+  return resultat;
+}
+
+// Når en ny katalog ankommer midt i sendingen, ligger alt som er lest
+// (inkludert nåværende notis) foran neste avspillingsindeks. Da kan ingen
+// indeksforskyvning lese samme notis to ganger eller hoppe over nye saker.
+function oppdaterRadioKoUnderSending(gammelKo, hentede, nesteIndeks, gjeldende, now = new Date()) {
+  const tidligere = Array.isArray(gammelKo) ? gammelKo : [];
+  const oppdatert = prioriterNyeRadioNotiser(tidligere, hentede, now);
+  const gamleNokler = new Set(tidligere.map(radioNotisNokkel));
+  const nyeNokler = new Set(oppdatert.filter(n => !gamleNokler.has(radioNotisNokkel(n)))
+    .map(radioNotisNokkel));
+  const oppdaterteNokler = new Map(oppdatert.map(n => [radioNotisNokkel(n), n]));
+  const hoert = tidligere.slice(0, Math.max(0, nesteIndeks))
+    .map(n => oppdaterteNokler.get(radioNotisNokkel(n))).filter(Boolean);
+  const horteNokler = new Set(hoert.map(radioNotisNokkel));
+  const gjenstaar = oppdatert.filter(n => !horteNokler.has(radioNotisNokkel(n)));
+  const ko = [...hoert, ...fordelRadioKategorier(gjenstaar, gjeldende?.category, nyeNokler)];
+  const gjeldendeIndeks = gjeldende
+    ? ko.findIndex(n => radioNotisNokkel(n) === radioNotisNokkel(gjeldende)) : -1;
+  return { ko, nesteIndeks: hoert.length, gjeldendeIndeks };
+}
+
 /* ---------- Godkjent radiotekst med konservativ uttaletilpasning ---------- */
 function lagRadioOpplesning(notis) {
   // Taleavvik kan settes eksplisitt av redaksjonen, ikke genereres fritt av AI.
@@ -664,7 +717,7 @@ function loadNotiser() {
       let radioVarSkjult = false;
       const mellomNyheterMs = 650;
       let radioSistOppdatert = Date.now();
-      let radiosaker = aktuelle.slice();
+      let radiosaker = fordelRadioKategorier(aktuelle);
       // Kun siste valgte nyhet lagres lokalt; aldri tale, brukerprofil eller
       // en avspillingsøkt som kan starte automatisk ved neste besøk.
       const sisteRadioNokkel = "paradisavisa-radio-siste-v1";
@@ -754,6 +807,24 @@ function loadNotiser() {
         band.classList.remove("is-radio");
         visRadio();
       };
+      const begynnNesteRunde = (oppdaterte, versjon, nyeNokler = new Set()) => {
+        const forrigeKategori = radiosaker[radioGjeldendeIndeks]?.category || "";
+        radiosaker = fordelRadioKategorier(oppdaterte, forrigeKategori, nyeNokler);
+        if (!radiosaker.length) {
+          stoppRadio("Ingen ferske notiser å lese opp.");
+          return;
+        }
+        // En eller to saker skal ikke spilles i en endeløs, kort løkke.
+        // Nye publiseringer kan likevel starte neste runde hvis de kom inn nå.
+        if (radiosaker.length <= 2 && nyeNokler.size === 0) {
+          stoppRadio("Alle aktuelle nyheter er lest opp. Trykk Spill for å høre dem igjen.");
+          return;
+        }
+        radioIndeks = 0;
+        radioGjeldendeIndeks = -1;
+        varsleSpiller();
+        lesNeste(versjon);
+      };
       const lesNeste = versjon => {
         if (!radioAktiv || versjon !== radioVersjon) return;
         if (radioPauset) {
@@ -769,8 +840,7 @@ function loadNotiser() {
             return;
           }
           if (Date.now() - radioSistOppdatert < 5 * 60 * 1000) {
-            radioIndeks = 0;
-            lesNeste(versjon);
+            begynnNesteRunde(radiosaker, versjon);
             return;
           }
           radioSistOppdatert = Date.now();
@@ -780,19 +850,14 @@ function loadNotiser() {
           }).then(data => {
             if (!radioAktiv || versjon !== radioVersjon) return;
             if (!Array.isArray(data)) throw new Error("Ugyldig notisliste");
-            radiosaker = prioriterNyeRadioNotiser(radiosaker, data);
-            radioIndeks = 0;
-            if (!radiosaker.length) {
-              stoppRadio("Ingen ferske notiser å lese opp.");
-              return;
-            }
-            lesNeste(versjon);
+            const gamleNokler = new Set(radiosaker.map(radioNotisNokkel));
+            const nesteKo = prioriterNyeRadioNotiser(radiosaker, data);
+            const nyeNokler = new Set(nesteKo.filter(n =>
+              !gamleNokler.has(radioNotisNokkel(n))).map(radioNotisNokkel));
+            begynnNesteRunde(nesteKo, versjon, nyeNokler);
           }).catch(() => {
             if (!radioAktiv || versjon !== radioVersjon) return;
-            radiosaker = radiosaker.filter(item => isNotisAktuell(item));
-            radioIndeks = 0;
-            if (radiosaker.length) lesNeste(versjon);
-            else stoppRadio("Ingen ferske notiser å lese opp.");
+            begynnNesteRunde(radiosaker.filter(item => isNotisAktuell(item)), versjon);
           });
           return;
         }
@@ -1052,18 +1117,16 @@ function loadNotiser() {
 
           const gammelKo = radiosaker;
           const gjeldende = gammelKo[radioGjeldendeIndeks];
-          const uavspilte = gammelKo.slice(radioIndeks);
-          const nyKo = prioriterNyeRadioNotiser(gammelKo, data);
-          const finn = notis => nyKo.findIndex(n => radioNotisNokkel(n) === radioNotisNokkel(notis));
-          radiosaker = nyKo;
           radioSistOppdatert = Date.now();
           if (radioAktiv) {
-            // Fortsett med neste uavspilte, eksisterende notis. Nye saker
-            // ligger foran i listen og leses ved neste rundeskifte.
-            const neste = uavspilte.find(n => finn(n) >= 0);
-            radioIndeks = neste ? finn(neste) : nyKo.length;
-            radioGjeldendeIndeks = gjeldende ? finn(gjeldende) : -1;
+            // Hørt del av runden blir stående foran neste indeks.
+            // Nye saker flettes naturlig inn etter pågående notis.
+            const plan = oppdaterRadioKoUnderSending(gammelKo, data, radioIndeks, gjeldende);
+            radiosaker = plan.ko;
+            radioIndeks = plan.nesteIndeks;
+            radioGjeldendeIndeks = plan.gjeldendeIndeks;
           } else {
+            radiosaker = fordelRadioKategorier(nye);
             radioIndeks = 0;
             radioGjeldendeIndeks = -1;
           }
