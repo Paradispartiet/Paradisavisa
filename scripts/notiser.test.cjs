@@ -356,7 +356,7 @@ test("Navigasjon i radioen bruker bare aktive notiser", () => {
   assert.match(script, /const ferske = radiosaker\.filter\(item => isNotisAktuell\(item\)\);/);
   assert.match(script, /const fra = ferske\.indexOf\(radiosaker\[radioGjeldendeIndeks\]\);/);
   assert.match(script, /spillFraKo\(mål\);/);
-  assert.match(script, /radiosaker = prioriterNyeRadioNotiser\(radiosaker, data\);/);
+  assert.match(script, /const nesteKo = prioriterNyeRadioNotiser\(radiosaker, data\);/);
 });
 
 test("Radiotekst tilpasses uttale uten å endre godkjent notis", () => {
