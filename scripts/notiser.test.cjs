@@ -393,11 +393,81 @@ test("Navigasjon i radioen bruker bare aktive notiser", () => {
 test("Radiotekst tilpasses uttale uten å endre godkjent notis", () => {
   const lageTekst=vm.runInContext("lagRadioOpplesning",sandbox);
   const notis={category:"Økonomi",text:"Norge bidrar med 2,5 mrd. kr og 30 %."};
-  assert.equal(lageTekst(notis),"Økonomi. Norge bidrar med 2,5 milliarder kr og 30 prosent.");
+  assert.equal(lageTekst(notis),"Økonomi. Norge bidrar med 2,5 milliarder kroner og 30 prosent.");
   assert.equal(notis.text,"Norge bidrar med 2,5 mrd. kr og 30 %.");
   assert.equal(lageTekst({category:"Sport",text:"Ordinær tekst",speechText:"Tilpasset uttale"}),
     "Sport. Tilpasset uttale");
   assert.equal(lageTekst({text:"120 kr"}),"Nyheter. 120 kroner");
+});
+
+test("Radiotale leser enkle beløp og mengder grammatisk, uten å endre tallverdier", () => {
+  const tale = vm.runInContext("lagRadioOpplesning", sandbox);
+  assert.equal(tale({ text: "1 mrd. kr, 2,5 mrd. kr, 1 mill. kr og 3 mill. kr." }),
+    "Nyheter. 1 milliard kroner, 2,5 milliarder kroner, 1 million kroner og 3 millioner kroner.");
+  assert.equal(tale({ text: "2 500 kr og 15,5 %." }),
+    "Nyheter. 2 500 kroner og 15,5 prosent.");
+  assert.equal(tale({ text: "ca. 2 mill. kr, bl.a. til skole, f.eks. i Oslo." }),
+    "Nyheter. cirka 2 millioner kroner, blant annet til skole, for eksempel i Oslo.");
+  assert.equal(tale({ text: "1. januar 2027 og 5 mot 4 stemmer." }),
+    "Nyheter. 1. januar 2027 og 5 mot 4 stemmer.",
+    "Datoer og opptellingsresultat skal aldri tolkes som klokkeslett");
+});
+
+test("Radioopplesning gjør digitale klokkeslett tydelige, men lar ugyldige klokkeslett stå", () => {
+  const tale = vm.runInContext("lagRadioOpplesning", sandbox);
+  assert.equal(tale({ text: "Trikken stanser klokken 15.00 til 15.15." }),
+    "Nyheter. Trikken stanser klokken femten til femten femten.");
+  assert.equal(tale({ text: "Møtet begynner kl. 08.05, neste møte klokken 21:30." }),
+    "Nyheter. Møtet begynner klokken åtte null fem, neste møte klokken tjueen tretti.");
+  assert.equal(tale({ text: "Klokken 25.99 og serien 15.15 er bare tekst." }),
+    "Nyheter. Klokken 25.99 og serien 15.15 er bare tekst.");
+});
+
+test("Bare entydige initialord utvides automatisk, ikke deler av navn", () => {
+  const tale = vm.runInContext("lagRadioOpplesning", sandbox);
+  assert.equal(tale({ text: "SV og MDG diskuterer KI. NRK og NHO følger saken." }),
+    "Nyheter. Sosialistisk Venstreparti og Miljøpartiet De Grønne diskuterer kunstig intelligens. Norsk rikskringkasting og Næringslivets Hovedorganisasjon følger saken.");
+  assert.equal(tale({ text: "KI-bruk, UDN og NRK-saken omtales." }),
+    "Nyheter. KI-bruk, UDN og NRK-saken omtales.",
+    "Ukjente forkortelser og sammensetninger skal kreve et redaksjonelt uttalevalg");
+});
+
+test("Redaksjonell uttaleordbok erstatter hele fraser kun i tale, ikke i notisbåndet", () => {
+  const tale = vm.runInContext("lagRadioOpplesning", sandbox);
+  const notis = {
+    category: "Kultur",
+    text: "Audna og Alta. Puskas Musikk & Platebar i Alta, ikke Altaværing.",
+    speechPronunciations: {
+      "Puskas Musikk & Platebar": "Puskas Musikk og Platebar",
+      "Alta": "Alta-byen"
+    }
+  };
+  assert.equal(tale(notis),
+    "Kultur. Audna og Alta-byen. Puskas Musikk og Platebar i Alta-byen, ikke Altaværing.");
+  assert.equal(notis.text, "Audna og Alta. Puskas Musikk & Platebar i Alta, ikke Altaværing.");
+  assert.equal(tale({ text: "A.B og A-B og Aa", speechPronunciations: {
+    "A.B": "A punktum B", "": "feil", "Aa": ""
+  } }), "Nyheter. A punktum B og A-B og Aa");
+  assert.equal(tale({ text: "Original tekst", speechText: "Tilpasset lesetekst" }),
+    "Nyheter. Tilpasset lesetekst");
+});
+
+test("Tre faktiske norske notiser har etterprøvbare talevalg uten redigert nyhetsinnhold", () => {
+  const tale = vm.runInContext("lagRadioOpplesning", sandbox);
+  const notes = JSON.parse(fs.readFileSync(path.join(root,"notiser.json"), "utf8"));
+  const horst = notes.find(n=>n.id==="notis-horst-forlag-ki-kontrakter-20261113");
+  const nho = notes.find(n=>n.id==="notis-norsk-industri-stotter-posten-20261113");
+  const puskas = notes.find(n=>n.id==="notis-puskas-alta-bakgrunnsmusikk-20261113");
+  assert.ok(horst && nho && puskas);
+  assert.match(tale(horst), /bruk av kunstig intelligens/);
+  assert.match(tale(horst), /tekster generert med kunstig intelligens/);
+  assert.doesNotMatch(tale(horst), /KI-detektor|KI-skrevet/);
+  assert.match(tale(nho), /Næringslivets Hovedorganisasjons største landsforening/);
+  assert.match(tale(puskas), /Puskas Musikk og Platebar/);
+  assert.match(horst.text, /KI-genererte tekster/);
+  assert.match(nho.text, /NHOs største landsforening/);
+  assert.match(puskas.text, /Puskas Musikk & Platebar/);
+  assert.ok([horst, nho, puskas].every(n=>n.url.startsWith("https://")));
 });
 
 test("Radiomotoren gir pust mellom notiser og krever brukertrykk etter taleavbrudd", () => {
