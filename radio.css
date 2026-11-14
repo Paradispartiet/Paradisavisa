@@ -1,6 +1,6 @@
 /* Paradisradioen: én tydelig spiller og en klikkbar nyhetskø. */
 .radio-side .radio-hoved {
-  max-width: 920px;
+  max-width: 800px;
   margin-inline: auto;
   padding-bottom: 5rem;
 }
@@ -11,11 +11,11 @@
   font: 800 .86rem/1.4 'Inter', system-ui, sans-serif;
 }
 .radio-spiller {
-  margin-top: 2rem;
+  margin-top: 1.4rem;
   padding: clamp(1rem, 3vw, 2rem);
   background: #0d0d0d;
-  border: 1px solid #555;
-  border-radius: 14px;
+  border: 1px solid #373737;
+  border-radius: 18px;
   color: #f4f4f4;
 }
 .radio-spillerhode {
@@ -36,7 +36,7 @@
   font-size: 2rem;
 }
 .radio-spillerhode h2,
-.radio-spilleliste-hode h2 {
+.radio-liste-tittel {
   margin: 0;
   font: 800 clamp(1.1rem, 2.5vw, 1.5rem)/1.2 'Inter', system-ui, sans-serif;
 }
@@ -48,8 +48,8 @@
 .radio-naa {
   padding: clamp(1rem, 3vw, 1.5rem);
   background: #171717;
-  border: 1px solid #3e3e3e;
-  border-radius: 10px;
+  border: 1px solid #313131;
+  border-radius: 12px;
 }
 .radio-naa-kategori {
   margin: 0 0 .7rem;
@@ -119,20 +119,14 @@
   outline-offset: 2px;
 }
 .radio-status {
-  margin: 0 0 1rem;
-  padding: .65rem .8rem;
-  border-left: 3px solid #ffd600;
-  color: #ddd;
-  background: #1a1a1a;
-  font: 400 .85rem/1.5 'Inter', system-ui, sans-serif;
+  margin: .6rem 0 1.1rem;
+  color: #b9b9b9;
+  font: 400 .79rem/1.5 'Inter', system-ui, sans-serif;
   white-space: normal;
 }
 .radio-innstillingsrad {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: .8rem 0;
+  display: block;
+  padding: .1rem 0 .7rem;
 }
 .radio-stemmegruppe {
   flex: 1 1 270px;
@@ -165,20 +159,72 @@
   padding-inline: 1rem;
   flex: 0 0 auto;
 }
-.radio-spilleliste { margin-top: 2rem; }
-.radio-spilleliste-hode {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: .5rem 1rem;
-  border-bottom: 1px solid #555;
-  padding-bottom: .75rem;
+/* Innholdet ligger bak to diskrete, tastaturvennlige fold-ut-rader.
+   Underliggende spiller og nyhetskø oppdateres selv om radene er lukket. */
+.radio-innstillinger,
+.radio-spilleliste {
+  margin-top: .5rem;
+  border-top: 1px solid #333;
 }
-.radio-spilleliste-hode span {
+.radio-innstillinger > summary,
+.radio-spilleliste > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem;
+  padding: .95rem .2rem;
+  list-style: none;
+  cursor: pointer;
+  color: #f1f1f1;
+  font: 700 .86rem/1.45 'Inter', system-ui, sans-serif;
+}
+.radio-innstillinger > summary::-webkit-details-marker,
+.radio-spilleliste > summary::-webkit-details-marker { display: none; }
+.radio-innstillinger > summary::after,
+.radio-spilleliste > summary::after {
+  content: "⌄";
+  color: #ffd600;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-left: auto;
+  transition: transform .18s ease;
+}
+.radio-innstillinger[open] > summary::after,
+.radio-spilleliste[open] > summary::after { transform: rotate(180deg); }
+.radio-innstillinger > summary:focus-visible,
+.radio-spilleliste > summary:focus-visible,
+.radio-gjenoppta:focus-visible { outline: 3px solid #ffd600; outline-offset: 2px; }
+.radio-liste-tittel { font-size: .9rem; font-weight: 700; }
+.radio-spilleliste-hode span[data-radio="count"] {
+  margin-left: auto;
   color: #aaa;
   font: 400 .74rem/1.3 'Inter', system-ui, sans-serif;
 }
+.radio-spilleliste[open] ol { padding-bottom: .2rem; }
+.radio-innstillinger[open] .radio-innstillingsrad { padding-bottom: .7rem; }
+.radio-hurtighandlinger {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: .6rem;
+}
+.radio-hurtighandlinger button { min-height: 40px; }
+.radio-hurtighandlinger .radio-gjenoppta {
+  background: transparent;
+  border: 0;
+  padding: .4rem 0;
+  color: #ffd600;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: .25rem;
+  font: 600 .8rem/1.4 'Inter', system-ui, sans-serif;
+  cursor: pointer;
+}
+.radio-hurtighandlinger .radio-gjenoppta[hidden] { display: none !important; }
+.radio-hurtighandlinger .radio-stopp { margin-left: auto; }
+.radio-hurtighandlinger .radio-stopp { min-height: 40px; padding: .4rem .8rem; }
+
 .radio-ko-hjelp {
   color: #bdbdbd;
   margin: .7rem 0 1rem;
@@ -244,7 +290,7 @@
   .radio-transport button { min-height: 56px; padding: .6rem .3rem; gap: .3rem; font-size: .77rem; }
   .radio-transport button.radio-primar { font-size: .91rem; }
   .radio-ko-knapp { grid-template-columns: 1.5rem minmax(0,1fr) 1.5rem; gap: .55rem; padding: .75rem .6rem; }
-  .radio-stopp { width: 100%; }
+  .radio-hurtighandlinger .radio-stopp { width: auto; }
 }
 
 /* Separat stemmehastighet på radiosiden, med samme valg som i notismenyer. */
