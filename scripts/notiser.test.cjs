@@ -239,7 +239,7 @@ test("Rettferdsvederlag og lakseutbrudd 13. november er to forskjellige, korrekt
     "notis-rettferdsvederlag-avvikling-forslag-20261113",
     "notis-laks-audna-sopp-trondelag-20261113"
   ];
-  assert.equal(notes.length, 54, "De 52 eksisterende notisene skal beholdes og to legges til");
+  assert.ok(notes.length >= 54, "Notisene fra 13. november og eldre skal beholdes ved nye publiseringer");
   assert.equal(new Set(notes.map(n => n.url)).size, notes.length, "Ingen gjentatt kildelenke");
   assert.equal(new Set(notes.filter(n => n.id).map(n => n.id)).size,
     notes.filter(n => n.id).length, "Ingen ID-kollisjoner");
@@ -262,6 +262,37 @@ test("Rettferdsvederlag og lakseutbrudd 13. november er to forskjellige, korrekt
   assert.match(laks.text, /frykter at opptil 90 prosent/);
   assert.match(laks.text, /prøvesvar må bekrefte årsaken/);
   assert.match(laks.text, /ikke fastslått at utbruddene har samme årsak/);
+});
+
+test("To nye notiser 14. november har unike kilder og riktig levetid", () => {
+  const notes = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const ids = [
+    "notis-musikkraad-jubileum-146-musikere-20261114",
+    "notis-tryg-fredag-trettende-bilskader-20261114"
+  ];
+  assert.equal(notes.length, 56, "54 eksisterende og to nye saker");
+  assert.equal(new Set(notes.map(n => n.url)).size, notes.length);
+  const named = notes.filter(n => n.id);
+  assert.equal(new Set(named.map(n => n.id)).size, named.length);
+  const [konsert, tryg] = ids.map(id => notes.find(n => n.id === id));
+  for (const n of [konsert, tryg]) {
+    assert.ok(n, "Mangler valgt notis");
+    assert.equal(n.date, "2026-11-14");
+    assert.match(n.url, /^https:/);
+    assert.ok(n.text.trim().split(/\s+/).length >= 25 &&
+      n.text.trim().split(/\s+/).length <= 65, "Radiotekst 25–65 ord");
+    assert.equal(fersk(n, new Date(2026, 10, 14)), true);
+  }
+  assert.equal(konsert.expires, "2026-11-14",
+    "Forhåndsomtale av konserten skal utløpe konsertdagen");
+  assert.equal(fersk(konsert, new Date(2026, 10, 15)), false);
+  assert.match(konsert.text, /er varslet/);
+  assert.match(konsert.text, /14\. november/);
+  assert.equal(tryg.expires, undefined, "Tryg-notisen skal ha tre kalenderdager");
+  assert.equal(fersk(tryg, new Date(2026, 10, 16)), true);
+  assert.equal(fersk(tryg, new Date(2026, 10, 17)), false);
+  assert.match(tryg.text, /selskapets egne skademeldinger/);
+  assert.match(tryg.text, /ikke viser at selve datoen forårsaker ulykkene/);
 });
 
 test("Notisbåndet bruker bare 2×/4×/5× og samler radio/pause/fart i én meny", () => {
