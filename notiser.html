@@ -14,21 +14,24 @@
 
   <link rel="icon" href="ikon-paradis.png">
   <link rel="stylesheet" href="styles.css?v=43">
-  <link rel="stylesheet" href="avisdesign.css?v=5">
+  <link rel="stylesheet" href="avisdesign.css?v=8">
 </head>
 <body class="notiser-side">
 
   <div id="header-placeholder"><a href="index.html" class="avis-fallback-link">← Til Paradisavisa</a></div>
   <main id="hovedinnhold" class="arkiv-hoved notis-arkiv-hoved">
-    <p class="arkiv-kategori">Paradisavisa / Korte nyheter</p>
-    <h1>Notiser</h1>
-    <p class="arkiv-ingress">Aktuelle, korte nyheter fra Paradisavisa. Eldre notiser ligger i et separat, lukket arkiv.</p>
-    <div id="notisgrid" class="notisgrid" aria-label="Aktuelle notiser"></div>
-    <details id="eldre-notiser" class="notis-arkiv-detaljer" hidden>
-      <summary>Eldre notiser – åpne arkivet</summary>
-      <p class="arkiv-ingress">Historiske notiser med opprinnelig dato. Opplysningene er ikke nødvendigvis oppdaterte.</p>
-      <div id="eldre-notisgrid" class="notisgrid" aria-label="Arkiverte notiser"></div>
-    </details>
+    <section id="notis-oversikt" class="notis-oversikt" aria-label="Notisoversikt">
+      <p class="arkiv-kategori">Paradisavisa / Korte nyheter</p>
+      <h1>Notiser</h1>
+      <p class="arkiv-ingress">Aktuelle, korte nyheter fra Paradisavisa. Åpne en notis for å lese den på egen side, eller gå direkte til originalkilden. Eldre notiser ligger i arkivet nedenfor.</p>
+      <div id="notisgrid" class="notisgrid" aria-label="Aktuelle notiser"></div>
+      <details id="eldre-notiser" class="notis-arkiv-detaljer" hidden>
+        <summary>Eldre notiser – åpne arkivet</summary>
+        <p class="arkiv-ingress">Historiske notiser med opprinnelig dato. Opplysningene er ikke nødvendigvis oppdaterte. Enkelte eldre notiser mangler registrert kilde.</p>
+        <div id="eldre-notisgrid" class="notisgrid" aria-label="Arkiverte notiser"></div>
+      </details>
+    </section>
+    <article id="notis-detalj" class="notis-detalj" aria-label="Notis" hidden></article>
   </main>
 
   <footer class="site-footer">
@@ -41,7 +44,7 @@
 
   <div class="notisbånd"><div class="notisinnhold"></div></div>
 
-  <script defer src="script.js?v=45"></script>
+  <script defer src="script.js?v=46"></script>
 
 </body>
 </html>
