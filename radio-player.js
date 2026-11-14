@@ -8,6 +8,7 @@
     const finn = name => root.querySelector('[data-radio="' + name + '"]');
     const spille = finn("play");
     const stopp = finn("stop");
+    const gjenoppta = finn("resume");
     const neste = finn("next");
     const forrige = finn("previous");
     const status = finn("status");
@@ -44,6 +45,7 @@
       visteNotiser = [];
       listeAntall.textContent = "0 aktuelle notiser";
       for (const knapp of [spille, stopp, neste, forrige]) knapp.disabled = true;
+      gjenoppta.hidden = true;
     };
     const visStemmer = tilstand => {
       const stemmer = Array.isArray(tilstand.stemmer) ? tilstand.stemmer : [];
@@ -140,6 +142,16 @@
         pauset ? "Fortsett nyhetsradio" : "Pause nyhetsradio");
       spille.disabled = !tilgjengelig;
       stopp.disabled = !tilgjengelig || !aktiv;
+      // Kun gyldige, fortsatt aktuelle nyheter kan tilbys som lokal fortsettelse.
+      // Web Speech starter den valgte nyheten på nytt fra begynnelsen.
+      gjenoppta.hidden = !tilgjengelig || aktiv ||
+        !Number.isInteger(tilstand.gjenopptaIndeks) || tilstand.gjenopptaIndeks < 0;
+      gjenoppta.disabled = gjenoppta.hidden;
+      if (!gjenoppta.hidden) {
+        const sist = notiser[tilstand.gjenopptaIndeks];
+        gjenoppta.setAttribute("aria-label", "Fortsett fra siste nyhet: " +
+          String(sist?.category || "Nyheter") + ". Starter nyheten på nytt.");
+      }
       neste.disabled = !tilgjengelig || !aktiv || notiser.length < 2;
       forrige.disabled = !tilgjengelig || !aktiv || notiser.length < 2;
       listeAntall.textContent = notiser.length + " aktuelle notiser";
@@ -160,6 +172,7 @@
       else spiller.play();
     });
     stopp.addEventListener("click", () => spiller?.stop());
+    gjenoppta.addEventListener("click", () => spiller?.resumeLast());
     neste.addEventListener("click", () => spiller?.next());
     forrige.addEventListener("click", () => spiller?.previous());
     stemmevalg.addEventListener("change", () => spiller?.setVoice(stemmevalg.value));
