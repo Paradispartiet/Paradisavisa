@@ -11,6 +11,65 @@ vm.createContext(sandbox);
 vm.runInContext(script, sandbox);
 const fersk = (note, now = new Date(2026, 10, 9)) => vm.runInContext("isNotisAktuell", sandbox)(note, now);
 
+test("Hver nåværende og historiske notis har én stabil intern lenke", () => {
+  const aktive = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const arkiverte = JSON.parse(fs.readFileSync(path.join(root, "arkiv/notiser-2025-10.json"), "utf8"));
+  const id = vm.runInContext("notisVisningsId", sandbox);
+  const alle = [...aktive, ...arkiverte];
+  const alleIder = alle.map(id);
+  assert.equal(new Set(alleIder).size, alle.length, "Ingen interne lenker må kollidere");
+  assert.equal(id(aktive[0]), aktive[0].id);
+  assert.match(id(arkiverte[0]), /^arkiv-2025-10-\d{2}-[a-z0-9]+$/);
+  assert.equal(id(arkiverte[0]), id({ ...arkiverte[0] }), "Arkivlenken skal være deterministisk");
+
+  // Samme destination uansett hvor på nettstedet script.js brukes.
+  const browser = {
+    Date, URL,
+    document: { addEventListener() {}, scripts: [
+      { src:"https://paradispartiet.github.io/Paradisavisa/script.js?v=46" }
+    ] },
+    window: { location: { href:"https://paradispartiet.github.io/Paradisavisa/artikler/eksempel.html" } }
+  };
+  vm.createContext(browser);
+  vm.runInContext(script, browser);
+  const intern = vm.runInContext("notisSideLenke", browser);
+  const href = intern(aktive[0]);
+  const url = new URL(href);
+  assert.equal(url.origin + url.pathname,
+    "https://paradispartiet.github.io/Paradisavisa/notiser.html");
+  assert.equal(url.searchParams.get("id"), aktive[0].id);
+  assert.equal(intern(arkiverte[0]).includes("notiser.html?id=arkiv-"), true);
+});
+
+test("Notisbåndet åpner interne notissider, med separat klikkbar og trygg originalkilde", () => {
+  const html = fs.readFileSync(path.join(root, "notiser.html"), "utf8");
+  const css = fs.readFileSync(path.join(root, "avisdesign.css"), "utf8");
+  const kilde = vm.runInContext("notisOriginalkilde", sandbox);
+  // URL er ikke tilgjengelig i den minimale test-sandboksen før vi setter den.
+  sandbox.URL = URL;
+  const godkjent = kilde({ url: "https://www.nrk.no/test" });
+  assert.equal(godkjent.hostname, "www.nrk.no");
+  assert.equal(kilde({ url: "javascript:alert(1)" }), null);
+  assert.equal(kilde({ url: "http://example.org/" }), null);
+  assert.equal(kilde({ url: "/relative-kilde" }), null);
+  assert.equal(kilde({}), null);
+
+  const ticker = script.slice(script.indexOf("const lagNotiselement = n =>"),
+    script.indexOf("let nesteNotisIndeks = 0;", script.indexOf("const lagNotiselement = n =>")));
+  assert.match(ticker, /link\.href = notisSideLenke\(n\)/);
+  assert.doesNotMatch(ticker, /link\.href = url\.href/,
+    "Notisbåndet skal ikke sende lesere direkte til eksterne nettsteder");
+  assert.match(script, /egenSide\.href = notisSideLenke\(item\)/);
+  assert.match(script, /kilder\.append\(kildeTittel, lagNotisKildelenke\(notis\)\)/);
+  assert.match(script, /lenker\.append\(egenSide, lagNotisKildelenke\(item\)\)/);
+  assert.match(script, /link\.rel = "noopener noreferrer"/);
+  assert.match(script, /document\.title = tittel \+ " \| Paradisavisa"/);
+  assert.match(html, /id="notis-oversikt"/);
+  assert.match(html, /id="notis-detalj"[^>]*hidden/);
+  assert.match(html, /src="script\.js\?v=46"/);
+  assert.match(css, /\.notiser-side \.notis-detalj-kilder a/);
+});
+
 test("Datofilter skjuler gamle, udaterte, fremtidige og ugyldige notiser", () => {
   const note = date => ({ category: "Klima", text: "Kontrollert testnotis", date });
   assert.equal(fersk(note("2026-11-09")), true);
