@@ -237,6 +237,37 @@ function radioNotisNokkel(notis) {
   ]);
 }
 
+// Én stabil intern adresse per notis, også for historiske oppføringer uten ID.
+function notisVisningsId(notis) {
+  if (typeof notis?.id === "string" && notis.id.trim()) return notis.id.trim();
+  const identitet = JSON.stringify([
+    notis?.date || "", notis?.url || "", notis?.category || "", notis?.text || ""
+  ]);
+  // Deterministisk FNV-1a som gir korte lenker for det gamle arkivet.
+  let hash = 2166136261;
+  for (let i = 0; i < identitet.length; i++)
+    hash = Math.imul(hash ^ identitet.charCodeAt(i), 16777619) >>> 0;
+  const dato = /^\d{4}-\d{2}-\d{2}$/.test(notis?.date || "") ? notis.date : "udatert";
+  return "arkiv-" + dato + "-" + hash.toString(36);
+}
+
+function notisSideLenke(notis) {
+  // script.js sin katalog er riktig også fra /artikler/ og andre undersider.
+  const appScript = Array.from(document.scripts)
+    .find(el => el.src.split("?")[0].endsWith("/script.js"));
+  const url = new URL("notiser.html", appScript?.src || window.location.href);
+  url.searchParams.set("id", notisVisningsId(notis));
+  return url.href;
+}
+
+function notisOriginalkilde(notis) {
+  if (typeof notis?.url !== "string") return null;
+  try {
+    const url = new URL(notis.url);
+    return url.protocol === "https:" ? url : null;
+  } catch (_) { return null; }
+}
+
 // Hentede notiser er autoritative: slettede og utløpte saker utgår.
 // Nye saker kommer først ved rundeskifte; kjente beholdes i radiokøens
 // forrige rekkefølge slik at en redaksjonell omstokking ikke nullstiller flyten.
@@ -457,20 +488,12 @@ function loadNotiser() {
         category.textContent = String(n.category || "") + ":";
         item.append(category, document.createTextNode(" " + String(n.text || "")));
 
-        let wrapper = item;
-        if (n.url) {
-          try {
-            const url = new URL(n.url, window.location.href);
-            if (url.protocol === "http:" || url.protocol === "https:") {
-              const link = document.createElement("a");
-              link.href = url.href;
-              link.appendChild(item);
-              wrapper = link;
-            }
-          } catch (_) {
-            // Ved ugyldig URL vises notisen fortsatt som tekst.
-          }
-        }
+        // Notisbåndet åpner vår egen notis. Originalkilden ligger på notissiden.
+        const link = document.createElement("a");
+        link.href = notisSideLenke(n);
+        link.title = "Les notisen i Paradisavisa";
+        link.appendChild(item);
+        const wrapper = link;
         const skille = document.createElement("span");
         skille.className = "notis-skille";
         skille.textContent = "•";
@@ -1523,12 +1546,98 @@ function toggleBox(id) {
   box.style.display = (box.style.display === "block") ? "none" : "block";
 }
 
+/* ---------- Notisside: enkeltvisning, kilde og arkiv ---------- */
+function lagNotisKildelenke(notis) {
+  const holder = document.createElement("span");
+  holder.className = "notis-kilde";
+  const url = notisOriginalkilde(notis);
+  if (!url) {
+    holder.textContent = "Kilde ikke registrert i arkivet";
+    return holder;
+  }
+  const link = document.createElement("a");
+  link.href = url.href;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = "Originalkilde · " + url.hostname.replace(/^www\./, "");
+  holder.appendChild(link);
+  return holder;
+}
+
+function tegnNotisDetalj(container, notis) {
+  container.replaceChildren();
+  const tilbake = document.createElement("a");
+  tilbake.className = "notis-detalj-tilbake";
+  tilbake.href = "notiser.html";
+  tilbake.textContent = "← Alle notiser";
+  container.appendChild(tilbake);
+
+  if (!notis) {
+    const overskrift = document.createElement("h1");
+    overskrift.textContent = "Notisen ble ikke funnet";
+    const melding = document.createElement("p");
+    melding.textContent = "Lenken kan være feil, eller notisen kan ha blitt flyttet.";
+    container.append(overskrift, melding);
+    document.title = "Notis ikke funnet | Paradisavisa";
+    return;
+  }
+
+  const metadata = document.createElement("div");
+  metadata.className = "notis-detalj-meta";
+  const kategori = document.createElement("span");
+  kategori.className = "notis-kategori";
+  kategori.textContent = String(notis.category || "Nyheter");
+  const dato = document.createElement("time");
+  dato.dateTime = String(notis.date || "");
+  dato.textContent = formatArticleDate(notis.date) || String(notis.date || "Udatert");
+  metadata.append(kategori, dato);
+
+  const fulltekst = String(notis.text || "").trim();
+  const setning = fulltekst.match(/^(.+?[.!?])(?=\s+[A-ZÆØÅ])/u);
+  const tittel = typeof notis.title === "string" && notis.title.trim()
+    ? notis.title.trim()
+    : setning && setning[1].length <= 180
+      ? setning[1].replace(/[.!?]$/, "")
+      : "Kort nytt: " + String(notis.category || "Nyheter");
+  const tekst = setning && tittel === setning[1].replace(/[.!?]$/, "")
+    ? fulltekst.slice(setning[1].length).trim() : fulltekst;
+
+  const overskrift = document.createElement("h1");
+  overskrift.textContent = tittel;
+  const innhold = document.createElement("p");
+  innhold.className = "notis-detalj-tekst";
+  innhold.textContent = tekst || fulltekst;
+
+  const kilder = document.createElement("div");
+  kilder.className = "notis-detalj-kilder";
+  const kildeTittel = document.createElement("strong");
+  kildeTittel.textContent = "Kilde";
+  kilder.append(kildeTittel, lagNotisKildelenke(notis));
+
+  container.append(metadata, overskrift, innhold, kilder);
+  if (!isNotisAktuell(notis)) {
+    const arkivMerknad = document.createElement("p");
+    arkivMerknad.className = "notis-detalj-arkiv";
+    arkivMerknad.textContent = "Arkivnotis: Opplysningene er fra publiseringsdatoen og er ikke nødvendigvis oppdaterte.";
+    container.appendChild(arkivMerknad);
+  }
+  document.title = tittel + " | Paradisavisa";
+}
+
 /* ---------- Notisarkiv: gamle notiser vises bare etter aktivt valg ---------- */
 function loadNotisarkiv() {
   const grid = document.getElementById("notisgrid");
   const details = document.getElementById("eldre-notiser");
   const gamleGrid = document.getElementById("eldre-notisgrid");
-  if (!grid || !details || !gamleGrid) return;
+  const oversikt = document.getElementById("notis-oversikt");
+  const detalj = document.getElementById("notis-detalj");
+  if (!grid || !details || !gamleGrid || !oversikt || !detalj) return;
+  const valgtId = new URLSearchParams(window.location.search).get("id");
+  if (valgtId !== null) {
+    oversikt.hidden = true;
+    detalj.hidden = false;
+    detalj.textContent = "Henter notisen …";
+  }
   const hent = filename => fetch(filename, { cache: "no-store" }).then(response => {
     if (!response.ok) throw new Error("Kunne ikke hente notiser: " + filename);
     return response.json();
@@ -1546,17 +1655,28 @@ function loadNotisarkiv() {
       const date = document.createElement("time");
       date.className = "notis-dato";
       date.dateTime = String(item.date || "");
-      date.textContent = String(item.date || "Udatert");
+      date.textContent = formatArticleDate(item.date) || String(item.date || "Udatert");
       const description = document.createElement("p");
       description.textContent = String(item.text || "");
+      const lenker = document.createElement("div");
+      lenker.className = "notis-kortlenker";
+      const egenSide = document.createElement("a");
+      egenSide.href = notisSideLenke(item);
+      egenSide.textContent = "Les notisen";
+      lenker.append(egenSide, lagNotisKildelenke(item));
       header.append(category, date);
-      card.append(header, description);
+      card.append(header, description, lenker);
       container.appendChild(card);
     });
   };
   Promise.all([hent("notiser.json"), hent("arkiv/notiser-2025-10.json")])
     .then(([aktive, arkiverte]) => {
       if (!Array.isArray(aktive) || !Array.isArray(arkiverte)) throw new Error("Ugyldig notisliste");
+      if (valgtId !== null) {
+        const valgt = [...aktive, ...arkiverte].find(item => notisVisningsId(item) === valgtId);
+        tegnNotisDetalj(detalj, valgt);
+        return;
+      }
       const sorter = entries => entries.sort((a, b) =>
         String(b.date || "").localeCompare(String(a.date || "")));
       const na = new Date();
@@ -1571,7 +1691,11 @@ function loadNotisarkiv() {
     })
     .catch(error => {
       console.error(error);
-      grid.textContent = "Notisene kunne ikke lastes. Prøv igjen senere.";
-      details.hidden = true;
+      if (valgtId !== null) {
+        detalj.textContent = "Notisen kunne ikke lastes. Prøv igjen senere.";
+      } else {
+        grid.textContent = "Notisene kunne ikke lastes. Prøv igjen senere.";
+        details.hidden = true;
+      }
     });
 }
