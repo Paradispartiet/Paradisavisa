@@ -31,6 +31,12 @@
     "id": "notis-horst-forlag-ki-kontrakter-20261113",
     "category": "Kultur",
     "text": "Jørn Lier Horsts bøker kan møte nye krav i utlandet etter debatten om KI-bruk i krimlitteraturen. Ifølge Klassekampen har hans tyske forlag kontraktsfestet et forbud mot KI-genererte tekster, mens det franske forlaget vil bruke en KI-detektor fra nyttår. At en detektor gir utslag, er ikke i seg selv bevis på at en tekst er KI-skrevet.",
+    "speechPronunciations": {
+      "KI-bruk": "bruk av kunstig intelligens",
+      "KI-genererte tekster": "tekster generert med kunstig intelligens",
+      "KI-detektor": "detektor for kunstig intelligens",
+      "KI-skrevet": "skrevet med kunstig intelligens"
+    },
     "date": "2026-11-13",
     "url": "https://klassekampen.no/artikkel/2026-11-13/horst-kan-fa-trobbel-i-utlandet"
   },
@@ -45,6 +51,9 @@
     "id": "notis-puskas-alta-bakgrunnsmusikk-20261113",
     "category": "Kultur",
     "text": "Puskas Musikk & Platebar i Alta har vunnet TONOs kåring av «Norges beste bakgrunnsmusikk 2026». Stedet slo blant annet en restaurant i Trondheim og et legesenter i Sandnes. Juryen valgte fem finalister, mens publikum stemte fram vinneren. Prisen skal overrekkes mandag 16. november, med en konsert av Gunn Kvaale.",
+    "speechPronunciations": {
+      "Puskas Musikk & Platebar": "Puskas Musikk og Platebar"
+    },
     "date": "2026-11-13",
     "url": "https://kommunikasjon.ntb.no/pressemelding/19141857/puskas-musikk-and-platebar-i-alta-har-norges-beste-bakgrunnsmusikk-2026?lang=no&publisherId=17849052"
   },
@@ -52,6 +61,9 @@
     "id": "notis-norsk-industri-stotter-posten-20261113",
     "category": "Arbeidsliv",
     "text": "De postansatte har fått en uventet støttespiller i striden om kutt i postomdelingen. Norsk Industri, NHOs største landsforening, advarer mot at kuttene kan svekke beredskap og demokratisk tilgang til informasjon. Klassekampen viser til høringssvaret fra direktør Harald Solberg. Reaksjonen kommer før den varslede politiske streiken blant postansatte mandag.",
+    "speechPronunciations": {
+      "NHOs": "Næringslivets Hovedorganisasjons"
+    },
     "date": "2026-11-13",
     "url": "https://klassekampen.no/artikkel/2026-11-13/postansatte-far-stotte-fra-nho-kjempe"
   },
