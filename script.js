@@ -665,6 +665,25 @@ function loadNotiser() {
       const mellomNyheterMs = 650;
       let radioSistOppdatert = Date.now();
       let radiosaker = aktuelle.slice();
+      // Kun siste valgte nyhet lagres lokalt; aldri tale, brukerprofil eller
+      // en avspillingsøkt som kan starte automatisk ved neste besøk.
+      const sisteRadioNokkel = "paradisavisa-radio-siste-v1";
+      const finnLagretRadioIndeks = () => {
+        let nokkel = "";
+        try {
+          const lagret = JSON.parse(localStorage.getItem(sisteRadioNokkel) || "null");
+          if (lagret && typeof lagret.nokkel === "string") nokkel = lagret.nokkel;
+        } catch (_) { /* Privat modus kan blokkere lokallagring. */ }
+        if (!nokkel) return -1;
+        return radiosaker.filter(item => isNotisAktuell(item))
+          .findIndex(item => radioNotisNokkel(item) === nokkel);
+      };
+      const lagreRadioPosisjon = notis => {
+        try {
+          localStorage.setItem(sisteRadioNokkel,
+            JSON.stringify({ nokkel: radioNotisNokkel(notis) }));
+        } catch (_) { /* Radioen virker fortsatt uten lokallagring. */ }
+      };
       const spillerLyttere = new Set();
       const spillerTilstand = () => ({
         aktiv: radioAktiv,
@@ -676,6 +695,7 @@ function loadNotiser() {
         stemmer: norskeStemmer.map(stemme => ({ value: stemmeNokkel(stemme), label: stemme.name + " (" + stemme.lang + ")" })),
         valgtStemme: valgtStemme,
         valgtTaletempo: valgtTaletempo,
+        gjenopptaIndeks: !radioAktiv ? finnLagretRadioIndeks() : -1,
         stemmeInfo: stemmeInfo.textContent,
         status: radiostatus.textContent,
         taleTilgjengelig: harTale
@@ -824,8 +844,10 @@ function loadNotiser() {
           }
           stoppRadio("Opplesningen kunne ikke fortsette.");
         };
-        try { tale.speak(ytring); }
-        catch (_) { stoppRadio("Opplesning kunne ikke startes i nettleseren."); }
+        try {
+          tale.speak(ytring);
+          lagreRadioPosisjon(notis);
+        } catch (_) { stoppRadio("Opplesning kunne ikke startes i nettleseren."); }
       };
       // Køvalg og Spill bruker samme motor. Ingen separat lydinstans på radiosiden.
       const spillFraKo = indeks => {
@@ -931,6 +953,11 @@ function loadNotiser() {
           if (radioAktiv) stoppRadio();
         },
         playIndex(indeks) { spillFraKo(indeks); },
+        resumeLast() {
+          if (radioAktiv) return;
+          const indeks = finnLagretRadioIndeks();
+          if (indeks >= 0) spillFraKo(indeks);
+        },
         setVoice(verdi) {
           if (typeof verdi !== "string" ||
               (verdi && !norskeStemmer.some(stemme => stemmeNokkel(stemme) === verdi))) return;
