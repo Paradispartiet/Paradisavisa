@@ -584,7 +584,15 @@ async function run(){
               label+": radiosiden mangler oppdatert spilleliste");
             check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===0,
               label+": radioen starter automatisk ved sidelasting");
-            // Direkte stemmevalg på radiosiden, uten å åpne notisbåndets meny.
+            // Radiostemmer og nyhetskø ligger bak to kompakte fold-ut-rader.
+            const innstillinger=page.locator(".radio-innstillinger");
+            const nyhetsliste=page.locator(".radio-spilleliste");
+            check(!(await innstillinger.evaluate(el=>el.open)) &&
+              !(await nyhetsliste.evaluate(el=>el.open)),
+              label+": radiosiden skal starte med enkel, sammenfoldet visning");
+            await innstillinger.locator("summary").click();
+            check(await innstillinger.evaluate(el=>el.open),
+              label+": innstillingene åpnes ikke");
             const stemmeRadio=page.locator("#paradisradio-stemme");
             const tempoRadio=page.locator("#paradisradio-tempo");
             check(await stemmeRadio.isVisible(), label+": norsk stemmevalg mangler på radiosiden");
@@ -612,6 +620,7 @@ async function run(){
               label+": radiosiden og notismenyen bruker ikke samme talehastighet");
             check((await page.evaluate(()=>localStorage.getItem("paradisavisa-radiotempo")))==="1.1",
               label+": talehastigheten fra radiosiden lagres ikke");
+            await innstillinger.locator("summary").click();
             const spill=page.locator("[data-radio='play']");
             await spill.click();
             check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===1,
@@ -634,6 +643,7 @@ async function run(){
             // Trykk på en bestemt sak. Hoppet bruker samme Web Speech-motor.
             const koKnapp=page.locator("[data-radio='playlist'] .radio-ko-knapp");
             check(await koKnapp.count()>=2, label+": klikkbar spilleliste har for få nyheter");
+            await nyhetsliste.locator("summary").click();
             await koKnapp.nth(1).click();
             check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===4,
               label+": klikk på nyhet starter ikke valgt notis");
@@ -716,6 +726,34 @@ async function run(){
               label+": stopp på radiosiden oppdaterer ikke radiomenyen");
             check((await page.evaluate(()=>window.__notisRadioTest.cancels))>=1,
               label+": stopp sendes ikke til talesyntesen");
+
+            // iPad-lignende sidestengning: posisjonen overlever reload,
+            // men lokal talesyntese må aldri starte før nytt brukertrykk.
+            const sisteTekst=await page.evaluate(()=>window.__notisRadioTest.spoken.at(-1)?.text);
+            const lagret=await page.evaluate(()=>JSON.parse(
+              localStorage.getItem("paradisavisa-radio-siste-v1") || "null"));
+            check(typeof lagret?.nokkel==="string" && lagret.nokkel.length>3,
+              label+": siste radioposisjon er ikke lagret lokalt");
+            await page.reload({waitUntil:"domcontentloaded"});
+            await page.locator("#paradisradio-player[data-ready='true']").waitFor({timeout:12000});
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===0,
+              label+": radioen spiller automatisk etter ny innlasting");
+            const gjenoppta=page.locator("[data-radio='resume']");
+            check(await gjenoppta.isVisible(),
+              label+": gjenopptakelse fra siste nyhet mangler etter reload");
+            await gjenoppta.click();
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===1 &&
+              (await page.evaluate(()=>window.__notisRadioTest.spoken[0]?.text))===sisteTekst,
+              label+": gjenopptakelse starter ikke samme nyhet på nytt");
+
+            await page.evaluate(()=>localStorage.setItem("paradisavisa-radio-siste-v1",
+              JSON.stringify({nokkel:"id:nyhet-som-ikke-finnes"})));
+            await page.reload({waitUntil:"domcontentloaded"});
+            await page.locator("#paradisradio-player[data-ready='true']").waitFor({timeout:12000});
+            check(!(await page.locator("[data-radio='resume']").isVisible()),
+              label+": ukjent eller utløpt nyhet skal ikke kunne gjenopptas");
+            check((await page.evaluate(()=>window.__notisRadioTest.spoken.length))===0,
+              label+": ugyldig gjenopptakelse utløser automatisk tale");
           } else {
             await page.locator("[data-radio='status']").waitFor();
             check(await page.locator("[data-radio='play']").isDisabled(),
