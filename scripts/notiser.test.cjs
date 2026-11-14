@@ -390,7 +390,7 @@ test("Radioikonet åpner samme kontroller, og menylinken går til en eksisterend
   assert.match(radio, /data-radio="stop"/);
   assert.match(radio, /data-radio="next"/);
   assert.match(radio, /data-radio="previous"/);
-  assert.match(radio, /radio-player\.js\?v=3/);
+  assert.match(radio, /radio-player\.js\?v=4/);
   const side = fs.readFileSync(path.join(root, "radio-player.js"), "utf8");
   assert.match(side, /window\.ParadisRadioPlayer/);
   assert.doesNotMatch(side, /new\s+(?:window\.)?SpeechSynthesisUtterance/);
@@ -432,4 +432,39 @@ test("Nyhetsstrømmen holder 13. november-sakene aktive 13.–15. november", () 
     assert.equal(dagens.filter(n => fersk(n, new Date(2026, 10, dag))).length, 6);
   }
   assert.equal(dagens.filter(n => fersk(n, new Date(2026, 10, 16))).length, 0);
+});
+
+
+test("iPad-radioen kan starte siste aktuelle nyhet på nytt uten autoplay", () => {
+  const html = fs.readFileSync(path.join(root, "paradisradio.html"), "utf8");
+  const side = fs.readFileSync(path.join(root, "radio-player.js"), "utf8");
+  assert.match(script, /const sisteRadioNokkel = "paradisavisa-radio-siste-v1"/);
+  assert.match(script, /localStorage\.getItem\(sisteRadioNokkel\)/);
+  assert.match(script, /localStorage\.setItem\(sisteRadioNokkel/);
+  assert.match(script, /finnLagretRadioIndeks/);
+  assert.match(script, /\.filter\(item => isNotisAktuell\(item\)\)/);
+  assert.match(script, /gjenopptaIndeks: !radioAktiv \? finnLagretRadioIndeks\(\) : -1/);
+  assert.match(script, /lagreRadioPosisjon\(notis\)/);
+  assert.match(script, /resumeLast\(\) \{/);
+  assert.match(script, /if \(indeks >= 0\) spillFraKo\(indeks\)/);
+  assert.match(html, /data-radio="resume"[^>]*hidden/);
+  assert.match(side, /gjenoppta\.addEventListener\("click", \(\) => spiller\?\.resumeLast\(\)\)/);
+  assert.doesNotMatch(side, /resumeLast\(\);(?!\s*\})/);
+  assert.match(script, /vedSynlighetsendring/);
+  assert.match(script, /radioKreverOmstart = true/);
+});
+
+test("Radiosiden er ryddig, men beholder begge uavhengige fartvalg", () => {
+  const html = fs.readFileSync(path.join(root, "paradisradio.html"), "utf8");
+  const css = fs.readFileSync(path.join(root, "radio.css"), "utf8");
+  assert.match(html, /<details class="radio-innstillinger">/);
+  assert.match(html, /<summary>Stemme og talehastighet<\/summary>/);
+  assert.match(html, /<details class="radio-spilleliste">/);
+  assert.match(html, /data-radio="playlist"/);
+  assert.match(html, /data-radio="voice"/);
+  assert.match(html, /data-radio="tempo"/);
+  assert.match(html, /class="notisbånd"/);
+  assert.match(script, /const fartvalg = \[2, 4, 5\]/);
+  assert.match(script, /ytring\.rate = valgtTaletempo/);
+  assert.match(css, /radio-gjenoppta\[hidden\]/);
 });
