@@ -70,6 +70,49 @@ test("Notisbåndet åpner interne notissider, med separat klikkbar og trygg orig
   assert.match(css, /\.notiser-side \.notis-detalj-kilder a/);
 });
 
+test("Tre internasjonale notiser har kilder, egne sider, unike id-er og 3-dagersgrense", () => {
+  const notes = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const ids = [
+    "notis-skottland-osters-dornoch-naturlig-formering-20261115",
+    "notis-eurovision-asia-carmelle-filippinene-20261114",
+    "notis-wales-all-blacks-73-aar-seier-20261114"
+  ];
+  assert.equal(notes.length, 59, "56 tidligere notiser er bevart og 3 nye er lagt til");
+  const named = notes.filter(n => n.id);
+  assert.equal(new Set(named.map(n => n.id)).size, named.length, "Ingen ID-kollisjoner");
+  assert.equal(new Set(notes.map(n => n.url)).size, notes.length, "Ingen gjentatte kilder");
+  const getId = vm.runInContext("notisVisningsId", sandbox);
+  const [osters, eurovision, rugby] = ids.map(id => notes.find(n => n.id === id));
+  for (const note of [osters, eurovision, rugby]) {
+    assert.ok(note, "Mangler valgt radiomelding");
+    assert.equal(note.expires, undefined, "Normal tre-dagersregel uten særskilt overstyring");
+    assert.equal(getId(note), note.id, "Fast intern notisside bygger på notis-ID");
+    assert.ok(note.url.startsWith("https://"), "Originalkilden skal være HTTPS");
+    assert.ok(typeof note.title === "string" && note.title.length >= 20);
+    assert.ok(note.text.length >= 100 && note.text.length <= 400);
+    const words = note.text.trim().split(/\s+/).length;
+    assert.ok(words >= 25 && words <= 65, "Passer kort radioopplesning");
+  }
+  assert.equal(osters.date, "2026-11-15");
+  assert.match(osters.url, /theguardian\.com\/environment\/2026\/nov\/15/);
+  assert.match(osters.text, /former.*seg naturlig/);
+  assert.equal(fersk(osters, new Date(2026, 10, 17)), true);
+  assert.equal(fersk(osters, new Date(2026, 10, 18)), false);
+
+  for (const note of [eurovision, rugby]) {
+    assert.equal(note.date, "2026-11-14", "Kamp og finale fant sted 14. november");
+    assert.equal(fersk(note, new Date(2026, 10, 15)), true);
+    assert.equal(fersk(note, new Date(2026, 10, 16)), true);
+    assert.equal(fersk(note, new Date(2026, 10, 17)), false);
+  }
+  assert.match(eurovision.url, /eurovision\.com\/newsroom\/release/);
+  assert.match(eurovision.text, /211 poeng/);
+  assert.match(rugby.url, /sixnationsrugby\.com\/en\/m6n\/news/);
+  assert.match(rugby.text, /35–28/);
+  assert.match(rugby.text, /1953/);
+  assert.doesNotMatch(rugby.url, /other-sport\/?$/, "Generell sportsside er ikke en kilde");
+});
+
 test("Datofilter skjuler gamle, udaterte, fremtidige og ugyldige notiser", () => {
   const note = date => ({ category: "Klima", text: "Kontrollert testnotis", date });
   assert.equal(fersk(note("2026-11-09")), true);
@@ -329,7 +372,7 @@ test("To nye notiser 14. november har unike kilder og riktig levetid", () => {
     "notis-musikkraad-jubileum-146-musikere-20261114",
     "notis-tryg-fredag-trettende-bilskader-20261114"
   ];
-  assert.equal(notes.length, 56, "54 eksisterende og to nye saker");
+  assert.ok(notes.length >= 56, "54 opprinnelige pluss de to fra 14. november beholdes");
   assert.equal(new Set(notes.map(n => n.url)).size, notes.length);
   const named = notes.filter(n => n.id);
   assert.equal(new Set(named.map(n => n.id)).size, named.length);
