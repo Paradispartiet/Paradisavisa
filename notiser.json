@@ -1,5 +1,53 @@
 [
   {
+    "id": "notis-hermes-innbrudd-oslo-20261116",
+    "category": "Kriminalitet",
+    "title": "Tyver rygget bil inn i Hermès i Oslo",
+    "text": "Tre personer skal ha brutt seg inn hos luksusbutikken Hermès i Nedre Slottsgate i Oslo natt til mandag. Politiet tror tyvene rygget en bil inn i inngangspartiet. Varer av høy verdi er stjålet, men beløpet er ukjent. Politiet søker etter en rød Ford Mondeo. Videoopptak viser at innbruddet skjedde rundt klokken 03.55.",
+    "date": "2026-11-16",
+    "url": "https://www.vartoslo.no/guro-sandnes-hermes-nedre-slottsgate/innbrudd-hos-luksusbutikken-hermes-i-sentrum-tyver-stakk-av-med-store-verdier/1344939"
+  },
+  {
+    "id": "notis-pizza-rammeavtale-100-millioner-20261116",
+    "category": "Offentlige innkjøp",
+    "title": "Pizzaramme på 100 millioner vekker debatt",
+    "text": "En felles avtale om pizza som overtidsmat for blant andre Statnett, Vy, Bane Nor, Posten og Avinor har en estimert verdi på 72 millioner kroner før moms. Den øvre kontraktsrammen er 100 millioner. Anbudet ble kunngjort i august, men vekker politisk debatt nå i november. Hundre millioner er en maksimalramme, ikke penger som allerede er brukt.",
+    "date": "2026-11-16",
+    "url": "https://sokfirma.no/anbud/2026-113590/overtidsmat-pizza"
+  },
+  {
+    "id": "notis-svindelforsok-mot-forfattere-20261116",
+    "category": "Litteratur",
+    "title": "Ny bølge av svindelforsøk mot norske forfattere",
+    "text": "Norske forfattere, forlag og litterære agenturer opplever en ny bølge med mistenkelige henvendelser, skriver Klassekampen. Forfatter Kjersti Annesdatter Skomsvold er blant dem som har mottatt slike meldinger. Hun forteller at erfaringene gjør henne mer skeptisk til nye henvendelser. Det er snakk om svindelforsøk, ikke dokumenterte økonomiske tap i denne omtalen.",
+    "date": "2026-11-16",
+    "url": "https://klassekampen.no/artikkel/2026-11-16/ny-svindelbolge-mot-forfattere"
+  },
+  {
+    "id": "notis-fn-autonome-vapen-geneve-20261116",
+    "category": "Teknologi og krig",
+    "title": "FN-land vurderer bindende regler mot drapsroboter",
+    "text": "Diplomater i Genève diskuterer om de skal åpne forhandlinger om internasjonale regler for dødelige autonome våpen, som kan velge og angripe mål uten direkte menneskelig styring. Flere land ønsker juridisk bindende begrensninger, mens blant andre USA og Russland er skeptiske. Møtet kan stake ut veien videre, men ingen ny avtale er vedtatt.",
+    "date": "2026-11-16",
+    "url": "https://apnews.com/article/1ff519255c145105360b04961d136081"
+  },
+  {
+    "id": "notis-vadehavet-unesco-fareliste-20261116",
+    "category": "Natur og verdensarv",
+    "title": "Vadehavet kan havne på UNESCOs fareliste",
+    "text": "UNESCO og naturvernunionen IUCN planlegger å vurdere tilstanden i Vadehavet gjennom en inspeksjon i 2027. Verdensarvområdet langs Danmark, Tyskland og Nederland er under press fra blant annet utvinning, fiske og turisme. Bestander av fisk og fugl er i tilbakegang, ifølge miljøeksperter. Vadehavet står ennå ikke på UNESCOs liste over truet verdensarv.",
+    "date": "2026-11-16",
+    "url": "https://www.theguardian.com/environment/2026/nov/16/europes-wadden-sea-is-a-natural-wonder-so-why-might-it-join-the-world-heritage-in-danger-list"
+  },
+  {
+    "id": "notis-xi-trump-putin-shenzhen-mote-20261116",
+    "category": "Verdenspolitikk",
+    "title": "Xi, Trump og Putin skal møtes i Shenzhen",
+    "text": "Kinas utenriksdepartement bekrefter at presidentene Xi Jinping, Donald Trump og Vladimir Putin etter planen skal møtes i Shenzhen torsdag 19. november i forbindelse med APEC-toppmøtet. Det skal bli deres første felles møte. Det hvite hus sier at atomnedrustning er blant temaene. Møtet er ennå ikke gjennomført, og ingen avtale er varslet.",
+    "date": "2026-11-16",
+    "url": "https://www.aftenposten.no/verden/i/QroJkq/kina-bekrefter-xi-trump-og-putin-moetes-torsdag"
+  },
+  {
     "id": "notis-skottland-osters-dornoch-naturlig-formering-20261115",
     "category": "Natur og miljø",
     "title": "Østers formerer seg igjen etter over hundre år",
