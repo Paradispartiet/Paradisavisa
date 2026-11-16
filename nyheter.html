@@ -6,18 +6,31 @@
   <meta name="description" content="Her finner du tidligere publiserte nyheter og bakgrunnsartikler i Paradisavisa. Datoen viser når saken ble publisert; eldre tekster er ikke nødvendigvis oppdatert.">
   <link rel="icon" href="ikon-paradis.png">
   <link rel="stylesheet" href="styles.css?v=42">
-  <link rel="stylesheet" href="avisdesign.css?v=2">
-  <script defer src="script.js?v=46"></script>
+  <link rel="stylesheet" href="avisdesign.css?v=8">
+  <script defer src="script.js?v=47"></script>
 </head>
 <body class="arkiv-side">
   <div id="header-placeholder"><a class="avis-fallback-link" href="index.html">← Til Paradisavisa</a></div>
   <main id="hovedinnhold" class="arkiv-hoved">
     <p class="arkiv-kategori">Paradisavisa · Arkiv</p>
     <h1>Nyheter</h1>
-    <p class="arkiv-ingress">Her finner du tidligere publiserte nyheter og bakgrunnsartikler i Paradisavisa. Datoen viser når saken ble publisert; eldre tekster er ikke nødvendigvis oppdatert.</p>
-    <div class="kategori-artikler-grid" data-artikkelkategori="nyheter" aria-label="Nyheter fra arkivet">
-      <p>Laster arkivet …</p>
-    </div>
+    <p class="arkiv-ingress">Nyheter og bakgrunnsartikler fordelt på Norge og verden. Datoen viser når saken ble publisert; eldre tekster er ikke nødvendigvis oppdatert.</p>
+    <nav class="nyhet-omrader" aria-label="Velg nyhetsområde">
+      <a href="#innenriks">Innenriks</a>
+      <a href="#utenriks">Utenriks</a>
+    </nav>
+    <section id="innenriks" class="nyhetsarkiv-omrade" aria-labelledby="innenriks-overskrift">
+      <h2 id="innenriks-overskrift">Innenriks</h2>
+      <div class="kategori-artikler-grid" data-artikkelkategori="nyheter" data-nyhetsomrade="innenriks" aria-label="Innenriksnyheter fra arkivet">
+        <p>Laster innenriksarkivet …</p>
+      </div>
+    </section>
+    <section id="utenriks" class="nyhetsarkiv-omrade" aria-labelledby="utenriks-overskrift">
+      <h2 id="utenriks-overskrift">Utenriks</h2>
+      <div class="kategori-artikler-grid" data-artikkelkategori="nyheter" data-nyhetsomrade="utenriks" aria-label="Utenriksnyheter fra arkivet">
+        <p>Laster utenriksarkivet …</p>
+      </div>
+    </section>
   </main>
   <footer class="site-footer">
     <p>© 2025–2026 Paradisavisa</p>
