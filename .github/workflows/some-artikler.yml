@@ -43,7 +43,7 @@ jobs:
       - name: Test direkte X-integrasjon og engangssperre
         run: node --test scripts/x-autopubliser.test.cjs
       - name: Installer bildebibliotek for visuell korttest
-        run: python3 -m pip install 'Pillow>=10,<13' 'CairoSVG>=2,<3'
+        run: python3 -m pip install 'Pillow>=11.3,<13' 'CairoSVG>=2,<3'
       - name: Test faktiske kortbilder og tekstsperre
         run: python3 -m unittest discover -s scripts -p 'test_some_kort.py' -v
 
@@ -81,7 +81,7 @@ jobs:
         run: node scripts/some-live.cjs "$RUNNER_TEMP/some-pakke/manifest.json"
       - name: Installer lokalt bildebibliotek
         if: steps.scan.outputs.count != '0'
-        run: python3 -m pip install 'Pillow>=10,<13' 'CairoSVG>=2,<3'
+        run: python3 -m pip install 'Pillow>=11.3,<13' 'CairoSVG>=2,<3'
       - name: Lag komplette Instagram-kort med bilde, tekst og avisnavn
         if: steps.scan.outputs.count != '0'
         run: python3 scripts/some-kort.py "$RUNNER_TEMP/some-pakke/manifest.json" --out "$RUNNER_TEMP/some-pakke/kort"
