@@ -77,7 +77,7 @@ test("Tre internasjonale notiser har kilder, egne sider, unike id-er og 3-dagers
     "notis-eurovision-asia-carmelle-filippinene-20261114",
     "notis-wales-all-blacks-73-aar-seier-20261114"
   ];
-  assert.equal(notes.length, 59, "56 tidligere notiser er bevart og 3 nye er lagt til");
+  assert.ok(notes.length >= 59, "Alle tidligere notiser skal beholdes ved senere publiseringer");
   const named = notes.filter(n => n.id);
   assert.equal(new Set(named.map(n => n.id)).size, named.length, "Ingen ID-kollisjoner");
   assert.equal(new Set(notes.map(n => n.url)).size, notes.length, "Ingen gjentatte kilder");
@@ -111,6 +111,54 @@ test("Tre internasjonale notiser har kilder, egne sider, unike id-er og 3-dagers
   assert.match(rugby.text, /35–28/);
   assert.match(rugby.text, /1953/);
   assert.doesNotMatch(rugby.url, /other-sport\/?$/, "Generell sportsside er ikke en kilde");
+});
+
+test("Seks notiser fra 16. november har korrekte kilder, internside og tre-dagersregel", () => {
+  const notes = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const ids = [
+    "notis-hermes-innbrudd-oslo-20261116",
+    "notis-pizza-rammeavtale-100-millioner-20261116",
+    "notis-svindelforsok-mot-forfattere-20261116",
+    "notis-fn-autonome-vapen-geneve-20261116",
+    "notis-vadehavet-unesco-fareliste-20261116",
+    "notis-xi-trump-putin-shenzhen-mote-20261116"
+  ];
+  assert.equal(notes.length, 65, "59 tidligere notiser skal beholdes og seks nye legges til");
+  const named = notes.filter(n => n.id);
+  assert.equal(new Set(named.map(n => n.id)).size, named.length, "Unike notis-ID-er");
+  assert.equal(new Set(notes.map(n => n.url)).size, notes.length, "Ingen doble kilde-URL-er");
+  const id = vm.runInContext("notisVisningsId", sandbox);
+  const items = ids.map(key => notes.find(note => note.id === key));
+  for (const note of items) {
+    assert.ok(note, "Mangler valgt notis");
+    assert.equal(note.date, "2026-11-16");
+    assert.equal(note.expires, undefined, "Alle følger vanlig tre-dagersregel");
+    assert.equal(id(note), note.id, "Interne notissider bruker samme stabile id");
+    assert.match(note.url, /^https:\/\//, "Originalkilden er en klikkbar HTTPS-lenke");
+    assert.ok(typeof note.title === "string" && note.title.length >= 20);
+    const words = note.text.trim().split(/\s+/).length;
+    assert.ok(words >= 25 && words <= 65, "Radiotekster har 25–65 ord");
+    for (const day of [16, 17, 18])
+      assert.equal(fersk(note, new Date(2026, 10, day)), true);
+    assert.equal(fersk(note, new Date(2026, 10, 19)), false);
+  }
+  const [hermes, pizza, litteratur, vapen, natur, diplomati] = items;
+  assert.match(hermes.url, /vartoslo\.no/);
+  assert.match(hermes.text, /Politiet tror|Politiet søker/);
+  assert.match(hermes.text, /beløpet er ukjent/);
+  assert.match(pizza.url, /sokfirma\.no\/anbud\/2026-113590/);
+  assert.match(pizza.text, /estimert verdi på 72 millioner/);
+  assert.match(pizza.text, /maksimalramme, ikke penger som allerede er brukt/);
+  assert.match(pizza.text, /kunngjort i august/);
+  assert.match(litteratur.url, /klassekampen\.no\/artikkel\/2026-11-16/);
+  assert.match(litteratur.text, /mistenkelige henvendelser/);
+  assert.match(vapen.url, /apnews\.com\/article/);
+  assert.match(vapen.text, /ingen ny avtale er vedtatt/);
+  assert.match(natur.url, /theguardian\.com\/environment\/2026\/nov\/16/);
+  assert.match(natur.text, /står ennå ikke på UNESCOs liste/);
+  assert.match(diplomati.url, /aftenposten\.no\/verden/);
+  assert.match(diplomati.text, /19\. november/);
+  assert.match(diplomati.text, /ennå ikke gjennomført/);
 });
 
 test("Datofilter skjuler gamle, udaterte, fremtidige og ugyldige notiser", () => {
