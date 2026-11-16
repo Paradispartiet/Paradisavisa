@@ -30,6 +30,22 @@ class SoMeKortTest(unittest.TestCase):
                 # Svart felt under fotografiet.
                 self.assertEqual(check.convert("RGB").getpixel((1070, 1300)), (9, 10, 12))
 
+    def test_avif_kort_1080x1350(self):
+        from PIL import features
+        self.assertTrue(features.check("avif"), "Pillow må støtte AVIF")
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            imagefile = root / "Bilder" / "Artikler" / "test.avif"
+            imagefile.parent.mkdir(parents=True)
+            Image.new("RGB", (1400, 788), "#765743").save(imagefile, format="AVIF")
+            item = {"id":"test-avif", "image":"Bilder/Artikler/test.avif",
+                    "instagram":{"cardTitle":"NAV skal finne rettighetene dine",
+                                 "cardIngress":"En vanlig dag med tryggere utbetalinger."}}
+            result = mod.create_card(item, root, root / "ut")
+            with Image.open(result) as check:
+                self.assertEqual(check.size, (1080, 1350))
+                self.assertEqual(check.format, "PNG")
+
     def test_tittel_uten_plass_avvises(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
