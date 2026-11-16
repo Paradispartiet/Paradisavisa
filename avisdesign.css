@@ -377,6 +377,36 @@
   color:#c3bfb5;
   line-height:1.7;
 }
+/* Samme nyhetsarkiv, men med to tydelig adskilte geografiske spor. */
+.arkiv-side .nyhet-omrader {
+  display:flex;
+  gap:clamp(.9rem,3vw,2rem);
+  flex-wrap:wrap;
+  margin:1.6rem 0 2rem;
+  border-bottom:1px solid #51493a;
+}
+.arkiv-side .nyhet-omrader a {
+  display:inline-block;
+  padding:.65rem 0 .85rem;
+  color:#f0d48c;
+  font:700 .9rem/1.4 Inter,system-ui,sans-serif;
+  text-decoration:none;
+  border-bottom:2px solid transparent;
+}
+.arkiv-side .nyhet-omrader a:hover,
+.arkiv-side .nyhet-omrader a:focus-visible {
+  color:#fff;
+  border-color:#e9c56c;
+}
+.arkiv-side .nyhetsarkiv-omrade {
+  margin:0 0 clamp(2.6rem,5vw,4.5rem);
+  scroll-margin-top:5rem;
+}
+.arkiv-side .nyhetsarkiv-omrade h2 {
+  margin:0 0 1.05rem;
+  color:#f5f1e9;
+  font:740 clamp(1.65rem,3vw,2.45rem)/1.2 Georgia,serif;
+}
 .arkiv-side .kategori-artikler-grid {
   gap:1.5rem;
   padding-top:1.3rem;
