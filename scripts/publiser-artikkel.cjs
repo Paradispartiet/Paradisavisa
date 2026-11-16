@@ -42,6 +42,9 @@ const category=String(a.kategori||"").toLocaleLowerCase("nb-NO");
 const feed=/kultur|film|musikk|scenekunst/.test(category)?"Kulturhjul.json":
  /sport|idrett/.test(category)?"Sportshjul.json":
  /kommentar|mening/.test(category)?"kommentarer.json":"Nyhetshjul.json";
+// Innenriks/Utenriks er redaksjonell merking, ikke gjetting fra overskriften.
+if(feed==="Nyhetshjul.json" && !["innenriks","utenriks"].includes(a.geografi))
+ stop("Nyhetsartikkelen må ha geografi: innenriks eller utenriks");
 const articles=json(feed);
 if(!Array.isArray(articles)||articles.some(x=>x.title===a.tittel||x.url===publicHtml))
  stop("Strømmen er ugyldig eller har allerede denne saken");
@@ -73,6 +76,7 @@ if(/noindex\s*,\s*nofollow/.test(html)||html.includes("REDAKSJONELT UTKAST")||
  stop("Publiseringskopien bestod ikke grunnkontrollen");
 const record={title:a.tittel,excerpt:excerpt.replaceAll("&quot;",'"').replaceAll("&amp;","&"),
  image:publicImage,url:publicHtml,date};
+if(feed==="Nyhetshjul.json")record.geografi=a.geografi;
 if(flag!=="--publiser"){
  console.log("FORHÅNDSVISNING – ingen filer er endret");
  console.log(JSON.stringify({artikkel:id,html:publicHtml,bilde:publicImage,nyhetsstrom:feed,metadata:record},null,2));
