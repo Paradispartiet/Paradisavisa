@@ -81,3 +81,117 @@ test("Tastaturnavigasjon beveger bare den siste plassens karusell", () => {
   assert.equal(rail.scrollLeft, 320);
   assert.equal(controls.children[1].textContent, "5 / 7");
 });
+
+
+function nyhetskilder() {
+  const root = path.resolve(__dirname, "..");
+  const innen = JSON.parse(fs.readFileSync(path.join(root, "Nyhetshjul.json"), "utf8"));
+  const feature = JSON.parse(fs.readFileSync(path.join(root, "Nyhetshjul2.json"), "utf8"));
+  return {innen, feature};
+}
+
+test("Alle publiserte nyheter og feature har eksplisitt geografisk merking", () => {
+  const {innen, feature} = nyhetskilder();
+  const alle = [...innen, ...feature];
+  const geografi = new Map();
+  assert.equal(innen.length, 12);
+  assert.equal(feature.length, 9);
+  for (const article of alle) {
+    assert.ok(["innenriks", "utenriks"].includes(article.geografi),
+      article.title + " mangler presis Innenriks/Utenriks-merking");
+    if (geografi.has(article.url))
+      assert.equal(article.geografi, geografi.get(article.url),
+        "Samme artikkel har ulik geografisk merking i feedene");
+    geografi.set(article.url, article.geografi);
+  }
+  assert.equal(geografi.size, 20, "Kjent duplikat på oljepris skal ikke listes to ganger i arkivet");
+  assert.ok(innen.some(x => x.geografi === "innenriks"));
+  assert.ok(innen.some(x => x.geografi === "utenriks"));
+  assert.equal(innen.find(x => x.url.includes("fjernvarmelekkasje")).geografi, "innenriks");
+  assert.equal(innen.find(x => x.url.includes("massie-hegseth")).geografi, "utenriks");
+});
+
+test("Forsiden viser Innenriks og Utenriks som egne komplette kortsamlinger", async () => {
+  const script = fs.readFileSync(path.resolve(__dirname, "../script.js"), "utf8");
+  const {innen} = nyhetskilder();
+  const domestic = new FakeElement(), foreign = new FakeElement();
+  const grids = {"nyhetshjul-grid":domestic,"utenrikshjul-grid":foreign};
+  const sandbox = {
+    document: {
+      addEventListener() {},
+      getElementById: id => grids[id] || null,
+      body: {classList:{contains: className => className === "avis-forside"}}
+    },
+    fetch: async file => {
+      assert.equal(file, "Nyhetshjul.json");
+      return {ok:true,json:async()=>innen};
+    },
+    console
+  };
+  vm.runInNewContext(script, sandbox);
+  sandbox.buildArticleCard = article => ({href:article.url});
+  sandbox.renderFourFrontPageCards = (grid,cards) => grid.replaceChildren(...cards);
+  sandbox.displayFreshness = () => {};
+  await sandbox.loadNyhetshjul();
+  const domesticUrls = domestic.children.map(x=>x.href);
+  const foreignUrls = foreign.children.map(x=>x.href);
+  assert.equal(domesticUrls.length, 4);
+  assert.equal(foreignUrls.length, 8);
+  assert.equal(new Set([...domesticUrls,...foreignUrls]).size, innen.length);
+  assert.ok(domesticUrls.every(url => innen.find(x=>x.url===url)?.geografi === "innenriks"));
+  assert.ok(foreignUrls.every(url => innen.find(x=>x.url===url)?.geografi === "utenriks"));
+});
+
+test("Nyhetsarkivet er todelt, avviser duplikater og kulturarkivet beholdes", async () => {
+  const script = fs.readFileSync(path.resolve(__dirname, "../script.js"), "utf8");
+  const {innen,feature} = nyhetskilder();
+  const inside = new FakeElement(), outside = new FakeElement();
+  inside.dataset = {artikkelkategori:"nyheter",nyhetsomrade:"innenriks"};
+  outside.dataset = {artikkelkategori:"nyheter",nyhetsomrade:"utenriks"};
+  const sandbox = {
+    document: {
+      addEventListener() {},
+      querySelectorAll: () => [inside,outside],
+      createElement: tag => new FakeElement(tag)
+    },
+    fetch: async name => {
+      const data = {"Nyhetshjul.json":innen,"Nyhetshjul2.json":feature};
+      assert.ok(data[name], "Ukjent arkivfil: "+name);
+      return {ok:true,json:async()=>data[name]};
+    },
+    console
+  };
+  vm.runInNewContext(script, sandbox);
+  sandbox.loadCategoryArchive();
+  await new Promise(resolve => setImmediate(resolve));
+  const domesticUrls = inside.children.map(x=>x.href), foreignUrls = outside.children.map(x=>x.href);
+  assert.equal(domesticUrls.length, 9);
+  assert.equal(foreignUrls.length, 11);
+  assert.equal(new Set([...domesticUrls,...foreignUrls]).size, 20,
+    "Alle 20 unike publiserte nyheter/feature må finnes i nøyaktig én gruppe");
+  const seen = new Map([...innen,...feature].map(x=>[x.url,x.geografi]));
+  assert.ok(domesticUrls.every(url=>seen.get(url)==="innenriks"));
+  assert.ok(foreignUrls.every(url=>seen.get(url)==="utenriks"));
+});
+
+test("Nyhetsmeny, arkivlenker og mobile kortstiler er tydelige på begge spor", () => {
+  const root = path.resolve(__dirname, "..");
+  const home = fs.readFileSync(path.join(root,"index.html"),"utf8");
+  const archive = fs.readFileSync(path.join(root,"nyheter.html"),"utf8");
+  const css = fs.readFileSync(path.join(root,"avisdesign.css"),"utf8");
+  const baseCss = fs.readFileSync(path.join(root,"styles.css"),"utf8");
+  assert.match(home, /id="nyhetshjul"[^>]*aria-labelledby="siste-nyheter-tittel"/);
+  assert.match(home, /id="utenrikshjul"[^>]*aria-labelledby="utenriks-tittel"/);
+  assert.match(home, /id="utenrikshjul-grid"/);
+  assert.match(home, /href="#nyhetshjul">Innenriks/);
+  assert.match(home, /href="#utenrikshjul">Utenriks/);
+  assert.match(home, /href="nyheter\.html#utenriks"/);
+  assert.match(archive, /id="innenriks"/);
+  assert.match(archive, /id="utenriks"/);
+  assert.match(archive, /data-nyhetsomrade="innenriks"/);
+  assert.match(archive, /data-nyhetsomrade="utenriks"/);
+  assert.match(css, /:is\(#nyhetshjul-grid,#utenrikshjul-grid\)/);
+  assert.match(baseCss, /:is\(#nyhetshjul-grid,#utenrikshjul-grid\)/);
+  assert.match(home, /script\.js\?v=47/);
+  assert.match(archive, /script\.js\?v=47/);
+});
