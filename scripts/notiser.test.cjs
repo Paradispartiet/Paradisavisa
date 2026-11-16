@@ -11,6 +11,58 @@ vm.createContext(sandbox);
 vm.runInContext(script, sandbox);
 const fersk = (note, now = new Date(2026, 10, 9)) => vm.runInContext("isNotisAktuell", sandbox)(note, now);
 
+test("Innenriks og Utenriks dekker alle 91 notiser uten å endre radiokøen", () => {
+  const active = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
+  const archive = JSON.parse(fs.readFileSync(path.join(root, "arkiv/notiser-2025-10.json"), "utf8"));
+  const all = [...active, ...archive];
+  assert.equal(active.length, 65);
+  assert.equal(archive.length, 26);
+  assert.equal(all.length, 91);
+  assert.ok(all.every(n => ["innenriks", "utenriks"].includes(n.geografi)),
+    "Ingen notis kan forsvinne mellom de to seksjonene");
+  assert.equal(all.filter(n => n.geografi === "innenriks").length, 46);
+  assert.equal(all.filter(n => n.geografi === "utenriks").length, 45);
+
+  const urls = new Set(), id = vm.runInContext("notisVisningsId", sandbox);
+  for (const note of all) {
+    const key = id(note);
+    assert.ok(!urls.has(key), "Samme notis skal bare ha én intern side");
+    urls.add(key);
+    assert.equal(id({...note, geografi:undefined}), key,
+      "Geografisk merking må ikke endre den eksisterende notislenken");
+    assert.ok(typeof note.category === "string" && note.category.length>0,
+      "Fagkategori beholdes for radioopplesningen");
+  }
+
+  const norsk = active.find(n => n.id === "notis-hermes-innbrudd-oslo-20261116");
+  const world = active.find(n => n.id === "notis-vadehavet-unesco-fareliste-20261116");
+  const sport = active.find(n => n.id === "notis-wales-all-blacks-73-aar-seier-20261114");
+  assert.equal(norsk.geografi, "innenriks");
+  assert.equal(world.geografi, "utenriks");
+  assert.equal(sport.geografi, "utenriks");
+  assert.equal(sport.category, "Sport");
+});
+
+test("Notissiden har to områder også i arkivet og beholder individuelle kildevisninger", () => {
+  const html = fs.readFileSync(path.join(root,"notiser.html"),"utf8");
+  const css = fs.readFileSync(path.join(root,"avisdesign.css"),"utf8");
+  assert.match(html, /href="#innenriks-notiser">Innenriks/);
+  assert.match(html, /href="#utenriks-notiser">Utenriks/);
+  assert.match(html, /id="notisgrid"/);
+  assert.match(html, /id="utenriks-notisgrid"/);
+  assert.match(html, /id="eldre-notisgrid"/);
+  assert.match(html, /id="eldre-utenriks-notisgrid"/);
+  assert.match(html, /id="notis-detalj"/);
+  assert.match(html, /script\.js\?v=48/);
+  assert.match(css, /\.notiser-side \.notis-omrader/);
+  assert.match(script, /tegn\(grid, innenriks\(ferske\)\)/);
+  assert.match(script, /tegn\(utenriksGrid, utenriks\(ferske\)\)/);
+  assert.match(script, /tegn\(gamleGrid, innenriks\(historiske\)\)/);
+  assert.match(script, /tegn\(gamleUtenriksGrid, utenriks\(historiske\)\)/);
+  assert.match(script, /lagNotisKildelenke\(notis\)/);
+  assert.match(script, /link\.href = notisSideLenke\(n\)/);
+});
+
 test("Hver nåværende og historiske notis har én stabil intern lenke", () => {
   const aktive = JSON.parse(fs.readFileSync(path.join(root, "notiser.json"), "utf8"));
   const arkiverte = JSON.parse(fs.readFileSync(path.join(root, "arkiv/notiser-2025-10.json"), "utf8"));
@@ -26,7 +78,7 @@ test("Hver nåværende og historiske notis har én stabil intern lenke", () => {
   const browser = {
     Date, URL,
     document: { addEventListener() {}, scripts: [
-      { src:"https://paradispartiet.github.io/Paradisavisa/script.js?v=46" }
+      { src:"https://paradispartiet.github.io/Paradisavisa/script.js?v=48" }
     ] },
     window: { location: { href:"https://paradispartiet.github.io/Paradisavisa/artikler/eksempel.html" } }
   };
@@ -66,7 +118,7 @@ test("Notisbåndet åpner interne notissider, med separat klikkbar og trygg orig
   assert.match(script, /document\.title = tittel \+ " \| Paradisavisa"/);
   assert.match(html, /id="notis-oversikt"/);
   assert.match(html, /id="notis-detalj"[^>]*hidden/);
-  assert.match(html, /src="script\.js\?v=46"/);
+  assert.match(html, /src="script\.js\?v=48"/);
   assert.match(css, /\.notiser-side \.notis-detalj-kilder a/);
 });
 

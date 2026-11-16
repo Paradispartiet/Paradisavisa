@@ -599,6 +599,48 @@ body.sport-side,body.notiser-side {padding-top:0}
   .sport-side #sportshjul-grid .hjul-card h3 {font-size:1.42rem}
 }
 
+/* To nyhetsområder: tydelig sortering, samme kort og kilder. */
+.notiser-side .notis-omrader {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:clamp(1rem,4vw,2.2rem);
+  margin:1.4rem 0 2.1rem;
+  border-bottom:1px solid #595143;
+}
+.notiser-side .notis-omrader a {
+  display:inline-block;
+  padding:.7rem 0;
+  border-bottom:2px solid transparent;
+  color:#e8ca78;
+  font:700 .89rem/1.4 Inter,system-ui,sans-serif;
+  text-decoration:none;
+}
+.notiser-side .notis-omrader a:hover,
+.notiser-side .notis-omrader a:focus-visible {
+  color:#fff;
+  border-bottom-color:#e8ca78;
+}
+.notiser-side .notis-omrade {
+  margin:0 0 clamp(2.5rem,5vw,4rem);
+  scroll-margin-top:5rem;
+}
+.notiser-side .notis-omrade h2,
+.notiser-side .notis-omrade h3 {
+  color:#f5f1e8;
+  font:740 clamp(1.65rem,3vw,2.25rem)/1.2 Georgia,serif;
+  margin:0 0 1.1rem;
+}
+.notiser-side .notis-arkiv-detaljer .notis-omrade h3 {
+  font-size:clamp(1.3rem,2.3vw,1.7rem);
+}
+.notiser-side .notis-detalj-meta .notis-omrade-merke {
+  color:#e9d39c;
+  font-weight:750;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+}
+
 /* Notislenker: les hos oss eller åpne den dokumenterte originalkilden. */
 .notiser-side .notis-oversikt[hidden],
 .notiser-side .notis-detalj[hidden] {display:none}
