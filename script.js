@@ -1604,7 +1604,10 @@ function tegnNotisDetalj(container, notis) {
   const dato = document.createElement("time");
   dato.dateTime = String(notis.date || "");
   dato.textContent = formatArticleDate(notis.date) || String(notis.date || "Udatert");
-  metadata.append(kategori, dato);
+  const geografisk = document.createElement("span");
+  geografisk.className = "notis-omrade-merke";
+  geografisk.textContent = notis.geografi === "utenriks" ? "Utenriks" : "Innenriks";
+  metadata.append(geografisk, kategori, dato);
 
   const fulltekst = String(notis.text || "").trim();
   const setning = fulltekst.match(/^(.+?[.!?])(?=\s+[A-ZÆØÅ])/u);
@@ -1641,11 +1644,13 @@ function tegnNotisDetalj(container, notis) {
 /* ---------- Notisarkiv: gamle notiser vises bare etter aktivt valg ---------- */
 function loadNotisarkiv() {
   const grid = document.getElementById("notisgrid");
+  const utenriksGrid = document.getElementById("utenriks-notisgrid");
   const details = document.getElementById("eldre-notiser");
   const gamleGrid = document.getElementById("eldre-notisgrid");
+  const gamleUtenriksGrid = document.getElementById("eldre-utenriks-notisgrid");
   const oversikt = document.getElementById("notis-oversikt");
   const detalj = document.getElementById("notis-detalj");
-  if (!grid || !details || !gamleGrid || !oversikt || !detalj) return;
+  if (!grid || !utenriksGrid || !details || !gamleGrid || !gamleUtenriksGrid || !oversikt || !detalj) return;
   const valgtId = new URLSearchParams(window.location.search).get("id");
   if (valgtId !== null) {
     oversikt.hidden = true;
@@ -1696,9 +1701,14 @@ function loadNotisarkiv() {
       const na = new Date();
       const ferske = sorter(aktive.filter(item => isNotisAktuell(item, na)));
       const historiske = sorter([...arkiverte, ...aktive.filter(item => !isNotisAktuell(item, na))]);
-      tegn(grid, ferske);
-      if (!ferske.length) grid.textContent = "Ingen aktuelle notiser akkurat nå.";
-      tegn(gamleGrid, historiske);
+      const innenriks = notes => notes.filter(item => item.geografi === "innenriks");
+      const utenriks = notes => notes.filter(item => item.geografi === "utenriks");
+      tegn(grid, innenriks(ferske));
+      tegn(utenriksGrid, utenriks(ferske));
+      if (!innenriks(ferske).length) grid.textContent = "Ingen aktuelle innenriksnotiser akkurat nå.";
+      if (!utenriks(ferske).length) utenriksGrid.textContent = "Ingen aktuelle utenriksnotiser akkurat nå.";
+      tegn(gamleGrid, innenriks(historiske));
+      tegn(gamleUtenriksGrid, utenriks(historiske));
       details.hidden = !historiske.length;
       const summary = details.querySelector("summary");
       if (summary) summary.textContent = "Eldre notiser (" + historiske.length + ") – åpne arkivet";
@@ -1709,6 +1719,7 @@ function loadNotisarkiv() {
         detalj.textContent = "Notisen kunne ikke lastes. Prøv igjen senere.";
       } else {
         grid.textContent = "Notisene kunne ikke lastes. Prøv igjen senere.";
+        utenriksGrid.textContent = "Notisene kunne ikke lastes. Prøv igjen senere.";
         details.hidden = true;
       }
     });
