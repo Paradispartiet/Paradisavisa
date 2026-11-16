@@ -118,7 +118,7 @@ test("Notisbåndet åpner interne notissider, med separat klikkbar og trygg orig
   assert.match(script, /document\.title = tittel \+ " \| Paradisavisa"/);
   assert.match(html, /id="notis-oversikt"/);
   assert.match(html, /id="notis-detalj"[^>]*hidden/);
-  assert.match(html, /src="script\.js\?v=46"/);
+  assert.match(html, /src="script\.js\?v=48"/);
   assert.match(css, /\.notiser-side \.notis-detalj-kilder a/);
 });
 
