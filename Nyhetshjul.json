@@ -5,7 +5,8 @@
     "image": "Bilder/Artikler/2026-11-11-norge-russland-eu-abu-dhabi.png",
     "position": "center",
     "url": "artikler/2026-11-11-norge-russland-eu-abu-dhabi.html",
-    "date": "2026-11-11"
+    "date": "2026-11-11",
+    "geografi": "utenriks"
   },
   {
     "title": "Trumps parti satte riksrettsforsøket mot Hegseth på vent",
@@ -13,7 +14,8 @@
     "image": "Bilder/Artikler/2026-11-11-hegseth-massie-maktkonflikt.webp",
     "position": "center",
     "url": "artikler/2026-11-10-massie-hegseth-riksrettsforslag.html",
-    "date": "2026-11-10"
+    "date": "2026-11-10",
+    "geografi": "utenriks"
   },
   {
     "title": "Hvem skal få Norges strøm?",
@@ -21,7 +23,8 @@
     "image": "Bilder/Artikler/2026-11-10-datasentre-kraftnett.webp",
     "position": "center 40%",
     "url": "artikler/2026-11-10-hvem-skal-fa-norges-strom.html",
-    "date": "2026-11-10"
+    "date": "2026-11-10",
+    "geografi": "innenriks"
   },
   {
     "title": "Et valgskred i USA – men hvem styrer det politiske spillet?",
@@ -29,7 +32,8 @@
     "image": "Bilder/Artikler/2026-11-05-usa-ludo-politisk-satire.jpg",
     "position": "center",
     "url": "artikler/2026-11-05-usa-valget-topartisystem-og-medier.html",
-    "date": "2026-11-05"
+    "date": "2026-11-05",
+    "geografi": "utenriks"
   },
   {
     "title": "Rørbrudd på Grønland: 1500 boenheter uten fjernvarme gjennom natten",
@@ -37,7 +41,8 @@
     "image": "Bilder/Artikler/2026-11-05-gronland-fjernvarme.jpg",
     "position": "center",
     "url": "artikler/2026-11-05-fjernvarmelekkasje-gronland-oslo.html",
-    "date": "2026-11-05"
+    "date": "2026-11-05",
+    "geografi": "innenriks"
   },
   {
     "title": "Oljeprisen falt nesten ni prosent: Hva betyr det for Norge?",
@@ -45,7 +50,8 @@
     "image": "Bilder/Artikler/2026-11-05-oljeprisen-norge-godkjent.webp",
     "position": "center 38%",
     "url": "artikler/2026-11-05-oljeprisfall-usa-valg-norge.html",
-    "date": "2026-11-05"
+    "date": "2026-11-05",
+    "geografi": "innenriks"
   },
   {
     "title": "Sofienberg kirke er varm. Folk fryser utenfor.",
@@ -53,14 +59,16 @@
     "image": "Bilder/Artikler/sofienberg-pingpong-hd.webp",
     "position": "center 55%",
     "url": "artikler/2026-11-03-sofienberg-kirke-varmestue.html",
-    "date": "2026-11-03"
+    "date": "2026-11-03",
+    "geografi": "innenriks"
   },
   {
     "title": "Trump krevde ti milliarder dollar fra en avis. Dommeren avviste søksmålet.",
     "excerpt": "En føderal dommer i Florida har avvist Trumps milliardsøksmål mot utgiveren av The Wall Street Journal. Retten avgjorde ikke om det omstridte Epstein-brevet var ekte.",
     "image": "Bilder/Artikler/trump-wsj-dom-fotomontasje-2026.jpg",
     "url": "artikler/2026-11-02-trump-wsj-dom.html",
-    "date": "2026-11-02"
+    "date": "2026-11-02",
+    "geografi": "utenriks"
   },
   {
     "title": "Støre–Stubb: Den diplomatiske muligheten – og risikoen",
@@ -68,7 +76,8 @@
     "image": "Bilder/Artikler/store-stubb-geopolitisk-1600x900.jpg",
     "position": "center",
     "url": "artikler/2026-11-02-store-stubb-diplomatisk-mulighet.html",
-    "date": "2026-11-02"
+    "date": "2026-11-02",
+    "geografi": "utenriks"
   },
   {
     "title": "Paris gjør fem hundre gater bilfrie",
@@ -76,7 +85,8 @@
     "image": "Nyhetshjul/paris_gate.JPG",
     "position": "top",
     "url": "artikler/2025-10-20-Paris_Anne_Hidalgo.html",
-    "date": "2025-10-20"
+    "date": "2025-10-20",
+    "geografi": "utenriks"
   },
   {
     "title": "Den friksjonsløse hjernen",
@@ -84,7 +94,8 @@
     "image": "Nyhetshjul/AI-hjerne.PNG",
     "position": "center top",
     "url": "artikler/2025-10-19-den-friksjonslose-hjernen.html",
-    "date": "2025-10-19"
+    "date": "2025-10-19",
+    "geografi": "utenriks"
   },
   {
     "title": "Isbjørnene tar over forlatt forskningsstasjon",
@@ -92,6 +103,7 @@
     "image": "Nyhetshjul/Isbjornene.PNG",
     "position": "center top",
     "url": "artikler/2025-10-18-iskoljudsjinoya.html",
-    "date": "2025-10-18"
+    "date": "2025-10-18",
+    "geografi": "utenriks"
   }
 ]
