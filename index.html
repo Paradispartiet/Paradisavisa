@@ -21,8 +21,8 @@
   <title>Paradisavisa</title>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,700;6..96,800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=44">
-<link rel="stylesheet" href="avisdesign.css?v=7">
-<script defer src="script.js?v=46"></script>
+<link rel="stylesheet" href="avisdesign.css?v=8">
+<script defer src="script.js?v=47"></script>
 </head>
 
 <body class="avis-forside">
@@ -32,7 +32,7 @@
 <header class="tittellinje avis-topp avis-masthead">
   <div class="avis-topp-inner">
     <div class="avis-masthead-rail">
-      <nav class="avis-kategorier" aria-label="Gå til avisens seksjoner"><a href="#nyhetshjul">Nyheter</a> <span aria-hidden="true">·</span> <a href="#kulturhjul">Kultur</a> <span aria-hidden="true">·</span> <a href="#sportshjul">Sport</a> <span aria-hidden="true">·</span> <a href="#debatt">Debatt</a></nav>
+      <nav class="avis-kategorier" aria-label="Gå til avisens seksjoner"><a href="#nyhetshjul">Innenriks</a> <span aria-hidden="true">·</span> <a href="#utenrikshjul">Utenriks</a> <span aria-hidden="true">·</span> <a href="#kulturhjul">Kultur</a> <span aria-hidden="true">·</span> <a href="#sportshjul">Sport</a> <span aria-hidden="true">·</span> <a href="#debatt">Debatt</a></nav>
       <div class="avis-topp-handlinger">
         <button class="nav-toggle" type="button" aria-controls="avis-hovedmeny" aria-expanded="false" aria-label="Åpne meny" hidden>
           <span class="nav-toggle-icon" aria-hidden="true">☰</span>
@@ -45,7 +45,8 @@
       <p class="avis-motto">Objektivt sett, fra vår synsvinkel.</p>
     </div>
     <nav id="avis-hovedmeny" class="site-nav avisa-menu" aria-label="Hovedmeny">
-      <a href="#nyhetshjul">Nyheter</a>
+      <a href="#nyhetshjul">Innenriks</a>
+      <a href="#utenrikshjul">Utenriks</a>
       <a href="#nyhetshjul2">Feature</a>
       <a href="nyheter.html">Nyhetsarkiv</a>
       <a href="#sportshjul">Sport</a>
@@ -65,19 +66,31 @@
   <section id="nyhetshjul" class="avis-seksjon avis-hovedsaker" aria-labelledby="siste-nyheter-tittel">
     <div class="avis-seksjonshode">
       <div class="avis-seksjonsidentitet">
-        <span class="avis-seksjonsmerke">01 / Nyheter og bakgrunn</span>
-        <h2 id="siste-nyheter-tittel" class="seksjonstittel">Nyheter</h2>
+        <span class="avis-seksjonsmerke">01 / Norge</span>
+        <h2 id="siste-nyheter-tittel" class="seksjonstittel">Innenriks</h2>
       </div>
-      <a class="avis-seksjonslenke" href="nyheter.html">Nyhetsarkiv <span aria-hidden="true">→</span></a>
+      <a class="avis-seksjonslenke" href="nyheter.html#innenriks">Innenriksarkiv <span aria-hidden="true">→</span></a>
     </div>
     <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
     <div id="nyhetshjul-grid" class="avis-ledergrid"></div>
   </section>
 
+  <section id="utenrikshjul" class="avis-seksjon avis-hovedsaker" aria-labelledby="utenriks-tittel">
+    <div class="avis-seksjonshode">
+      <div class="avis-seksjonsidentitet">
+        <span class="avis-seksjonsmerke">02 / Verden</span>
+        <h2 id="utenriks-tittel" class="seksjonstittel">Utenriks</h2>
+      </div>
+      <a class="avis-seksjonslenke" href="nyheter.html#utenriks">Utenriksarkiv <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="seksjonsinfo" data-nyhetsstatus>Henter publiseringsdatoer …</p>
+    <div id="utenrikshjul-grid" class="avis-ledergrid"></div>
+  </section>
+
   <section id="nyhetshjul2" class="avis-seksjon" aria-labelledby="feature-tittel">
     <div class="avis-seksjonshode">
       <div class="avis-seksjonsidentitet">
-        <span class="avis-seksjonsmerke">02 / Feature og fordypning</span>
+        <span class="avis-seksjonsmerke">03 / Feature og fordypning</span>
         <h2 id="feature-tittel" class="seksjonstittel">Feature</h2>
       </div>
     </div>
@@ -88,7 +101,7 @@
   <section id="kulturhjul" class="avis-seksjon" aria-labelledby="kultur-tittel">
     <div class="avis-seksjonshode">
       <div class="avis-seksjonsidentitet">
-        <span class="avis-seksjonsmerke">03 / Film, litteratur og scene</span>
+        <span class="avis-seksjonsmerke">04 / Film, litteratur og scene</span>
         <h2 id="kultur-tittel" class="seksjonstittel">Kultur</h2>
       </div>
       <a class="avis-seksjonslenke" href="kultur.html">Kulturarkiv <span aria-hidden="true">→</span></a>
@@ -100,7 +113,7 @@
   <section id="sportshjul" class="avis-seksjon" aria-labelledby="sport-tittel">
     <div class="avis-seksjonshode">
       <div class="avis-seksjonsidentitet">
-        <span class="avis-seksjonsmerke">04 / Sport og idrett</span>
+        <span class="avis-seksjonsmerke">05 / Sport og idrett</span>
         <h2 id="sport-tittel" class="seksjonstittel">Sport</h2>
       </div>
       <a class="avis-seksjonslenke" href="sport.html">Flere sportssaker <span aria-hidden="true">→</span></a>
@@ -112,7 +125,7 @@
   <section id="kommentarer" class="avis-seksjon avis-perspektiver" aria-labelledby="kommentarer-tittel">
     <div class="avis-seksjonshode">
       <div class="avis-seksjonsidentitet">
-        <span class="avis-seksjonsmerke">05 / Analyse og meninger</span>
+        <span class="avis-seksjonsmerke">06 / Analyse og meninger</span>
         <h2 id="kommentarer-tittel" class="seksjonstittel">Kommentarer</h2>
       </div>
     </div>
@@ -123,7 +136,7 @@
   <section id="debatt" class="avis-seksjon avis-debatt" aria-labelledby="debatt-tittel">
     <div class="avis-seksjonshode">
       <div class="avis-seksjonsidentitet">
-        <span class="avis-seksjonsmerke">06 / Åpen debatt</span>
+        <span class="avis-seksjonsmerke">07 / Åpen debatt</span>
         <h2 id="debatt-tittel" class="seksjonstittel">Debatt</h2>
       </div>
       <a class="avis-seksjonslenke" href="skriv-innlegg.html">Send inn ditt innlegg <span aria-hidden="true">→</span></a>

@@ -5,7 +5,8 @@
     "image": "Bilder/Artikler/2026-11-13-puskas-alta-feature.svg",
     "position": "center center",
     "url": "artikler/2026-11-13-puskas-alta-musikken-som-samler.html",
-    "date": "2026-11-13"
+    "date": "2026-11-13",
+    "geografi": "innenriks"
   },
   {
     "title": "Kan Norden frigjøre seg fra teknologigigantene?",
@@ -13,7 +14,8 @@
     "image": "Bilder/Artikler/feature07-nordisk-digital-suverenitet-hovedbilde-2026.webp",
     "position": "center",
     "url": "artikler/2026-11-10-norden-teknologigigantene.html",
-    "date": "2026-11-10"
+    "date": "2026-11-10",
+    "geografi": "utenriks"
   },
   {
     "title": "Bankene tjener milliarder – hvem betaler?",
@@ -21,7 +23,8 @@
     "image": "Bilder/Artikler/feature06-bankene-hovedbilde-2026.webp",
     "position": "center",
     "url": "artikler/2026-11-10-bankene-tjener-milliarder.html",
-    "date": "2026-11-10"
+    "date": "2026-11-10",
+    "geografi": "innenriks"
   },
   {
     "title": "Oljeprisen falt nesten ni prosent: Hva betyr det for Norge?",
@@ -29,35 +32,40 @@
     "image": "Bilder/Artikler/2026-11-05-oljeprisen-norge.svg",
     "position": "center",
     "url": "artikler/2026-11-05-oljeprisfall-usa-valg-norge.html",
-    "date": "2026-11-05"
+    "date": "2026-11-05",
+    "geografi": "innenriks"
   },
   {
     "title": "Hvem bestemmer over journalistikken når plattformene setter vilkårene?",
     "excerpt": "Norske medier fikk midlertidig stanset Metas nye vilkår. Hva står på spill når en plattform både formidler journalistikk og setter vilkår for bruken av den?",
     "image": "Bilder/Artikler/meta-plattformmakt-redaksjon-kiillustrasjon-2026.jpg",
     "url": "artikler/2026-11-02-meta-plattformmakt-pressefrihet.html",
-    "date": "2026-11-02"
+    "date": "2026-11-02",
+    "geografi": "innenriks"
   },
   {
     "title": "De sørget i 16 minutter. To år senere vant studentbevegelsen valget.",
     "excerpt": "Et tak kollapset ved jernbanestasjonen i Novi Sad og tok 16 liv. To år senere har studentbevegelsen vunnet valget i Serbia, mens mandatfordelingen ennå er foreløpig.",
     "image": "Bilder/Artikler/serbia-studentprotest-novi-sad-2025-arkivfoto.jpg",
     "url": "artikler/2026-11-02-serbia-studentvalget.html",
-    "date": "2026-11-02"
+    "date": "2026-11-02",
+    "geografi": "utenriks"
   },
   {
     "title": "Hvem stjal 6,3 milliarder dollar fra Binance – og hvem betaler?",
     "excerpt": "Kryptovaluta for anslagsvis 6,3 milliarder dollar ble tappet fra Binances nettilkoblede lommebøker 29. oktober. FBI peker mot nordkoreanske hackere. Men hv",
     "image": "Bilder/Artikler/binance-cybersikkerhet-fotomontasje-2026.jpg",
     "url": "artikler/2026-11-02-binance-hacking.html",
-    "date": "2026-11-02"
+    "date": "2026-11-02",
+    "geografi": "utenriks"
   },
   {
     "title": "Stortingsmiddagen 2025: Humor, alvor – og tradisjon",
     "excerpt": "Kong Harald åpnet årets Stortingsmiddag med Netflix-humor og avsluttet med et alvorlig forsvar for demokratiet. Tradisjonen fra 1906 lever videre – med norske råvarer og høytid på Slottet.",
     "image": "Bilder/Kultur/kongen-tegnet.PNG",
     "url": "artikler/2025-10-23-stortingsmiddagen-2025.html",
-    "date": "2025-10-23"
+    "date": "2025-10-23",
+    "geografi": "innenriks"
   },
   {
     "title": "Årets hage 2025",
@@ -65,6 +73,7 @@
     "image": "Nyhetshjul/Forside_arets_hage.PNG",
     "position": "center top",
     "url": "artikler/2025-10-23-arets-hage.html",
-    "date": "2025-10-23"
+    "date": "2025-10-23",
+    "geografi": "innenriks"
   }
 ]

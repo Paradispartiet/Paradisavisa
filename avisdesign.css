@@ -142,7 +142,7 @@
 }
 
 /* Et luftig magasin-/avisgrid, ikke flere likeverdige svarte bokser. */
-.avis-forside #nyhetshjul-grid,
+.avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid),
 .avis-forside #nyhetshjul2-grid,
 .avis-forside #sportshjul-grid,
 .avis-forside #kulturhjul-grid,
@@ -217,37 +217,37 @@
 
 /* Hovedsaken får plass som en hovedsak i en papiravis. */
 @media (min-width:1000px) {
-  .avis-forside #nyhetshjul-grid {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) {
     grid-template-columns:minmax(0,1.63fr) minmax(0,1fr);
     grid-template-rows:repeat(2,minmax(0,auto));
     gap:1.15rem 2.2rem;
   }
-  .avis-forside #nyhetshjul-grid > .hjul-card:first-child {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .hjul-card:first-child {
     grid-column:1;
     grid-row:1/span 2;
     border-top:0;
     padding-right:2.15rem;
     border-right:1px solid #38352e;
   }
-  .avis-forside #nyhetshjul-grid > .hjul-card:first-child img {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .hjul-card:first-child img {
     aspect-ratio:16/10;
     margin-bottom:1.3rem;
   }
-  .avis-forside #nyhetshjul-grid > .hjul-card:first-child h3 {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .hjul-card:first-child h3 {
     font-size:clamp(2rem,3vw,2.85rem);
     line-height:1.12;
     letter-spacing:-.045em;
     margin-bottom:.8rem;
   }
-  .avis-forside #nyhetshjul-grid > .hjul-card:first-child p {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .hjul-card:first-child p {
     font-size:1rem;
     max-width:56ch;
   }
-  .avis-forside #nyhetshjul-grid > .hjul-card:not(:first-child) img {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .hjul-card:not(:first-child) img {
     aspect-ratio:16/6.6;
     margin-bottom:.65rem;
   }
-  .avis-forside #nyhetshjul-grid > .hjul-card:not(:first-child) h3 {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .hjul-card:not(:first-child) h3 {
     font-size:clamp(1.2rem,1.5vw,1.56rem);
     line-height:1.23;
   }
@@ -284,7 +284,7 @@
 
 /* Tablet: ordinært tospaltet grid. Mobil: lesbare artikler i én kolonne. */
 @media (min-width:701px) and (max-width:999px) {
-  .avis-forside #nyhetshjul-grid,
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid),
   .avis-forside #sportshjul-grid,
   .avis-forside #kulturhjul-grid,
   .avis-forside #kommentarhjul-grid {
@@ -309,7 +309,7 @@
   .avis-forside .avis-seksjonsmerke {font-size:.63rem;letter-spacing:.1em}
   .avis-forside #hovedinnhold .avis-seksjon .seksjonstittel {font-size:1.8rem}
   .avis-forside .avis-seksjonslenke {font-size:.7rem}
-  .avis-forside #nyhetshjul-grid,
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid),
   .avis-forside #nyhetshjul2-grid,
   .avis-forside #sportshjul-grid,
   .avis-forside #kulturhjul-grid,
@@ -326,7 +326,7 @@
     aspect-ratio:16/9;
     margin-bottom:.75rem;
   }
-  .avis-forside #nyhetshjul-grid > .hjul-card:first-child h3 {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .hjul-card:first-child h3 {
     font-size:1.75rem;
     line-height:1.2;
   }
@@ -376,6 +376,36 @@
   max-width:700px;
   color:#c3bfb5;
   line-height:1.7;
+}
+/* Samme nyhetsarkiv, men med to tydelig adskilte geografiske spor. */
+.arkiv-side .nyhet-omrader {
+  display:flex;
+  gap:clamp(.9rem,3vw,2rem);
+  flex-wrap:wrap;
+  margin:1.6rem 0 2rem;
+  border-bottom:1px solid #51493a;
+}
+.arkiv-side .nyhet-omrader a {
+  display:inline-block;
+  padding:.65rem 0 .85rem;
+  color:#f0d48c;
+  font:700 .9rem/1.4 Inter,system-ui,sans-serif;
+  text-decoration:none;
+  border-bottom:2px solid transparent;
+}
+.arkiv-side .nyhet-omrader a:hover,
+.arkiv-side .nyhet-omrader a:focus-visible {
+  color:#fff;
+  border-color:#e9c56c;
+}
+.arkiv-side .nyhetsarkiv-omrade {
+  margin:0 0 clamp(2.6rem,5vw,4.5rem);
+  scroll-margin-top:5rem;
+}
+.arkiv-side .nyhetsarkiv-omrade h2 {
+  margin:0 0 1.05rem;
+  color:#f5f1e9;
+  font:740 clamp(1.65rem,3vw,2.45rem)/1.2 Georgia,serif;
 }
 .arkiv-side .kategori-artikler-grid {
   gap:1.5rem;
@@ -657,7 +687,7 @@ body.sport-side,body.notiser-side {padding-top:0}
 .avis-forside .avis-motto,.avis-forside .avis-kategorier,.avis-forside .avis-leserinfo p,.avis-forside .seksjonsinfo,.avis-forside .hjul-card h3,.avis-forside .hjul-card p,.avis-forside .forside-dato,.avis-forside .avis-seksjon .seksjonstittel,.avis-forside .avis-seksjonslenke{color:#fff!important}
 
 /* Behold hele Meta-illustrasjonen i nyhetskortet på alle skjermstørrelser. */
-.avis-forside #nyhetshjul-grid .hjul-card[href$="/artikler/2026-11-02-meta-plattformmakt-pressefrihet.html"] img {
+.avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) .hjul-card[href$="/artikler/2026-11-02-meta-plattformmakt-pressefrihet.html"] img {
   aspect-ratio:16/9;
   object-position:center;
 }
@@ -665,44 +695,44 @@ body.sport-side,body.notiser-side {padding-top:0}
 
 /* Fire synlige forsideplasser. Bare den fjerde er en sideveis kortkarusell. */
 @media (min-width: 1000px) {
-  .avis-forside #nyhetshjul-grid {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) {
     grid-template-columns: minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr);
     grid-template-rows: repeat(2,minmax(0,auto));
   }
-  .avis-forside #nyhetshjul-grid > .hjul-card:first-child {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .hjul-card:first-child {
     grid-column: 1;
     grid-row: 1 / span 2;
   }
-  .avis-forside #nyhetshjul-grid > .hjul-card:nth-child(2) {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .hjul-card:nth-child(2) {
     grid-column: 2;
     grid-row: 1;
   }
-  .avis-forside #nyhetshjul-grid > .hjul-card:nth-child(3) {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .hjul-card:nth-child(3) {
     grid-column: 3;
     grid-row: 1;
   }
-  .avis-forside #nyhetshjul-grid > .avis-sisteplass,
-  .avis-forside #nyhetshjul-grid > .hjul-card:nth-child(4) {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .avis-sisteplass,
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) > .hjul-card:nth-child(4) {
     grid-column: 2 / span 2;
     grid-row: 2;
   }
-  .avis-forside #nyhetshjul-grid .avis-sisteplass-spor .hjul-card {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) .avis-sisteplass-spor .hjul-card {
     display: grid;
     grid-template-columns: minmax(0,42%) minmax(0,1fr);
     grid-template-rows: auto auto 1fr;
     column-gap: 1.2rem;
     align-content: start;
   }
-  .avis-forside #nyhetshjul-grid .avis-sisteplass-spor .hjul-card img {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) .avis-sisteplass-spor .hjul-card img {
     grid-column: 1;
     grid-row: 1 / span 3;
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
   }
-  .avis-forside #nyhetshjul-grid .avis-sisteplass-spor .hjul-card h3,
-  .avis-forside #nyhetshjul-grid .avis-sisteplass-spor .hjul-card time,
-  .avis-forside #nyhetshjul-grid .avis-sisteplass-spor .hjul-card p {
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) .avis-sisteplass-spor .hjul-card h3,
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) .avis-sisteplass-spor .hjul-card time,
+  .avis-forside :is(#nyhetshjul-grid,#utenrikshjul-grid) .avis-sisteplass-spor .hjul-card p {
     grid-column: 2;
   }
   .avis-forside #sportshjul-grid,

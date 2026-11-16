@@ -146,6 +146,9 @@ for(const name of ["Nyhetshjul.json","Nyhetshjul2.json","Kulturhjul.json","Sport
   for(const item of Array.isArray(feed)?feed:[]){
     if(typeof item.url==="string"&&item.url.includes("utkast/"))
       errors.push("Utkast lekket til offentlig nyhetsstrøm: "+name+" "+item.url);
+    if(["Nyhetshjul.json","Nyhetshjul2.json"].includes(name) &&
+       !["innenriks","utenriks"].includes(item.geografi))
+      errors.push("Nyhet mangler Innenriks/Utenriks-merking: "+name+" "+(item.url||item.title||"ukjent"));
   }
 }
 if(errors.length){

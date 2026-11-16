@@ -25,6 +25,7 @@ function fixture(options={}) {
     id:"faktatest",
     tittel:"En fiktiv artikkel for regresjonstest",
     kategori:"Samfunn",
+    geografi:options.geografi===undefined?"innenriks":options.geografi,
     status:options.approved===false?"utkast":"godkjent",
     faktasjekk:options.approved===false?"kreves":"godkjent",
     godkjent:options.approved!==false,
@@ -110,6 +111,7 @@ test("simulert publisering endrer bare godkjent artikkel og riktig nyhetsstrøm"
     assert.equal(feed.length,1);
     assert.equal(feed[0].url,filename);
     assert.equal(feed[0].image,imageFile);
+    assert.equal(feed[0].geografi,"innenriks");
   } finally { f.cleanup(); }
 });
 
@@ -133,6 +135,18 @@ for(const link of [
     } finally { f.cleanup(); }
   });
 }
+
+test("godkjent nyhet uten Innenriks/Utenriks blir ikke publisert",()=>{
+  const f=fixture({geografi:null});
+  try {
+    const result=f.run(true);
+    assert.notEqual(result.status,0);
+    assert.match(result.stderr,/geografi: innenriks eller utenriks/);
+    assert.deepEqual(f.json(feedFile),[]);
+    assert.equal(f.exists(filename),false);
+    assert.equal(f.json(metadataFile).artikler[0].publisert,false);
+  } finally { f.cleanup(); }
+});
 
 test("simulert publisering avviser ukontrollert utkast",()=>{
   const f=fixture({approved:false});

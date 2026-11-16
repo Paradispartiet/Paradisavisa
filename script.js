@@ -125,11 +125,11 @@ function initAvisaMenu() {
 }
 
 
-/* ---------- Kategoriarkiv: tydelig dato, ingen gamle saker som "ferske" ---------- */
+/* ---------- Kategoriarkiv: Innenriks/Utenriks, kultur beholdes separat ---------- */
 function loadCategoryArchive() {
-  const container = document.querySelector("[data-artikkelkategori]");
-  if (!container) return;
-  const type = container.dataset.artikkelkategori;
+  const containers = Array.from(document.querySelectorAll("[data-artikkelkategori]"));
+  if (!containers.length) return;
+  const type = containers[0].dataset.artikkelkategori;
   if (!["nyheter", "kultur"].includes(type)) return;
 
   const sources = type === "kultur"
@@ -152,53 +152,61 @@ function loadCategoryArchive() {
       })
       .sort((a,b) => String(b.date||"").localeCompare(String(a.date||"")));
 
-    container.replaceChildren();
-    if (!items.length) {
-      const empty = document.createElement("p");
-      empty.textContent = "Ingen arkiverte saker i denne kategorien ennå.";
-      container.appendChild(empty);
-      return;
-    }
-
-    items.forEach(item => {
-      const card = document.createElement("a");
-      card.className = "hjul-card";
-      card.href = item.url;
-      if (item.image) {
-        const image = document.createElement("img");
-        image.src = item.image;
-        image.alt = "";
-        image.loading = "lazy";
-        card.appendChild(image);
+    for (const container of containers) {
+      // Bare nyhetsarkivet er geografisk inndelt. Kulturarket beholder alt.
+      const nyhetsomrade = container.dataset.nyhetsomrade;
+      const relevante = type === "nyheter" && nyhetsomrade
+        ? items.filter(item => item.geografi === nyhetsomrade)
+        : items;
+      container.replaceChildren();
+      if (!relevante.length) {
+        const empty = document.createElement("p");
+        empty.textContent = "Ingen arkiverte saker i denne kategorien ennå.";
+        container.appendChild(empty);
+        continue;
       }
-      const heading = document.createElement("h3");
-      heading.textContent = item.title;
-      card.appendChild(heading);
-      if (item.date) {
-        const time = document.createElement("time");
-        time.className = "arkiv-dato";
-        time.dateTime = item.date;
-        try {
-          time.textContent = new Date(item.date + "T12:00:00").toLocaleDateString(
-            "nb-NO", {day:"numeric",month:"long",year:"numeric"}
-          );
-        } catch (_) {
-          time.textContent = item.date;
+      for (const item of relevante) {
+        const card = document.createElement("a");
+        card.className = "hjul-card";
+        card.href = item.url;
+        if (item.image) {
+          const image = document.createElement("img");
+          image.src = item.image;
+          image.alt = "";
+          image.loading = "lazy";
+          card.appendChild(image);
         }
-        card.appendChild(time);
+        const heading = document.createElement("h3");
+        heading.textContent = item.title;
+        card.appendChild(heading);
+        if (item.date) {
+          const time = document.createElement("time");
+          time.className = "arkiv-dato";
+          time.dateTime = item.date;
+          try {
+            time.textContent = new Date(item.date + "T12:00:00").toLocaleDateString(
+              "nb-NO", {day:"numeric",month:"long",year:"numeric"}
+            );
+          } catch (_) {
+            time.textContent = item.date;
+          }
+          card.appendChild(time);
+        }
+        if (item.excerpt) {
+          const excerpt = document.createElement("p");
+          excerpt.textContent = item.excerpt;
+          card.appendChild(excerpt);
+        }
+        container.appendChild(card);
       }
-      if (item.excerpt) {
-        const excerpt = document.createElement("p");
-        excerpt.textContent = item.excerpt;
-        card.appendChild(excerpt);
-      }
-      container.appendChild(card);
-    });
+    }
   }).catch(err => {
     console.error("Kategoriarkivet feilet:", err);
-    const fallback = document.createElement("p");
-    fallback.textContent = "Arkivet kunne ikke lastes. Prøv å åpne siden på nytt.";
-    container.replaceChildren(fallback);
+    for (const container of containers) {
+      const fallback = document.createElement("p");
+      fallback.textContent = "Arkivet kunne ikke lastes. Prøv å åpne siden på nytt.";
+      container.replaceChildren(fallback);
+    }
   });
 }
 
@@ -1453,7 +1461,7 @@ function renderFourFrontPageCards(grid, cards) {
   update();
 }
 
-function loadArticleFeed(filename, gridId) {
+function loadArticleFeed(filename, gridId, geografi = null) {
   const grid = document.getElementById(gridId);
   if (!grid) return;
   return fetch(filename, {cache:"no-store"})
@@ -1465,6 +1473,7 @@ function loadArticleFeed(filename, gridId) {
       if (!Array.isArray(raw)) throw new Error("Uventet format i "+filename);
       const items=raw
         .filter(item=>item && item.url && item.title)
+        .filter(item => !geografi || item.geografi === geografi)
         .sort((a,b)=>String(b.date||"").localeCompare(String(a.date||"")));
       const cards = items.map(buildArticleCard).filter(Boolean);
       if (document.body.classList.contains("avis-forside")) {
@@ -1489,7 +1498,12 @@ function loadArticleFeed(filename, gridId) {
     });
 }
 
-function loadNyhetshjul() { return loadArticleFeed("Nyhetshjul.json","nyhetshjul-grid"); }
+function loadNyhetshjul() {
+  return Promise.all([
+    loadArticleFeed("Nyhetshjul.json", "nyhetshjul-grid", "innenriks"),
+    loadArticleFeed("Nyhetshjul.json", "utenrikshjul-grid", "utenriks")
+  ]);
+}
 function loadNyhetshjul2() { return loadArticleFeed("Nyhetshjul2.json","nyhetshjul2-grid"); }
 function loadSportshjul() { return loadArticleFeed("Sportshjul.json","sportshjul-grid"); }
 function loadKulturhjul() { return loadArticleFeed("Kulturhjul.json","kulturhjul-grid"); }

@@ -166,7 +166,7 @@ async function run(){
 
       // Vent på at alle innholdsseksjonene faktisk er fylt. Et tomt felt
       // ved første skjermbilde kan ellers maskere problemer med kortene.
-      const storyGrids=["#nyhetshjul-grid","#nyhetshjul2-grid",
+      const storyGrids=["#nyhetshjul-grid","#utenrikshjul-grid","#nyhetshjul2-grid",
         "#sportshjul-grid","#kulturhjul-grid","#kommentarhjul-grid"];
       for(const id of storyGrids){
         await page.locator(id+" .hjul-card").first().waitFor({timeout:12000});
@@ -250,7 +250,7 @@ async function run(){
       }
       console.log(label+": alle redaksjonelle kort finnes, kontrollerer bilder og geometri");
       const layout=await page.evaluate(async () => {
-        const ids=["nyhetshjul-grid","nyhetshjul2-grid","sportshjul-grid",
+        const ids=["nyhetshjul-grid","utenrikshjul-grid","nyhetshjul2-grid","sportshjul-grid",
           "kulturhjul-grid","kommentarhjul-grid"];
         const grids=ids.map(id=>{
           const container=document.getElementById(id);
@@ -265,6 +265,7 @@ async function run(){
           return {
             id,
             slotCount:cards.length,
+            hasMoreThanFour:container.querySelectorAll(".hjul-card").length>4,
             hasSideScroll:!!rail && rail.scrollWidth>rail.clientWidth+2,
             rects:cards.map(card=>{
               const r=card.getBoundingClientRect();
@@ -289,9 +290,10 @@ async function run(){
       for(const grid of layout.grids){
         check(grid.slotCount<=4,
           label+": mer enn fire synlige artikkelplasser i "+grid.id);
-        if(["nyhetshjul-grid","kommentarhjul-grid"].includes(grid.id)){
-          check(grid.hasSideScroll,
-            label+": det fjerde kortet mangler sideveis blaing i "+grid.id);
+        if(["nyhetshjul-grid","utenrikshjul-grid","kommentarhjul-grid"].includes(grid.id)){
+          check(grid.hasSideScroll===grid.hasMoreThanFour,
+            label+": feil sideveis blaing i "+grid.id+
+              " (kreves bare når seksjonen har flere enn fire artikler)");
         }
         for(const r of grid.rects){
           check(r.left>=-2 && r.right<=layout.width+2,
@@ -305,7 +307,7 @@ async function run(){
         }
       }
       // Bruk piltasten i siste forsidekort og kontroller faktisk bevegelse.
-      const carousel=page.locator("#nyhetshjul-grid .avis-sisteplass");
+      const carousel=page.locator("#utenrikshjul-grid .avis-sisteplass");
       check((await carousel.count())===1,
         label+": nyhetskarusellen mangler i siste plass");
       if(await carousel.count()){
