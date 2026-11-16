@@ -51,3 +51,14 @@ test("tekst og lenker håndterer HTML-entiteter uten dobbel HTML",()=>{
  assert.equal(clean("Nord &amp; sør <b>i dag</b>"),"Nord & sør i dag");
  assert.equal(shorten("Dette er et eksempel med mange ord",21),"Dette er et…");
 });
+
+// AVIF er et gyldig offentlig bildeformat og skal ikke blokkere SoMe-pakken.
+test("ny publisert artikkel kan bruke AVIF uten å slippe gjennom usikre baner",()=>{
+ const avif={...example, image:"Bilder/Artikler/2026-11-16-nav-ai-rettigheter.avif"};
+ const {before,current}=states([],[avif],"kommentarer.json");
+ const records=diffFeeds(before,current,reader);
+ assert.equal(records.length,1);
+ assert.equal(records[0].image,avif.image);
+ current["kommentarer.json"]=[{...avif,image:"Bilder/Artikler/../../skjult.avif"}];
+ assert.throws(()=>diffFeeds(before,current,reader),/Ugyldig/);
+});

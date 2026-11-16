@@ -60,7 +60,7 @@ function getPublished(articles, fileReader) {
   const result = [];
   for (const a of articles) {
     const url = checkedRelative(a.url, "artikler/", /\.html$/i);
-    const image = checkedRelative(a.image, "", /\.(?:webp|jpe?g|png|svg)$/i);
+    const image = checkedRelative(a.image, "", /\.(?:avif|webp|jpe?g|png|svg)$/i);
     if (!/^(?:Bilder|Nyhetshjul|assets)\//.test(image) || image.startsWith("/"))
       throw new Error("Bilde må ligge i godkjent offentlig bildemappe: " + image);
     if (!a.title || !a.excerpt || !a.date ||
