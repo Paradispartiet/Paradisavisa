@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="no">
+<html lang="nb" class="av-artikkelside">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Når noen ber om hjelp, skal de få hjelp | Paradisavisa</title>
 <meta name="description" content="Kommentar fra Paradisavisa om NAV, rettigheter, automatisk økonomisk hjelp og et samfunn med mindre kontroll og større trygghet.">
 <meta name="theme-color" content="#000000"><meta name="color-scheme" content="dark">
 <meta property="og:type" content="article"><meta property="og:site_name" content="Paradisavisa">
-<meta property="og:title" content="Når noen ber om hjelp, skal de få hjelp">
+<meta property="og:title" content="Når noen ber om hjelp, skal de få hjelp"><meta property="article:published_time" content="2026-11-02"><meta property="article:modified_time" content="2026-11-12">
 <meta property="og:description" content="Kommentar om rettigheter, tillit og automatisk hjelp, med minst mulig kontroll og sanksjoner.">
 <meta property="og:image" content="https://paradispartiet.github.io/Paradisavisa/Bilder/nav-satire-skopuss.jpg">
-<link rel="icon" href="../favicon.PNG">
+<link rel="icon" href="../favicon.PNG"><link rel="stylesheet" href="../artikkel.css?v=20261112a">
 <style>
 :root{color-scheme:dark}*{box-sizing:border-box}html,body{background:#000;color:#f5f5f2;margin:0}
 body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
@@ -21,6 +21,40 @@ main{max-width:1470px;padding:clamp(24px,5vw,78px) clamp(18px,5vw,75px);margin:a
 .signature{text-align:right;font-family:Georgia,"Times New Roman",serif;font-size:clamp(28px,4vw,50px);font-style:italic;margin:60px 0 22px}
 nav a{color:#d0dfdf;text-underline-offset:4px;font-size:15px}.sr-only{position:absolute;clip:rect(0 0 0 0);width:1px;height:1px;overflow:hidden}
 @media(max-width:900px){main{max-width:700px}.story{columns:1}}@media print{@page{margin:12mm}html,body{background:#000!important;color:#fff!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}.story{font-size:12pt;columns:2}.story figure{margin:10px 0}}
+
+/* Feature 13: NAV-kommentaren leses i én tydelig søyle, ikke spredt på to. */
+.av-artikkelside main{max-width:1100px;margin:auto;padding:clamp(1.5rem,4vw,3rem) clamp(1rem,4vw,2.25rem) 5rem}
+.av-artikkelside article.story.av-artikkel{max-width:780px;columns:auto!important;column-count:1!important;margin:0 auto;font:400 clamp(1.08rem,1.7vw,1.3rem)/1.76 Georgia,"Times New Roman",serif;color:#f2efe6}
+.av-artikkelside article.story.av-artikkel>h1{position:static!important;clip:auto!important;width:auto!important;height:auto!important;overflow:visible!important;white-space:normal!important;display:block!important;margin:0 0 .6em!important;max-width:780px;font:800 clamp(2.3rem,5.5vw,4.3rem)/1.08 Georgia,serif!important;letter-spacing:-.04em;color:#fff}
+.av-artikkelside article.story.av-artikkel>p{margin:0 0 1.25em;break-inside:auto;font:400 clamp(1.1rem,1.7vw,1.28rem)/1.76 Georgia,serif;color:#f1eee8}
+.av-artikkelside article.story.av-artikkel>p.av-artikkel-meta{font:600 .84rem/1.55 system-ui,sans-serif;color:#c8c3b8;border-block:1px solid #514d45;padding:.7rem 0;margin-bottom:1.7rem}
+.av-artikkelside article.story.av-artikkel>p.av-fakta-note{font:400 .96rem/1.65 system-ui,sans-serif;color:#e0d7c5;border-left:3px solid #e2c66b;padding:.45rem 0 .45rem 1rem;margin:1.2rem 0 1.6rem}
+.av-artikkelside article.story.av-artikkel>p.av-fakta-note strong{color:#ffe69d}
+.av-artikkelside article.story.av-artikkel figure{max-width:100%;margin:2.3rem auto 2.5rem;break-inside:avoid}
+.av-artikkelside article.story.av-artikkel figure>img{display:block;width:100%;height:auto;max-height:min(66vh,36rem);object-fit:contain;border-radius:5px}
+.av-artikkelside article.story.av-artikkel figure>figcaption{margin:.55rem 0 0;font:400 .83rem/1.55 system-ui,sans-serif!important;color:#c7c5bd!important}
+.av-artikkelside article.story.av-artikkel .av-graf{margin:2.2rem auto;padding:clamp(.95rem,2.5vw,1.3rem);background:#11120f;border:1px solid #61553c}
+.av-artikkelside article.story.av-artikkel .av-graf h2{font:700 1.48rem/1.3 Georgia,serif;margin:0 0 .7rem}
+.av-artikkelside article.story.av-artikkel .av-graf>img{max-height:min(64vh,36rem);width:100%;object-fit:contain}
+.av-artikkelside article.story.av-artikkel .av-graf figcaption a{color:#ffe28b}
+.av-artikkelside article.story.av-artikkel .av-modul{max-width:100%;margin:2.4rem auto;padding:clamp(1rem,2.5vw,1.45rem)}
+.av-artikkelside article.story.av-artikkel .av-modul>h2{font:700 1.5rem/1.3 Georgia,serif;margin:0 0 .65rem}
+.av-artikkelside article.story.av-artikkel .av-modul p,
+.av-artikkelside article.story.av-artikkel .av-modul .av-modul-intro{font:400 .97rem/1.6 system-ui,sans-serif;color:#e5ddd0;margin:0 0 .85rem}
+.av-artikkelside article.story.av-artikkel .av-modul .av-modul-kilde{font:.83rem/1.6 system-ui,sans-serif;color:#d3c9b8}
+.av-artikkelside article.story.av-artikkel .av-modul a{color:#ffe28b}
+.av-artikkelside article.story.av-artikkel .av-infoboks{max-width:100%}
+.av-artikkelside article.story.av-artikkel .av-infoboks-innhold p{font:.97rem/1.6 system-ui,sans-serif;color:#eee8da}
+.av-artikkelside article.story.av-artikkel .av-forklaring-panel{font:.98rem/1.6 system-ui,sans-serif}
+.av-artikkelside article.story.av-artikkel .av-forklaring-panel strong{color:#ffe08e}
+.av-artikkelside article.story.av-artikkel .av-kilder-samlet{max-width:100%;margin:3.1rem auto 0;border-top:1px solid #645d47;padding-top:1.2rem}
+.av-artikkelside article.story.av-artikkel .av-kilder-samlet h2{font:700 1.48rem/1.3 Georgia,serif;margin:0 0 1rem;color:#fff}
+.av-artikkelside article.story.av-artikkel .av-kilder-samlet p{font:.9rem/1.62 system-ui,sans-serif;color:#d2c9bc}
+.av-artikkelside article.story.av-artikkel .av-kilder-samlet ul{font:.92rem/1.6 system-ui,sans-serif;padding-left:1.4rem}
+.av-artikkelside article.story.av-artikkel .av-kilder-samlet a,
+.av-artikkelside article.story.av-artikkel>p a{color:#ffe28b}
+@media(max-width:700px){.av-artikkelside main{padding:1.7rem 1.05rem 4rem}.av-artikkelside article.story.av-artikkel{font-size:1.12rem}.av-artikkelside article.story.av-artikkel .av-modul,.av-artikkelside article.story.av-artikkel .av-graf{margin:1.7rem auto;padding:1rem}}
+@media print{.av-artikkelside article.story.av-artikkel{columns:1!important}.av-artikkelside article.story.av-artikkel .av-modul{break-inside:avoid}}
 </style>
 <link rel="stylesheet" href="../artikkel-header.css?v=20261112">
 </head>
@@ -28,19 +62,45 @@ nav a{color:#d0dfdf;text-underline-offset:4px;font-size:15px}.sr-only{position:a
 <header class="avisa-article-fallback" aria-label="Paradisavisa – toppmeny"><div class="pa-header-inner"><div class="pa-header-brand"><a href="../index.html">PARADISAVISA</a><p>Objektivt sett, fra vår synsvinkel.</p></div><div class="pa-header-actions"><a href="../index.html">Forsiden</a><details class="pa-menu"><summary>Meny</summary><nav aria-label="Hovedmeny"><a href="../nyheter.html">Nyhetsarkiv</a><a href="../index.html#nyhetshjul2">Feature</a><a href="../sport.html">Sport</a><a href="../kultur.html">Kulturarkiv</a><a href="../index.html#kommentarer">Kommentarer</a><a href="../index.html#debatt">Debatt</a><a href="../notiser.html">Notiser</a><a href="../paradisradio.html">Paradisradioen</a><a href="../skriv-innlegg.html">Skriv innlegg</a><a href="../kontakt.html">Kontakt</a></nav></details></div></div></header>
 <main>
 <div class="masthead"><a href="../index.html">Paradisavisa</a></div>
-<article class="story" aria-labelledby="artikkeltittel">
-<h1 id="artikkeltittel" class="sr-only">Når noen ber om hjelp, skal de få hjelp</h1>
+<article class="story av-artikkel" aria-labelledby="artikkeltittel">
+<h1 id="artikkeltittel">Når noen ber om hjelp, skal de få hjelp</h1><p class="av-artikkel-meta">Kommentar · Paradisavisa · <time datetime="2026-11-02">Publisert 2. november 2026</time> · Oppdatert 12. november</p>
 <p>Vi lever i et samfunn som har ressurser til å sørge for at alle får dekket sine grunnleggende behov. Det bør også være utgangspunktet for hvordan NAV fungerer.</p>
 <p>Når noen ber om økonomisk hjelp, skal de få hjelp. De skal ikke måtte kjenne til alle støtteordningene, fylle ut en rekke søknader eller gjentatte ganger dokumentere hvorfor de trenger penger.</p>
 <p>Det bør være tilstrekkelig å opplyse om hvor mye man har på konto, faste inntekter og nødvendige utgifter. NAV skal deretter selv finne ut hva personen har rett på, og sørge for at vedkommende får all støtten som skal gis.</p>
-<p>Det er NAV som skal kjenne regelverket, ikke brukerne.</p>
-<figure><img src="../Bilder/nav-satire-skopuss.jpg" alt="Satirisk tegning der NAV-brukere må pusse skoene til saksbehandlere i et kontor. En allegori over maktubalanse, ikke en faktisk hendelse." width="1280" height="853" loading="lazy"><figcaption style="color:#a8abad;font-size:.77em;line-height:1.45;margin-top:.55rem">Satirisk illustrasjon om opplevd maktubalanse og utrygghet. Motivet skildrer ikke en virkelig hendelse ved NAV.</figcaption></figure><p>Vi bør organisere samfunnet slik at behovet for tvang, overvåkning, trusler og økonomiske sanksjoner blir så lite som mulig. Mennesker som trenger hjelp, skal ikke møtes som om de i utgangspunktet er mistenkelige. Vi er et generøst samfunn, og det skal også komme til uttrykk i måten vi behandler hverandre på.</p>
+<p>Det er NAV som skal kjenne regelverket, ikke brukerne.</p><p class="av-fakta-note"><strong>Rett og forslag:</strong> Alle har rett til å søke om økonomisk sosialhjelp og få <a href="https://www.nav.no/okonomisk-sosialhjelp" rel="noopener noreferrer">individuell vurdering</a>. Men dagens system gir ikke automatisk den foreslåtte støtten uten søknad. Etter <a href="https://lovdata.no/dokument/NL/lov/2009-12-18-131/%C2%A717" rel="noopener noreferrer">sosialtjenesteloven § 18</a> har den som ikke kan sørge for sitt livsopphold, og oppfyller vilkårene, rett til økonomisk stønad. Den automatiserte modellen under er Paradisavisas standpunkt, ikke gjeldende NAV-praksis.</p>
+<figure><img src="../Bilder/nav-satire-skopuss.jpg" alt="Satirisk tegning der NAV-brukere må pusse skoene til saksbehandlere i et kontor. En allegori over maktubalanse, ikke en faktisk hendelse." width="1280" height="853" loading="lazy"><figcaption style="color:#a8abad;font-size:.77em;line-height:1.45;margin-top:.55rem">Satirisk illustrasjon om opplevd maktubalanse og utrygghet. Motivet skildrer ikke en virkelig hendelse ved NAV.</figcaption></figure><figure class="av-graf" aria-labelledby="nav-soknad-tittel">
+<h2 id="nav-soknad-tittel">To måter å organisere økonomisk hjelp på</h2>
+<img src="../Bilder/Artikler/2026-11-12-nav-dagens-ordning-vs-forslag.svg" width="960" height="700" loading="lazy" decoding="async" alt="Øverst dagens system med søknad, opplysninger, individuell vurdering, vedtak og klage. Nederst Paradisavisas ikke-vedtatte forslag med enklere kontakt, gjenbruk av informasjon, nødvendig hjelp raskere og målrettet etterkontroll.">
+<div class="av-graf-kontroller"><a class="av-zoom-knapp" data-av-zoom href="../Bilder/Artikler/2026-11-12-nav-dagens-ordning-vs-forslag.svg" aria-label="Forstørr sammenligningen mellom dagens NAV-ordning og Paradisavisas forslag">Forstørr</a></div>
+<figcaption>Redaksjonell prinsippskisse. Den første rekken bygger på <a href="https://www.nav.no/okonomisk-sosialhjelp" rel="noopener noreferrer">NAVs søknadsveiledning</a>; nederste rekke er en <strong>politisk foreslått endring</strong>, ikke en beskrivelse av hva NAV gjør nå. I nødsituasjoner skal NAV svare raskt, jf. <a href="https://www.nav.no/ikke-penger" rel="noopener noreferrer">NAVs nødveiledning</a>.</figcaption>
+</figure><p>Vi bør organisere samfunnet slik at behovet for tvang, overvåkning, trusler og økonomiske sanksjoner blir så lite som mulig. Mennesker som trenger hjelp, skal ikke møtes som om de i utgangspunktet er mistenkelige. Vi er et generøst samfunn, og det skal også komme til uttrykk i måten vi behandler hverandre på.</p>
 <p>For mange innebærer kontakten med NAV stor nervøsitet. De vet ikke hva de får, når pengene kommer, eller om en saksbehandler vil godkjenne det de trenger. Denne usikkerheten kan prege hele hverdagen, særlig for mennesker som allerede sliter med sykdom, dårlig økonomi eller psykiske belastninger.</p>
 <p>Dette påvirker også de ansatte. Det er krevende å ha ansvar for avgjørelser som kan få så store konsekvenser for andre menneskers liv. Med automatiske beregninger og faste rettigheter trenger ikke ansatte å sitte med den samme personlige belastningen ved hver enkelt utbetaling.</p>
-<p>NAV bør i størst mulig grad beregne og utbetale støtten automatisk. Nødvendig kontroll kan skje i etterkant, og bare når det finnes et reelt behov for den. Opplysninger som allerede finnes i offentlige registre, bør ikke kreves inn på nytt fra brukerne.</p>
-<p>Gi først, spør siden. Det betyr ikke at opplysninger aldri skal kontrolleres, men at mennesker ikke skal måtte gjennom omfattende kontroll for å få dekket grunnleggende behov.</p>
-<p>Langtidsmottakere av sosialhjelp og uføretrygdede bør få faste ekstrautbetalinger til ferie, jul, transport, klær, husholdningsartikler, møbler og hvitevarer. Nødvendig strøm og oppvarming skal dekkes. Dette er vanlige behov som oppstår gjennom et år, og som ikke skal kreve nye søknader hver gang.</p>
-<p>I et samfunn der grunnleggende behov dekkes gratis for dem som trenger det, blir også mye av dagens behovsprøving og saksbehandling overflødig.</p>
+<figure class="av-graf" aria-labelledby="nav-paragrafer-tittel">
+<h2 id="nav-paragrafer-tittel">Hva gir sosialtjenesteloven rett til?</h2>
+<img src="../Bilder/Artikler/2026-11-12-nav-loven-paragrafene-17-20.svg" width="960" height="630" loading="lazy" decoding="async" alt="Sosialtjenesteloven paragraf 17 gjelder råd, 18 stønad til livsopphold når vilkårene er oppfylt, 19 hjelp i særlige tilfeller, 20 adgang til lovlige vilkår. Dette innebærer ikke universell rett til alle foreslåtte faste tillegg.">
+<div class="av-graf-kontroller"><a class="av-zoom-knapp" data-av-zoom href="../Bilder/Artikler/2026-11-12-nav-loven-paragrafene-17-20.svg" aria-label="Forstørr oversikten over sosialtjenesteloven paragraf 17 til 20">Forstørr</a></div>
+<figcaption>Fire eksisterende bestemmelser – ikke fire nye støtteordninger. Les ordlyden i <a href="https://lovdata.no/dokument/NL/lov/2009-12-18-131/%C2%A717" rel="noopener noreferrer">sosialtjenesteloven §§ 17–20</a>. Kommunal sosialhjelp bygger på konkrete, individuelle vurderinger.</figcaption>
+</figure><p>NAV bør i størst mulig grad beregne og utbetale støtten automatisk. Nødvendig kontroll kan skje i etterkant, og bare når det finnes et reelt behov for den. Opplysninger som allerede finnes i offentlige registre, bør ikke kreves inn på nytt fra brukerne.</p>
+<section class="av-modul" data-av-explainer aria-labelledby="nav-praksis-vs-forslag">
+<h2 id="nav-praksis-vs-forslag">Fire avgjørelser som må tas i en ny ordning</h2>
+<p class="av-modul-intro">Dette er eksempler på krav til å utvikle Paradisavisas modell. Det er ikke en automatisk ytelseskalkulator eller en bindende vurdering av rettigheter.</p>
+<div class="av-forklaring-kart" role="group" aria-label="Velg et hensyn i foreslått NAV-modell">
+<button type="button" data-av-step="søknad">1. Kontakt</button>
+<button type="button" data-av-step="data">2. Opplysninger</button>
+<button type="button" data-av-step="nød">3. Hastesak</button>
+<button type="button" data-av-step="rettssikkerhet">4. Rettssikkerhet</button>
+</div>
+<div class="av-forklaring-panel" data-av-panel="søknad"><strong>Én enklere inngang.</strong> Forslaget er at brukeren skal slippe å identifisere riktig støtteordning selv. NAV må likevel ha nok informasjon til å ta en riktig beslutning.</div>
+<div class="av-forklaring-panel" data-av-panel="data"><strong>Bruk opplysninger som finnes, men beskytt privatlivet.</strong> Datadeling forutsetter gyldig rettslig grunnlag, dataminimering, korreksjonsmuligheter og god sikkerhet. Det finnes ikke frie hjemler til å hente alle private data automatisk.</div>
+<div class="av-forklaring-panel" data-av-panel="nød"><strong>Rask behandling når det haster.</strong> NAV sier allerede at søknader i nødssituasjoner skal få raskt svar. Paradisavisa foreslår et system som oppdager og løser nødvendige behov enda mer proaktivt.</div>
+<div class="av-forklaring-panel" data-av-panel="rettssikkerhet"><strong>Individuell vurdering og klage må bestå.</strong> Automatisering må ikke fjerne adgangen til begrunnelse, menneskelig vurdering ved behov eller reell klagemulighet.</div>
+<p class="av-modul-kilde">Kilder om dagens ordning: <a href="https://www.nav.no/okonomisk-sosialhjelp" rel="noopener noreferrer">NAVs veiledning</a> og <a href="https://www.nav.no/samarbeidspartner/tolkning-sosialtjenesteloven" rel="noopener noreferrer">NAVs rundskriv</a>. Alternativene over er redaksjonelle forslag.</p>
+</section><p>Gi først, spør siden. Det betyr ikke at opplysninger aldri skal kontrolleres, men at mennesker ikke skal måtte gjennom omfattende kontroll for å få dekket grunnleggende behov.</p>
+<details class="av-infoboks"><summary>Har man allerede rett til å få økonomisk hjelp i en nødssituasjon?</summary>
+<div class="av-infoboks-innhold"><p><strong>Du har rett til å søke og få situasjonen vurdert raskt.</strong> NAV oppgir at nødhjelp kan dekke helt nødvendige utgifter i en kort periode, for eksempel mat og utgifter som må betales for å unngå at strømmen stenges. Det er ikke det samme som at enhver ønsket utbetaling skjer automatisk uten dokumentasjon eller vurdering.</p><p>Ved akutt behov opplyser <a href="https://www.nav.no/ikke-penger" rel="noopener noreferrer">NAV at du bør kontakte NAV-kontoret i kommunen der du oppholder deg</a>. En vanlig søknad gir skriftlig vedtak og mulighet til å klage. Paradisavisas forslag om «gi først, spør siden» krever endringer og klare rettssikkerhetsregler.</p></div>
+</details><p>Langtidsmottakere av sosialhjelp og uføretrygdede bør få faste ekstrautbetalinger til ferie, jul, transport, klær, husholdningsartikler, møbler og hvitevarer. Nødvendig strøm og oppvarming skal dekkes. Dette er vanlige behov som oppstår gjennom et år, og som ikke skal kreve nye søknader hver gang.</p>
+<p class="av-fakta-note"><strong>Det er en politisk målsetting, ikke en nåværende generell ytelse:</strong> Faste tillegg til ferie, jul, transport, møbler og hvitevarer finnes ikke som én automatisk nasjonal rett for alle sosialhjelpsmottakere og uføretrygdede slik kommentaren foreslår. Kommunen vurderer økonomisk sosialhjelp ut fra livssituasjon og konkrete behov. <a href="https://www.nav.no/okonomisk-sosialhjelp" rel="noopener noreferrer">NAV: økonomisk sosialhjelp</a> · <a href="https://lovdata.no/dokument/NL/lov/2009-12-18-131/%C2%A717" rel="noopener noreferrer">Lovdata: §§ 18–19</a>.</p><p>I et samfunn der grunnleggende behov dekkes gratis for dem som trenger det, blir også mye av dagens behovsprøving og saksbehandling overflødig.</p>
 <p>Når basissystemet er på plass, vil mange av sakene som i dag havner hos NAV, rett og slett falle bort. Folk vil ikke lenger behøve å søke om hjelp til hver eneste nødvendige utgift, fordi disse behovene allerede er ivaretatt.</p>
 <p>Det vil spare mye arbeid med søknader, innhenting av dokumentasjon, telefoner, purringer, klager, nye vurderinger og akutte nødhjelpssaker. Ansatte kan konsentrere seg om situasjoner som faktisk krever individuell hjelp, fremfor å bruke tiden på å kontrollere ordinære og forutsigbare behov.</p>
 <p>Samtidig vil mange mennesker slippe den psykiske belastningen ved stadig å måtte forklare, dokumentere og forsvare sin økonomiske situasjon. Økonomisk trygghet gir mennesker større mulighet til å ta vare på helsen sin, familien og sitt eget liv.</p>
@@ -48,8 +108,30 @@ nav a{color:#d0dfdf;text-underline-offset:4px;font-size:15px}.sr-only{position:a
 <p>Et godt samfunn trenger ikke gjøre mennesker redde for å be om hjelp. Det trenger heller ikke kontrollere alle sider av menneskers privatøkonomi for å sikre at grunnleggende behov blir dekket.</p>
 <p>Når samfunnet sørger for at alle har det nødvendige, reduseres også behovet for kontroll, sanksjoner og stadig nye økonomiske vurderinger.</p>
 <p>NAVs oppgave bør være å sørge for at rettighetene blir oppfylt. Mennesker skal få den hjelpen de trenger, med minst mulig innblanding i privatlivet og størst mulig frihet til å leve sine egne liv.</p>
-</article>
+<section class="av-modul av-poll" data-av-poll="nav-hjelp-trygghet-2026" aria-labelledby="nav-poll-tittel">
+<h2 id="nav-poll-tittel">Hva bør endres først i møtet med NAV?</h2>
+<p class="av-modul-intro">Frivillig leserspørsmål, ikke en representativ undersøkelse. Bare ditt eget svar lagres lokalt. Ingen fellestall eller prosenter vises.</p>
+<p data-av-poll-js-required class="av-modul-kilde">Avstemningen trenger JavaScript og sender ikke svaret til en server.</p>
+<form hidden><fieldset><legend>Velg én prioritering</legend>
+<label><input type="radio" name="choice" value="enkelt"><span>Færre søknader og mindre gjentatt dokumentasjon</span></label>
+<label><input type="radio" name="choice" value="nodhjelp"><span>Raskere hjelp i akutte situasjoner</span></label>
+<label><input type="radio" name="choice" value="personvern"><span>Mer personvern og tydeligere rettssikkerhet</span></label>
+<label><input type="radio" name="choice" value="grunnbehov"><span>Mer automatisk dekning av grunnleggende behov</span></label>
+<label><input type="radio" name="choice" value="usikker"><span>Jeg er usikker</span></label>
+</fieldset><p data-av-poll-error role="alert"></p><button type="submit" class="av-interaksjon-btn">Vis mitt svar</button></form>
+<div class="av-poll-svar" data-av-poll-result hidden role="status" aria-live="polite"><p>Du valgte: <strong data-av-poll-choice></strong></p><p>Dette viser bare ditt eget svar.</p><button type="button" class="av-interaksjon-btn av-interaksjon-btn--sekundaer" data-av-poll-change>Endre svaret</button></div>
+</section>
+<section class="av-kilder-samlet" aria-labelledby="nav-kilder-tittel">
+<h2 id="nav-kilder-tittel">Kilder og hva som er kommentar</h2>
+<ul>
+<li><a href="https://www.nav.no/okonomisk-sosialhjelp" rel="noopener noreferrer">NAV: økonomisk sosialhjelp</a> – søknad, dokumentasjon, individuell behandling, vedtaksbrev og klage.</li>
+<li><a href="https://www.nav.no/ikke-penger" rel="noopener noreferrer">NAV: Har ikke penger til mat, bolig eller andre utgifter</a> – nødhjelp og rask behandling.</li>
+<li><a href="https://lovdata.no/dokument/NL/lov/2009-12-18-131/%C2%A717" rel="noopener noreferrer">Sosialtjenesteloven §§ 17–20</a> – veiledning, stønad, særskilte tilfeller og vilkår.</li>
+<li><a href="https://www.nav.no/samarbeidspartner/tolkning-sosialtjenesteloven" rel="noopener noreferrer">NAV: Rundskriv og tolkning av sosialtjenesteloven</a> – skillet mellom dokumentasjonskrav og vilkår.</li>
+</ul>
+<p>Dette er en meningsartikkel. Paradisavisas forslag om en langt mer automatisk og tillitsbasert velferdsordning er et normativt standpunkt. Den er ikke en veiledning om hvilke enkeltytelser en leser faktisk har krav på.</p>
+</section></article>
 <div class="signature">Paradisavisa</div>
 <nav aria-label="Tilbake"><a href="../index.html#kommentarer">Tilbake til kommentarer</a></nav>
-</main><script defer src="../artikkel-header.js?v=20261112"></script>
+</main><dialog id="av-zoom-dialog" class="av-zoom-dialog" aria-label="Forstørret NAV-forklaring"><button type="button" data-av-zoom-close>Lukk ×</button><img data-av-zoom-image alt=""><p data-av-zoom-caption></p></dialog><script defer src="../artikkel-header.js?v=20261112"></script><script defer src="../artikkel-interaktiv.js"></script>
 </body></html>
