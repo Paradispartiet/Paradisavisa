@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Redaksjonell vektorillustrasjon av T-bane foran avsperret plattform">
-<defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#17243a"/><stop offset="1" stop-color="#070c14"/></linearGradient><linearGradient id="train" x2="0" y2="1"><stop stop-color="#eef1f1"/><stop offset="1" stop-color="#9caeb3"/></linearGradient></defs>
-<rect width="1600" height="900" fill="url(#bg)"/><path d="M0 580 1600 580M0 650 1600 650" stroke="#4b586b" stroke-width="8"/><path d="M0 780H1600M0 800H1600" stroke="#9299a3" stroke-width="10"/>
-<path d="M350 115h900" stroke="#d2dfdc" stroke-width="9"/><rect x="480" y="150" width="640" height="570" rx="100" fill="url(#train)" stroke="#e7edec" stroke-width="12"/>
-<rect x="530" y="245" width="540" height="240" rx="35" fill="#0b2035"/><path d="M800 245v240" stroke="#557085" stroke-width="9"/><rect x="565" y="518" width="470" height="70" rx="20" fill="#d01e2f"/>
-<circle cx="555" cy="655" r="31" fill="#fff3b2"/><circle cx="1045" cy="655" r="31" fill="#fff3b2"/><path d="M570 716l-90 110M1030 716l90 110" stroke="#75808c" stroke-width="24"/>
-<path d="M0 625 1600 785M0 785 1600 625" stroke="#efc84b" stroke-width="29" opacity=".92"/><path d="M0 625 1600 785M0 785 1600 625" stroke="#191919" stroke-width="6" stroke-dasharray="44 24"/>
-<rect x="75" y="72" width="370" height="65" fill="#f2c442" rx="10"/><text x="260" y="116" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="32" fill="#101824" text-anchor="middle">T-BANEN I OSLO</text>
-<text x="800" y="861" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="32" fill="#e5e7e9" text-anchor="middle">REDAKSJONELL ILLUSTRASJON — IKKE DOKUMENTARFOTO</text></svg>
