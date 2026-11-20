@@ -1,5 +1,23 @@
 [
   {
+    "id": "notis-tbanestenging-oslo-20261120",
+    "category": "Samferdsel",
+    "title": "Nesten hele T-banen stengt i Oslo",
+    "text": "Fra torsdag 19. til søndag 22. november er 63 av Oslos 101 T-banestasjoner stengt for testing av nytt signalsystem. Ekstra busser og trikker settes inn, men kan ikke erstatte hele kapasiteten. Statens vegvesen ber bilister vurdere om de må kjøre.",
+    "date": "2026-11-20",
+    "url": "https://www.vegvesen.no/nn/om-oss/presse/aktuelt/2026/11/t-banen-stenger-19.-22.-november-vurder-om-du-ma-kjore-bil-i-oslo",
+    "geografi": "innenriks"
+  },
+  {
+    "id": "notis-stian-solberg-nhl-debut-20261120",
+    "category": "Sport",
+    "title": "Stian Solberg debuterte i NHL",
+    "text": "Stian Solberg (20) spilte sin første NHL-kamp for Anaheim Ducks da laget tapte 0–4 mot Colorado Avalanche torsdag kveld. Den norske backen fikk 18 minutter og 23 sekunder på isen og blokkerte fem skudd, flest på Anaheim-laget.",
+    "date": "2026-11-20",
+    "url": "https://www.hockey.com/news/solberg-plays-18-23-in-nhl-debut-for-ducks-kv10f7",
+    "geografi": "innenriks"
+  },
+  {
     "id": "notis-hermes-innbrudd-oslo-20261116",
     "category": "Kriminalitet",
     "title": "Tyver rygget bil inn i Hermès i Oslo",
