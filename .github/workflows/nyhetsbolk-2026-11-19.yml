@@ -1,0 +1,25 @@
+name: Kontroller nyhetsbolk 19. november
+on:
+  pull_request:
+    paths:
+      - 'utkast/2026-11-19/**'
+      - 'utkast/artikler.json'
+      - 'scripts/nyhetsbolk-2026-11-19.test.cjs'
+      - 'scripts/pr199_import_images.py'
+      - '.github/workflows/pr199-image-import.yml'
+      - '.github/workflows/nyhetsbolk-2026-11-19.yml'
+  push:
+    branches:
+      - 'redaksjon/nyhetsbolk-2026-11-19-stormakter-ki-budsjett'
+jobs:
+  utkast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Kontroller Python-importør uten å overføre bilder
+        run: python3 -m py_compile scripts/pr199_import_images.py
+      - name: Test kun de tre nyhetsutkastene
+        run: node --test scripts/nyhetsbolk-2026-11-19.test.cjs

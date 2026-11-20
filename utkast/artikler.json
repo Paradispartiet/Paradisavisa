@@ -4,6 +4,45 @@
   "oppdatert": "2026-11-12",
   "artikler": [
     {
+      "id": "hoyre-budsjett-frp-maling",
+      "tittel": "Høyre vil omprioritere 42,3 milliarder – mens Frp leder klart",
+      "kategori": "Innenriks · Politikk",
+      "geografi": "innenriks",
+      "artikkel": "utkast/2026-11-19/hoyre-budsjett-frp-maling.html",
+      "bilde": "utkast/2026-11-19/bilder/hoyre-budsjett-frp-maling-hovedbilde.webp",
+      "registrert": "2026-11-19",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "anthropic-rekordnotering",
+      "tittel": "Anthropic får rekordverdi på børsen – men KI-boomen møter tvil",
+      "kategori": "Utenriks · Teknologi og økonomi",
+      "geografi": "utenriks",
+      "artikkel": "utkast/2026-11-19/anthropic-rekordnotering.html",
+      "bilde": "utkast/2026-11-19/bilder/anthropic-rekordnotering-hovedbilde.webp",
+      "registrert": "2026-11-19",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
+      "id": "stormaktene-fredserklaering",
+      "tittel": "Stormaktene lover fred – men Ukraina står uten løsning",
+      "kategori": "Utenriks",
+      "geografi": "utenriks",
+      "artikkel": "utkast/2026-11-19/stormaktene-fredserklaering.html",
+      "bilde": "utkast/2026-11-19/bilder/stormaktene-fredserklaering-hovedbilde.webp",
+      "registrert": "2026-11-19",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
+    {
       "id": "boligopproret-spania-20261112",
       "tittel": "Boligopprøret: Når lønnen ikke rekker til husleien",
       "kategori": "Nyheter – verden og samfunn",

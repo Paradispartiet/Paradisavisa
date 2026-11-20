@@ -1,0 +1,44 @@
+name: PR199 – importer godkjent bildepakke
+on:
+  push:
+    branches:
+      - redaksjon/nyhetsbolk-2026-11-19-stormakter-ki-budsjett
+    paths:
+      - redaksjon/incoming/PR199_Paradisavisa_bilder_2026-11-20.zip
+
+permissions:
+  contents: read
+
+jobs:
+  importer:
+    if: github.ref == 'refs/heads/redaksjon/nyhetsbolk-2026-11-19-stormakter-ki-budsjett'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: redaksjon/nyhetsbolk-2026-11-19-stormakter-ki-budsjett
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verifiser ZIP og oppdater kun tre redaksjonelle utkast
+        run: python scripts/pr199_import_images.py
+      - name: Målrettet kvalitetssjekk uten full avisregresjon
+        run: |
+          node scripts/valider-artikler.cjs
+          node --test scripts/nyhetsbolk-2026-11-19.test.cjs
+      - name: Lagre seks bilder og tre endrede utkast på PR-grenen
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- utkast/2026-11-19 utkast/artikler.json
+          git rm -- redaksjon/incoming/PR199_Paradisavisa_bilder_2026-11-20.zip
+          git diff --cached --quiet && { echo "Ingen bildeforskjeller"; exit 0; }
+          git commit -m "assets: importer seks verifiserte WebP-bilder til tre utkast i PR199"
+          git push origin HEAD:refs/heads/redaksjon/nyhetsbolk-2026-11-19-stormakter-ki-budsjett
