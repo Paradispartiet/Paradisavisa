@@ -1,4 +1,4 @@
-name: PR201 image import (one-off)
+name: PR201 promote approved image (one-off)
 on:
   push:
     branches:
@@ -8,46 +8,29 @@ on:
 permissions:
   contents: write
 jobs:
-  import-illustration:
+  copy-image:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - name: Import verified image
-        env:
-          IMAGE_URL: "https://dnznrvs05pmza.cloudfront.net/gemini/gemini-nano-banana-2.1/images/e217704d-d5cc-4588-9ed7-3e83f86536d6/4dc2816c-da85-46a8-b9fd-77087f56e473/One_standalone_16_9_high_resolution_editorial_illustration_f.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMjJiYzk4YWZhYTA4ZDQwOCIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NTMyMjc5OX0.fznbqW-JCMLEDzyFPhkjLPNPqfMndLOQdPbggf_N0vI"
+      - name: Copy approved WebP to public article assets
         run: |
           set -euo pipefail
-          mkdir -p /tmp/pa201
-          curl -fL --retry 3 --max-time 60 --silent --show-error "$IMAGE_URL" -o /tmp/pa201/source.png
-          python -m pip -q install Pillow
+          source='utkast/2026-11-20/bilder/gutter-menn-likestilling-hovedbilde.webp'
+          target='Bilder/Artikler/2026-11-20-likestilling-gutter-og-menn.webp'
+          test -s "$source"
+          mkdir -p Bilder/Artikler
+          cp "$source" "$target"
+          cmp "$source" "$target"
           python - <<'PY'
-          import os, hashlib
-          from PIL import Image,ImageOps
-          path="/tmp/pa201/source.png"
-          with open(path,"rb") as f: magic=f.read(8)
-          if magic != bytes.fromhex("89504e470d0a1a0a"):
-              raise SystemExit("Not a PNG")
-          with Image.open(path) as im:
-              im.load()
-              if im.width < 1400 or im.height < 700 or abs(im.width/im.height-16/9)>0.18:
-                  raise SystemExit(f"Unexpected dimensions: {im.size}")
-              im=ImageOps.exif_transpose(im).convert("RGB")
-              im.thumbnail((2048,1152),Image.Resampling.LANCZOS)
-              out="utkast/2026-11-20/bilder/gutter-menn-likestilling-hovedbilde.webp"
-              im.save(out,"WEBP",quality=88,method=6)
-              thumb=ImageOps.fit(im,(512,288),method=Image.Resampling.LANCZOS)
-              thumb.save("utkast/2026-11-20/bilder/gutter-menn-likestilling-miniatyr.webp","WEBP",quality=86,method=6)
-              print(f"Source: {im.width}x{im.height}; output bytes: {os.path.getsize(out)}")
-          for x in [out,"utkast/2026-11-20/bilder/gutter-menn-likestilling-miniatyr.webp"]:
-              print(x,hashlib.sha256(open(x,"rb").read()).hexdigest())
+          from pathlib import Path
+          b=Path("Bilder/Artikler/2026-11-20-likestilling-gutter-og-menn.webp").read_bytes()
+          assert len(b)>10000 and b[:4]==b"RIFF" and b[8:12]==b"WEBP"
+          print("Public WebP validated:",len(b))
           PY
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add utkast/2026-11-20/bilder/gutter-menn-likestilling-*.webp
-          git diff --cached --quiet || (git commit -m 'Import unique editorial illustration for equality article' && git push)
+          git add "$target"
+          git diff --cached --quiet || (git commit -m 'Add final equality article image to public assets' && git push)
