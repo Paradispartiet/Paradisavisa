@@ -1,8 +1,21 @@
 {
   "arbeidsflyt": "fortlopende",
   "beskrivelse": "Hver artikkel behandles og publiseres enkeltvis når den er faktakontrollert og godkjent. Datoen registrert angir arbeidsmappen, ikke publiseringsdato eller utgave.",
-  "oppdatert": "2026-11-12",
+  "oppdatert": "2026-11-20",
   "artikler": [
+    {
+      "id": "likestilling-gutter-og-menn-20261120",
+      "tittel": "Regjeringen vil gi gutter og menn større plass i likestillingspolitikken",
+      "kategori": "Innenriks · Politikk og likestilling",
+      "geografi": "innenriks",
+      "artikkel": "utkast/2026-11-20/likestilling-gutter-og-menn.html",
+      "bilde": "utkast/2026-11-20/bilder/gutter-menn-likestilling-illustrasjon.svg",
+      "registrert": "2026-11-20",
+      "status": "utkast",
+      "faktasjekk": "kreves",
+      "godkjent": false,
+      "publisert": false
+    },
     {
       "id": "boligopproret-spania-20261112",
       "tittel": "Boligopprøret: Når lønnen ikke rekker til husleien",
