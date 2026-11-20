@@ -21,10 +21,10 @@ Fullstendige kontrollsummer, dimensjoner, alt-tekst og bildetekster ligger i `ma
 - **Høyre:** Illustrert person på blå Høyre-bakgrunn med dokument merket «Alternativt statsbudsjett 2027». Bildetekst: *KI-generert redaksjonell illustrasjon av budsjettdebatten. Ikke foto fra budsjettpresentasjonen.* Unngå å navngi personen som et konkret portrett uten verifisert identitet.
 
 ## Integrasjon når bildefilene er tilgjengelige i GitHub
-1. Last opp de seks WebP-filene **uendret** fra ZIP til `Bilder/Artikler/` på **den eksisterende PR #199-grenen**. Ikke legg dem bare inn i nye utkastmapper. Kontroller full SHA-256 mot `manifest.json`.
-2. Erstatt midlertidig `<img src="bilder/<slug>.svg">` i hver av de tre HTML-filene med `../../Bilder/Artikler/<slug>-hovedbilde.webp`; behold korrekt `alt`, 1600 × 900 og presis bildetekst. Utkastfilen er fortsatt `noindex`.
-3. Oppdater `utkast/artikler.json` til faktisk ny bildebane hvis den tilhørende original-skissen ikke lenger er kanonisk. Ikke fjern gamle filer ukritisk. Legg inn endelige Open Graph/Twitter-bildelenker først når publicering faktisk skjer.
-4. Kjør `node scripts/valider-artikler.cjs` og `node --test scripts/nyhetsbolk-2026-11-19.test.cjs`, helst én avgrenset nettleserkontroll av disse tre artikkelsidene. Ikke krev full visuell forside-regresjon for et rent bildefilbytte i et upublisert utkast.
+1. Last opp de tre WebP-hovedbildene **uendret** fra ZIP til `utkast/2026-11-19/bilder/` i **den eksisterende PR #199-grenen**. Miniatyrene kan ligge samme sted. Kontroller full SHA-256 mot `manifest.json`.
+2. Erstatt midlertidig `<img src="bilder/<slug>.svg">` i hver av de tre HTML-filene med `bilder/<slug>-hovedbilde.webp`; behold korrekt `alt`, 1600 × 900 og presis bildetekst. Utkastfilen er fortsatt `noindex`.
+3. Oppdater `utkast/artikler.json` til `utkast/2026-11-19/bilder/<slug>-hovedbilde.webp`. Ved faktisk publisering kopieres godkjente bilder til `Bilder/Artikler/` og artikkelens offentlige bildebane, Open Graph og Twitter-bilde oppdateres. Det eksisterende `scripts/publiser-artikkel.cjs` støtter foreløpig bare SVG; bruk ikke dette skriptet for WebP-artikler uten egen justering og test.
+4. Kjør `node scripts/valider-artikler.cjs` og `node --test scripts/nyhetsbolk-2026-11-19.test.cjs`, helst én avgrenset nettleserkontroll av disse tre artikkelsidene. Begge kontrollene støtter WebP i utkastmappen. Ikke krev full visuell forside-regresjon for et rent bildefilbytte i et upublisert utkast.
 5. Kontroller kildene på nytt **samme dag som publisering** og godkjenn hver artikkel separat etter `REDAKSJONSPLAN.md`. Oppdater kun riktig nyhetshjul. Først etter offentlig publisering klargjøres og sendes Instagram/X etter den eksisterende SoMe-rutinen.
 
 ## SoMe-tekster (foreløpige, ikke sendt)
