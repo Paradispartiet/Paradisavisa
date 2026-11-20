@@ -17,9 +17,9 @@ test("Tre individuelle kilderike nyhetsutkast i eksisterende redaksjonell kø", 
     assert.equal(item.publisert, false);
     assert.notEqual(item.faktasjekk, "godkjent");
     assert.match(item.artikkel, /^utkast\/2026-11-19\/[a-z0-9-]+\.html$/);
-    assert.match(item.bilde, /^utkast\/2026-11-19\/bilder\/[a-z0-9-]+\.svg$/);
+    assert.match(item.bilde, /^utkast\/2026-11-19\/bilder\/[a-z0-9-]+\.(?:svg|webp)$/);
     const html = fs.readFileSync(path.join(root, item.artikkel), "utf8");
-    const svg = fs.readFileSync(path.join(root, item.bilde), "utf8");
+    const image = fs.readFileSync(path.join(root, item.bilde));
     assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
     assert.match(html, /REDAKSJONELT UTKAST – IKKE PUBLISERT/);
     assert.equal((html.match(/<h1\b/g) || []).length, 1);
@@ -27,9 +27,16 @@ test("Tre individuelle kilderike nyhetsutkast i eksisterende redaksjonell kø", 
     assert.match(html, /<details class="pa-menu">/);
     assert.match(html, /Kilder og dokumentasjon/);
     assert.ok((html.match(/class="av-kilde-note"/g) || []).length >= 3, "Få kildenoter i " + id);
-    assert.match(html, new RegExp('src="bilder/' + id + '\\.svg"'));
-    assert.match(svg, /^<svg\b/);
-    assert.match(svg.trim(), /<\/svg>$/);
+    assert.match(html, new RegExp('src="bilder/' + path.basename(item.bilde).replace(/[.*+?^${}()|[\]\\]/g, '\\assert.match(html, new RegExp('src="bilder/' + id + '\\.svg"'));') + '"'));
+    if (item.bilde.endsWith(".svg")) {
+      const svg = image.toString("utf8");
+      assert.match(svg, /^<svg\b/);
+      assert.match(svg.trim(), /<\/svg>$/);
+    } else {
+      assert.ok(image.length > 4000, "WebP-bildet er for lite: " + id);
+      assert.equal(image.toString("ascii", 0, 4), "RIFF");
+      assert.equal(image.toString("ascii", 8, 12), "WEBP");
+    }
     assert.ok(!html.includes('content="index, follow"'));
     for (const feed of feeds) {
       const items = JSON.parse(fs.readFileSync(path.join(root, feed), "utf8"));
