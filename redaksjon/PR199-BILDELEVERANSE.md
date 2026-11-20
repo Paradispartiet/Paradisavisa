@@ -20,7 +20,19 @@ Fullstendige kontrollsummer, dimensjoner, alt-tekst og bildetekster ligger i `ma
 - **Anthropic:** Kontrast mellom klassisk børsarkitektur og serverrom bak glass i storbylandskap. Bildetekst: *KI-generert redaksjonell illustrasjon om finans og KI-infrastruktur. Ikke foto av Anthropics børsnotering.*
 - **Høyre:** Illustrert person på blå Høyre-bakgrunn med dokument merket «Alternativt statsbudsjett 2027». Bildetekst: *KI-generert redaksjonell illustrasjon av budsjettdebatten. Ikke foto fra budsjettpresentasjonen.* Unngå å navngi personen som et konkret portrett uten verifisert identitet.
 
-## Integrasjon når bildefilene er tilgjengelige i GitHub
+## Automatisk bildeimport fra iPad (foretrukket)
+Bildepakken leveres som **én uendret ZIP-fil**, ikke seks enkeltfiler. Den lokale importtesten er bestått med den faktiske pakken.
+
+1. Last ned `PR199_Paradisavisa_bilder_2026-11-20.zip` fra den tilhørende ChatGPT-samtalen.
+2. Åpne `redaksjon/incoming/` i den **eksisterende PR #199-grenen**, velg GitHubs «Add file» → «Upload files», og last opp ZIP-filen med nøyaktig dette navnet.
+3. Velg **Commit directly to the redaksjon/nyhetsbolk-2026-11-19-stormakter-ki-budsjett branch**, ikke `main`.
+4. GitHub Actions-jobben **PR199 – importer godkjent bildepakke** kontrollerer ZIP SHA-256 `3be1ba5f888566fbcf7d521e5eb71e6311669c63f766694229c482c4b9f1c94d`, alle seks bildefiler, bildetekstene, HTML-strukturen og redaksjonelle utkast-sperrer. Ved grønn kontroll legger jobben bildene og HTML-endringene inn i PR #199 og fjerner ZIP-filen fra den nye committen.
+5. Ingen produksjonspublisering eller SoMe-utsending skjer. Artiklene forblir `noindex`, `status=utkast`, `godkjent=false` og `publisert=false`.
+
+Importkode: `scripts/pr199_import_images.py`. GitHub-jobb: `.github/workflows/pr199-image-import.yml`.
+Mottaksmappe: `redaksjon/incoming/README.md`.
+
+## Manuell reserve hvis Github Actions ikke kan skrive til PR-grenen
 1. Last opp de tre WebP-hovedbildene **uendret** fra ZIP til `utkast/2026-11-19/bilder/` i **den eksisterende PR #199-grenen**. Miniatyrene kan ligge samme sted. Kontroller full SHA-256 mot `manifest.json`.
 2. Erstatt midlertidig `<img src="bilder/<slug>.svg">` i hver av de tre HTML-filene med `bilder/<slug>-hovedbilde.webp`; behold korrekt `alt`, 1600 × 900 og presis bildetekst. Utkastfilen er fortsatt `noindex`.
 3. Oppdater `utkast/artikler.json` til `utkast/2026-11-19/bilder/<slug>-hovedbilde.webp`. Ved faktisk publisering kopieres godkjente bilder til `Bilder/Artikler/` og artikkelens offentlige bildebane, Open Graph og Twitter-bilde oppdateres. Det eksisterende `scripts/publiser-artikkel.cjs` støtter foreløpig bare SVG; bruk ikke dette skriptet for WebP-artikler uten egen justering og test.
