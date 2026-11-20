@@ -1,34 +1,8 @@
 {
   "arbeidsflyt": "fortlopende",
   "beskrivelse": "Hver artikkel behandles og publiseres enkeltvis når den er faktakontrollert og godkjent. Datoen registrert angir arbeidsmappen, ikke publiseringsdato eller utgave.",
-  "oppdatert": "2026-11-20",
+  "oppdatert": "2026-11-12",
   "artikler": [
-    {
-      "id": "tbanestenging-oslo-20261120",
-      "tittel": "Nesten hele T-banen i Oslo stengt i fire dager",
-      "kategori": "Innenriks · Samferdsel",
-      "geografi": "innenriks",
-      "artikkel": "utkast/2026-11-20/tbanestenging-oslo.html",
-      "bilde": "utkast/2026-11-20/bilder/tbanestenging-oslo-illustrasjon.svg",
-      "registrert": "2026-11-20",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
-    },
-    {
-      "id": "stian-solberg-nhl-debut-20261120",
-      "tittel": "Stian Solberg fikk NHL-debuten – spilte over 18 minutter",
-      "kategori": "Sport · Ishockey",
-      "geografi": "innenriks",
-      "artikkel": "utkast/2026-11-20/stian-solberg-nhl-debut.html",
-      "bilde": "utkast/2026-11-20/bilder/stian-solberg-nhl-illustrasjon.svg",
-      "registrert": "2026-11-20",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
-    },
     {
       "id": "boligopproret-spania-20261112",
       "tittel": "Boligopprøret: Når lønnen ikke rekker til husleien",
