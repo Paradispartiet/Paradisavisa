@@ -9,12 +9,14 @@
       "kategori": "Innenriks · Politikk og likestilling",
       "geografi": "innenriks",
       "artikkel": "utkast/2026-11-20/likestilling-gutter-og-menn.html",
-      "bilde": "utkast/2026-11-20/bilder/gutter-menn-likestilling-illustrasjon.svg",
+      "bilde": "utkast/2026-11-20/bilder/gutter-menn-likestilling-hovedbilde.webp",
       "registrert": "2026-11-20",
-      "status": "utkast",
-      "faktasjekk": "kreves",
-      "godkjent": false,
-      "publisert": false
+      "status": "publisert",
+      "faktasjekk": "godkjent",
+      "godkjent": true,
+      "publisert": true,
+      "publisert_dato": "2026-11-20",
+      "publisert_url": "artikler/2026-11-20-likestilling-gutter-og-menn.html"
     },
     {
       "id": "boligopproret-spania-20261112",
