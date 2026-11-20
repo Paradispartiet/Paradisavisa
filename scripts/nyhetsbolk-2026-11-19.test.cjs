@@ -27,7 +27,7 @@ test("Tre individuelle kilderike nyhetsutkast i eksisterende redaksjonell kø", 
     assert.match(html, /<details class="pa-menu">/);
     assert.match(html, /Kilder og dokumentasjon/);
     assert.ok((html.match(/class="av-kilde-note"/g) || []).length >= 3, "Få kildenoter i " + id);
-    assert.match(html, new RegExp('src="bilder/' + path.basename(item.bilde).replace(/[.*+?^${}()|[\]\\]/g, '\\assert.match(html, new RegExp('src="bilder/' + id + '\\.svg"'));') + '"'));
+    assert.ok(html.includes('src="bilder/' + path.basename(item.bilde) + '"'), "Feil bilde i " + id);
     if (item.bilde.endsWith(".svg")) {
       const svg = image.toString("utf8");
       assert.match(svg, /^<svg\b/);
