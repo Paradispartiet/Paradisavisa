@@ -346,7 +346,8 @@ async function run(){
       assert.ok(await page.locator(".av-kilde-note a").count()>=9);
       const sovereigntyDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(sovereigntyDims.width<=sovereigntyDims.viewport+2,name+": digital suverenitet har sidelengs scroll "+JSON.stringify(sovereigntyDims));
-      assert.equal(await page.locator("article figure img").count(),3);
+      assert.equal(await page.locator("article figure.av-tegneseriestripe img").count(),3);
+      assert.equal(await page.locator("article figure:not(.av-tegneseriestripe) img").count(),3);
       const sovereigntyImages=page.locator("article figure img");
       for(let i=0;i<await sovereigntyImages.count();i++){
         await sovereigntyImages.nth(i).scrollIntoViewIfNeeded();
