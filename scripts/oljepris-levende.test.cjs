@@ -43,7 +43,16 @@ test("Sju dokumenterte daglige oppgjørspriser er både i SVG og tabell",()=>{
  assert.match(chart,/januar-kontraktens oppgjørspris/);
 });
 test("Levende moduler: to nye SVG-er, kompakt zoom, forklarer, tidslinje, faktaboks, lokal poll",()=>{
- assert.equal((html.match(/<figure\b/g)||[]).length,3);
+ const strips=html.match(/<figure class="av-tegneseriestripe"[^>]*>.*?<\/figure>/gs)||[];
+ assert.equal(strips.length,3);
+ for(const [index,strip] of strips.entries()){
+  const image="2026-11-05-oljepris-tegneserie-0"+(index+1)+".webp";
+  assert.ok(strip.includes('src="../Bilder/Artikler/'+image+'"'));
+  assert.match(strip,/<img[^>]+\balt="[^"]+"/);
+  assert.match(strip,/<figcaption>[^<]+<\/figcaption>/);
+  assert.ok(fs.statSync(path.join(__dirname,"../Bilder/Artikler",image)).size>0);
+ }
+ assert.equal((html.match(/<figure\b/g)||[]).length-strips.length,3);
  assert.equal((html.match(/class="av-zoom-knapp" data-av-zoom/g)||[]).length,2);
  assert.equal((html.match(/>Forstørr<\/a>/g)||[]).length,2);
  assert.match(html,/id="av-zoom-dialog"/);
