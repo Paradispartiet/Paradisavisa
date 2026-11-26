@@ -22,7 +22,8 @@ const notisKontekst={document:{addEventListener(){}},Date};
 vm.createContext(notisKontekst);
 vm.runInContext(fs.readFileSync(path.join(root,"script.js"),"utf8"),notisKontekst);
 const isNotisAktuell=vm.runInContext("isNotisAktuell",notisKontekst);
-const harAktuelleNotiser=JSON.parse(fs.readFileSync(path.join(root,"notiser.json"),"utf8")).some(n=>isNotisAktuell(n));
+const aktuelleNotiser=JSON.parse(fs.readFileSync(path.join(root,"notiser.json"),"utf8")).filter(n=>isNotisAktuell(n));
+const harAktuelleNotiser=aktuelleNotiser.length>0;
 const mime={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",
   ".js":"text/javascript; charset=utf-8",".json":"application/json; charset=utf-8",
   ".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".webp":"image/webp",
@@ -765,30 +766,32 @@ async function run(){
         if(name==="notiser.html"){
           check((await page.locator(".notis-arkiv-hoved h1").textContent())==="Notiser",
             label+": notisarkivet mangler egen hovedoverskrift");
-          if(harAktuelleNotiser) {
-            await page.locator("#notisgrid .notis-rute").first().waitFor({timeout:10000});
-          } else {
-            await page.waitForFunction(()=>document.getElementById("notisgrid")?.textContent.includes("Ingen aktuelle notiser"));
+          for(const [geografi,selector] of [["innenriks","#notisgrid"],["utenriks","#utenriks-notisgrid"]]){
+            const grid=page.locator(selector);
+            const cards=grid.locator(".notis-rute");
+            const forventet=aktuelleNotiser.filter(n=>n.geografi===geografi).length;
+            if(forventet===0){
+              await grid.getByText("Ingen aktuelle "+geografi+"notiser akkurat nå.",{exact:true}).waitFor();
+            }else{
+              await cards.first().waitFor({timeout:10000});
+              const layout=await grid.evaluate(el=>({
+                columns:getComputedStyle(el).gridTemplateColumns.split(" ").length,
+                firstWidth:el.querySelector(".notis-rute").getBoundingClientRect().width,
+                viewport:innerWidth
+              }));
+              if(label==="mobil"){
+                check(layout.columns===1,label+": notiser skal stå i én kolonne på mobil");
+                check(layout.firstWidth>layout.viewport*.8,label+": notisene blir for smale på mobil");
+              }else{
+                check(layout.columns>=2,label+": notisarkivet skal bruke flere kolonner på PC");
+                check(layout.firstWidth>250,label+": notisene er for smale på PC");
+              }
+            }
+            check(await cards.count()===forventet,label+": feil antall ferske "+geografi+"notiser");
           }
           await page.locator("#eldre-notiser:not([hidden]) summary").waitFor({timeout:10000});
           check(!(await page.locator("#eldre-notiser").evaluate(el=>el.open)),
             label+": historiske notiser skal være lukket");
-          const layout=await page.evaluate(()=>{
-            const grid=document.getElementById("notisgrid");
-            const cards=[...grid.querySelectorAll(".notis-rute")];
-            const r=cards[0]?.getBoundingClientRect();
-            return {columns:getComputedStyle(grid).gridTemplateColumns.split(" ").length,
-              firstWidth:r?.width||0,viewport:innerWidth,count:cards.length};
-          });
-          check(harAktuelleNotiser ? layout.count>0 : layout.count===0,
-            label+": feil antall ferske notiser");
-          if(harAktuelleNotiser && label==="mobil"){
-            check(layout.columns===1,label+": notiser skal stå i én kolonne på mobil");
-            check(layout.firstWidth>layout.viewport*.8,label+": notisene blir for smale på mobil");
-          }else if(harAktuelleNotiser){
-            check(layout.columns>=2,label+": notisarkivet skal bruke flere kolonner på PC");
-            check(layout.firstWidth>250,label+": notisene er for smale på PC");
-          }
         }
         if(name==="nyheter.html"||name==="kultur.html"){
           await page.locator("[data-artikkelkategori] a.hjul-card").first().waitFor({timeout:10000});

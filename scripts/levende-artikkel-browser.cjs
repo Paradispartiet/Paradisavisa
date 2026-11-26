@@ -458,7 +458,8 @@ async function run(){
       assert.match(await page.title(),/Oljeprisen falt nesten ni prosent/);
       await assertCompactZoomLinks(page,name+": oljepris",2);
       assert.equal(await page.locator("main h1").count(),1);
-      assert.equal(await page.locator("main figure img").count(),3);
+      assert.equal(await page.locator("main figure.av-tegneseriestripe img").count(),3);
+      assert.equal(await page.locator("main figure:not(.av-tegneseriestripe) img").count(),3);
       const oilDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(oilDims.width<=oilDims.viewport+2,name+": oljeprissak har horisontal scroll "+JSON.stringify(oilDims));
       for(const img of await page.locator("main figure img").all()){
