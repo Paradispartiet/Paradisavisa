@@ -36,7 +36,9 @@ test("Sporbare priser og kildestatus uten å hevde at gratis varmestue mangler",
  assert.match(html,/oslo\.kommune\.no\/skole-og-utdanning\/lan-og-leie-av-skolelokaler/);
 });
 test("To nye kildebelagte og tilgjengelige SVG-grafikker med prisdata/tabell",()=>{
- assert.equal((html.match(/<figure\b/g)||[]).length,4);
+ const strips=(html.match(/<figure class="av-tegneseriestripe"/g)||[]).length;
+ assert.equal(strips,3);
+ assert.equal((html.match(/<figure\b/g)||[]).length-strips,4);
  assert.equal((html.match(/class="av-zoom-knapp" data-av-zoom/g)||[]).length,2);
  assert.equal((html.match(/>Forstørr<\/a>/g)||[]).length,2);
  assert.match(html,/id="av-zoom-dialog"/);
