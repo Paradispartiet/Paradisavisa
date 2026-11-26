@@ -548,7 +548,8 @@ async function run(){
       assert.match(await page.title(),/Sofienberg kirke er varm/);
       await assertCompactZoomLinks(page,name+": Sofienberg",2);
       assert.equal(await page.locator("article.av-artikkel h1").count(),1);
-      assert.equal(await page.locator("article.av-artikkel figure img").count(),4);
+      assert.equal(await page.locator("article.av-artikkel figure.av-tegneseriestripe img").count(),3);
+      assert.equal(await page.locator("article.av-artikkel figure:not(.av-tegneseriestripe) img").count(),4);
       const sofDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(sofDims.width<=sofDims.viewport+2,name+": Sofienberg har sidelengs scroll "+JSON.stringify(sofDims));
       for(const img of await page.locator("article.av-artikkel figure img").all()){
