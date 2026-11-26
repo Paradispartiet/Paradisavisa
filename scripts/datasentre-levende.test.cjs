@@ -52,5 +52,7 @@ test("Samme modulbibliotek brukes med poll, zoom, tidslinje, forklaring og fakta
  assert.match(html,/ingen felles resultater registreres/);
  assert.match(html,/data-av-zoom/);
  assert.match(html,/id="av-zoom-dialog"/);
- assert.equal((html.match(/<figure\b/g)||[]).length,3);
+ const strips=(html.match(/<figure class="av-tegneseriestripe"/g)||[]).length;
+ assert.equal(strips,3);
+ assert.equal((html.match(/<figure\b/g)||[]).length-strips,3);
 });

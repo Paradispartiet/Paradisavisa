@@ -189,7 +189,8 @@ async function run(){
       assert.ok(datasentreWidth.documentWidth<=datasentreWidth.viewport+2,name+": horisontal overflow datasenterartikkel "+JSON.stringify(datasentreWidth));
       assert.equal(await page.locator("main.story-shell h1").count(),1);
       assert.ok(await page.locator(".av-kilde-note a").count()>=9);
-      assert.equal(await page.locator("main figure img").count(),3);
+      assert.equal(await page.locator("main figure.av-tegneseriestripe img").count(),3);
+      assert.equal(await page.locator("main figure:not(.av-tegneseriestripe) img").count(),3);
       for(const img of await page.locator("main figure img").all()){
         await img.scrollIntoViewIfNeeded();
         await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{el.addEventListener("load",resolve,{once:true});el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});});});
