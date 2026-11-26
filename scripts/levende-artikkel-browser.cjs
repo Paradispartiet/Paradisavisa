@@ -388,7 +388,8 @@ async function run(){
       assert.equal(await page.locator("article.av-artikkel h1").count(),1);
       const serbiaDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(serbiaDims.width<=serbiaDims.viewport+2,name+": Serbia-artikkelen har sidelengs scroll "+JSON.stringify(serbiaDims));
-      assert.equal(await page.locator("article figure img").count(),2);
+      assert.equal(await page.locator("article figure.av-tegneseriestripe img").count(),3);
+      assert.equal(await page.locator("article figure:not(.av-tegneseriestripe) img").count(),2);
       for(const img of await page.locator("article figure img").all()){
         await img.scrollIntoViewIfNeeded();
         await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{el.addEventListener("load",resolve,{once:true});el.addEventListener("error",()=>reject(new Error("image broken")),{once:true});});});
