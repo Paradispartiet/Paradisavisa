@@ -7,7 +7,7 @@ const cards=JSON.parse(read("kommentarer.json"));
 const heroPath="Bilder/Artikler/2026-11-12-staten-skal-lage-ting-som-varer-hovedbilde.webp";
 
 test("Kommentar beholder tittel, avsender, publiseringsdato og godkjent hovedbilde",()=>{
- assert.match(html,/<h1 class="title">Staten skal lage ting som varer<\/h1>/);
+ assert.match(html,/<h1 class="title">Kan staten lage produkter som varer lenger\?<\/h1>/);
  assert.equal((html.match(/<h1\b/g)||[]).length,1);
  assert.match(html,/article:published_time" content="2026-11-06"/);
  assert.match(html,/article:modified_time" content="2026-11-12"/);
@@ -37,7 +37,9 @@ test("Politisk forslag skilles fra etablert virksomhet; kildene er transparente"
  assert.match(html,/Private selskaper skal fortsatt kunne selge/);
 });
 test("Levende kommentar: originalgrafikk, liten zoom, forklaring, faktaboks og lokal avstemning",()=>{
- assert.equal((html.match(/<figure\b/g)||[]).length,2);
+ const strips=(html.match(/<figure class="av-tegneseriestripe"/g)||[]).length;
+ assert.equal(strips,3);
+ assert.equal((html.match(/<figure\b/g)||[]).length-strips,2);
  assert.match(svg,/<title id="svgtitle">/);
  assert.match(svg,/<desc id="svgdesc">/);
  assert.match(svg,/ikke en allerede vedtatt ordning/);
@@ -66,7 +68,7 @@ test("Godkjent illustrasjon er en virkelig skarp WebP i repoet, og den brukes pÃ
  assert.match(html,/twitter:image" content="https:\/\/paradispartiet\.github\.io\/Paradisavisa\/Bilder\/Artikler\/2026-11-12-staten-skal-lage-ting-som-varer-hovedbilde\.webp"/);
  const card=cards.find(x=>x.url==="artikler/2026-11-06-staten-bor-lage-ting-som-varer.html");
  assert.ok(card,"Kanonisk kommentar-kort mangler");
- assert.equal(card.title,"Staten skal lage ting som varer");
+ assert.equal(card.title,"Kan staten lage produkter som varer lenger?");
  assert.equal(card.image,heroPath);
  assert.equal(card.date,"2026-11-06");
 });
