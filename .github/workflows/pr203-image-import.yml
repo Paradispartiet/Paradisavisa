@@ -1,0 +1,37 @@
+name: PR203 – importer tre tegneseriestriper
+on:
+  push:
+    branches:
+      - redaksjon/symboltunge-bilder-20261126
+    paths:
+      - redaksjon/incoming/Paradisavisa_oljepris_tegneserier.zip
+permissions:
+  contents: read
+jobs:
+  importer:
+    if: github.ref == 'refs/heads/redaksjon/symboltunge-bilder-20261126'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Importer verifiserte bilder og bevar alt eksisterende
+        run: python scripts/pr203_import_oljepris.py
+      - name: Kontroller endringer
+        run: |
+          git diff --check
+          test "$(git diff --name-only)" = "artikler/2026-11-05-oljeprisfall-usa-valg-norge.html"
+          for n in 01 02 03; do
+            test -s "Bilder/Artikler/2026-11-05-oljepris-tegneserie-${n}.webp"
+          done
+      - name: Lagre importen på PR-grenen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artikler/2026-11-05-oljeprisfall-usa-valg-norge.html Bilder/Artikler/2026-11-05-oljepris-tegneserie-*.webp
+          git rm redaksjon/incoming/Paradisavisa_oljepris_tegneserier.zip
+          git commit -m "Legg til tre visuelle fortellinger i oljeprisartikkelen"
+          git push origin HEAD:refs/heads/redaksjon/symboltunge-bilder-20261126

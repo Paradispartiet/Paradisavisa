@@ -1,7 +1,25 @@
 # Paradisavisa – redaksjonell bildehåndbok
-**Versjon:** 1.2 · **Dato:** 6. november 2026 · **Bruk:** intern redaksjonell standard
+**Versjon:** 1.5 · **Dato:** 26. november 2026 · **Bruk:** intern redaksjonell standard
 
 > **Hovedregel:** Ett gjennomarbeidet motiv med ekte rom, lys og mening er bedre enn ti ikoner. Illustrasjonen skal vise idéen – ikke skrive den. Et bilde som er godkjent i samtalen, skal publiseres som den faktiske godkjente bildefilen; et nytt SVG-utkast er ikke samme bilde.
+
+## Visuell journalistikk – tegneserieavis (26. november 2026)
+
+**Fast format, godkjent 26. november:** Bruk tre separate horisontale striper med tre miniatyrscener i hver, fordelt på tre relevante steder i artikkelen når innholdet bærer ni scener. Kortere saker får færre striper. Bruk tydelige, rikere naturlige farger (blått, grønt, rødt og jordfarger), matt trykktekstur og sort grunnflate; unngå blasse farger, gulldominans og glans. Behold alle eksisterende hovedbilder, sekundærbilder, foto og faktagrafikker. Hver ny stripe får egen alt-tekst, faktakontrollert bildetekst og lesbarhet i full bredde på mobil og iPad. Ingen innbakte oppdiktede tall eller overskrifter.
+
+**Alle artikler i Paradisavisa skal fortelles visuelt gjennom små, informative, håndtegnede scener og forklaringsgrafikker.** Bruk det godkjente bankmotivet (bankens maskineri i gjennomskjæring, husholdning, sparer, konkurranse, eiere og kapitalbuffer) som stilreferanse: klassisk skandinavisk bildebok og tegneserie, presis konturstrek, detaljrike miniatyrmiljøer, matt papir-/trykktekstur, sort eller nesten sort mellomrom og varierte, dempede naturlige farger. Ingen gjennomgående gullpalett, glimmer, neon eller glanset fotomontasje. Behold alle eksisterende bilder og grafikker. Nye tegneseriestriper er tillegg i artikkelens leseflyt, aldri erstatninger.
+
+- Les hele ferdige artikkelen før bildeplan. Lag en visuell fortelling av **hvem, hva, hvor, hvorfor, hvordan og konsekvenser**, inklusive relevante motsetninger og usikkerhet. Hvert miniatyrmotiv skal ha en konkret funksjon i artikkelen.
+- Hovedbildet er et visuelt sammendrag: flere små sammenhengende, gjenkjennelige scener, gjerne gjennomskjæring av et system, vignetter eller sekvensiell tegneseriefortelling. Gjenstander, bygninger, kart og mekanismer prioriteres; små personer brukes når de forklarer aktører eller konsekvenser.
+- Plasser egne små forklaringsillustrasjoner ved relevante avsnitt i alle artikler. Antall og størrelse følger sakens innhold; hvert motiv tilfører ny informasjon, ikke dekorasjon eller repetisjon av hovedbildet. Behold eksisterende kildebelagte grafer, tabeller og dokumentarfoto der de har journalistisk verdi. Korte saker kan ha færre scener.
+- Skill dokumenterte hendelser fra mulige konsekvenser og redaksjonell fortolkning. Ikke dikt opp faktiske scener, sitater, tall eller dokumenter. Bruk tekst og presise tall i HTML-bildetekst eller separat verifisert grafikk; ikke generer overskrifter inni bildet.
+- Hovedbilde normalt 16:9; mindre grafikker får format etter innhold og må være lesbare på mobil/iPad. Hver grafikk får egen alt-tekst, bildetekst, artikkelkobling og KI-merking ved behov. Følg eksisterende godkjennings-, rettighets- og filintegritetsregler.
+- Denne regelen går foran eldre stilråd om filmatisk fotorealisme, én enkelt scene, forbud mot vignetter eller en fast symbolgrense. Visuell fortelling er journalistikk, ikke pynt.
+
+
+## Overordnet bilderegel – 26. november 2026
+
+**Alle konstruerte redaksjonelle illustrasjoner, også hovedbilder og forsidebilder, skal være symboltunge, artikkelspesifikke og visuelt rike. Gjenstander, steder, systemer og meningsbærende detaljer skal dominere over mennesker.** Les hele den ferdige artikkelen før motiv eller prompt bestemmes. Finn hovedbudskap, historikk, aktører, årsaker, konsekvenser, motsetninger og usikkerhet; knytt hvert valgt symbol til et konkret avsnitt eller poeng. Bygg én helhetlig, detaljrik, naturtro eller filmatisk komposisjon med tydelig fokus og romlig dybde. Det er ingen fast øvre symbolgrense; fjern bare irrelevante, misvisende eller visuelt konkurrerende elementer. Unngå generiske personer ved PC, generiske portretter, flate ikoner, tekstplakater og gjenbruk av motiver mellom ulike saker. Mennesker kan være små deler av miljøet eller nødvendige i personorienterte saker. Dokumentariske fotografier og kildebelagt datagrafikk skal fortsatt være faktatro og skal ikke manipuleres til symbolske scener. Hovedbilde og sekundærbilde skal ha ulike motiver, men begge kan være rike. Denne regelen erstatter eldre råd om maks antall symboler og persondominerte illustrasjoner; krav til KI-merking, rettigheter, godkjenning og eksakt bildefil gjelder fortsatt.
 
 ## 1. Redaksjonelt grunnsyn
 - **Skille fakta fra tolkning.** Hendelsesnyheter skal være dokumentariske eller uttrykkelig merkede som redaksjonelle illustrasjoner. Satire skal kunne identifiseres som satire.
@@ -17,7 +35,7 @@
 | --- | --- | --- | --- |
 | Hendelsesnyhet | Dokumentert hendelse, arbeid, sted og konsekvens. Bruk autentisk foto med rettigheter der det finnes | Lavt | Ingen oppdiktede skadde |
 | Lokalstoff / Oslo | Stedsgjenkjenning og troverdig aktivitet | Lavt | Ingen teatralske tilskuere |
-| Analyse / forklaring | Et hovedmotiv og to–fire relevante støttegrep, som viser en årsakssammenheng eller et dilemma. | Moderat | Ingen PowerPoint |
+| Analyse / forklaring | Et hovedmotiv og flere relevante, integrerte støttegrep, som viser en årsakssammenheng eller et dilemma. | Moderat | Ingen PowerPoint |
 | Økonomi, rente og energi | Markedsbevegelse og konkret virkning for mennesker, bedrifter, stat eller natur | Moderat | Ingen automatisk likhet mellom prisfall og klimafordel |
 | Klima, miljø og natur | Vis faktiske mekanismer eller tydelig merkede framtidsscenarioer | Moderat | Ingen grønnvasking |
 | Politisk satire / systemkritikk | Én hovedmetafor, synlige relevante partssymboler, makt og medier | Høyt | Ikke skriv leserens budskap som tekst i bildet; ikke bruk tilfeldige flagg |
@@ -38,7 +56,7 @@
 
 #### 3. Analyse / forklaring
 - **Stil:** Én gjennomtenkt metafor med fotografisk dybde.
-- **Må vise:** Et hovedmotiv og to–fire relevante støttegrep, som viser en årsakssammenheng eller et dilemma.
+- **Må vise:** Et hovedmotiv og flere relevante, integrerte støttegrep, som viser en årsakssammenheng eller et dilemma.
 - **Unngå:** Ingen PowerPoint, plakater, ti ikoner, store piler eller innbakte tekstforklaringer.
 
 #### 4. Økonomi, rente og energi
@@ -74,7 +92,7 @@
 ## 2A. Hovedbilde og symbolmettet sekundærbilde – generell regel
 Dette er to **ulike redaksjonelle oppgaver** og skal planlegges separat når en sak har både hovedbilde og sekundærbilde.
 
-- **Hovedbilde:** Et umiddelbart lesbart og saklig hovedmotiv. Det skal først og fremst vise hvem, hva eller hvor, med få presise støttegrep. Dette er det foretrukne motivet til forsidekort og deling.
+- **Hovedbilde:** Et umiddelbart lesbart og saklig hovedmotiv. Det skal først og fremst vise hvem, hva eller hvor, med mange artikkelspesifikke, integrerte referanser og tydelig visuelt hierarki. Dette er det foretrukne motivet til forsidekort og deling.
 - **Sekundærbilde:** En **symbolmettet, flerlaget redaksjonell analyseillustrasjon** som samler **artikkelens hovedbudskap og de forskjellige vesentlige elementene i saken** i én helhetlig komposisjon. Bildet skal gi en rikere lesning enn hovedbildet: konfliktlinjer, årsaker, konsekvenser, kontraster, historikk og ettermæle kan få hver sine meningsbærende visuelle tegn.
 - **Komposisjon:** Også det symbolske sekundærbildet må ha et tydelig hovedmotiv, fokushierarki og dybde i forgrunn, mellomgrunn og bakgrunn. Bruk flere relevante elementer når saken krever det; ikke et vilkårlig maksimum på fire. Hvert element må tilføre journalistisk mening og kunne forklares med artikkelen.
 - **Stil:** Gjerne detaljrik, filmatisk og naturtro redaksjonell fotomontasje eller kunstnerisk illustrasjon – **ikke** flat kollasj, ikonplakat eller infografikk. Symbolene skal inngå i et troverdig visuelt rom, og motivet skal fungere også uten innbakte ord.
@@ -109,8 +127,8 @@ Denne metoden brukes **før selve bildeprompten**, spesielt for analyse, politik
 3. **Skil fakta fra tolkning.** Hvilke mekanismer er fastslått, hvilke er mulige scenarioer, og hvilke er redaksjonelle verdier eller metaforer? Ikke framstill konsekvenser som allerede inntruffet hvis saken bare omtaler en risiko.
 4. **Formuler ett visuelt paradoks eller spørsmål.** Eksempel: «Vi vil ha økonomisk trygghet, men bygger mye av tryggheten på en ressurs vi ønsker å bli mindre avhengige av.» Dette er *briefens kjerne*, ikke tekst som skal skrives i bildet.
 5. **Velg en scene, ikke en symbolkatalog.** Finn et gjenkjennelig sted og et naturlig handlingsøyeblikk der hovedidéen kommer fram. Avgjør hva man ser på to sekunder, hva man oppdager ved nærmere blikk og hva artikkelteksten – ikke bildet – skal forklare.
-6. **Ranger symbolene.** Én hovedscene, høyst ett tydelig signal om endringen og få meningsbærende detaljer i omgivelsene. Integrerte tegn er bedre enn overdimensjonerte mynter, tønner, piler og diagrammer.
-7. **Bruk romlig fortelling.** Forgrunn kan vise et menneskelig møte med nyheten; mellomgrunn kan vise økonomien eller systemet; bakgrunn kan vise samfunnet som er berørt. Disse lagene skal være én sammenhengende, troverdig scene.
+6. **Ranger symbolene.** Én hovedscene med tydelig signal om endringen og mange relevante, meningsbærende detaljer i omgivelsene. Integrerte tegn er bedre enn overdimensjonerte mynter, tønner, piler og diagrammer.
+7. **Bruk romlig fortelling.** Forgrunn kan vise gjenstander eller et konkret møte med nyheten; mellomgrunn kan vise økonomien eller systemet; bakgrunn kan vise samfunnet som er berørt. Disse lagene skal være én sammenhengende, troverdig scene.
 8. **Bestem følelsesregisteret.** Skildre usikkerhet uten å dikte opp konkurser, masseoppsigelser, katastrofer eller panikk. Dramatikk må være begrunnet i saken, ikke bare i bildegeneratorens stil.
 9. **Skriv hva bildet skal unngå.** Fjern eksplisitte etiketter, sjokkpiler, feil flagg, urelaterte symboler, kunstig todeling, poserte reaksjoner og påstander motivet ikke dokumenterer.
 10. **Kvalitetskontroller mot teksten.** Bildet må gi riktig forståelse ved raskt blikk. Sjekk om det antyder en uverifisert årsak eller om det overdriver skade eller sikkerhet. KI-bilder er illustrasjoner, ikke fotografiske bevis.
@@ -127,7 +145,7 @@ Denne metoden brukes **før selve bildeprompten**, spesielt for analyse, politik
 - **Bevisst utelatt:** Oljetønner som forgrunnsikoner, gigantiske kroner, eksplosjoner, tungsindige statistroller, tomme fabrikker og todelt «fossilt dårlig / grønt godt»-plakat.
 - **Etisk presisering:** Ikke framstill anlegget som et faktisk dokumentert konkurssted eller skjermen som en autentisk børsmelding. Opplys i bildeteksten at det er en KI-assistert redaksjonell illustrasjon.
 
-**Beslutningsregel:** Når man er usikker på enda et symbol, fjern det først. Bildet skal invitere til tolkning, mens artikkelen leverer fakta og nyanser.
+**Beslutningsregel:** Når man er usikker på enda et symbol, kontroller det mot artikkelens innhold og komposisjonen. Bildet skal invitere til tolkning, mens artikkelen leverer fakta og nyanser.
 
 ## 5. Arbeidsflyt med publiseringssperre
 1. **Brief:** Velg kategori, hovedidé, sentralt motiv, sekundære symboler, feil som må unngås og bildetype.
