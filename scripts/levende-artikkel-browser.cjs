@@ -230,7 +230,8 @@ async function run(){
       const theatreDims=await page.evaluate(()=>({documentWidth:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(theatreDims.documentWidth<=theatreDims.viewport+2,name+": Nationaltheatret har sidelengs scroll "+JSON.stringify(theatreDims));
       assert.ok(await page.locator(".av-kilde-note a").count()>=7);
-      assert.equal(await page.locator("main figure img").count(),2);
+      assert.equal(await page.locator("main figure.av-tegneseriestripe img").count(),3);
+      assert.equal(await page.locator("main figure:not(.av-tegneseriestripe) img").count(),2);
       for(const img of await page.locator("main figure img").all()){
         await img.scrollIntoViewIfNeeded();
         await page.waitForFunction(src=>{
