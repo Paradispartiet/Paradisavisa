@@ -41,7 +41,9 @@ test("Levende kulturmoduler er informative uten fiktive avstemninger eller visua
  assert.match(h,/class="av-tidslinje"/);
  assert.match(h,/data-av-zoom aria-label="Forstørr diagrammet over de to teaterstedene">Forstørr/);
  assert.match(h,/class="av-figur av-mellombilde"/);
- assert.equal((h.match(/<figure\b/g)||[]).length,2);
+ const strips=(h.match(/<figure class="av-tegneseriestripe"/g)||[]).length;
+ assert.equal(strips,3);
+ assert.equal((h.match(/<figure\b/g)||[]).length-strips,2);
  assert.doesNotMatch(h,/data-av-poll="/,"Ingen poll for et uklart teater-/byggespørsmål");
  assert.match(svg,/<title id="t">/);
  assert.match(svg,/<desc id="d">/);
