@@ -1,7 +1,19 @@
 # Paradisavisa – redaksjonell bildehåndbok
-**Versjon:** 1.3 · **Dato:** 26. november 2026 · **Bruk:** intern redaksjonell standard
+**Versjon:** 1.4 · **Dato:** 26. november 2026 · **Bruk:** intern redaksjonell standard
 
 > **Hovedregel:** Ett gjennomarbeidet motiv med ekte rom, lys og mening er bedre enn ti ikoner. Illustrasjonen skal vise idéen – ikke skrive den. Et bilde som er godkjent i samtalen, skal publiseres som den faktiske godkjente bildefilen; et nytt SVG-utkast er ikke samme bilde.
+
+## Visuell journalistikk – tegneserieavis (26. november 2026)
+
+**Alle artikler i Paradisavisa skal fortelles visuelt gjennom små, informative, håndtegnede scener og forklaringsgrafikker.** Bruk det godkjente bankmotivet (bankens maskineri i gjennomskjæring, husholdning, sparer, konkurranse, eiere og kapitalbuffer) som stilreferanse: klassisk skandinavisk bildebok og tegneserie, presis konturstrek, detaljrike miniatyrmiljøer, matt papir-/trykktekstur, sort eller nesten sort mellomrom og varierte, dempede naturlige farger. Ingen gjennomgående gullpalett, glimmer, neon eller glanset fotomontasje. Behold godkjente eksisterende bilder, blant annet platebarmotivet, inntil et konkret bytte er valgt.
+
+- Les hele ferdige artikkelen før bildeplan. Lag en visuell fortelling av **hvem, hva, hvor, hvorfor, hvordan og konsekvenser**, inklusive relevante motsetninger og usikkerhet. Hvert miniatyrmotiv skal ha en konkret funksjon i artikkelen.
+- Hovedbildet er et visuelt sammendrag: flere små sammenhengende, gjenkjennelige scener, gjerne gjennomskjæring av et system, vignetter eller sekvensiell tegneseriefortelling. Gjenstander, bygninger, kart og mekanismer prioriteres; små personer brukes når de forklarer aktører eller konsekvenser.
+- Plasser egne små forklaringsillustrasjoner ved relevante avsnitt i alle artikler. Antall og størrelse følger sakens innhold; hvert motiv tilfører ny informasjon, ikke dekorasjon eller repetisjon av hovedbildet. Behold eksisterende kildebelagte grafer, tabeller og dokumentarfoto der de har journalistisk verdi. Korte saker kan ha færre scener.
+- Skill dokumenterte hendelser fra mulige konsekvenser og redaksjonell fortolkning. Ikke dikt opp faktiske scener, sitater, tall eller dokumenter. Bruk tekst og presise tall i HTML-bildetekst eller separat verifisert grafikk; ikke generer overskrifter inni bildet.
+- Hovedbilde normalt 16:9; mindre grafikker får format etter innhold og må være lesbare på mobil/iPad. Hver grafikk får egen alt-tekst, bildetekst, artikkelkobling og KI-merking ved behov. Følg eksisterende godkjennings-, rettighets- og filintegritetsregler.
+- Denne regelen går foran eldre stilråd om filmatisk fotorealisme, én enkelt scene, forbud mot vignetter eller en fast symbolgrense. Visuell fortelling er journalistikk, ikke pynt.
+
 
 ## Overordnet bilderegel – 26. november 2026
 
