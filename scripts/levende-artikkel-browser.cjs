@@ -304,13 +304,14 @@ async function run(){
 
       // Sixth pilot: political commentary about a public basic product range.
       await page.goto(base+"/artikler/2026-11-06-staten-bor-lage-ting-som-varer.html",{waitUntil:"load"});
-      assert.match(await page.title(),/Staten skal lage ting som varer/);
+      assert.match(await page.title(),/Kan staten lage produkter som varer lenger\?/);
       await assertCompactZoomLinks(page,name+": grunnsortiment-kommentar");
       assert.equal(await page.locator("article.av-artikkel h1").count(),1);
       assert.ok(await page.locator(".av-kilde-note a").count()>=7);
       const basicDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(basicDims.width<=basicDims.viewport+2,name+": grunnsortiment-kommentar har sidelengs scroll "+JSON.stringify(basicDims));
-      assert.equal(await page.locator("article figure img").count(),2);
+      assert.equal(await page.locator("article figure.av-tegneseriestripe img").count(),3);
+      assert.equal(await page.locator("article figure:not(.av-tegneseriestripe) img").count(),2);
       const basicImages=page.locator("article figure img");
       for(let i=0;i<await basicImages.count();i++){
         await basicImages.nth(i).scrollIntoViewIfNeeded();
