@@ -35,7 +35,9 @@ test("Tydelig dokumenterte primærkilder og skille mellom intensjon og vedtak",(
  assert.match(html,/et skriftlig svar til Paradisavisa/);
 });
 test("Levende feature: tre illustrasjoner, forklaringsgrafikk, fire trinn, tidslinje og lokal poll",()=>{
- assert.equal((html.match(/<figure\b/g)||[]).length,3);
+ const strips=html.match(/<figure class="av-tegneseriestripe"[^>]*>.*?<\/figure>/gs)||[];
+ assert.equal(strips.length,3);
+ assert.equal((html.match(/<figure\b/g)||[]).length-strips.length,3);
  assert.match(html,/class="av-zoom-knapp" data-av-zoom aria-label="Forstørr diagrammet om leverandøravhengighet">Forstørr/);
  assert.match(html,/id="av-zoom-dialog"/);
  assert.match(html,/class="av-infoboks"/);
