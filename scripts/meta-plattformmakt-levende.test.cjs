@@ -35,7 +35,9 @@ test("Oppdatering 6 november 2026 og rettslige reservasjoner",()=>{
  assert.match(html,/niemanlab\.org\/2026\/11\/meta-pulls-down-controversial-terms-of-service/);
 });
 test("To originale SVG-grafikker er faktabasert og tilgjengelig",()=>{
- assert.equal((html.match(/<figure\b/g)||[]).length,4);
+ const strips=(html.match(/<figure class="av-tegneseriestripe"/g)||[]).length;
+ assert.equal(strips,3);
+ assert.equal((html.match(/<figure\b/g)||[]).length-strips,4);
  assert.equal((html.match(/class="av-zoom-knapp" data-av-zoom/g)||[]).length,2);
  assert.equal((html.match(/>Forstørr<\/a>/g)||[]).length,2);
  assert.match(html,/id="av-zoom-dialog"/);
