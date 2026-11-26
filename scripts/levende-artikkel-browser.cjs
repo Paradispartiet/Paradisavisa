@@ -507,7 +507,8 @@ async function run(){
       assert.equal(await page.locator("article.av-artikkel h1").isVisible(),true);
       const metaDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(metaDims.width<=metaDims.viewport+2,name+": Meta-saken har sidelengs scroll "+JSON.stringify(metaDims));
-      assert.equal(await page.locator("article.av-artikkel figure img").count(),4);
+      assert.equal(await page.locator("article.av-artikkel figure.av-tegneseriestripe img").count(),3);
+      assert.equal(await page.locator("article.av-artikkel figure:not(.av-tegneseriestripe) img").count(),4);
       for(const img of await page.locator("article.av-artikkel figure img").all()){
         await img.scrollIntoViewIfNeeded();
         await img.evaluate(async el=>{if(!el.complete||!el.naturalWidth)await new Promise((resolve,reject)=>{
