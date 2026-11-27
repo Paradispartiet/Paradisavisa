@@ -423,7 +423,8 @@ async function run(){
       await assertCompactZoomLinks(page,name+": diplomati");
       assert.equal(await page.locator("article.av-artikkel h1").count(),0); // H1 stays outside the text column.
       assert.equal(await page.locator("main h1").count(),1);
-      assert.equal(await page.locator("main figure img").count(),2);
+      assert.equal(await page.locator("main figure.av-tegneseriestripe img").count(),3);
+      assert.equal(await page.locator("main figure:not(.av-tegneseriestripe) img").count(),2);
       const diplomaDims=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(diplomaDims.width<=diplomaDims.viewport+2,name+": diplomatifeature har sidelengs scroll "+JSON.stringify(diplomaDims));
       for(const img of await page.locator("main figure img").all()){

@@ -30,7 +30,9 @@ test("Tre kanaler, presis kildekarakter og oppdatering 12 november",()=>{
  assert.match(html,/EU-kommisjonen utbetalte 5\. november 4,36 milliarder euro/);
 });
 test("Diagram med kompakt zoom, seks tider, faktaboks, fire forklaringssteg og lokal poll",()=>{
- assert.equal((html.match(/<figure\b/g)||[]).length,2);
+ const strips=(html.match(/<figure class="av-tegneseriestripe"/g)||[]).length;
+ assert.equal(strips,3);
+ assert.equal((html.match(/<figure\b/g)||[]).length-strips,2);
  assert.match(html,/class="av-zoom-knapp" data-av-zoom[^>]+>Forstørr<\/a>/);
  assert.match(html,/id="av-zoom-dialog"/);
  assert.match(html,/class="av-tidslinje"/);
