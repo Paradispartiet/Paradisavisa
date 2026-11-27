@@ -152,6 +152,7 @@ async function run(){
       assert.equal(await page.locator("figure.av-skriveprosess-figur img").count(),1);
       assert.ok(await page.locator(".av-kilde-note a").count()>=4);
       assert.ok(await page.locator(".av-kilder-samlet li").count()>=8);
+      assert.equal(await page.locator("article figure.av-tegneseriestripe img").count(),3);
       const debattImages=page.locator("article img");
       for(let i=0;i<await debattImages.count();i++){
         await debattImages.nth(i).scrollIntoViewIfNeeded();
