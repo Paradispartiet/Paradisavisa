@@ -46,7 +46,7 @@ test("Levende moduler: to nye SVG-er, kompakt zoom, forklarer, tidslinje, faktab
  const strips=html.match(/<figure class="av-tegneseriestripe"[^>]*>.*?<\/figure>/gs)||[];
  assert.equal(strips.length,3);
  for(const [index,strip] of strips.entries()){
-  const image="2026-11-05-oljepris-tegneserie-0"+(index+1)+".webp";
+  const image="2026-11-05-oljepris-illustrasjon-0"+(index+1)+".webp";
   assert.ok(strip.includes('src="../Bilder/Artikler/'+image+'"'));
   assert.match(strip,/<img[^>]+\balt="[^"]+"/);
   assert.match(strip,/<figcaption>[^<]+<\/figcaption>/);
