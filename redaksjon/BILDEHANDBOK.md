@@ -1,21 +1,16 @@
 # Paradisavisa – redaksjonell bildehåndbok
-**Versjon:** 1.5 · **Dato:** 26. november 2026 · **Bruk:** intern redaksjonell standard
+**Versjon:** 1.6 · **Dato:** 27. november 2026 · **Bruk:** intern redaksjonell standard
 
 > **Hovedregel:** Ett gjennomarbeidet motiv med ekte rom, lys og mening er bedre enn ti ikoner. Illustrasjonen skal vise idéen – ikke skrive den. Et bilde som er godkjent i samtalen, skal publiseres som den faktiske godkjente bildefilen; et nytt SVG-utkast er ikke samme bilde.
 
-## Visuell journalistikk – tegneserieavis (26. november 2026)
+## Visuell journalistikk – variasjon fra sak til sak
 
-**Fast format, godkjent 26. november:** Bruk tre separate horisontale striper med tre miniatyrscener i hver, fordelt på tre relevante steder i artikkelen når innholdet bærer ni scener. Kortere saker får færre striper. Bruk tydelige, rikere naturlige farger (blått, grønt, rødt og jordfarger), matt trykktekstur og sort grunnflate; unngå blasse farger, gulldominans og glans. Behold alle eksisterende hovedbilder, sekundærbilder, foto og faktagrafikker. Hver ny stripe får egen alt-tekst, faktakontrollert bildetekst og lesbarhet i full bredde på mobil og iPad. Ingen innbakte oppdiktede tall eller overskrifter.
+Les hele artikkelen og velg sammenhenger der et bilde kan tilføre innsikt. Finn et konkret spor i saken, for eksempel materialet som skiller to produksjonsmåter, et sted som endrer bruk, eller hvordan en beslutning får ulike følger for to aktører. Velg uttrykk etter hva som gjør sammenhengen tydeligst.
 
-**Alle artikler i Paradisavisa skal fortelles visuelt gjennom små, informative, håndtegnede scener og forklaringsgrafikker.** Bruk det godkjente bankmotivet (bankens maskineri i gjennomskjæring, husholdning, sparer, konkurranse, eiere og kapitalbuffer) som stilreferanse: klassisk skandinavisk bildebok og tegneserie, presis konturstrek, detaljrike miniatyrmiljøer, matt papir-/trykktekstur, sort eller nesten sort mellomrom og varierte, dempede naturlige farger. Ingen gjennomgående gullpalett, glimmer, neon eller glanset fotomontasje. Behold alle eksisterende bilder og grafikker. Nye tegneseriestriper er tillegg i artikkelens leseflyt, aldri erstatninger.
-
-- Les hele ferdige artikkelen før bildeplan. Lag en visuell fortelling av **hvem, hva, hvor, hvorfor, hvordan og konsekvenser**, inklusive relevante motsetninger og usikkerhet. Hvert miniatyrmotiv skal ha en konkret funksjon i artikkelen.
-- Hovedbildet er et visuelt sammendrag: flere små sammenhengende, gjenkjennelige scener, gjerne gjennomskjæring av et system, vignetter eller sekvensiell tegneseriefortelling. Gjenstander, bygninger, kart og mekanismer prioriteres; små personer brukes når de forklarer aktører eller konsekvenser.
-- Plasser egne små forklaringsillustrasjoner ved relevante avsnitt i alle artikler. Antall og størrelse følger sakens innhold; hvert motiv tilfører ny informasjon, ikke dekorasjon eller repetisjon av hovedbildet. Behold eksisterende kildebelagte grafer, tabeller og dokumentarfoto der de har journalistisk verdi. Korte saker kan ha færre scener.
-- Skill dokumenterte hendelser fra mulige konsekvenser og redaksjonell fortolkning. Ikke dikt opp faktiske scener, sitater, tall eller dokumenter. Bruk tekst og presise tall i HTML-bildetekst eller separat verifisert grafikk; ikke generer overskrifter inni bildet.
-- Hovedbilde normalt 16:9; mindre grafikker får format etter innhold og må være lesbare på mobil/iPad. Hver grafikk får egen alt-tekst, bildetekst, artikkelkobling og KI-merking ved behov. Følg eksisterende godkjennings-, rettighets- og filintegritetsregler.
-- Denne regelen går foran eldre stilråd om filmatisk fotorealisme, én enkelt scene, forbud mot vignetter eller en fast symbolgrense. Visuell fortelling er journalistikk, ikke pynt.
-
+- Sammenlign motiv, komposisjon og uttrykk med de tre siste illustrerte sakene før du bestiller et nytt bilde. Se særlig etter gjentatte skrivebord, saksmapper, forstørrelsesglass, telefoner, serverrom og piler. Bruk slike gjenstander når de har en presis rolle i akkurat denne saken.
+- Varier utsnitt, perspektiv, lys, palett og teknikk. En stedsskildring, et fotoessay, en gjennomskjæring, en dokumentcollage og en sekvens kan alle passe i Paradisavisa. Velg bare de grepene som hjelper leseren i den aktuelle saken.
+- Bruk tre striper à tre ruter når fortellingen trenger ni scener. En kortere sekvens, en hel komposisjon eller en kildebasert grafikk kan dekke behovet bedre. Hvert nytt bilde skal ha et eget journalistisk poeng.
+- Kontroller mobil- og iPad-lesbarhet, bildekarakter, alt-tekst og bildetekst. Skill dokumentasjon, forslag og hypotetiske eksempler. Behold eksisterende dokumentarfoto og kildebelagte grafikker.
 
 ## Overordnet bilderegel – 26. november 2026
 
