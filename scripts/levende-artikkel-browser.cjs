@@ -463,7 +463,7 @@ async function run(){
 
       // Tenth living feature: oil price settlements, original image, charts and no fabricated pump prices.
       await page.goto(base+"/artikler/2026-11-05-oljeprisfall-usa-valg-norge.html",{waitUntil:"load"});
-      assert.match(await page.title(),/Oljeprisen falt nesten ni prosent/);
+      assert.match(await page.title(),/Oljeprisen falt\. Hva står på spill for Norge\?/);
       await assertCompactZoomLinks(page,name+": oljepris",2);
       assert.equal(await page.locator("main h1").count(),1);
       assert.equal(await page.locator("main figure.av-tegneseriestripe img").count(),3);
