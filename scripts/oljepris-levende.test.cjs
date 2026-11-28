@@ -5,7 +5,7 @@ const html=read("artikler/2026-11-05-oljeprisfall-usa-valg-norge.html");
 const chart=read("Bilder/Artikler/2026-11-12-brent-november-sluttkurser.svg");
 const flow=read("Bilder/Artikler/2026-11-12-oljepris-norge-virkninger.svg");
 test("Originalt oljeprisinnhold, hovedillustrasjon, dato og felles stil beholdes",()=>{
- assert.match(html,/<h1 class="story-title">Oljeprisen falt nesten ni prosent/);
+ assert.match(html,/<h1 class="story-title">Oljeprisen falt\. Hva står på spill for Norge\?/);
  assert.equal((html.match(/<h1\b/g)||[]).length,1);
  assert.equal((html.match(/<article\b/g)||[]).length,1);
  assert.equal((html.match(/<\/article>/g)||[]).length,1);
