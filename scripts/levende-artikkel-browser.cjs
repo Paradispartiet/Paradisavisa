@@ -267,7 +267,8 @@ async function run(){
       assert.ok(await page.locator(".av-kilde-note a").count()>=7);
       const ronaldoWidth=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(ronaldoWidth.width<=ronaldoWidth.viewport+2,name+": Ronaldo-analysen har sidelengs scroll "+JSON.stringify(ronaldoWidth));
-      assert.equal(await page.locator("article figure img").count(),3);
+      assert.equal(await page.locator("article figure.av-tegneseriestripe img").count(),2);
+      assert.equal(await page.locator("article figure:not(.av-tegneseriestripe) img").count(),3);
       const pictures=page.locator("article figure img");
       for(let i=0;i<await pictures.count();i++){
         await pictures.nth(i).scrollIntoViewIfNeeded();

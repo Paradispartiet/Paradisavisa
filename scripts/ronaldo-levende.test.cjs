@@ -35,7 +35,9 @@ test("Karrieretall er kildebelagte og modulene viser ikke oppdiktet løpsstatist
  assert.match(h,/<form hidden>/);
  assert.match(h,/data-av-poll-js-required/);
  assert.match(h,/class="av-zoom-knapp"[^>]*aria-label="Forstørr taktikkdiagrammet om presspillet">Forstørr/);
- assert.equal((h.match(/<figure\b/g)||[]).length,3);
+ const strips=(h.match(/<figure class="av-tegneseriestripe"/g)||[]).length;
+ assert.equal(strips,2);
+ assert.equal((h.match(/<figure\b/g)||[]).length-strips,3);
  assert.match(diagram,/<title id="title">/);
  assert.match(diagram,/<desc id="description">/);
  assert.match(diagram,/ikke bevis for hvordan en konkret spiller beveget seg/);
