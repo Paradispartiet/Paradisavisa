@@ -67,6 +67,88 @@ stock-aktig klisjé eller unødvendig dramatikk.
 Bildet må ikke framstå som dokumentarfoto hvis scenen er konstruert.
 ~~~
 
+## Stiltillegg du kan kopiere
+
+Velg ett uttrykk ut fra hva bildet skal forklare. Fyll inn feltene fra artikkelbriefen og legg til blokken i bildebestillingen. Se [de publiserte bildeeksemplene](https://paradispartiet.github.io/Paradisavisa/redaksjon/bildehandbok.html#stiloversikt) før du velger komposisjon.
+
+### Retrostil
+
+~~~text
+Bruk [TIDSPERIODE] som referanse for fargepalett, trykkraster og komposisjon. Bygg motivet rundt [TIDSTYPISK GJENSTAND] og vis [KONTRAST]. Utform scenen som en ny illustrasjon.
+~~~
+
+### Klassisk tegning
+
+~~~text
+Tegn [MOTIV] med [BLYANT, KULL ELLER PENN] fra [PERSPEKTIV]. La linjevekten fremheve [DETALJ], og bruk skravering til å vise [ROM ELLER MATERIALSKIFTE].
+~~~
+
+### Abstraksjon
+
+~~~text
+Gi [AKTØR ELLER KOMPONENT A] og [B] hver sin form. Vis [SAMMENHENG] gjennom avstand, rytme eller overlapping. Hold forholdet mellom formene lesbart på mobil.
+~~~
+
+### Akvarell
+
+~~~text
+Bruk transparente fargelag til å skille [MILJØ] fra [ENDRING]. Hold [AVGJØRENDE SPOR] skarpt og la bakgrunnen vise vær, lys eller årstid.
+~~~
+
+### Gouache og plakatmaleri
+
+~~~text
+Bygg scenen med dekkende fargeflater. Gi [HOVEDMOTIV] en tydelig silhuett og bruk [TO ARTIKKELSPESIFIKKE DETALJER] til å skille situasjonene.
+~~~
+
+### Linotrykk og tresnitt
+
+~~~text
+Bruk få trykkfarger, skårne linjer og tydelige materialteksturer. Vis [DEL ELLER VERKTØY] i nærbilde og la [ENDRING] komme fram i overflaten.
+~~~
+
+### Kollasj og papirklipp
+
+~~~text
+Bruk overlappende papirlager til å knytte [DEL A] og [DEL B] sammen. La klippekanten eller mellomrommet vise hvor forbindelsen endres.
+~~~
+
+### Isometrisk illustrasjon og gjennomskjæring
+
+~~~text
+Åpne [BYGG ELLER SYSTEM] fra [VALGT SIDE] så [FUNKSJONER] blir synlige. Gi [VIKTIG FLYT] en fysisk sammenhengende rute gjennom motivet. Bruk dokumenterte detaljer eller en tydelig tenkt modell.
+~~~
+
+### Miniatyr og diorama
+
+~~~text
+Bygg en liten modell av [SITUASJON] i [MATERIALE]. Bruk skala og plassering til å vise hva [AKTØR ELLER GJENSTAND] kan nå, bruke eller påvirke.
+~~~
+
+### Fotografisk stilleben
+
+~~~text
+Plasser [GJENSTAND], [MOTSTYKKE] og [AVGJØRENDE DETALJ] i ett oppsett. Bruk sidelys og skarphet til å vise [FORSKJELL]. Beskriv bildet som et konstruert motiv i bildeteksten.
+~~~
+
+### Karikatur og visuell satire
+
+~~~text
+Overdriv [SYNLIG TREKK VED SYSTEMET] slik at [SELVMOTSIGELSE] blir tydelig. Bygg handlingen rundt en symbolsk situasjon og merk den som satire.
+~~~
+
+### Tekstil og broderi
+
+~~~text
+La [FARGE ELLER SØM] stå for [FORBINDELSE]. Bruk en brutt eller endret tråd til å vise [HVA SOM GÅR TAPT], mens motivene på hver side fortsatt kan gjenkjennes.
+~~~
+
+### Surrealistisk illustrasjon
+
+~~~text
+La [GJENSTAND] gjøre én umulig ting som uttrykker [HOVEDPOENG]. Gjør resten av scenen konkret slik at leseren lett ser hva som er forandret.
+~~~
+
 ## 3. Maler per kategori
 
 ### A. Konkrete nyhetshendelser
