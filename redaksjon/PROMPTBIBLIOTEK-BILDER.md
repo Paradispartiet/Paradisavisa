@@ -1,5 +1,5 @@
 # Paradisavisa – promptbibliotek for redaksjonelle bilder
-**Versjon:** 1.6 · **Dato:** 27. november 2026 · Brukes sammen med [Bildehåndboken](BILDEHANDBOK.md).
+**Versjon:** 1.7 · **Dato:** 28. november 2026 · Brukes sammen med [Bildehåndboken](BILDEHANDBOK.md).
 
 ## Visuell journalistikk – variasjon fra sak til sak
 
@@ -7,6 +7,15 @@ Les hele artikkelen og velg sammenhenger der et bilde kan tilføre innsikt. Finn
 
 - Sammenlign motiv, komposisjon og uttrykk med de tre siste illustrerte sakene før du bestiller et nytt bilde. Se særlig etter gjentatte skrivebord, saksmapper, forstørrelsesglass, telefoner, serverrom og piler. Bruk slike gjenstander når de har en presis rolle i akkurat denne saken.
 - Varier utsnitt, perspektiv, lys, palett og teknikk. En stedsskildring, et fotoessay, en gjennomskjæring, en dokumentcollage og en sekvens kan alle passe i Paradisavisa. Velg bare de grepene som hjelper leseren i den aktuelle saken.
+
+### Tre mulige uttrykk
+
+- **Retrostil:** Bruk for eksempel plakatspråk, silketrykk eller rastrert avistrykk når formspråket har en forbindelse til tidsepoken eller temaet. Merk nye illustrasjoner tydelig slik at de ikke fremstår som arkivmateriale.
+- **Klassisk tegning:** Bruk blyant, kull eller penn og blekk når rom, bevegelse, håndverk eller konstruksjon blir lettere å forstå gjennom streken.
+- **Abstraksjon:** Bruk form, farge og rytme når bildet skal forklare et forhold som er vanskelig å fotografere. Forankre motivet i ett presist poeng og bruk bildeteksten til å gjøre koblingen tydelig. Bruk kildebelagt datagrafikk når leseren trenger tall.
+
+I prompten, angi hva uttrykket skal hjelpe leseren å forstå. Beskriv trykkteknikk og periode for retro, strek og materiale for klassisk tegning, eller forholdet mellom formene for abstraksjon.
+
 - Bruk tre striper à tre ruter når fortellingen trenger ni scener. En kortere sekvens, en hel komposisjon eller en kildebasert grafikk kan dekke behovet bedre. Hvert nytt bilde skal ha et eget journalistisk poeng.
 - Kontroller mobil- og iPad-lesbarhet, bildekarakter, alt-tekst og bildetekst. Skill dokumentasjon, forslag og hypotetiske eksempler. Behold eksisterende dokumentarfoto og kildebelagte grafikker.
 
