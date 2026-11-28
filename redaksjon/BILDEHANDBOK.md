@@ -1,5 +1,5 @@
 # Paradisavisa – redaksjonell bildehåndbok
-**Versjon:** 1.7 · **Dato:** 28. november 2026 · **Bruk:** intern redaksjonell standard
+**Versjon:** 1.8 · **Dato:** 28. november 2026 · **Bruk:** intern redaksjonell standard
 
 > **Hovedregel:** Ett gjennomarbeidet motiv med ekte rom, lys og mening er bedre enn ti ikoner. Illustrasjonen skal vise idéen – ikke skrive den. Et bilde som er godkjent i samtalen, skal publiseres som den faktiske godkjente bildefilen; et nytt SVG-utkast er ikke samme bilde.
 
@@ -10,11 +10,21 @@ Les hele artikkelen og velg sammenhenger der et bilde kan tilføre innsikt. Finn
 - Sammenlign motiv, komposisjon og uttrykk med de tre siste illustrerte sakene før du bestiller et nytt bilde. Se særlig etter gjentatte skrivebord, saksmapper, forstørrelsesglass, telefoner, serverrom og piler. Bruk slike gjenstander når de har en presis rolle i akkurat denne saken.
 - Varier utsnitt, perspektiv, lys, palett og teknikk. En stedsskildring, et fotoessay, en gjennomskjæring, en dokumentcollage og en sekvens kan alle passe i Paradisavisa. Velg bare de grepene som hjelper leseren i den aktuelle saken.
 
-### Tre mulige uttrykk
+### Stilbank for redaksjonelle illustrasjoner
 
 - **Retrostil:** Bruk for eksempel plakatspråk, silketrykk eller rastrert avistrykk når formspråket har en forbindelse til tidsepoken eller temaet. Merk nye illustrasjoner tydelig slik at de ikke fremstår som arkivmateriale.
 - **Klassisk tegning:** Bruk blyant, kull eller penn og blekk når rom, bevegelse, håndverk eller konstruksjon blir lettere å forstå gjennom streken.
 - **Abstraksjon:** Bruk form, farge og rytme når bildet skal forklare et forhold som er vanskelig å fotografere. Forankre motivet i ett presist poeng og bruk bildeteksten til å gjøre koblingen tydelig. Bruk kildebelagt datagrafikk når leseren trenger tall.
+- **Akvarell:** Myke overganger og gjennomskinnelige farger gir rom for natur, vær og atmosfære. Eksempel: En elv som gradvis tar tilbake en flomslette.
+- **Gouache og plakatmaleri:** Dekkende fargeflater og tydelige silhuetter gjør en scene lesbar i lite format. Eksempel: Ulik bruk av det samme byrommet morgen og kveld.
+- **Linotrykk og tresnitt:** Skårne flater, grov struktur og sterke kontraster fremhever form og materialer. Eksempel: En bygningsdel før og etter restaurering.
+- **Kollasj og papirklipp:** Kombiner utklipp eller fargelag for å vise at flere deler inngår i én sammenheng. Eksempel: En kollektivrute som forbinder bolig, skole og arbeid.
+- **Isometrisk illustrasjon og gjennomskjæring:** Vis hva som ligger bak en fasade eller hvordan et system er bygget opp. Eksempel: Et bygg med adskilte publikumsarealer, verksted og teknisk drift.
+- **Miniatyr og diorama:** Bygg opp én tydelig situasjon i liten skala med skygger og fysiske materialer. Eksempel: Tre mulige bruksformer for det samme lokalet.
+- **Fotografisk stilleben:** La ett eller noen få konkrete objekter bære poenget gjennom utsnitt, lys og materiale. Eksempel: En demontert telefon ved siden av et tilgjengelig reservebatteri.
+- **Karikatur og visuell satire:** Overdriv en egenskap for å tydeliggjøre makt, konflikt eller selvmotsigelse. Merk motivet som satire. Eksempel: En symbolsk talerstol som vokser for hver ny regel om hvem som får ordet.
+- **Tekstil og broderi:** Bruk tråd, søm og lag til å vise tilhørighet, avhengighet eller brudd. Eksempel: Et arkiv der filene blir med i flyttingen, mens forbindelsene mellom dem ryker.
+- **Surrealistisk illustrasjon:** Sett gjenstander i en umulig, men forståelig situasjon som uttrykker én idé. Eksempel: En bro der et ledd henger i lufta for å vise et løfte som ennå ikke er gjennomført.
 
 - Bruk tre striper à tre ruter når fortellingen trenger ni scener. En kortere sekvens, en hel komposisjon eller en kildebasert grafikk kan dekke behovet bedre. Hvert nytt bilde skal ha et eget journalistisk poeng.
 - Kontroller mobil- og iPad-lesbarhet, bildekarakter, alt-tekst og bildetekst. Skill dokumentasjon, forslag og hypotetiske eksempler. Behold eksisterende dokumentarfoto og kildebelagte grafikker.
